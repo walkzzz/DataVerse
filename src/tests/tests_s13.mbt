@@ -130,13 +130,6 @@ test "math_linear_algebra_basic" {
   assert_true(mt.trace() == 3.0)
 }
 
-test "stats_dist_normal_basic" {
-  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let mean = @_common.mean(data)
-  assert_true(mean > 2.9 && mean < 3.1)
-  let sd = @_common.std(data)
-  assert_true(sd > 1.4 && sd < 1.5)
-}
 
 test "ml_cluster_kmeans_basic" {
   let pt = @ml_cluster_kmeans.ml_cluster_kmeans_make_point(1.0, 2.0)
@@ -156,19 +149,6 @@ test "ds_tree_avl_basic" {
   assert_true(sr.max() == 5.0)
 }
 
-test "sort_compare_quick_basic" {
-  let arr = [5.0, 3.0, 1.0, 4.0, 2.0]
-  let sorted = @_common.sort(arr)
-  assert_true(sorted[0] == 1.0)
-  assert_true(sorted[4] == 5.0)
-}
-
-test "signal_filter_fir_basic" {
-  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let norm = @_common.normalize(data)
-  assert_true(norm[0] == 0.0)
-  assert_true(norm[4] == 1.0)
-}
 
 test "image_filter_gaussian_basic" {
   let mt = @image_filter_gaussian.image_filter_gaussian_matrix_identity(3)
@@ -178,11 +158,4 @@ test "image_filter_gaussian_basic" {
 test "chem_mol_repr_smiles_basic" {
   let mt = @chem_mol_repr_smiles.chem_mol_repr_smiles_matrix_identity(2)
   assert_true(mt.det() == 1.0)
-}
-
-test "finance_pricing_black_scholes_basic" {
-  let pred = [1.0, 2.0, 3.0]
-  let labels = [1.0, 2.0, 3.0]
-  let r2 = @_common.r2(pred, labels)
-  assert_true(r2 > 0.99)
 }

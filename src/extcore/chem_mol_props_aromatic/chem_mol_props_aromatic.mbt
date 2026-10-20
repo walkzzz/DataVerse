@@ -186,10 +186,9 @@ pub fn ChemmolpropsaromaticMatrix::multiply(self : ChemmolpropsaromaticMatrix, o
   if self.cols != other.rows { return chem_mol_props_aromatic_make_matrix(self.rows, other.cols, 0.0) }
   let result = chem_mol_props_aromatic_make_matrix(self.rows, other.cols, 0.0)
   for i in 0..<self.rows {
-    for j in 0..<other.cols {
-      let mut sum = 0.0
-      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
-      result.data[i][j] = sum
+    for k in 0..<self.cols {
+      let v = self.data[i][k]
+      for j in 0..<other.cols { result.data[i][j] = result.data[i][j] + v * other.data[k][j] }
     }
   }
   result

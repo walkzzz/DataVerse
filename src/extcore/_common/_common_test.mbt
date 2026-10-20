@@ -145,3 +145,46 @@ test "common_array_ops" {
   let f = @_common.fill_arr(3, 5.0)
   assert_true(f[0] > 4.99 && f[2] > 4.99)
 }
+test "common_robustness_factorial" {
+  assert_true(@_common.factorial(-1) < 0.001)
+  assert_true(@_common.factorial(0) > 0.99 && @_common.factorial(0) < 1.01)
+  assert_true(@_common.factorial(5) > 119.9 && @_common.factorial(5) < 120.1)
+}
+
+test "common_robustness_fibonacci" {
+  assert_true(@_common.fibonacci(-1) == 0)
+  assert_true(@_common.fibonacci(0) == 0)
+  assert_true(@_common.fibonacci(1) == 1)
+  assert_true(@_common.fibonacci(10) == 55)
+}
+
+test "common_robustness_is_prime" {
+  assert_true(not(@_common.is_prime(-1)))
+  assert_true(not(@_common.is_prime(0)))
+  assert_true(not(@_common.is_prime(1)))
+  assert_true(@_common.is_prime(2))
+  assert_true(@_common.is_prime(3))
+  assert_true(@_common.is_prime(7))
+  assert_true(not(@_common.is_prime(8)))
+  assert_true(@_common.is_prime(97))
+}
+
+test "common_robustness_clamp" {
+  let r = @_common.clamp(5.0, 10.0, 0.0)
+  assert_true(r > 4.99 && r < 5.01)
+  let r2 = @_common.clamp(-1.0, 0.0, 10.0)
+  assert_true(r2 < 0.001)
+  let r3 = @_common.clamp(15.0, 0.0, 10.0)
+  assert_true(r3 > 9.99)
+}
+
+test "common_robustness_sort" {
+  let sorted = @_common.sort([5.0, 3.0, 1.0, 4.0, 2.0])
+  assert_true(sorted[0] < 1.01 && sorted[4] > 4.99)
+  let sorted2 = @_common.sort([1.0, 2.0, 3.0, 4.0, 5.0])
+  assert_true(sorted2[0] < 1.01 && sorted2[4] > 4.99)
+  let sorted3 = @_common.sort([])
+  assert_true(sorted3.length() == 0)
+  let sorted4 = @_common.sort([42.0])
+  assert_true(sorted4[0] > 41.99 && sorted4[0] < 42.01)
+}

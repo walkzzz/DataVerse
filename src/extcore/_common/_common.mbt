@@ -11,7 +11,7 @@
 // 基础数学函数
 // ============================================================================
 
-/// 牛顿法求平方根，20 次迭代（double 精度足够收敛）
+/// 牛顿法求平方根，自适应迭代（最多 20 次，变化 < 1e-15 时提前停止）
 pub fn sqrt(x : Double) -> Double {
   match x {
     x if x <= 0.0 => 0.0
@@ -22,7 +22,18 @@ pub fn sqrt(x : Double) -> Double {
         g = 1.0
       }
       for _ in 0..<20 {
-        g = (g + x / g) / 2.0
+        let next = (g + x / g) / 2.0
+        let diff = next - g
+        if diff < 0.0 {
+          if -diff < 0.000000000000001 {
+            g = next
+            break
+          }
+        } else if diff < 0.000000000000001 {
+          g = next
+          break
+        }
+        g = next
       }
       g
     }
@@ -43,8 +54,9 @@ pub fn dbl(x : Double) -> String {
   x.to_string()
 }
 
-/// 限制值在 [lo, hi] 范围内
+/// 限制值在 [lo, hi] 范围内（自动修正 lo > hi 的情况）
 pub fn clamp(x : Double, lo : Double, hi : Double) -> Double {
+  let (lo, hi) = if lo <= hi { (lo, hi) } else { (hi, lo) }
   if x < lo {
     lo
   } else if x > hi {
@@ -326,26 +338,64 @@ pub fn f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
 // 排序函数
 // ============================================================================
 
-/// 快速排序（升序）— O(n log n) 平均复杂度
+/// 插入排序（小数组优化，n <= 16 时优于快排）
+fn insertion_sort(arr : Array[Double], lo : Int, hi : Int) -> Unit {
+  let start = lo + 1
+  let end = hi + 1
+  for i in start..<end {
+    let key = arr[i]
+    let mut j = i - 1
+    while j >= lo && arr[j] > key {
+      arr[j + 1] = arr[j]
+      j = j - 1
+    }
+    arr[j + 1] = key
+  }
+}
+
+/// 三数取中选择 pivot，避免已排序数组退化到 O(n²)
+fn median3(arr : Array[Double], lo : Int, hi : Int) -> Double {
+  let mid = lo + (hi - lo) / 2
+  let a = arr[lo]
+  let b = arr[mid]
+  let c = arr[hi]
+  if (a <= b && b <= c) || (c <= b && b <= a) {
+    b
+  } else if (b <= a && a <= c) || (c <= a && a <= b) {
+    a
+  } else {
+    c
+  }
+}
+
+/// 快速排序（升序）— 三数取中 + 插入排序优化
 fn qsort_helper(arr : Array[Double], lo : Int, hi : Int) -> Unit {
-  if lo < hi {
-    let pivot = arr[hi]
+  if hi - lo <= 16 {
+    insertion_sort(arr, lo, hi)
+  } else if lo < hi {
+    let pivot = median3(arr, lo, hi)
     let mut i = lo - 1
-    for j in lo..<hi {
-      if arr[j] <= pivot {
+    let mut j = hi + 1
+    let mut done = false
+    while not(done) {
+      i = i + 1
+      while arr[i] < pivot {
         i = i + 1
+      }
+      j = j - 1
+      while arr[j] > pivot {
+        j = j - 1
+      }
+      if i >= j {
+        done = true
+      } else {
         let tmp = arr[i]
         arr[i] = arr[j]
         arr[j] = tmp
       }
     }
-    i = i + 1
-    let tmp = arr[i]
-    arr[i] = arr[hi]
-    arr[hi] = tmp
-    let pivot_idx = i
-    qsort_helper(arr, lo, pivot_idx - 1)
-    qsort_helper(arr, pivot_idx + 1, hi)
+    qsort_helper(arr, lo, j)
+    qsort_helper(arr, j + 1, hi)
   }
 }
 
@@ -381,14 +431,19 @@ pub fn sort_desc(arr : Array[Double]) -> Array[Double] {
 // 数论函数
 // ============================================================================
 
-/// 阶乘
+/// 阶乘（负数返回 0.0，n > 170 自然溢出为 Infinity）
 pub fn factorial(n : Int) -> Double {
-  let mut result = 1.0
-  let end = n + 1
-  for i in 2..<end {
-    result = result * i.to_double()
+  match n {
+    n if n < 0 => 0.0
+    _ => {
+      let mut result = 1.0
+      let end = n + 1
+      for i in 2..<end {
+        result = result * i.to_double()
+      }
+      result
+    }
   }
-  result
 }
 
 /// 最大公约数
@@ -425,7 +480,7 @@ pub fn lcm(a : Int, b : Int) -> Int {
   }
 }
 
-/// 判断素数
+/// 判断素数（用 i <= n/i 代替 i*i <= n 防止 Int 溢出）
 pub fn is_prime(n : Int) -> Bool {
   match n {
     n if n < 2 => false
@@ -434,7 +489,7 @@ pub fn is_prime(n : Int) -> Bool {
     _ => {
       let mut result = true
       let mut i = 3
-      while i * i <= n {
+      while i <= n / i {
         if n % i == 0 {
           result = false
         }
@@ -445,9 +500,10 @@ pub fn is_prime(n : Int) -> Bool {
   }
 }
 
-/// 斐波那契数列
+/// 斐波那契数列（负数返回 0）
 pub fn fibonacci(n : Int) -> Int {
   match n {
+    n if n < 0 => 0
     0 => 0
     1 => 1
     _ => {

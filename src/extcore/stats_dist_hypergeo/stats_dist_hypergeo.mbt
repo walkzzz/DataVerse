@@ -283,64 +283,6 @@ pub fn StatsdisthypergeoVector::to_string(self : StatsdisthypergeoVector) -> Str
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn stats_dist_hypergeo_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn stats_dist_hypergeo_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn stats_dist_hypergeo_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn stats_dist_hypergeo_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn stats_dist_hypergeo_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn stats_dist_hypergeo_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn stats_dist_hypergeo_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn stats_dist_hypergeo_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn stats_dist_hypergeo_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn stats_dist_hypergeo_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn stats_dist_hypergeo_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn stats_dist_hypergeo_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn stats_dist_hypergeo_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn stats_dist_hypergeo_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn stats_dist_hypergeo_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn stats_dist_hypergeo_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn stats_dist_hypergeo_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn stats_dist_hypergeo_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn stats_dist_hypergeo_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn stats_dist_hypergeo_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn stats_dist_hypergeo_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn stats_dist_hypergeo_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn stats_dist_hypergeo_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn stats_dist_hypergeo_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn stats_dist_hypergeo_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn stats_dist_hypergeo_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn stats_dist_hypergeo_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn stats_dist_hypergeo_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn stats_dist_hypergeo_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct StatsdisthypergeoFrame {
   data : Array[Double]
   size : Int

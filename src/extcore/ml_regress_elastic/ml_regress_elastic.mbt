@@ -283,64 +283,6 @@ pub fn MlregresselasticVector::to_string(self : MlregresselasticVector) -> Strin
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn ml_regress_elastic_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn ml_regress_elastic_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn ml_regress_elastic_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn ml_regress_elastic_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn ml_regress_elastic_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn ml_regress_elastic_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn ml_regress_elastic_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn ml_regress_elastic_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn ml_regress_elastic_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn ml_regress_elastic_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn ml_regress_elastic_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn ml_regress_elastic_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn ml_regress_elastic_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn ml_regress_elastic_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn ml_regress_elastic_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn ml_regress_elastic_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn ml_regress_elastic_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn ml_regress_elastic_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn ml_regress_elastic_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn ml_regress_elastic_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn ml_regress_elastic_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn ml_regress_elastic_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn ml_regress_elastic_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn ml_regress_elastic_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn ml_regress_elastic_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn ml_regress_elastic_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn ml_regress_elastic_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn ml_regress_elastic_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn ml_regress_elastic_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MlregresselasticFrame {
   data : Array[Double]
   size : Int

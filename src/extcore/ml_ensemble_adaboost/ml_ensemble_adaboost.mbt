@@ -283,64 +283,6 @@ pub fn MlensembleadaboostVector::to_string(self : MlensembleadaboostVector) -> S
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn ml_ensemble_adaboost_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn ml_ensemble_adaboost_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn ml_ensemble_adaboost_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn ml_ensemble_adaboost_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn ml_ensemble_adaboost_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn ml_ensemble_adaboost_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn ml_ensemble_adaboost_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn ml_ensemble_adaboost_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn ml_ensemble_adaboost_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn ml_ensemble_adaboost_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn ml_ensemble_adaboost_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn ml_ensemble_adaboost_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn ml_ensemble_adaboost_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn ml_ensemble_adaboost_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn ml_ensemble_adaboost_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn ml_ensemble_adaboost_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn ml_ensemble_adaboost_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn ml_ensemble_adaboost_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn ml_ensemble_adaboost_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn ml_ensemble_adaboost_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn ml_ensemble_adaboost_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn ml_ensemble_adaboost_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn ml_ensemble_adaboost_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn ml_ensemble_adaboost_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn ml_ensemble_adaboost_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn ml_ensemble_adaboost_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn ml_ensemble_adaboost_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn ml_ensemble_adaboost_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn ml_ensemble_adaboost_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MlensembleadaboostFrame {
   data : Array[Double]
   size : Int

@@ -283,64 +283,6 @@ pub fn MlregressquantileVector::to_string(self : MlregressquantileVector) -> Str
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn ml_regress_quantile_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn ml_regress_quantile_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn ml_regress_quantile_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn ml_regress_quantile_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn ml_regress_quantile_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn ml_regress_quantile_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn ml_regress_quantile_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn ml_regress_quantile_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn ml_regress_quantile_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn ml_regress_quantile_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn ml_regress_quantile_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn ml_regress_quantile_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn ml_regress_quantile_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn ml_regress_quantile_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn ml_regress_quantile_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn ml_regress_quantile_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn ml_regress_quantile_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn ml_regress_quantile_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn ml_regress_quantile_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn ml_regress_quantile_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn ml_regress_quantile_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn ml_regress_quantile_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn ml_regress_quantile_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn ml_regress_quantile_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn ml_regress_quantile_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn ml_regress_quantile_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn ml_regress_quantile_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn ml_regress_quantile_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn ml_regress_quantile_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MlregressquantileFrame {
   data : Array[Double]
   size : Int

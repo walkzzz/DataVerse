@@ -283,64 +283,6 @@ pub fn MathsparsematrixVector::to_string(self : MathsparsematrixVector) -> Strin
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn math_sparse_matrix_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn math_sparse_matrix_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn math_sparse_matrix_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn math_sparse_matrix_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn math_sparse_matrix_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn math_sparse_matrix_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn math_sparse_matrix_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn math_sparse_matrix_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn math_sparse_matrix_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn math_sparse_matrix_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn math_sparse_matrix_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn math_sparse_matrix_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn math_sparse_matrix_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn math_sparse_matrix_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn math_sparse_matrix_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn math_sparse_matrix_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn math_sparse_matrix_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn math_sparse_matrix_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn math_sparse_matrix_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn math_sparse_matrix_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn math_sparse_matrix_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn math_sparse_matrix_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn math_sparse_matrix_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn math_sparse_matrix_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn math_sparse_matrix_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn math_sparse_matrix_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn math_sparse_matrix_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn math_sparse_matrix_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn math_sparse_matrix_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MathsparsematrixFrame {
   data : Array[Double]
   size : Int

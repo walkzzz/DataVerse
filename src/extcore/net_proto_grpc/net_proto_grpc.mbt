@@ -283,64 +283,6 @@ pub fn NetprotogrpcVector::to_string(self : NetprotogrpcVector) -> String {
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn net_proto_grpc_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn net_proto_grpc_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn net_proto_grpc_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn net_proto_grpc_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn net_proto_grpc_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn net_proto_grpc_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn net_proto_grpc_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn net_proto_grpc_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn net_proto_grpc_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn net_proto_grpc_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn net_proto_grpc_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn net_proto_grpc_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn net_proto_grpc_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn net_proto_grpc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn net_proto_grpc_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn net_proto_grpc_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn net_proto_grpc_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn net_proto_grpc_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn net_proto_grpc_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn net_proto_grpc_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn net_proto_grpc_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn net_proto_grpc_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn net_proto_grpc_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn net_proto_grpc_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn net_proto_grpc_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn net_proto_grpc_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn net_proto_grpc_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn net_proto_grpc_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn net_proto_grpc_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct NetprotogrpcFrame {
   data : Array[Double]
   size : Int

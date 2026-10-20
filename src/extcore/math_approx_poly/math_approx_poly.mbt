@@ -283,64 +283,6 @@ pub fn MathapproxpolyVector::to_string(self : MathapproxpolyVector) -> String {
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn math_approx_poly_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn math_approx_poly_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn math_approx_poly_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn math_approx_poly_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn math_approx_poly_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn math_approx_poly_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn math_approx_poly_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn math_approx_poly_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn math_approx_poly_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn math_approx_poly_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn math_approx_poly_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn math_approx_poly_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn math_approx_poly_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn math_approx_poly_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn math_approx_poly_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn math_approx_poly_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn math_approx_poly_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn math_approx_poly_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn math_approx_poly_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn math_approx_poly_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn math_approx_poly_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn math_approx_poly_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn math_approx_poly_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn math_approx_poly_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn math_approx_poly_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn math_approx_poly_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn math_approx_poly_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn math_approx_poly_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn math_approx_poly_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MathapproxpolyFrame {
   data : Array[Double]
   size : Int

@@ -283,64 +283,6 @@ pub fn BiophylobayesianVector::to_string(self : BiophylobayesianVector) -> Strin
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn bio_phylo_bayesian_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn bio_phylo_bayesian_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn bio_phylo_bayesian_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn bio_phylo_bayesian_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn bio_phylo_bayesian_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn bio_phylo_bayesian_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn bio_phylo_bayesian_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn bio_phylo_bayesian_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn bio_phylo_bayesian_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn bio_phylo_bayesian_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn bio_phylo_bayesian_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn bio_phylo_bayesian_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn bio_phylo_bayesian_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn bio_phylo_bayesian_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn bio_phylo_bayesian_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn bio_phylo_bayesian_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn bio_phylo_bayesian_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn bio_phylo_bayesian_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn bio_phylo_bayesian_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn bio_phylo_bayesian_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn bio_phylo_bayesian_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn bio_phylo_bayesian_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn bio_phylo_bayesian_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn bio_phylo_bayesian_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn bio_phylo_bayesian_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn bio_phylo_bayesian_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn bio_phylo_bayesian_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn bio_phylo_bayesian_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn bio_phylo_bayesian_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct BiophylobayesianFrame {
   data : Array[Double]
   size : Int

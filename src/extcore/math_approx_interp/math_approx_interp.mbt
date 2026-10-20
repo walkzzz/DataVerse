@@ -283,64 +283,6 @@ pub fn MathapproxinterpVector::to_string(self : MathapproxinterpVector) -> Strin
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn math_approx_interp_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn math_approx_interp_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn math_approx_interp_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn math_approx_interp_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn math_approx_interp_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn math_approx_interp_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn math_approx_interp_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn math_approx_interp_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn math_approx_interp_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn math_approx_interp_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn math_approx_interp_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn math_approx_interp_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn math_approx_interp_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn math_approx_interp_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn math_approx_interp_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn math_approx_interp_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn math_approx_interp_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn math_approx_interp_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn math_approx_interp_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn math_approx_interp_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn math_approx_interp_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn math_approx_interp_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn math_approx_interp_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn math_approx_interp_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn math_approx_interp_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn math_approx_interp_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn math_approx_interp_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn math_approx_interp_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn math_approx_interp_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MathapproxinterpFrame {
   data : Array[Double]
   size : Int

@@ -283,64 +283,6 @@ pub fn SignalfilterwienerVector::to_string(self : SignalfilterwienerVector) -> S
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn signal_filter_wiener_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn signal_filter_wiener_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn signal_filter_wiener_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn signal_filter_wiener_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn signal_filter_wiener_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn signal_filter_wiener_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn signal_filter_wiener_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn signal_filter_wiener_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn signal_filter_wiener_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn signal_filter_wiener_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn signal_filter_wiener_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn signal_filter_wiener_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn signal_filter_wiener_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn signal_filter_wiener_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn signal_filter_wiener_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn signal_filter_wiener_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn signal_filter_wiener_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn signal_filter_wiener_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn signal_filter_wiener_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn signal_filter_wiener_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn signal_filter_wiener_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn signal_filter_wiener_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn signal_filter_wiener_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn signal_filter_wiener_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn signal_filter_wiener_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn signal_filter_wiener_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn signal_filter_wiener_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn signal_filter_wiener_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn signal_filter_wiener_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct SignalfilterwienerFrame {
   data : Array[Double]
   size : Int

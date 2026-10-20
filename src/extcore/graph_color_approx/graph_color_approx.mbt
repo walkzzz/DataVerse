@@ -283,64 +283,6 @@ pub fn GraphcolorapproxVector::to_string(self : GraphcolorapproxVector) -> Strin
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn graph_color_approx_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn graph_color_approx_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn graph_color_approx_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn graph_color_approx_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn graph_color_approx_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn graph_color_approx_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn graph_color_approx_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn graph_color_approx_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn graph_color_approx_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn graph_color_approx_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn graph_color_approx_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn graph_color_approx_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn graph_color_approx_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn graph_color_approx_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn graph_color_approx_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn graph_color_approx_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn graph_color_approx_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn graph_color_approx_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn graph_color_approx_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn graph_color_approx_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn graph_color_approx_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn graph_color_approx_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn graph_color_approx_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn graph_color_approx_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn graph_color_approx_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn graph_color_approx_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn graph_color_approx_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn graph_color_approx_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn graph_color_approx_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct GraphcolorapproxFrame {
   data : Array[Double]
   size : Int

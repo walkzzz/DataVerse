@@ -283,64 +283,6 @@ pub fn GraphconnectcircuitVector::to_string(self : GraphconnectcircuitVector) ->
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn graph_connect_circuit_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn graph_connect_circuit_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn graph_connect_circuit_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn graph_connect_circuit_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn graph_connect_circuit_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn graph_connect_circuit_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn graph_connect_circuit_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn graph_connect_circuit_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn graph_connect_circuit_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn graph_connect_circuit_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn graph_connect_circuit_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn graph_connect_circuit_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn graph_connect_circuit_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn graph_connect_circuit_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn graph_connect_circuit_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn graph_connect_circuit_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn graph_connect_circuit_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn graph_connect_circuit_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn graph_connect_circuit_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn graph_connect_circuit_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn graph_connect_circuit_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn graph_connect_circuit_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn graph_connect_circuit_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn graph_connect_circuit_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn graph_connect_circuit_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn graph_connect_circuit_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn graph_connect_circuit_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn graph_connect_circuit_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn graph_connect_circuit_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct GraphconnectcircuitFrame {
   data : Array[Double]
   size : Int

@@ -283,64 +283,6 @@ pub fn PhysicsheatsourceVector::to_string(self : PhysicsheatsourceVector) -> Str
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn physics_heat_source_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn physics_heat_source_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn physics_heat_source_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn physics_heat_source_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn physics_heat_source_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn physics_heat_source_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn physics_heat_source_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn physics_heat_source_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn physics_heat_source_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn physics_heat_source_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn physics_heat_source_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn physics_heat_source_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn physics_heat_source_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn physics_heat_source_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn physics_heat_source_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn physics_heat_source_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn physics_heat_source_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn physics_heat_source_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn physics_heat_source_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn physics_heat_source_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn physics_heat_source_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn physics_heat_source_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn physics_heat_source_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn physics_heat_source_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn physics_heat_source_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn physics_heat_source_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn physics_heat_source_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn physics_heat_source_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn physics_heat_source_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct PhysicsheatsourceFrame {
   data : Array[Double]
   size : Int

@@ -283,64 +283,6 @@ pub fn DbqueryfilterVector::to_string(self : DbqueryfilterVector) -> String {
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn db_query_filter_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn db_query_filter_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn db_query_filter_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn db_query_filter_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn db_query_filter_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn db_query_filter_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn db_query_filter_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn db_query_filter_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn db_query_filter_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn db_query_filter_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn db_query_filter_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn db_query_filter_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn db_query_filter_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn db_query_filter_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn db_query_filter_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn db_query_filter_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn db_query_filter_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn db_query_filter_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn db_query_filter_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn db_query_filter_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn db_query_filter_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn db_query_filter_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn db_query_filter_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn db_query_filter_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn db_query_filter_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn db_query_filter_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn db_query_filter_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn db_query_filter_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn db_query_filter_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct DbqueryfilterFrame {
   data : Array[Double]
   size : Int

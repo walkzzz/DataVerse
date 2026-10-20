@@ -283,64 +283,6 @@ pub fn GraphflowevacuationVector::to_string(self : GraphflowevacuationVector) ->
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn graph_flow_evacuation_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn graph_flow_evacuation_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn graph_flow_evacuation_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn graph_flow_evacuation_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn graph_flow_evacuation_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn graph_flow_evacuation_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn graph_flow_evacuation_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn graph_flow_evacuation_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn graph_flow_evacuation_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn graph_flow_evacuation_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn graph_flow_evacuation_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn graph_flow_evacuation_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn graph_flow_evacuation_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn graph_flow_evacuation_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn graph_flow_evacuation_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn graph_flow_evacuation_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn graph_flow_evacuation_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn graph_flow_evacuation_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn graph_flow_evacuation_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn graph_flow_evacuation_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn graph_flow_evacuation_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn graph_flow_evacuation_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn graph_flow_evacuation_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn graph_flow_evacuation_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn graph_flow_evacuation_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn graph_flow_evacuation_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn graph_flow_evacuation_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn graph_flow_evacuation_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn graph_flow_evacuation_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct GraphflowevacuationFrame {
   data : Array[Double]
   size : Int

@@ -132,9 +132,9 @@ test "math_linear_algebra_basic" {
 
 test "stats_dist_normal_basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let mean = @stats_dist_normal.stats_dist_normal_mean(data)
+  let mean = @_common.mean(data)
   assert_true(mean > 2.9 && mean < 3.1)
-  let sd = @stats_dist_normal.stats_dist_normal_std(data)
+  let sd = @_common.std(data)
   assert_true(sd > 1.4 && sd < 1.5)
 }
 
@@ -158,14 +158,14 @@ test "ds_tree_avl_basic" {
 
 test "sort_compare_quick_basic" {
   let arr = [5.0, 3.0, 1.0, 4.0, 2.0]
-  let sorted = @sort_compare_quick.sort_compare_quick_sort(arr)
+  let sorted = @_common.sort(arr)
   assert_true(sorted[0] == 1.0)
   assert_true(sorted[4] == 5.0)
 }
 
 test "signal_filter_fir_basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let norm = @signal_filter_fir.signal_filter_fir_normalize(data)
+  let norm = @_common.normalize(data)
   assert_true(norm[0] == 0.0)
   assert_true(norm[4] == 1.0)
 }
@@ -183,6 +183,6 @@ test "chem_mol_repr_smiles_basic" {
 test "finance_pricing_black_scholes_basic" {
   let pred = [1.0, 2.0, 3.0]
   let labels = [1.0, 2.0, 3.0]
-  let r2 = @finance_pricing_black_scholes.finance_pricing_black_scholes_r2(pred, labels)
+  let r2 = @_common.r2(pred, labels)
   assert_true(r2 > 0.99)
 }

@@ -283,64 +283,6 @@ pub fn MlfeaturetsneVector::to_string(self : MlfeaturetsneVector) -> String {
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn ml_feature_tsne_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn ml_feature_tsne_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn ml_feature_tsne_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn ml_feature_tsne_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn ml_feature_tsne_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn ml_feature_tsne_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn ml_feature_tsne_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn ml_feature_tsne_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn ml_feature_tsne_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn ml_feature_tsne_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn ml_feature_tsne_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn ml_feature_tsne_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn ml_feature_tsne_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn ml_feature_tsne_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn ml_feature_tsne_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn ml_feature_tsne_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn ml_feature_tsne_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn ml_feature_tsne_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn ml_feature_tsne_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn ml_feature_tsne_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn ml_feature_tsne_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn ml_feature_tsne_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn ml_feature_tsne_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn ml_feature_tsne_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn ml_feature_tsne_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn ml_feature_tsne_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn ml_feature_tsne_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn ml_feature_tsne_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn ml_feature_tsne_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct MlfeaturetsneFrame {
   data : Array[Double]
   size : Int

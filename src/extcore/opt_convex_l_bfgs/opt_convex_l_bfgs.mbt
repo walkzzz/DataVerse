@@ -283,64 +283,6 @@ pub fn OptconvexlbfgsVector::to_string(self : OptconvexlbfgsVector) -> String {
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn opt_convex_l_bfgs_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn opt_convex_l_bfgs_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn opt_convex_l_bfgs_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn opt_convex_l_bfgs_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn opt_convex_l_bfgs_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn opt_convex_l_bfgs_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn opt_convex_l_bfgs_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn opt_convex_l_bfgs_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn opt_convex_l_bfgs_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn opt_convex_l_bfgs_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn opt_convex_l_bfgs_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn opt_convex_l_bfgs_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn opt_convex_l_bfgs_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn opt_convex_l_bfgs_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn opt_convex_l_bfgs_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn opt_convex_l_bfgs_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn opt_convex_l_bfgs_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn opt_convex_l_bfgs_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn opt_convex_l_bfgs_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn opt_convex_l_bfgs_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn opt_convex_l_bfgs_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn opt_convex_l_bfgs_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn opt_convex_l_bfgs_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn opt_convex_l_bfgs_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn opt_convex_l_bfgs_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn opt_convex_l_bfgs_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn opt_convex_l_bfgs_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn opt_convex_l_bfgs_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn opt_convex_l_bfgs_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct OptconvexlbfgsFrame {
   data : Array[Double]
   size : Int

@@ -283,64 +283,6 @@ pub fn DsheapskewVector::to_string(self : DsheapskewVector) -> String {
   if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn ds_heap_skew_mean(data : Array[Double]) -> Double { @_common.mean(data) }
-
-pub fn ds_heap_skew_var(data : Array[Double]) -> Double { @_common.variance(data) }
-
-pub fn ds_heap_skew_std(data : Array[Double]) -> Double { @_common.std(data) }
-
-pub fn ds_heap_skew_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
-
-pub fn ds_heap_skew_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
-
-pub fn ds_heap_skew_median(data : Array[Double]) -> Double { @_common.median(data) }
-
-pub fn ds_heap_skew_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
-
-pub fn ds_heap_skew_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
-
-pub fn ds_heap_skew_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
-
-pub fn ds_heap_skew_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
-
-pub fn ds_heap_skew_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
-
-pub fn ds_heap_skew_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
-
-pub fn ds_heap_skew_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
-
-pub fn ds_heap_skew_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
-
-pub fn ds_heap_skew_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
-
-pub fn ds_heap_skew_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
-
-pub fn ds_heap_skew_factorial(n : Int) -> Double { @_common.factorial(n) }
-
-pub fn ds_heap_skew_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
-
-pub fn ds_heap_skew_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
-
-pub fn ds_heap_skew_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
-
-pub fn ds_heap_skew_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
-
-pub fn ds_heap_skew_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
-
-pub fn ds_heap_skew_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
-
-pub fn ds_heap_skew_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
-
-pub fn ds_heap_skew_min(data : Array[Double]) -> Double { @_common.min(data) }
-
-pub fn ds_heap_skew_max(data : Array[Double]) -> Double { @_common.max(data) }
-
-pub fn ds_heap_skew_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
-
-pub fn ds_heap_skew_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
-
-pub fn ds_heap_skew_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
-
 pub(all) struct DsheapskewFrame {
   data : Array[Double]
   size : Int

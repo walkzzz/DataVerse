@@ -209,4 +209,5 @@ import {
   "dataverse/extcore/bio_seq_align_global",
   "dataverse/extcore/chem_mol_repr_smiles",
   "dataverse/extcore/finance_pricing_black_scholes",
+  "dataverse/extcore/_common",
 }

@@ -383,28 +383,20 @@ pub fn nlp_pos_maxent_frame_sum(s : NlpposmaxentFrame) -> Double { @_common.sum(
 pub fn nlp_pos_maxent_frame_mean(s : NlpposmaxentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_frame_scale(s : NlpposmaxentFrame, f : Double) -> NlpposmaxentFrame {
-  let result = nlp_pos_maxent_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_frame_add(a : NlpposmaxentFrame, b : NlpposmaxentFrame) -> NlpposmaxentFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_frame_copy(s : NlpposmaxentFrame) -> NlpposmaxentFrame {
-  let result = nlp_pos_maxent_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_frame_fill(s : NlpposmaxentFrame, v : Double) -> NlpposmaxentFrame {
-  let result = nlp_pos_maxent_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_frame_min(s : NlpposmaxentFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_pos_maxent_table_sum(s : NlpposmaxentTable) -> Double { @_common.sum(
 pub fn nlp_pos_maxent_table_mean(s : NlpposmaxentTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_table_scale(s : NlpposmaxentTable, f : Double) -> NlpposmaxentTable {
-  let result = nlp_pos_maxent_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_table_add(a : NlpposmaxentTable, b : NlpposmaxentTable) -> NlpposmaxentTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_table_copy(s : NlpposmaxentTable) -> NlpposmaxentTable {
-  let result = nlp_pos_maxent_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_table_fill(s : NlpposmaxentTable, v : Double) -> NlpposmaxentTable {
-  let result = nlp_pos_maxent_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_table_min(s : NlpposmaxentTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_pos_maxent_graphn_sum(s : NlpposmaxentGraphN) -> Double { @_common.su
 pub fn nlp_pos_maxent_graphn_mean(s : NlpposmaxentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_graphn_scale(s : NlpposmaxentGraphN, f : Double) -> NlpposmaxentGraphN {
-  let result = nlp_pos_maxent_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_graphn_add(a : NlpposmaxentGraphN, b : NlpposmaxentGraphN) -> NlpposmaxentGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_graphn_copy(s : NlpposmaxentGraphN) -> NlpposmaxentGraphN {
-  let result = nlp_pos_maxent_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_graphn_fill(s : NlpposmaxentGraphN, v : Double) -> NlpposmaxentGraphN {
-  let result = nlp_pos_maxent_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_graphn_min(s : NlpposmaxentGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_pos_maxent_node_sum(s : NlpposmaxentNode) -> Double { @_common.sum(s.
 pub fn nlp_pos_maxent_node_mean(s : NlpposmaxentNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_node_scale(s : NlpposmaxentNode, f : Double) -> NlpposmaxentNode {
-  let result = nlp_pos_maxent_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_node_add(a : NlpposmaxentNode, b : NlpposmaxentNode) -> NlpposmaxentNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_node_copy(s : NlpposmaxentNode) -> NlpposmaxentNode {
-  let result = nlp_pos_maxent_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_node_fill(s : NlpposmaxentNode, v : Double) -> NlpposmaxentNode {
-  let result = nlp_pos_maxent_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_node_min(s : NlpposmaxentNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_pos_maxent_edge_sum(s : NlpposmaxentEdge) -> Double { @_common.sum(s.
 pub fn nlp_pos_maxent_edge_mean(s : NlpposmaxentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_edge_scale(s : NlpposmaxentEdge, f : Double) -> NlpposmaxentEdge {
-  let result = nlp_pos_maxent_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_edge_add(a : NlpposmaxentEdge, b : NlpposmaxentEdge) -> NlpposmaxentEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_edge_copy(s : NlpposmaxentEdge) -> NlpposmaxentEdge {
-  let result = nlp_pos_maxent_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_edge_fill(s : NlpposmaxentEdge, v : Double) -> NlpposmaxentEdge {
-  let result = nlp_pos_maxent_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_edge_min(s : NlpposmaxentEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_pos_maxent_path_sum(s : NlpposmaxentPath) -> Double { @_common.sum(s.
 pub fn nlp_pos_maxent_path_mean(s : NlpposmaxentPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_path_scale(s : NlpposmaxentPath, f : Double) -> NlpposmaxentPath {
-  let result = nlp_pos_maxent_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_path_add(a : NlpposmaxentPath, b : NlpposmaxentPath) -> NlpposmaxentPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_path_copy(s : NlpposmaxentPath) -> NlpposmaxentPath {
-  let result = nlp_pos_maxent_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_path_fill(s : NlpposmaxentPath, v : Double) -> NlpposmaxentPath {
-  let result = nlp_pos_maxent_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_path_min(s : NlpposmaxentPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_pos_maxent_cluster_sum(s : NlpposmaxentCluster) -> Double { @_common.
 pub fn nlp_pos_maxent_cluster_mean(s : NlpposmaxentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_cluster_scale(s : NlpposmaxentCluster, f : Double) -> NlpposmaxentCluster {
-  let result = nlp_pos_maxent_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_cluster_add(a : NlpposmaxentCluster, b : NlpposmaxentCluster) -> NlpposmaxentCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_cluster_copy(s : NlpposmaxentCluster) -> NlpposmaxentCluster {
-  let result = nlp_pos_maxent_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_cluster_fill(s : NlpposmaxentCluster, v : Double) -> NlpposmaxentCluster {
-  let result = nlp_pos_maxent_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_cluster_min(s : NlpposmaxentCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_pos_maxent_model_sum(s : NlpposmaxentModel) -> Double { @_common.sum(
 pub fn nlp_pos_maxent_model_mean(s : NlpposmaxentModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_model_scale(s : NlpposmaxentModel, f : Double) -> NlpposmaxentModel {
-  let result = nlp_pos_maxent_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_model_add(a : NlpposmaxentModel, b : NlpposmaxentModel) -> NlpposmaxentModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_model_copy(s : NlpposmaxentModel) -> NlpposmaxentModel {
-  let result = nlp_pos_maxent_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_model_fill(s : NlpposmaxentModel, v : Double) -> NlpposmaxentModel {
-  let result = nlp_pos_maxent_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_model_min(s : NlpposmaxentModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_pos_maxent_layer_sum(s : NlpposmaxentLayer) -> Double { @_common.sum(
 pub fn nlp_pos_maxent_layer_mean(s : NlpposmaxentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_layer_scale(s : NlpposmaxentLayer, f : Double) -> NlpposmaxentLayer {
-  let result = nlp_pos_maxent_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_layer_add(a : NlpposmaxentLayer, b : NlpposmaxentLayer) -> NlpposmaxentLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_layer_copy(s : NlpposmaxentLayer) -> NlpposmaxentLayer {
-  let result = nlp_pos_maxent_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_layer_fill(s : NlpposmaxentLayer, v : Double) -> NlpposmaxentLayer {
-  let result = nlp_pos_maxent_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_layer_min(s : NlpposmaxentLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_pos_maxent_buffer_sum(s : NlpposmaxentBuffer) -> Double { @_common.su
 pub fn nlp_pos_maxent_buffer_mean(s : NlpposmaxentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_buffer_scale(s : NlpposmaxentBuffer, f : Double) -> NlpposmaxentBuffer {
-  let result = nlp_pos_maxent_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_buffer_add(a : NlpposmaxentBuffer, b : NlpposmaxentBuffer) -> NlpposmaxentBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_buffer_copy(s : NlpposmaxentBuffer) -> NlpposmaxentBuffer {
-  let result = nlp_pos_maxent_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_buffer_fill(s : NlpposmaxentBuffer, v : Double) -> NlpposmaxentBuffer {
-  let result = nlp_pos_maxent_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_buffer_min(s : NlpposmaxentBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_pos_maxent_cursor_sum(s : NlpposmaxentCursor) -> Double { @_common.su
 pub fn nlp_pos_maxent_cursor_mean(s : NlpposmaxentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_cursor_scale(s : NlpposmaxentCursor, f : Double) -> NlpposmaxentCursor {
-  let result = nlp_pos_maxent_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_cursor_add(a : NlpposmaxentCursor, b : NlpposmaxentCursor) -> NlpposmaxentCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_cursor_copy(s : NlpposmaxentCursor) -> NlpposmaxentCursor {
-  let result = nlp_pos_maxent_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_cursor_fill(s : NlpposmaxentCursor, v : Double) -> NlpposmaxentCursor {
-  let result = nlp_pos_maxent_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_cursor_min(s : NlpposmaxentCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_pos_maxent_view_sum(s : NlpposmaxentView) -> Double { @_common.sum(s.
 pub fn nlp_pos_maxent_view_mean(s : NlpposmaxentView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_view_scale(s : NlpposmaxentView, f : Double) -> NlpposmaxentView {
-  let result = nlp_pos_maxent_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_view_add(a : NlpposmaxentView, b : NlpposmaxentView) -> NlpposmaxentView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_view_copy(s : NlpposmaxentView) -> NlpposmaxentView {
-  let result = nlp_pos_maxent_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_view_fill(s : NlpposmaxentView, v : Double) -> NlpposmaxentView {
-  let result = nlp_pos_maxent_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_view_min(s : NlpposmaxentView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_pos_maxent_range_sum(s : NlpposmaxentRange) -> Double { @_common.sum(
 pub fn nlp_pos_maxent_range_mean(s : NlpposmaxentRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_range_scale(s : NlpposmaxentRange, f : Double) -> NlpposmaxentRange {
-  let result = nlp_pos_maxent_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_range_add(a : NlpposmaxentRange, b : NlpposmaxentRange) -> NlpposmaxentRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_range_copy(s : NlpposmaxentRange) -> NlpposmaxentRange {
-  let result = nlp_pos_maxent_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_range_fill(s : NlpposmaxentRange, v : Double) -> NlpposmaxentRange {
-  let result = nlp_pos_maxent_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_range_min(s : NlpposmaxentRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_pos_maxent_slice_sum(s : NlpposmaxentSlice) -> Double { @_common.sum(
 pub fn nlp_pos_maxent_slice_mean(s : NlpposmaxentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_slice_scale(s : NlpposmaxentSlice, f : Double) -> NlpposmaxentSlice {
-  let result = nlp_pos_maxent_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_slice_add(a : NlpposmaxentSlice, b : NlpposmaxentSlice) -> NlpposmaxentSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_maxent_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_maxent_slice_copy(s : NlpposmaxentSlice) -> NlpposmaxentSlice {
-  let result = nlp_pos_maxent_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_slice_fill(s : NlpposmaxentSlice, v : Double) -> NlpposmaxentSlice {
-  let result = nlp_pos_maxent_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_maxent_slice_min(s : NlpposmaxentSlice) -> Double { @_common.min(s.data) }

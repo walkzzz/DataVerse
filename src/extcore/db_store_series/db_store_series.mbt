@@ -383,28 +383,20 @@ pub fn db_store_series_frame_sum(s : DbstoreseriesFrame) -> Double { @_common.su
 pub fn db_store_series_frame_mean(s : DbstoreseriesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_frame_scale(s : DbstoreseriesFrame, f : Double) -> DbstoreseriesFrame {
-  let result = db_store_series_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_frame_add(a : DbstoreseriesFrame, b : DbstoreseriesFrame) -> DbstoreseriesFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_frame_copy(s : DbstoreseriesFrame) -> DbstoreseriesFrame {
-  let result = db_store_series_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_frame_fill(s : DbstoreseriesFrame, v : Double) -> DbstoreseriesFrame {
-  let result = db_store_series_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_frame_min(s : DbstoreseriesFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_store_series_table_sum(s : DbstoreseriesTable) -> Double { @_common.su
 pub fn db_store_series_table_mean(s : DbstoreseriesTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_table_scale(s : DbstoreseriesTable, f : Double) -> DbstoreseriesTable {
-  let result = db_store_series_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_table_add(a : DbstoreseriesTable, b : DbstoreseriesTable) -> DbstoreseriesTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_table_copy(s : DbstoreseriesTable) -> DbstoreseriesTable {
-  let result = db_store_series_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_table_fill(s : DbstoreseriesTable, v : Double) -> DbstoreseriesTable {
-  let result = db_store_series_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_table_min(s : DbstoreseriesTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_store_series_graphn_sum(s : DbstoreseriesGraphN) -> Double { @_common.
 pub fn db_store_series_graphn_mean(s : DbstoreseriesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_graphn_scale(s : DbstoreseriesGraphN, f : Double) -> DbstoreseriesGraphN {
-  let result = db_store_series_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_graphn_add(a : DbstoreseriesGraphN, b : DbstoreseriesGraphN) -> DbstoreseriesGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_graphn_copy(s : DbstoreseriesGraphN) -> DbstoreseriesGraphN {
-  let result = db_store_series_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_graphn_fill(s : DbstoreseriesGraphN, v : Double) -> DbstoreseriesGraphN {
-  let result = db_store_series_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_graphn_min(s : DbstoreseriesGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_store_series_node_sum(s : DbstoreseriesNode) -> Double { @_common.sum(
 pub fn db_store_series_node_mean(s : DbstoreseriesNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_node_scale(s : DbstoreseriesNode, f : Double) -> DbstoreseriesNode {
-  let result = db_store_series_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_node_add(a : DbstoreseriesNode, b : DbstoreseriesNode) -> DbstoreseriesNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_node_copy(s : DbstoreseriesNode) -> DbstoreseriesNode {
-  let result = db_store_series_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_node_fill(s : DbstoreseriesNode, v : Double) -> DbstoreseriesNode {
-  let result = db_store_series_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_node_min(s : DbstoreseriesNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_store_series_edge_sum(s : DbstoreseriesEdge) -> Double { @_common.sum(
 pub fn db_store_series_edge_mean(s : DbstoreseriesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_edge_scale(s : DbstoreseriesEdge, f : Double) -> DbstoreseriesEdge {
-  let result = db_store_series_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_edge_add(a : DbstoreseriesEdge, b : DbstoreseriesEdge) -> DbstoreseriesEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_edge_copy(s : DbstoreseriesEdge) -> DbstoreseriesEdge {
-  let result = db_store_series_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_edge_fill(s : DbstoreseriesEdge, v : Double) -> DbstoreseriesEdge {
-  let result = db_store_series_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_edge_min(s : DbstoreseriesEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_store_series_path_sum(s : DbstoreseriesPath) -> Double { @_common.sum(
 pub fn db_store_series_path_mean(s : DbstoreseriesPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_path_scale(s : DbstoreseriesPath, f : Double) -> DbstoreseriesPath {
-  let result = db_store_series_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_path_add(a : DbstoreseriesPath, b : DbstoreseriesPath) -> DbstoreseriesPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_path_copy(s : DbstoreseriesPath) -> DbstoreseriesPath {
-  let result = db_store_series_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_path_fill(s : DbstoreseriesPath, v : Double) -> DbstoreseriesPath {
-  let result = db_store_series_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_path_min(s : DbstoreseriesPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_store_series_cluster_sum(s : DbstoreseriesCluster) -> Double { @_commo
 pub fn db_store_series_cluster_mean(s : DbstoreseriesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_cluster_scale(s : DbstoreseriesCluster, f : Double) -> DbstoreseriesCluster {
-  let result = db_store_series_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_cluster_add(a : DbstoreseriesCluster, b : DbstoreseriesCluster) -> DbstoreseriesCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_cluster_copy(s : DbstoreseriesCluster) -> DbstoreseriesCluster {
-  let result = db_store_series_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_cluster_fill(s : DbstoreseriesCluster, v : Double) -> DbstoreseriesCluster {
-  let result = db_store_series_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_cluster_min(s : DbstoreseriesCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_store_series_model_sum(s : DbstoreseriesModel) -> Double { @_common.su
 pub fn db_store_series_model_mean(s : DbstoreseriesModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_model_scale(s : DbstoreseriesModel, f : Double) -> DbstoreseriesModel {
-  let result = db_store_series_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_model_add(a : DbstoreseriesModel, b : DbstoreseriesModel) -> DbstoreseriesModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_model_copy(s : DbstoreseriesModel) -> DbstoreseriesModel {
-  let result = db_store_series_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_model_fill(s : DbstoreseriesModel, v : Double) -> DbstoreseriesModel {
-  let result = db_store_series_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_model_min(s : DbstoreseriesModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_store_series_layer_sum(s : DbstoreseriesLayer) -> Double { @_common.su
 pub fn db_store_series_layer_mean(s : DbstoreseriesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_layer_scale(s : DbstoreseriesLayer, f : Double) -> DbstoreseriesLayer {
-  let result = db_store_series_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_layer_add(a : DbstoreseriesLayer, b : DbstoreseriesLayer) -> DbstoreseriesLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_layer_copy(s : DbstoreseriesLayer) -> DbstoreseriesLayer {
-  let result = db_store_series_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_layer_fill(s : DbstoreseriesLayer, v : Double) -> DbstoreseriesLayer {
-  let result = db_store_series_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_layer_min(s : DbstoreseriesLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_store_series_buffer_sum(s : DbstoreseriesBuffer) -> Double { @_common.
 pub fn db_store_series_buffer_mean(s : DbstoreseriesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_buffer_scale(s : DbstoreseriesBuffer, f : Double) -> DbstoreseriesBuffer {
-  let result = db_store_series_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_buffer_add(a : DbstoreseriesBuffer, b : DbstoreseriesBuffer) -> DbstoreseriesBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_buffer_copy(s : DbstoreseriesBuffer) -> DbstoreseriesBuffer {
-  let result = db_store_series_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_buffer_fill(s : DbstoreseriesBuffer, v : Double) -> DbstoreseriesBuffer {
-  let result = db_store_series_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_buffer_min(s : DbstoreseriesBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_store_series_cursor_sum(s : DbstoreseriesCursor) -> Double { @_common.
 pub fn db_store_series_cursor_mean(s : DbstoreseriesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_cursor_scale(s : DbstoreseriesCursor, f : Double) -> DbstoreseriesCursor {
-  let result = db_store_series_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_cursor_add(a : DbstoreseriesCursor, b : DbstoreseriesCursor) -> DbstoreseriesCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_cursor_copy(s : DbstoreseriesCursor) -> DbstoreseriesCursor {
-  let result = db_store_series_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_cursor_fill(s : DbstoreseriesCursor, v : Double) -> DbstoreseriesCursor {
-  let result = db_store_series_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_cursor_min(s : DbstoreseriesCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_store_series_view_sum(s : DbstoreseriesView) -> Double { @_common.sum(
 pub fn db_store_series_view_mean(s : DbstoreseriesView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_view_scale(s : DbstoreseriesView, f : Double) -> DbstoreseriesView {
-  let result = db_store_series_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_view_add(a : DbstoreseriesView, b : DbstoreseriesView) -> DbstoreseriesView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_view_copy(s : DbstoreseriesView) -> DbstoreseriesView {
-  let result = db_store_series_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_view_fill(s : DbstoreseriesView, v : Double) -> DbstoreseriesView {
-  let result = db_store_series_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_view_min(s : DbstoreseriesView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_store_series_range_sum(s : DbstoreseriesRange) -> Double { @_common.su
 pub fn db_store_series_range_mean(s : DbstoreseriesRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_range_scale(s : DbstoreseriesRange, f : Double) -> DbstoreseriesRange {
-  let result = db_store_series_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_range_add(a : DbstoreseriesRange, b : DbstoreseriesRange) -> DbstoreseriesRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_range_copy(s : DbstoreseriesRange) -> DbstoreseriesRange {
-  let result = db_store_series_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_range_fill(s : DbstoreseriesRange, v : Double) -> DbstoreseriesRange {
-  let result = db_store_series_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_range_min(s : DbstoreseriesRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_store_series_slice_sum(s : DbstoreseriesSlice) -> Double { @_common.su
 pub fn db_store_series_slice_mean(s : DbstoreseriesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_series_slice_scale(s : DbstoreseriesSlice, f : Double) -> DbstoreseriesSlice {
-  let result = db_store_series_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_slice_add(a : DbstoreseriesSlice, b : DbstoreseriesSlice) -> DbstoreseriesSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_series_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_series_slice_copy(s : DbstoreseriesSlice) -> DbstoreseriesSlice {
-  let result = db_store_series_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_slice_fill(s : DbstoreseriesSlice, v : Double) -> DbstoreseriesSlice {
-  let result = db_store_series_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_series_slice_min(s : DbstoreseriesSlice) -> Double { @_common.min(s.data) }

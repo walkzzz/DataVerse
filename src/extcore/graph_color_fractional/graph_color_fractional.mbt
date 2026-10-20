@@ -383,28 +383,20 @@ pub fn graph_color_fractional_frame_sum(s : GraphcolorfractionalFrame) -> Double
 pub fn graph_color_fractional_frame_mean(s : GraphcolorfractionalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_frame_scale(s : GraphcolorfractionalFrame, f : Double) -> GraphcolorfractionalFrame {
-  let result = graph_color_fractional_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_frame_add(a : GraphcolorfractionalFrame, b : GraphcolorfractionalFrame) -> GraphcolorfractionalFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_frame_copy(s : GraphcolorfractionalFrame) -> GraphcolorfractionalFrame {
-  let result = graph_color_fractional_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_frame_fill(s : GraphcolorfractionalFrame, v : Double) -> GraphcolorfractionalFrame {
-  let result = graph_color_fractional_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_frame_min(s : GraphcolorfractionalFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_fractional_table_sum(s : GraphcolorfractionalTable) -> Double
 pub fn graph_color_fractional_table_mean(s : GraphcolorfractionalTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_table_scale(s : GraphcolorfractionalTable, f : Double) -> GraphcolorfractionalTable {
-  let result = graph_color_fractional_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_table_add(a : GraphcolorfractionalTable, b : GraphcolorfractionalTable) -> GraphcolorfractionalTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_table_copy(s : GraphcolorfractionalTable) -> GraphcolorfractionalTable {
-  let result = graph_color_fractional_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_table_fill(s : GraphcolorfractionalTable, v : Double) -> GraphcolorfractionalTable {
-  let result = graph_color_fractional_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_table_min(s : GraphcolorfractionalTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_fractional_graphn_sum(s : GraphcolorfractionalGraphN) -> Doub
 pub fn graph_color_fractional_graphn_mean(s : GraphcolorfractionalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_graphn_scale(s : GraphcolorfractionalGraphN, f : Double) -> GraphcolorfractionalGraphN {
-  let result = graph_color_fractional_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_graphn_add(a : GraphcolorfractionalGraphN, b : GraphcolorfractionalGraphN) -> GraphcolorfractionalGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_graphn_copy(s : GraphcolorfractionalGraphN) -> GraphcolorfractionalGraphN {
-  let result = graph_color_fractional_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_graphn_fill(s : GraphcolorfractionalGraphN, v : Double) -> GraphcolorfractionalGraphN {
-  let result = graph_color_fractional_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_graphn_min(s : GraphcolorfractionalGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_fractional_node_sum(s : GraphcolorfractionalNode) -> Double {
 pub fn graph_color_fractional_node_mean(s : GraphcolorfractionalNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_node_scale(s : GraphcolorfractionalNode, f : Double) -> GraphcolorfractionalNode {
-  let result = graph_color_fractional_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_node_add(a : GraphcolorfractionalNode, b : GraphcolorfractionalNode) -> GraphcolorfractionalNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_node_copy(s : GraphcolorfractionalNode) -> GraphcolorfractionalNode {
-  let result = graph_color_fractional_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_node_fill(s : GraphcolorfractionalNode, v : Double) -> GraphcolorfractionalNode {
-  let result = graph_color_fractional_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_node_min(s : GraphcolorfractionalNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_fractional_edge_sum(s : GraphcolorfractionalEdge) -> Double {
 pub fn graph_color_fractional_edge_mean(s : GraphcolorfractionalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_edge_scale(s : GraphcolorfractionalEdge, f : Double) -> GraphcolorfractionalEdge {
-  let result = graph_color_fractional_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_edge_add(a : GraphcolorfractionalEdge, b : GraphcolorfractionalEdge) -> GraphcolorfractionalEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_edge_copy(s : GraphcolorfractionalEdge) -> GraphcolorfractionalEdge {
-  let result = graph_color_fractional_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_edge_fill(s : GraphcolorfractionalEdge, v : Double) -> GraphcolorfractionalEdge {
-  let result = graph_color_fractional_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_edge_min(s : GraphcolorfractionalEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_fractional_path_sum(s : GraphcolorfractionalPath) -> Double {
 pub fn graph_color_fractional_path_mean(s : GraphcolorfractionalPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_path_scale(s : GraphcolorfractionalPath, f : Double) -> GraphcolorfractionalPath {
-  let result = graph_color_fractional_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_path_add(a : GraphcolorfractionalPath, b : GraphcolorfractionalPath) -> GraphcolorfractionalPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_path_copy(s : GraphcolorfractionalPath) -> GraphcolorfractionalPath {
-  let result = graph_color_fractional_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_path_fill(s : GraphcolorfractionalPath, v : Double) -> GraphcolorfractionalPath {
-  let result = graph_color_fractional_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_path_min(s : GraphcolorfractionalPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_fractional_cluster_sum(s : GraphcolorfractionalCluster) -> Do
 pub fn graph_color_fractional_cluster_mean(s : GraphcolorfractionalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_cluster_scale(s : GraphcolorfractionalCluster, f : Double) -> GraphcolorfractionalCluster {
-  let result = graph_color_fractional_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_cluster_add(a : GraphcolorfractionalCluster, b : GraphcolorfractionalCluster) -> GraphcolorfractionalCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_cluster_copy(s : GraphcolorfractionalCluster) -> GraphcolorfractionalCluster {
-  let result = graph_color_fractional_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_cluster_fill(s : GraphcolorfractionalCluster, v : Double) -> GraphcolorfractionalCluster {
-  let result = graph_color_fractional_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_cluster_min(s : GraphcolorfractionalCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_fractional_model_sum(s : GraphcolorfractionalModel) -> Double
 pub fn graph_color_fractional_model_mean(s : GraphcolorfractionalModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_model_scale(s : GraphcolorfractionalModel, f : Double) -> GraphcolorfractionalModel {
-  let result = graph_color_fractional_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_model_add(a : GraphcolorfractionalModel, b : GraphcolorfractionalModel) -> GraphcolorfractionalModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_model_copy(s : GraphcolorfractionalModel) -> GraphcolorfractionalModel {
-  let result = graph_color_fractional_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_model_fill(s : GraphcolorfractionalModel, v : Double) -> GraphcolorfractionalModel {
-  let result = graph_color_fractional_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_model_min(s : GraphcolorfractionalModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_fractional_layer_sum(s : GraphcolorfractionalLayer) -> Double
 pub fn graph_color_fractional_layer_mean(s : GraphcolorfractionalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_layer_scale(s : GraphcolorfractionalLayer, f : Double) -> GraphcolorfractionalLayer {
-  let result = graph_color_fractional_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_layer_add(a : GraphcolorfractionalLayer, b : GraphcolorfractionalLayer) -> GraphcolorfractionalLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_layer_copy(s : GraphcolorfractionalLayer) -> GraphcolorfractionalLayer {
-  let result = graph_color_fractional_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_layer_fill(s : GraphcolorfractionalLayer, v : Double) -> GraphcolorfractionalLayer {
-  let result = graph_color_fractional_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_layer_min(s : GraphcolorfractionalLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_fractional_buffer_sum(s : GraphcolorfractionalBuffer) -> Doub
 pub fn graph_color_fractional_buffer_mean(s : GraphcolorfractionalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_buffer_scale(s : GraphcolorfractionalBuffer, f : Double) -> GraphcolorfractionalBuffer {
-  let result = graph_color_fractional_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_buffer_add(a : GraphcolorfractionalBuffer, b : GraphcolorfractionalBuffer) -> GraphcolorfractionalBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_buffer_copy(s : GraphcolorfractionalBuffer) -> GraphcolorfractionalBuffer {
-  let result = graph_color_fractional_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_buffer_fill(s : GraphcolorfractionalBuffer, v : Double) -> GraphcolorfractionalBuffer {
-  let result = graph_color_fractional_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_buffer_min(s : GraphcolorfractionalBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_fractional_cursor_sum(s : GraphcolorfractionalCursor) -> Doub
 pub fn graph_color_fractional_cursor_mean(s : GraphcolorfractionalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_cursor_scale(s : GraphcolorfractionalCursor, f : Double) -> GraphcolorfractionalCursor {
-  let result = graph_color_fractional_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_cursor_add(a : GraphcolorfractionalCursor, b : GraphcolorfractionalCursor) -> GraphcolorfractionalCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_cursor_copy(s : GraphcolorfractionalCursor) -> GraphcolorfractionalCursor {
-  let result = graph_color_fractional_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_cursor_fill(s : GraphcolorfractionalCursor, v : Double) -> GraphcolorfractionalCursor {
-  let result = graph_color_fractional_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_cursor_min(s : GraphcolorfractionalCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_fractional_view_sum(s : GraphcolorfractionalView) -> Double {
 pub fn graph_color_fractional_view_mean(s : GraphcolorfractionalView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_view_scale(s : GraphcolorfractionalView, f : Double) -> GraphcolorfractionalView {
-  let result = graph_color_fractional_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_view_add(a : GraphcolorfractionalView, b : GraphcolorfractionalView) -> GraphcolorfractionalView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_view_copy(s : GraphcolorfractionalView) -> GraphcolorfractionalView {
-  let result = graph_color_fractional_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_view_fill(s : GraphcolorfractionalView, v : Double) -> GraphcolorfractionalView {
-  let result = graph_color_fractional_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_view_min(s : GraphcolorfractionalView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_fractional_range_sum(s : GraphcolorfractionalRange) -> Double
 pub fn graph_color_fractional_range_mean(s : GraphcolorfractionalRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_range_scale(s : GraphcolorfractionalRange, f : Double) -> GraphcolorfractionalRange {
-  let result = graph_color_fractional_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_range_add(a : GraphcolorfractionalRange, b : GraphcolorfractionalRange) -> GraphcolorfractionalRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_range_copy(s : GraphcolorfractionalRange) -> GraphcolorfractionalRange {
-  let result = graph_color_fractional_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_range_fill(s : GraphcolorfractionalRange, v : Double) -> GraphcolorfractionalRange {
-  let result = graph_color_fractional_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_range_min(s : GraphcolorfractionalRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_fractional_slice_sum(s : GraphcolorfractionalSlice) -> Double
 pub fn graph_color_fractional_slice_mean(s : GraphcolorfractionalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_slice_scale(s : GraphcolorfractionalSlice, f : Double) -> GraphcolorfractionalSlice {
-  let result = graph_color_fractional_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_slice_add(a : GraphcolorfractionalSlice, b : GraphcolorfractionalSlice) -> GraphcolorfractionalSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_fractional_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_fractional_slice_copy(s : GraphcolorfractionalSlice) -> GraphcolorfractionalSlice {
-  let result = graph_color_fractional_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_slice_fill(s : GraphcolorfractionalSlice, v : Double) -> GraphcolorfractionalSlice {
-  let result = graph_color_fractional_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_fractional_slice_min(s : GraphcolorfractionalSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn math_approx_pade_frame_sum(s : MathapproxpadeFrame) -> Double { @_common.
 pub fn math_approx_pade_frame_mean(s : MathapproxpadeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_frame_scale(s : MathapproxpadeFrame, f : Double) -> MathapproxpadeFrame {
-  let result = math_approx_pade_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_frame_add(a : MathapproxpadeFrame, b : MathapproxpadeFrame) -> MathapproxpadeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_frame_copy(s : MathapproxpadeFrame) -> MathapproxpadeFrame {
-  let result = math_approx_pade_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_frame_fill(s : MathapproxpadeFrame, v : Double) -> MathapproxpadeFrame {
-  let result = math_approx_pade_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_frame_min(s : MathapproxpadeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_approx_pade_table_sum(s : MathapproxpadeTable) -> Double { @_common.
 pub fn math_approx_pade_table_mean(s : MathapproxpadeTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_table_scale(s : MathapproxpadeTable, f : Double) -> MathapproxpadeTable {
-  let result = math_approx_pade_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_table_add(a : MathapproxpadeTable, b : MathapproxpadeTable) -> MathapproxpadeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_table_copy(s : MathapproxpadeTable) -> MathapproxpadeTable {
-  let result = math_approx_pade_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_table_fill(s : MathapproxpadeTable, v : Double) -> MathapproxpadeTable {
-  let result = math_approx_pade_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_table_min(s : MathapproxpadeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_approx_pade_graphn_sum(s : MathapproxpadeGraphN) -> Double { @_commo
 pub fn math_approx_pade_graphn_mean(s : MathapproxpadeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_graphn_scale(s : MathapproxpadeGraphN, f : Double) -> MathapproxpadeGraphN {
-  let result = math_approx_pade_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_graphn_add(a : MathapproxpadeGraphN, b : MathapproxpadeGraphN) -> MathapproxpadeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_graphn_copy(s : MathapproxpadeGraphN) -> MathapproxpadeGraphN {
-  let result = math_approx_pade_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_graphn_fill(s : MathapproxpadeGraphN, v : Double) -> MathapproxpadeGraphN {
-  let result = math_approx_pade_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_graphn_min(s : MathapproxpadeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_approx_pade_node_sum(s : MathapproxpadeNode) -> Double { @_common.su
 pub fn math_approx_pade_node_mean(s : MathapproxpadeNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_node_scale(s : MathapproxpadeNode, f : Double) -> MathapproxpadeNode {
-  let result = math_approx_pade_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_node_add(a : MathapproxpadeNode, b : MathapproxpadeNode) -> MathapproxpadeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_node_copy(s : MathapproxpadeNode) -> MathapproxpadeNode {
-  let result = math_approx_pade_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_node_fill(s : MathapproxpadeNode, v : Double) -> MathapproxpadeNode {
-  let result = math_approx_pade_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_node_min(s : MathapproxpadeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_approx_pade_edge_sum(s : MathapproxpadeEdge) -> Double { @_common.su
 pub fn math_approx_pade_edge_mean(s : MathapproxpadeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_edge_scale(s : MathapproxpadeEdge, f : Double) -> MathapproxpadeEdge {
-  let result = math_approx_pade_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_edge_add(a : MathapproxpadeEdge, b : MathapproxpadeEdge) -> MathapproxpadeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_edge_copy(s : MathapproxpadeEdge) -> MathapproxpadeEdge {
-  let result = math_approx_pade_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_edge_fill(s : MathapproxpadeEdge, v : Double) -> MathapproxpadeEdge {
-  let result = math_approx_pade_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_edge_min(s : MathapproxpadeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_approx_pade_path_sum(s : MathapproxpadePath) -> Double { @_common.su
 pub fn math_approx_pade_path_mean(s : MathapproxpadePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_path_scale(s : MathapproxpadePath, f : Double) -> MathapproxpadePath {
-  let result = math_approx_pade_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_path_add(a : MathapproxpadePath, b : MathapproxpadePath) -> MathapproxpadePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_path_copy(s : MathapproxpadePath) -> MathapproxpadePath {
-  let result = math_approx_pade_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_path_fill(s : MathapproxpadePath, v : Double) -> MathapproxpadePath {
-  let result = math_approx_pade_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_path_min(s : MathapproxpadePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_approx_pade_cluster_sum(s : MathapproxpadeCluster) -> Double { @_com
 pub fn math_approx_pade_cluster_mean(s : MathapproxpadeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_cluster_scale(s : MathapproxpadeCluster, f : Double) -> MathapproxpadeCluster {
-  let result = math_approx_pade_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_cluster_add(a : MathapproxpadeCluster, b : MathapproxpadeCluster) -> MathapproxpadeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_cluster_copy(s : MathapproxpadeCluster) -> MathapproxpadeCluster {
-  let result = math_approx_pade_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_cluster_fill(s : MathapproxpadeCluster, v : Double) -> MathapproxpadeCluster {
-  let result = math_approx_pade_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_cluster_min(s : MathapproxpadeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_approx_pade_model_sum(s : MathapproxpadeModel) -> Double { @_common.
 pub fn math_approx_pade_model_mean(s : MathapproxpadeModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_model_scale(s : MathapproxpadeModel, f : Double) -> MathapproxpadeModel {
-  let result = math_approx_pade_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_model_add(a : MathapproxpadeModel, b : MathapproxpadeModel) -> MathapproxpadeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_model_copy(s : MathapproxpadeModel) -> MathapproxpadeModel {
-  let result = math_approx_pade_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_model_fill(s : MathapproxpadeModel, v : Double) -> MathapproxpadeModel {
-  let result = math_approx_pade_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_model_min(s : MathapproxpadeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_approx_pade_layer_sum(s : MathapproxpadeLayer) -> Double { @_common.
 pub fn math_approx_pade_layer_mean(s : MathapproxpadeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_layer_scale(s : MathapproxpadeLayer, f : Double) -> MathapproxpadeLayer {
-  let result = math_approx_pade_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_layer_add(a : MathapproxpadeLayer, b : MathapproxpadeLayer) -> MathapproxpadeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_layer_copy(s : MathapproxpadeLayer) -> MathapproxpadeLayer {
-  let result = math_approx_pade_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_layer_fill(s : MathapproxpadeLayer, v : Double) -> MathapproxpadeLayer {
-  let result = math_approx_pade_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_layer_min(s : MathapproxpadeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_approx_pade_buffer_sum(s : MathapproxpadeBuffer) -> Double { @_commo
 pub fn math_approx_pade_buffer_mean(s : MathapproxpadeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_buffer_scale(s : MathapproxpadeBuffer, f : Double) -> MathapproxpadeBuffer {
-  let result = math_approx_pade_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_buffer_add(a : MathapproxpadeBuffer, b : MathapproxpadeBuffer) -> MathapproxpadeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_buffer_copy(s : MathapproxpadeBuffer) -> MathapproxpadeBuffer {
-  let result = math_approx_pade_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_buffer_fill(s : MathapproxpadeBuffer, v : Double) -> MathapproxpadeBuffer {
-  let result = math_approx_pade_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_buffer_min(s : MathapproxpadeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_approx_pade_cursor_sum(s : MathapproxpadeCursor) -> Double { @_commo
 pub fn math_approx_pade_cursor_mean(s : MathapproxpadeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_cursor_scale(s : MathapproxpadeCursor, f : Double) -> MathapproxpadeCursor {
-  let result = math_approx_pade_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_cursor_add(a : MathapproxpadeCursor, b : MathapproxpadeCursor) -> MathapproxpadeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_cursor_copy(s : MathapproxpadeCursor) -> MathapproxpadeCursor {
-  let result = math_approx_pade_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_cursor_fill(s : MathapproxpadeCursor, v : Double) -> MathapproxpadeCursor {
-  let result = math_approx_pade_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_cursor_min(s : MathapproxpadeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_approx_pade_view_sum(s : MathapproxpadeView) -> Double { @_common.su
 pub fn math_approx_pade_view_mean(s : MathapproxpadeView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_view_scale(s : MathapproxpadeView, f : Double) -> MathapproxpadeView {
-  let result = math_approx_pade_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_view_add(a : MathapproxpadeView, b : MathapproxpadeView) -> MathapproxpadeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_view_copy(s : MathapproxpadeView) -> MathapproxpadeView {
-  let result = math_approx_pade_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_view_fill(s : MathapproxpadeView, v : Double) -> MathapproxpadeView {
-  let result = math_approx_pade_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_view_min(s : MathapproxpadeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_approx_pade_range_sum(s : MathapproxpadeRange) -> Double { @_common.
 pub fn math_approx_pade_range_mean(s : MathapproxpadeRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_range_scale(s : MathapproxpadeRange, f : Double) -> MathapproxpadeRange {
-  let result = math_approx_pade_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_range_add(a : MathapproxpadeRange, b : MathapproxpadeRange) -> MathapproxpadeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_range_copy(s : MathapproxpadeRange) -> MathapproxpadeRange {
-  let result = math_approx_pade_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_range_fill(s : MathapproxpadeRange, v : Double) -> MathapproxpadeRange {
-  let result = math_approx_pade_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_range_min(s : MathapproxpadeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_approx_pade_slice_sum(s : MathapproxpadeSlice) -> Double { @_common.
 pub fn math_approx_pade_slice_mean(s : MathapproxpadeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_pade_slice_scale(s : MathapproxpadeSlice, f : Double) -> MathapproxpadeSlice {
-  let result = math_approx_pade_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_slice_add(a : MathapproxpadeSlice, b : MathapproxpadeSlice) -> MathapproxpadeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_pade_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_pade_slice_copy(s : MathapproxpadeSlice) -> MathapproxpadeSlice {
-  let result = math_approx_pade_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_slice_fill(s : MathapproxpadeSlice, v : Double) -> MathapproxpadeSlice {
-  let result = math_approx_pade_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_pade_slice_min(s : MathapproxpadeSlice) -> Double { @_common.min(s.data) }

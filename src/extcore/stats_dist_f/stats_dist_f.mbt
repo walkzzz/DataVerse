@@ -383,28 +383,20 @@ pub fn stats_dist_f_frame_sum(s : StatsdistfFrame) -> Double { @_common.sum(s.da
 pub fn stats_dist_f_frame_mean(s : StatsdistfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_frame_scale(s : StatsdistfFrame, f : Double) -> StatsdistfFrame {
-  let result = stats_dist_f_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_frame_add(a : StatsdistfFrame, b : StatsdistfFrame) -> StatsdistfFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_frame_copy(s : StatsdistfFrame) -> StatsdistfFrame {
-  let result = stats_dist_f_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_frame_fill(s : StatsdistfFrame, v : Double) -> StatsdistfFrame {
-  let result = stats_dist_f_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_frame_min(s : StatsdistfFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_f_table_sum(s : StatsdistfTable) -> Double { @_common.sum(s.da
 pub fn stats_dist_f_table_mean(s : StatsdistfTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_table_scale(s : StatsdistfTable, f : Double) -> StatsdistfTable {
-  let result = stats_dist_f_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_table_add(a : StatsdistfTable, b : StatsdistfTable) -> StatsdistfTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_table_copy(s : StatsdistfTable) -> StatsdistfTable {
-  let result = stats_dist_f_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_table_fill(s : StatsdistfTable, v : Double) -> StatsdistfTable {
-  let result = stats_dist_f_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_table_min(s : StatsdistfTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_f_graphn_sum(s : StatsdistfGraphN) -> Double { @_common.sum(s.
 pub fn stats_dist_f_graphn_mean(s : StatsdistfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_graphn_scale(s : StatsdistfGraphN, f : Double) -> StatsdistfGraphN {
-  let result = stats_dist_f_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_graphn_add(a : StatsdistfGraphN, b : StatsdistfGraphN) -> StatsdistfGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_graphn_copy(s : StatsdistfGraphN) -> StatsdistfGraphN {
-  let result = stats_dist_f_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_graphn_fill(s : StatsdistfGraphN, v : Double) -> StatsdistfGraphN {
-  let result = stats_dist_f_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_graphn_min(s : StatsdistfGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_f_node_sum(s : StatsdistfNode) -> Double { @_common.sum(s.data
 pub fn stats_dist_f_node_mean(s : StatsdistfNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_node_scale(s : StatsdistfNode, f : Double) -> StatsdistfNode {
-  let result = stats_dist_f_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_node_add(a : StatsdistfNode, b : StatsdistfNode) -> StatsdistfNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_node_copy(s : StatsdistfNode) -> StatsdistfNode {
-  let result = stats_dist_f_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_node_fill(s : StatsdistfNode, v : Double) -> StatsdistfNode {
-  let result = stats_dist_f_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_node_min(s : StatsdistfNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_f_edge_sum(s : StatsdistfEdge) -> Double { @_common.sum(s.data
 pub fn stats_dist_f_edge_mean(s : StatsdistfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_edge_scale(s : StatsdistfEdge, f : Double) -> StatsdistfEdge {
-  let result = stats_dist_f_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_edge_add(a : StatsdistfEdge, b : StatsdistfEdge) -> StatsdistfEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_edge_copy(s : StatsdistfEdge) -> StatsdistfEdge {
-  let result = stats_dist_f_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_edge_fill(s : StatsdistfEdge, v : Double) -> StatsdistfEdge {
-  let result = stats_dist_f_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_edge_min(s : StatsdistfEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_f_path_sum(s : StatsdistfPath) -> Double { @_common.sum(s.data
 pub fn stats_dist_f_path_mean(s : StatsdistfPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_path_scale(s : StatsdistfPath, f : Double) -> StatsdistfPath {
-  let result = stats_dist_f_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_path_add(a : StatsdistfPath, b : StatsdistfPath) -> StatsdistfPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_path_copy(s : StatsdistfPath) -> StatsdistfPath {
-  let result = stats_dist_f_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_path_fill(s : StatsdistfPath, v : Double) -> StatsdistfPath {
-  let result = stats_dist_f_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_path_min(s : StatsdistfPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_f_cluster_sum(s : StatsdistfCluster) -> Double { @_common.sum(
 pub fn stats_dist_f_cluster_mean(s : StatsdistfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_cluster_scale(s : StatsdistfCluster, f : Double) -> StatsdistfCluster {
-  let result = stats_dist_f_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_cluster_add(a : StatsdistfCluster, b : StatsdistfCluster) -> StatsdistfCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_cluster_copy(s : StatsdistfCluster) -> StatsdistfCluster {
-  let result = stats_dist_f_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_cluster_fill(s : StatsdistfCluster, v : Double) -> StatsdistfCluster {
-  let result = stats_dist_f_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_cluster_min(s : StatsdistfCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_f_model_sum(s : StatsdistfModel) -> Double { @_common.sum(s.da
 pub fn stats_dist_f_model_mean(s : StatsdistfModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_model_scale(s : StatsdistfModel, f : Double) -> StatsdistfModel {
-  let result = stats_dist_f_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_model_add(a : StatsdistfModel, b : StatsdistfModel) -> StatsdistfModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_model_copy(s : StatsdistfModel) -> StatsdistfModel {
-  let result = stats_dist_f_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_model_fill(s : StatsdistfModel, v : Double) -> StatsdistfModel {
-  let result = stats_dist_f_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_model_min(s : StatsdistfModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_f_layer_sum(s : StatsdistfLayer) -> Double { @_common.sum(s.da
 pub fn stats_dist_f_layer_mean(s : StatsdistfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_layer_scale(s : StatsdistfLayer, f : Double) -> StatsdistfLayer {
-  let result = stats_dist_f_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_layer_add(a : StatsdistfLayer, b : StatsdistfLayer) -> StatsdistfLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_layer_copy(s : StatsdistfLayer) -> StatsdistfLayer {
-  let result = stats_dist_f_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_layer_fill(s : StatsdistfLayer, v : Double) -> StatsdistfLayer {
-  let result = stats_dist_f_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_layer_min(s : StatsdistfLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_f_buffer_sum(s : StatsdistfBuffer) -> Double { @_common.sum(s.
 pub fn stats_dist_f_buffer_mean(s : StatsdistfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_buffer_scale(s : StatsdistfBuffer, f : Double) -> StatsdistfBuffer {
-  let result = stats_dist_f_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_buffer_add(a : StatsdistfBuffer, b : StatsdistfBuffer) -> StatsdistfBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_buffer_copy(s : StatsdistfBuffer) -> StatsdistfBuffer {
-  let result = stats_dist_f_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_buffer_fill(s : StatsdistfBuffer, v : Double) -> StatsdistfBuffer {
-  let result = stats_dist_f_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_buffer_min(s : StatsdistfBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_f_cursor_sum(s : StatsdistfCursor) -> Double { @_common.sum(s.
 pub fn stats_dist_f_cursor_mean(s : StatsdistfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_cursor_scale(s : StatsdistfCursor, f : Double) -> StatsdistfCursor {
-  let result = stats_dist_f_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_cursor_add(a : StatsdistfCursor, b : StatsdistfCursor) -> StatsdistfCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_cursor_copy(s : StatsdistfCursor) -> StatsdistfCursor {
-  let result = stats_dist_f_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_cursor_fill(s : StatsdistfCursor, v : Double) -> StatsdistfCursor {
-  let result = stats_dist_f_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_cursor_min(s : StatsdistfCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_f_view_sum(s : StatsdistfView) -> Double { @_common.sum(s.data
 pub fn stats_dist_f_view_mean(s : StatsdistfView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_view_scale(s : StatsdistfView, f : Double) -> StatsdistfView {
-  let result = stats_dist_f_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_view_add(a : StatsdistfView, b : StatsdistfView) -> StatsdistfView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_view_copy(s : StatsdistfView) -> StatsdistfView {
-  let result = stats_dist_f_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_view_fill(s : StatsdistfView, v : Double) -> StatsdistfView {
-  let result = stats_dist_f_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_view_min(s : StatsdistfView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_f_range_sum(s : StatsdistfRange) -> Double { @_common.sum(s.da
 pub fn stats_dist_f_range_mean(s : StatsdistfRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_range_scale(s : StatsdistfRange, f : Double) -> StatsdistfRange {
-  let result = stats_dist_f_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_range_add(a : StatsdistfRange, b : StatsdistfRange) -> StatsdistfRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_range_copy(s : StatsdistfRange) -> StatsdistfRange {
-  let result = stats_dist_f_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_range_fill(s : StatsdistfRange, v : Double) -> StatsdistfRange {
-  let result = stats_dist_f_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_range_min(s : StatsdistfRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_f_slice_sum(s : StatsdistfSlice) -> Double { @_common.sum(s.da
 pub fn stats_dist_f_slice_mean(s : StatsdistfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_f_slice_scale(s : StatsdistfSlice, f : Double) -> StatsdistfSlice {
-  let result = stats_dist_f_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_slice_add(a : StatsdistfSlice, b : StatsdistfSlice) -> StatsdistfSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_f_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_f_slice_copy(s : StatsdistfSlice) -> StatsdistfSlice {
-  let result = stats_dist_f_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_slice_fill(s : StatsdistfSlice, v : Double) -> StatsdistfSlice {
-  let result = stats_dist_f_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_f_slice_min(s : StatsdistfSlice) -> Double { @_common.min(s.data) }

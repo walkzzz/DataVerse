@@ -383,28 +383,20 @@ pub fn db_query_parallel_frame_sum(s : DbqueryparallelFrame) -> Double { @_commo
 pub fn db_query_parallel_frame_mean(s : DbqueryparallelFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_frame_scale(s : DbqueryparallelFrame, f : Double) -> DbqueryparallelFrame {
-  let result = db_query_parallel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_frame_add(a : DbqueryparallelFrame, b : DbqueryparallelFrame) -> DbqueryparallelFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_frame_copy(s : DbqueryparallelFrame) -> DbqueryparallelFrame {
-  let result = db_query_parallel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_frame_fill(s : DbqueryparallelFrame, v : Double) -> DbqueryparallelFrame {
-  let result = db_query_parallel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_frame_min(s : DbqueryparallelFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_query_parallel_table_sum(s : DbqueryparallelTable) -> Double { @_commo
 pub fn db_query_parallel_table_mean(s : DbqueryparallelTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_table_scale(s : DbqueryparallelTable, f : Double) -> DbqueryparallelTable {
-  let result = db_query_parallel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_table_add(a : DbqueryparallelTable, b : DbqueryparallelTable) -> DbqueryparallelTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_table_copy(s : DbqueryparallelTable) -> DbqueryparallelTable {
-  let result = db_query_parallel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_table_fill(s : DbqueryparallelTable, v : Double) -> DbqueryparallelTable {
-  let result = db_query_parallel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_table_min(s : DbqueryparallelTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_query_parallel_graphn_sum(s : DbqueryparallelGraphN) -> Double { @_com
 pub fn db_query_parallel_graphn_mean(s : DbqueryparallelGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_graphn_scale(s : DbqueryparallelGraphN, f : Double) -> DbqueryparallelGraphN {
-  let result = db_query_parallel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_graphn_add(a : DbqueryparallelGraphN, b : DbqueryparallelGraphN) -> DbqueryparallelGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_graphn_copy(s : DbqueryparallelGraphN) -> DbqueryparallelGraphN {
-  let result = db_query_parallel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_graphn_fill(s : DbqueryparallelGraphN, v : Double) -> DbqueryparallelGraphN {
-  let result = db_query_parallel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_graphn_min(s : DbqueryparallelGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_query_parallel_node_sum(s : DbqueryparallelNode) -> Double { @_common.
 pub fn db_query_parallel_node_mean(s : DbqueryparallelNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_node_scale(s : DbqueryparallelNode, f : Double) -> DbqueryparallelNode {
-  let result = db_query_parallel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_node_add(a : DbqueryparallelNode, b : DbqueryparallelNode) -> DbqueryparallelNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_node_copy(s : DbqueryparallelNode) -> DbqueryparallelNode {
-  let result = db_query_parallel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_node_fill(s : DbqueryparallelNode, v : Double) -> DbqueryparallelNode {
-  let result = db_query_parallel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_node_min(s : DbqueryparallelNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_query_parallel_edge_sum(s : DbqueryparallelEdge) -> Double { @_common.
 pub fn db_query_parallel_edge_mean(s : DbqueryparallelEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_edge_scale(s : DbqueryparallelEdge, f : Double) -> DbqueryparallelEdge {
-  let result = db_query_parallel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_edge_add(a : DbqueryparallelEdge, b : DbqueryparallelEdge) -> DbqueryparallelEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_edge_copy(s : DbqueryparallelEdge) -> DbqueryparallelEdge {
-  let result = db_query_parallel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_edge_fill(s : DbqueryparallelEdge, v : Double) -> DbqueryparallelEdge {
-  let result = db_query_parallel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_edge_min(s : DbqueryparallelEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_query_parallel_path_sum(s : DbqueryparallelPath) -> Double { @_common.
 pub fn db_query_parallel_path_mean(s : DbqueryparallelPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_path_scale(s : DbqueryparallelPath, f : Double) -> DbqueryparallelPath {
-  let result = db_query_parallel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_path_add(a : DbqueryparallelPath, b : DbqueryparallelPath) -> DbqueryparallelPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_path_copy(s : DbqueryparallelPath) -> DbqueryparallelPath {
-  let result = db_query_parallel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_path_fill(s : DbqueryparallelPath, v : Double) -> DbqueryparallelPath {
-  let result = db_query_parallel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_path_min(s : DbqueryparallelPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_query_parallel_cluster_sum(s : DbqueryparallelCluster) -> Double { @_c
 pub fn db_query_parallel_cluster_mean(s : DbqueryparallelCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_cluster_scale(s : DbqueryparallelCluster, f : Double) -> DbqueryparallelCluster {
-  let result = db_query_parallel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_cluster_add(a : DbqueryparallelCluster, b : DbqueryparallelCluster) -> DbqueryparallelCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_cluster_copy(s : DbqueryparallelCluster) -> DbqueryparallelCluster {
-  let result = db_query_parallel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_cluster_fill(s : DbqueryparallelCluster, v : Double) -> DbqueryparallelCluster {
-  let result = db_query_parallel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_cluster_min(s : DbqueryparallelCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_query_parallel_model_sum(s : DbqueryparallelModel) -> Double { @_commo
 pub fn db_query_parallel_model_mean(s : DbqueryparallelModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_model_scale(s : DbqueryparallelModel, f : Double) -> DbqueryparallelModel {
-  let result = db_query_parallel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_model_add(a : DbqueryparallelModel, b : DbqueryparallelModel) -> DbqueryparallelModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_model_copy(s : DbqueryparallelModel) -> DbqueryparallelModel {
-  let result = db_query_parallel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_model_fill(s : DbqueryparallelModel, v : Double) -> DbqueryparallelModel {
-  let result = db_query_parallel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_model_min(s : DbqueryparallelModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_query_parallel_layer_sum(s : DbqueryparallelLayer) -> Double { @_commo
 pub fn db_query_parallel_layer_mean(s : DbqueryparallelLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_layer_scale(s : DbqueryparallelLayer, f : Double) -> DbqueryparallelLayer {
-  let result = db_query_parallel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_layer_add(a : DbqueryparallelLayer, b : DbqueryparallelLayer) -> DbqueryparallelLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_layer_copy(s : DbqueryparallelLayer) -> DbqueryparallelLayer {
-  let result = db_query_parallel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_layer_fill(s : DbqueryparallelLayer, v : Double) -> DbqueryparallelLayer {
-  let result = db_query_parallel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_layer_min(s : DbqueryparallelLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_query_parallel_buffer_sum(s : DbqueryparallelBuffer) -> Double { @_com
 pub fn db_query_parallel_buffer_mean(s : DbqueryparallelBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_buffer_scale(s : DbqueryparallelBuffer, f : Double) -> DbqueryparallelBuffer {
-  let result = db_query_parallel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_buffer_add(a : DbqueryparallelBuffer, b : DbqueryparallelBuffer) -> DbqueryparallelBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_buffer_copy(s : DbqueryparallelBuffer) -> DbqueryparallelBuffer {
-  let result = db_query_parallel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_buffer_fill(s : DbqueryparallelBuffer, v : Double) -> DbqueryparallelBuffer {
-  let result = db_query_parallel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_buffer_min(s : DbqueryparallelBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_query_parallel_cursor_sum(s : DbqueryparallelCursor) -> Double { @_com
 pub fn db_query_parallel_cursor_mean(s : DbqueryparallelCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_cursor_scale(s : DbqueryparallelCursor, f : Double) -> DbqueryparallelCursor {
-  let result = db_query_parallel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_cursor_add(a : DbqueryparallelCursor, b : DbqueryparallelCursor) -> DbqueryparallelCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_cursor_copy(s : DbqueryparallelCursor) -> DbqueryparallelCursor {
-  let result = db_query_parallel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_cursor_fill(s : DbqueryparallelCursor, v : Double) -> DbqueryparallelCursor {
-  let result = db_query_parallel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_cursor_min(s : DbqueryparallelCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_query_parallel_view_sum(s : DbqueryparallelView) -> Double { @_common.
 pub fn db_query_parallel_view_mean(s : DbqueryparallelView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_view_scale(s : DbqueryparallelView, f : Double) -> DbqueryparallelView {
-  let result = db_query_parallel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_view_add(a : DbqueryparallelView, b : DbqueryparallelView) -> DbqueryparallelView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_view_copy(s : DbqueryparallelView) -> DbqueryparallelView {
-  let result = db_query_parallel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_view_fill(s : DbqueryparallelView, v : Double) -> DbqueryparallelView {
-  let result = db_query_parallel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_view_min(s : DbqueryparallelView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_query_parallel_range_sum(s : DbqueryparallelRange) -> Double { @_commo
 pub fn db_query_parallel_range_mean(s : DbqueryparallelRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_range_scale(s : DbqueryparallelRange, f : Double) -> DbqueryparallelRange {
-  let result = db_query_parallel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_range_add(a : DbqueryparallelRange, b : DbqueryparallelRange) -> DbqueryparallelRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_range_copy(s : DbqueryparallelRange) -> DbqueryparallelRange {
-  let result = db_query_parallel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_range_fill(s : DbqueryparallelRange, v : Double) -> DbqueryparallelRange {
-  let result = db_query_parallel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_range_min(s : DbqueryparallelRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_query_parallel_slice_sum(s : DbqueryparallelSlice) -> Double { @_commo
 pub fn db_query_parallel_slice_mean(s : DbqueryparallelSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_slice_scale(s : DbqueryparallelSlice, f : Double) -> DbqueryparallelSlice {
-  let result = db_query_parallel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_slice_add(a : DbqueryparallelSlice, b : DbqueryparallelSlice) -> DbqueryparallelSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_parallel_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_parallel_slice_copy(s : DbqueryparallelSlice) -> DbqueryparallelSlice {
-  let result = db_query_parallel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_slice_fill(s : DbqueryparallelSlice, v : Double) -> DbqueryparallelSlice {
-  let result = db_query_parallel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_parallel_slice_min(s : DbqueryparallelSlice) -> Double { @_common.min(s.data) }

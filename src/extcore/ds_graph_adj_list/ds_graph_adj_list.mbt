@@ -383,28 +383,20 @@ pub fn ds_graph_adj_list_frame_sum(s : DsgraphadjlistFrame) -> Double { @_common
 pub fn ds_graph_adj_list_frame_mean(s : DsgraphadjlistFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_frame_scale(s : DsgraphadjlistFrame, f : Double) -> DsgraphadjlistFrame {
-  let result = ds_graph_adj_list_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_frame_add(a : DsgraphadjlistFrame, b : DsgraphadjlistFrame) -> DsgraphadjlistFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_frame_copy(s : DsgraphadjlistFrame) -> DsgraphadjlistFrame {
-  let result = ds_graph_adj_list_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_frame_fill(s : DsgraphadjlistFrame, v : Double) -> DsgraphadjlistFrame {
-  let result = ds_graph_adj_list_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_frame_min(s : DsgraphadjlistFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_graph_adj_list_table_sum(s : DsgraphadjlistTable) -> Double { @_common
 pub fn ds_graph_adj_list_table_mean(s : DsgraphadjlistTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_table_scale(s : DsgraphadjlistTable, f : Double) -> DsgraphadjlistTable {
-  let result = ds_graph_adj_list_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_table_add(a : DsgraphadjlistTable, b : DsgraphadjlistTable) -> DsgraphadjlistTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_table_copy(s : DsgraphadjlistTable) -> DsgraphadjlistTable {
-  let result = ds_graph_adj_list_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_table_fill(s : DsgraphadjlistTable, v : Double) -> DsgraphadjlistTable {
-  let result = ds_graph_adj_list_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_table_min(s : DsgraphadjlistTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_graph_adj_list_graphn_sum(s : DsgraphadjlistGraphN) -> Double { @_comm
 pub fn ds_graph_adj_list_graphn_mean(s : DsgraphadjlistGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_graphn_scale(s : DsgraphadjlistGraphN, f : Double) -> DsgraphadjlistGraphN {
-  let result = ds_graph_adj_list_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_graphn_add(a : DsgraphadjlistGraphN, b : DsgraphadjlistGraphN) -> DsgraphadjlistGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_graphn_copy(s : DsgraphadjlistGraphN) -> DsgraphadjlistGraphN {
-  let result = ds_graph_adj_list_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_graphn_fill(s : DsgraphadjlistGraphN, v : Double) -> DsgraphadjlistGraphN {
-  let result = ds_graph_adj_list_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_graphn_min(s : DsgraphadjlistGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_graph_adj_list_node_sum(s : DsgraphadjlistNode) -> Double { @_common.s
 pub fn ds_graph_adj_list_node_mean(s : DsgraphadjlistNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_node_scale(s : DsgraphadjlistNode, f : Double) -> DsgraphadjlistNode {
-  let result = ds_graph_adj_list_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_node_add(a : DsgraphadjlistNode, b : DsgraphadjlistNode) -> DsgraphadjlistNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_node_copy(s : DsgraphadjlistNode) -> DsgraphadjlistNode {
-  let result = ds_graph_adj_list_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_node_fill(s : DsgraphadjlistNode, v : Double) -> DsgraphadjlistNode {
-  let result = ds_graph_adj_list_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_node_min(s : DsgraphadjlistNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_graph_adj_list_edge_sum(s : DsgraphadjlistEdge) -> Double { @_common.s
 pub fn ds_graph_adj_list_edge_mean(s : DsgraphadjlistEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_edge_scale(s : DsgraphadjlistEdge, f : Double) -> DsgraphadjlistEdge {
-  let result = ds_graph_adj_list_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_edge_add(a : DsgraphadjlistEdge, b : DsgraphadjlistEdge) -> DsgraphadjlistEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_edge_copy(s : DsgraphadjlistEdge) -> DsgraphadjlistEdge {
-  let result = ds_graph_adj_list_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_edge_fill(s : DsgraphadjlistEdge, v : Double) -> DsgraphadjlistEdge {
-  let result = ds_graph_adj_list_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_edge_min(s : DsgraphadjlistEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_graph_adj_list_path_sum(s : DsgraphadjlistPath) -> Double { @_common.s
 pub fn ds_graph_adj_list_path_mean(s : DsgraphadjlistPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_path_scale(s : DsgraphadjlistPath, f : Double) -> DsgraphadjlistPath {
-  let result = ds_graph_adj_list_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_path_add(a : DsgraphadjlistPath, b : DsgraphadjlistPath) -> DsgraphadjlistPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_path_copy(s : DsgraphadjlistPath) -> DsgraphadjlistPath {
-  let result = ds_graph_adj_list_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_path_fill(s : DsgraphadjlistPath, v : Double) -> DsgraphadjlistPath {
-  let result = ds_graph_adj_list_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_path_min(s : DsgraphadjlistPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_graph_adj_list_cluster_sum(s : DsgraphadjlistCluster) -> Double { @_co
 pub fn ds_graph_adj_list_cluster_mean(s : DsgraphadjlistCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_cluster_scale(s : DsgraphadjlistCluster, f : Double) -> DsgraphadjlistCluster {
-  let result = ds_graph_adj_list_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cluster_add(a : DsgraphadjlistCluster, b : DsgraphadjlistCluster) -> DsgraphadjlistCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_cluster_copy(s : DsgraphadjlistCluster) -> DsgraphadjlistCluster {
-  let result = ds_graph_adj_list_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cluster_fill(s : DsgraphadjlistCluster, v : Double) -> DsgraphadjlistCluster {
-  let result = ds_graph_adj_list_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cluster_min(s : DsgraphadjlistCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_graph_adj_list_model_sum(s : DsgraphadjlistModel) -> Double { @_common
 pub fn ds_graph_adj_list_model_mean(s : DsgraphadjlistModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_model_scale(s : DsgraphadjlistModel, f : Double) -> DsgraphadjlistModel {
-  let result = ds_graph_adj_list_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_model_add(a : DsgraphadjlistModel, b : DsgraphadjlistModel) -> DsgraphadjlistModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_model_copy(s : DsgraphadjlistModel) -> DsgraphadjlistModel {
-  let result = ds_graph_adj_list_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_model_fill(s : DsgraphadjlistModel, v : Double) -> DsgraphadjlistModel {
-  let result = ds_graph_adj_list_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_model_min(s : DsgraphadjlistModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_graph_adj_list_layer_sum(s : DsgraphadjlistLayer) -> Double { @_common
 pub fn ds_graph_adj_list_layer_mean(s : DsgraphadjlistLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_layer_scale(s : DsgraphadjlistLayer, f : Double) -> DsgraphadjlistLayer {
-  let result = ds_graph_adj_list_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_layer_add(a : DsgraphadjlistLayer, b : DsgraphadjlistLayer) -> DsgraphadjlistLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_layer_copy(s : DsgraphadjlistLayer) -> DsgraphadjlistLayer {
-  let result = ds_graph_adj_list_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_layer_fill(s : DsgraphadjlistLayer, v : Double) -> DsgraphadjlistLayer {
-  let result = ds_graph_adj_list_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_layer_min(s : DsgraphadjlistLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_graph_adj_list_buffer_sum(s : DsgraphadjlistBuffer) -> Double { @_comm
 pub fn ds_graph_adj_list_buffer_mean(s : DsgraphadjlistBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_buffer_scale(s : DsgraphadjlistBuffer, f : Double) -> DsgraphadjlistBuffer {
-  let result = ds_graph_adj_list_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_buffer_add(a : DsgraphadjlistBuffer, b : DsgraphadjlistBuffer) -> DsgraphadjlistBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_buffer_copy(s : DsgraphadjlistBuffer) -> DsgraphadjlistBuffer {
-  let result = ds_graph_adj_list_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_buffer_fill(s : DsgraphadjlistBuffer, v : Double) -> DsgraphadjlistBuffer {
-  let result = ds_graph_adj_list_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_buffer_min(s : DsgraphadjlistBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_graph_adj_list_cursor_sum(s : DsgraphadjlistCursor) -> Double { @_comm
 pub fn ds_graph_adj_list_cursor_mean(s : DsgraphadjlistCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_cursor_scale(s : DsgraphadjlistCursor, f : Double) -> DsgraphadjlistCursor {
-  let result = ds_graph_adj_list_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cursor_add(a : DsgraphadjlistCursor, b : DsgraphadjlistCursor) -> DsgraphadjlistCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_cursor_copy(s : DsgraphadjlistCursor) -> DsgraphadjlistCursor {
-  let result = ds_graph_adj_list_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cursor_fill(s : DsgraphadjlistCursor, v : Double) -> DsgraphadjlistCursor {
-  let result = ds_graph_adj_list_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cursor_min(s : DsgraphadjlistCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_graph_adj_list_view_sum(s : DsgraphadjlistView) -> Double { @_common.s
 pub fn ds_graph_adj_list_view_mean(s : DsgraphadjlistView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_view_scale(s : DsgraphadjlistView, f : Double) -> DsgraphadjlistView {
-  let result = ds_graph_adj_list_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_view_add(a : DsgraphadjlistView, b : DsgraphadjlistView) -> DsgraphadjlistView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_view_copy(s : DsgraphadjlistView) -> DsgraphadjlistView {
-  let result = ds_graph_adj_list_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_view_fill(s : DsgraphadjlistView, v : Double) -> DsgraphadjlistView {
-  let result = ds_graph_adj_list_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_view_min(s : DsgraphadjlistView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_graph_adj_list_range_sum(s : DsgraphadjlistRange) -> Double { @_common
 pub fn ds_graph_adj_list_range_mean(s : DsgraphadjlistRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_range_scale(s : DsgraphadjlistRange, f : Double) -> DsgraphadjlistRange {
-  let result = ds_graph_adj_list_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_range_add(a : DsgraphadjlistRange, b : DsgraphadjlistRange) -> DsgraphadjlistRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_range_copy(s : DsgraphadjlistRange) -> DsgraphadjlistRange {
-  let result = ds_graph_adj_list_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_range_fill(s : DsgraphadjlistRange, v : Double) -> DsgraphadjlistRange {
-  let result = ds_graph_adj_list_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_range_min(s : DsgraphadjlistRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_graph_adj_list_slice_sum(s : DsgraphadjlistSlice) -> Double { @_common
 pub fn ds_graph_adj_list_slice_mean(s : DsgraphadjlistSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_list_slice_scale(s : DsgraphadjlistSlice, f : Double) -> DsgraphadjlistSlice {
-  let result = ds_graph_adj_list_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_slice_add(a : DsgraphadjlistSlice, b : DsgraphadjlistSlice) -> DsgraphadjlistSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_adj_list_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_adj_list_slice_copy(s : DsgraphadjlistSlice) -> DsgraphadjlistSlice {
-  let result = ds_graph_adj_list_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_slice_fill(s : DsgraphadjlistSlice, v : Double) -> DsgraphadjlistSlice {
-  let result = ds_graph_adj_list_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_slice_min(s : DsgraphadjlistSlice) -> Double { @_common.min(s.data) }

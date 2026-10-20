@@ -383,28 +383,20 @@ pub fn signal_spec_burg_frame_sum(s : SignalspecburgFrame) -> Double { @_common.
 pub fn signal_spec_burg_frame_mean(s : SignalspecburgFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_frame_scale(s : SignalspecburgFrame, f : Double) -> SignalspecburgFrame {
-  let result = signal_spec_burg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_frame_add(a : SignalspecburgFrame, b : SignalspecburgFrame) -> SignalspecburgFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_frame_copy(s : SignalspecburgFrame) -> SignalspecburgFrame {
-  let result = signal_spec_burg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_frame_fill(s : SignalspecburgFrame, v : Double) -> SignalspecburgFrame {
-  let result = signal_spec_burg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_frame_min(s : SignalspecburgFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_spec_burg_table_sum(s : SignalspecburgTable) -> Double { @_common.
 pub fn signal_spec_burg_table_mean(s : SignalspecburgTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_table_scale(s : SignalspecburgTable, f : Double) -> SignalspecburgTable {
-  let result = signal_spec_burg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_table_add(a : SignalspecburgTable, b : SignalspecburgTable) -> SignalspecburgTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_table_copy(s : SignalspecburgTable) -> SignalspecburgTable {
-  let result = signal_spec_burg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_table_fill(s : SignalspecburgTable, v : Double) -> SignalspecburgTable {
-  let result = signal_spec_burg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_table_min(s : SignalspecburgTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_spec_burg_graphn_sum(s : SignalspecburgGraphN) -> Double { @_commo
 pub fn signal_spec_burg_graphn_mean(s : SignalspecburgGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_graphn_scale(s : SignalspecburgGraphN, f : Double) -> SignalspecburgGraphN {
-  let result = signal_spec_burg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_graphn_add(a : SignalspecburgGraphN, b : SignalspecburgGraphN) -> SignalspecburgGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_graphn_copy(s : SignalspecburgGraphN) -> SignalspecburgGraphN {
-  let result = signal_spec_burg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_graphn_fill(s : SignalspecburgGraphN, v : Double) -> SignalspecburgGraphN {
-  let result = signal_spec_burg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_graphn_min(s : SignalspecburgGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_spec_burg_node_sum(s : SignalspecburgNode) -> Double { @_common.su
 pub fn signal_spec_burg_node_mean(s : SignalspecburgNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_node_scale(s : SignalspecburgNode, f : Double) -> SignalspecburgNode {
-  let result = signal_spec_burg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_node_add(a : SignalspecburgNode, b : SignalspecburgNode) -> SignalspecburgNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_node_copy(s : SignalspecburgNode) -> SignalspecburgNode {
-  let result = signal_spec_burg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_node_fill(s : SignalspecburgNode, v : Double) -> SignalspecburgNode {
-  let result = signal_spec_burg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_node_min(s : SignalspecburgNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_spec_burg_edge_sum(s : SignalspecburgEdge) -> Double { @_common.su
 pub fn signal_spec_burg_edge_mean(s : SignalspecburgEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_edge_scale(s : SignalspecburgEdge, f : Double) -> SignalspecburgEdge {
-  let result = signal_spec_burg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_edge_add(a : SignalspecburgEdge, b : SignalspecburgEdge) -> SignalspecburgEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_edge_copy(s : SignalspecburgEdge) -> SignalspecburgEdge {
-  let result = signal_spec_burg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_edge_fill(s : SignalspecburgEdge, v : Double) -> SignalspecburgEdge {
-  let result = signal_spec_burg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_edge_min(s : SignalspecburgEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_spec_burg_path_sum(s : SignalspecburgPath) -> Double { @_common.su
 pub fn signal_spec_burg_path_mean(s : SignalspecburgPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_path_scale(s : SignalspecburgPath, f : Double) -> SignalspecburgPath {
-  let result = signal_spec_burg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_path_add(a : SignalspecburgPath, b : SignalspecburgPath) -> SignalspecburgPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_path_copy(s : SignalspecburgPath) -> SignalspecburgPath {
-  let result = signal_spec_burg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_path_fill(s : SignalspecburgPath, v : Double) -> SignalspecburgPath {
-  let result = signal_spec_burg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_path_min(s : SignalspecburgPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_spec_burg_cluster_sum(s : SignalspecburgCluster) -> Double { @_com
 pub fn signal_spec_burg_cluster_mean(s : SignalspecburgCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_cluster_scale(s : SignalspecburgCluster, f : Double) -> SignalspecburgCluster {
-  let result = signal_spec_burg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_cluster_add(a : SignalspecburgCluster, b : SignalspecburgCluster) -> SignalspecburgCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_cluster_copy(s : SignalspecburgCluster) -> SignalspecburgCluster {
-  let result = signal_spec_burg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_cluster_fill(s : SignalspecburgCluster, v : Double) -> SignalspecburgCluster {
-  let result = signal_spec_burg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_cluster_min(s : SignalspecburgCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_spec_burg_model_sum(s : SignalspecburgModel) -> Double { @_common.
 pub fn signal_spec_burg_model_mean(s : SignalspecburgModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_model_scale(s : SignalspecburgModel, f : Double) -> SignalspecburgModel {
-  let result = signal_spec_burg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_model_add(a : SignalspecburgModel, b : SignalspecburgModel) -> SignalspecburgModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_model_copy(s : SignalspecburgModel) -> SignalspecburgModel {
-  let result = signal_spec_burg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_model_fill(s : SignalspecburgModel, v : Double) -> SignalspecburgModel {
-  let result = signal_spec_burg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_model_min(s : SignalspecburgModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_spec_burg_layer_sum(s : SignalspecburgLayer) -> Double { @_common.
 pub fn signal_spec_burg_layer_mean(s : SignalspecburgLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_layer_scale(s : SignalspecburgLayer, f : Double) -> SignalspecburgLayer {
-  let result = signal_spec_burg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_layer_add(a : SignalspecburgLayer, b : SignalspecburgLayer) -> SignalspecburgLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_layer_copy(s : SignalspecburgLayer) -> SignalspecburgLayer {
-  let result = signal_spec_burg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_layer_fill(s : SignalspecburgLayer, v : Double) -> SignalspecburgLayer {
-  let result = signal_spec_burg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_layer_min(s : SignalspecburgLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_spec_burg_buffer_sum(s : SignalspecburgBuffer) -> Double { @_commo
 pub fn signal_spec_burg_buffer_mean(s : SignalspecburgBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_buffer_scale(s : SignalspecburgBuffer, f : Double) -> SignalspecburgBuffer {
-  let result = signal_spec_burg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_buffer_add(a : SignalspecburgBuffer, b : SignalspecburgBuffer) -> SignalspecburgBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_buffer_copy(s : SignalspecburgBuffer) -> SignalspecburgBuffer {
-  let result = signal_spec_burg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_buffer_fill(s : SignalspecburgBuffer, v : Double) -> SignalspecburgBuffer {
-  let result = signal_spec_burg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_buffer_min(s : SignalspecburgBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_spec_burg_cursor_sum(s : SignalspecburgCursor) -> Double { @_commo
 pub fn signal_spec_burg_cursor_mean(s : SignalspecburgCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_cursor_scale(s : SignalspecburgCursor, f : Double) -> SignalspecburgCursor {
-  let result = signal_spec_burg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_cursor_add(a : SignalspecburgCursor, b : SignalspecburgCursor) -> SignalspecburgCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_cursor_copy(s : SignalspecburgCursor) -> SignalspecburgCursor {
-  let result = signal_spec_burg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_cursor_fill(s : SignalspecburgCursor, v : Double) -> SignalspecburgCursor {
-  let result = signal_spec_burg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_cursor_min(s : SignalspecburgCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_spec_burg_view_sum(s : SignalspecburgView) -> Double { @_common.su
 pub fn signal_spec_burg_view_mean(s : SignalspecburgView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_view_scale(s : SignalspecburgView, f : Double) -> SignalspecburgView {
-  let result = signal_spec_burg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_view_add(a : SignalspecburgView, b : SignalspecburgView) -> SignalspecburgView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_view_copy(s : SignalspecburgView) -> SignalspecburgView {
-  let result = signal_spec_burg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_view_fill(s : SignalspecburgView, v : Double) -> SignalspecburgView {
-  let result = signal_spec_burg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_view_min(s : SignalspecburgView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_spec_burg_range_sum(s : SignalspecburgRange) -> Double { @_common.
 pub fn signal_spec_burg_range_mean(s : SignalspecburgRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_range_scale(s : SignalspecburgRange, f : Double) -> SignalspecburgRange {
-  let result = signal_spec_burg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_range_add(a : SignalspecburgRange, b : SignalspecburgRange) -> SignalspecburgRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_range_copy(s : SignalspecburgRange) -> SignalspecburgRange {
-  let result = signal_spec_burg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_range_fill(s : SignalspecburgRange, v : Double) -> SignalspecburgRange {
-  let result = signal_spec_burg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_range_min(s : SignalspecburgRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_spec_burg_slice_sum(s : SignalspecburgSlice) -> Double { @_common.
 pub fn signal_spec_burg_slice_mean(s : SignalspecburgSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_slice_scale(s : SignalspecburgSlice, f : Double) -> SignalspecburgSlice {
-  let result = signal_spec_burg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_slice_add(a : SignalspecburgSlice, b : SignalspecburgSlice) -> SignalspecburgSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_burg_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_burg_slice_copy(s : SignalspecburgSlice) -> SignalspecburgSlice {
-  let result = signal_spec_burg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_slice_fill(s : SignalspecburgSlice, v : Double) -> SignalspecburgSlice {
-  let result = signal_spec_burg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_burg_slice_min(s : SignalspecburgSlice) -> Double { @_common.min(s.data) }

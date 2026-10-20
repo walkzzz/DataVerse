@@ -383,28 +383,20 @@ pub fn sort_exchange_smooth_frame_sum(s : SortexchangesmoothFrame) -> Double { @
 pub fn sort_exchange_smooth_frame_mean(s : SortexchangesmoothFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_frame_scale(s : SortexchangesmoothFrame, f : Double) -> SortexchangesmoothFrame {
-  let result = sort_exchange_smooth_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_frame_add(a : SortexchangesmoothFrame, b : SortexchangesmoothFrame) -> SortexchangesmoothFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_frame_copy(s : SortexchangesmoothFrame) -> SortexchangesmoothFrame {
-  let result = sort_exchange_smooth_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_frame_fill(s : SortexchangesmoothFrame, v : Double) -> SortexchangesmoothFrame {
-  let result = sort_exchange_smooth_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_frame_min(s : SortexchangesmoothFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_exchange_smooth_table_sum(s : SortexchangesmoothTable) -> Double { @
 pub fn sort_exchange_smooth_table_mean(s : SortexchangesmoothTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_table_scale(s : SortexchangesmoothTable, f : Double) -> SortexchangesmoothTable {
-  let result = sort_exchange_smooth_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_table_add(a : SortexchangesmoothTable, b : SortexchangesmoothTable) -> SortexchangesmoothTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_table_copy(s : SortexchangesmoothTable) -> SortexchangesmoothTable {
-  let result = sort_exchange_smooth_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_table_fill(s : SortexchangesmoothTable, v : Double) -> SortexchangesmoothTable {
-  let result = sort_exchange_smooth_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_table_min(s : SortexchangesmoothTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_exchange_smooth_graphn_sum(s : SortexchangesmoothGraphN) -> Double {
 pub fn sort_exchange_smooth_graphn_mean(s : SortexchangesmoothGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_graphn_scale(s : SortexchangesmoothGraphN, f : Double) -> SortexchangesmoothGraphN {
-  let result = sort_exchange_smooth_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_graphn_add(a : SortexchangesmoothGraphN, b : SortexchangesmoothGraphN) -> SortexchangesmoothGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_graphn_copy(s : SortexchangesmoothGraphN) -> SortexchangesmoothGraphN {
-  let result = sort_exchange_smooth_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_graphn_fill(s : SortexchangesmoothGraphN, v : Double) -> SortexchangesmoothGraphN {
-  let result = sort_exchange_smooth_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_graphn_min(s : SortexchangesmoothGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_exchange_smooth_node_sum(s : SortexchangesmoothNode) -> Double { @_c
 pub fn sort_exchange_smooth_node_mean(s : SortexchangesmoothNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_node_scale(s : SortexchangesmoothNode, f : Double) -> SortexchangesmoothNode {
-  let result = sort_exchange_smooth_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_node_add(a : SortexchangesmoothNode, b : SortexchangesmoothNode) -> SortexchangesmoothNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_node_copy(s : SortexchangesmoothNode) -> SortexchangesmoothNode {
-  let result = sort_exchange_smooth_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_node_fill(s : SortexchangesmoothNode, v : Double) -> SortexchangesmoothNode {
-  let result = sort_exchange_smooth_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_node_min(s : SortexchangesmoothNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_exchange_smooth_edge_sum(s : SortexchangesmoothEdge) -> Double { @_c
 pub fn sort_exchange_smooth_edge_mean(s : SortexchangesmoothEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_edge_scale(s : SortexchangesmoothEdge, f : Double) -> SortexchangesmoothEdge {
-  let result = sort_exchange_smooth_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_edge_add(a : SortexchangesmoothEdge, b : SortexchangesmoothEdge) -> SortexchangesmoothEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_edge_copy(s : SortexchangesmoothEdge) -> SortexchangesmoothEdge {
-  let result = sort_exchange_smooth_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_edge_fill(s : SortexchangesmoothEdge, v : Double) -> SortexchangesmoothEdge {
-  let result = sort_exchange_smooth_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_edge_min(s : SortexchangesmoothEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_exchange_smooth_path_sum(s : SortexchangesmoothPath) -> Double { @_c
 pub fn sort_exchange_smooth_path_mean(s : SortexchangesmoothPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_path_scale(s : SortexchangesmoothPath, f : Double) -> SortexchangesmoothPath {
-  let result = sort_exchange_smooth_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_path_add(a : SortexchangesmoothPath, b : SortexchangesmoothPath) -> SortexchangesmoothPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_path_copy(s : SortexchangesmoothPath) -> SortexchangesmoothPath {
-  let result = sort_exchange_smooth_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_path_fill(s : SortexchangesmoothPath, v : Double) -> SortexchangesmoothPath {
-  let result = sort_exchange_smooth_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_path_min(s : SortexchangesmoothPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_exchange_smooth_cluster_sum(s : SortexchangesmoothCluster) -> Double
 pub fn sort_exchange_smooth_cluster_mean(s : SortexchangesmoothCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_cluster_scale(s : SortexchangesmoothCluster, f : Double) -> SortexchangesmoothCluster {
-  let result = sort_exchange_smooth_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_cluster_add(a : SortexchangesmoothCluster, b : SortexchangesmoothCluster) -> SortexchangesmoothCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_cluster_copy(s : SortexchangesmoothCluster) -> SortexchangesmoothCluster {
-  let result = sort_exchange_smooth_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_cluster_fill(s : SortexchangesmoothCluster, v : Double) -> SortexchangesmoothCluster {
-  let result = sort_exchange_smooth_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_cluster_min(s : SortexchangesmoothCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_exchange_smooth_model_sum(s : SortexchangesmoothModel) -> Double { @
 pub fn sort_exchange_smooth_model_mean(s : SortexchangesmoothModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_model_scale(s : SortexchangesmoothModel, f : Double) -> SortexchangesmoothModel {
-  let result = sort_exchange_smooth_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_model_add(a : SortexchangesmoothModel, b : SortexchangesmoothModel) -> SortexchangesmoothModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_model_copy(s : SortexchangesmoothModel) -> SortexchangesmoothModel {
-  let result = sort_exchange_smooth_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_model_fill(s : SortexchangesmoothModel, v : Double) -> SortexchangesmoothModel {
-  let result = sort_exchange_smooth_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_model_min(s : SortexchangesmoothModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_exchange_smooth_layer_sum(s : SortexchangesmoothLayer) -> Double { @
 pub fn sort_exchange_smooth_layer_mean(s : SortexchangesmoothLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_layer_scale(s : SortexchangesmoothLayer, f : Double) -> SortexchangesmoothLayer {
-  let result = sort_exchange_smooth_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_layer_add(a : SortexchangesmoothLayer, b : SortexchangesmoothLayer) -> SortexchangesmoothLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_layer_copy(s : SortexchangesmoothLayer) -> SortexchangesmoothLayer {
-  let result = sort_exchange_smooth_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_layer_fill(s : SortexchangesmoothLayer, v : Double) -> SortexchangesmoothLayer {
-  let result = sort_exchange_smooth_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_layer_min(s : SortexchangesmoothLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_exchange_smooth_buffer_sum(s : SortexchangesmoothBuffer) -> Double {
 pub fn sort_exchange_smooth_buffer_mean(s : SortexchangesmoothBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_buffer_scale(s : SortexchangesmoothBuffer, f : Double) -> SortexchangesmoothBuffer {
-  let result = sort_exchange_smooth_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_buffer_add(a : SortexchangesmoothBuffer, b : SortexchangesmoothBuffer) -> SortexchangesmoothBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_buffer_copy(s : SortexchangesmoothBuffer) -> SortexchangesmoothBuffer {
-  let result = sort_exchange_smooth_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_buffer_fill(s : SortexchangesmoothBuffer, v : Double) -> SortexchangesmoothBuffer {
-  let result = sort_exchange_smooth_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_buffer_min(s : SortexchangesmoothBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_exchange_smooth_cursor_sum(s : SortexchangesmoothCursor) -> Double {
 pub fn sort_exchange_smooth_cursor_mean(s : SortexchangesmoothCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_cursor_scale(s : SortexchangesmoothCursor, f : Double) -> SortexchangesmoothCursor {
-  let result = sort_exchange_smooth_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_cursor_add(a : SortexchangesmoothCursor, b : SortexchangesmoothCursor) -> SortexchangesmoothCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_cursor_copy(s : SortexchangesmoothCursor) -> SortexchangesmoothCursor {
-  let result = sort_exchange_smooth_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_cursor_fill(s : SortexchangesmoothCursor, v : Double) -> SortexchangesmoothCursor {
-  let result = sort_exchange_smooth_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_cursor_min(s : SortexchangesmoothCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_exchange_smooth_view_sum(s : SortexchangesmoothView) -> Double { @_c
 pub fn sort_exchange_smooth_view_mean(s : SortexchangesmoothView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_view_scale(s : SortexchangesmoothView, f : Double) -> SortexchangesmoothView {
-  let result = sort_exchange_smooth_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_view_add(a : SortexchangesmoothView, b : SortexchangesmoothView) -> SortexchangesmoothView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_view_copy(s : SortexchangesmoothView) -> SortexchangesmoothView {
-  let result = sort_exchange_smooth_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_view_fill(s : SortexchangesmoothView, v : Double) -> SortexchangesmoothView {
-  let result = sort_exchange_smooth_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_view_min(s : SortexchangesmoothView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_exchange_smooth_range_sum(s : SortexchangesmoothRange) -> Double { @
 pub fn sort_exchange_smooth_range_mean(s : SortexchangesmoothRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_range_scale(s : SortexchangesmoothRange, f : Double) -> SortexchangesmoothRange {
-  let result = sort_exchange_smooth_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_range_add(a : SortexchangesmoothRange, b : SortexchangesmoothRange) -> SortexchangesmoothRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_range_copy(s : SortexchangesmoothRange) -> SortexchangesmoothRange {
-  let result = sort_exchange_smooth_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_range_fill(s : SortexchangesmoothRange, v : Double) -> SortexchangesmoothRange {
-  let result = sort_exchange_smooth_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_range_min(s : SortexchangesmoothRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_exchange_smooth_slice_sum(s : SortexchangesmoothSlice) -> Double { @
 pub fn sort_exchange_smooth_slice_mean(s : SortexchangesmoothSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_smooth_slice_scale(s : SortexchangesmoothSlice, f : Double) -> SortexchangesmoothSlice {
-  let result = sort_exchange_smooth_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_slice_add(a : SortexchangesmoothSlice, b : SortexchangesmoothSlice) -> SortexchangesmoothSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_smooth_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_smooth_slice_copy(s : SortexchangesmoothSlice) -> SortexchangesmoothSlice {
-  let result = sort_exchange_smooth_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_slice_fill(s : SortexchangesmoothSlice, v : Double) -> SortexchangesmoothSlice {
-  let result = sort_exchange_smooth_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_smooth_slice_min(s : SortexchangesmoothSlice) -> Double { @_common.min(s.data) }

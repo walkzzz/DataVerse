@@ -134,3 +134,14 @@ test "common_corr" {
   let c = @_common.corr([1.0, 2.0, 3.0, 4.0], [2.0, 4.0, 6.0, 8.0])
   assert_true(c > 0.99)
 }
+test "common_array_ops" {
+  let r = @_common.copy_arr([1.0, 2.0, 3.0])
+  assert_true(r[2] > 2.99 && r[2] < 3.01)
+  let s = @_common.scale_arr([1.0, 2.0, 3.0], 2.0)
+  assert_true(s[1] > 3.99 && s[1] < 4.01)
+  let a = @_common.add_arr([1.0, 2.0], [3.0, 4.0])
+  assert_true(a[0] > 3.99 && a[0] < 4.01)
+  assert_true(a[1] > 5.99 && a[1] < 6.01)
+  let f = @_common.fill_arr(3, 5.0)
+  assert_true(f[0] > 4.99 && f[2] > 4.99)
+}

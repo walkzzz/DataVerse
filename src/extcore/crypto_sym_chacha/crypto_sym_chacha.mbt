@@ -383,28 +383,20 @@ pub fn crypto_sym_chacha_frame_sum(s : CryptosymchachaFrame) -> Double { @_commo
 pub fn crypto_sym_chacha_frame_mean(s : CryptosymchachaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_frame_scale(s : CryptosymchachaFrame, f : Double) -> CryptosymchachaFrame {
-  let result = crypto_sym_chacha_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_frame_add(a : CryptosymchachaFrame, b : CryptosymchachaFrame) -> CryptosymchachaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_frame_copy(s : CryptosymchachaFrame) -> CryptosymchachaFrame {
-  let result = crypto_sym_chacha_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_frame_fill(s : CryptosymchachaFrame, v : Double) -> CryptosymchachaFrame {
-  let result = crypto_sym_chacha_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_frame_min(s : CryptosymchachaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sym_chacha_table_sum(s : CryptosymchachaTable) -> Double { @_commo
 pub fn crypto_sym_chacha_table_mean(s : CryptosymchachaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_table_scale(s : CryptosymchachaTable, f : Double) -> CryptosymchachaTable {
-  let result = crypto_sym_chacha_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_table_add(a : CryptosymchachaTable, b : CryptosymchachaTable) -> CryptosymchachaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_table_copy(s : CryptosymchachaTable) -> CryptosymchachaTable {
-  let result = crypto_sym_chacha_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_table_fill(s : CryptosymchachaTable, v : Double) -> CryptosymchachaTable {
-  let result = crypto_sym_chacha_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_table_min(s : CryptosymchachaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sym_chacha_graphn_sum(s : CryptosymchachaGraphN) -> Double { @_com
 pub fn crypto_sym_chacha_graphn_mean(s : CryptosymchachaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_graphn_scale(s : CryptosymchachaGraphN, f : Double) -> CryptosymchachaGraphN {
-  let result = crypto_sym_chacha_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_graphn_add(a : CryptosymchachaGraphN, b : CryptosymchachaGraphN) -> CryptosymchachaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_graphn_copy(s : CryptosymchachaGraphN) -> CryptosymchachaGraphN {
-  let result = crypto_sym_chacha_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_graphn_fill(s : CryptosymchachaGraphN, v : Double) -> CryptosymchachaGraphN {
-  let result = crypto_sym_chacha_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_graphn_min(s : CryptosymchachaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sym_chacha_node_sum(s : CryptosymchachaNode) -> Double { @_common.
 pub fn crypto_sym_chacha_node_mean(s : CryptosymchachaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_node_scale(s : CryptosymchachaNode, f : Double) -> CryptosymchachaNode {
-  let result = crypto_sym_chacha_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_node_add(a : CryptosymchachaNode, b : CryptosymchachaNode) -> CryptosymchachaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_node_copy(s : CryptosymchachaNode) -> CryptosymchachaNode {
-  let result = crypto_sym_chacha_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_node_fill(s : CryptosymchachaNode, v : Double) -> CryptosymchachaNode {
-  let result = crypto_sym_chacha_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_node_min(s : CryptosymchachaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sym_chacha_edge_sum(s : CryptosymchachaEdge) -> Double { @_common.
 pub fn crypto_sym_chacha_edge_mean(s : CryptosymchachaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_edge_scale(s : CryptosymchachaEdge, f : Double) -> CryptosymchachaEdge {
-  let result = crypto_sym_chacha_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_edge_add(a : CryptosymchachaEdge, b : CryptosymchachaEdge) -> CryptosymchachaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_edge_copy(s : CryptosymchachaEdge) -> CryptosymchachaEdge {
-  let result = crypto_sym_chacha_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_edge_fill(s : CryptosymchachaEdge, v : Double) -> CryptosymchachaEdge {
-  let result = crypto_sym_chacha_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_edge_min(s : CryptosymchachaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sym_chacha_path_sum(s : CryptosymchachaPath) -> Double { @_common.
 pub fn crypto_sym_chacha_path_mean(s : CryptosymchachaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_path_scale(s : CryptosymchachaPath, f : Double) -> CryptosymchachaPath {
-  let result = crypto_sym_chacha_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_path_add(a : CryptosymchachaPath, b : CryptosymchachaPath) -> CryptosymchachaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_path_copy(s : CryptosymchachaPath) -> CryptosymchachaPath {
-  let result = crypto_sym_chacha_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_path_fill(s : CryptosymchachaPath, v : Double) -> CryptosymchachaPath {
-  let result = crypto_sym_chacha_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_path_min(s : CryptosymchachaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sym_chacha_cluster_sum(s : CryptosymchachaCluster) -> Double { @_c
 pub fn crypto_sym_chacha_cluster_mean(s : CryptosymchachaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_cluster_scale(s : CryptosymchachaCluster, f : Double) -> CryptosymchachaCluster {
-  let result = crypto_sym_chacha_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_cluster_add(a : CryptosymchachaCluster, b : CryptosymchachaCluster) -> CryptosymchachaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_cluster_copy(s : CryptosymchachaCluster) -> CryptosymchachaCluster {
-  let result = crypto_sym_chacha_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_cluster_fill(s : CryptosymchachaCluster, v : Double) -> CryptosymchachaCluster {
-  let result = crypto_sym_chacha_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_cluster_min(s : CryptosymchachaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sym_chacha_model_sum(s : CryptosymchachaModel) -> Double { @_commo
 pub fn crypto_sym_chacha_model_mean(s : CryptosymchachaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_model_scale(s : CryptosymchachaModel, f : Double) -> CryptosymchachaModel {
-  let result = crypto_sym_chacha_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_model_add(a : CryptosymchachaModel, b : CryptosymchachaModel) -> CryptosymchachaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_model_copy(s : CryptosymchachaModel) -> CryptosymchachaModel {
-  let result = crypto_sym_chacha_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_model_fill(s : CryptosymchachaModel, v : Double) -> CryptosymchachaModel {
-  let result = crypto_sym_chacha_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_model_min(s : CryptosymchachaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sym_chacha_layer_sum(s : CryptosymchachaLayer) -> Double { @_commo
 pub fn crypto_sym_chacha_layer_mean(s : CryptosymchachaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_layer_scale(s : CryptosymchachaLayer, f : Double) -> CryptosymchachaLayer {
-  let result = crypto_sym_chacha_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_layer_add(a : CryptosymchachaLayer, b : CryptosymchachaLayer) -> CryptosymchachaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_layer_copy(s : CryptosymchachaLayer) -> CryptosymchachaLayer {
-  let result = crypto_sym_chacha_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_layer_fill(s : CryptosymchachaLayer, v : Double) -> CryptosymchachaLayer {
-  let result = crypto_sym_chacha_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_layer_min(s : CryptosymchachaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sym_chacha_buffer_sum(s : CryptosymchachaBuffer) -> Double { @_com
 pub fn crypto_sym_chacha_buffer_mean(s : CryptosymchachaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_buffer_scale(s : CryptosymchachaBuffer, f : Double) -> CryptosymchachaBuffer {
-  let result = crypto_sym_chacha_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_buffer_add(a : CryptosymchachaBuffer, b : CryptosymchachaBuffer) -> CryptosymchachaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_buffer_copy(s : CryptosymchachaBuffer) -> CryptosymchachaBuffer {
-  let result = crypto_sym_chacha_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_buffer_fill(s : CryptosymchachaBuffer, v : Double) -> CryptosymchachaBuffer {
-  let result = crypto_sym_chacha_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_buffer_min(s : CryptosymchachaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sym_chacha_cursor_sum(s : CryptosymchachaCursor) -> Double { @_com
 pub fn crypto_sym_chacha_cursor_mean(s : CryptosymchachaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_cursor_scale(s : CryptosymchachaCursor, f : Double) -> CryptosymchachaCursor {
-  let result = crypto_sym_chacha_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_cursor_add(a : CryptosymchachaCursor, b : CryptosymchachaCursor) -> CryptosymchachaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_cursor_copy(s : CryptosymchachaCursor) -> CryptosymchachaCursor {
-  let result = crypto_sym_chacha_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_cursor_fill(s : CryptosymchachaCursor, v : Double) -> CryptosymchachaCursor {
-  let result = crypto_sym_chacha_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_cursor_min(s : CryptosymchachaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sym_chacha_view_sum(s : CryptosymchachaView) -> Double { @_common.
 pub fn crypto_sym_chacha_view_mean(s : CryptosymchachaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_view_scale(s : CryptosymchachaView, f : Double) -> CryptosymchachaView {
-  let result = crypto_sym_chacha_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_view_add(a : CryptosymchachaView, b : CryptosymchachaView) -> CryptosymchachaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_view_copy(s : CryptosymchachaView) -> CryptosymchachaView {
-  let result = crypto_sym_chacha_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_view_fill(s : CryptosymchachaView, v : Double) -> CryptosymchachaView {
-  let result = crypto_sym_chacha_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_view_min(s : CryptosymchachaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sym_chacha_range_sum(s : CryptosymchachaRange) -> Double { @_commo
 pub fn crypto_sym_chacha_range_mean(s : CryptosymchachaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_range_scale(s : CryptosymchachaRange, f : Double) -> CryptosymchachaRange {
-  let result = crypto_sym_chacha_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_range_add(a : CryptosymchachaRange, b : CryptosymchachaRange) -> CryptosymchachaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_range_copy(s : CryptosymchachaRange) -> CryptosymchachaRange {
-  let result = crypto_sym_chacha_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_range_fill(s : CryptosymchachaRange, v : Double) -> CryptosymchachaRange {
-  let result = crypto_sym_chacha_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_range_min(s : CryptosymchachaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sym_chacha_slice_sum(s : CryptosymchachaSlice) -> Double { @_commo
 pub fn crypto_sym_chacha_slice_mean(s : CryptosymchachaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_slice_scale(s : CryptosymchachaSlice, f : Double) -> CryptosymchachaSlice {
-  let result = crypto_sym_chacha_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_slice_add(a : CryptosymchachaSlice, b : CryptosymchachaSlice) -> CryptosymchachaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_chacha_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_chacha_slice_copy(s : CryptosymchachaSlice) -> CryptosymchachaSlice {
-  let result = crypto_sym_chacha_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_slice_fill(s : CryptosymchachaSlice, v : Double) -> CryptosymchachaSlice {
-  let result = crypto_sym_chacha_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_chacha_slice_min(s : CryptosymchachaSlice) -> Double { @_common.min(s.data) }

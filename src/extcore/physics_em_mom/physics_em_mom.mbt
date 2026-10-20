@@ -383,28 +383,20 @@ pub fn physics_em_mom_frame_sum(s : PhysicsemmomFrame) -> Double { @_common.sum(
 pub fn physics_em_mom_frame_mean(s : PhysicsemmomFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_frame_scale(s : PhysicsemmomFrame, f : Double) -> PhysicsemmomFrame {
-  let result = physics_em_mom_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_frame_add(a : PhysicsemmomFrame, b : PhysicsemmomFrame) -> PhysicsemmomFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_frame_copy(s : PhysicsemmomFrame) -> PhysicsemmomFrame {
-  let result = physics_em_mom_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_frame_fill(s : PhysicsemmomFrame, v : Double) -> PhysicsemmomFrame {
-  let result = physics_em_mom_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_frame_min(s : PhysicsemmomFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_em_mom_table_sum(s : PhysicsemmomTable) -> Double { @_common.sum(
 pub fn physics_em_mom_table_mean(s : PhysicsemmomTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_table_scale(s : PhysicsemmomTable, f : Double) -> PhysicsemmomTable {
-  let result = physics_em_mom_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_table_add(a : PhysicsemmomTable, b : PhysicsemmomTable) -> PhysicsemmomTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_table_copy(s : PhysicsemmomTable) -> PhysicsemmomTable {
-  let result = physics_em_mom_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_table_fill(s : PhysicsemmomTable, v : Double) -> PhysicsemmomTable {
-  let result = physics_em_mom_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_table_min(s : PhysicsemmomTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_em_mom_graphn_sum(s : PhysicsemmomGraphN) -> Double { @_common.su
 pub fn physics_em_mom_graphn_mean(s : PhysicsemmomGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_graphn_scale(s : PhysicsemmomGraphN, f : Double) -> PhysicsemmomGraphN {
-  let result = physics_em_mom_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_graphn_add(a : PhysicsemmomGraphN, b : PhysicsemmomGraphN) -> PhysicsemmomGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_graphn_copy(s : PhysicsemmomGraphN) -> PhysicsemmomGraphN {
-  let result = physics_em_mom_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_graphn_fill(s : PhysicsemmomGraphN, v : Double) -> PhysicsemmomGraphN {
-  let result = physics_em_mom_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_graphn_min(s : PhysicsemmomGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_em_mom_node_sum(s : PhysicsemmomNode) -> Double { @_common.sum(s.
 pub fn physics_em_mom_node_mean(s : PhysicsemmomNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_node_scale(s : PhysicsemmomNode, f : Double) -> PhysicsemmomNode {
-  let result = physics_em_mom_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_node_add(a : PhysicsemmomNode, b : PhysicsemmomNode) -> PhysicsemmomNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_node_copy(s : PhysicsemmomNode) -> PhysicsemmomNode {
-  let result = physics_em_mom_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_node_fill(s : PhysicsemmomNode, v : Double) -> PhysicsemmomNode {
-  let result = physics_em_mom_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_node_min(s : PhysicsemmomNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_em_mom_edge_sum(s : PhysicsemmomEdge) -> Double { @_common.sum(s.
 pub fn physics_em_mom_edge_mean(s : PhysicsemmomEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_edge_scale(s : PhysicsemmomEdge, f : Double) -> PhysicsemmomEdge {
-  let result = physics_em_mom_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_edge_add(a : PhysicsemmomEdge, b : PhysicsemmomEdge) -> PhysicsemmomEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_edge_copy(s : PhysicsemmomEdge) -> PhysicsemmomEdge {
-  let result = physics_em_mom_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_edge_fill(s : PhysicsemmomEdge, v : Double) -> PhysicsemmomEdge {
-  let result = physics_em_mom_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_edge_min(s : PhysicsemmomEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_em_mom_path_sum(s : PhysicsemmomPath) -> Double { @_common.sum(s.
 pub fn physics_em_mom_path_mean(s : PhysicsemmomPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_path_scale(s : PhysicsemmomPath, f : Double) -> PhysicsemmomPath {
-  let result = physics_em_mom_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_path_add(a : PhysicsemmomPath, b : PhysicsemmomPath) -> PhysicsemmomPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_path_copy(s : PhysicsemmomPath) -> PhysicsemmomPath {
-  let result = physics_em_mom_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_path_fill(s : PhysicsemmomPath, v : Double) -> PhysicsemmomPath {
-  let result = physics_em_mom_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_path_min(s : PhysicsemmomPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_em_mom_cluster_sum(s : PhysicsemmomCluster) -> Double { @_common.
 pub fn physics_em_mom_cluster_mean(s : PhysicsemmomCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_cluster_scale(s : PhysicsemmomCluster, f : Double) -> PhysicsemmomCluster {
-  let result = physics_em_mom_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cluster_add(a : PhysicsemmomCluster, b : PhysicsemmomCluster) -> PhysicsemmomCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_cluster_copy(s : PhysicsemmomCluster) -> PhysicsemmomCluster {
-  let result = physics_em_mom_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cluster_fill(s : PhysicsemmomCluster, v : Double) -> PhysicsemmomCluster {
-  let result = physics_em_mom_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cluster_min(s : PhysicsemmomCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_em_mom_model_sum(s : PhysicsemmomModel) -> Double { @_common.sum(
 pub fn physics_em_mom_model_mean(s : PhysicsemmomModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_model_scale(s : PhysicsemmomModel, f : Double) -> PhysicsemmomModel {
-  let result = physics_em_mom_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_model_add(a : PhysicsemmomModel, b : PhysicsemmomModel) -> PhysicsemmomModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_model_copy(s : PhysicsemmomModel) -> PhysicsemmomModel {
-  let result = physics_em_mom_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_model_fill(s : PhysicsemmomModel, v : Double) -> PhysicsemmomModel {
-  let result = physics_em_mom_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_model_min(s : PhysicsemmomModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_em_mom_layer_sum(s : PhysicsemmomLayer) -> Double { @_common.sum(
 pub fn physics_em_mom_layer_mean(s : PhysicsemmomLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_layer_scale(s : PhysicsemmomLayer, f : Double) -> PhysicsemmomLayer {
-  let result = physics_em_mom_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_layer_add(a : PhysicsemmomLayer, b : PhysicsemmomLayer) -> PhysicsemmomLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_layer_copy(s : PhysicsemmomLayer) -> PhysicsemmomLayer {
-  let result = physics_em_mom_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_layer_fill(s : PhysicsemmomLayer, v : Double) -> PhysicsemmomLayer {
-  let result = physics_em_mom_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_layer_min(s : PhysicsemmomLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_em_mom_buffer_sum(s : PhysicsemmomBuffer) -> Double { @_common.su
 pub fn physics_em_mom_buffer_mean(s : PhysicsemmomBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_buffer_scale(s : PhysicsemmomBuffer, f : Double) -> PhysicsemmomBuffer {
-  let result = physics_em_mom_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_buffer_add(a : PhysicsemmomBuffer, b : PhysicsemmomBuffer) -> PhysicsemmomBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_buffer_copy(s : PhysicsemmomBuffer) -> PhysicsemmomBuffer {
-  let result = physics_em_mom_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_buffer_fill(s : PhysicsemmomBuffer, v : Double) -> PhysicsemmomBuffer {
-  let result = physics_em_mom_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_buffer_min(s : PhysicsemmomBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_em_mom_cursor_sum(s : PhysicsemmomCursor) -> Double { @_common.su
 pub fn physics_em_mom_cursor_mean(s : PhysicsemmomCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_cursor_scale(s : PhysicsemmomCursor, f : Double) -> PhysicsemmomCursor {
-  let result = physics_em_mom_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cursor_add(a : PhysicsemmomCursor, b : PhysicsemmomCursor) -> PhysicsemmomCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_cursor_copy(s : PhysicsemmomCursor) -> PhysicsemmomCursor {
-  let result = physics_em_mom_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cursor_fill(s : PhysicsemmomCursor, v : Double) -> PhysicsemmomCursor {
-  let result = physics_em_mom_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cursor_min(s : PhysicsemmomCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_em_mom_view_sum(s : PhysicsemmomView) -> Double { @_common.sum(s.
 pub fn physics_em_mom_view_mean(s : PhysicsemmomView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_view_scale(s : PhysicsemmomView, f : Double) -> PhysicsemmomView {
-  let result = physics_em_mom_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_view_add(a : PhysicsemmomView, b : PhysicsemmomView) -> PhysicsemmomView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_view_copy(s : PhysicsemmomView) -> PhysicsemmomView {
-  let result = physics_em_mom_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_view_fill(s : PhysicsemmomView, v : Double) -> PhysicsemmomView {
-  let result = physics_em_mom_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_view_min(s : PhysicsemmomView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_em_mom_range_sum(s : PhysicsemmomRange) -> Double { @_common.sum(
 pub fn physics_em_mom_range_mean(s : PhysicsemmomRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_range_scale(s : PhysicsemmomRange, f : Double) -> PhysicsemmomRange {
-  let result = physics_em_mom_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_range_add(a : PhysicsemmomRange, b : PhysicsemmomRange) -> PhysicsemmomRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_range_copy(s : PhysicsemmomRange) -> PhysicsemmomRange {
-  let result = physics_em_mom_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_range_fill(s : PhysicsemmomRange, v : Double) -> PhysicsemmomRange {
-  let result = physics_em_mom_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_range_min(s : PhysicsemmomRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_em_mom_slice_sum(s : PhysicsemmomSlice) -> Double { @_common.sum(
 pub fn physics_em_mom_slice_mean(s : PhysicsemmomSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_mom_slice_scale(s : PhysicsemmomSlice, f : Double) -> PhysicsemmomSlice {
-  let result = physics_em_mom_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_slice_add(a : PhysicsemmomSlice, b : PhysicsemmomSlice) -> PhysicsemmomSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_mom_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_mom_slice_copy(s : PhysicsemmomSlice) -> PhysicsemmomSlice {
-  let result = physics_em_mom_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_slice_fill(s : PhysicsemmomSlice, v : Double) -> PhysicsemmomSlice {
-  let result = physics_em_mom_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_slice_min(s : PhysicsemmomSlice) -> Double { @_common.min(s.data) }

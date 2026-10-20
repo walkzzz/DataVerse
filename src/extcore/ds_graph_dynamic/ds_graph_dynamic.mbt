@@ -383,28 +383,20 @@ pub fn ds_graph_dynamic_frame_sum(s : DsgraphdynamicFrame) -> Double { @_common.
 pub fn ds_graph_dynamic_frame_mean(s : DsgraphdynamicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_frame_scale(s : DsgraphdynamicFrame, f : Double) -> DsgraphdynamicFrame {
-  let result = ds_graph_dynamic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_frame_add(a : DsgraphdynamicFrame, b : DsgraphdynamicFrame) -> DsgraphdynamicFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_frame_copy(s : DsgraphdynamicFrame) -> DsgraphdynamicFrame {
-  let result = ds_graph_dynamic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_frame_fill(s : DsgraphdynamicFrame, v : Double) -> DsgraphdynamicFrame {
-  let result = ds_graph_dynamic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_frame_min(s : DsgraphdynamicFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_graph_dynamic_table_sum(s : DsgraphdynamicTable) -> Double { @_common.
 pub fn ds_graph_dynamic_table_mean(s : DsgraphdynamicTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_table_scale(s : DsgraphdynamicTable, f : Double) -> DsgraphdynamicTable {
-  let result = ds_graph_dynamic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_table_add(a : DsgraphdynamicTable, b : DsgraphdynamicTable) -> DsgraphdynamicTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_table_copy(s : DsgraphdynamicTable) -> DsgraphdynamicTable {
-  let result = ds_graph_dynamic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_table_fill(s : DsgraphdynamicTable, v : Double) -> DsgraphdynamicTable {
-  let result = ds_graph_dynamic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_table_min(s : DsgraphdynamicTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_graph_dynamic_graphn_sum(s : DsgraphdynamicGraphN) -> Double { @_commo
 pub fn ds_graph_dynamic_graphn_mean(s : DsgraphdynamicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_graphn_scale(s : DsgraphdynamicGraphN, f : Double) -> DsgraphdynamicGraphN {
-  let result = ds_graph_dynamic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_graphn_add(a : DsgraphdynamicGraphN, b : DsgraphdynamicGraphN) -> DsgraphdynamicGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_graphn_copy(s : DsgraphdynamicGraphN) -> DsgraphdynamicGraphN {
-  let result = ds_graph_dynamic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_graphn_fill(s : DsgraphdynamicGraphN, v : Double) -> DsgraphdynamicGraphN {
-  let result = ds_graph_dynamic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_graphn_min(s : DsgraphdynamicGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_graph_dynamic_node_sum(s : DsgraphdynamicNode) -> Double { @_common.su
 pub fn ds_graph_dynamic_node_mean(s : DsgraphdynamicNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_node_scale(s : DsgraphdynamicNode, f : Double) -> DsgraphdynamicNode {
-  let result = ds_graph_dynamic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_node_add(a : DsgraphdynamicNode, b : DsgraphdynamicNode) -> DsgraphdynamicNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_node_copy(s : DsgraphdynamicNode) -> DsgraphdynamicNode {
-  let result = ds_graph_dynamic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_node_fill(s : DsgraphdynamicNode, v : Double) -> DsgraphdynamicNode {
-  let result = ds_graph_dynamic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_node_min(s : DsgraphdynamicNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_graph_dynamic_edge_sum(s : DsgraphdynamicEdge) -> Double { @_common.su
 pub fn ds_graph_dynamic_edge_mean(s : DsgraphdynamicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_edge_scale(s : DsgraphdynamicEdge, f : Double) -> DsgraphdynamicEdge {
-  let result = ds_graph_dynamic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_edge_add(a : DsgraphdynamicEdge, b : DsgraphdynamicEdge) -> DsgraphdynamicEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_edge_copy(s : DsgraphdynamicEdge) -> DsgraphdynamicEdge {
-  let result = ds_graph_dynamic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_edge_fill(s : DsgraphdynamicEdge, v : Double) -> DsgraphdynamicEdge {
-  let result = ds_graph_dynamic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_edge_min(s : DsgraphdynamicEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_graph_dynamic_path_sum(s : DsgraphdynamicPath) -> Double { @_common.su
 pub fn ds_graph_dynamic_path_mean(s : DsgraphdynamicPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_path_scale(s : DsgraphdynamicPath, f : Double) -> DsgraphdynamicPath {
-  let result = ds_graph_dynamic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_path_add(a : DsgraphdynamicPath, b : DsgraphdynamicPath) -> DsgraphdynamicPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_path_copy(s : DsgraphdynamicPath) -> DsgraphdynamicPath {
-  let result = ds_graph_dynamic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_path_fill(s : DsgraphdynamicPath, v : Double) -> DsgraphdynamicPath {
-  let result = ds_graph_dynamic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_path_min(s : DsgraphdynamicPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_graph_dynamic_cluster_sum(s : DsgraphdynamicCluster) -> Double { @_com
 pub fn ds_graph_dynamic_cluster_mean(s : DsgraphdynamicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_cluster_scale(s : DsgraphdynamicCluster, f : Double) -> DsgraphdynamicCluster {
-  let result = ds_graph_dynamic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_cluster_add(a : DsgraphdynamicCluster, b : DsgraphdynamicCluster) -> DsgraphdynamicCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_cluster_copy(s : DsgraphdynamicCluster) -> DsgraphdynamicCluster {
-  let result = ds_graph_dynamic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_cluster_fill(s : DsgraphdynamicCluster, v : Double) -> DsgraphdynamicCluster {
-  let result = ds_graph_dynamic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_cluster_min(s : DsgraphdynamicCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_graph_dynamic_model_sum(s : DsgraphdynamicModel) -> Double { @_common.
 pub fn ds_graph_dynamic_model_mean(s : DsgraphdynamicModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_model_scale(s : DsgraphdynamicModel, f : Double) -> DsgraphdynamicModel {
-  let result = ds_graph_dynamic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_model_add(a : DsgraphdynamicModel, b : DsgraphdynamicModel) -> DsgraphdynamicModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_model_copy(s : DsgraphdynamicModel) -> DsgraphdynamicModel {
-  let result = ds_graph_dynamic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_model_fill(s : DsgraphdynamicModel, v : Double) -> DsgraphdynamicModel {
-  let result = ds_graph_dynamic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_model_min(s : DsgraphdynamicModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_graph_dynamic_layer_sum(s : DsgraphdynamicLayer) -> Double { @_common.
 pub fn ds_graph_dynamic_layer_mean(s : DsgraphdynamicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_layer_scale(s : DsgraphdynamicLayer, f : Double) -> DsgraphdynamicLayer {
-  let result = ds_graph_dynamic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_layer_add(a : DsgraphdynamicLayer, b : DsgraphdynamicLayer) -> DsgraphdynamicLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_layer_copy(s : DsgraphdynamicLayer) -> DsgraphdynamicLayer {
-  let result = ds_graph_dynamic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_layer_fill(s : DsgraphdynamicLayer, v : Double) -> DsgraphdynamicLayer {
-  let result = ds_graph_dynamic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_layer_min(s : DsgraphdynamicLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_graph_dynamic_buffer_sum(s : DsgraphdynamicBuffer) -> Double { @_commo
 pub fn ds_graph_dynamic_buffer_mean(s : DsgraphdynamicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_buffer_scale(s : DsgraphdynamicBuffer, f : Double) -> DsgraphdynamicBuffer {
-  let result = ds_graph_dynamic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_buffer_add(a : DsgraphdynamicBuffer, b : DsgraphdynamicBuffer) -> DsgraphdynamicBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_buffer_copy(s : DsgraphdynamicBuffer) -> DsgraphdynamicBuffer {
-  let result = ds_graph_dynamic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_buffer_fill(s : DsgraphdynamicBuffer, v : Double) -> DsgraphdynamicBuffer {
-  let result = ds_graph_dynamic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_buffer_min(s : DsgraphdynamicBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_graph_dynamic_cursor_sum(s : DsgraphdynamicCursor) -> Double { @_commo
 pub fn ds_graph_dynamic_cursor_mean(s : DsgraphdynamicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_cursor_scale(s : DsgraphdynamicCursor, f : Double) -> DsgraphdynamicCursor {
-  let result = ds_graph_dynamic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_cursor_add(a : DsgraphdynamicCursor, b : DsgraphdynamicCursor) -> DsgraphdynamicCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_cursor_copy(s : DsgraphdynamicCursor) -> DsgraphdynamicCursor {
-  let result = ds_graph_dynamic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_cursor_fill(s : DsgraphdynamicCursor, v : Double) -> DsgraphdynamicCursor {
-  let result = ds_graph_dynamic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_cursor_min(s : DsgraphdynamicCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_graph_dynamic_view_sum(s : DsgraphdynamicView) -> Double { @_common.su
 pub fn ds_graph_dynamic_view_mean(s : DsgraphdynamicView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_view_scale(s : DsgraphdynamicView, f : Double) -> DsgraphdynamicView {
-  let result = ds_graph_dynamic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_view_add(a : DsgraphdynamicView, b : DsgraphdynamicView) -> DsgraphdynamicView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_view_copy(s : DsgraphdynamicView) -> DsgraphdynamicView {
-  let result = ds_graph_dynamic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_view_fill(s : DsgraphdynamicView, v : Double) -> DsgraphdynamicView {
-  let result = ds_graph_dynamic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_view_min(s : DsgraphdynamicView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_graph_dynamic_range_sum(s : DsgraphdynamicRange) -> Double { @_common.
 pub fn ds_graph_dynamic_range_mean(s : DsgraphdynamicRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_range_scale(s : DsgraphdynamicRange, f : Double) -> DsgraphdynamicRange {
-  let result = ds_graph_dynamic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_range_add(a : DsgraphdynamicRange, b : DsgraphdynamicRange) -> DsgraphdynamicRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_range_copy(s : DsgraphdynamicRange) -> DsgraphdynamicRange {
-  let result = ds_graph_dynamic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_range_fill(s : DsgraphdynamicRange, v : Double) -> DsgraphdynamicRange {
-  let result = ds_graph_dynamic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_range_min(s : DsgraphdynamicRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_graph_dynamic_slice_sum(s : DsgraphdynamicSlice) -> Double { @_common.
 pub fn ds_graph_dynamic_slice_mean(s : DsgraphdynamicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_slice_scale(s : DsgraphdynamicSlice, f : Double) -> DsgraphdynamicSlice {
-  let result = ds_graph_dynamic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_slice_add(a : DsgraphdynamicSlice, b : DsgraphdynamicSlice) -> DsgraphdynamicSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_dynamic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_dynamic_slice_copy(s : DsgraphdynamicSlice) -> DsgraphdynamicSlice {
-  let result = ds_graph_dynamic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_slice_fill(s : DsgraphdynamicSlice, v : Double) -> DsgraphdynamicSlice {
-  let result = ds_graph_dynamic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_dynamic_slice_min(s : DsgraphdynamicSlice) -> Double { @_common.min(s.data) }

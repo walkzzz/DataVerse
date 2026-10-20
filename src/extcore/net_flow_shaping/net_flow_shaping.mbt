@@ -383,28 +383,20 @@ pub fn net_flow_shaping_frame_sum(s : NetflowshapingFrame) -> Double { @_common.
 pub fn net_flow_shaping_frame_mean(s : NetflowshapingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_frame_scale(s : NetflowshapingFrame, f : Double) -> NetflowshapingFrame {
-  let result = net_flow_shaping_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_frame_add(a : NetflowshapingFrame, b : NetflowshapingFrame) -> NetflowshapingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_frame_copy(s : NetflowshapingFrame) -> NetflowshapingFrame {
-  let result = net_flow_shaping_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_frame_fill(s : NetflowshapingFrame, v : Double) -> NetflowshapingFrame {
-  let result = net_flow_shaping_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_frame_min(s : NetflowshapingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_flow_shaping_table_sum(s : NetflowshapingTable) -> Double { @_common.
 pub fn net_flow_shaping_table_mean(s : NetflowshapingTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_table_scale(s : NetflowshapingTable, f : Double) -> NetflowshapingTable {
-  let result = net_flow_shaping_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_table_add(a : NetflowshapingTable, b : NetflowshapingTable) -> NetflowshapingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_table_copy(s : NetflowshapingTable) -> NetflowshapingTable {
-  let result = net_flow_shaping_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_table_fill(s : NetflowshapingTable, v : Double) -> NetflowshapingTable {
-  let result = net_flow_shaping_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_table_min(s : NetflowshapingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_flow_shaping_graphn_sum(s : NetflowshapingGraphN) -> Double { @_commo
 pub fn net_flow_shaping_graphn_mean(s : NetflowshapingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_graphn_scale(s : NetflowshapingGraphN, f : Double) -> NetflowshapingGraphN {
-  let result = net_flow_shaping_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_graphn_add(a : NetflowshapingGraphN, b : NetflowshapingGraphN) -> NetflowshapingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_graphn_copy(s : NetflowshapingGraphN) -> NetflowshapingGraphN {
-  let result = net_flow_shaping_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_graphn_fill(s : NetflowshapingGraphN, v : Double) -> NetflowshapingGraphN {
-  let result = net_flow_shaping_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_graphn_min(s : NetflowshapingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_flow_shaping_node_sum(s : NetflowshapingNode) -> Double { @_common.su
 pub fn net_flow_shaping_node_mean(s : NetflowshapingNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_node_scale(s : NetflowshapingNode, f : Double) -> NetflowshapingNode {
-  let result = net_flow_shaping_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_node_add(a : NetflowshapingNode, b : NetflowshapingNode) -> NetflowshapingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_node_copy(s : NetflowshapingNode) -> NetflowshapingNode {
-  let result = net_flow_shaping_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_node_fill(s : NetflowshapingNode, v : Double) -> NetflowshapingNode {
-  let result = net_flow_shaping_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_node_min(s : NetflowshapingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_flow_shaping_edge_sum(s : NetflowshapingEdge) -> Double { @_common.su
 pub fn net_flow_shaping_edge_mean(s : NetflowshapingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_edge_scale(s : NetflowshapingEdge, f : Double) -> NetflowshapingEdge {
-  let result = net_flow_shaping_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_edge_add(a : NetflowshapingEdge, b : NetflowshapingEdge) -> NetflowshapingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_edge_copy(s : NetflowshapingEdge) -> NetflowshapingEdge {
-  let result = net_flow_shaping_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_edge_fill(s : NetflowshapingEdge, v : Double) -> NetflowshapingEdge {
-  let result = net_flow_shaping_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_edge_min(s : NetflowshapingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_flow_shaping_path_sum(s : NetflowshapingPath) -> Double { @_common.su
 pub fn net_flow_shaping_path_mean(s : NetflowshapingPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_path_scale(s : NetflowshapingPath, f : Double) -> NetflowshapingPath {
-  let result = net_flow_shaping_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_path_add(a : NetflowshapingPath, b : NetflowshapingPath) -> NetflowshapingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_path_copy(s : NetflowshapingPath) -> NetflowshapingPath {
-  let result = net_flow_shaping_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_path_fill(s : NetflowshapingPath, v : Double) -> NetflowshapingPath {
-  let result = net_flow_shaping_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_path_min(s : NetflowshapingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_flow_shaping_cluster_sum(s : NetflowshapingCluster) -> Double { @_com
 pub fn net_flow_shaping_cluster_mean(s : NetflowshapingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_cluster_scale(s : NetflowshapingCluster, f : Double) -> NetflowshapingCluster {
-  let result = net_flow_shaping_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_cluster_add(a : NetflowshapingCluster, b : NetflowshapingCluster) -> NetflowshapingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_cluster_copy(s : NetflowshapingCluster) -> NetflowshapingCluster {
-  let result = net_flow_shaping_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_cluster_fill(s : NetflowshapingCluster, v : Double) -> NetflowshapingCluster {
-  let result = net_flow_shaping_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_cluster_min(s : NetflowshapingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_flow_shaping_model_sum(s : NetflowshapingModel) -> Double { @_common.
 pub fn net_flow_shaping_model_mean(s : NetflowshapingModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_model_scale(s : NetflowshapingModel, f : Double) -> NetflowshapingModel {
-  let result = net_flow_shaping_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_model_add(a : NetflowshapingModel, b : NetflowshapingModel) -> NetflowshapingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_model_copy(s : NetflowshapingModel) -> NetflowshapingModel {
-  let result = net_flow_shaping_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_model_fill(s : NetflowshapingModel, v : Double) -> NetflowshapingModel {
-  let result = net_flow_shaping_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_model_min(s : NetflowshapingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_flow_shaping_layer_sum(s : NetflowshapingLayer) -> Double { @_common.
 pub fn net_flow_shaping_layer_mean(s : NetflowshapingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_layer_scale(s : NetflowshapingLayer, f : Double) -> NetflowshapingLayer {
-  let result = net_flow_shaping_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_layer_add(a : NetflowshapingLayer, b : NetflowshapingLayer) -> NetflowshapingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_layer_copy(s : NetflowshapingLayer) -> NetflowshapingLayer {
-  let result = net_flow_shaping_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_layer_fill(s : NetflowshapingLayer, v : Double) -> NetflowshapingLayer {
-  let result = net_flow_shaping_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_layer_min(s : NetflowshapingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_flow_shaping_buffer_sum(s : NetflowshapingBuffer) -> Double { @_commo
 pub fn net_flow_shaping_buffer_mean(s : NetflowshapingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_buffer_scale(s : NetflowshapingBuffer, f : Double) -> NetflowshapingBuffer {
-  let result = net_flow_shaping_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_buffer_add(a : NetflowshapingBuffer, b : NetflowshapingBuffer) -> NetflowshapingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_buffer_copy(s : NetflowshapingBuffer) -> NetflowshapingBuffer {
-  let result = net_flow_shaping_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_buffer_fill(s : NetflowshapingBuffer, v : Double) -> NetflowshapingBuffer {
-  let result = net_flow_shaping_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_buffer_min(s : NetflowshapingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_flow_shaping_cursor_sum(s : NetflowshapingCursor) -> Double { @_commo
 pub fn net_flow_shaping_cursor_mean(s : NetflowshapingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_cursor_scale(s : NetflowshapingCursor, f : Double) -> NetflowshapingCursor {
-  let result = net_flow_shaping_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_cursor_add(a : NetflowshapingCursor, b : NetflowshapingCursor) -> NetflowshapingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_cursor_copy(s : NetflowshapingCursor) -> NetflowshapingCursor {
-  let result = net_flow_shaping_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_cursor_fill(s : NetflowshapingCursor, v : Double) -> NetflowshapingCursor {
-  let result = net_flow_shaping_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_cursor_min(s : NetflowshapingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_flow_shaping_view_sum(s : NetflowshapingView) -> Double { @_common.su
 pub fn net_flow_shaping_view_mean(s : NetflowshapingView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_view_scale(s : NetflowshapingView, f : Double) -> NetflowshapingView {
-  let result = net_flow_shaping_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_view_add(a : NetflowshapingView, b : NetflowshapingView) -> NetflowshapingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_view_copy(s : NetflowshapingView) -> NetflowshapingView {
-  let result = net_flow_shaping_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_view_fill(s : NetflowshapingView, v : Double) -> NetflowshapingView {
-  let result = net_flow_shaping_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_view_min(s : NetflowshapingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_flow_shaping_range_sum(s : NetflowshapingRange) -> Double { @_common.
 pub fn net_flow_shaping_range_mean(s : NetflowshapingRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_range_scale(s : NetflowshapingRange, f : Double) -> NetflowshapingRange {
-  let result = net_flow_shaping_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_range_add(a : NetflowshapingRange, b : NetflowshapingRange) -> NetflowshapingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_range_copy(s : NetflowshapingRange) -> NetflowshapingRange {
-  let result = net_flow_shaping_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_range_fill(s : NetflowshapingRange, v : Double) -> NetflowshapingRange {
-  let result = net_flow_shaping_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_range_min(s : NetflowshapingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_flow_shaping_slice_sum(s : NetflowshapingSlice) -> Double { @_common.
 pub fn net_flow_shaping_slice_mean(s : NetflowshapingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_slice_scale(s : NetflowshapingSlice, f : Double) -> NetflowshapingSlice {
-  let result = net_flow_shaping_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_slice_add(a : NetflowshapingSlice, b : NetflowshapingSlice) -> NetflowshapingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_shaping_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_shaping_slice_copy(s : NetflowshapingSlice) -> NetflowshapingSlice {
-  let result = net_flow_shaping_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_slice_fill(s : NetflowshapingSlice, v : Double) -> NetflowshapingSlice {
-  let result = net_flow_shaping_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_shaping_slice_min(s : NetflowshapingSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn math_cholesky_frame_sum(s : MathcholeskyFrame) -> Double { @_common.sum(s
 pub fn math_cholesky_frame_mean(s : MathcholeskyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_frame_scale(s : MathcholeskyFrame, f : Double) -> MathcholeskyFrame {
-  let result = math_cholesky_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_frame_add(a : MathcholeskyFrame, b : MathcholeskyFrame) -> MathcholeskyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_frame_copy(s : MathcholeskyFrame) -> MathcholeskyFrame {
-  let result = math_cholesky_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_frame_fill(s : MathcholeskyFrame, v : Double) -> MathcholeskyFrame {
-  let result = math_cholesky_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_frame_min(s : MathcholeskyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_cholesky_table_sum(s : MathcholeskyTable) -> Double { @_common.sum(s
 pub fn math_cholesky_table_mean(s : MathcholeskyTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_table_scale(s : MathcholeskyTable, f : Double) -> MathcholeskyTable {
-  let result = math_cholesky_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_table_add(a : MathcholeskyTable, b : MathcholeskyTable) -> MathcholeskyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_table_copy(s : MathcholeskyTable) -> MathcholeskyTable {
-  let result = math_cholesky_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_table_fill(s : MathcholeskyTable, v : Double) -> MathcholeskyTable {
-  let result = math_cholesky_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_table_min(s : MathcholeskyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_cholesky_graphn_sum(s : MathcholeskyGraphN) -> Double { @_common.sum
 pub fn math_cholesky_graphn_mean(s : MathcholeskyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_graphn_scale(s : MathcholeskyGraphN, f : Double) -> MathcholeskyGraphN {
-  let result = math_cholesky_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_graphn_add(a : MathcholeskyGraphN, b : MathcholeskyGraphN) -> MathcholeskyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_graphn_copy(s : MathcholeskyGraphN) -> MathcholeskyGraphN {
-  let result = math_cholesky_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_graphn_fill(s : MathcholeskyGraphN, v : Double) -> MathcholeskyGraphN {
-  let result = math_cholesky_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_graphn_min(s : MathcholeskyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_cholesky_node_sum(s : MathcholeskyNode) -> Double { @_common.sum(s.d
 pub fn math_cholesky_node_mean(s : MathcholeskyNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_node_scale(s : MathcholeskyNode, f : Double) -> MathcholeskyNode {
-  let result = math_cholesky_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_node_add(a : MathcholeskyNode, b : MathcholeskyNode) -> MathcholeskyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_node_copy(s : MathcholeskyNode) -> MathcholeskyNode {
-  let result = math_cholesky_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_node_fill(s : MathcholeskyNode, v : Double) -> MathcholeskyNode {
-  let result = math_cholesky_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_node_min(s : MathcholeskyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_cholesky_edge_sum(s : MathcholeskyEdge) -> Double { @_common.sum(s.d
 pub fn math_cholesky_edge_mean(s : MathcholeskyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_edge_scale(s : MathcholeskyEdge, f : Double) -> MathcholeskyEdge {
-  let result = math_cholesky_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_edge_add(a : MathcholeskyEdge, b : MathcholeskyEdge) -> MathcholeskyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_edge_copy(s : MathcholeskyEdge) -> MathcholeskyEdge {
-  let result = math_cholesky_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_edge_fill(s : MathcholeskyEdge, v : Double) -> MathcholeskyEdge {
-  let result = math_cholesky_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_edge_min(s : MathcholeskyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_cholesky_path_sum(s : MathcholeskyPath) -> Double { @_common.sum(s.d
 pub fn math_cholesky_path_mean(s : MathcholeskyPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_path_scale(s : MathcholeskyPath, f : Double) -> MathcholeskyPath {
-  let result = math_cholesky_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_path_add(a : MathcholeskyPath, b : MathcholeskyPath) -> MathcholeskyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_path_copy(s : MathcholeskyPath) -> MathcholeskyPath {
-  let result = math_cholesky_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_path_fill(s : MathcholeskyPath, v : Double) -> MathcholeskyPath {
-  let result = math_cholesky_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_path_min(s : MathcholeskyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_cholesky_cluster_sum(s : MathcholeskyCluster) -> Double { @_common.s
 pub fn math_cholesky_cluster_mean(s : MathcholeskyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_cluster_scale(s : MathcholeskyCluster, f : Double) -> MathcholeskyCluster {
-  let result = math_cholesky_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cluster_add(a : MathcholeskyCluster, b : MathcholeskyCluster) -> MathcholeskyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_cluster_copy(s : MathcholeskyCluster) -> MathcholeskyCluster {
-  let result = math_cholesky_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cluster_fill(s : MathcholeskyCluster, v : Double) -> MathcholeskyCluster {
-  let result = math_cholesky_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cluster_min(s : MathcholeskyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_cholesky_model_sum(s : MathcholeskyModel) -> Double { @_common.sum(s
 pub fn math_cholesky_model_mean(s : MathcholeskyModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_model_scale(s : MathcholeskyModel, f : Double) -> MathcholeskyModel {
-  let result = math_cholesky_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_model_add(a : MathcholeskyModel, b : MathcholeskyModel) -> MathcholeskyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_model_copy(s : MathcholeskyModel) -> MathcholeskyModel {
-  let result = math_cholesky_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_model_fill(s : MathcholeskyModel, v : Double) -> MathcholeskyModel {
-  let result = math_cholesky_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_model_min(s : MathcholeskyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_cholesky_layer_sum(s : MathcholeskyLayer) -> Double { @_common.sum(s
 pub fn math_cholesky_layer_mean(s : MathcholeskyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_layer_scale(s : MathcholeskyLayer, f : Double) -> MathcholeskyLayer {
-  let result = math_cholesky_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_layer_add(a : MathcholeskyLayer, b : MathcholeskyLayer) -> MathcholeskyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_layer_copy(s : MathcholeskyLayer) -> MathcholeskyLayer {
-  let result = math_cholesky_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_layer_fill(s : MathcholeskyLayer, v : Double) -> MathcholeskyLayer {
-  let result = math_cholesky_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_layer_min(s : MathcholeskyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_cholesky_buffer_sum(s : MathcholeskyBuffer) -> Double { @_common.sum
 pub fn math_cholesky_buffer_mean(s : MathcholeskyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_buffer_scale(s : MathcholeskyBuffer, f : Double) -> MathcholeskyBuffer {
-  let result = math_cholesky_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_buffer_add(a : MathcholeskyBuffer, b : MathcholeskyBuffer) -> MathcholeskyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_buffer_copy(s : MathcholeskyBuffer) -> MathcholeskyBuffer {
-  let result = math_cholesky_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_buffer_fill(s : MathcholeskyBuffer, v : Double) -> MathcholeskyBuffer {
-  let result = math_cholesky_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_buffer_min(s : MathcholeskyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_cholesky_cursor_sum(s : MathcholeskyCursor) -> Double { @_common.sum
 pub fn math_cholesky_cursor_mean(s : MathcholeskyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_cursor_scale(s : MathcholeskyCursor, f : Double) -> MathcholeskyCursor {
-  let result = math_cholesky_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cursor_add(a : MathcholeskyCursor, b : MathcholeskyCursor) -> MathcholeskyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_cursor_copy(s : MathcholeskyCursor) -> MathcholeskyCursor {
-  let result = math_cholesky_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cursor_fill(s : MathcholeskyCursor, v : Double) -> MathcholeskyCursor {
-  let result = math_cholesky_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cursor_min(s : MathcholeskyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_cholesky_view_sum(s : MathcholeskyView) -> Double { @_common.sum(s.d
 pub fn math_cholesky_view_mean(s : MathcholeskyView) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_view_scale(s : MathcholeskyView, f : Double) -> MathcholeskyView {
-  let result = math_cholesky_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_view_add(a : MathcholeskyView, b : MathcholeskyView) -> MathcholeskyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_view_copy(s : MathcholeskyView) -> MathcholeskyView {
-  let result = math_cholesky_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_view_fill(s : MathcholeskyView, v : Double) -> MathcholeskyView {
-  let result = math_cholesky_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_view_min(s : MathcholeskyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_cholesky_range_sum(s : MathcholeskyRange) -> Double { @_common.sum(s
 pub fn math_cholesky_range_mean(s : MathcholeskyRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_range_scale(s : MathcholeskyRange, f : Double) -> MathcholeskyRange {
-  let result = math_cholesky_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_range_add(a : MathcholeskyRange, b : MathcholeskyRange) -> MathcholeskyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_range_copy(s : MathcholeskyRange) -> MathcholeskyRange {
-  let result = math_cholesky_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_range_fill(s : MathcholeskyRange, v : Double) -> MathcholeskyRange {
-  let result = math_cholesky_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_range_min(s : MathcholeskyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_cholesky_slice_sum(s : MathcholeskySlice) -> Double { @_common.sum(s
 pub fn math_cholesky_slice_mean(s : MathcholeskySlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_slice_scale(s : MathcholeskySlice, f : Double) -> MathcholeskySlice {
-  let result = math_cholesky_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_slice_add(a : MathcholeskySlice, b : MathcholeskySlice) -> MathcholeskySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_cholesky_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_cholesky_slice_copy(s : MathcholeskySlice) -> MathcholeskySlice {
-  let result = math_cholesky_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_slice_fill(s : MathcholeskySlice, v : Double) -> MathcholeskySlice {
-  let result = math_cholesky_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_slice_min(s : MathcholeskySlice) -> Double { @_common.min(s.data) }

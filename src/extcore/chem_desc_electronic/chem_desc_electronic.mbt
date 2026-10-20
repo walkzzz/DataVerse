@@ -383,28 +383,20 @@ pub fn chem_desc_electronic_frame_sum(s : ChemdescelectronicFrame) -> Double { @
 pub fn chem_desc_electronic_frame_mean(s : ChemdescelectronicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_frame_scale(s : ChemdescelectronicFrame, f : Double) -> ChemdescelectronicFrame {
-  let result = chem_desc_electronic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_frame_add(a : ChemdescelectronicFrame, b : ChemdescelectronicFrame) -> ChemdescelectronicFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_frame_copy(s : ChemdescelectronicFrame) -> ChemdescelectronicFrame {
-  let result = chem_desc_electronic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_frame_fill(s : ChemdescelectronicFrame, v : Double) -> ChemdescelectronicFrame {
-  let result = chem_desc_electronic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_frame_min(s : ChemdescelectronicFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_desc_electronic_table_sum(s : ChemdescelectronicTable) -> Double { @
 pub fn chem_desc_electronic_table_mean(s : ChemdescelectronicTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_table_scale(s : ChemdescelectronicTable, f : Double) -> ChemdescelectronicTable {
-  let result = chem_desc_electronic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_table_add(a : ChemdescelectronicTable, b : ChemdescelectronicTable) -> ChemdescelectronicTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_table_copy(s : ChemdescelectronicTable) -> ChemdescelectronicTable {
-  let result = chem_desc_electronic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_table_fill(s : ChemdescelectronicTable, v : Double) -> ChemdescelectronicTable {
-  let result = chem_desc_electronic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_table_min(s : ChemdescelectronicTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_desc_electronic_graphn_sum(s : ChemdescelectronicGraphN) -> Double {
 pub fn chem_desc_electronic_graphn_mean(s : ChemdescelectronicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_graphn_scale(s : ChemdescelectronicGraphN, f : Double) -> ChemdescelectronicGraphN {
-  let result = chem_desc_electronic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_graphn_add(a : ChemdescelectronicGraphN, b : ChemdescelectronicGraphN) -> ChemdescelectronicGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_graphn_copy(s : ChemdescelectronicGraphN) -> ChemdescelectronicGraphN {
-  let result = chem_desc_electronic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_graphn_fill(s : ChemdescelectronicGraphN, v : Double) -> ChemdescelectronicGraphN {
-  let result = chem_desc_electronic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_graphn_min(s : ChemdescelectronicGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_desc_electronic_node_sum(s : ChemdescelectronicNode) -> Double { @_c
 pub fn chem_desc_electronic_node_mean(s : ChemdescelectronicNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_node_scale(s : ChemdescelectronicNode, f : Double) -> ChemdescelectronicNode {
-  let result = chem_desc_electronic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_node_add(a : ChemdescelectronicNode, b : ChemdescelectronicNode) -> ChemdescelectronicNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_node_copy(s : ChemdescelectronicNode) -> ChemdescelectronicNode {
-  let result = chem_desc_electronic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_node_fill(s : ChemdescelectronicNode, v : Double) -> ChemdescelectronicNode {
-  let result = chem_desc_electronic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_node_min(s : ChemdescelectronicNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_desc_electronic_edge_sum(s : ChemdescelectronicEdge) -> Double { @_c
 pub fn chem_desc_electronic_edge_mean(s : ChemdescelectronicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_edge_scale(s : ChemdescelectronicEdge, f : Double) -> ChemdescelectronicEdge {
-  let result = chem_desc_electronic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_edge_add(a : ChemdescelectronicEdge, b : ChemdescelectronicEdge) -> ChemdescelectronicEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_edge_copy(s : ChemdescelectronicEdge) -> ChemdescelectronicEdge {
-  let result = chem_desc_electronic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_edge_fill(s : ChemdescelectronicEdge, v : Double) -> ChemdescelectronicEdge {
-  let result = chem_desc_electronic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_edge_min(s : ChemdescelectronicEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_desc_electronic_path_sum(s : ChemdescelectronicPath) -> Double { @_c
 pub fn chem_desc_electronic_path_mean(s : ChemdescelectronicPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_path_scale(s : ChemdescelectronicPath, f : Double) -> ChemdescelectronicPath {
-  let result = chem_desc_electronic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_path_add(a : ChemdescelectronicPath, b : ChemdescelectronicPath) -> ChemdescelectronicPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_path_copy(s : ChemdescelectronicPath) -> ChemdescelectronicPath {
-  let result = chem_desc_electronic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_path_fill(s : ChemdescelectronicPath, v : Double) -> ChemdescelectronicPath {
-  let result = chem_desc_electronic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_path_min(s : ChemdescelectronicPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_desc_electronic_cluster_sum(s : ChemdescelectronicCluster) -> Double
 pub fn chem_desc_electronic_cluster_mean(s : ChemdescelectronicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_cluster_scale(s : ChemdescelectronicCluster, f : Double) -> ChemdescelectronicCluster {
-  let result = chem_desc_electronic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_cluster_add(a : ChemdescelectronicCluster, b : ChemdescelectronicCluster) -> ChemdescelectronicCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_cluster_copy(s : ChemdescelectronicCluster) -> ChemdescelectronicCluster {
-  let result = chem_desc_electronic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_cluster_fill(s : ChemdescelectronicCluster, v : Double) -> ChemdescelectronicCluster {
-  let result = chem_desc_electronic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_cluster_min(s : ChemdescelectronicCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_desc_electronic_model_sum(s : ChemdescelectronicModel) -> Double { @
 pub fn chem_desc_electronic_model_mean(s : ChemdescelectronicModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_model_scale(s : ChemdescelectronicModel, f : Double) -> ChemdescelectronicModel {
-  let result = chem_desc_electronic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_model_add(a : ChemdescelectronicModel, b : ChemdescelectronicModel) -> ChemdescelectronicModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_model_copy(s : ChemdescelectronicModel) -> ChemdescelectronicModel {
-  let result = chem_desc_electronic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_model_fill(s : ChemdescelectronicModel, v : Double) -> ChemdescelectronicModel {
-  let result = chem_desc_electronic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_model_min(s : ChemdescelectronicModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_desc_electronic_layer_sum(s : ChemdescelectronicLayer) -> Double { @
 pub fn chem_desc_electronic_layer_mean(s : ChemdescelectronicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_layer_scale(s : ChemdescelectronicLayer, f : Double) -> ChemdescelectronicLayer {
-  let result = chem_desc_electronic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_layer_add(a : ChemdescelectronicLayer, b : ChemdescelectronicLayer) -> ChemdescelectronicLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_layer_copy(s : ChemdescelectronicLayer) -> ChemdescelectronicLayer {
-  let result = chem_desc_electronic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_layer_fill(s : ChemdescelectronicLayer, v : Double) -> ChemdescelectronicLayer {
-  let result = chem_desc_electronic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_layer_min(s : ChemdescelectronicLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_desc_electronic_buffer_sum(s : ChemdescelectronicBuffer) -> Double {
 pub fn chem_desc_electronic_buffer_mean(s : ChemdescelectronicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_buffer_scale(s : ChemdescelectronicBuffer, f : Double) -> ChemdescelectronicBuffer {
-  let result = chem_desc_electronic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_buffer_add(a : ChemdescelectronicBuffer, b : ChemdescelectronicBuffer) -> ChemdescelectronicBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_buffer_copy(s : ChemdescelectronicBuffer) -> ChemdescelectronicBuffer {
-  let result = chem_desc_electronic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_buffer_fill(s : ChemdescelectronicBuffer, v : Double) -> ChemdescelectronicBuffer {
-  let result = chem_desc_electronic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_buffer_min(s : ChemdescelectronicBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_desc_electronic_cursor_sum(s : ChemdescelectronicCursor) -> Double {
 pub fn chem_desc_electronic_cursor_mean(s : ChemdescelectronicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_cursor_scale(s : ChemdescelectronicCursor, f : Double) -> ChemdescelectronicCursor {
-  let result = chem_desc_electronic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_cursor_add(a : ChemdescelectronicCursor, b : ChemdescelectronicCursor) -> ChemdescelectronicCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_cursor_copy(s : ChemdescelectronicCursor) -> ChemdescelectronicCursor {
-  let result = chem_desc_electronic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_cursor_fill(s : ChemdescelectronicCursor, v : Double) -> ChemdescelectronicCursor {
-  let result = chem_desc_electronic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_cursor_min(s : ChemdescelectronicCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_desc_electronic_view_sum(s : ChemdescelectronicView) -> Double { @_c
 pub fn chem_desc_electronic_view_mean(s : ChemdescelectronicView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_view_scale(s : ChemdescelectronicView, f : Double) -> ChemdescelectronicView {
-  let result = chem_desc_electronic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_view_add(a : ChemdescelectronicView, b : ChemdescelectronicView) -> ChemdescelectronicView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_view_copy(s : ChemdescelectronicView) -> ChemdescelectronicView {
-  let result = chem_desc_electronic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_view_fill(s : ChemdescelectronicView, v : Double) -> ChemdescelectronicView {
-  let result = chem_desc_electronic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_view_min(s : ChemdescelectronicView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_desc_electronic_range_sum(s : ChemdescelectronicRange) -> Double { @
 pub fn chem_desc_electronic_range_mean(s : ChemdescelectronicRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_range_scale(s : ChemdescelectronicRange, f : Double) -> ChemdescelectronicRange {
-  let result = chem_desc_electronic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_range_add(a : ChemdescelectronicRange, b : ChemdescelectronicRange) -> ChemdescelectronicRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_range_copy(s : ChemdescelectronicRange) -> ChemdescelectronicRange {
-  let result = chem_desc_electronic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_range_fill(s : ChemdescelectronicRange, v : Double) -> ChemdescelectronicRange {
-  let result = chem_desc_electronic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_range_min(s : ChemdescelectronicRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_desc_electronic_slice_sum(s : ChemdescelectronicSlice) -> Double { @
 pub fn chem_desc_electronic_slice_mean(s : ChemdescelectronicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_slice_scale(s : ChemdescelectronicSlice, f : Double) -> ChemdescelectronicSlice {
-  let result = chem_desc_electronic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_slice_add(a : ChemdescelectronicSlice, b : ChemdescelectronicSlice) -> ChemdescelectronicSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_electronic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_electronic_slice_copy(s : ChemdescelectronicSlice) -> ChemdescelectronicSlice {
-  let result = chem_desc_electronic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_slice_fill(s : ChemdescelectronicSlice, v : Double) -> ChemdescelectronicSlice {
-  let result = chem_desc_electronic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_electronic_slice_min(s : ChemdescelectronicSlice) -> Double { @_common.min(s.data) }

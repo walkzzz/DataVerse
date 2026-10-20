@@ -383,28 +383,20 @@ pub fn bio_phylo_parsimony_frame_sum(s : BiophyloparsimonyFrame) -> Double { @_c
 pub fn bio_phylo_parsimony_frame_mean(s : BiophyloparsimonyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_frame_scale(s : BiophyloparsimonyFrame, f : Double) -> BiophyloparsimonyFrame {
-  let result = bio_phylo_parsimony_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_frame_add(a : BiophyloparsimonyFrame, b : BiophyloparsimonyFrame) -> BiophyloparsimonyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_frame_copy(s : BiophyloparsimonyFrame) -> BiophyloparsimonyFrame {
-  let result = bio_phylo_parsimony_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_frame_fill(s : BiophyloparsimonyFrame, v : Double) -> BiophyloparsimonyFrame {
-  let result = bio_phylo_parsimony_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_frame_min(s : BiophyloparsimonyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_phylo_parsimony_table_sum(s : BiophyloparsimonyTable) -> Double { @_c
 pub fn bio_phylo_parsimony_table_mean(s : BiophyloparsimonyTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_table_scale(s : BiophyloparsimonyTable, f : Double) -> BiophyloparsimonyTable {
-  let result = bio_phylo_parsimony_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_table_add(a : BiophyloparsimonyTable, b : BiophyloparsimonyTable) -> BiophyloparsimonyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_table_copy(s : BiophyloparsimonyTable) -> BiophyloparsimonyTable {
-  let result = bio_phylo_parsimony_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_table_fill(s : BiophyloparsimonyTable, v : Double) -> BiophyloparsimonyTable {
-  let result = bio_phylo_parsimony_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_table_min(s : BiophyloparsimonyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_phylo_parsimony_graphn_sum(s : BiophyloparsimonyGraphN) -> Double { @
 pub fn bio_phylo_parsimony_graphn_mean(s : BiophyloparsimonyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_graphn_scale(s : BiophyloparsimonyGraphN, f : Double) -> BiophyloparsimonyGraphN {
-  let result = bio_phylo_parsimony_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_graphn_add(a : BiophyloparsimonyGraphN, b : BiophyloparsimonyGraphN) -> BiophyloparsimonyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_graphn_copy(s : BiophyloparsimonyGraphN) -> BiophyloparsimonyGraphN {
-  let result = bio_phylo_parsimony_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_graphn_fill(s : BiophyloparsimonyGraphN, v : Double) -> BiophyloparsimonyGraphN {
-  let result = bio_phylo_parsimony_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_graphn_min(s : BiophyloparsimonyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_phylo_parsimony_node_sum(s : BiophyloparsimonyNode) -> Double { @_com
 pub fn bio_phylo_parsimony_node_mean(s : BiophyloparsimonyNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_node_scale(s : BiophyloparsimonyNode, f : Double) -> BiophyloparsimonyNode {
-  let result = bio_phylo_parsimony_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_node_add(a : BiophyloparsimonyNode, b : BiophyloparsimonyNode) -> BiophyloparsimonyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_node_copy(s : BiophyloparsimonyNode) -> BiophyloparsimonyNode {
-  let result = bio_phylo_parsimony_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_node_fill(s : BiophyloparsimonyNode, v : Double) -> BiophyloparsimonyNode {
-  let result = bio_phylo_parsimony_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_node_min(s : BiophyloparsimonyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_phylo_parsimony_edge_sum(s : BiophyloparsimonyEdge) -> Double { @_com
 pub fn bio_phylo_parsimony_edge_mean(s : BiophyloparsimonyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_edge_scale(s : BiophyloparsimonyEdge, f : Double) -> BiophyloparsimonyEdge {
-  let result = bio_phylo_parsimony_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_edge_add(a : BiophyloparsimonyEdge, b : BiophyloparsimonyEdge) -> BiophyloparsimonyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_edge_copy(s : BiophyloparsimonyEdge) -> BiophyloparsimonyEdge {
-  let result = bio_phylo_parsimony_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_edge_fill(s : BiophyloparsimonyEdge, v : Double) -> BiophyloparsimonyEdge {
-  let result = bio_phylo_parsimony_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_edge_min(s : BiophyloparsimonyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_phylo_parsimony_path_sum(s : BiophyloparsimonyPath) -> Double { @_com
 pub fn bio_phylo_parsimony_path_mean(s : BiophyloparsimonyPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_path_scale(s : BiophyloparsimonyPath, f : Double) -> BiophyloparsimonyPath {
-  let result = bio_phylo_parsimony_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_path_add(a : BiophyloparsimonyPath, b : BiophyloparsimonyPath) -> BiophyloparsimonyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_path_copy(s : BiophyloparsimonyPath) -> BiophyloparsimonyPath {
-  let result = bio_phylo_parsimony_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_path_fill(s : BiophyloparsimonyPath, v : Double) -> BiophyloparsimonyPath {
-  let result = bio_phylo_parsimony_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_path_min(s : BiophyloparsimonyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_phylo_parsimony_cluster_sum(s : BiophyloparsimonyCluster) -> Double {
 pub fn bio_phylo_parsimony_cluster_mean(s : BiophyloparsimonyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_cluster_scale(s : BiophyloparsimonyCluster, f : Double) -> BiophyloparsimonyCluster {
-  let result = bio_phylo_parsimony_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cluster_add(a : BiophyloparsimonyCluster, b : BiophyloparsimonyCluster) -> BiophyloparsimonyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_cluster_copy(s : BiophyloparsimonyCluster) -> BiophyloparsimonyCluster {
-  let result = bio_phylo_parsimony_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cluster_fill(s : BiophyloparsimonyCluster, v : Double) -> BiophyloparsimonyCluster {
-  let result = bio_phylo_parsimony_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cluster_min(s : BiophyloparsimonyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_phylo_parsimony_model_sum(s : BiophyloparsimonyModel) -> Double { @_c
 pub fn bio_phylo_parsimony_model_mean(s : BiophyloparsimonyModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_model_scale(s : BiophyloparsimonyModel, f : Double) -> BiophyloparsimonyModel {
-  let result = bio_phylo_parsimony_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_model_add(a : BiophyloparsimonyModel, b : BiophyloparsimonyModel) -> BiophyloparsimonyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_model_copy(s : BiophyloparsimonyModel) -> BiophyloparsimonyModel {
-  let result = bio_phylo_parsimony_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_model_fill(s : BiophyloparsimonyModel, v : Double) -> BiophyloparsimonyModel {
-  let result = bio_phylo_parsimony_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_model_min(s : BiophyloparsimonyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_phylo_parsimony_layer_sum(s : BiophyloparsimonyLayer) -> Double { @_c
 pub fn bio_phylo_parsimony_layer_mean(s : BiophyloparsimonyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_layer_scale(s : BiophyloparsimonyLayer, f : Double) -> BiophyloparsimonyLayer {
-  let result = bio_phylo_parsimony_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_layer_add(a : BiophyloparsimonyLayer, b : BiophyloparsimonyLayer) -> BiophyloparsimonyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_layer_copy(s : BiophyloparsimonyLayer) -> BiophyloparsimonyLayer {
-  let result = bio_phylo_parsimony_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_layer_fill(s : BiophyloparsimonyLayer, v : Double) -> BiophyloparsimonyLayer {
-  let result = bio_phylo_parsimony_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_layer_min(s : BiophyloparsimonyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_phylo_parsimony_buffer_sum(s : BiophyloparsimonyBuffer) -> Double { @
 pub fn bio_phylo_parsimony_buffer_mean(s : BiophyloparsimonyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_buffer_scale(s : BiophyloparsimonyBuffer, f : Double) -> BiophyloparsimonyBuffer {
-  let result = bio_phylo_parsimony_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_buffer_add(a : BiophyloparsimonyBuffer, b : BiophyloparsimonyBuffer) -> BiophyloparsimonyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_buffer_copy(s : BiophyloparsimonyBuffer) -> BiophyloparsimonyBuffer {
-  let result = bio_phylo_parsimony_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_buffer_fill(s : BiophyloparsimonyBuffer, v : Double) -> BiophyloparsimonyBuffer {
-  let result = bio_phylo_parsimony_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_buffer_min(s : BiophyloparsimonyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_phylo_parsimony_cursor_sum(s : BiophyloparsimonyCursor) -> Double { @
 pub fn bio_phylo_parsimony_cursor_mean(s : BiophyloparsimonyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_cursor_scale(s : BiophyloparsimonyCursor, f : Double) -> BiophyloparsimonyCursor {
-  let result = bio_phylo_parsimony_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cursor_add(a : BiophyloparsimonyCursor, b : BiophyloparsimonyCursor) -> BiophyloparsimonyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_cursor_copy(s : BiophyloparsimonyCursor) -> BiophyloparsimonyCursor {
-  let result = bio_phylo_parsimony_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cursor_fill(s : BiophyloparsimonyCursor, v : Double) -> BiophyloparsimonyCursor {
-  let result = bio_phylo_parsimony_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cursor_min(s : BiophyloparsimonyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_phylo_parsimony_view_sum(s : BiophyloparsimonyView) -> Double { @_com
 pub fn bio_phylo_parsimony_view_mean(s : BiophyloparsimonyView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_view_scale(s : BiophyloparsimonyView, f : Double) -> BiophyloparsimonyView {
-  let result = bio_phylo_parsimony_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_view_add(a : BiophyloparsimonyView, b : BiophyloparsimonyView) -> BiophyloparsimonyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_view_copy(s : BiophyloparsimonyView) -> BiophyloparsimonyView {
-  let result = bio_phylo_parsimony_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_view_fill(s : BiophyloparsimonyView, v : Double) -> BiophyloparsimonyView {
-  let result = bio_phylo_parsimony_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_view_min(s : BiophyloparsimonyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_phylo_parsimony_range_sum(s : BiophyloparsimonyRange) -> Double { @_c
 pub fn bio_phylo_parsimony_range_mean(s : BiophyloparsimonyRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_range_scale(s : BiophyloparsimonyRange, f : Double) -> BiophyloparsimonyRange {
-  let result = bio_phylo_parsimony_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_range_add(a : BiophyloparsimonyRange, b : BiophyloparsimonyRange) -> BiophyloparsimonyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_range_copy(s : BiophyloparsimonyRange) -> BiophyloparsimonyRange {
-  let result = bio_phylo_parsimony_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_range_fill(s : BiophyloparsimonyRange, v : Double) -> BiophyloparsimonyRange {
-  let result = bio_phylo_parsimony_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_range_min(s : BiophyloparsimonyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_phylo_parsimony_slice_sum(s : BiophyloparsimonySlice) -> Double { @_c
 pub fn bio_phylo_parsimony_slice_mean(s : BiophyloparsimonySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_slice_scale(s : BiophyloparsimonySlice, f : Double) -> BiophyloparsimonySlice {
-  let result = bio_phylo_parsimony_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_slice_add(a : BiophyloparsimonySlice, b : BiophyloparsimonySlice) -> BiophyloparsimonySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_parsimony_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_parsimony_slice_copy(s : BiophyloparsimonySlice) -> BiophyloparsimonySlice {
-  let result = bio_phylo_parsimony_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_slice_fill(s : BiophyloparsimonySlice, v : Double) -> BiophyloparsimonySlice {
-  let result = bio_phylo_parsimony_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_slice_min(s : BiophyloparsimonySlice) -> Double { @_common.min(s.data) }

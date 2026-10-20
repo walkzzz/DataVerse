@@ -383,28 +383,20 @@ pub fn crypto_sign_threshold_frame_sum(s : CryptosignthresholdFrame) -> Double {
 pub fn crypto_sign_threshold_frame_mean(s : CryptosignthresholdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_frame_scale(s : CryptosignthresholdFrame, f : Double) -> CryptosignthresholdFrame {
-  let result = crypto_sign_threshold_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_frame_add(a : CryptosignthresholdFrame, b : CryptosignthresholdFrame) -> CryptosignthresholdFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_frame_copy(s : CryptosignthresholdFrame) -> CryptosignthresholdFrame {
-  let result = crypto_sign_threshold_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_frame_fill(s : CryptosignthresholdFrame, v : Double) -> CryptosignthresholdFrame {
-  let result = crypto_sign_threshold_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_frame_min(s : CryptosignthresholdFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sign_threshold_table_sum(s : CryptosignthresholdTable) -> Double {
 pub fn crypto_sign_threshold_table_mean(s : CryptosignthresholdTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_table_scale(s : CryptosignthresholdTable, f : Double) -> CryptosignthresholdTable {
-  let result = crypto_sign_threshold_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_table_add(a : CryptosignthresholdTable, b : CryptosignthresholdTable) -> CryptosignthresholdTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_table_copy(s : CryptosignthresholdTable) -> CryptosignthresholdTable {
-  let result = crypto_sign_threshold_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_table_fill(s : CryptosignthresholdTable, v : Double) -> CryptosignthresholdTable {
-  let result = crypto_sign_threshold_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_table_min(s : CryptosignthresholdTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sign_threshold_graphn_sum(s : CryptosignthresholdGraphN) -> Double
 pub fn crypto_sign_threshold_graphn_mean(s : CryptosignthresholdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_graphn_scale(s : CryptosignthresholdGraphN, f : Double) -> CryptosignthresholdGraphN {
-  let result = crypto_sign_threshold_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_graphn_add(a : CryptosignthresholdGraphN, b : CryptosignthresholdGraphN) -> CryptosignthresholdGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_graphn_copy(s : CryptosignthresholdGraphN) -> CryptosignthresholdGraphN {
-  let result = crypto_sign_threshold_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_graphn_fill(s : CryptosignthresholdGraphN, v : Double) -> CryptosignthresholdGraphN {
-  let result = crypto_sign_threshold_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_graphn_min(s : CryptosignthresholdGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sign_threshold_node_sum(s : CryptosignthresholdNode) -> Double { @
 pub fn crypto_sign_threshold_node_mean(s : CryptosignthresholdNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_node_scale(s : CryptosignthresholdNode, f : Double) -> CryptosignthresholdNode {
-  let result = crypto_sign_threshold_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_node_add(a : CryptosignthresholdNode, b : CryptosignthresholdNode) -> CryptosignthresholdNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_node_copy(s : CryptosignthresholdNode) -> CryptosignthresholdNode {
-  let result = crypto_sign_threshold_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_node_fill(s : CryptosignthresholdNode, v : Double) -> CryptosignthresholdNode {
-  let result = crypto_sign_threshold_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_node_min(s : CryptosignthresholdNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sign_threshold_edge_sum(s : CryptosignthresholdEdge) -> Double { @
 pub fn crypto_sign_threshold_edge_mean(s : CryptosignthresholdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_edge_scale(s : CryptosignthresholdEdge, f : Double) -> CryptosignthresholdEdge {
-  let result = crypto_sign_threshold_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_edge_add(a : CryptosignthresholdEdge, b : CryptosignthresholdEdge) -> CryptosignthresholdEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_edge_copy(s : CryptosignthresholdEdge) -> CryptosignthresholdEdge {
-  let result = crypto_sign_threshold_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_edge_fill(s : CryptosignthresholdEdge, v : Double) -> CryptosignthresholdEdge {
-  let result = crypto_sign_threshold_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_edge_min(s : CryptosignthresholdEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sign_threshold_path_sum(s : CryptosignthresholdPath) -> Double { @
 pub fn crypto_sign_threshold_path_mean(s : CryptosignthresholdPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_path_scale(s : CryptosignthresholdPath, f : Double) -> CryptosignthresholdPath {
-  let result = crypto_sign_threshold_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_path_add(a : CryptosignthresholdPath, b : CryptosignthresholdPath) -> CryptosignthresholdPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_path_copy(s : CryptosignthresholdPath) -> CryptosignthresholdPath {
-  let result = crypto_sign_threshold_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_path_fill(s : CryptosignthresholdPath, v : Double) -> CryptosignthresholdPath {
-  let result = crypto_sign_threshold_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_path_min(s : CryptosignthresholdPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sign_threshold_cluster_sum(s : CryptosignthresholdCluster) -> Doub
 pub fn crypto_sign_threshold_cluster_mean(s : CryptosignthresholdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_cluster_scale(s : CryptosignthresholdCluster, f : Double) -> CryptosignthresholdCluster {
-  let result = crypto_sign_threshold_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_cluster_add(a : CryptosignthresholdCluster, b : CryptosignthresholdCluster) -> CryptosignthresholdCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_cluster_copy(s : CryptosignthresholdCluster) -> CryptosignthresholdCluster {
-  let result = crypto_sign_threshold_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_cluster_fill(s : CryptosignthresholdCluster, v : Double) -> CryptosignthresholdCluster {
-  let result = crypto_sign_threshold_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_cluster_min(s : CryptosignthresholdCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sign_threshold_model_sum(s : CryptosignthresholdModel) -> Double {
 pub fn crypto_sign_threshold_model_mean(s : CryptosignthresholdModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_model_scale(s : CryptosignthresholdModel, f : Double) -> CryptosignthresholdModel {
-  let result = crypto_sign_threshold_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_model_add(a : CryptosignthresholdModel, b : CryptosignthresholdModel) -> CryptosignthresholdModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_model_copy(s : CryptosignthresholdModel) -> CryptosignthresholdModel {
-  let result = crypto_sign_threshold_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_model_fill(s : CryptosignthresholdModel, v : Double) -> CryptosignthresholdModel {
-  let result = crypto_sign_threshold_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_model_min(s : CryptosignthresholdModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sign_threshold_layer_sum(s : CryptosignthresholdLayer) -> Double {
 pub fn crypto_sign_threshold_layer_mean(s : CryptosignthresholdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_layer_scale(s : CryptosignthresholdLayer, f : Double) -> CryptosignthresholdLayer {
-  let result = crypto_sign_threshold_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_layer_add(a : CryptosignthresholdLayer, b : CryptosignthresholdLayer) -> CryptosignthresholdLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_layer_copy(s : CryptosignthresholdLayer) -> CryptosignthresholdLayer {
-  let result = crypto_sign_threshold_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_layer_fill(s : CryptosignthresholdLayer, v : Double) -> CryptosignthresholdLayer {
-  let result = crypto_sign_threshold_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_layer_min(s : CryptosignthresholdLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sign_threshold_buffer_sum(s : CryptosignthresholdBuffer) -> Double
 pub fn crypto_sign_threshold_buffer_mean(s : CryptosignthresholdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_buffer_scale(s : CryptosignthresholdBuffer, f : Double) -> CryptosignthresholdBuffer {
-  let result = crypto_sign_threshold_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_buffer_add(a : CryptosignthresholdBuffer, b : CryptosignthresholdBuffer) -> CryptosignthresholdBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_buffer_copy(s : CryptosignthresholdBuffer) -> CryptosignthresholdBuffer {
-  let result = crypto_sign_threshold_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_buffer_fill(s : CryptosignthresholdBuffer, v : Double) -> CryptosignthresholdBuffer {
-  let result = crypto_sign_threshold_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_buffer_min(s : CryptosignthresholdBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sign_threshold_cursor_sum(s : CryptosignthresholdCursor) -> Double
 pub fn crypto_sign_threshold_cursor_mean(s : CryptosignthresholdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_cursor_scale(s : CryptosignthresholdCursor, f : Double) -> CryptosignthresholdCursor {
-  let result = crypto_sign_threshold_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_cursor_add(a : CryptosignthresholdCursor, b : CryptosignthresholdCursor) -> CryptosignthresholdCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_cursor_copy(s : CryptosignthresholdCursor) -> CryptosignthresholdCursor {
-  let result = crypto_sign_threshold_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_cursor_fill(s : CryptosignthresholdCursor, v : Double) -> CryptosignthresholdCursor {
-  let result = crypto_sign_threshold_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_cursor_min(s : CryptosignthresholdCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sign_threshold_view_sum(s : CryptosignthresholdView) -> Double { @
 pub fn crypto_sign_threshold_view_mean(s : CryptosignthresholdView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_view_scale(s : CryptosignthresholdView, f : Double) -> CryptosignthresholdView {
-  let result = crypto_sign_threshold_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_view_add(a : CryptosignthresholdView, b : CryptosignthresholdView) -> CryptosignthresholdView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_view_copy(s : CryptosignthresholdView) -> CryptosignthresholdView {
-  let result = crypto_sign_threshold_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_view_fill(s : CryptosignthresholdView, v : Double) -> CryptosignthresholdView {
-  let result = crypto_sign_threshold_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_view_min(s : CryptosignthresholdView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sign_threshold_range_sum(s : CryptosignthresholdRange) -> Double {
 pub fn crypto_sign_threshold_range_mean(s : CryptosignthresholdRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_range_scale(s : CryptosignthresholdRange, f : Double) -> CryptosignthresholdRange {
-  let result = crypto_sign_threshold_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_range_add(a : CryptosignthresholdRange, b : CryptosignthresholdRange) -> CryptosignthresholdRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_range_copy(s : CryptosignthresholdRange) -> CryptosignthresholdRange {
-  let result = crypto_sign_threshold_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_range_fill(s : CryptosignthresholdRange, v : Double) -> CryptosignthresholdRange {
-  let result = crypto_sign_threshold_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_range_min(s : CryptosignthresholdRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sign_threshold_slice_sum(s : CryptosignthresholdSlice) -> Double {
 pub fn crypto_sign_threshold_slice_mean(s : CryptosignthresholdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_slice_scale(s : CryptosignthresholdSlice, f : Double) -> CryptosignthresholdSlice {
-  let result = crypto_sign_threshold_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_slice_add(a : CryptosignthresholdSlice, b : CryptosignthresholdSlice) -> CryptosignthresholdSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_threshold_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_threshold_slice_copy(s : CryptosignthresholdSlice) -> CryptosignthresholdSlice {
-  let result = crypto_sign_threshold_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_slice_fill(s : CryptosignthresholdSlice, v : Double) -> CryptosignthresholdSlice {
-  let result = crypto_sign_threshold_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_threshold_slice_min(s : CryptosignthresholdSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_test_shapiro_frame_sum(s : StatstestshapiroFrame) -> Double { @_com
 pub fn stats_test_shapiro_frame_mean(s : StatstestshapiroFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_frame_scale(s : StatstestshapiroFrame, f : Double) -> StatstestshapiroFrame {
-  let result = stats_test_shapiro_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_frame_add(a : StatstestshapiroFrame, b : StatstestshapiroFrame) -> StatstestshapiroFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_frame_copy(s : StatstestshapiroFrame) -> StatstestshapiroFrame {
-  let result = stats_test_shapiro_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_frame_fill(s : StatstestshapiroFrame, v : Double) -> StatstestshapiroFrame {
-  let result = stats_test_shapiro_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_frame_min(s : StatstestshapiroFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_test_shapiro_table_sum(s : StatstestshapiroTable) -> Double { @_com
 pub fn stats_test_shapiro_table_mean(s : StatstestshapiroTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_table_scale(s : StatstestshapiroTable, f : Double) -> StatstestshapiroTable {
-  let result = stats_test_shapiro_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_table_add(a : StatstestshapiroTable, b : StatstestshapiroTable) -> StatstestshapiroTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_table_copy(s : StatstestshapiroTable) -> StatstestshapiroTable {
-  let result = stats_test_shapiro_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_table_fill(s : StatstestshapiroTable, v : Double) -> StatstestshapiroTable {
-  let result = stats_test_shapiro_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_table_min(s : StatstestshapiroTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_test_shapiro_graphn_sum(s : StatstestshapiroGraphN) -> Double { @_c
 pub fn stats_test_shapiro_graphn_mean(s : StatstestshapiroGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_graphn_scale(s : StatstestshapiroGraphN, f : Double) -> StatstestshapiroGraphN {
-  let result = stats_test_shapiro_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_graphn_add(a : StatstestshapiroGraphN, b : StatstestshapiroGraphN) -> StatstestshapiroGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_graphn_copy(s : StatstestshapiroGraphN) -> StatstestshapiroGraphN {
-  let result = stats_test_shapiro_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_graphn_fill(s : StatstestshapiroGraphN, v : Double) -> StatstestshapiroGraphN {
-  let result = stats_test_shapiro_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_graphn_min(s : StatstestshapiroGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_test_shapiro_node_sum(s : StatstestshapiroNode) -> Double { @_commo
 pub fn stats_test_shapiro_node_mean(s : StatstestshapiroNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_node_scale(s : StatstestshapiroNode, f : Double) -> StatstestshapiroNode {
-  let result = stats_test_shapiro_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_node_add(a : StatstestshapiroNode, b : StatstestshapiroNode) -> StatstestshapiroNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_node_copy(s : StatstestshapiroNode) -> StatstestshapiroNode {
-  let result = stats_test_shapiro_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_node_fill(s : StatstestshapiroNode, v : Double) -> StatstestshapiroNode {
-  let result = stats_test_shapiro_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_node_min(s : StatstestshapiroNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_test_shapiro_edge_sum(s : StatstestshapiroEdge) -> Double { @_commo
 pub fn stats_test_shapiro_edge_mean(s : StatstestshapiroEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_edge_scale(s : StatstestshapiroEdge, f : Double) -> StatstestshapiroEdge {
-  let result = stats_test_shapiro_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_edge_add(a : StatstestshapiroEdge, b : StatstestshapiroEdge) -> StatstestshapiroEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_edge_copy(s : StatstestshapiroEdge) -> StatstestshapiroEdge {
-  let result = stats_test_shapiro_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_edge_fill(s : StatstestshapiroEdge, v : Double) -> StatstestshapiroEdge {
-  let result = stats_test_shapiro_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_edge_min(s : StatstestshapiroEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_test_shapiro_path_sum(s : StatstestshapiroPath) -> Double { @_commo
 pub fn stats_test_shapiro_path_mean(s : StatstestshapiroPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_path_scale(s : StatstestshapiroPath, f : Double) -> StatstestshapiroPath {
-  let result = stats_test_shapiro_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_path_add(a : StatstestshapiroPath, b : StatstestshapiroPath) -> StatstestshapiroPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_path_copy(s : StatstestshapiroPath) -> StatstestshapiroPath {
-  let result = stats_test_shapiro_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_path_fill(s : StatstestshapiroPath, v : Double) -> StatstestshapiroPath {
-  let result = stats_test_shapiro_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_path_min(s : StatstestshapiroPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_test_shapiro_cluster_sum(s : StatstestshapiroCluster) -> Double { @
 pub fn stats_test_shapiro_cluster_mean(s : StatstestshapiroCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_cluster_scale(s : StatstestshapiroCluster, f : Double) -> StatstestshapiroCluster {
-  let result = stats_test_shapiro_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_cluster_add(a : StatstestshapiroCluster, b : StatstestshapiroCluster) -> StatstestshapiroCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_cluster_copy(s : StatstestshapiroCluster) -> StatstestshapiroCluster {
-  let result = stats_test_shapiro_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_cluster_fill(s : StatstestshapiroCluster, v : Double) -> StatstestshapiroCluster {
-  let result = stats_test_shapiro_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_cluster_min(s : StatstestshapiroCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_test_shapiro_model_sum(s : StatstestshapiroModel) -> Double { @_com
 pub fn stats_test_shapiro_model_mean(s : StatstestshapiroModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_model_scale(s : StatstestshapiroModel, f : Double) -> StatstestshapiroModel {
-  let result = stats_test_shapiro_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_model_add(a : StatstestshapiroModel, b : StatstestshapiroModel) -> StatstestshapiroModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_model_copy(s : StatstestshapiroModel) -> StatstestshapiroModel {
-  let result = stats_test_shapiro_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_model_fill(s : StatstestshapiroModel, v : Double) -> StatstestshapiroModel {
-  let result = stats_test_shapiro_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_model_min(s : StatstestshapiroModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_test_shapiro_layer_sum(s : StatstestshapiroLayer) -> Double { @_com
 pub fn stats_test_shapiro_layer_mean(s : StatstestshapiroLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_layer_scale(s : StatstestshapiroLayer, f : Double) -> StatstestshapiroLayer {
-  let result = stats_test_shapiro_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_layer_add(a : StatstestshapiroLayer, b : StatstestshapiroLayer) -> StatstestshapiroLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_layer_copy(s : StatstestshapiroLayer) -> StatstestshapiroLayer {
-  let result = stats_test_shapiro_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_layer_fill(s : StatstestshapiroLayer, v : Double) -> StatstestshapiroLayer {
-  let result = stats_test_shapiro_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_layer_min(s : StatstestshapiroLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_test_shapiro_buffer_sum(s : StatstestshapiroBuffer) -> Double { @_c
 pub fn stats_test_shapiro_buffer_mean(s : StatstestshapiroBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_buffer_scale(s : StatstestshapiroBuffer, f : Double) -> StatstestshapiroBuffer {
-  let result = stats_test_shapiro_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_buffer_add(a : StatstestshapiroBuffer, b : StatstestshapiroBuffer) -> StatstestshapiroBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_buffer_copy(s : StatstestshapiroBuffer) -> StatstestshapiroBuffer {
-  let result = stats_test_shapiro_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_buffer_fill(s : StatstestshapiroBuffer, v : Double) -> StatstestshapiroBuffer {
-  let result = stats_test_shapiro_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_buffer_min(s : StatstestshapiroBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_test_shapiro_cursor_sum(s : StatstestshapiroCursor) -> Double { @_c
 pub fn stats_test_shapiro_cursor_mean(s : StatstestshapiroCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_cursor_scale(s : StatstestshapiroCursor, f : Double) -> StatstestshapiroCursor {
-  let result = stats_test_shapiro_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_cursor_add(a : StatstestshapiroCursor, b : StatstestshapiroCursor) -> StatstestshapiroCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_cursor_copy(s : StatstestshapiroCursor) -> StatstestshapiroCursor {
-  let result = stats_test_shapiro_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_cursor_fill(s : StatstestshapiroCursor, v : Double) -> StatstestshapiroCursor {
-  let result = stats_test_shapiro_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_cursor_min(s : StatstestshapiroCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_test_shapiro_view_sum(s : StatstestshapiroView) -> Double { @_commo
 pub fn stats_test_shapiro_view_mean(s : StatstestshapiroView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_view_scale(s : StatstestshapiroView, f : Double) -> StatstestshapiroView {
-  let result = stats_test_shapiro_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_view_add(a : StatstestshapiroView, b : StatstestshapiroView) -> StatstestshapiroView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_view_copy(s : StatstestshapiroView) -> StatstestshapiroView {
-  let result = stats_test_shapiro_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_view_fill(s : StatstestshapiroView, v : Double) -> StatstestshapiroView {
-  let result = stats_test_shapiro_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_view_min(s : StatstestshapiroView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_test_shapiro_range_sum(s : StatstestshapiroRange) -> Double { @_com
 pub fn stats_test_shapiro_range_mean(s : StatstestshapiroRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_range_scale(s : StatstestshapiroRange, f : Double) -> StatstestshapiroRange {
-  let result = stats_test_shapiro_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_range_add(a : StatstestshapiroRange, b : StatstestshapiroRange) -> StatstestshapiroRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_range_copy(s : StatstestshapiroRange) -> StatstestshapiroRange {
-  let result = stats_test_shapiro_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_range_fill(s : StatstestshapiroRange, v : Double) -> StatstestshapiroRange {
-  let result = stats_test_shapiro_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_range_min(s : StatstestshapiroRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_test_shapiro_slice_sum(s : StatstestshapiroSlice) -> Double { @_com
 pub fn stats_test_shapiro_slice_mean(s : StatstestshapiroSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_slice_scale(s : StatstestshapiroSlice, f : Double) -> StatstestshapiroSlice {
-  let result = stats_test_shapiro_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_slice_add(a : StatstestshapiroSlice, b : StatstestshapiroSlice) -> StatstestshapiroSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_shapiro_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_shapiro_slice_copy(s : StatstestshapiroSlice) -> StatstestshapiroSlice {
-  let result = stats_test_shapiro_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_slice_fill(s : StatstestshapiroSlice, v : Double) -> StatstestshapiroSlice {
-  let result = stats_test_shapiro_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_shapiro_slice_min(s : StatstestshapiroSlice) -> Double { @_common.min(s.data) }

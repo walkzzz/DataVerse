@@ -383,28 +383,20 @@ pub fn signal_spec_covariance_frame_sum(s : SignalspeccovarianceFrame) -> Double
 pub fn signal_spec_covariance_frame_mean(s : SignalspeccovarianceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_frame_scale(s : SignalspeccovarianceFrame, f : Double) -> SignalspeccovarianceFrame {
-  let result = signal_spec_covariance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_frame_add(a : SignalspeccovarianceFrame, b : SignalspeccovarianceFrame) -> SignalspeccovarianceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_frame_copy(s : SignalspeccovarianceFrame) -> SignalspeccovarianceFrame {
-  let result = signal_spec_covariance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_frame_fill(s : SignalspeccovarianceFrame, v : Double) -> SignalspeccovarianceFrame {
-  let result = signal_spec_covariance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_frame_min(s : SignalspeccovarianceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_spec_covariance_table_sum(s : SignalspeccovarianceTable) -> Double
 pub fn signal_spec_covariance_table_mean(s : SignalspeccovarianceTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_table_scale(s : SignalspeccovarianceTable, f : Double) -> SignalspeccovarianceTable {
-  let result = signal_spec_covariance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_table_add(a : SignalspeccovarianceTable, b : SignalspeccovarianceTable) -> SignalspeccovarianceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_table_copy(s : SignalspeccovarianceTable) -> SignalspeccovarianceTable {
-  let result = signal_spec_covariance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_table_fill(s : SignalspeccovarianceTable, v : Double) -> SignalspeccovarianceTable {
-  let result = signal_spec_covariance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_table_min(s : SignalspeccovarianceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_spec_covariance_graphn_sum(s : SignalspeccovarianceGraphN) -> Doub
 pub fn signal_spec_covariance_graphn_mean(s : SignalspeccovarianceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_graphn_scale(s : SignalspeccovarianceGraphN, f : Double) -> SignalspeccovarianceGraphN {
-  let result = signal_spec_covariance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_graphn_add(a : SignalspeccovarianceGraphN, b : SignalspeccovarianceGraphN) -> SignalspeccovarianceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_graphn_copy(s : SignalspeccovarianceGraphN) -> SignalspeccovarianceGraphN {
-  let result = signal_spec_covariance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_graphn_fill(s : SignalspeccovarianceGraphN, v : Double) -> SignalspeccovarianceGraphN {
-  let result = signal_spec_covariance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_graphn_min(s : SignalspeccovarianceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_spec_covariance_node_sum(s : SignalspeccovarianceNode) -> Double {
 pub fn signal_spec_covariance_node_mean(s : SignalspeccovarianceNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_node_scale(s : SignalspeccovarianceNode, f : Double) -> SignalspeccovarianceNode {
-  let result = signal_spec_covariance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_node_add(a : SignalspeccovarianceNode, b : SignalspeccovarianceNode) -> SignalspeccovarianceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_node_copy(s : SignalspeccovarianceNode) -> SignalspeccovarianceNode {
-  let result = signal_spec_covariance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_node_fill(s : SignalspeccovarianceNode, v : Double) -> SignalspeccovarianceNode {
-  let result = signal_spec_covariance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_node_min(s : SignalspeccovarianceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_spec_covariance_edge_sum(s : SignalspeccovarianceEdge) -> Double {
 pub fn signal_spec_covariance_edge_mean(s : SignalspeccovarianceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_edge_scale(s : SignalspeccovarianceEdge, f : Double) -> SignalspeccovarianceEdge {
-  let result = signal_spec_covariance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_edge_add(a : SignalspeccovarianceEdge, b : SignalspeccovarianceEdge) -> SignalspeccovarianceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_edge_copy(s : SignalspeccovarianceEdge) -> SignalspeccovarianceEdge {
-  let result = signal_spec_covariance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_edge_fill(s : SignalspeccovarianceEdge, v : Double) -> SignalspeccovarianceEdge {
-  let result = signal_spec_covariance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_edge_min(s : SignalspeccovarianceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_spec_covariance_path_sum(s : SignalspeccovariancePath) -> Double {
 pub fn signal_spec_covariance_path_mean(s : SignalspeccovariancePath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_path_scale(s : SignalspeccovariancePath, f : Double) -> SignalspeccovariancePath {
-  let result = signal_spec_covariance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_path_add(a : SignalspeccovariancePath, b : SignalspeccovariancePath) -> SignalspeccovariancePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_path_copy(s : SignalspeccovariancePath) -> SignalspeccovariancePath {
-  let result = signal_spec_covariance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_path_fill(s : SignalspeccovariancePath, v : Double) -> SignalspeccovariancePath {
-  let result = signal_spec_covariance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_path_min(s : SignalspeccovariancePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_spec_covariance_cluster_sum(s : SignalspeccovarianceCluster) -> Do
 pub fn signal_spec_covariance_cluster_mean(s : SignalspeccovarianceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_cluster_scale(s : SignalspeccovarianceCluster, f : Double) -> SignalspeccovarianceCluster {
-  let result = signal_spec_covariance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_cluster_add(a : SignalspeccovarianceCluster, b : SignalspeccovarianceCluster) -> SignalspeccovarianceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_cluster_copy(s : SignalspeccovarianceCluster) -> SignalspeccovarianceCluster {
-  let result = signal_spec_covariance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_cluster_fill(s : SignalspeccovarianceCluster, v : Double) -> SignalspeccovarianceCluster {
-  let result = signal_spec_covariance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_cluster_min(s : SignalspeccovarianceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_spec_covariance_model_sum(s : SignalspeccovarianceModel) -> Double
 pub fn signal_spec_covariance_model_mean(s : SignalspeccovarianceModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_model_scale(s : SignalspeccovarianceModel, f : Double) -> SignalspeccovarianceModel {
-  let result = signal_spec_covariance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_model_add(a : SignalspeccovarianceModel, b : SignalspeccovarianceModel) -> SignalspeccovarianceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_model_copy(s : SignalspeccovarianceModel) -> SignalspeccovarianceModel {
-  let result = signal_spec_covariance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_model_fill(s : SignalspeccovarianceModel, v : Double) -> SignalspeccovarianceModel {
-  let result = signal_spec_covariance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_model_min(s : SignalspeccovarianceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_spec_covariance_layer_sum(s : SignalspeccovarianceLayer) -> Double
 pub fn signal_spec_covariance_layer_mean(s : SignalspeccovarianceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_layer_scale(s : SignalspeccovarianceLayer, f : Double) -> SignalspeccovarianceLayer {
-  let result = signal_spec_covariance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_layer_add(a : SignalspeccovarianceLayer, b : SignalspeccovarianceLayer) -> SignalspeccovarianceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_layer_copy(s : SignalspeccovarianceLayer) -> SignalspeccovarianceLayer {
-  let result = signal_spec_covariance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_layer_fill(s : SignalspeccovarianceLayer, v : Double) -> SignalspeccovarianceLayer {
-  let result = signal_spec_covariance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_layer_min(s : SignalspeccovarianceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_spec_covariance_buffer_sum(s : SignalspeccovarianceBuffer) -> Doub
 pub fn signal_spec_covariance_buffer_mean(s : SignalspeccovarianceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_buffer_scale(s : SignalspeccovarianceBuffer, f : Double) -> SignalspeccovarianceBuffer {
-  let result = signal_spec_covariance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_buffer_add(a : SignalspeccovarianceBuffer, b : SignalspeccovarianceBuffer) -> SignalspeccovarianceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_buffer_copy(s : SignalspeccovarianceBuffer) -> SignalspeccovarianceBuffer {
-  let result = signal_spec_covariance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_buffer_fill(s : SignalspeccovarianceBuffer, v : Double) -> SignalspeccovarianceBuffer {
-  let result = signal_spec_covariance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_buffer_min(s : SignalspeccovarianceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_spec_covariance_cursor_sum(s : SignalspeccovarianceCursor) -> Doub
 pub fn signal_spec_covariance_cursor_mean(s : SignalspeccovarianceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_cursor_scale(s : SignalspeccovarianceCursor, f : Double) -> SignalspeccovarianceCursor {
-  let result = signal_spec_covariance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_cursor_add(a : SignalspeccovarianceCursor, b : SignalspeccovarianceCursor) -> SignalspeccovarianceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_cursor_copy(s : SignalspeccovarianceCursor) -> SignalspeccovarianceCursor {
-  let result = signal_spec_covariance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_cursor_fill(s : SignalspeccovarianceCursor, v : Double) -> SignalspeccovarianceCursor {
-  let result = signal_spec_covariance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_cursor_min(s : SignalspeccovarianceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_spec_covariance_view_sum(s : SignalspeccovarianceView) -> Double {
 pub fn signal_spec_covariance_view_mean(s : SignalspeccovarianceView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_view_scale(s : SignalspeccovarianceView, f : Double) -> SignalspeccovarianceView {
-  let result = signal_spec_covariance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_view_add(a : SignalspeccovarianceView, b : SignalspeccovarianceView) -> SignalspeccovarianceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_view_copy(s : SignalspeccovarianceView) -> SignalspeccovarianceView {
-  let result = signal_spec_covariance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_view_fill(s : SignalspeccovarianceView, v : Double) -> SignalspeccovarianceView {
-  let result = signal_spec_covariance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_view_min(s : SignalspeccovarianceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_spec_covariance_range_sum(s : SignalspeccovarianceRange) -> Double
 pub fn signal_spec_covariance_range_mean(s : SignalspeccovarianceRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_range_scale(s : SignalspeccovarianceRange, f : Double) -> SignalspeccovarianceRange {
-  let result = signal_spec_covariance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_range_add(a : SignalspeccovarianceRange, b : SignalspeccovarianceRange) -> SignalspeccovarianceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_range_copy(s : SignalspeccovarianceRange) -> SignalspeccovarianceRange {
-  let result = signal_spec_covariance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_range_fill(s : SignalspeccovarianceRange, v : Double) -> SignalspeccovarianceRange {
-  let result = signal_spec_covariance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_range_min(s : SignalspeccovarianceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_spec_covariance_slice_sum(s : SignalspeccovarianceSlice) -> Double
 pub fn signal_spec_covariance_slice_mean(s : SignalspeccovarianceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_slice_scale(s : SignalspeccovarianceSlice, f : Double) -> SignalspeccovarianceSlice {
-  let result = signal_spec_covariance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_slice_add(a : SignalspeccovarianceSlice, b : SignalspeccovarianceSlice) -> SignalspeccovarianceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_covariance_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_covariance_slice_copy(s : SignalspeccovarianceSlice) -> SignalspeccovarianceSlice {
-  let result = signal_spec_covariance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_slice_fill(s : SignalspeccovarianceSlice, v : Double) -> SignalspeccovarianceSlice {
-  let result = signal_spec_covariance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_covariance_slice_min(s : SignalspeccovarianceSlice) -> Double { @_common.min(s.data) }

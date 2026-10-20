@@ -383,28 +383,20 @@ pub fn math_opt_convex_frame_sum(s : MathoptconvexFrame) -> Double { @_common.su
 pub fn math_opt_convex_frame_mean(s : MathoptconvexFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_frame_scale(s : MathoptconvexFrame, f : Double) -> MathoptconvexFrame {
-  let result = math_opt_convex_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_frame_add(a : MathoptconvexFrame, b : MathoptconvexFrame) -> MathoptconvexFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_frame_copy(s : MathoptconvexFrame) -> MathoptconvexFrame {
-  let result = math_opt_convex_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_frame_fill(s : MathoptconvexFrame, v : Double) -> MathoptconvexFrame {
-  let result = math_opt_convex_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_frame_min(s : MathoptconvexFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_opt_convex_table_sum(s : MathoptconvexTable) -> Double { @_common.su
 pub fn math_opt_convex_table_mean(s : MathoptconvexTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_table_scale(s : MathoptconvexTable, f : Double) -> MathoptconvexTable {
-  let result = math_opt_convex_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_table_add(a : MathoptconvexTable, b : MathoptconvexTable) -> MathoptconvexTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_table_copy(s : MathoptconvexTable) -> MathoptconvexTable {
-  let result = math_opt_convex_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_table_fill(s : MathoptconvexTable, v : Double) -> MathoptconvexTable {
-  let result = math_opt_convex_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_table_min(s : MathoptconvexTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_opt_convex_graphn_sum(s : MathoptconvexGraphN) -> Double { @_common.
 pub fn math_opt_convex_graphn_mean(s : MathoptconvexGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_graphn_scale(s : MathoptconvexGraphN, f : Double) -> MathoptconvexGraphN {
-  let result = math_opt_convex_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_graphn_add(a : MathoptconvexGraphN, b : MathoptconvexGraphN) -> MathoptconvexGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_graphn_copy(s : MathoptconvexGraphN) -> MathoptconvexGraphN {
-  let result = math_opt_convex_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_graphn_fill(s : MathoptconvexGraphN, v : Double) -> MathoptconvexGraphN {
-  let result = math_opt_convex_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_graphn_min(s : MathoptconvexGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_opt_convex_node_sum(s : MathoptconvexNode) -> Double { @_common.sum(
 pub fn math_opt_convex_node_mean(s : MathoptconvexNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_node_scale(s : MathoptconvexNode, f : Double) -> MathoptconvexNode {
-  let result = math_opt_convex_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_node_add(a : MathoptconvexNode, b : MathoptconvexNode) -> MathoptconvexNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_node_copy(s : MathoptconvexNode) -> MathoptconvexNode {
-  let result = math_opt_convex_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_node_fill(s : MathoptconvexNode, v : Double) -> MathoptconvexNode {
-  let result = math_opt_convex_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_node_min(s : MathoptconvexNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_opt_convex_edge_sum(s : MathoptconvexEdge) -> Double { @_common.sum(
 pub fn math_opt_convex_edge_mean(s : MathoptconvexEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_edge_scale(s : MathoptconvexEdge, f : Double) -> MathoptconvexEdge {
-  let result = math_opt_convex_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_edge_add(a : MathoptconvexEdge, b : MathoptconvexEdge) -> MathoptconvexEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_edge_copy(s : MathoptconvexEdge) -> MathoptconvexEdge {
-  let result = math_opt_convex_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_edge_fill(s : MathoptconvexEdge, v : Double) -> MathoptconvexEdge {
-  let result = math_opt_convex_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_edge_min(s : MathoptconvexEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_opt_convex_path_sum(s : MathoptconvexPath) -> Double { @_common.sum(
 pub fn math_opt_convex_path_mean(s : MathoptconvexPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_path_scale(s : MathoptconvexPath, f : Double) -> MathoptconvexPath {
-  let result = math_opt_convex_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_path_add(a : MathoptconvexPath, b : MathoptconvexPath) -> MathoptconvexPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_path_copy(s : MathoptconvexPath) -> MathoptconvexPath {
-  let result = math_opt_convex_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_path_fill(s : MathoptconvexPath, v : Double) -> MathoptconvexPath {
-  let result = math_opt_convex_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_path_min(s : MathoptconvexPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_opt_convex_cluster_sum(s : MathoptconvexCluster) -> Double { @_commo
 pub fn math_opt_convex_cluster_mean(s : MathoptconvexCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_cluster_scale(s : MathoptconvexCluster, f : Double) -> MathoptconvexCluster {
-  let result = math_opt_convex_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cluster_add(a : MathoptconvexCluster, b : MathoptconvexCluster) -> MathoptconvexCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_cluster_copy(s : MathoptconvexCluster) -> MathoptconvexCluster {
-  let result = math_opt_convex_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cluster_fill(s : MathoptconvexCluster, v : Double) -> MathoptconvexCluster {
-  let result = math_opt_convex_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cluster_min(s : MathoptconvexCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_opt_convex_model_sum(s : MathoptconvexModel) -> Double { @_common.su
 pub fn math_opt_convex_model_mean(s : MathoptconvexModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_model_scale(s : MathoptconvexModel, f : Double) -> MathoptconvexModel {
-  let result = math_opt_convex_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_model_add(a : MathoptconvexModel, b : MathoptconvexModel) -> MathoptconvexModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_model_copy(s : MathoptconvexModel) -> MathoptconvexModel {
-  let result = math_opt_convex_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_model_fill(s : MathoptconvexModel, v : Double) -> MathoptconvexModel {
-  let result = math_opt_convex_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_model_min(s : MathoptconvexModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_opt_convex_layer_sum(s : MathoptconvexLayer) -> Double { @_common.su
 pub fn math_opt_convex_layer_mean(s : MathoptconvexLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_layer_scale(s : MathoptconvexLayer, f : Double) -> MathoptconvexLayer {
-  let result = math_opt_convex_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_layer_add(a : MathoptconvexLayer, b : MathoptconvexLayer) -> MathoptconvexLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_layer_copy(s : MathoptconvexLayer) -> MathoptconvexLayer {
-  let result = math_opt_convex_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_layer_fill(s : MathoptconvexLayer, v : Double) -> MathoptconvexLayer {
-  let result = math_opt_convex_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_layer_min(s : MathoptconvexLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_opt_convex_buffer_sum(s : MathoptconvexBuffer) -> Double { @_common.
 pub fn math_opt_convex_buffer_mean(s : MathoptconvexBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_buffer_scale(s : MathoptconvexBuffer, f : Double) -> MathoptconvexBuffer {
-  let result = math_opt_convex_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_buffer_add(a : MathoptconvexBuffer, b : MathoptconvexBuffer) -> MathoptconvexBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_buffer_copy(s : MathoptconvexBuffer) -> MathoptconvexBuffer {
-  let result = math_opt_convex_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_buffer_fill(s : MathoptconvexBuffer, v : Double) -> MathoptconvexBuffer {
-  let result = math_opt_convex_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_buffer_min(s : MathoptconvexBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_opt_convex_cursor_sum(s : MathoptconvexCursor) -> Double { @_common.
 pub fn math_opt_convex_cursor_mean(s : MathoptconvexCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_cursor_scale(s : MathoptconvexCursor, f : Double) -> MathoptconvexCursor {
-  let result = math_opt_convex_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cursor_add(a : MathoptconvexCursor, b : MathoptconvexCursor) -> MathoptconvexCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_cursor_copy(s : MathoptconvexCursor) -> MathoptconvexCursor {
-  let result = math_opt_convex_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cursor_fill(s : MathoptconvexCursor, v : Double) -> MathoptconvexCursor {
-  let result = math_opt_convex_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cursor_min(s : MathoptconvexCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_opt_convex_view_sum(s : MathoptconvexView) -> Double { @_common.sum(
 pub fn math_opt_convex_view_mean(s : MathoptconvexView) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_view_scale(s : MathoptconvexView, f : Double) -> MathoptconvexView {
-  let result = math_opt_convex_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_view_add(a : MathoptconvexView, b : MathoptconvexView) -> MathoptconvexView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_view_copy(s : MathoptconvexView) -> MathoptconvexView {
-  let result = math_opt_convex_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_view_fill(s : MathoptconvexView, v : Double) -> MathoptconvexView {
-  let result = math_opt_convex_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_view_min(s : MathoptconvexView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_opt_convex_range_sum(s : MathoptconvexRange) -> Double { @_common.su
 pub fn math_opt_convex_range_mean(s : MathoptconvexRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_range_scale(s : MathoptconvexRange, f : Double) -> MathoptconvexRange {
-  let result = math_opt_convex_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_range_add(a : MathoptconvexRange, b : MathoptconvexRange) -> MathoptconvexRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_range_copy(s : MathoptconvexRange) -> MathoptconvexRange {
-  let result = math_opt_convex_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_range_fill(s : MathoptconvexRange, v : Double) -> MathoptconvexRange {
-  let result = math_opt_convex_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_range_min(s : MathoptconvexRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_opt_convex_slice_sum(s : MathoptconvexSlice) -> Double { @_common.su
 pub fn math_opt_convex_slice_mean(s : MathoptconvexSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_convex_slice_scale(s : MathoptconvexSlice, f : Double) -> MathoptconvexSlice {
-  let result = math_opt_convex_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_slice_add(a : MathoptconvexSlice, b : MathoptconvexSlice) -> MathoptconvexSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_opt_convex_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_opt_convex_slice_copy(s : MathoptconvexSlice) -> MathoptconvexSlice {
-  let result = math_opt_convex_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_slice_fill(s : MathoptconvexSlice, v : Double) -> MathoptconvexSlice {
-  let result = math_opt_convex_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_slice_min(s : MathoptconvexSlice) -> Double { @_common.min(s.data) }

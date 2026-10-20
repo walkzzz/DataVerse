@@ -383,28 +383,20 @@ pub fn ds_list_doubly_frame_sum(s : DslistdoublyFrame) -> Double { @_common.sum(
 pub fn ds_list_doubly_frame_mean(s : DslistdoublyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_frame_scale(s : DslistdoublyFrame, f : Double) -> DslistdoublyFrame {
-  let result = ds_list_doubly_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_frame_add(a : DslistdoublyFrame, b : DslistdoublyFrame) -> DslistdoublyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_frame_copy(s : DslistdoublyFrame) -> DslistdoublyFrame {
-  let result = ds_list_doubly_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_frame_fill(s : DslistdoublyFrame, v : Double) -> DslistdoublyFrame {
-  let result = ds_list_doubly_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_frame_min(s : DslistdoublyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_list_doubly_table_sum(s : DslistdoublyTable) -> Double { @_common.sum(
 pub fn ds_list_doubly_table_mean(s : DslistdoublyTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_table_scale(s : DslistdoublyTable, f : Double) -> DslistdoublyTable {
-  let result = ds_list_doubly_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_table_add(a : DslistdoublyTable, b : DslistdoublyTable) -> DslistdoublyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_table_copy(s : DslistdoublyTable) -> DslistdoublyTable {
-  let result = ds_list_doubly_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_table_fill(s : DslistdoublyTable, v : Double) -> DslistdoublyTable {
-  let result = ds_list_doubly_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_table_min(s : DslistdoublyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_list_doubly_graphn_sum(s : DslistdoublyGraphN) -> Double { @_common.su
 pub fn ds_list_doubly_graphn_mean(s : DslistdoublyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_graphn_scale(s : DslistdoublyGraphN, f : Double) -> DslistdoublyGraphN {
-  let result = ds_list_doubly_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_graphn_add(a : DslistdoublyGraphN, b : DslistdoublyGraphN) -> DslistdoublyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_graphn_copy(s : DslistdoublyGraphN) -> DslistdoublyGraphN {
-  let result = ds_list_doubly_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_graphn_fill(s : DslistdoublyGraphN, v : Double) -> DslistdoublyGraphN {
-  let result = ds_list_doubly_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_graphn_min(s : DslistdoublyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_list_doubly_node_sum(s : DslistdoublyNode) -> Double { @_common.sum(s.
 pub fn ds_list_doubly_node_mean(s : DslistdoublyNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_node_scale(s : DslistdoublyNode, f : Double) -> DslistdoublyNode {
-  let result = ds_list_doubly_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_node_add(a : DslistdoublyNode, b : DslistdoublyNode) -> DslistdoublyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_node_copy(s : DslistdoublyNode) -> DslistdoublyNode {
-  let result = ds_list_doubly_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_node_fill(s : DslistdoublyNode, v : Double) -> DslistdoublyNode {
-  let result = ds_list_doubly_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_node_min(s : DslistdoublyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_list_doubly_edge_sum(s : DslistdoublyEdge) -> Double { @_common.sum(s.
 pub fn ds_list_doubly_edge_mean(s : DslistdoublyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_edge_scale(s : DslistdoublyEdge, f : Double) -> DslistdoublyEdge {
-  let result = ds_list_doubly_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_edge_add(a : DslistdoublyEdge, b : DslistdoublyEdge) -> DslistdoublyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_edge_copy(s : DslistdoublyEdge) -> DslistdoublyEdge {
-  let result = ds_list_doubly_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_edge_fill(s : DslistdoublyEdge, v : Double) -> DslistdoublyEdge {
-  let result = ds_list_doubly_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_edge_min(s : DslistdoublyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_list_doubly_path_sum(s : DslistdoublyPath) -> Double { @_common.sum(s.
 pub fn ds_list_doubly_path_mean(s : DslistdoublyPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_path_scale(s : DslistdoublyPath, f : Double) -> DslistdoublyPath {
-  let result = ds_list_doubly_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_path_add(a : DslistdoublyPath, b : DslistdoublyPath) -> DslistdoublyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_path_copy(s : DslistdoublyPath) -> DslistdoublyPath {
-  let result = ds_list_doubly_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_path_fill(s : DslistdoublyPath, v : Double) -> DslistdoublyPath {
-  let result = ds_list_doubly_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_path_min(s : DslistdoublyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_list_doubly_cluster_sum(s : DslistdoublyCluster) -> Double { @_common.
 pub fn ds_list_doubly_cluster_mean(s : DslistdoublyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_cluster_scale(s : DslistdoublyCluster, f : Double) -> DslistdoublyCluster {
-  let result = ds_list_doubly_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_cluster_add(a : DslistdoublyCluster, b : DslistdoublyCluster) -> DslistdoublyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_cluster_copy(s : DslistdoublyCluster) -> DslistdoublyCluster {
-  let result = ds_list_doubly_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_cluster_fill(s : DslistdoublyCluster, v : Double) -> DslistdoublyCluster {
-  let result = ds_list_doubly_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_cluster_min(s : DslistdoublyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_list_doubly_model_sum(s : DslistdoublyModel) -> Double { @_common.sum(
 pub fn ds_list_doubly_model_mean(s : DslistdoublyModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_model_scale(s : DslistdoublyModel, f : Double) -> DslistdoublyModel {
-  let result = ds_list_doubly_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_model_add(a : DslistdoublyModel, b : DslistdoublyModel) -> DslistdoublyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_model_copy(s : DslistdoublyModel) -> DslistdoublyModel {
-  let result = ds_list_doubly_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_model_fill(s : DslistdoublyModel, v : Double) -> DslistdoublyModel {
-  let result = ds_list_doubly_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_model_min(s : DslistdoublyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_list_doubly_layer_sum(s : DslistdoublyLayer) -> Double { @_common.sum(
 pub fn ds_list_doubly_layer_mean(s : DslistdoublyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_layer_scale(s : DslistdoublyLayer, f : Double) -> DslistdoublyLayer {
-  let result = ds_list_doubly_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_layer_add(a : DslistdoublyLayer, b : DslistdoublyLayer) -> DslistdoublyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_layer_copy(s : DslistdoublyLayer) -> DslistdoublyLayer {
-  let result = ds_list_doubly_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_layer_fill(s : DslistdoublyLayer, v : Double) -> DslistdoublyLayer {
-  let result = ds_list_doubly_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_layer_min(s : DslistdoublyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_list_doubly_buffer_sum(s : DslistdoublyBuffer) -> Double { @_common.su
 pub fn ds_list_doubly_buffer_mean(s : DslistdoublyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_buffer_scale(s : DslistdoublyBuffer, f : Double) -> DslistdoublyBuffer {
-  let result = ds_list_doubly_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_buffer_add(a : DslistdoublyBuffer, b : DslistdoublyBuffer) -> DslistdoublyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_buffer_copy(s : DslistdoublyBuffer) -> DslistdoublyBuffer {
-  let result = ds_list_doubly_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_buffer_fill(s : DslistdoublyBuffer, v : Double) -> DslistdoublyBuffer {
-  let result = ds_list_doubly_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_buffer_min(s : DslistdoublyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_list_doubly_cursor_sum(s : DslistdoublyCursor) -> Double { @_common.su
 pub fn ds_list_doubly_cursor_mean(s : DslistdoublyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_cursor_scale(s : DslistdoublyCursor, f : Double) -> DslistdoublyCursor {
-  let result = ds_list_doubly_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_cursor_add(a : DslistdoublyCursor, b : DslistdoublyCursor) -> DslistdoublyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_cursor_copy(s : DslistdoublyCursor) -> DslistdoublyCursor {
-  let result = ds_list_doubly_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_cursor_fill(s : DslistdoublyCursor, v : Double) -> DslistdoublyCursor {
-  let result = ds_list_doubly_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_cursor_min(s : DslistdoublyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_list_doubly_view_sum(s : DslistdoublyView) -> Double { @_common.sum(s.
 pub fn ds_list_doubly_view_mean(s : DslistdoublyView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_view_scale(s : DslistdoublyView, f : Double) -> DslistdoublyView {
-  let result = ds_list_doubly_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_view_add(a : DslistdoublyView, b : DslistdoublyView) -> DslistdoublyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_view_copy(s : DslistdoublyView) -> DslistdoublyView {
-  let result = ds_list_doubly_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_view_fill(s : DslistdoublyView, v : Double) -> DslistdoublyView {
-  let result = ds_list_doubly_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_view_min(s : DslistdoublyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_list_doubly_range_sum(s : DslistdoublyRange) -> Double { @_common.sum(
 pub fn ds_list_doubly_range_mean(s : DslistdoublyRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_range_scale(s : DslistdoublyRange, f : Double) -> DslistdoublyRange {
-  let result = ds_list_doubly_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_range_add(a : DslistdoublyRange, b : DslistdoublyRange) -> DslistdoublyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_range_copy(s : DslistdoublyRange) -> DslistdoublyRange {
-  let result = ds_list_doubly_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_range_fill(s : DslistdoublyRange, v : Double) -> DslistdoublyRange {
-  let result = ds_list_doubly_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_range_min(s : DslistdoublyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_list_doubly_slice_sum(s : DslistdoublySlice) -> Double { @_common.sum(
 pub fn ds_list_doubly_slice_mean(s : DslistdoublySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_slice_scale(s : DslistdoublySlice, f : Double) -> DslistdoublySlice {
-  let result = ds_list_doubly_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_slice_add(a : DslistdoublySlice, b : DslistdoublySlice) -> DslistdoublySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_doubly_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_doubly_slice_copy(s : DslistdoublySlice) -> DslistdoublySlice {
-  let result = ds_list_doubly_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_slice_fill(s : DslistdoublySlice, v : Double) -> DslistdoublySlice {
-  let result = ds_list_doubly_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_doubly_slice_min(s : DslistdoublySlice) -> Double { @_common.min(s.data) }

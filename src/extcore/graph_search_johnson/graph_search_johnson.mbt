@@ -383,28 +383,20 @@ pub fn graph_search_johnson_frame_sum(s : GraphsearchjohnsonFrame) -> Double { @
 pub fn graph_search_johnson_frame_mean(s : GraphsearchjohnsonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_frame_scale(s : GraphsearchjohnsonFrame, f : Double) -> GraphsearchjohnsonFrame {
-  let result = graph_search_johnson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_frame_add(a : GraphsearchjohnsonFrame, b : GraphsearchjohnsonFrame) -> GraphsearchjohnsonFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_frame_copy(s : GraphsearchjohnsonFrame) -> GraphsearchjohnsonFrame {
-  let result = graph_search_johnson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_frame_fill(s : GraphsearchjohnsonFrame, v : Double) -> GraphsearchjohnsonFrame {
-  let result = graph_search_johnson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_frame_min(s : GraphsearchjohnsonFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_search_johnson_table_sum(s : GraphsearchjohnsonTable) -> Double { @
 pub fn graph_search_johnson_table_mean(s : GraphsearchjohnsonTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_table_scale(s : GraphsearchjohnsonTable, f : Double) -> GraphsearchjohnsonTable {
-  let result = graph_search_johnson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_table_add(a : GraphsearchjohnsonTable, b : GraphsearchjohnsonTable) -> GraphsearchjohnsonTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_table_copy(s : GraphsearchjohnsonTable) -> GraphsearchjohnsonTable {
-  let result = graph_search_johnson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_table_fill(s : GraphsearchjohnsonTable, v : Double) -> GraphsearchjohnsonTable {
-  let result = graph_search_johnson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_table_min(s : GraphsearchjohnsonTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_search_johnson_graphn_sum(s : GraphsearchjohnsonGraphN) -> Double {
 pub fn graph_search_johnson_graphn_mean(s : GraphsearchjohnsonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_graphn_scale(s : GraphsearchjohnsonGraphN, f : Double) -> GraphsearchjohnsonGraphN {
-  let result = graph_search_johnson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_graphn_add(a : GraphsearchjohnsonGraphN, b : GraphsearchjohnsonGraphN) -> GraphsearchjohnsonGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_graphn_copy(s : GraphsearchjohnsonGraphN) -> GraphsearchjohnsonGraphN {
-  let result = graph_search_johnson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_graphn_fill(s : GraphsearchjohnsonGraphN, v : Double) -> GraphsearchjohnsonGraphN {
-  let result = graph_search_johnson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_graphn_min(s : GraphsearchjohnsonGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_search_johnson_node_sum(s : GraphsearchjohnsonNode) -> Double { @_c
 pub fn graph_search_johnson_node_mean(s : GraphsearchjohnsonNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_node_scale(s : GraphsearchjohnsonNode, f : Double) -> GraphsearchjohnsonNode {
-  let result = graph_search_johnson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_node_add(a : GraphsearchjohnsonNode, b : GraphsearchjohnsonNode) -> GraphsearchjohnsonNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_node_copy(s : GraphsearchjohnsonNode) -> GraphsearchjohnsonNode {
-  let result = graph_search_johnson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_node_fill(s : GraphsearchjohnsonNode, v : Double) -> GraphsearchjohnsonNode {
-  let result = graph_search_johnson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_node_min(s : GraphsearchjohnsonNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_search_johnson_edge_sum(s : GraphsearchjohnsonEdge) -> Double { @_c
 pub fn graph_search_johnson_edge_mean(s : GraphsearchjohnsonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_edge_scale(s : GraphsearchjohnsonEdge, f : Double) -> GraphsearchjohnsonEdge {
-  let result = graph_search_johnson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_edge_add(a : GraphsearchjohnsonEdge, b : GraphsearchjohnsonEdge) -> GraphsearchjohnsonEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_edge_copy(s : GraphsearchjohnsonEdge) -> GraphsearchjohnsonEdge {
-  let result = graph_search_johnson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_edge_fill(s : GraphsearchjohnsonEdge, v : Double) -> GraphsearchjohnsonEdge {
-  let result = graph_search_johnson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_edge_min(s : GraphsearchjohnsonEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_search_johnson_path_sum(s : GraphsearchjohnsonPath) -> Double { @_c
 pub fn graph_search_johnson_path_mean(s : GraphsearchjohnsonPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_path_scale(s : GraphsearchjohnsonPath, f : Double) -> GraphsearchjohnsonPath {
-  let result = graph_search_johnson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_path_add(a : GraphsearchjohnsonPath, b : GraphsearchjohnsonPath) -> GraphsearchjohnsonPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_path_copy(s : GraphsearchjohnsonPath) -> GraphsearchjohnsonPath {
-  let result = graph_search_johnson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_path_fill(s : GraphsearchjohnsonPath, v : Double) -> GraphsearchjohnsonPath {
-  let result = graph_search_johnson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_path_min(s : GraphsearchjohnsonPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_search_johnson_cluster_sum(s : GraphsearchjohnsonCluster) -> Double
 pub fn graph_search_johnson_cluster_mean(s : GraphsearchjohnsonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_cluster_scale(s : GraphsearchjohnsonCluster, f : Double) -> GraphsearchjohnsonCluster {
-  let result = graph_search_johnson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cluster_add(a : GraphsearchjohnsonCluster, b : GraphsearchjohnsonCluster) -> GraphsearchjohnsonCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_cluster_copy(s : GraphsearchjohnsonCluster) -> GraphsearchjohnsonCluster {
-  let result = graph_search_johnson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cluster_fill(s : GraphsearchjohnsonCluster, v : Double) -> GraphsearchjohnsonCluster {
-  let result = graph_search_johnson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cluster_min(s : GraphsearchjohnsonCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_search_johnson_model_sum(s : GraphsearchjohnsonModel) -> Double { @
 pub fn graph_search_johnson_model_mean(s : GraphsearchjohnsonModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_model_scale(s : GraphsearchjohnsonModel, f : Double) -> GraphsearchjohnsonModel {
-  let result = graph_search_johnson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_model_add(a : GraphsearchjohnsonModel, b : GraphsearchjohnsonModel) -> GraphsearchjohnsonModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_model_copy(s : GraphsearchjohnsonModel) -> GraphsearchjohnsonModel {
-  let result = graph_search_johnson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_model_fill(s : GraphsearchjohnsonModel, v : Double) -> GraphsearchjohnsonModel {
-  let result = graph_search_johnson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_model_min(s : GraphsearchjohnsonModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_search_johnson_layer_sum(s : GraphsearchjohnsonLayer) -> Double { @
 pub fn graph_search_johnson_layer_mean(s : GraphsearchjohnsonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_layer_scale(s : GraphsearchjohnsonLayer, f : Double) -> GraphsearchjohnsonLayer {
-  let result = graph_search_johnson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_layer_add(a : GraphsearchjohnsonLayer, b : GraphsearchjohnsonLayer) -> GraphsearchjohnsonLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_layer_copy(s : GraphsearchjohnsonLayer) -> GraphsearchjohnsonLayer {
-  let result = graph_search_johnson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_layer_fill(s : GraphsearchjohnsonLayer, v : Double) -> GraphsearchjohnsonLayer {
-  let result = graph_search_johnson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_layer_min(s : GraphsearchjohnsonLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_search_johnson_buffer_sum(s : GraphsearchjohnsonBuffer) -> Double {
 pub fn graph_search_johnson_buffer_mean(s : GraphsearchjohnsonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_buffer_scale(s : GraphsearchjohnsonBuffer, f : Double) -> GraphsearchjohnsonBuffer {
-  let result = graph_search_johnson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_buffer_add(a : GraphsearchjohnsonBuffer, b : GraphsearchjohnsonBuffer) -> GraphsearchjohnsonBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_buffer_copy(s : GraphsearchjohnsonBuffer) -> GraphsearchjohnsonBuffer {
-  let result = graph_search_johnson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_buffer_fill(s : GraphsearchjohnsonBuffer, v : Double) -> GraphsearchjohnsonBuffer {
-  let result = graph_search_johnson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_buffer_min(s : GraphsearchjohnsonBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_search_johnson_cursor_sum(s : GraphsearchjohnsonCursor) -> Double {
 pub fn graph_search_johnson_cursor_mean(s : GraphsearchjohnsonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_cursor_scale(s : GraphsearchjohnsonCursor, f : Double) -> GraphsearchjohnsonCursor {
-  let result = graph_search_johnson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cursor_add(a : GraphsearchjohnsonCursor, b : GraphsearchjohnsonCursor) -> GraphsearchjohnsonCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_cursor_copy(s : GraphsearchjohnsonCursor) -> GraphsearchjohnsonCursor {
-  let result = graph_search_johnson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cursor_fill(s : GraphsearchjohnsonCursor, v : Double) -> GraphsearchjohnsonCursor {
-  let result = graph_search_johnson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cursor_min(s : GraphsearchjohnsonCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_search_johnson_view_sum(s : GraphsearchjohnsonView) -> Double { @_c
 pub fn graph_search_johnson_view_mean(s : GraphsearchjohnsonView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_view_scale(s : GraphsearchjohnsonView, f : Double) -> GraphsearchjohnsonView {
-  let result = graph_search_johnson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_view_add(a : GraphsearchjohnsonView, b : GraphsearchjohnsonView) -> GraphsearchjohnsonView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_view_copy(s : GraphsearchjohnsonView) -> GraphsearchjohnsonView {
-  let result = graph_search_johnson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_view_fill(s : GraphsearchjohnsonView, v : Double) -> GraphsearchjohnsonView {
-  let result = graph_search_johnson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_view_min(s : GraphsearchjohnsonView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_search_johnson_range_sum(s : GraphsearchjohnsonRange) -> Double { @
 pub fn graph_search_johnson_range_mean(s : GraphsearchjohnsonRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_range_scale(s : GraphsearchjohnsonRange, f : Double) -> GraphsearchjohnsonRange {
-  let result = graph_search_johnson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_range_add(a : GraphsearchjohnsonRange, b : GraphsearchjohnsonRange) -> GraphsearchjohnsonRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_range_copy(s : GraphsearchjohnsonRange) -> GraphsearchjohnsonRange {
-  let result = graph_search_johnson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_range_fill(s : GraphsearchjohnsonRange, v : Double) -> GraphsearchjohnsonRange {
-  let result = graph_search_johnson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_range_min(s : GraphsearchjohnsonRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_search_johnson_slice_sum(s : GraphsearchjohnsonSlice) -> Double { @
 pub fn graph_search_johnson_slice_mean(s : GraphsearchjohnsonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_slice_scale(s : GraphsearchjohnsonSlice, f : Double) -> GraphsearchjohnsonSlice {
-  let result = graph_search_johnson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_slice_add(a : GraphsearchjohnsonSlice, b : GraphsearchjohnsonSlice) -> GraphsearchjohnsonSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_johnson_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_johnson_slice_copy(s : GraphsearchjohnsonSlice) -> GraphsearchjohnsonSlice {
-  let result = graph_search_johnson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_slice_fill(s : GraphsearchjohnsonSlice, v : Double) -> GraphsearchjohnsonSlice {
-  let result = graph_search_johnson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_slice_min(s : GraphsearchjohnsonSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ds_heap_lazy_frame_sum(s : DsheaplazyFrame) -> Double { @_common.sum(s.da
 pub fn ds_heap_lazy_frame_mean(s : DsheaplazyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_frame_scale(s : DsheaplazyFrame, f : Double) -> DsheaplazyFrame {
-  let result = ds_heap_lazy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_frame_add(a : DsheaplazyFrame, b : DsheaplazyFrame) -> DsheaplazyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_frame_copy(s : DsheaplazyFrame) -> DsheaplazyFrame {
-  let result = ds_heap_lazy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_frame_fill(s : DsheaplazyFrame, v : Double) -> DsheaplazyFrame {
-  let result = ds_heap_lazy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_frame_min(s : DsheaplazyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_heap_lazy_table_sum(s : DsheaplazyTable) -> Double { @_common.sum(s.da
 pub fn ds_heap_lazy_table_mean(s : DsheaplazyTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_table_scale(s : DsheaplazyTable, f : Double) -> DsheaplazyTable {
-  let result = ds_heap_lazy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_table_add(a : DsheaplazyTable, b : DsheaplazyTable) -> DsheaplazyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_table_copy(s : DsheaplazyTable) -> DsheaplazyTable {
-  let result = ds_heap_lazy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_table_fill(s : DsheaplazyTable, v : Double) -> DsheaplazyTable {
-  let result = ds_heap_lazy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_table_min(s : DsheaplazyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_heap_lazy_graphn_sum(s : DsheaplazyGraphN) -> Double { @_common.sum(s.
 pub fn ds_heap_lazy_graphn_mean(s : DsheaplazyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_graphn_scale(s : DsheaplazyGraphN, f : Double) -> DsheaplazyGraphN {
-  let result = ds_heap_lazy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_graphn_add(a : DsheaplazyGraphN, b : DsheaplazyGraphN) -> DsheaplazyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_graphn_copy(s : DsheaplazyGraphN) -> DsheaplazyGraphN {
-  let result = ds_heap_lazy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_graphn_fill(s : DsheaplazyGraphN, v : Double) -> DsheaplazyGraphN {
-  let result = ds_heap_lazy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_graphn_min(s : DsheaplazyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_heap_lazy_node_sum(s : DsheaplazyNode) -> Double { @_common.sum(s.data
 pub fn ds_heap_lazy_node_mean(s : DsheaplazyNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_node_scale(s : DsheaplazyNode, f : Double) -> DsheaplazyNode {
-  let result = ds_heap_lazy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_node_add(a : DsheaplazyNode, b : DsheaplazyNode) -> DsheaplazyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_node_copy(s : DsheaplazyNode) -> DsheaplazyNode {
-  let result = ds_heap_lazy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_node_fill(s : DsheaplazyNode, v : Double) -> DsheaplazyNode {
-  let result = ds_heap_lazy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_node_min(s : DsheaplazyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_heap_lazy_edge_sum(s : DsheaplazyEdge) -> Double { @_common.sum(s.data
 pub fn ds_heap_lazy_edge_mean(s : DsheaplazyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_edge_scale(s : DsheaplazyEdge, f : Double) -> DsheaplazyEdge {
-  let result = ds_heap_lazy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_edge_add(a : DsheaplazyEdge, b : DsheaplazyEdge) -> DsheaplazyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_edge_copy(s : DsheaplazyEdge) -> DsheaplazyEdge {
-  let result = ds_heap_lazy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_edge_fill(s : DsheaplazyEdge, v : Double) -> DsheaplazyEdge {
-  let result = ds_heap_lazy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_edge_min(s : DsheaplazyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_heap_lazy_path_sum(s : DsheaplazyPath) -> Double { @_common.sum(s.data
 pub fn ds_heap_lazy_path_mean(s : DsheaplazyPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_path_scale(s : DsheaplazyPath, f : Double) -> DsheaplazyPath {
-  let result = ds_heap_lazy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_path_add(a : DsheaplazyPath, b : DsheaplazyPath) -> DsheaplazyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_path_copy(s : DsheaplazyPath) -> DsheaplazyPath {
-  let result = ds_heap_lazy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_path_fill(s : DsheaplazyPath, v : Double) -> DsheaplazyPath {
-  let result = ds_heap_lazy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_path_min(s : DsheaplazyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_heap_lazy_cluster_sum(s : DsheaplazyCluster) -> Double { @_common.sum(
 pub fn ds_heap_lazy_cluster_mean(s : DsheaplazyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_cluster_scale(s : DsheaplazyCluster, f : Double) -> DsheaplazyCluster {
-  let result = ds_heap_lazy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_cluster_add(a : DsheaplazyCluster, b : DsheaplazyCluster) -> DsheaplazyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_cluster_copy(s : DsheaplazyCluster) -> DsheaplazyCluster {
-  let result = ds_heap_lazy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_cluster_fill(s : DsheaplazyCluster, v : Double) -> DsheaplazyCluster {
-  let result = ds_heap_lazy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_cluster_min(s : DsheaplazyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_heap_lazy_model_sum(s : DsheaplazyModel) -> Double { @_common.sum(s.da
 pub fn ds_heap_lazy_model_mean(s : DsheaplazyModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_model_scale(s : DsheaplazyModel, f : Double) -> DsheaplazyModel {
-  let result = ds_heap_lazy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_model_add(a : DsheaplazyModel, b : DsheaplazyModel) -> DsheaplazyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_model_copy(s : DsheaplazyModel) -> DsheaplazyModel {
-  let result = ds_heap_lazy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_model_fill(s : DsheaplazyModel, v : Double) -> DsheaplazyModel {
-  let result = ds_heap_lazy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_model_min(s : DsheaplazyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_heap_lazy_layer_sum(s : DsheaplazyLayer) -> Double { @_common.sum(s.da
 pub fn ds_heap_lazy_layer_mean(s : DsheaplazyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_layer_scale(s : DsheaplazyLayer, f : Double) -> DsheaplazyLayer {
-  let result = ds_heap_lazy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_layer_add(a : DsheaplazyLayer, b : DsheaplazyLayer) -> DsheaplazyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_layer_copy(s : DsheaplazyLayer) -> DsheaplazyLayer {
-  let result = ds_heap_lazy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_layer_fill(s : DsheaplazyLayer, v : Double) -> DsheaplazyLayer {
-  let result = ds_heap_lazy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_layer_min(s : DsheaplazyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_heap_lazy_buffer_sum(s : DsheaplazyBuffer) -> Double { @_common.sum(s.
 pub fn ds_heap_lazy_buffer_mean(s : DsheaplazyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_buffer_scale(s : DsheaplazyBuffer, f : Double) -> DsheaplazyBuffer {
-  let result = ds_heap_lazy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_buffer_add(a : DsheaplazyBuffer, b : DsheaplazyBuffer) -> DsheaplazyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_buffer_copy(s : DsheaplazyBuffer) -> DsheaplazyBuffer {
-  let result = ds_heap_lazy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_buffer_fill(s : DsheaplazyBuffer, v : Double) -> DsheaplazyBuffer {
-  let result = ds_heap_lazy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_buffer_min(s : DsheaplazyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_heap_lazy_cursor_sum(s : DsheaplazyCursor) -> Double { @_common.sum(s.
 pub fn ds_heap_lazy_cursor_mean(s : DsheaplazyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_cursor_scale(s : DsheaplazyCursor, f : Double) -> DsheaplazyCursor {
-  let result = ds_heap_lazy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_cursor_add(a : DsheaplazyCursor, b : DsheaplazyCursor) -> DsheaplazyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_cursor_copy(s : DsheaplazyCursor) -> DsheaplazyCursor {
-  let result = ds_heap_lazy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_cursor_fill(s : DsheaplazyCursor, v : Double) -> DsheaplazyCursor {
-  let result = ds_heap_lazy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_cursor_min(s : DsheaplazyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_heap_lazy_view_sum(s : DsheaplazyView) -> Double { @_common.sum(s.data
 pub fn ds_heap_lazy_view_mean(s : DsheaplazyView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_view_scale(s : DsheaplazyView, f : Double) -> DsheaplazyView {
-  let result = ds_heap_lazy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_view_add(a : DsheaplazyView, b : DsheaplazyView) -> DsheaplazyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_view_copy(s : DsheaplazyView) -> DsheaplazyView {
-  let result = ds_heap_lazy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_view_fill(s : DsheaplazyView, v : Double) -> DsheaplazyView {
-  let result = ds_heap_lazy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_view_min(s : DsheaplazyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_heap_lazy_range_sum(s : DsheaplazyRange) -> Double { @_common.sum(s.da
 pub fn ds_heap_lazy_range_mean(s : DsheaplazyRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_range_scale(s : DsheaplazyRange, f : Double) -> DsheaplazyRange {
-  let result = ds_heap_lazy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_range_add(a : DsheaplazyRange, b : DsheaplazyRange) -> DsheaplazyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_range_copy(s : DsheaplazyRange) -> DsheaplazyRange {
-  let result = ds_heap_lazy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_range_fill(s : DsheaplazyRange, v : Double) -> DsheaplazyRange {
-  let result = ds_heap_lazy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_range_min(s : DsheaplazyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_heap_lazy_slice_sum(s : DsheaplazySlice) -> Double { @_common.sum(s.da
 pub fn ds_heap_lazy_slice_mean(s : DsheaplazySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_slice_scale(s : DsheaplazySlice, f : Double) -> DsheaplazySlice {
-  let result = ds_heap_lazy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_slice_add(a : DsheaplazySlice, b : DsheaplazySlice) -> DsheaplazySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_lazy_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_lazy_slice_copy(s : DsheaplazySlice) -> DsheaplazySlice {
-  let result = ds_heap_lazy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_slice_fill(s : DsheaplazySlice, v : Double) -> DsheaplazySlice {
-  let result = ds_heap_lazy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_lazy_slice_min(s : DsheaplazySlice) -> Double { @_common.min(s.data) }

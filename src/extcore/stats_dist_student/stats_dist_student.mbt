@@ -383,28 +383,20 @@ pub fn stats_dist_student_frame_sum(s : StatsdiststudentFrame) -> Double { @_com
 pub fn stats_dist_student_frame_mean(s : StatsdiststudentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_frame_scale(s : StatsdiststudentFrame, f : Double) -> StatsdiststudentFrame {
-  let result = stats_dist_student_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_frame_add(a : StatsdiststudentFrame, b : StatsdiststudentFrame) -> StatsdiststudentFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_frame_copy(s : StatsdiststudentFrame) -> StatsdiststudentFrame {
-  let result = stats_dist_student_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_frame_fill(s : StatsdiststudentFrame, v : Double) -> StatsdiststudentFrame {
-  let result = stats_dist_student_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_frame_min(s : StatsdiststudentFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_student_table_sum(s : StatsdiststudentTable) -> Double { @_com
 pub fn stats_dist_student_table_mean(s : StatsdiststudentTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_table_scale(s : StatsdiststudentTable, f : Double) -> StatsdiststudentTable {
-  let result = stats_dist_student_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_table_add(a : StatsdiststudentTable, b : StatsdiststudentTable) -> StatsdiststudentTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_table_copy(s : StatsdiststudentTable) -> StatsdiststudentTable {
-  let result = stats_dist_student_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_table_fill(s : StatsdiststudentTable, v : Double) -> StatsdiststudentTable {
-  let result = stats_dist_student_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_table_min(s : StatsdiststudentTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_student_graphn_sum(s : StatsdiststudentGraphN) -> Double { @_c
 pub fn stats_dist_student_graphn_mean(s : StatsdiststudentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_graphn_scale(s : StatsdiststudentGraphN, f : Double) -> StatsdiststudentGraphN {
-  let result = stats_dist_student_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_graphn_add(a : StatsdiststudentGraphN, b : StatsdiststudentGraphN) -> StatsdiststudentGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_graphn_copy(s : StatsdiststudentGraphN) -> StatsdiststudentGraphN {
-  let result = stats_dist_student_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_graphn_fill(s : StatsdiststudentGraphN, v : Double) -> StatsdiststudentGraphN {
-  let result = stats_dist_student_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_graphn_min(s : StatsdiststudentGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_student_node_sum(s : StatsdiststudentNode) -> Double { @_commo
 pub fn stats_dist_student_node_mean(s : StatsdiststudentNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_node_scale(s : StatsdiststudentNode, f : Double) -> StatsdiststudentNode {
-  let result = stats_dist_student_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_node_add(a : StatsdiststudentNode, b : StatsdiststudentNode) -> StatsdiststudentNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_node_copy(s : StatsdiststudentNode) -> StatsdiststudentNode {
-  let result = stats_dist_student_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_node_fill(s : StatsdiststudentNode, v : Double) -> StatsdiststudentNode {
-  let result = stats_dist_student_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_node_min(s : StatsdiststudentNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_student_edge_sum(s : StatsdiststudentEdge) -> Double { @_commo
 pub fn stats_dist_student_edge_mean(s : StatsdiststudentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_edge_scale(s : StatsdiststudentEdge, f : Double) -> StatsdiststudentEdge {
-  let result = stats_dist_student_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_edge_add(a : StatsdiststudentEdge, b : StatsdiststudentEdge) -> StatsdiststudentEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_edge_copy(s : StatsdiststudentEdge) -> StatsdiststudentEdge {
-  let result = stats_dist_student_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_edge_fill(s : StatsdiststudentEdge, v : Double) -> StatsdiststudentEdge {
-  let result = stats_dist_student_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_edge_min(s : StatsdiststudentEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_student_path_sum(s : StatsdiststudentPath) -> Double { @_commo
 pub fn stats_dist_student_path_mean(s : StatsdiststudentPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_path_scale(s : StatsdiststudentPath, f : Double) -> StatsdiststudentPath {
-  let result = stats_dist_student_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_path_add(a : StatsdiststudentPath, b : StatsdiststudentPath) -> StatsdiststudentPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_path_copy(s : StatsdiststudentPath) -> StatsdiststudentPath {
-  let result = stats_dist_student_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_path_fill(s : StatsdiststudentPath, v : Double) -> StatsdiststudentPath {
-  let result = stats_dist_student_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_path_min(s : StatsdiststudentPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_student_cluster_sum(s : StatsdiststudentCluster) -> Double { @
 pub fn stats_dist_student_cluster_mean(s : StatsdiststudentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_cluster_scale(s : StatsdiststudentCluster, f : Double) -> StatsdiststudentCluster {
-  let result = stats_dist_student_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_cluster_add(a : StatsdiststudentCluster, b : StatsdiststudentCluster) -> StatsdiststudentCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_cluster_copy(s : StatsdiststudentCluster) -> StatsdiststudentCluster {
-  let result = stats_dist_student_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_cluster_fill(s : StatsdiststudentCluster, v : Double) -> StatsdiststudentCluster {
-  let result = stats_dist_student_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_cluster_min(s : StatsdiststudentCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_student_model_sum(s : StatsdiststudentModel) -> Double { @_com
 pub fn stats_dist_student_model_mean(s : StatsdiststudentModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_model_scale(s : StatsdiststudentModel, f : Double) -> StatsdiststudentModel {
-  let result = stats_dist_student_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_model_add(a : StatsdiststudentModel, b : StatsdiststudentModel) -> StatsdiststudentModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_model_copy(s : StatsdiststudentModel) -> StatsdiststudentModel {
-  let result = stats_dist_student_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_model_fill(s : StatsdiststudentModel, v : Double) -> StatsdiststudentModel {
-  let result = stats_dist_student_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_model_min(s : StatsdiststudentModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_student_layer_sum(s : StatsdiststudentLayer) -> Double { @_com
 pub fn stats_dist_student_layer_mean(s : StatsdiststudentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_layer_scale(s : StatsdiststudentLayer, f : Double) -> StatsdiststudentLayer {
-  let result = stats_dist_student_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_layer_add(a : StatsdiststudentLayer, b : StatsdiststudentLayer) -> StatsdiststudentLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_layer_copy(s : StatsdiststudentLayer) -> StatsdiststudentLayer {
-  let result = stats_dist_student_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_layer_fill(s : StatsdiststudentLayer, v : Double) -> StatsdiststudentLayer {
-  let result = stats_dist_student_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_layer_min(s : StatsdiststudentLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_student_buffer_sum(s : StatsdiststudentBuffer) -> Double { @_c
 pub fn stats_dist_student_buffer_mean(s : StatsdiststudentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_buffer_scale(s : StatsdiststudentBuffer, f : Double) -> StatsdiststudentBuffer {
-  let result = stats_dist_student_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_buffer_add(a : StatsdiststudentBuffer, b : StatsdiststudentBuffer) -> StatsdiststudentBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_buffer_copy(s : StatsdiststudentBuffer) -> StatsdiststudentBuffer {
-  let result = stats_dist_student_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_buffer_fill(s : StatsdiststudentBuffer, v : Double) -> StatsdiststudentBuffer {
-  let result = stats_dist_student_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_buffer_min(s : StatsdiststudentBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_student_cursor_sum(s : StatsdiststudentCursor) -> Double { @_c
 pub fn stats_dist_student_cursor_mean(s : StatsdiststudentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_cursor_scale(s : StatsdiststudentCursor, f : Double) -> StatsdiststudentCursor {
-  let result = stats_dist_student_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_cursor_add(a : StatsdiststudentCursor, b : StatsdiststudentCursor) -> StatsdiststudentCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_cursor_copy(s : StatsdiststudentCursor) -> StatsdiststudentCursor {
-  let result = stats_dist_student_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_cursor_fill(s : StatsdiststudentCursor, v : Double) -> StatsdiststudentCursor {
-  let result = stats_dist_student_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_cursor_min(s : StatsdiststudentCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_student_view_sum(s : StatsdiststudentView) -> Double { @_commo
 pub fn stats_dist_student_view_mean(s : StatsdiststudentView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_view_scale(s : StatsdiststudentView, f : Double) -> StatsdiststudentView {
-  let result = stats_dist_student_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_view_add(a : StatsdiststudentView, b : StatsdiststudentView) -> StatsdiststudentView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_view_copy(s : StatsdiststudentView) -> StatsdiststudentView {
-  let result = stats_dist_student_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_view_fill(s : StatsdiststudentView, v : Double) -> StatsdiststudentView {
-  let result = stats_dist_student_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_view_min(s : StatsdiststudentView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_student_range_sum(s : StatsdiststudentRange) -> Double { @_com
 pub fn stats_dist_student_range_mean(s : StatsdiststudentRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_range_scale(s : StatsdiststudentRange, f : Double) -> StatsdiststudentRange {
-  let result = stats_dist_student_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_range_add(a : StatsdiststudentRange, b : StatsdiststudentRange) -> StatsdiststudentRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_range_copy(s : StatsdiststudentRange) -> StatsdiststudentRange {
-  let result = stats_dist_student_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_range_fill(s : StatsdiststudentRange, v : Double) -> StatsdiststudentRange {
-  let result = stats_dist_student_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_range_min(s : StatsdiststudentRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_student_slice_sum(s : StatsdiststudentSlice) -> Double { @_com
 pub fn stats_dist_student_slice_mean(s : StatsdiststudentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_slice_scale(s : StatsdiststudentSlice, f : Double) -> StatsdiststudentSlice {
-  let result = stats_dist_student_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_slice_add(a : StatsdiststudentSlice, b : StatsdiststudentSlice) -> StatsdiststudentSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_student_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_student_slice_copy(s : StatsdiststudentSlice) -> StatsdiststudentSlice {
-  let result = stats_dist_student_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_slice_fill(s : StatsdiststudentSlice, v : Double) -> StatsdiststudentSlice {
-  let result = stats_dist_student_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_student_slice_min(s : StatsdiststudentSlice) -> Double { @_common.min(s.data) }

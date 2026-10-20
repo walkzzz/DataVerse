@@ -383,28 +383,20 @@ pub fn graph_search_astar_frame_sum(s : GraphsearchastarFrame) -> Double { @_com
 pub fn graph_search_astar_frame_mean(s : GraphsearchastarFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_frame_scale(s : GraphsearchastarFrame, f : Double) -> GraphsearchastarFrame {
-  let result = graph_search_astar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_frame_add(a : GraphsearchastarFrame, b : GraphsearchastarFrame) -> GraphsearchastarFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_frame_copy(s : GraphsearchastarFrame) -> GraphsearchastarFrame {
-  let result = graph_search_astar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_frame_fill(s : GraphsearchastarFrame, v : Double) -> GraphsearchastarFrame {
-  let result = graph_search_astar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_frame_min(s : GraphsearchastarFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_search_astar_table_sum(s : GraphsearchastarTable) -> Double { @_com
 pub fn graph_search_astar_table_mean(s : GraphsearchastarTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_table_scale(s : GraphsearchastarTable, f : Double) -> GraphsearchastarTable {
-  let result = graph_search_astar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_table_add(a : GraphsearchastarTable, b : GraphsearchastarTable) -> GraphsearchastarTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_table_copy(s : GraphsearchastarTable) -> GraphsearchastarTable {
-  let result = graph_search_astar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_table_fill(s : GraphsearchastarTable, v : Double) -> GraphsearchastarTable {
-  let result = graph_search_astar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_table_min(s : GraphsearchastarTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_search_astar_graphn_sum(s : GraphsearchastarGraphN) -> Double { @_c
 pub fn graph_search_astar_graphn_mean(s : GraphsearchastarGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_graphn_scale(s : GraphsearchastarGraphN, f : Double) -> GraphsearchastarGraphN {
-  let result = graph_search_astar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_graphn_add(a : GraphsearchastarGraphN, b : GraphsearchastarGraphN) -> GraphsearchastarGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_graphn_copy(s : GraphsearchastarGraphN) -> GraphsearchastarGraphN {
-  let result = graph_search_astar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_graphn_fill(s : GraphsearchastarGraphN, v : Double) -> GraphsearchastarGraphN {
-  let result = graph_search_astar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_graphn_min(s : GraphsearchastarGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_search_astar_node_sum(s : GraphsearchastarNode) -> Double { @_commo
 pub fn graph_search_astar_node_mean(s : GraphsearchastarNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_node_scale(s : GraphsearchastarNode, f : Double) -> GraphsearchastarNode {
-  let result = graph_search_astar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_node_add(a : GraphsearchastarNode, b : GraphsearchastarNode) -> GraphsearchastarNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_node_copy(s : GraphsearchastarNode) -> GraphsearchastarNode {
-  let result = graph_search_astar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_node_fill(s : GraphsearchastarNode, v : Double) -> GraphsearchastarNode {
-  let result = graph_search_astar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_node_min(s : GraphsearchastarNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_search_astar_edge_sum(s : GraphsearchastarEdge) -> Double { @_commo
 pub fn graph_search_astar_edge_mean(s : GraphsearchastarEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_edge_scale(s : GraphsearchastarEdge, f : Double) -> GraphsearchastarEdge {
-  let result = graph_search_astar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_edge_add(a : GraphsearchastarEdge, b : GraphsearchastarEdge) -> GraphsearchastarEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_edge_copy(s : GraphsearchastarEdge) -> GraphsearchastarEdge {
-  let result = graph_search_astar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_edge_fill(s : GraphsearchastarEdge, v : Double) -> GraphsearchastarEdge {
-  let result = graph_search_astar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_edge_min(s : GraphsearchastarEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_search_astar_path_sum(s : GraphsearchastarPath) -> Double { @_commo
 pub fn graph_search_astar_path_mean(s : GraphsearchastarPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_path_scale(s : GraphsearchastarPath, f : Double) -> GraphsearchastarPath {
-  let result = graph_search_astar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_path_add(a : GraphsearchastarPath, b : GraphsearchastarPath) -> GraphsearchastarPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_path_copy(s : GraphsearchastarPath) -> GraphsearchastarPath {
-  let result = graph_search_astar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_path_fill(s : GraphsearchastarPath, v : Double) -> GraphsearchastarPath {
-  let result = graph_search_astar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_path_min(s : GraphsearchastarPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_search_astar_cluster_sum(s : GraphsearchastarCluster) -> Double { @
 pub fn graph_search_astar_cluster_mean(s : GraphsearchastarCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_cluster_scale(s : GraphsearchastarCluster, f : Double) -> GraphsearchastarCluster {
-  let result = graph_search_astar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_cluster_add(a : GraphsearchastarCluster, b : GraphsearchastarCluster) -> GraphsearchastarCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_cluster_copy(s : GraphsearchastarCluster) -> GraphsearchastarCluster {
-  let result = graph_search_astar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_cluster_fill(s : GraphsearchastarCluster, v : Double) -> GraphsearchastarCluster {
-  let result = graph_search_astar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_cluster_min(s : GraphsearchastarCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_search_astar_model_sum(s : GraphsearchastarModel) -> Double { @_com
 pub fn graph_search_astar_model_mean(s : GraphsearchastarModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_model_scale(s : GraphsearchastarModel, f : Double) -> GraphsearchastarModel {
-  let result = graph_search_astar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_model_add(a : GraphsearchastarModel, b : GraphsearchastarModel) -> GraphsearchastarModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_model_copy(s : GraphsearchastarModel) -> GraphsearchastarModel {
-  let result = graph_search_astar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_model_fill(s : GraphsearchastarModel, v : Double) -> GraphsearchastarModel {
-  let result = graph_search_astar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_model_min(s : GraphsearchastarModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_search_astar_layer_sum(s : GraphsearchastarLayer) -> Double { @_com
 pub fn graph_search_astar_layer_mean(s : GraphsearchastarLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_layer_scale(s : GraphsearchastarLayer, f : Double) -> GraphsearchastarLayer {
-  let result = graph_search_astar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_layer_add(a : GraphsearchastarLayer, b : GraphsearchastarLayer) -> GraphsearchastarLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_layer_copy(s : GraphsearchastarLayer) -> GraphsearchastarLayer {
-  let result = graph_search_astar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_layer_fill(s : GraphsearchastarLayer, v : Double) -> GraphsearchastarLayer {
-  let result = graph_search_astar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_layer_min(s : GraphsearchastarLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_search_astar_buffer_sum(s : GraphsearchastarBuffer) -> Double { @_c
 pub fn graph_search_astar_buffer_mean(s : GraphsearchastarBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_buffer_scale(s : GraphsearchastarBuffer, f : Double) -> GraphsearchastarBuffer {
-  let result = graph_search_astar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_buffer_add(a : GraphsearchastarBuffer, b : GraphsearchastarBuffer) -> GraphsearchastarBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_buffer_copy(s : GraphsearchastarBuffer) -> GraphsearchastarBuffer {
-  let result = graph_search_astar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_buffer_fill(s : GraphsearchastarBuffer, v : Double) -> GraphsearchastarBuffer {
-  let result = graph_search_astar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_buffer_min(s : GraphsearchastarBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_search_astar_cursor_sum(s : GraphsearchastarCursor) -> Double { @_c
 pub fn graph_search_astar_cursor_mean(s : GraphsearchastarCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_cursor_scale(s : GraphsearchastarCursor, f : Double) -> GraphsearchastarCursor {
-  let result = graph_search_astar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_cursor_add(a : GraphsearchastarCursor, b : GraphsearchastarCursor) -> GraphsearchastarCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_cursor_copy(s : GraphsearchastarCursor) -> GraphsearchastarCursor {
-  let result = graph_search_astar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_cursor_fill(s : GraphsearchastarCursor, v : Double) -> GraphsearchastarCursor {
-  let result = graph_search_astar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_cursor_min(s : GraphsearchastarCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_search_astar_view_sum(s : GraphsearchastarView) -> Double { @_commo
 pub fn graph_search_astar_view_mean(s : GraphsearchastarView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_view_scale(s : GraphsearchastarView, f : Double) -> GraphsearchastarView {
-  let result = graph_search_astar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_view_add(a : GraphsearchastarView, b : GraphsearchastarView) -> GraphsearchastarView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_view_copy(s : GraphsearchastarView) -> GraphsearchastarView {
-  let result = graph_search_astar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_view_fill(s : GraphsearchastarView, v : Double) -> GraphsearchastarView {
-  let result = graph_search_astar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_view_min(s : GraphsearchastarView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_search_astar_range_sum(s : GraphsearchastarRange) -> Double { @_com
 pub fn graph_search_astar_range_mean(s : GraphsearchastarRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_range_scale(s : GraphsearchastarRange, f : Double) -> GraphsearchastarRange {
-  let result = graph_search_astar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_range_add(a : GraphsearchastarRange, b : GraphsearchastarRange) -> GraphsearchastarRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_range_copy(s : GraphsearchastarRange) -> GraphsearchastarRange {
-  let result = graph_search_astar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_range_fill(s : GraphsearchastarRange, v : Double) -> GraphsearchastarRange {
-  let result = graph_search_astar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_range_min(s : GraphsearchastarRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_search_astar_slice_sum(s : GraphsearchastarSlice) -> Double { @_com
 pub fn graph_search_astar_slice_mean(s : GraphsearchastarSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_astar_slice_scale(s : GraphsearchastarSlice, f : Double) -> GraphsearchastarSlice {
-  let result = graph_search_astar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_slice_add(a : GraphsearchastarSlice, b : GraphsearchastarSlice) -> GraphsearchastarSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_astar_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_astar_slice_copy(s : GraphsearchastarSlice) -> GraphsearchastarSlice {
-  let result = graph_search_astar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_slice_fill(s : GraphsearchastarSlice, v : Double) -> GraphsearchastarSlice {
-  let result = graph_search_astar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_astar_slice_min(s : GraphsearchastarSlice) -> Double { @_common.min(s.data) }

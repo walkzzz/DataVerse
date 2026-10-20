@@ -383,28 +383,20 @@ pub fn sort_dist_parallel_frame_sum(s : SortdistparallelFrame) -> Double { @_com
 pub fn sort_dist_parallel_frame_mean(s : SortdistparallelFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_frame_scale(s : SortdistparallelFrame, f : Double) -> SortdistparallelFrame {
-  let result = sort_dist_parallel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_frame_add(a : SortdistparallelFrame, b : SortdistparallelFrame) -> SortdistparallelFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_frame_copy(s : SortdistparallelFrame) -> SortdistparallelFrame {
-  let result = sort_dist_parallel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_frame_fill(s : SortdistparallelFrame, v : Double) -> SortdistparallelFrame {
-  let result = sort_dist_parallel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_frame_min(s : SortdistparallelFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_dist_parallel_table_sum(s : SortdistparallelTable) -> Double { @_com
 pub fn sort_dist_parallel_table_mean(s : SortdistparallelTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_table_scale(s : SortdistparallelTable, f : Double) -> SortdistparallelTable {
-  let result = sort_dist_parallel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_table_add(a : SortdistparallelTable, b : SortdistparallelTable) -> SortdistparallelTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_table_copy(s : SortdistparallelTable) -> SortdistparallelTable {
-  let result = sort_dist_parallel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_table_fill(s : SortdistparallelTable, v : Double) -> SortdistparallelTable {
-  let result = sort_dist_parallel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_table_min(s : SortdistparallelTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_dist_parallel_graphn_sum(s : SortdistparallelGraphN) -> Double { @_c
 pub fn sort_dist_parallel_graphn_mean(s : SortdistparallelGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_graphn_scale(s : SortdistparallelGraphN, f : Double) -> SortdistparallelGraphN {
-  let result = sort_dist_parallel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_graphn_add(a : SortdistparallelGraphN, b : SortdistparallelGraphN) -> SortdistparallelGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_graphn_copy(s : SortdistparallelGraphN) -> SortdistparallelGraphN {
-  let result = sort_dist_parallel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_graphn_fill(s : SortdistparallelGraphN, v : Double) -> SortdistparallelGraphN {
-  let result = sort_dist_parallel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_graphn_min(s : SortdistparallelGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_dist_parallel_node_sum(s : SortdistparallelNode) -> Double { @_commo
 pub fn sort_dist_parallel_node_mean(s : SortdistparallelNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_node_scale(s : SortdistparallelNode, f : Double) -> SortdistparallelNode {
-  let result = sort_dist_parallel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_node_add(a : SortdistparallelNode, b : SortdistparallelNode) -> SortdistparallelNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_node_copy(s : SortdistparallelNode) -> SortdistparallelNode {
-  let result = sort_dist_parallel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_node_fill(s : SortdistparallelNode, v : Double) -> SortdistparallelNode {
-  let result = sort_dist_parallel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_node_min(s : SortdistparallelNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_dist_parallel_edge_sum(s : SortdistparallelEdge) -> Double { @_commo
 pub fn sort_dist_parallel_edge_mean(s : SortdistparallelEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_edge_scale(s : SortdistparallelEdge, f : Double) -> SortdistparallelEdge {
-  let result = sort_dist_parallel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_edge_add(a : SortdistparallelEdge, b : SortdistparallelEdge) -> SortdistparallelEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_edge_copy(s : SortdistparallelEdge) -> SortdistparallelEdge {
-  let result = sort_dist_parallel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_edge_fill(s : SortdistparallelEdge, v : Double) -> SortdistparallelEdge {
-  let result = sort_dist_parallel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_edge_min(s : SortdistparallelEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_dist_parallel_path_sum(s : SortdistparallelPath) -> Double { @_commo
 pub fn sort_dist_parallel_path_mean(s : SortdistparallelPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_path_scale(s : SortdistparallelPath, f : Double) -> SortdistparallelPath {
-  let result = sort_dist_parallel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_path_add(a : SortdistparallelPath, b : SortdistparallelPath) -> SortdistparallelPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_path_copy(s : SortdistparallelPath) -> SortdistparallelPath {
-  let result = sort_dist_parallel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_path_fill(s : SortdistparallelPath, v : Double) -> SortdistparallelPath {
-  let result = sort_dist_parallel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_path_min(s : SortdistparallelPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_dist_parallel_cluster_sum(s : SortdistparallelCluster) -> Double { @
 pub fn sort_dist_parallel_cluster_mean(s : SortdistparallelCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_cluster_scale(s : SortdistparallelCluster, f : Double) -> SortdistparallelCluster {
-  let result = sort_dist_parallel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_cluster_add(a : SortdistparallelCluster, b : SortdistparallelCluster) -> SortdistparallelCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_cluster_copy(s : SortdistparallelCluster) -> SortdistparallelCluster {
-  let result = sort_dist_parallel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_cluster_fill(s : SortdistparallelCluster, v : Double) -> SortdistparallelCluster {
-  let result = sort_dist_parallel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_cluster_min(s : SortdistparallelCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_dist_parallel_model_sum(s : SortdistparallelModel) -> Double { @_com
 pub fn sort_dist_parallel_model_mean(s : SortdistparallelModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_model_scale(s : SortdistparallelModel, f : Double) -> SortdistparallelModel {
-  let result = sort_dist_parallel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_model_add(a : SortdistparallelModel, b : SortdistparallelModel) -> SortdistparallelModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_model_copy(s : SortdistparallelModel) -> SortdistparallelModel {
-  let result = sort_dist_parallel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_model_fill(s : SortdistparallelModel, v : Double) -> SortdistparallelModel {
-  let result = sort_dist_parallel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_model_min(s : SortdistparallelModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_dist_parallel_layer_sum(s : SortdistparallelLayer) -> Double { @_com
 pub fn sort_dist_parallel_layer_mean(s : SortdistparallelLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_layer_scale(s : SortdistparallelLayer, f : Double) -> SortdistparallelLayer {
-  let result = sort_dist_parallel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_layer_add(a : SortdistparallelLayer, b : SortdistparallelLayer) -> SortdistparallelLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_layer_copy(s : SortdistparallelLayer) -> SortdistparallelLayer {
-  let result = sort_dist_parallel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_layer_fill(s : SortdistparallelLayer, v : Double) -> SortdistparallelLayer {
-  let result = sort_dist_parallel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_layer_min(s : SortdistparallelLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_dist_parallel_buffer_sum(s : SortdistparallelBuffer) -> Double { @_c
 pub fn sort_dist_parallel_buffer_mean(s : SortdistparallelBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_buffer_scale(s : SortdistparallelBuffer, f : Double) -> SortdistparallelBuffer {
-  let result = sort_dist_parallel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_buffer_add(a : SortdistparallelBuffer, b : SortdistparallelBuffer) -> SortdistparallelBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_buffer_copy(s : SortdistparallelBuffer) -> SortdistparallelBuffer {
-  let result = sort_dist_parallel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_buffer_fill(s : SortdistparallelBuffer, v : Double) -> SortdistparallelBuffer {
-  let result = sort_dist_parallel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_buffer_min(s : SortdistparallelBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_dist_parallel_cursor_sum(s : SortdistparallelCursor) -> Double { @_c
 pub fn sort_dist_parallel_cursor_mean(s : SortdistparallelCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_cursor_scale(s : SortdistparallelCursor, f : Double) -> SortdistparallelCursor {
-  let result = sort_dist_parallel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_cursor_add(a : SortdistparallelCursor, b : SortdistparallelCursor) -> SortdistparallelCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_cursor_copy(s : SortdistparallelCursor) -> SortdistparallelCursor {
-  let result = sort_dist_parallel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_cursor_fill(s : SortdistparallelCursor, v : Double) -> SortdistparallelCursor {
-  let result = sort_dist_parallel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_cursor_min(s : SortdistparallelCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_dist_parallel_view_sum(s : SortdistparallelView) -> Double { @_commo
 pub fn sort_dist_parallel_view_mean(s : SortdistparallelView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_view_scale(s : SortdistparallelView, f : Double) -> SortdistparallelView {
-  let result = sort_dist_parallel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_view_add(a : SortdistparallelView, b : SortdistparallelView) -> SortdistparallelView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_view_copy(s : SortdistparallelView) -> SortdistparallelView {
-  let result = sort_dist_parallel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_view_fill(s : SortdistparallelView, v : Double) -> SortdistparallelView {
-  let result = sort_dist_parallel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_view_min(s : SortdistparallelView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_dist_parallel_range_sum(s : SortdistparallelRange) -> Double { @_com
 pub fn sort_dist_parallel_range_mean(s : SortdistparallelRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_range_scale(s : SortdistparallelRange, f : Double) -> SortdistparallelRange {
-  let result = sort_dist_parallel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_range_add(a : SortdistparallelRange, b : SortdistparallelRange) -> SortdistparallelRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_range_copy(s : SortdistparallelRange) -> SortdistparallelRange {
-  let result = sort_dist_parallel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_range_fill(s : SortdistparallelRange, v : Double) -> SortdistparallelRange {
-  let result = sort_dist_parallel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_range_min(s : SortdistparallelRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_dist_parallel_slice_sum(s : SortdistparallelSlice) -> Double { @_com
 pub fn sort_dist_parallel_slice_mean(s : SortdistparallelSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_slice_scale(s : SortdistparallelSlice, f : Double) -> SortdistparallelSlice {
-  let result = sort_dist_parallel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_slice_add(a : SortdistparallelSlice, b : SortdistparallelSlice) -> SortdistparallelSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_parallel_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_parallel_slice_copy(s : SortdistparallelSlice) -> SortdistparallelSlice {
-  let result = sort_dist_parallel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_slice_fill(s : SortdistparallelSlice, v : Double) -> SortdistparallelSlice {
-  let result = sort_dist_parallel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_parallel_slice_min(s : SortdistparallelSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ml_rl_trpo_frame_sum(s : MlrltrpoFrame) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_trpo_frame_mean(s : MlrltrpoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_frame_scale(s : MlrltrpoFrame, f : Double) -> MlrltrpoFrame {
-  let result = ml_rl_trpo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_frame_add(a : MlrltrpoFrame, b : MlrltrpoFrame) -> MlrltrpoFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_frame_copy(s : MlrltrpoFrame) -> MlrltrpoFrame {
-  let result = ml_rl_trpo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_frame_fill(s : MlrltrpoFrame, v : Double) -> MlrltrpoFrame {
-  let result = ml_rl_trpo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_frame_min(s : MlrltrpoFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_trpo_table_sum(s : MlrltrpoTable) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_trpo_table_mean(s : MlrltrpoTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_table_scale(s : MlrltrpoTable, f : Double) -> MlrltrpoTable {
-  let result = ml_rl_trpo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_table_add(a : MlrltrpoTable, b : MlrltrpoTable) -> MlrltrpoTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_table_copy(s : MlrltrpoTable) -> MlrltrpoTable {
-  let result = ml_rl_trpo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_table_fill(s : MlrltrpoTable, v : Double) -> MlrltrpoTable {
-  let result = ml_rl_trpo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_table_min(s : MlrltrpoTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_trpo_graphn_sum(s : MlrltrpoGraphN) -> Double { @_common.sum(s.data
 pub fn ml_rl_trpo_graphn_mean(s : MlrltrpoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_graphn_scale(s : MlrltrpoGraphN, f : Double) -> MlrltrpoGraphN {
-  let result = ml_rl_trpo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_graphn_add(a : MlrltrpoGraphN, b : MlrltrpoGraphN) -> MlrltrpoGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_graphn_copy(s : MlrltrpoGraphN) -> MlrltrpoGraphN {
-  let result = ml_rl_trpo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_graphn_fill(s : MlrltrpoGraphN, v : Double) -> MlrltrpoGraphN {
-  let result = ml_rl_trpo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_graphn_min(s : MlrltrpoGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_trpo_node_sum(s : MlrltrpoNode) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_trpo_node_mean(s : MlrltrpoNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_node_scale(s : MlrltrpoNode, f : Double) -> MlrltrpoNode {
-  let result = ml_rl_trpo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_node_add(a : MlrltrpoNode, b : MlrltrpoNode) -> MlrltrpoNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_node_copy(s : MlrltrpoNode) -> MlrltrpoNode {
-  let result = ml_rl_trpo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_node_fill(s : MlrltrpoNode, v : Double) -> MlrltrpoNode {
-  let result = ml_rl_trpo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_node_min(s : MlrltrpoNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_trpo_edge_sum(s : MlrltrpoEdge) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_trpo_edge_mean(s : MlrltrpoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_edge_scale(s : MlrltrpoEdge, f : Double) -> MlrltrpoEdge {
-  let result = ml_rl_trpo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_edge_add(a : MlrltrpoEdge, b : MlrltrpoEdge) -> MlrltrpoEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_edge_copy(s : MlrltrpoEdge) -> MlrltrpoEdge {
-  let result = ml_rl_trpo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_edge_fill(s : MlrltrpoEdge, v : Double) -> MlrltrpoEdge {
-  let result = ml_rl_trpo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_edge_min(s : MlrltrpoEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_trpo_path_sum(s : MlrltrpoPath) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_trpo_path_mean(s : MlrltrpoPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_path_scale(s : MlrltrpoPath, f : Double) -> MlrltrpoPath {
-  let result = ml_rl_trpo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_path_add(a : MlrltrpoPath, b : MlrltrpoPath) -> MlrltrpoPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_path_copy(s : MlrltrpoPath) -> MlrltrpoPath {
-  let result = ml_rl_trpo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_path_fill(s : MlrltrpoPath, v : Double) -> MlrltrpoPath {
-  let result = ml_rl_trpo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_path_min(s : MlrltrpoPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_trpo_cluster_sum(s : MlrltrpoCluster) -> Double { @_common.sum(s.da
 pub fn ml_rl_trpo_cluster_mean(s : MlrltrpoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_cluster_scale(s : MlrltrpoCluster, f : Double) -> MlrltrpoCluster {
-  let result = ml_rl_trpo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_cluster_add(a : MlrltrpoCluster, b : MlrltrpoCluster) -> MlrltrpoCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_cluster_copy(s : MlrltrpoCluster) -> MlrltrpoCluster {
-  let result = ml_rl_trpo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_cluster_fill(s : MlrltrpoCluster, v : Double) -> MlrltrpoCluster {
-  let result = ml_rl_trpo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_cluster_min(s : MlrltrpoCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_trpo_model_sum(s : MlrltrpoModel) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_trpo_model_mean(s : MlrltrpoModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_model_scale(s : MlrltrpoModel, f : Double) -> MlrltrpoModel {
-  let result = ml_rl_trpo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_model_add(a : MlrltrpoModel, b : MlrltrpoModel) -> MlrltrpoModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_model_copy(s : MlrltrpoModel) -> MlrltrpoModel {
-  let result = ml_rl_trpo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_model_fill(s : MlrltrpoModel, v : Double) -> MlrltrpoModel {
-  let result = ml_rl_trpo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_model_min(s : MlrltrpoModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_trpo_layer_sum(s : MlrltrpoLayer) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_trpo_layer_mean(s : MlrltrpoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_layer_scale(s : MlrltrpoLayer, f : Double) -> MlrltrpoLayer {
-  let result = ml_rl_trpo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_layer_add(a : MlrltrpoLayer, b : MlrltrpoLayer) -> MlrltrpoLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_layer_copy(s : MlrltrpoLayer) -> MlrltrpoLayer {
-  let result = ml_rl_trpo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_layer_fill(s : MlrltrpoLayer, v : Double) -> MlrltrpoLayer {
-  let result = ml_rl_trpo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_layer_min(s : MlrltrpoLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_trpo_buffer_sum(s : MlrltrpoBuffer) -> Double { @_common.sum(s.data
 pub fn ml_rl_trpo_buffer_mean(s : MlrltrpoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_buffer_scale(s : MlrltrpoBuffer, f : Double) -> MlrltrpoBuffer {
-  let result = ml_rl_trpo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_buffer_add(a : MlrltrpoBuffer, b : MlrltrpoBuffer) -> MlrltrpoBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_buffer_copy(s : MlrltrpoBuffer) -> MlrltrpoBuffer {
-  let result = ml_rl_trpo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_buffer_fill(s : MlrltrpoBuffer, v : Double) -> MlrltrpoBuffer {
-  let result = ml_rl_trpo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_buffer_min(s : MlrltrpoBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_trpo_cursor_sum(s : MlrltrpoCursor) -> Double { @_common.sum(s.data
 pub fn ml_rl_trpo_cursor_mean(s : MlrltrpoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_cursor_scale(s : MlrltrpoCursor, f : Double) -> MlrltrpoCursor {
-  let result = ml_rl_trpo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_cursor_add(a : MlrltrpoCursor, b : MlrltrpoCursor) -> MlrltrpoCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_cursor_copy(s : MlrltrpoCursor) -> MlrltrpoCursor {
-  let result = ml_rl_trpo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_cursor_fill(s : MlrltrpoCursor, v : Double) -> MlrltrpoCursor {
-  let result = ml_rl_trpo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_cursor_min(s : MlrltrpoCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_trpo_view_sum(s : MlrltrpoView) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_trpo_view_mean(s : MlrltrpoView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_view_scale(s : MlrltrpoView, f : Double) -> MlrltrpoView {
-  let result = ml_rl_trpo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_view_add(a : MlrltrpoView, b : MlrltrpoView) -> MlrltrpoView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_view_copy(s : MlrltrpoView) -> MlrltrpoView {
-  let result = ml_rl_trpo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_view_fill(s : MlrltrpoView, v : Double) -> MlrltrpoView {
-  let result = ml_rl_trpo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_view_min(s : MlrltrpoView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_trpo_range_sum(s : MlrltrpoRange) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_trpo_range_mean(s : MlrltrpoRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_range_scale(s : MlrltrpoRange, f : Double) -> MlrltrpoRange {
-  let result = ml_rl_trpo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_range_add(a : MlrltrpoRange, b : MlrltrpoRange) -> MlrltrpoRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_range_copy(s : MlrltrpoRange) -> MlrltrpoRange {
-  let result = ml_rl_trpo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_range_fill(s : MlrltrpoRange, v : Double) -> MlrltrpoRange {
-  let result = ml_rl_trpo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_range_min(s : MlrltrpoRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_trpo_slice_sum(s : MlrltrpoSlice) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_trpo_slice_mean(s : MlrltrpoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_trpo_slice_scale(s : MlrltrpoSlice, f : Double) -> MlrltrpoSlice {
-  let result = ml_rl_trpo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_slice_add(a : MlrltrpoSlice, b : MlrltrpoSlice) -> MlrltrpoSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_trpo_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_trpo_slice_copy(s : MlrltrpoSlice) -> MlrltrpoSlice {
-  let result = ml_rl_trpo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_slice_fill(s : MlrltrpoSlice, v : Double) -> MlrltrpoSlice {
-  let result = ml_rl_trpo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_trpo_slice_min(s : MlrltrpoSlice) -> Double { @_common.min(s.data) }

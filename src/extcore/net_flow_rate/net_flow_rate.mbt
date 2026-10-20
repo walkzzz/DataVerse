@@ -383,28 +383,20 @@ pub fn net_flow_rate_frame_sum(s : NetflowrateFrame) -> Double { @_common.sum(s.
 pub fn net_flow_rate_frame_mean(s : NetflowrateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_frame_scale(s : NetflowrateFrame, f : Double) -> NetflowrateFrame {
-  let result = net_flow_rate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_frame_add(a : NetflowrateFrame, b : NetflowrateFrame) -> NetflowrateFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_frame_copy(s : NetflowrateFrame) -> NetflowrateFrame {
-  let result = net_flow_rate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_frame_fill(s : NetflowrateFrame, v : Double) -> NetflowrateFrame {
-  let result = net_flow_rate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_frame_min(s : NetflowrateFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_flow_rate_table_sum(s : NetflowrateTable) -> Double { @_common.sum(s.
 pub fn net_flow_rate_table_mean(s : NetflowrateTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_table_scale(s : NetflowrateTable, f : Double) -> NetflowrateTable {
-  let result = net_flow_rate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_table_add(a : NetflowrateTable, b : NetflowrateTable) -> NetflowrateTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_table_copy(s : NetflowrateTable) -> NetflowrateTable {
-  let result = net_flow_rate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_table_fill(s : NetflowrateTable, v : Double) -> NetflowrateTable {
-  let result = net_flow_rate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_table_min(s : NetflowrateTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_flow_rate_graphn_sum(s : NetflowrateGraphN) -> Double { @_common.sum(
 pub fn net_flow_rate_graphn_mean(s : NetflowrateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_graphn_scale(s : NetflowrateGraphN, f : Double) -> NetflowrateGraphN {
-  let result = net_flow_rate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_graphn_add(a : NetflowrateGraphN, b : NetflowrateGraphN) -> NetflowrateGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_graphn_copy(s : NetflowrateGraphN) -> NetflowrateGraphN {
-  let result = net_flow_rate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_graphn_fill(s : NetflowrateGraphN, v : Double) -> NetflowrateGraphN {
-  let result = net_flow_rate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_graphn_min(s : NetflowrateGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_flow_rate_node_sum(s : NetflowrateNode) -> Double { @_common.sum(s.da
 pub fn net_flow_rate_node_mean(s : NetflowrateNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_node_scale(s : NetflowrateNode, f : Double) -> NetflowrateNode {
-  let result = net_flow_rate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_node_add(a : NetflowrateNode, b : NetflowrateNode) -> NetflowrateNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_node_copy(s : NetflowrateNode) -> NetflowrateNode {
-  let result = net_flow_rate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_node_fill(s : NetflowrateNode, v : Double) -> NetflowrateNode {
-  let result = net_flow_rate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_node_min(s : NetflowrateNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_flow_rate_edge_sum(s : NetflowrateEdge) -> Double { @_common.sum(s.da
 pub fn net_flow_rate_edge_mean(s : NetflowrateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_edge_scale(s : NetflowrateEdge, f : Double) -> NetflowrateEdge {
-  let result = net_flow_rate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_edge_add(a : NetflowrateEdge, b : NetflowrateEdge) -> NetflowrateEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_edge_copy(s : NetflowrateEdge) -> NetflowrateEdge {
-  let result = net_flow_rate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_edge_fill(s : NetflowrateEdge, v : Double) -> NetflowrateEdge {
-  let result = net_flow_rate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_edge_min(s : NetflowrateEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_flow_rate_path_sum(s : NetflowratePath) -> Double { @_common.sum(s.da
 pub fn net_flow_rate_path_mean(s : NetflowratePath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_path_scale(s : NetflowratePath, f : Double) -> NetflowratePath {
-  let result = net_flow_rate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_path_add(a : NetflowratePath, b : NetflowratePath) -> NetflowratePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_path_copy(s : NetflowratePath) -> NetflowratePath {
-  let result = net_flow_rate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_path_fill(s : NetflowratePath, v : Double) -> NetflowratePath {
-  let result = net_flow_rate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_path_min(s : NetflowratePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_flow_rate_cluster_sum(s : NetflowrateCluster) -> Double { @_common.su
 pub fn net_flow_rate_cluster_mean(s : NetflowrateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_cluster_scale(s : NetflowrateCluster, f : Double) -> NetflowrateCluster {
-  let result = net_flow_rate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_cluster_add(a : NetflowrateCluster, b : NetflowrateCluster) -> NetflowrateCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_cluster_copy(s : NetflowrateCluster) -> NetflowrateCluster {
-  let result = net_flow_rate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_cluster_fill(s : NetflowrateCluster, v : Double) -> NetflowrateCluster {
-  let result = net_flow_rate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_cluster_min(s : NetflowrateCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_flow_rate_model_sum(s : NetflowrateModel) -> Double { @_common.sum(s.
 pub fn net_flow_rate_model_mean(s : NetflowrateModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_model_scale(s : NetflowrateModel, f : Double) -> NetflowrateModel {
-  let result = net_flow_rate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_model_add(a : NetflowrateModel, b : NetflowrateModel) -> NetflowrateModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_model_copy(s : NetflowrateModel) -> NetflowrateModel {
-  let result = net_flow_rate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_model_fill(s : NetflowrateModel, v : Double) -> NetflowrateModel {
-  let result = net_flow_rate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_model_min(s : NetflowrateModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_flow_rate_layer_sum(s : NetflowrateLayer) -> Double { @_common.sum(s.
 pub fn net_flow_rate_layer_mean(s : NetflowrateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_layer_scale(s : NetflowrateLayer, f : Double) -> NetflowrateLayer {
-  let result = net_flow_rate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_layer_add(a : NetflowrateLayer, b : NetflowrateLayer) -> NetflowrateLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_layer_copy(s : NetflowrateLayer) -> NetflowrateLayer {
-  let result = net_flow_rate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_layer_fill(s : NetflowrateLayer, v : Double) -> NetflowrateLayer {
-  let result = net_flow_rate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_layer_min(s : NetflowrateLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_flow_rate_buffer_sum(s : NetflowrateBuffer) -> Double { @_common.sum(
 pub fn net_flow_rate_buffer_mean(s : NetflowrateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_buffer_scale(s : NetflowrateBuffer, f : Double) -> NetflowrateBuffer {
-  let result = net_flow_rate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_buffer_add(a : NetflowrateBuffer, b : NetflowrateBuffer) -> NetflowrateBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_buffer_copy(s : NetflowrateBuffer) -> NetflowrateBuffer {
-  let result = net_flow_rate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_buffer_fill(s : NetflowrateBuffer, v : Double) -> NetflowrateBuffer {
-  let result = net_flow_rate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_buffer_min(s : NetflowrateBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_flow_rate_cursor_sum(s : NetflowrateCursor) -> Double { @_common.sum(
 pub fn net_flow_rate_cursor_mean(s : NetflowrateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_cursor_scale(s : NetflowrateCursor, f : Double) -> NetflowrateCursor {
-  let result = net_flow_rate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_cursor_add(a : NetflowrateCursor, b : NetflowrateCursor) -> NetflowrateCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_cursor_copy(s : NetflowrateCursor) -> NetflowrateCursor {
-  let result = net_flow_rate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_cursor_fill(s : NetflowrateCursor, v : Double) -> NetflowrateCursor {
-  let result = net_flow_rate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_cursor_min(s : NetflowrateCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_flow_rate_view_sum(s : NetflowrateView) -> Double { @_common.sum(s.da
 pub fn net_flow_rate_view_mean(s : NetflowrateView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_view_scale(s : NetflowrateView, f : Double) -> NetflowrateView {
-  let result = net_flow_rate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_view_add(a : NetflowrateView, b : NetflowrateView) -> NetflowrateView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_view_copy(s : NetflowrateView) -> NetflowrateView {
-  let result = net_flow_rate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_view_fill(s : NetflowrateView, v : Double) -> NetflowrateView {
-  let result = net_flow_rate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_view_min(s : NetflowrateView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_flow_rate_range_sum(s : NetflowrateRange) -> Double { @_common.sum(s.
 pub fn net_flow_rate_range_mean(s : NetflowrateRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_range_scale(s : NetflowrateRange, f : Double) -> NetflowrateRange {
-  let result = net_flow_rate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_range_add(a : NetflowrateRange, b : NetflowrateRange) -> NetflowrateRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_range_copy(s : NetflowrateRange) -> NetflowrateRange {
-  let result = net_flow_rate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_range_fill(s : NetflowrateRange, v : Double) -> NetflowrateRange {
-  let result = net_flow_rate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_range_min(s : NetflowrateRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_flow_rate_slice_sum(s : NetflowrateSlice) -> Double { @_common.sum(s.
 pub fn net_flow_rate_slice_mean(s : NetflowrateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_slice_scale(s : NetflowrateSlice, f : Double) -> NetflowrateSlice {
-  let result = net_flow_rate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_slice_add(a : NetflowrateSlice, b : NetflowrateSlice) -> NetflowrateSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_rate_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_rate_slice_copy(s : NetflowrateSlice) -> NetflowrateSlice {
-  let result = net_flow_rate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_slice_fill(s : NetflowrateSlice, v : Double) -> NetflowrateSlice {
-  let result = net_flow_rate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_rate_slice_min(s : NetflowrateSlice) -> Double { @_common.min(s.data) }

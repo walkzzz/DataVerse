@@ -383,28 +383,20 @@ pub fn timeseries_sarima_frame_sum(s : TimeseriessarimaFrame) -> Double { @_comm
 pub fn timeseries_sarima_frame_mean(s : TimeseriessarimaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_frame_scale(s : TimeseriessarimaFrame, f : Double) -> TimeseriessarimaFrame {
-  let result = timeseries_sarima_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_frame_add(a : TimeseriessarimaFrame, b : TimeseriessarimaFrame) -> TimeseriessarimaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_frame_copy(s : TimeseriessarimaFrame) -> TimeseriessarimaFrame {
-  let result = timeseries_sarima_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_frame_fill(s : TimeseriessarimaFrame, v : Double) -> TimeseriessarimaFrame {
-  let result = timeseries_sarima_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_frame_min(s : TimeseriessarimaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_sarima_table_sum(s : TimeseriessarimaTable) -> Double { @_comm
 pub fn timeseries_sarima_table_mean(s : TimeseriessarimaTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_table_scale(s : TimeseriessarimaTable, f : Double) -> TimeseriessarimaTable {
-  let result = timeseries_sarima_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_table_add(a : TimeseriessarimaTable, b : TimeseriessarimaTable) -> TimeseriessarimaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_table_copy(s : TimeseriessarimaTable) -> TimeseriessarimaTable {
-  let result = timeseries_sarima_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_table_fill(s : TimeseriessarimaTable, v : Double) -> TimeseriessarimaTable {
-  let result = timeseries_sarima_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_table_min(s : TimeseriessarimaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_sarima_graphn_sum(s : TimeseriessarimaGraphN) -> Double { @_co
 pub fn timeseries_sarima_graphn_mean(s : TimeseriessarimaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_graphn_scale(s : TimeseriessarimaGraphN, f : Double) -> TimeseriessarimaGraphN {
-  let result = timeseries_sarima_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_graphn_add(a : TimeseriessarimaGraphN, b : TimeseriessarimaGraphN) -> TimeseriessarimaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_graphn_copy(s : TimeseriessarimaGraphN) -> TimeseriessarimaGraphN {
-  let result = timeseries_sarima_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_graphn_fill(s : TimeseriessarimaGraphN, v : Double) -> TimeseriessarimaGraphN {
-  let result = timeseries_sarima_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_graphn_min(s : TimeseriessarimaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_sarima_node_sum(s : TimeseriessarimaNode) -> Double { @_common
 pub fn timeseries_sarima_node_mean(s : TimeseriessarimaNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_node_scale(s : TimeseriessarimaNode, f : Double) -> TimeseriessarimaNode {
-  let result = timeseries_sarima_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_node_add(a : TimeseriessarimaNode, b : TimeseriessarimaNode) -> TimeseriessarimaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_node_copy(s : TimeseriessarimaNode) -> TimeseriessarimaNode {
-  let result = timeseries_sarima_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_node_fill(s : TimeseriessarimaNode, v : Double) -> TimeseriessarimaNode {
-  let result = timeseries_sarima_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_node_min(s : TimeseriessarimaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_sarima_edge_sum(s : TimeseriessarimaEdge) -> Double { @_common
 pub fn timeseries_sarima_edge_mean(s : TimeseriessarimaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_edge_scale(s : TimeseriessarimaEdge, f : Double) -> TimeseriessarimaEdge {
-  let result = timeseries_sarima_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_edge_add(a : TimeseriessarimaEdge, b : TimeseriessarimaEdge) -> TimeseriessarimaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_edge_copy(s : TimeseriessarimaEdge) -> TimeseriessarimaEdge {
-  let result = timeseries_sarima_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_edge_fill(s : TimeseriessarimaEdge, v : Double) -> TimeseriessarimaEdge {
-  let result = timeseries_sarima_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_edge_min(s : TimeseriessarimaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_sarima_path_sum(s : TimeseriessarimaPath) -> Double { @_common
 pub fn timeseries_sarima_path_mean(s : TimeseriessarimaPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_path_scale(s : TimeseriessarimaPath, f : Double) -> TimeseriessarimaPath {
-  let result = timeseries_sarima_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_path_add(a : TimeseriessarimaPath, b : TimeseriessarimaPath) -> TimeseriessarimaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_path_copy(s : TimeseriessarimaPath) -> TimeseriessarimaPath {
-  let result = timeseries_sarima_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_path_fill(s : TimeseriessarimaPath, v : Double) -> TimeseriessarimaPath {
-  let result = timeseries_sarima_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_path_min(s : TimeseriessarimaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_sarima_cluster_sum(s : TimeseriessarimaCluster) -> Double { @_
 pub fn timeseries_sarima_cluster_mean(s : TimeseriessarimaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_cluster_scale(s : TimeseriessarimaCluster, f : Double) -> TimeseriessarimaCluster {
-  let result = timeseries_sarima_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_cluster_add(a : TimeseriessarimaCluster, b : TimeseriessarimaCluster) -> TimeseriessarimaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_cluster_copy(s : TimeseriessarimaCluster) -> TimeseriessarimaCluster {
-  let result = timeseries_sarima_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_cluster_fill(s : TimeseriessarimaCluster, v : Double) -> TimeseriessarimaCluster {
-  let result = timeseries_sarima_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_cluster_min(s : TimeseriessarimaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_sarima_model_sum(s : TimeseriessarimaModel) -> Double { @_comm
 pub fn timeseries_sarima_model_mean(s : TimeseriessarimaModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_model_scale(s : TimeseriessarimaModel, f : Double) -> TimeseriessarimaModel {
-  let result = timeseries_sarima_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_model_add(a : TimeseriessarimaModel, b : TimeseriessarimaModel) -> TimeseriessarimaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_model_copy(s : TimeseriessarimaModel) -> TimeseriessarimaModel {
-  let result = timeseries_sarima_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_model_fill(s : TimeseriessarimaModel, v : Double) -> TimeseriessarimaModel {
-  let result = timeseries_sarima_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_model_min(s : TimeseriessarimaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_sarima_layer_sum(s : TimeseriessarimaLayer) -> Double { @_comm
 pub fn timeseries_sarima_layer_mean(s : TimeseriessarimaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_layer_scale(s : TimeseriessarimaLayer, f : Double) -> TimeseriessarimaLayer {
-  let result = timeseries_sarima_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_layer_add(a : TimeseriessarimaLayer, b : TimeseriessarimaLayer) -> TimeseriessarimaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_layer_copy(s : TimeseriessarimaLayer) -> TimeseriessarimaLayer {
-  let result = timeseries_sarima_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_layer_fill(s : TimeseriessarimaLayer, v : Double) -> TimeseriessarimaLayer {
-  let result = timeseries_sarima_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_layer_min(s : TimeseriessarimaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_sarima_buffer_sum(s : TimeseriessarimaBuffer) -> Double { @_co
 pub fn timeseries_sarima_buffer_mean(s : TimeseriessarimaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_buffer_scale(s : TimeseriessarimaBuffer, f : Double) -> TimeseriessarimaBuffer {
-  let result = timeseries_sarima_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_buffer_add(a : TimeseriessarimaBuffer, b : TimeseriessarimaBuffer) -> TimeseriessarimaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_buffer_copy(s : TimeseriessarimaBuffer) -> TimeseriessarimaBuffer {
-  let result = timeseries_sarima_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_buffer_fill(s : TimeseriessarimaBuffer, v : Double) -> TimeseriessarimaBuffer {
-  let result = timeseries_sarima_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_buffer_min(s : TimeseriessarimaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_sarima_cursor_sum(s : TimeseriessarimaCursor) -> Double { @_co
 pub fn timeseries_sarima_cursor_mean(s : TimeseriessarimaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_cursor_scale(s : TimeseriessarimaCursor, f : Double) -> TimeseriessarimaCursor {
-  let result = timeseries_sarima_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_cursor_add(a : TimeseriessarimaCursor, b : TimeseriessarimaCursor) -> TimeseriessarimaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_cursor_copy(s : TimeseriessarimaCursor) -> TimeseriessarimaCursor {
-  let result = timeseries_sarima_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_cursor_fill(s : TimeseriessarimaCursor, v : Double) -> TimeseriessarimaCursor {
-  let result = timeseries_sarima_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_cursor_min(s : TimeseriessarimaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_sarima_view_sum(s : TimeseriessarimaView) -> Double { @_common
 pub fn timeseries_sarima_view_mean(s : TimeseriessarimaView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_view_scale(s : TimeseriessarimaView, f : Double) -> TimeseriessarimaView {
-  let result = timeseries_sarima_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_view_add(a : TimeseriessarimaView, b : TimeseriessarimaView) -> TimeseriessarimaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_view_copy(s : TimeseriessarimaView) -> TimeseriessarimaView {
-  let result = timeseries_sarima_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_view_fill(s : TimeseriessarimaView, v : Double) -> TimeseriessarimaView {
-  let result = timeseries_sarima_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_view_min(s : TimeseriessarimaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_sarima_range_sum(s : TimeseriessarimaRange) -> Double { @_comm
 pub fn timeseries_sarima_range_mean(s : TimeseriessarimaRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_range_scale(s : TimeseriessarimaRange, f : Double) -> TimeseriessarimaRange {
-  let result = timeseries_sarima_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_range_add(a : TimeseriessarimaRange, b : TimeseriessarimaRange) -> TimeseriessarimaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_range_copy(s : TimeseriessarimaRange) -> TimeseriessarimaRange {
-  let result = timeseries_sarima_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_range_fill(s : TimeseriessarimaRange, v : Double) -> TimeseriessarimaRange {
-  let result = timeseries_sarima_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_range_min(s : TimeseriessarimaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_sarima_slice_sum(s : TimeseriessarimaSlice) -> Double { @_comm
 pub fn timeseries_sarima_slice_mean(s : TimeseriessarimaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_sarima_slice_scale(s : TimeseriessarimaSlice, f : Double) -> TimeseriessarimaSlice {
-  let result = timeseries_sarima_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_slice_add(a : TimeseriessarimaSlice, b : TimeseriessarimaSlice) -> TimeseriessarimaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_sarima_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_sarima_slice_copy(s : TimeseriessarimaSlice) -> TimeseriessarimaSlice {
-  let result = timeseries_sarima_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_slice_fill(s : TimeseriessarimaSlice, v : Double) -> TimeseriessarimaSlice {
-  let result = timeseries_sarima_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_sarima_slice_min(s : TimeseriessarimaSlice) -> Double { @_common.min(s.data) }

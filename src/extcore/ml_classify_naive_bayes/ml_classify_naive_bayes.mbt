@@ -383,28 +383,20 @@ pub fn ml_classify_naive_bayes_frame_sum(s : MlclassifynaivebayesFrame) -> Doubl
 pub fn ml_classify_naive_bayes_frame_mean(s : MlclassifynaivebayesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_frame_scale(s : MlclassifynaivebayesFrame, f : Double) -> MlclassifynaivebayesFrame {
-  let result = ml_classify_naive_bayes_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_frame_add(a : MlclassifynaivebayesFrame, b : MlclassifynaivebayesFrame) -> MlclassifynaivebayesFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_frame_copy(s : MlclassifynaivebayesFrame) -> MlclassifynaivebayesFrame {
-  let result = ml_classify_naive_bayes_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_frame_fill(s : MlclassifynaivebayesFrame, v : Double) -> MlclassifynaivebayesFrame {
-  let result = ml_classify_naive_bayes_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_frame_min(s : MlclassifynaivebayesFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_classify_naive_bayes_table_sum(s : MlclassifynaivebayesTable) -> Doubl
 pub fn ml_classify_naive_bayes_table_mean(s : MlclassifynaivebayesTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_table_scale(s : MlclassifynaivebayesTable, f : Double) -> MlclassifynaivebayesTable {
-  let result = ml_classify_naive_bayes_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_table_add(a : MlclassifynaivebayesTable, b : MlclassifynaivebayesTable) -> MlclassifynaivebayesTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_table_copy(s : MlclassifynaivebayesTable) -> MlclassifynaivebayesTable {
-  let result = ml_classify_naive_bayes_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_table_fill(s : MlclassifynaivebayesTable, v : Double) -> MlclassifynaivebayesTable {
-  let result = ml_classify_naive_bayes_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_table_min(s : MlclassifynaivebayesTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_classify_naive_bayes_graphn_sum(s : MlclassifynaivebayesGraphN) -> Dou
 pub fn ml_classify_naive_bayes_graphn_mean(s : MlclassifynaivebayesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_graphn_scale(s : MlclassifynaivebayesGraphN, f : Double) -> MlclassifynaivebayesGraphN {
-  let result = ml_classify_naive_bayes_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_graphn_add(a : MlclassifynaivebayesGraphN, b : MlclassifynaivebayesGraphN) -> MlclassifynaivebayesGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_graphn_copy(s : MlclassifynaivebayesGraphN) -> MlclassifynaivebayesGraphN {
-  let result = ml_classify_naive_bayes_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_graphn_fill(s : MlclassifynaivebayesGraphN, v : Double) -> MlclassifynaivebayesGraphN {
-  let result = ml_classify_naive_bayes_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_graphn_min(s : MlclassifynaivebayesGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_classify_naive_bayes_node_sum(s : MlclassifynaivebayesNode) -> Double 
 pub fn ml_classify_naive_bayes_node_mean(s : MlclassifynaivebayesNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_node_scale(s : MlclassifynaivebayesNode, f : Double) -> MlclassifynaivebayesNode {
-  let result = ml_classify_naive_bayes_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_node_add(a : MlclassifynaivebayesNode, b : MlclassifynaivebayesNode) -> MlclassifynaivebayesNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_node_copy(s : MlclassifynaivebayesNode) -> MlclassifynaivebayesNode {
-  let result = ml_classify_naive_bayes_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_node_fill(s : MlclassifynaivebayesNode, v : Double) -> MlclassifynaivebayesNode {
-  let result = ml_classify_naive_bayes_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_node_min(s : MlclassifynaivebayesNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_classify_naive_bayes_edge_sum(s : MlclassifynaivebayesEdge) -> Double 
 pub fn ml_classify_naive_bayes_edge_mean(s : MlclassifynaivebayesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_edge_scale(s : MlclassifynaivebayesEdge, f : Double) -> MlclassifynaivebayesEdge {
-  let result = ml_classify_naive_bayes_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_edge_add(a : MlclassifynaivebayesEdge, b : MlclassifynaivebayesEdge) -> MlclassifynaivebayesEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_edge_copy(s : MlclassifynaivebayesEdge) -> MlclassifynaivebayesEdge {
-  let result = ml_classify_naive_bayes_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_edge_fill(s : MlclassifynaivebayesEdge, v : Double) -> MlclassifynaivebayesEdge {
-  let result = ml_classify_naive_bayes_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_edge_min(s : MlclassifynaivebayesEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_classify_naive_bayes_path_sum(s : MlclassifynaivebayesPath) -> Double 
 pub fn ml_classify_naive_bayes_path_mean(s : MlclassifynaivebayesPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_path_scale(s : MlclassifynaivebayesPath, f : Double) -> MlclassifynaivebayesPath {
-  let result = ml_classify_naive_bayes_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_path_add(a : MlclassifynaivebayesPath, b : MlclassifynaivebayesPath) -> MlclassifynaivebayesPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_path_copy(s : MlclassifynaivebayesPath) -> MlclassifynaivebayesPath {
-  let result = ml_classify_naive_bayes_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_path_fill(s : MlclassifynaivebayesPath, v : Double) -> MlclassifynaivebayesPath {
-  let result = ml_classify_naive_bayes_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_path_min(s : MlclassifynaivebayesPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_classify_naive_bayes_cluster_sum(s : MlclassifynaivebayesCluster) -> D
 pub fn ml_classify_naive_bayes_cluster_mean(s : MlclassifynaivebayesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_cluster_scale(s : MlclassifynaivebayesCluster, f : Double) -> MlclassifynaivebayesCluster {
-  let result = ml_classify_naive_bayes_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_cluster_add(a : MlclassifynaivebayesCluster, b : MlclassifynaivebayesCluster) -> MlclassifynaivebayesCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_cluster_copy(s : MlclassifynaivebayesCluster) -> MlclassifynaivebayesCluster {
-  let result = ml_classify_naive_bayes_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_cluster_fill(s : MlclassifynaivebayesCluster, v : Double) -> MlclassifynaivebayesCluster {
-  let result = ml_classify_naive_bayes_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_cluster_min(s : MlclassifynaivebayesCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_classify_naive_bayes_model_sum(s : MlclassifynaivebayesModel) -> Doubl
 pub fn ml_classify_naive_bayes_model_mean(s : MlclassifynaivebayesModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_model_scale(s : MlclassifynaivebayesModel, f : Double) -> MlclassifynaivebayesModel {
-  let result = ml_classify_naive_bayes_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_model_add(a : MlclassifynaivebayesModel, b : MlclassifynaivebayesModel) -> MlclassifynaivebayesModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_model_copy(s : MlclassifynaivebayesModel) -> MlclassifynaivebayesModel {
-  let result = ml_classify_naive_bayes_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_model_fill(s : MlclassifynaivebayesModel, v : Double) -> MlclassifynaivebayesModel {
-  let result = ml_classify_naive_bayes_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_model_min(s : MlclassifynaivebayesModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_classify_naive_bayes_layer_sum(s : MlclassifynaivebayesLayer) -> Doubl
 pub fn ml_classify_naive_bayes_layer_mean(s : MlclassifynaivebayesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_layer_scale(s : MlclassifynaivebayesLayer, f : Double) -> MlclassifynaivebayesLayer {
-  let result = ml_classify_naive_bayes_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_layer_add(a : MlclassifynaivebayesLayer, b : MlclassifynaivebayesLayer) -> MlclassifynaivebayesLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_layer_copy(s : MlclassifynaivebayesLayer) -> MlclassifynaivebayesLayer {
-  let result = ml_classify_naive_bayes_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_layer_fill(s : MlclassifynaivebayesLayer, v : Double) -> MlclassifynaivebayesLayer {
-  let result = ml_classify_naive_bayes_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_layer_min(s : MlclassifynaivebayesLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_classify_naive_bayes_buffer_sum(s : MlclassifynaivebayesBuffer) -> Dou
 pub fn ml_classify_naive_bayes_buffer_mean(s : MlclassifynaivebayesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_buffer_scale(s : MlclassifynaivebayesBuffer, f : Double) -> MlclassifynaivebayesBuffer {
-  let result = ml_classify_naive_bayes_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_buffer_add(a : MlclassifynaivebayesBuffer, b : MlclassifynaivebayesBuffer) -> MlclassifynaivebayesBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_buffer_copy(s : MlclassifynaivebayesBuffer) -> MlclassifynaivebayesBuffer {
-  let result = ml_classify_naive_bayes_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_buffer_fill(s : MlclassifynaivebayesBuffer, v : Double) -> MlclassifynaivebayesBuffer {
-  let result = ml_classify_naive_bayes_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_buffer_min(s : MlclassifynaivebayesBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_classify_naive_bayes_cursor_sum(s : MlclassifynaivebayesCursor) -> Dou
 pub fn ml_classify_naive_bayes_cursor_mean(s : MlclassifynaivebayesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_cursor_scale(s : MlclassifynaivebayesCursor, f : Double) -> MlclassifynaivebayesCursor {
-  let result = ml_classify_naive_bayes_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_cursor_add(a : MlclassifynaivebayesCursor, b : MlclassifynaivebayesCursor) -> MlclassifynaivebayesCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_cursor_copy(s : MlclassifynaivebayesCursor) -> MlclassifynaivebayesCursor {
-  let result = ml_classify_naive_bayes_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_cursor_fill(s : MlclassifynaivebayesCursor, v : Double) -> MlclassifynaivebayesCursor {
-  let result = ml_classify_naive_bayes_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_cursor_min(s : MlclassifynaivebayesCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_classify_naive_bayes_view_sum(s : MlclassifynaivebayesView) -> Double 
 pub fn ml_classify_naive_bayes_view_mean(s : MlclassifynaivebayesView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_view_scale(s : MlclassifynaivebayesView, f : Double) -> MlclassifynaivebayesView {
-  let result = ml_classify_naive_bayes_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_view_add(a : MlclassifynaivebayesView, b : MlclassifynaivebayesView) -> MlclassifynaivebayesView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_view_copy(s : MlclassifynaivebayesView) -> MlclassifynaivebayesView {
-  let result = ml_classify_naive_bayes_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_view_fill(s : MlclassifynaivebayesView, v : Double) -> MlclassifynaivebayesView {
-  let result = ml_classify_naive_bayes_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_view_min(s : MlclassifynaivebayesView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_classify_naive_bayes_range_sum(s : MlclassifynaivebayesRange) -> Doubl
 pub fn ml_classify_naive_bayes_range_mean(s : MlclassifynaivebayesRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_range_scale(s : MlclassifynaivebayesRange, f : Double) -> MlclassifynaivebayesRange {
-  let result = ml_classify_naive_bayes_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_range_add(a : MlclassifynaivebayesRange, b : MlclassifynaivebayesRange) -> MlclassifynaivebayesRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_range_copy(s : MlclassifynaivebayesRange) -> MlclassifynaivebayesRange {
-  let result = ml_classify_naive_bayes_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_range_fill(s : MlclassifynaivebayesRange, v : Double) -> MlclassifynaivebayesRange {
-  let result = ml_classify_naive_bayes_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_range_min(s : MlclassifynaivebayesRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_classify_naive_bayes_slice_sum(s : MlclassifynaivebayesSlice) -> Doubl
 pub fn ml_classify_naive_bayes_slice_mean(s : MlclassifynaivebayesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_naive_bayes_slice_scale(s : MlclassifynaivebayesSlice, f : Double) -> MlclassifynaivebayesSlice {
-  let result = ml_classify_naive_bayes_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_slice_add(a : MlclassifynaivebayesSlice, b : MlclassifynaivebayesSlice) -> MlclassifynaivebayesSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_naive_bayes_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_naive_bayes_slice_copy(s : MlclassifynaivebayesSlice) -> MlclassifynaivebayesSlice {
-  let result = ml_classify_naive_bayes_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_slice_fill(s : MlclassifynaivebayesSlice, v : Double) -> MlclassifynaivebayesSlice {
-  let result = ml_classify_naive_bayes_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_naive_bayes_slice_min(s : MlclassifynaivebayesSlice) -> Double { @_common.min(s.data) }

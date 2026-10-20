@@ -383,28 +383,20 @@ pub fn image_feature_surf_frame_sum(s : ImagefeaturesurfFrame) -> Double { @_com
 pub fn image_feature_surf_frame_mean(s : ImagefeaturesurfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_frame_scale(s : ImagefeaturesurfFrame, f : Double) -> ImagefeaturesurfFrame {
-  let result = image_feature_surf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_frame_add(a : ImagefeaturesurfFrame, b : ImagefeaturesurfFrame) -> ImagefeaturesurfFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_frame_copy(s : ImagefeaturesurfFrame) -> ImagefeaturesurfFrame {
-  let result = image_feature_surf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_frame_fill(s : ImagefeaturesurfFrame, v : Double) -> ImagefeaturesurfFrame {
-  let result = image_feature_surf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_frame_min(s : ImagefeaturesurfFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_feature_surf_table_sum(s : ImagefeaturesurfTable) -> Double { @_com
 pub fn image_feature_surf_table_mean(s : ImagefeaturesurfTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_table_scale(s : ImagefeaturesurfTable, f : Double) -> ImagefeaturesurfTable {
-  let result = image_feature_surf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_table_add(a : ImagefeaturesurfTable, b : ImagefeaturesurfTable) -> ImagefeaturesurfTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_table_copy(s : ImagefeaturesurfTable) -> ImagefeaturesurfTable {
-  let result = image_feature_surf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_table_fill(s : ImagefeaturesurfTable, v : Double) -> ImagefeaturesurfTable {
-  let result = image_feature_surf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_table_min(s : ImagefeaturesurfTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_feature_surf_graphn_sum(s : ImagefeaturesurfGraphN) -> Double { @_c
 pub fn image_feature_surf_graphn_mean(s : ImagefeaturesurfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_graphn_scale(s : ImagefeaturesurfGraphN, f : Double) -> ImagefeaturesurfGraphN {
-  let result = image_feature_surf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_graphn_add(a : ImagefeaturesurfGraphN, b : ImagefeaturesurfGraphN) -> ImagefeaturesurfGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_graphn_copy(s : ImagefeaturesurfGraphN) -> ImagefeaturesurfGraphN {
-  let result = image_feature_surf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_graphn_fill(s : ImagefeaturesurfGraphN, v : Double) -> ImagefeaturesurfGraphN {
-  let result = image_feature_surf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_graphn_min(s : ImagefeaturesurfGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_feature_surf_node_sum(s : ImagefeaturesurfNode) -> Double { @_commo
 pub fn image_feature_surf_node_mean(s : ImagefeaturesurfNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_node_scale(s : ImagefeaturesurfNode, f : Double) -> ImagefeaturesurfNode {
-  let result = image_feature_surf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_node_add(a : ImagefeaturesurfNode, b : ImagefeaturesurfNode) -> ImagefeaturesurfNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_node_copy(s : ImagefeaturesurfNode) -> ImagefeaturesurfNode {
-  let result = image_feature_surf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_node_fill(s : ImagefeaturesurfNode, v : Double) -> ImagefeaturesurfNode {
-  let result = image_feature_surf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_node_min(s : ImagefeaturesurfNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_feature_surf_edge_sum(s : ImagefeaturesurfEdge) -> Double { @_commo
 pub fn image_feature_surf_edge_mean(s : ImagefeaturesurfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_edge_scale(s : ImagefeaturesurfEdge, f : Double) -> ImagefeaturesurfEdge {
-  let result = image_feature_surf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_edge_add(a : ImagefeaturesurfEdge, b : ImagefeaturesurfEdge) -> ImagefeaturesurfEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_edge_copy(s : ImagefeaturesurfEdge) -> ImagefeaturesurfEdge {
-  let result = image_feature_surf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_edge_fill(s : ImagefeaturesurfEdge, v : Double) -> ImagefeaturesurfEdge {
-  let result = image_feature_surf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_edge_min(s : ImagefeaturesurfEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_feature_surf_path_sum(s : ImagefeaturesurfPath) -> Double { @_commo
 pub fn image_feature_surf_path_mean(s : ImagefeaturesurfPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_path_scale(s : ImagefeaturesurfPath, f : Double) -> ImagefeaturesurfPath {
-  let result = image_feature_surf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_path_add(a : ImagefeaturesurfPath, b : ImagefeaturesurfPath) -> ImagefeaturesurfPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_path_copy(s : ImagefeaturesurfPath) -> ImagefeaturesurfPath {
-  let result = image_feature_surf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_path_fill(s : ImagefeaturesurfPath, v : Double) -> ImagefeaturesurfPath {
-  let result = image_feature_surf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_path_min(s : ImagefeaturesurfPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_feature_surf_cluster_sum(s : ImagefeaturesurfCluster) -> Double { @
 pub fn image_feature_surf_cluster_mean(s : ImagefeaturesurfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_cluster_scale(s : ImagefeaturesurfCluster, f : Double) -> ImagefeaturesurfCluster {
-  let result = image_feature_surf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cluster_add(a : ImagefeaturesurfCluster, b : ImagefeaturesurfCluster) -> ImagefeaturesurfCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_cluster_copy(s : ImagefeaturesurfCluster) -> ImagefeaturesurfCluster {
-  let result = image_feature_surf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cluster_fill(s : ImagefeaturesurfCluster, v : Double) -> ImagefeaturesurfCluster {
-  let result = image_feature_surf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cluster_min(s : ImagefeaturesurfCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_feature_surf_model_sum(s : ImagefeaturesurfModel) -> Double { @_com
 pub fn image_feature_surf_model_mean(s : ImagefeaturesurfModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_model_scale(s : ImagefeaturesurfModel, f : Double) -> ImagefeaturesurfModel {
-  let result = image_feature_surf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_model_add(a : ImagefeaturesurfModel, b : ImagefeaturesurfModel) -> ImagefeaturesurfModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_model_copy(s : ImagefeaturesurfModel) -> ImagefeaturesurfModel {
-  let result = image_feature_surf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_model_fill(s : ImagefeaturesurfModel, v : Double) -> ImagefeaturesurfModel {
-  let result = image_feature_surf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_model_min(s : ImagefeaturesurfModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_feature_surf_layer_sum(s : ImagefeaturesurfLayer) -> Double { @_com
 pub fn image_feature_surf_layer_mean(s : ImagefeaturesurfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_layer_scale(s : ImagefeaturesurfLayer, f : Double) -> ImagefeaturesurfLayer {
-  let result = image_feature_surf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_layer_add(a : ImagefeaturesurfLayer, b : ImagefeaturesurfLayer) -> ImagefeaturesurfLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_layer_copy(s : ImagefeaturesurfLayer) -> ImagefeaturesurfLayer {
-  let result = image_feature_surf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_layer_fill(s : ImagefeaturesurfLayer, v : Double) -> ImagefeaturesurfLayer {
-  let result = image_feature_surf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_layer_min(s : ImagefeaturesurfLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_feature_surf_buffer_sum(s : ImagefeaturesurfBuffer) -> Double { @_c
 pub fn image_feature_surf_buffer_mean(s : ImagefeaturesurfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_buffer_scale(s : ImagefeaturesurfBuffer, f : Double) -> ImagefeaturesurfBuffer {
-  let result = image_feature_surf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_buffer_add(a : ImagefeaturesurfBuffer, b : ImagefeaturesurfBuffer) -> ImagefeaturesurfBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_buffer_copy(s : ImagefeaturesurfBuffer) -> ImagefeaturesurfBuffer {
-  let result = image_feature_surf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_buffer_fill(s : ImagefeaturesurfBuffer, v : Double) -> ImagefeaturesurfBuffer {
-  let result = image_feature_surf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_buffer_min(s : ImagefeaturesurfBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_feature_surf_cursor_sum(s : ImagefeaturesurfCursor) -> Double { @_c
 pub fn image_feature_surf_cursor_mean(s : ImagefeaturesurfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_cursor_scale(s : ImagefeaturesurfCursor, f : Double) -> ImagefeaturesurfCursor {
-  let result = image_feature_surf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cursor_add(a : ImagefeaturesurfCursor, b : ImagefeaturesurfCursor) -> ImagefeaturesurfCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_cursor_copy(s : ImagefeaturesurfCursor) -> ImagefeaturesurfCursor {
-  let result = image_feature_surf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cursor_fill(s : ImagefeaturesurfCursor, v : Double) -> ImagefeaturesurfCursor {
-  let result = image_feature_surf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cursor_min(s : ImagefeaturesurfCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_feature_surf_view_sum(s : ImagefeaturesurfView) -> Double { @_commo
 pub fn image_feature_surf_view_mean(s : ImagefeaturesurfView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_view_scale(s : ImagefeaturesurfView, f : Double) -> ImagefeaturesurfView {
-  let result = image_feature_surf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_view_add(a : ImagefeaturesurfView, b : ImagefeaturesurfView) -> ImagefeaturesurfView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_view_copy(s : ImagefeaturesurfView) -> ImagefeaturesurfView {
-  let result = image_feature_surf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_view_fill(s : ImagefeaturesurfView, v : Double) -> ImagefeaturesurfView {
-  let result = image_feature_surf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_view_min(s : ImagefeaturesurfView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_feature_surf_range_sum(s : ImagefeaturesurfRange) -> Double { @_com
 pub fn image_feature_surf_range_mean(s : ImagefeaturesurfRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_range_scale(s : ImagefeaturesurfRange, f : Double) -> ImagefeaturesurfRange {
-  let result = image_feature_surf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_range_add(a : ImagefeaturesurfRange, b : ImagefeaturesurfRange) -> ImagefeaturesurfRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_range_copy(s : ImagefeaturesurfRange) -> ImagefeaturesurfRange {
-  let result = image_feature_surf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_range_fill(s : ImagefeaturesurfRange, v : Double) -> ImagefeaturesurfRange {
-  let result = image_feature_surf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_range_min(s : ImagefeaturesurfRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_feature_surf_slice_sum(s : ImagefeaturesurfSlice) -> Double { @_com
 pub fn image_feature_surf_slice_mean(s : ImagefeaturesurfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_slice_scale(s : ImagefeaturesurfSlice, f : Double) -> ImagefeaturesurfSlice {
-  let result = image_feature_surf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_slice_add(a : ImagefeaturesurfSlice, b : ImagefeaturesurfSlice) -> ImagefeaturesurfSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_surf_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_surf_slice_copy(s : ImagefeaturesurfSlice) -> ImagefeaturesurfSlice {
-  let result = image_feature_surf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_slice_fill(s : ImagefeaturesurfSlice, v : Double) -> ImagefeaturesurfSlice {
-  let result = image_feature_surf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_slice_min(s : ImagefeaturesurfSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_desc_multivariate_frame_sum(s : StatsdescmultivariateFrame) -> Doub
 pub fn stats_desc_multivariate_frame_mean(s : StatsdescmultivariateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_frame_scale(s : StatsdescmultivariateFrame, f : Double) -> StatsdescmultivariateFrame {
-  let result = stats_desc_multivariate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_frame_add(a : StatsdescmultivariateFrame, b : StatsdescmultivariateFrame) -> StatsdescmultivariateFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_frame_copy(s : StatsdescmultivariateFrame) -> StatsdescmultivariateFrame {
-  let result = stats_desc_multivariate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_frame_fill(s : StatsdescmultivariateFrame, v : Double) -> StatsdescmultivariateFrame {
-  let result = stats_desc_multivariate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_frame_min(s : StatsdescmultivariateFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_desc_multivariate_table_sum(s : StatsdescmultivariateTable) -> Doub
 pub fn stats_desc_multivariate_table_mean(s : StatsdescmultivariateTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_table_scale(s : StatsdescmultivariateTable, f : Double) -> StatsdescmultivariateTable {
-  let result = stats_desc_multivariate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_table_add(a : StatsdescmultivariateTable, b : StatsdescmultivariateTable) -> StatsdescmultivariateTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_table_copy(s : StatsdescmultivariateTable) -> StatsdescmultivariateTable {
-  let result = stats_desc_multivariate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_table_fill(s : StatsdescmultivariateTable, v : Double) -> StatsdescmultivariateTable {
-  let result = stats_desc_multivariate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_table_min(s : StatsdescmultivariateTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_desc_multivariate_graphn_sum(s : StatsdescmultivariateGraphN) -> Do
 pub fn stats_desc_multivariate_graphn_mean(s : StatsdescmultivariateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_graphn_scale(s : StatsdescmultivariateGraphN, f : Double) -> StatsdescmultivariateGraphN {
-  let result = stats_desc_multivariate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_graphn_add(a : StatsdescmultivariateGraphN, b : StatsdescmultivariateGraphN) -> StatsdescmultivariateGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_graphn_copy(s : StatsdescmultivariateGraphN) -> StatsdescmultivariateGraphN {
-  let result = stats_desc_multivariate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_graphn_fill(s : StatsdescmultivariateGraphN, v : Double) -> StatsdescmultivariateGraphN {
-  let result = stats_desc_multivariate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_graphn_min(s : StatsdescmultivariateGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_desc_multivariate_node_sum(s : StatsdescmultivariateNode) -> Double
 pub fn stats_desc_multivariate_node_mean(s : StatsdescmultivariateNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_node_scale(s : StatsdescmultivariateNode, f : Double) -> StatsdescmultivariateNode {
-  let result = stats_desc_multivariate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_node_add(a : StatsdescmultivariateNode, b : StatsdescmultivariateNode) -> StatsdescmultivariateNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_node_copy(s : StatsdescmultivariateNode) -> StatsdescmultivariateNode {
-  let result = stats_desc_multivariate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_node_fill(s : StatsdescmultivariateNode, v : Double) -> StatsdescmultivariateNode {
-  let result = stats_desc_multivariate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_node_min(s : StatsdescmultivariateNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_desc_multivariate_edge_sum(s : StatsdescmultivariateEdge) -> Double
 pub fn stats_desc_multivariate_edge_mean(s : StatsdescmultivariateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_edge_scale(s : StatsdescmultivariateEdge, f : Double) -> StatsdescmultivariateEdge {
-  let result = stats_desc_multivariate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_edge_add(a : StatsdescmultivariateEdge, b : StatsdescmultivariateEdge) -> StatsdescmultivariateEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_edge_copy(s : StatsdescmultivariateEdge) -> StatsdescmultivariateEdge {
-  let result = stats_desc_multivariate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_edge_fill(s : StatsdescmultivariateEdge, v : Double) -> StatsdescmultivariateEdge {
-  let result = stats_desc_multivariate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_edge_min(s : StatsdescmultivariateEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_desc_multivariate_path_sum(s : StatsdescmultivariatePath) -> Double
 pub fn stats_desc_multivariate_path_mean(s : StatsdescmultivariatePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_path_scale(s : StatsdescmultivariatePath, f : Double) -> StatsdescmultivariatePath {
-  let result = stats_desc_multivariate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_path_add(a : StatsdescmultivariatePath, b : StatsdescmultivariatePath) -> StatsdescmultivariatePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_path_copy(s : StatsdescmultivariatePath) -> StatsdescmultivariatePath {
-  let result = stats_desc_multivariate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_path_fill(s : StatsdescmultivariatePath, v : Double) -> StatsdescmultivariatePath {
-  let result = stats_desc_multivariate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_path_min(s : StatsdescmultivariatePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_desc_multivariate_cluster_sum(s : StatsdescmultivariateCluster) -> 
 pub fn stats_desc_multivariate_cluster_mean(s : StatsdescmultivariateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_cluster_scale(s : StatsdescmultivariateCluster, f : Double) -> StatsdescmultivariateCluster {
-  let result = stats_desc_multivariate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cluster_add(a : StatsdescmultivariateCluster, b : StatsdescmultivariateCluster) -> StatsdescmultivariateCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_cluster_copy(s : StatsdescmultivariateCluster) -> StatsdescmultivariateCluster {
-  let result = stats_desc_multivariate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cluster_fill(s : StatsdescmultivariateCluster, v : Double) -> StatsdescmultivariateCluster {
-  let result = stats_desc_multivariate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cluster_min(s : StatsdescmultivariateCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_desc_multivariate_model_sum(s : StatsdescmultivariateModel) -> Doub
 pub fn stats_desc_multivariate_model_mean(s : StatsdescmultivariateModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_model_scale(s : StatsdescmultivariateModel, f : Double) -> StatsdescmultivariateModel {
-  let result = stats_desc_multivariate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_model_add(a : StatsdescmultivariateModel, b : StatsdescmultivariateModel) -> StatsdescmultivariateModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_model_copy(s : StatsdescmultivariateModel) -> StatsdescmultivariateModel {
-  let result = stats_desc_multivariate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_model_fill(s : StatsdescmultivariateModel, v : Double) -> StatsdescmultivariateModel {
-  let result = stats_desc_multivariate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_model_min(s : StatsdescmultivariateModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_desc_multivariate_layer_sum(s : StatsdescmultivariateLayer) -> Doub
 pub fn stats_desc_multivariate_layer_mean(s : StatsdescmultivariateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_layer_scale(s : StatsdescmultivariateLayer, f : Double) -> StatsdescmultivariateLayer {
-  let result = stats_desc_multivariate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_layer_add(a : StatsdescmultivariateLayer, b : StatsdescmultivariateLayer) -> StatsdescmultivariateLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_layer_copy(s : StatsdescmultivariateLayer) -> StatsdescmultivariateLayer {
-  let result = stats_desc_multivariate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_layer_fill(s : StatsdescmultivariateLayer, v : Double) -> StatsdescmultivariateLayer {
-  let result = stats_desc_multivariate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_layer_min(s : StatsdescmultivariateLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_desc_multivariate_buffer_sum(s : StatsdescmultivariateBuffer) -> Do
 pub fn stats_desc_multivariate_buffer_mean(s : StatsdescmultivariateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_buffer_scale(s : StatsdescmultivariateBuffer, f : Double) -> StatsdescmultivariateBuffer {
-  let result = stats_desc_multivariate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_buffer_add(a : StatsdescmultivariateBuffer, b : StatsdescmultivariateBuffer) -> StatsdescmultivariateBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_buffer_copy(s : StatsdescmultivariateBuffer) -> StatsdescmultivariateBuffer {
-  let result = stats_desc_multivariate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_buffer_fill(s : StatsdescmultivariateBuffer, v : Double) -> StatsdescmultivariateBuffer {
-  let result = stats_desc_multivariate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_buffer_min(s : StatsdescmultivariateBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_desc_multivariate_cursor_sum(s : StatsdescmultivariateCursor) -> Do
 pub fn stats_desc_multivariate_cursor_mean(s : StatsdescmultivariateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_cursor_scale(s : StatsdescmultivariateCursor, f : Double) -> StatsdescmultivariateCursor {
-  let result = stats_desc_multivariate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cursor_add(a : StatsdescmultivariateCursor, b : StatsdescmultivariateCursor) -> StatsdescmultivariateCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_cursor_copy(s : StatsdescmultivariateCursor) -> StatsdescmultivariateCursor {
-  let result = stats_desc_multivariate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cursor_fill(s : StatsdescmultivariateCursor, v : Double) -> StatsdescmultivariateCursor {
-  let result = stats_desc_multivariate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cursor_min(s : StatsdescmultivariateCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_desc_multivariate_view_sum(s : StatsdescmultivariateView) -> Double
 pub fn stats_desc_multivariate_view_mean(s : StatsdescmultivariateView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_view_scale(s : StatsdescmultivariateView, f : Double) -> StatsdescmultivariateView {
-  let result = stats_desc_multivariate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_view_add(a : StatsdescmultivariateView, b : StatsdescmultivariateView) -> StatsdescmultivariateView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_view_copy(s : StatsdescmultivariateView) -> StatsdescmultivariateView {
-  let result = stats_desc_multivariate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_view_fill(s : StatsdescmultivariateView, v : Double) -> StatsdescmultivariateView {
-  let result = stats_desc_multivariate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_view_min(s : StatsdescmultivariateView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_desc_multivariate_range_sum(s : StatsdescmultivariateRange) -> Doub
 pub fn stats_desc_multivariate_range_mean(s : StatsdescmultivariateRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_range_scale(s : StatsdescmultivariateRange, f : Double) -> StatsdescmultivariateRange {
-  let result = stats_desc_multivariate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_range_add(a : StatsdescmultivariateRange, b : StatsdescmultivariateRange) -> StatsdescmultivariateRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_range_copy(s : StatsdescmultivariateRange) -> StatsdescmultivariateRange {
-  let result = stats_desc_multivariate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_range_fill(s : StatsdescmultivariateRange, v : Double) -> StatsdescmultivariateRange {
-  let result = stats_desc_multivariate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_range_min(s : StatsdescmultivariateRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_desc_multivariate_slice_sum(s : StatsdescmultivariateSlice) -> Doub
 pub fn stats_desc_multivariate_slice_mean(s : StatsdescmultivariateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_slice_scale(s : StatsdescmultivariateSlice, f : Double) -> StatsdescmultivariateSlice {
-  let result = stats_desc_multivariate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_slice_add(a : StatsdescmultivariateSlice, b : StatsdescmultivariateSlice) -> StatsdescmultivariateSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_multivariate_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_multivariate_slice_copy(s : StatsdescmultivariateSlice) -> StatsdescmultivariateSlice {
-  let result = stats_desc_multivariate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_slice_fill(s : StatsdescmultivariateSlice, v : Double) -> StatsdescmultivariateSlice {
-  let result = stats_desc_multivariate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_slice_min(s : StatsdescmultivariateSlice) -> Double { @_common.min(s.data) }

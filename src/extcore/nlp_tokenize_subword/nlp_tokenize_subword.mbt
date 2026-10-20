@@ -383,28 +383,20 @@ pub fn nlp_tokenize_subword_frame_sum(s : NlptokenizesubwordFrame) -> Double { @
 pub fn nlp_tokenize_subword_frame_mean(s : NlptokenizesubwordFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_frame_scale(s : NlptokenizesubwordFrame, f : Double) -> NlptokenizesubwordFrame {
-  let result = nlp_tokenize_subword_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_frame_add(a : NlptokenizesubwordFrame, b : NlptokenizesubwordFrame) -> NlptokenizesubwordFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_frame_copy(s : NlptokenizesubwordFrame) -> NlptokenizesubwordFrame {
-  let result = nlp_tokenize_subword_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_frame_fill(s : NlptokenizesubwordFrame, v : Double) -> NlptokenizesubwordFrame {
-  let result = nlp_tokenize_subword_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_frame_min(s : NlptokenizesubwordFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_tokenize_subword_table_sum(s : NlptokenizesubwordTable) -> Double { @
 pub fn nlp_tokenize_subword_table_mean(s : NlptokenizesubwordTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_table_scale(s : NlptokenizesubwordTable, f : Double) -> NlptokenizesubwordTable {
-  let result = nlp_tokenize_subword_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_table_add(a : NlptokenizesubwordTable, b : NlptokenizesubwordTable) -> NlptokenizesubwordTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_table_copy(s : NlptokenizesubwordTable) -> NlptokenizesubwordTable {
-  let result = nlp_tokenize_subword_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_table_fill(s : NlptokenizesubwordTable, v : Double) -> NlptokenizesubwordTable {
-  let result = nlp_tokenize_subword_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_table_min(s : NlptokenizesubwordTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_tokenize_subword_graphn_sum(s : NlptokenizesubwordGraphN) -> Double {
 pub fn nlp_tokenize_subword_graphn_mean(s : NlptokenizesubwordGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_graphn_scale(s : NlptokenizesubwordGraphN, f : Double) -> NlptokenizesubwordGraphN {
-  let result = nlp_tokenize_subword_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_graphn_add(a : NlptokenizesubwordGraphN, b : NlptokenizesubwordGraphN) -> NlptokenizesubwordGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_graphn_copy(s : NlptokenizesubwordGraphN) -> NlptokenizesubwordGraphN {
-  let result = nlp_tokenize_subword_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_graphn_fill(s : NlptokenizesubwordGraphN, v : Double) -> NlptokenizesubwordGraphN {
-  let result = nlp_tokenize_subword_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_graphn_min(s : NlptokenizesubwordGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_tokenize_subword_node_sum(s : NlptokenizesubwordNode) -> Double { @_c
 pub fn nlp_tokenize_subword_node_mean(s : NlptokenizesubwordNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_node_scale(s : NlptokenizesubwordNode, f : Double) -> NlptokenizesubwordNode {
-  let result = nlp_tokenize_subword_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_node_add(a : NlptokenizesubwordNode, b : NlptokenizesubwordNode) -> NlptokenizesubwordNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_node_copy(s : NlptokenizesubwordNode) -> NlptokenizesubwordNode {
-  let result = nlp_tokenize_subword_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_node_fill(s : NlptokenizesubwordNode, v : Double) -> NlptokenizesubwordNode {
-  let result = nlp_tokenize_subword_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_node_min(s : NlptokenizesubwordNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_tokenize_subword_edge_sum(s : NlptokenizesubwordEdge) -> Double { @_c
 pub fn nlp_tokenize_subword_edge_mean(s : NlptokenizesubwordEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_edge_scale(s : NlptokenizesubwordEdge, f : Double) -> NlptokenizesubwordEdge {
-  let result = nlp_tokenize_subword_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_edge_add(a : NlptokenizesubwordEdge, b : NlptokenizesubwordEdge) -> NlptokenizesubwordEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_edge_copy(s : NlptokenizesubwordEdge) -> NlptokenizesubwordEdge {
-  let result = nlp_tokenize_subword_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_edge_fill(s : NlptokenizesubwordEdge, v : Double) -> NlptokenizesubwordEdge {
-  let result = nlp_tokenize_subword_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_edge_min(s : NlptokenizesubwordEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_tokenize_subword_path_sum(s : NlptokenizesubwordPath) -> Double { @_c
 pub fn nlp_tokenize_subword_path_mean(s : NlptokenizesubwordPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_path_scale(s : NlptokenizesubwordPath, f : Double) -> NlptokenizesubwordPath {
-  let result = nlp_tokenize_subword_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_path_add(a : NlptokenizesubwordPath, b : NlptokenizesubwordPath) -> NlptokenizesubwordPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_path_copy(s : NlptokenizesubwordPath) -> NlptokenizesubwordPath {
-  let result = nlp_tokenize_subword_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_path_fill(s : NlptokenizesubwordPath, v : Double) -> NlptokenizesubwordPath {
-  let result = nlp_tokenize_subword_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_path_min(s : NlptokenizesubwordPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_tokenize_subword_cluster_sum(s : NlptokenizesubwordCluster) -> Double
 pub fn nlp_tokenize_subword_cluster_mean(s : NlptokenizesubwordCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_cluster_scale(s : NlptokenizesubwordCluster, f : Double) -> NlptokenizesubwordCluster {
-  let result = nlp_tokenize_subword_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cluster_add(a : NlptokenizesubwordCluster, b : NlptokenizesubwordCluster) -> NlptokenizesubwordCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_cluster_copy(s : NlptokenizesubwordCluster) -> NlptokenizesubwordCluster {
-  let result = nlp_tokenize_subword_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cluster_fill(s : NlptokenizesubwordCluster, v : Double) -> NlptokenizesubwordCluster {
-  let result = nlp_tokenize_subword_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cluster_min(s : NlptokenizesubwordCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_tokenize_subword_model_sum(s : NlptokenizesubwordModel) -> Double { @
 pub fn nlp_tokenize_subword_model_mean(s : NlptokenizesubwordModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_model_scale(s : NlptokenizesubwordModel, f : Double) -> NlptokenizesubwordModel {
-  let result = nlp_tokenize_subword_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_model_add(a : NlptokenizesubwordModel, b : NlptokenizesubwordModel) -> NlptokenizesubwordModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_model_copy(s : NlptokenizesubwordModel) -> NlptokenizesubwordModel {
-  let result = nlp_tokenize_subword_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_model_fill(s : NlptokenizesubwordModel, v : Double) -> NlptokenizesubwordModel {
-  let result = nlp_tokenize_subword_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_model_min(s : NlptokenizesubwordModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_tokenize_subword_layer_sum(s : NlptokenizesubwordLayer) -> Double { @
 pub fn nlp_tokenize_subword_layer_mean(s : NlptokenizesubwordLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_layer_scale(s : NlptokenizesubwordLayer, f : Double) -> NlptokenizesubwordLayer {
-  let result = nlp_tokenize_subword_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_layer_add(a : NlptokenizesubwordLayer, b : NlptokenizesubwordLayer) -> NlptokenizesubwordLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_layer_copy(s : NlptokenizesubwordLayer) -> NlptokenizesubwordLayer {
-  let result = nlp_tokenize_subword_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_layer_fill(s : NlptokenizesubwordLayer, v : Double) -> NlptokenizesubwordLayer {
-  let result = nlp_tokenize_subword_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_layer_min(s : NlptokenizesubwordLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_tokenize_subword_buffer_sum(s : NlptokenizesubwordBuffer) -> Double {
 pub fn nlp_tokenize_subword_buffer_mean(s : NlptokenizesubwordBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_buffer_scale(s : NlptokenizesubwordBuffer, f : Double) -> NlptokenizesubwordBuffer {
-  let result = nlp_tokenize_subword_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_buffer_add(a : NlptokenizesubwordBuffer, b : NlptokenizesubwordBuffer) -> NlptokenizesubwordBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_buffer_copy(s : NlptokenizesubwordBuffer) -> NlptokenizesubwordBuffer {
-  let result = nlp_tokenize_subword_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_buffer_fill(s : NlptokenizesubwordBuffer, v : Double) -> NlptokenizesubwordBuffer {
-  let result = nlp_tokenize_subword_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_buffer_min(s : NlptokenizesubwordBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_tokenize_subword_cursor_sum(s : NlptokenizesubwordCursor) -> Double {
 pub fn nlp_tokenize_subword_cursor_mean(s : NlptokenizesubwordCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_cursor_scale(s : NlptokenizesubwordCursor, f : Double) -> NlptokenizesubwordCursor {
-  let result = nlp_tokenize_subword_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cursor_add(a : NlptokenizesubwordCursor, b : NlptokenizesubwordCursor) -> NlptokenizesubwordCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_cursor_copy(s : NlptokenizesubwordCursor) -> NlptokenizesubwordCursor {
-  let result = nlp_tokenize_subword_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cursor_fill(s : NlptokenizesubwordCursor, v : Double) -> NlptokenizesubwordCursor {
-  let result = nlp_tokenize_subword_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cursor_min(s : NlptokenizesubwordCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_tokenize_subword_view_sum(s : NlptokenizesubwordView) -> Double { @_c
 pub fn nlp_tokenize_subword_view_mean(s : NlptokenizesubwordView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_view_scale(s : NlptokenizesubwordView, f : Double) -> NlptokenizesubwordView {
-  let result = nlp_tokenize_subword_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_view_add(a : NlptokenizesubwordView, b : NlptokenizesubwordView) -> NlptokenizesubwordView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_view_copy(s : NlptokenizesubwordView) -> NlptokenizesubwordView {
-  let result = nlp_tokenize_subword_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_view_fill(s : NlptokenizesubwordView, v : Double) -> NlptokenizesubwordView {
-  let result = nlp_tokenize_subword_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_view_min(s : NlptokenizesubwordView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_tokenize_subword_range_sum(s : NlptokenizesubwordRange) -> Double { @
 pub fn nlp_tokenize_subword_range_mean(s : NlptokenizesubwordRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_range_scale(s : NlptokenizesubwordRange, f : Double) -> NlptokenizesubwordRange {
-  let result = nlp_tokenize_subword_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_range_add(a : NlptokenizesubwordRange, b : NlptokenizesubwordRange) -> NlptokenizesubwordRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_range_copy(s : NlptokenizesubwordRange) -> NlptokenizesubwordRange {
-  let result = nlp_tokenize_subword_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_range_fill(s : NlptokenizesubwordRange, v : Double) -> NlptokenizesubwordRange {
-  let result = nlp_tokenize_subword_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_range_min(s : NlptokenizesubwordRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_tokenize_subword_slice_sum(s : NlptokenizesubwordSlice) -> Double { @
 pub fn nlp_tokenize_subword_slice_mean(s : NlptokenizesubwordSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_subword_slice_scale(s : NlptokenizesubwordSlice, f : Double) -> NlptokenizesubwordSlice {
-  let result = nlp_tokenize_subword_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_slice_add(a : NlptokenizesubwordSlice, b : NlptokenizesubwordSlice) -> NlptokenizesubwordSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_subword_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_subword_slice_copy(s : NlptokenizesubwordSlice) -> NlptokenizesubwordSlice {
-  let result = nlp_tokenize_subword_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_slice_fill(s : NlptokenizesubwordSlice, v : Double) -> NlptokenizesubwordSlice {
-  let result = nlp_tokenize_subword_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_slice_min(s : NlptokenizesubwordSlice) -> Double { @_common.min(s.data) }

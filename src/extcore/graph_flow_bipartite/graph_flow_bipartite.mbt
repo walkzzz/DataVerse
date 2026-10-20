@@ -383,28 +383,20 @@ pub fn graph_flow_bipartite_frame_sum(s : GraphflowbipartiteFrame) -> Double { @
 pub fn graph_flow_bipartite_frame_mean(s : GraphflowbipartiteFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_frame_scale(s : GraphflowbipartiteFrame, f : Double) -> GraphflowbipartiteFrame {
-  let result = graph_flow_bipartite_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_frame_add(a : GraphflowbipartiteFrame, b : GraphflowbipartiteFrame) -> GraphflowbipartiteFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_frame_copy(s : GraphflowbipartiteFrame) -> GraphflowbipartiteFrame {
-  let result = graph_flow_bipartite_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_frame_fill(s : GraphflowbipartiteFrame, v : Double) -> GraphflowbipartiteFrame {
-  let result = graph_flow_bipartite_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_frame_min(s : GraphflowbipartiteFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_flow_bipartite_table_sum(s : GraphflowbipartiteTable) -> Double { @
 pub fn graph_flow_bipartite_table_mean(s : GraphflowbipartiteTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_table_scale(s : GraphflowbipartiteTable, f : Double) -> GraphflowbipartiteTable {
-  let result = graph_flow_bipartite_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_table_add(a : GraphflowbipartiteTable, b : GraphflowbipartiteTable) -> GraphflowbipartiteTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_table_copy(s : GraphflowbipartiteTable) -> GraphflowbipartiteTable {
-  let result = graph_flow_bipartite_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_table_fill(s : GraphflowbipartiteTable, v : Double) -> GraphflowbipartiteTable {
-  let result = graph_flow_bipartite_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_table_min(s : GraphflowbipartiteTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_flow_bipartite_graphn_sum(s : GraphflowbipartiteGraphN) -> Double {
 pub fn graph_flow_bipartite_graphn_mean(s : GraphflowbipartiteGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_graphn_scale(s : GraphflowbipartiteGraphN, f : Double) -> GraphflowbipartiteGraphN {
-  let result = graph_flow_bipartite_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_graphn_add(a : GraphflowbipartiteGraphN, b : GraphflowbipartiteGraphN) -> GraphflowbipartiteGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_graphn_copy(s : GraphflowbipartiteGraphN) -> GraphflowbipartiteGraphN {
-  let result = graph_flow_bipartite_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_graphn_fill(s : GraphflowbipartiteGraphN, v : Double) -> GraphflowbipartiteGraphN {
-  let result = graph_flow_bipartite_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_graphn_min(s : GraphflowbipartiteGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_flow_bipartite_node_sum(s : GraphflowbipartiteNode) -> Double { @_c
 pub fn graph_flow_bipartite_node_mean(s : GraphflowbipartiteNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_node_scale(s : GraphflowbipartiteNode, f : Double) -> GraphflowbipartiteNode {
-  let result = graph_flow_bipartite_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_node_add(a : GraphflowbipartiteNode, b : GraphflowbipartiteNode) -> GraphflowbipartiteNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_node_copy(s : GraphflowbipartiteNode) -> GraphflowbipartiteNode {
-  let result = graph_flow_bipartite_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_node_fill(s : GraphflowbipartiteNode, v : Double) -> GraphflowbipartiteNode {
-  let result = graph_flow_bipartite_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_node_min(s : GraphflowbipartiteNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_flow_bipartite_edge_sum(s : GraphflowbipartiteEdge) -> Double { @_c
 pub fn graph_flow_bipartite_edge_mean(s : GraphflowbipartiteEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_edge_scale(s : GraphflowbipartiteEdge, f : Double) -> GraphflowbipartiteEdge {
-  let result = graph_flow_bipartite_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_edge_add(a : GraphflowbipartiteEdge, b : GraphflowbipartiteEdge) -> GraphflowbipartiteEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_edge_copy(s : GraphflowbipartiteEdge) -> GraphflowbipartiteEdge {
-  let result = graph_flow_bipartite_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_edge_fill(s : GraphflowbipartiteEdge, v : Double) -> GraphflowbipartiteEdge {
-  let result = graph_flow_bipartite_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_edge_min(s : GraphflowbipartiteEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_flow_bipartite_path_sum(s : GraphflowbipartitePath) -> Double { @_c
 pub fn graph_flow_bipartite_path_mean(s : GraphflowbipartitePath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_path_scale(s : GraphflowbipartitePath, f : Double) -> GraphflowbipartitePath {
-  let result = graph_flow_bipartite_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_path_add(a : GraphflowbipartitePath, b : GraphflowbipartitePath) -> GraphflowbipartitePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_path_copy(s : GraphflowbipartitePath) -> GraphflowbipartitePath {
-  let result = graph_flow_bipartite_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_path_fill(s : GraphflowbipartitePath, v : Double) -> GraphflowbipartitePath {
-  let result = graph_flow_bipartite_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_path_min(s : GraphflowbipartitePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_flow_bipartite_cluster_sum(s : GraphflowbipartiteCluster) -> Double
 pub fn graph_flow_bipartite_cluster_mean(s : GraphflowbipartiteCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_cluster_scale(s : GraphflowbipartiteCluster, f : Double) -> GraphflowbipartiteCluster {
-  let result = graph_flow_bipartite_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cluster_add(a : GraphflowbipartiteCluster, b : GraphflowbipartiteCluster) -> GraphflowbipartiteCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_cluster_copy(s : GraphflowbipartiteCluster) -> GraphflowbipartiteCluster {
-  let result = graph_flow_bipartite_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cluster_fill(s : GraphflowbipartiteCluster, v : Double) -> GraphflowbipartiteCluster {
-  let result = graph_flow_bipartite_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cluster_min(s : GraphflowbipartiteCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_flow_bipartite_model_sum(s : GraphflowbipartiteModel) -> Double { @
 pub fn graph_flow_bipartite_model_mean(s : GraphflowbipartiteModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_model_scale(s : GraphflowbipartiteModel, f : Double) -> GraphflowbipartiteModel {
-  let result = graph_flow_bipartite_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_model_add(a : GraphflowbipartiteModel, b : GraphflowbipartiteModel) -> GraphflowbipartiteModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_model_copy(s : GraphflowbipartiteModel) -> GraphflowbipartiteModel {
-  let result = graph_flow_bipartite_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_model_fill(s : GraphflowbipartiteModel, v : Double) -> GraphflowbipartiteModel {
-  let result = graph_flow_bipartite_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_model_min(s : GraphflowbipartiteModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_flow_bipartite_layer_sum(s : GraphflowbipartiteLayer) -> Double { @
 pub fn graph_flow_bipartite_layer_mean(s : GraphflowbipartiteLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_layer_scale(s : GraphflowbipartiteLayer, f : Double) -> GraphflowbipartiteLayer {
-  let result = graph_flow_bipartite_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_layer_add(a : GraphflowbipartiteLayer, b : GraphflowbipartiteLayer) -> GraphflowbipartiteLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_layer_copy(s : GraphflowbipartiteLayer) -> GraphflowbipartiteLayer {
-  let result = graph_flow_bipartite_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_layer_fill(s : GraphflowbipartiteLayer, v : Double) -> GraphflowbipartiteLayer {
-  let result = graph_flow_bipartite_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_layer_min(s : GraphflowbipartiteLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_flow_bipartite_buffer_sum(s : GraphflowbipartiteBuffer) -> Double {
 pub fn graph_flow_bipartite_buffer_mean(s : GraphflowbipartiteBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_buffer_scale(s : GraphflowbipartiteBuffer, f : Double) -> GraphflowbipartiteBuffer {
-  let result = graph_flow_bipartite_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_buffer_add(a : GraphflowbipartiteBuffer, b : GraphflowbipartiteBuffer) -> GraphflowbipartiteBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_buffer_copy(s : GraphflowbipartiteBuffer) -> GraphflowbipartiteBuffer {
-  let result = graph_flow_bipartite_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_buffer_fill(s : GraphflowbipartiteBuffer, v : Double) -> GraphflowbipartiteBuffer {
-  let result = graph_flow_bipartite_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_buffer_min(s : GraphflowbipartiteBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_flow_bipartite_cursor_sum(s : GraphflowbipartiteCursor) -> Double {
 pub fn graph_flow_bipartite_cursor_mean(s : GraphflowbipartiteCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_cursor_scale(s : GraphflowbipartiteCursor, f : Double) -> GraphflowbipartiteCursor {
-  let result = graph_flow_bipartite_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cursor_add(a : GraphflowbipartiteCursor, b : GraphflowbipartiteCursor) -> GraphflowbipartiteCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_cursor_copy(s : GraphflowbipartiteCursor) -> GraphflowbipartiteCursor {
-  let result = graph_flow_bipartite_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cursor_fill(s : GraphflowbipartiteCursor, v : Double) -> GraphflowbipartiteCursor {
-  let result = graph_flow_bipartite_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cursor_min(s : GraphflowbipartiteCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_flow_bipartite_view_sum(s : GraphflowbipartiteView) -> Double { @_c
 pub fn graph_flow_bipartite_view_mean(s : GraphflowbipartiteView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_view_scale(s : GraphflowbipartiteView, f : Double) -> GraphflowbipartiteView {
-  let result = graph_flow_bipartite_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_view_add(a : GraphflowbipartiteView, b : GraphflowbipartiteView) -> GraphflowbipartiteView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_view_copy(s : GraphflowbipartiteView) -> GraphflowbipartiteView {
-  let result = graph_flow_bipartite_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_view_fill(s : GraphflowbipartiteView, v : Double) -> GraphflowbipartiteView {
-  let result = graph_flow_bipartite_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_view_min(s : GraphflowbipartiteView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_flow_bipartite_range_sum(s : GraphflowbipartiteRange) -> Double { @
 pub fn graph_flow_bipartite_range_mean(s : GraphflowbipartiteRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_range_scale(s : GraphflowbipartiteRange, f : Double) -> GraphflowbipartiteRange {
-  let result = graph_flow_bipartite_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_range_add(a : GraphflowbipartiteRange, b : GraphflowbipartiteRange) -> GraphflowbipartiteRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_range_copy(s : GraphflowbipartiteRange) -> GraphflowbipartiteRange {
-  let result = graph_flow_bipartite_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_range_fill(s : GraphflowbipartiteRange, v : Double) -> GraphflowbipartiteRange {
-  let result = graph_flow_bipartite_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_range_min(s : GraphflowbipartiteRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_flow_bipartite_slice_sum(s : GraphflowbipartiteSlice) -> Double { @
 pub fn graph_flow_bipartite_slice_mean(s : GraphflowbipartiteSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_bipartite_slice_scale(s : GraphflowbipartiteSlice, f : Double) -> GraphflowbipartiteSlice {
-  let result = graph_flow_bipartite_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_slice_add(a : GraphflowbipartiteSlice, b : GraphflowbipartiteSlice) -> GraphflowbipartiteSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_bipartite_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_bipartite_slice_copy(s : GraphflowbipartiteSlice) -> GraphflowbipartiteSlice {
-  let result = graph_flow_bipartite_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_slice_fill(s : GraphflowbipartiteSlice, v : Double) -> GraphflowbipartiteSlice {
-  let result = graph_flow_bipartite_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_slice_min(s : GraphflowbipartiteSlice) -> Double { @_common.min(s.data) }

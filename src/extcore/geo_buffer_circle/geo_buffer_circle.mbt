@@ -383,28 +383,20 @@ pub fn geo_buffer_circle_frame_sum(s : GeobuffercircleFrame) -> Double { @_commo
 pub fn geo_buffer_circle_frame_mean(s : GeobuffercircleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_frame_scale(s : GeobuffercircleFrame, f : Double) -> GeobuffercircleFrame {
-  let result = geo_buffer_circle_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_frame_add(a : GeobuffercircleFrame, b : GeobuffercircleFrame) -> GeobuffercircleFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_frame_copy(s : GeobuffercircleFrame) -> GeobuffercircleFrame {
-  let result = geo_buffer_circle_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_frame_fill(s : GeobuffercircleFrame, v : Double) -> GeobuffercircleFrame {
-  let result = geo_buffer_circle_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_frame_min(s : GeobuffercircleFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_buffer_circle_table_sum(s : GeobuffercircleTable) -> Double { @_commo
 pub fn geo_buffer_circle_table_mean(s : GeobuffercircleTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_table_scale(s : GeobuffercircleTable, f : Double) -> GeobuffercircleTable {
-  let result = geo_buffer_circle_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_table_add(a : GeobuffercircleTable, b : GeobuffercircleTable) -> GeobuffercircleTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_table_copy(s : GeobuffercircleTable) -> GeobuffercircleTable {
-  let result = geo_buffer_circle_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_table_fill(s : GeobuffercircleTable, v : Double) -> GeobuffercircleTable {
-  let result = geo_buffer_circle_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_table_min(s : GeobuffercircleTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_buffer_circle_graphn_sum(s : GeobuffercircleGraphN) -> Double { @_com
 pub fn geo_buffer_circle_graphn_mean(s : GeobuffercircleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_graphn_scale(s : GeobuffercircleGraphN, f : Double) -> GeobuffercircleGraphN {
-  let result = geo_buffer_circle_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_graphn_add(a : GeobuffercircleGraphN, b : GeobuffercircleGraphN) -> GeobuffercircleGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_graphn_copy(s : GeobuffercircleGraphN) -> GeobuffercircleGraphN {
-  let result = geo_buffer_circle_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_graphn_fill(s : GeobuffercircleGraphN, v : Double) -> GeobuffercircleGraphN {
-  let result = geo_buffer_circle_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_graphn_min(s : GeobuffercircleGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_buffer_circle_node_sum(s : GeobuffercircleNode) -> Double { @_common.
 pub fn geo_buffer_circle_node_mean(s : GeobuffercircleNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_node_scale(s : GeobuffercircleNode, f : Double) -> GeobuffercircleNode {
-  let result = geo_buffer_circle_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_node_add(a : GeobuffercircleNode, b : GeobuffercircleNode) -> GeobuffercircleNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_node_copy(s : GeobuffercircleNode) -> GeobuffercircleNode {
-  let result = geo_buffer_circle_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_node_fill(s : GeobuffercircleNode, v : Double) -> GeobuffercircleNode {
-  let result = geo_buffer_circle_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_node_min(s : GeobuffercircleNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_buffer_circle_edge_sum(s : GeobuffercircleEdge) -> Double { @_common.
 pub fn geo_buffer_circle_edge_mean(s : GeobuffercircleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_edge_scale(s : GeobuffercircleEdge, f : Double) -> GeobuffercircleEdge {
-  let result = geo_buffer_circle_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_edge_add(a : GeobuffercircleEdge, b : GeobuffercircleEdge) -> GeobuffercircleEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_edge_copy(s : GeobuffercircleEdge) -> GeobuffercircleEdge {
-  let result = geo_buffer_circle_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_edge_fill(s : GeobuffercircleEdge, v : Double) -> GeobuffercircleEdge {
-  let result = geo_buffer_circle_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_edge_min(s : GeobuffercircleEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_buffer_circle_path_sum(s : GeobuffercirclePath) -> Double { @_common.
 pub fn geo_buffer_circle_path_mean(s : GeobuffercirclePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_path_scale(s : GeobuffercirclePath, f : Double) -> GeobuffercirclePath {
-  let result = geo_buffer_circle_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_path_add(a : GeobuffercirclePath, b : GeobuffercirclePath) -> GeobuffercirclePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_path_copy(s : GeobuffercirclePath) -> GeobuffercirclePath {
-  let result = geo_buffer_circle_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_path_fill(s : GeobuffercirclePath, v : Double) -> GeobuffercirclePath {
-  let result = geo_buffer_circle_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_path_min(s : GeobuffercirclePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_buffer_circle_cluster_sum(s : GeobuffercircleCluster) -> Double { @_c
 pub fn geo_buffer_circle_cluster_mean(s : GeobuffercircleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_cluster_scale(s : GeobuffercircleCluster, f : Double) -> GeobuffercircleCluster {
-  let result = geo_buffer_circle_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_cluster_add(a : GeobuffercircleCluster, b : GeobuffercircleCluster) -> GeobuffercircleCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_cluster_copy(s : GeobuffercircleCluster) -> GeobuffercircleCluster {
-  let result = geo_buffer_circle_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_cluster_fill(s : GeobuffercircleCluster, v : Double) -> GeobuffercircleCluster {
-  let result = geo_buffer_circle_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_cluster_min(s : GeobuffercircleCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_buffer_circle_model_sum(s : GeobuffercircleModel) -> Double { @_commo
 pub fn geo_buffer_circle_model_mean(s : GeobuffercircleModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_model_scale(s : GeobuffercircleModel, f : Double) -> GeobuffercircleModel {
-  let result = geo_buffer_circle_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_model_add(a : GeobuffercircleModel, b : GeobuffercircleModel) -> GeobuffercircleModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_model_copy(s : GeobuffercircleModel) -> GeobuffercircleModel {
-  let result = geo_buffer_circle_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_model_fill(s : GeobuffercircleModel, v : Double) -> GeobuffercircleModel {
-  let result = geo_buffer_circle_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_model_min(s : GeobuffercircleModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_buffer_circle_layer_sum(s : GeobuffercircleLayer) -> Double { @_commo
 pub fn geo_buffer_circle_layer_mean(s : GeobuffercircleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_layer_scale(s : GeobuffercircleLayer, f : Double) -> GeobuffercircleLayer {
-  let result = geo_buffer_circle_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_layer_add(a : GeobuffercircleLayer, b : GeobuffercircleLayer) -> GeobuffercircleLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_layer_copy(s : GeobuffercircleLayer) -> GeobuffercircleLayer {
-  let result = geo_buffer_circle_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_layer_fill(s : GeobuffercircleLayer, v : Double) -> GeobuffercircleLayer {
-  let result = geo_buffer_circle_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_layer_min(s : GeobuffercircleLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_buffer_circle_buffer_sum(s : GeobuffercircleBuffer) -> Double { @_com
 pub fn geo_buffer_circle_buffer_mean(s : GeobuffercircleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_buffer_scale(s : GeobuffercircleBuffer, f : Double) -> GeobuffercircleBuffer {
-  let result = geo_buffer_circle_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_buffer_add(a : GeobuffercircleBuffer, b : GeobuffercircleBuffer) -> GeobuffercircleBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_buffer_copy(s : GeobuffercircleBuffer) -> GeobuffercircleBuffer {
-  let result = geo_buffer_circle_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_buffer_fill(s : GeobuffercircleBuffer, v : Double) -> GeobuffercircleBuffer {
-  let result = geo_buffer_circle_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_buffer_min(s : GeobuffercircleBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_buffer_circle_cursor_sum(s : GeobuffercircleCursor) -> Double { @_com
 pub fn geo_buffer_circle_cursor_mean(s : GeobuffercircleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_cursor_scale(s : GeobuffercircleCursor, f : Double) -> GeobuffercircleCursor {
-  let result = geo_buffer_circle_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_cursor_add(a : GeobuffercircleCursor, b : GeobuffercircleCursor) -> GeobuffercircleCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_cursor_copy(s : GeobuffercircleCursor) -> GeobuffercircleCursor {
-  let result = geo_buffer_circle_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_cursor_fill(s : GeobuffercircleCursor, v : Double) -> GeobuffercircleCursor {
-  let result = geo_buffer_circle_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_cursor_min(s : GeobuffercircleCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_buffer_circle_view_sum(s : GeobuffercircleView) -> Double { @_common.
 pub fn geo_buffer_circle_view_mean(s : GeobuffercircleView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_view_scale(s : GeobuffercircleView, f : Double) -> GeobuffercircleView {
-  let result = geo_buffer_circle_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_view_add(a : GeobuffercircleView, b : GeobuffercircleView) -> GeobuffercircleView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_view_copy(s : GeobuffercircleView) -> GeobuffercircleView {
-  let result = geo_buffer_circle_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_view_fill(s : GeobuffercircleView, v : Double) -> GeobuffercircleView {
-  let result = geo_buffer_circle_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_view_min(s : GeobuffercircleView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_buffer_circle_range_sum(s : GeobuffercircleRange) -> Double { @_commo
 pub fn geo_buffer_circle_range_mean(s : GeobuffercircleRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_range_scale(s : GeobuffercircleRange, f : Double) -> GeobuffercircleRange {
-  let result = geo_buffer_circle_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_range_add(a : GeobuffercircleRange, b : GeobuffercircleRange) -> GeobuffercircleRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_range_copy(s : GeobuffercircleRange) -> GeobuffercircleRange {
-  let result = geo_buffer_circle_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_range_fill(s : GeobuffercircleRange, v : Double) -> GeobuffercircleRange {
-  let result = geo_buffer_circle_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_range_min(s : GeobuffercircleRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_buffer_circle_slice_sum(s : GeobuffercircleSlice) -> Double { @_commo
 pub fn geo_buffer_circle_slice_mean(s : GeobuffercircleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_circle_slice_scale(s : GeobuffercircleSlice, f : Double) -> GeobuffercircleSlice {
-  let result = geo_buffer_circle_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_slice_add(a : GeobuffercircleSlice, b : GeobuffercircleSlice) -> GeobuffercircleSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_circle_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_circle_slice_copy(s : GeobuffercircleSlice) -> GeobuffercircleSlice {
-  let result = geo_buffer_circle_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_slice_fill(s : GeobuffercircleSlice, v : Double) -> GeobuffercircleSlice {
-  let result = geo_buffer_circle_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_circle_slice_min(s : GeobuffercircleSlice) -> Double { @_common.min(s.data) }

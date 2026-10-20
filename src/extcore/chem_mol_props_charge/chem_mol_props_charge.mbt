@@ -383,28 +383,20 @@ pub fn chem_mol_props_charge_frame_sum(s : ChemmolpropschargeFrame) -> Double { 
 pub fn chem_mol_props_charge_frame_mean(s : ChemmolpropschargeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_frame_scale(s : ChemmolpropschargeFrame, f : Double) -> ChemmolpropschargeFrame {
-  let result = chem_mol_props_charge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_frame_add(a : ChemmolpropschargeFrame, b : ChemmolpropschargeFrame) -> ChemmolpropschargeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_frame_copy(s : ChemmolpropschargeFrame) -> ChemmolpropschargeFrame {
-  let result = chem_mol_props_charge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_frame_fill(s : ChemmolpropschargeFrame, v : Double) -> ChemmolpropschargeFrame {
-  let result = chem_mol_props_charge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_frame_min(s : ChemmolpropschargeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_mol_props_charge_table_sum(s : ChemmolpropschargeTable) -> Double { 
 pub fn chem_mol_props_charge_table_mean(s : ChemmolpropschargeTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_table_scale(s : ChemmolpropschargeTable, f : Double) -> ChemmolpropschargeTable {
-  let result = chem_mol_props_charge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_table_add(a : ChemmolpropschargeTable, b : ChemmolpropschargeTable) -> ChemmolpropschargeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_table_copy(s : ChemmolpropschargeTable) -> ChemmolpropschargeTable {
-  let result = chem_mol_props_charge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_table_fill(s : ChemmolpropschargeTable, v : Double) -> ChemmolpropschargeTable {
-  let result = chem_mol_props_charge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_table_min(s : ChemmolpropschargeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_mol_props_charge_graphn_sum(s : ChemmolpropschargeGraphN) -> Double 
 pub fn chem_mol_props_charge_graphn_mean(s : ChemmolpropschargeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_graphn_scale(s : ChemmolpropschargeGraphN, f : Double) -> ChemmolpropschargeGraphN {
-  let result = chem_mol_props_charge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_graphn_add(a : ChemmolpropschargeGraphN, b : ChemmolpropschargeGraphN) -> ChemmolpropschargeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_graphn_copy(s : ChemmolpropschargeGraphN) -> ChemmolpropschargeGraphN {
-  let result = chem_mol_props_charge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_graphn_fill(s : ChemmolpropschargeGraphN, v : Double) -> ChemmolpropschargeGraphN {
-  let result = chem_mol_props_charge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_graphn_min(s : ChemmolpropschargeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_mol_props_charge_node_sum(s : ChemmolpropschargeNode) -> Double { @_
 pub fn chem_mol_props_charge_node_mean(s : ChemmolpropschargeNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_node_scale(s : ChemmolpropschargeNode, f : Double) -> ChemmolpropschargeNode {
-  let result = chem_mol_props_charge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_node_add(a : ChemmolpropschargeNode, b : ChemmolpropschargeNode) -> ChemmolpropschargeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_node_copy(s : ChemmolpropschargeNode) -> ChemmolpropschargeNode {
-  let result = chem_mol_props_charge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_node_fill(s : ChemmolpropschargeNode, v : Double) -> ChemmolpropschargeNode {
-  let result = chem_mol_props_charge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_node_min(s : ChemmolpropschargeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_mol_props_charge_edge_sum(s : ChemmolpropschargeEdge) -> Double { @_
 pub fn chem_mol_props_charge_edge_mean(s : ChemmolpropschargeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_edge_scale(s : ChemmolpropschargeEdge, f : Double) -> ChemmolpropschargeEdge {
-  let result = chem_mol_props_charge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_edge_add(a : ChemmolpropschargeEdge, b : ChemmolpropschargeEdge) -> ChemmolpropschargeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_edge_copy(s : ChemmolpropschargeEdge) -> ChemmolpropschargeEdge {
-  let result = chem_mol_props_charge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_edge_fill(s : ChemmolpropschargeEdge, v : Double) -> ChemmolpropschargeEdge {
-  let result = chem_mol_props_charge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_edge_min(s : ChemmolpropschargeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_mol_props_charge_path_sum(s : ChemmolpropschargePath) -> Double { @_
 pub fn chem_mol_props_charge_path_mean(s : ChemmolpropschargePath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_path_scale(s : ChemmolpropschargePath, f : Double) -> ChemmolpropschargePath {
-  let result = chem_mol_props_charge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_path_add(a : ChemmolpropschargePath, b : ChemmolpropschargePath) -> ChemmolpropschargePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_path_copy(s : ChemmolpropschargePath) -> ChemmolpropschargePath {
-  let result = chem_mol_props_charge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_path_fill(s : ChemmolpropschargePath, v : Double) -> ChemmolpropschargePath {
-  let result = chem_mol_props_charge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_path_min(s : ChemmolpropschargePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_mol_props_charge_cluster_sum(s : ChemmolpropschargeCluster) -> Doubl
 pub fn chem_mol_props_charge_cluster_mean(s : ChemmolpropschargeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_cluster_scale(s : ChemmolpropschargeCluster, f : Double) -> ChemmolpropschargeCluster {
-  let result = chem_mol_props_charge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cluster_add(a : ChemmolpropschargeCluster, b : ChemmolpropschargeCluster) -> ChemmolpropschargeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_cluster_copy(s : ChemmolpropschargeCluster) -> ChemmolpropschargeCluster {
-  let result = chem_mol_props_charge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cluster_fill(s : ChemmolpropschargeCluster, v : Double) -> ChemmolpropschargeCluster {
-  let result = chem_mol_props_charge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cluster_min(s : ChemmolpropschargeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_mol_props_charge_model_sum(s : ChemmolpropschargeModel) -> Double { 
 pub fn chem_mol_props_charge_model_mean(s : ChemmolpropschargeModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_model_scale(s : ChemmolpropschargeModel, f : Double) -> ChemmolpropschargeModel {
-  let result = chem_mol_props_charge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_model_add(a : ChemmolpropschargeModel, b : ChemmolpropschargeModel) -> ChemmolpropschargeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_model_copy(s : ChemmolpropschargeModel) -> ChemmolpropschargeModel {
-  let result = chem_mol_props_charge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_model_fill(s : ChemmolpropschargeModel, v : Double) -> ChemmolpropschargeModel {
-  let result = chem_mol_props_charge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_model_min(s : ChemmolpropschargeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_mol_props_charge_layer_sum(s : ChemmolpropschargeLayer) -> Double { 
 pub fn chem_mol_props_charge_layer_mean(s : ChemmolpropschargeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_layer_scale(s : ChemmolpropschargeLayer, f : Double) -> ChemmolpropschargeLayer {
-  let result = chem_mol_props_charge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_layer_add(a : ChemmolpropschargeLayer, b : ChemmolpropschargeLayer) -> ChemmolpropschargeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_layer_copy(s : ChemmolpropschargeLayer) -> ChemmolpropschargeLayer {
-  let result = chem_mol_props_charge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_layer_fill(s : ChemmolpropschargeLayer, v : Double) -> ChemmolpropschargeLayer {
-  let result = chem_mol_props_charge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_layer_min(s : ChemmolpropschargeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_mol_props_charge_buffer_sum(s : ChemmolpropschargeBuffer) -> Double 
 pub fn chem_mol_props_charge_buffer_mean(s : ChemmolpropschargeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_buffer_scale(s : ChemmolpropschargeBuffer, f : Double) -> ChemmolpropschargeBuffer {
-  let result = chem_mol_props_charge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_buffer_add(a : ChemmolpropschargeBuffer, b : ChemmolpropschargeBuffer) -> ChemmolpropschargeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_buffer_copy(s : ChemmolpropschargeBuffer) -> ChemmolpropschargeBuffer {
-  let result = chem_mol_props_charge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_buffer_fill(s : ChemmolpropschargeBuffer, v : Double) -> ChemmolpropschargeBuffer {
-  let result = chem_mol_props_charge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_buffer_min(s : ChemmolpropschargeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_mol_props_charge_cursor_sum(s : ChemmolpropschargeCursor) -> Double 
 pub fn chem_mol_props_charge_cursor_mean(s : ChemmolpropschargeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_cursor_scale(s : ChemmolpropschargeCursor, f : Double) -> ChemmolpropschargeCursor {
-  let result = chem_mol_props_charge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cursor_add(a : ChemmolpropschargeCursor, b : ChemmolpropschargeCursor) -> ChemmolpropschargeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_cursor_copy(s : ChemmolpropschargeCursor) -> ChemmolpropschargeCursor {
-  let result = chem_mol_props_charge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cursor_fill(s : ChemmolpropschargeCursor, v : Double) -> ChemmolpropschargeCursor {
-  let result = chem_mol_props_charge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cursor_min(s : ChemmolpropschargeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_mol_props_charge_view_sum(s : ChemmolpropschargeView) -> Double { @_
 pub fn chem_mol_props_charge_view_mean(s : ChemmolpropschargeView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_view_scale(s : ChemmolpropschargeView, f : Double) -> ChemmolpropschargeView {
-  let result = chem_mol_props_charge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_view_add(a : ChemmolpropschargeView, b : ChemmolpropschargeView) -> ChemmolpropschargeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_view_copy(s : ChemmolpropschargeView) -> ChemmolpropschargeView {
-  let result = chem_mol_props_charge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_view_fill(s : ChemmolpropschargeView, v : Double) -> ChemmolpropschargeView {
-  let result = chem_mol_props_charge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_view_min(s : ChemmolpropschargeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_mol_props_charge_range_sum(s : ChemmolpropschargeRange) -> Double { 
 pub fn chem_mol_props_charge_range_mean(s : ChemmolpropschargeRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_range_scale(s : ChemmolpropschargeRange, f : Double) -> ChemmolpropschargeRange {
-  let result = chem_mol_props_charge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_range_add(a : ChemmolpropschargeRange, b : ChemmolpropschargeRange) -> ChemmolpropschargeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_range_copy(s : ChemmolpropschargeRange) -> ChemmolpropschargeRange {
-  let result = chem_mol_props_charge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_range_fill(s : ChemmolpropschargeRange, v : Double) -> ChemmolpropschargeRange {
-  let result = chem_mol_props_charge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_range_min(s : ChemmolpropschargeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_mol_props_charge_slice_sum(s : ChemmolpropschargeSlice) -> Double { 
 pub fn chem_mol_props_charge_slice_mean(s : ChemmolpropschargeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_slice_scale(s : ChemmolpropschargeSlice, f : Double) -> ChemmolpropschargeSlice {
-  let result = chem_mol_props_charge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_slice_add(a : ChemmolpropschargeSlice, b : ChemmolpropschargeSlice) -> ChemmolpropschargeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_charge_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_charge_slice_copy(s : ChemmolpropschargeSlice) -> ChemmolpropschargeSlice {
-  let result = chem_mol_props_charge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_slice_fill(s : ChemmolpropschargeSlice, v : Double) -> ChemmolpropschargeSlice {
-  let result = chem_mol_props_charge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_slice_min(s : ChemmolpropschargeSlice) -> Double { @_common.min(s.data) }

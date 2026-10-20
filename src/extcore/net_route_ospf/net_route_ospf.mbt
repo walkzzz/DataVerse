@@ -383,28 +383,20 @@ pub fn net_route_ospf_frame_sum(s : NetrouteospfFrame) -> Double { @_common.sum(
 pub fn net_route_ospf_frame_mean(s : NetrouteospfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_frame_scale(s : NetrouteospfFrame, f : Double) -> NetrouteospfFrame {
-  let result = net_route_ospf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_frame_add(a : NetrouteospfFrame, b : NetrouteospfFrame) -> NetrouteospfFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_frame_copy(s : NetrouteospfFrame) -> NetrouteospfFrame {
-  let result = net_route_ospf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_frame_fill(s : NetrouteospfFrame, v : Double) -> NetrouteospfFrame {
-  let result = net_route_ospf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_frame_min(s : NetrouteospfFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_route_ospf_table_sum(s : NetrouteospfTable) -> Double { @_common.sum(
 pub fn net_route_ospf_table_mean(s : NetrouteospfTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_table_scale(s : NetrouteospfTable, f : Double) -> NetrouteospfTable {
-  let result = net_route_ospf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_table_add(a : NetrouteospfTable, b : NetrouteospfTable) -> NetrouteospfTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_table_copy(s : NetrouteospfTable) -> NetrouteospfTable {
-  let result = net_route_ospf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_table_fill(s : NetrouteospfTable, v : Double) -> NetrouteospfTable {
-  let result = net_route_ospf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_table_min(s : NetrouteospfTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_route_ospf_graphn_sum(s : NetrouteospfGraphN) -> Double { @_common.su
 pub fn net_route_ospf_graphn_mean(s : NetrouteospfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_graphn_scale(s : NetrouteospfGraphN, f : Double) -> NetrouteospfGraphN {
-  let result = net_route_ospf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_graphn_add(a : NetrouteospfGraphN, b : NetrouteospfGraphN) -> NetrouteospfGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_graphn_copy(s : NetrouteospfGraphN) -> NetrouteospfGraphN {
-  let result = net_route_ospf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_graphn_fill(s : NetrouteospfGraphN, v : Double) -> NetrouteospfGraphN {
-  let result = net_route_ospf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_graphn_min(s : NetrouteospfGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_route_ospf_node_sum(s : NetrouteospfNode) -> Double { @_common.sum(s.
 pub fn net_route_ospf_node_mean(s : NetrouteospfNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_node_scale(s : NetrouteospfNode, f : Double) -> NetrouteospfNode {
-  let result = net_route_ospf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_node_add(a : NetrouteospfNode, b : NetrouteospfNode) -> NetrouteospfNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_node_copy(s : NetrouteospfNode) -> NetrouteospfNode {
-  let result = net_route_ospf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_node_fill(s : NetrouteospfNode, v : Double) -> NetrouteospfNode {
-  let result = net_route_ospf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_node_min(s : NetrouteospfNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_route_ospf_edge_sum(s : NetrouteospfEdge) -> Double { @_common.sum(s.
 pub fn net_route_ospf_edge_mean(s : NetrouteospfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_edge_scale(s : NetrouteospfEdge, f : Double) -> NetrouteospfEdge {
-  let result = net_route_ospf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_edge_add(a : NetrouteospfEdge, b : NetrouteospfEdge) -> NetrouteospfEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_edge_copy(s : NetrouteospfEdge) -> NetrouteospfEdge {
-  let result = net_route_ospf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_edge_fill(s : NetrouteospfEdge, v : Double) -> NetrouteospfEdge {
-  let result = net_route_ospf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_edge_min(s : NetrouteospfEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_route_ospf_path_sum(s : NetrouteospfPath) -> Double { @_common.sum(s.
 pub fn net_route_ospf_path_mean(s : NetrouteospfPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_path_scale(s : NetrouteospfPath, f : Double) -> NetrouteospfPath {
-  let result = net_route_ospf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_path_add(a : NetrouteospfPath, b : NetrouteospfPath) -> NetrouteospfPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_path_copy(s : NetrouteospfPath) -> NetrouteospfPath {
-  let result = net_route_ospf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_path_fill(s : NetrouteospfPath, v : Double) -> NetrouteospfPath {
-  let result = net_route_ospf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_path_min(s : NetrouteospfPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_route_ospf_cluster_sum(s : NetrouteospfCluster) -> Double { @_common.
 pub fn net_route_ospf_cluster_mean(s : NetrouteospfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_cluster_scale(s : NetrouteospfCluster, f : Double) -> NetrouteospfCluster {
-  let result = net_route_ospf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_cluster_add(a : NetrouteospfCluster, b : NetrouteospfCluster) -> NetrouteospfCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_cluster_copy(s : NetrouteospfCluster) -> NetrouteospfCluster {
-  let result = net_route_ospf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_cluster_fill(s : NetrouteospfCluster, v : Double) -> NetrouteospfCluster {
-  let result = net_route_ospf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_cluster_min(s : NetrouteospfCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_route_ospf_model_sum(s : NetrouteospfModel) -> Double { @_common.sum(
 pub fn net_route_ospf_model_mean(s : NetrouteospfModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_model_scale(s : NetrouteospfModel, f : Double) -> NetrouteospfModel {
-  let result = net_route_ospf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_model_add(a : NetrouteospfModel, b : NetrouteospfModel) -> NetrouteospfModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_model_copy(s : NetrouteospfModel) -> NetrouteospfModel {
-  let result = net_route_ospf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_model_fill(s : NetrouteospfModel, v : Double) -> NetrouteospfModel {
-  let result = net_route_ospf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_model_min(s : NetrouteospfModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_route_ospf_layer_sum(s : NetrouteospfLayer) -> Double { @_common.sum(
 pub fn net_route_ospf_layer_mean(s : NetrouteospfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_layer_scale(s : NetrouteospfLayer, f : Double) -> NetrouteospfLayer {
-  let result = net_route_ospf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_layer_add(a : NetrouteospfLayer, b : NetrouteospfLayer) -> NetrouteospfLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_layer_copy(s : NetrouteospfLayer) -> NetrouteospfLayer {
-  let result = net_route_ospf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_layer_fill(s : NetrouteospfLayer, v : Double) -> NetrouteospfLayer {
-  let result = net_route_ospf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_layer_min(s : NetrouteospfLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_route_ospf_buffer_sum(s : NetrouteospfBuffer) -> Double { @_common.su
 pub fn net_route_ospf_buffer_mean(s : NetrouteospfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_buffer_scale(s : NetrouteospfBuffer, f : Double) -> NetrouteospfBuffer {
-  let result = net_route_ospf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_buffer_add(a : NetrouteospfBuffer, b : NetrouteospfBuffer) -> NetrouteospfBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_buffer_copy(s : NetrouteospfBuffer) -> NetrouteospfBuffer {
-  let result = net_route_ospf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_buffer_fill(s : NetrouteospfBuffer, v : Double) -> NetrouteospfBuffer {
-  let result = net_route_ospf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_buffer_min(s : NetrouteospfBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_route_ospf_cursor_sum(s : NetrouteospfCursor) -> Double { @_common.su
 pub fn net_route_ospf_cursor_mean(s : NetrouteospfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_cursor_scale(s : NetrouteospfCursor, f : Double) -> NetrouteospfCursor {
-  let result = net_route_ospf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_cursor_add(a : NetrouteospfCursor, b : NetrouteospfCursor) -> NetrouteospfCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_cursor_copy(s : NetrouteospfCursor) -> NetrouteospfCursor {
-  let result = net_route_ospf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_cursor_fill(s : NetrouteospfCursor, v : Double) -> NetrouteospfCursor {
-  let result = net_route_ospf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_cursor_min(s : NetrouteospfCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_route_ospf_view_sum(s : NetrouteospfView) -> Double { @_common.sum(s.
 pub fn net_route_ospf_view_mean(s : NetrouteospfView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_view_scale(s : NetrouteospfView, f : Double) -> NetrouteospfView {
-  let result = net_route_ospf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_view_add(a : NetrouteospfView, b : NetrouteospfView) -> NetrouteospfView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_view_copy(s : NetrouteospfView) -> NetrouteospfView {
-  let result = net_route_ospf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_view_fill(s : NetrouteospfView, v : Double) -> NetrouteospfView {
-  let result = net_route_ospf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_view_min(s : NetrouteospfView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_route_ospf_range_sum(s : NetrouteospfRange) -> Double { @_common.sum(
 pub fn net_route_ospf_range_mean(s : NetrouteospfRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_range_scale(s : NetrouteospfRange, f : Double) -> NetrouteospfRange {
-  let result = net_route_ospf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_range_add(a : NetrouteospfRange, b : NetrouteospfRange) -> NetrouteospfRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_range_copy(s : NetrouteospfRange) -> NetrouteospfRange {
-  let result = net_route_ospf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_range_fill(s : NetrouteospfRange, v : Double) -> NetrouteospfRange {
-  let result = net_route_ospf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_range_min(s : NetrouteospfRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_route_ospf_slice_sum(s : NetrouteospfSlice) -> Double { @_common.sum(
 pub fn net_route_ospf_slice_mean(s : NetrouteospfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_ospf_slice_scale(s : NetrouteospfSlice, f : Double) -> NetrouteospfSlice {
-  let result = net_route_ospf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_slice_add(a : NetrouteospfSlice, b : NetrouteospfSlice) -> NetrouteospfSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_ospf_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_ospf_slice_copy(s : NetrouteospfSlice) -> NetrouteospfSlice {
-  let result = net_route_ospf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_slice_fill(s : NetrouteospfSlice, v : Double) -> NetrouteospfSlice {
-  let result = net_route_ospf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_ospf_slice_min(s : NetrouteospfSlice) -> Double { @_common.min(s.data) }

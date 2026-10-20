@@ -383,28 +383,20 @@ pub fn stats_model_linear_frame_sum(s : StatsmodellinearFrame) -> Double { @_com
 pub fn stats_model_linear_frame_mean(s : StatsmodellinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_frame_scale(s : StatsmodellinearFrame, f : Double) -> StatsmodellinearFrame {
-  let result = stats_model_linear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_frame_add(a : StatsmodellinearFrame, b : StatsmodellinearFrame) -> StatsmodellinearFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_frame_copy(s : StatsmodellinearFrame) -> StatsmodellinearFrame {
-  let result = stats_model_linear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_frame_fill(s : StatsmodellinearFrame, v : Double) -> StatsmodellinearFrame {
-  let result = stats_model_linear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_frame_min(s : StatsmodellinearFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_model_linear_table_sum(s : StatsmodellinearTable) -> Double { @_com
 pub fn stats_model_linear_table_mean(s : StatsmodellinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_table_scale(s : StatsmodellinearTable, f : Double) -> StatsmodellinearTable {
-  let result = stats_model_linear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_table_add(a : StatsmodellinearTable, b : StatsmodellinearTable) -> StatsmodellinearTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_table_copy(s : StatsmodellinearTable) -> StatsmodellinearTable {
-  let result = stats_model_linear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_table_fill(s : StatsmodellinearTable, v : Double) -> StatsmodellinearTable {
-  let result = stats_model_linear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_table_min(s : StatsmodellinearTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_model_linear_graphn_sum(s : StatsmodellinearGraphN) -> Double { @_c
 pub fn stats_model_linear_graphn_mean(s : StatsmodellinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_graphn_scale(s : StatsmodellinearGraphN, f : Double) -> StatsmodellinearGraphN {
-  let result = stats_model_linear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_graphn_add(a : StatsmodellinearGraphN, b : StatsmodellinearGraphN) -> StatsmodellinearGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_graphn_copy(s : StatsmodellinearGraphN) -> StatsmodellinearGraphN {
-  let result = stats_model_linear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_graphn_fill(s : StatsmodellinearGraphN, v : Double) -> StatsmodellinearGraphN {
-  let result = stats_model_linear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_graphn_min(s : StatsmodellinearGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_model_linear_node_sum(s : StatsmodellinearNode) -> Double { @_commo
 pub fn stats_model_linear_node_mean(s : StatsmodellinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_node_scale(s : StatsmodellinearNode, f : Double) -> StatsmodellinearNode {
-  let result = stats_model_linear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_node_add(a : StatsmodellinearNode, b : StatsmodellinearNode) -> StatsmodellinearNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_node_copy(s : StatsmodellinearNode) -> StatsmodellinearNode {
-  let result = stats_model_linear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_node_fill(s : StatsmodellinearNode, v : Double) -> StatsmodellinearNode {
-  let result = stats_model_linear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_node_min(s : StatsmodellinearNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_model_linear_edge_sum(s : StatsmodellinearEdge) -> Double { @_commo
 pub fn stats_model_linear_edge_mean(s : StatsmodellinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_edge_scale(s : StatsmodellinearEdge, f : Double) -> StatsmodellinearEdge {
-  let result = stats_model_linear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_edge_add(a : StatsmodellinearEdge, b : StatsmodellinearEdge) -> StatsmodellinearEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_edge_copy(s : StatsmodellinearEdge) -> StatsmodellinearEdge {
-  let result = stats_model_linear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_edge_fill(s : StatsmodellinearEdge, v : Double) -> StatsmodellinearEdge {
-  let result = stats_model_linear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_edge_min(s : StatsmodellinearEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_model_linear_path_sum(s : StatsmodellinearPath) -> Double { @_commo
 pub fn stats_model_linear_path_mean(s : StatsmodellinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_path_scale(s : StatsmodellinearPath, f : Double) -> StatsmodellinearPath {
-  let result = stats_model_linear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_path_add(a : StatsmodellinearPath, b : StatsmodellinearPath) -> StatsmodellinearPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_path_copy(s : StatsmodellinearPath) -> StatsmodellinearPath {
-  let result = stats_model_linear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_path_fill(s : StatsmodellinearPath, v : Double) -> StatsmodellinearPath {
-  let result = stats_model_linear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_path_min(s : StatsmodellinearPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_model_linear_cluster_sum(s : StatsmodellinearCluster) -> Double { @
 pub fn stats_model_linear_cluster_mean(s : StatsmodellinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_cluster_scale(s : StatsmodellinearCluster, f : Double) -> StatsmodellinearCluster {
-  let result = stats_model_linear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_cluster_add(a : StatsmodellinearCluster, b : StatsmodellinearCluster) -> StatsmodellinearCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_cluster_copy(s : StatsmodellinearCluster) -> StatsmodellinearCluster {
-  let result = stats_model_linear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_cluster_fill(s : StatsmodellinearCluster, v : Double) -> StatsmodellinearCluster {
-  let result = stats_model_linear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_cluster_min(s : StatsmodellinearCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_model_linear_model_sum(s : StatsmodellinearModel) -> Double { @_com
 pub fn stats_model_linear_model_mean(s : StatsmodellinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_model_scale(s : StatsmodellinearModel, f : Double) -> StatsmodellinearModel {
-  let result = stats_model_linear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_model_add(a : StatsmodellinearModel, b : StatsmodellinearModel) -> StatsmodellinearModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_model_copy(s : StatsmodellinearModel) -> StatsmodellinearModel {
-  let result = stats_model_linear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_model_fill(s : StatsmodellinearModel, v : Double) -> StatsmodellinearModel {
-  let result = stats_model_linear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_model_min(s : StatsmodellinearModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_model_linear_layer_sum(s : StatsmodellinearLayer) -> Double { @_com
 pub fn stats_model_linear_layer_mean(s : StatsmodellinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_layer_scale(s : StatsmodellinearLayer, f : Double) -> StatsmodellinearLayer {
-  let result = stats_model_linear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_layer_add(a : StatsmodellinearLayer, b : StatsmodellinearLayer) -> StatsmodellinearLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_layer_copy(s : StatsmodellinearLayer) -> StatsmodellinearLayer {
-  let result = stats_model_linear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_layer_fill(s : StatsmodellinearLayer, v : Double) -> StatsmodellinearLayer {
-  let result = stats_model_linear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_layer_min(s : StatsmodellinearLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_model_linear_buffer_sum(s : StatsmodellinearBuffer) -> Double { @_c
 pub fn stats_model_linear_buffer_mean(s : StatsmodellinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_buffer_scale(s : StatsmodellinearBuffer, f : Double) -> StatsmodellinearBuffer {
-  let result = stats_model_linear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_buffer_add(a : StatsmodellinearBuffer, b : StatsmodellinearBuffer) -> StatsmodellinearBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_buffer_copy(s : StatsmodellinearBuffer) -> StatsmodellinearBuffer {
-  let result = stats_model_linear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_buffer_fill(s : StatsmodellinearBuffer, v : Double) -> StatsmodellinearBuffer {
-  let result = stats_model_linear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_buffer_min(s : StatsmodellinearBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_model_linear_cursor_sum(s : StatsmodellinearCursor) -> Double { @_c
 pub fn stats_model_linear_cursor_mean(s : StatsmodellinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_cursor_scale(s : StatsmodellinearCursor, f : Double) -> StatsmodellinearCursor {
-  let result = stats_model_linear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_cursor_add(a : StatsmodellinearCursor, b : StatsmodellinearCursor) -> StatsmodellinearCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_cursor_copy(s : StatsmodellinearCursor) -> StatsmodellinearCursor {
-  let result = stats_model_linear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_cursor_fill(s : StatsmodellinearCursor, v : Double) -> StatsmodellinearCursor {
-  let result = stats_model_linear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_cursor_min(s : StatsmodellinearCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_model_linear_view_sum(s : StatsmodellinearView) -> Double { @_commo
 pub fn stats_model_linear_view_mean(s : StatsmodellinearView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_view_scale(s : StatsmodellinearView, f : Double) -> StatsmodellinearView {
-  let result = stats_model_linear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_view_add(a : StatsmodellinearView, b : StatsmodellinearView) -> StatsmodellinearView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_view_copy(s : StatsmodellinearView) -> StatsmodellinearView {
-  let result = stats_model_linear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_view_fill(s : StatsmodellinearView, v : Double) -> StatsmodellinearView {
-  let result = stats_model_linear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_view_min(s : StatsmodellinearView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_model_linear_range_sum(s : StatsmodellinearRange) -> Double { @_com
 pub fn stats_model_linear_range_mean(s : StatsmodellinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_range_scale(s : StatsmodellinearRange, f : Double) -> StatsmodellinearRange {
-  let result = stats_model_linear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_range_add(a : StatsmodellinearRange, b : StatsmodellinearRange) -> StatsmodellinearRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_range_copy(s : StatsmodellinearRange) -> StatsmodellinearRange {
-  let result = stats_model_linear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_range_fill(s : StatsmodellinearRange, v : Double) -> StatsmodellinearRange {
-  let result = stats_model_linear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_range_min(s : StatsmodellinearRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_model_linear_slice_sum(s : StatsmodellinearSlice) -> Double { @_com
 pub fn stats_model_linear_slice_mean(s : StatsmodellinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_slice_scale(s : StatsmodellinearSlice, f : Double) -> StatsmodellinearSlice {
-  let result = stats_model_linear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_slice_add(a : StatsmodellinearSlice, b : StatsmodellinearSlice) -> StatsmodellinearSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_linear_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_linear_slice_copy(s : StatsmodellinearSlice) -> StatsmodellinearSlice {
-  let result = stats_model_linear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_slice_fill(s : StatsmodellinearSlice, v : Double) -> StatsmodellinearSlice {
-  let result = stats_model_linear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_linear_slice_min(s : StatsmodellinearSlice) -> Double { @_common.min(s.data) }

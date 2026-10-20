@@ -383,28 +383,20 @@ pub fn crypto_sym_cast_frame_sum(s : CryptosymcastFrame) -> Double { @_common.su
 pub fn crypto_sym_cast_frame_mean(s : CryptosymcastFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_frame_scale(s : CryptosymcastFrame, f : Double) -> CryptosymcastFrame {
-  let result = crypto_sym_cast_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_frame_add(a : CryptosymcastFrame, b : CryptosymcastFrame) -> CryptosymcastFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_frame_copy(s : CryptosymcastFrame) -> CryptosymcastFrame {
-  let result = crypto_sym_cast_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_frame_fill(s : CryptosymcastFrame, v : Double) -> CryptosymcastFrame {
-  let result = crypto_sym_cast_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_frame_min(s : CryptosymcastFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sym_cast_table_sum(s : CryptosymcastTable) -> Double { @_common.su
 pub fn crypto_sym_cast_table_mean(s : CryptosymcastTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_table_scale(s : CryptosymcastTable, f : Double) -> CryptosymcastTable {
-  let result = crypto_sym_cast_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_table_add(a : CryptosymcastTable, b : CryptosymcastTable) -> CryptosymcastTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_table_copy(s : CryptosymcastTable) -> CryptosymcastTable {
-  let result = crypto_sym_cast_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_table_fill(s : CryptosymcastTable, v : Double) -> CryptosymcastTable {
-  let result = crypto_sym_cast_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_table_min(s : CryptosymcastTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sym_cast_graphn_sum(s : CryptosymcastGraphN) -> Double { @_common.
 pub fn crypto_sym_cast_graphn_mean(s : CryptosymcastGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_graphn_scale(s : CryptosymcastGraphN, f : Double) -> CryptosymcastGraphN {
-  let result = crypto_sym_cast_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_graphn_add(a : CryptosymcastGraphN, b : CryptosymcastGraphN) -> CryptosymcastGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_graphn_copy(s : CryptosymcastGraphN) -> CryptosymcastGraphN {
-  let result = crypto_sym_cast_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_graphn_fill(s : CryptosymcastGraphN, v : Double) -> CryptosymcastGraphN {
-  let result = crypto_sym_cast_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_graphn_min(s : CryptosymcastGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sym_cast_node_sum(s : CryptosymcastNode) -> Double { @_common.sum(
 pub fn crypto_sym_cast_node_mean(s : CryptosymcastNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_node_scale(s : CryptosymcastNode, f : Double) -> CryptosymcastNode {
-  let result = crypto_sym_cast_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_node_add(a : CryptosymcastNode, b : CryptosymcastNode) -> CryptosymcastNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_node_copy(s : CryptosymcastNode) -> CryptosymcastNode {
-  let result = crypto_sym_cast_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_node_fill(s : CryptosymcastNode, v : Double) -> CryptosymcastNode {
-  let result = crypto_sym_cast_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_node_min(s : CryptosymcastNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sym_cast_edge_sum(s : CryptosymcastEdge) -> Double { @_common.sum(
 pub fn crypto_sym_cast_edge_mean(s : CryptosymcastEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_edge_scale(s : CryptosymcastEdge, f : Double) -> CryptosymcastEdge {
-  let result = crypto_sym_cast_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_edge_add(a : CryptosymcastEdge, b : CryptosymcastEdge) -> CryptosymcastEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_edge_copy(s : CryptosymcastEdge) -> CryptosymcastEdge {
-  let result = crypto_sym_cast_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_edge_fill(s : CryptosymcastEdge, v : Double) -> CryptosymcastEdge {
-  let result = crypto_sym_cast_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_edge_min(s : CryptosymcastEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sym_cast_path_sum(s : CryptosymcastPath) -> Double { @_common.sum(
 pub fn crypto_sym_cast_path_mean(s : CryptosymcastPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_path_scale(s : CryptosymcastPath, f : Double) -> CryptosymcastPath {
-  let result = crypto_sym_cast_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_path_add(a : CryptosymcastPath, b : CryptosymcastPath) -> CryptosymcastPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_path_copy(s : CryptosymcastPath) -> CryptosymcastPath {
-  let result = crypto_sym_cast_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_path_fill(s : CryptosymcastPath, v : Double) -> CryptosymcastPath {
-  let result = crypto_sym_cast_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_path_min(s : CryptosymcastPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sym_cast_cluster_sum(s : CryptosymcastCluster) -> Double { @_commo
 pub fn crypto_sym_cast_cluster_mean(s : CryptosymcastCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_cluster_scale(s : CryptosymcastCluster, f : Double) -> CryptosymcastCluster {
-  let result = crypto_sym_cast_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_cluster_add(a : CryptosymcastCluster, b : CryptosymcastCluster) -> CryptosymcastCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_cluster_copy(s : CryptosymcastCluster) -> CryptosymcastCluster {
-  let result = crypto_sym_cast_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_cluster_fill(s : CryptosymcastCluster, v : Double) -> CryptosymcastCluster {
-  let result = crypto_sym_cast_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_cluster_min(s : CryptosymcastCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sym_cast_model_sum(s : CryptosymcastModel) -> Double { @_common.su
 pub fn crypto_sym_cast_model_mean(s : CryptosymcastModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_model_scale(s : CryptosymcastModel, f : Double) -> CryptosymcastModel {
-  let result = crypto_sym_cast_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_model_add(a : CryptosymcastModel, b : CryptosymcastModel) -> CryptosymcastModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_model_copy(s : CryptosymcastModel) -> CryptosymcastModel {
-  let result = crypto_sym_cast_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_model_fill(s : CryptosymcastModel, v : Double) -> CryptosymcastModel {
-  let result = crypto_sym_cast_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_model_min(s : CryptosymcastModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sym_cast_layer_sum(s : CryptosymcastLayer) -> Double { @_common.su
 pub fn crypto_sym_cast_layer_mean(s : CryptosymcastLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_layer_scale(s : CryptosymcastLayer, f : Double) -> CryptosymcastLayer {
-  let result = crypto_sym_cast_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_layer_add(a : CryptosymcastLayer, b : CryptosymcastLayer) -> CryptosymcastLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_layer_copy(s : CryptosymcastLayer) -> CryptosymcastLayer {
-  let result = crypto_sym_cast_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_layer_fill(s : CryptosymcastLayer, v : Double) -> CryptosymcastLayer {
-  let result = crypto_sym_cast_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_layer_min(s : CryptosymcastLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sym_cast_buffer_sum(s : CryptosymcastBuffer) -> Double { @_common.
 pub fn crypto_sym_cast_buffer_mean(s : CryptosymcastBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_buffer_scale(s : CryptosymcastBuffer, f : Double) -> CryptosymcastBuffer {
-  let result = crypto_sym_cast_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_buffer_add(a : CryptosymcastBuffer, b : CryptosymcastBuffer) -> CryptosymcastBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_buffer_copy(s : CryptosymcastBuffer) -> CryptosymcastBuffer {
-  let result = crypto_sym_cast_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_buffer_fill(s : CryptosymcastBuffer, v : Double) -> CryptosymcastBuffer {
-  let result = crypto_sym_cast_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_buffer_min(s : CryptosymcastBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sym_cast_cursor_sum(s : CryptosymcastCursor) -> Double { @_common.
 pub fn crypto_sym_cast_cursor_mean(s : CryptosymcastCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_cursor_scale(s : CryptosymcastCursor, f : Double) -> CryptosymcastCursor {
-  let result = crypto_sym_cast_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_cursor_add(a : CryptosymcastCursor, b : CryptosymcastCursor) -> CryptosymcastCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_cursor_copy(s : CryptosymcastCursor) -> CryptosymcastCursor {
-  let result = crypto_sym_cast_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_cursor_fill(s : CryptosymcastCursor, v : Double) -> CryptosymcastCursor {
-  let result = crypto_sym_cast_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_cursor_min(s : CryptosymcastCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sym_cast_view_sum(s : CryptosymcastView) -> Double { @_common.sum(
 pub fn crypto_sym_cast_view_mean(s : CryptosymcastView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_view_scale(s : CryptosymcastView, f : Double) -> CryptosymcastView {
-  let result = crypto_sym_cast_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_view_add(a : CryptosymcastView, b : CryptosymcastView) -> CryptosymcastView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_view_copy(s : CryptosymcastView) -> CryptosymcastView {
-  let result = crypto_sym_cast_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_view_fill(s : CryptosymcastView, v : Double) -> CryptosymcastView {
-  let result = crypto_sym_cast_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_view_min(s : CryptosymcastView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sym_cast_range_sum(s : CryptosymcastRange) -> Double { @_common.su
 pub fn crypto_sym_cast_range_mean(s : CryptosymcastRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_range_scale(s : CryptosymcastRange, f : Double) -> CryptosymcastRange {
-  let result = crypto_sym_cast_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_range_add(a : CryptosymcastRange, b : CryptosymcastRange) -> CryptosymcastRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_range_copy(s : CryptosymcastRange) -> CryptosymcastRange {
-  let result = crypto_sym_cast_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_range_fill(s : CryptosymcastRange, v : Double) -> CryptosymcastRange {
-  let result = crypto_sym_cast_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_range_min(s : CryptosymcastRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sym_cast_slice_sum(s : CryptosymcastSlice) -> Double { @_common.su
 pub fn crypto_sym_cast_slice_mean(s : CryptosymcastSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_slice_scale(s : CryptosymcastSlice, f : Double) -> CryptosymcastSlice {
-  let result = crypto_sym_cast_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_slice_add(a : CryptosymcastSlice, b : CryptosymcastSlice) -> CryptosymcastSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_cast_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_cast_slice_copy(s : CryptosymcastSlice) -> CryptosymcastSlice {
-  let result = crypto_sym_cast_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_slice_fill(s : CryptosymcastSlice, v : Double) -> CryptosymcastSlice {
-  let result = crypto_sym_cast_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_cast_slice_min(s : CryptosymcastSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn physics_mechanics_soft_frame_sum(s : PhysicsmechanicssoftFrame) -> Double
 pub fn physics_mechanics_soft_frame_mean(s : PhysicsmechanicssoftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_frame_scale(s : PhysicsmechanicssoftFrame, f : Double) -> PhysicsmechanicssoftFrame {
-  let result = physics_mechanics_soft_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_frame_add(a : PhysicsmechanicssoftFrame, b : PhysicsmechanicssoftFrame) -> PhysicsmechanicssoftFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_frame_copy(s : PhysicsmechanicssoftFrame) -> PhysicsmechanicssoftFrame {
-  let result = physics_mechanics_soft_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_frame_fill(s : PhysicsmechanicssoftFrame, v : Double) -> PhysicsmechanicssoftFrame {
-  let result = physics_mechanics_soft_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_frame_min(s : PhysicsmechanicssoftFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_mechanics_soft_table_sum(s : PhysicsmechanicssoftTable) -> Double
 pub fn physics_mechanics_soft_table_mean(s : PhysicsmechanicssoftTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_table_scale(s : PhysicsmechanicssoftTable, f : Double) -> PhysicsmechanicssoftTable {
-  let result = physics_mechanics_soft_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_table_add(a : PhysicsmechanicssoftTable, b : PhysicsmechanicssoftTable) -> PhysicsmechanicssoftTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_table_copy(s : PhysicsmechanicssoftTable) -> PhysicsmechanicssoftTable {
-  let result = physics_mechanics_soft_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_table_fill(s : PhysicsmechanicssoftTable, v : Double) -> PhysicsmechanicssoftTable {
-  let result = physics_mechanics_soft_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_table_min(s : PhysicsmechanicssoftTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_mechanics_soft_graphn_sum(s : PhysicsmechanicssoftGraphN) -> Doub
 pub fn physics_mechanics_soft_graphn_mean(s : PhysicsmechanicssoftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_graphn_scale(s : PhysicsmechanicssoftGraphN, f : Double) -> PhysicsmechanicssoftGraphN {
-  let result = physics_mechanics_soft_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_graphn_add(a : PhysicsmechanicssoftGraphN, b : PhysicsmechanicssoftGraphN) -> PhysicsmechanicssoftGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_graphn_copy(s : PhysicsmechanicssoftGraphN) -> PhysicsmechanicssoftGraphN {
-  let result = physics_mechanics_soft_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_graphn_fill(s : PhysicsmechanicssoftGraphN, v : Double) -> PhysicsmechanicssoftGraphN {
-  let result = physics_mechanics_soft_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_graphn_min(s : PhysicsmechanicssoftGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_mechanics_soft_node_sum(s : PhysicsmechanicssoftNode) -> Double {
 pub fn physics_mechanics_soft_node_mean(s : PhysicsmechanicssoftNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_node_scale(s : PhysicsmechanicssoftNode, f : Double) -> PhysicsmechanicssoftNode {
-  let result = physics_mechanics_soft_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_node_add(a : PhysicsmechanicssoftNode, b : PhysicsmechanicssoftNode) -> PhysicsmechanicssoftNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_node_copy(s : PhysicsmechanicssoftNode) -> PhysicsmechanicssoftNode {
-  let result = physics_mechanics_soft_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_node_fill(s : PhysicsmechanicssoftNode, v : Double) -> PhysicsmechanicssoftNode {
-  let result = physics_mechanics_soft_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_node_min(s : PhysicsmechanicssoftNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_mechanics_soft_edge_sum(s : PhysicsmechanicssoftEdge) -> Double {
 pub fn physics_mechanics_soft_edge_mean(s : PhysicsmechanicssoftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_edge_scale(s : PhysicsmechanicssoftEdge, f : Double) -> PhysicsmechanicssoftEdge {
-  let result = physics_mechanics_soft_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_edge_add(a : PhysicsmechanicssoftEdge, b : PhysicsmechanicssoftEdge) -> PhysicsmechanicssoftEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_edge_copy(s : PhysicsmechanicssoftEdge) -> PhysicsmechanicssoftEdge {
-  let result = physics_mechanics_soft_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_edge_fill(s : PhysicsmechanicssoftEdge, v : Double) -> PhysicsmechanicssoftEdge {
-  let result = physics_mechanics_soft_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_edge_min(s : PhysicsmechanicssoftEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_mechanics_soft_path_sum(s : PhysicsmechanicssoftPath) -> Double {
 pub fn physics_mechanics_soft_path_mean(s : PhysicsmechanicssoftPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_path_scale(s : PhysicsmechanicssoftPath, f : Double) -> PhysicsmechanicssoftPath {
-  let result = physics_mechanics_soft_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_path_add(a : PhysicsmechanicssoftPath, b : PhysicsmechanicssoftPath) -> PhysicsmechanicssoftPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_path_copy(s : PhysicsmechanicssoftPath) -> PhysicsmechanicssoftPath {
-  let result = physics_mechanics_soft_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_path_fill(s : PhysicsmechanicssoftPath, v : Double) -> PhysicsmechanicssoftPath {
-  let result = physics_mechanics_soft_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_path_min(s : PhysicsmechanicssoftPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_mechanics_soft_cluster_sum(s : PhysicsmechanicssoftCluster) -> Do
 pub fn physics_mechanics_soft_cluster_mean(s : PhysicsmechanicssoftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_cluster_scale(s : PhysicsmechanicssoftCluster, f : Double) -> PhysicsmechanicssoftCluster {
-  let result = physics_mechanics_soft_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_cluster_add(a : PhysicsmechanicssoftCluster, b : PhysicsmechanicssoftCluster) -> PhysicsmechanicssoftCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_cluster_copy(s : PhysicsmechanicssoftCluster) -> PhysicsmechanicssoftCluster {
-  let result = physics_mechanics_soft_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_cluster_fill(s : PhysicsmechanicssoftCluster, v : Double) -> PhysicsmechanicssoftCluster {
-  let result = physics_mechanics_soft_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_cluster_min(s : PhysicsmechanicssoftCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_mechanics_soft_model_sum(s : PhysicsmechanicssoftModel) -> Double
 pub fn physics_mechanics_soft_model_mean(s : PhysicsmechanicssoftModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_model_scale(s : PhysicsmechanicssoftModel, f : Double) -> PhysicsmechanicssoftModel {
-  let result = physics_mechanics_soft_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_model_add(a : PhysicsmechanicssoftModel, b : PhysicsmechanicssoftModel) -> PhysicsmechanicssoftModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_model_copy(s : PhysicsmechanicssoftModel) -> PhysicsmechanicssoftModel {
-  let result = physics_mechanics_soft_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_model_fill(s : PhysicsmechanicssoftModel, v : Double) -> PhysicsmechanicssoftModel {
-  let result = physics_mechanics_soft_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_model_min(s : PhysicsmechanicssoftModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_mechanics_soft_layer_sum(s : PhysicsmechanicssoftLayer) -> Double
 pub fn physics_mechanics_soft_layer_mean(s : PhysicsmechanicssoftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_layer_scale(s : PhysicsmechanicssoftLayer, f : Double) -> PhysicsmechanicssoftLayer {
-  let result = physics_mechanics_soft_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_layer_add(a : PhysicsmechanicssoftLayer, b : PhysicsmechanicssoftLayer) -> PhysicsmechanicssoftLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_layer_copy(s : PhysicsmechanicssoftLayer) -> PhysicsmechanicssoftLayer {
-  let result = physics_mechanics_soft_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_layer_fill(s : PhysicsmechanicssoftLayer, v : Double) -> PhysicsmechanicssoftLayer {
-  let result = physics_mechanics_soft_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_layer_min(s : PhysicsmechanicssoftLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_mechanics_soft_buffer_sum(s : PhysicsmechanicssoftBuffer) -> Doub
 pub fn physics_mechanics_soft_buffer_mean(s : PhysicsmechanicssoftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_buffer_scale(s : PhysicsmechanicssoftBuffer, f : Double) -> PhysicsmechanicssoftBuffer {
-  let result = physics_mechanics_soft_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_buffer_add(a : PhysicsmechanicssoftBuffer, b : PhysicsmechanicssoftBuffer) -> PhysicsmechanicssoftBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_buffer_copy(s : PhysicsmechanicssoftBuffer) -> PhysicsmechanicssoftBuffer {
-  let result = physics_mechanics_soft_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_buffer_fill(s : PhysicsmechanicssoftBuffer, v : Double) -> PhysicsmechanicssoftBuffer {
-  let result = physics_mechanics_soft_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_buffer_min(s : PhysicsmechanicssoftBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_mechanics_soft_cursor_sum(s : PhysicsmechanicssoftCursor) -> Doub
 pub fn physics_mechanics_soft_cursor_mean(s : PhysicsmechanicssoftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_cursor_scale(s : PhysicsmechanicssoftCursor, f : Double) -> PhysicsmechanicssoftCursor {
-  let result = physics_mechanics_soft_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_cursor_add(a : PhysicsmechanicssoftCursor, b : PhysicsmechanicssoftCursor) -> PhysicsmechanicssoftCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_cursor_copy(s : PhysicsmechanicssoftCursor) -> PhysicsmechanicssoftCursor {
-  let result = physics_mechanics_soft_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_cursor_fill(s : PhysicsmechanicssoftCursor, v : Double) -> PhysicsmechanicssoftCursor {
-  let result = physics_mechanics_soft_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_cursor_min(s : PhysicsmechanicssoftCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_mechanics_soft_view_sum(s : PhysicsmechanicssoftView) -> Double {
 pub fn physics_mechanics_soft_view_mean(s : PhysicsmechanicssoftView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_view_scale(s : PhysicsmechanicssoftView, f : Double) -> PhysicsmechanicssoftView {
-  let result = physics_mechanics_soft_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_view_add(a : PhysicsmechanicssoftView, b : PhysicsmechanicssoftView) -> PhysicsmechanicssoftView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_view_copy(s : PhysicsmechanicssoftView) -> PhysicsmechanicssoftView {
-  let result = physics_mechanics_soft_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_view_fill(s : PhysicsmechanicssoftView, v : Double) -> PhysicsmechanicssoftView {
-  let result = physics_mechanics_soft_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_view_min(s : PhysicsmechanicssoftView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_mechanics_soft_range_sum(s : PhysicsmechanicssoftRange) -> Double
 pub fn physics_mechanics_soft_range_mean(s : PhysicsmechanicssoftRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_range_scale(s : PhysicsmechanicssoftRange, f : Double) -> PhysicsmechanicssoftRange {
-  let result = physics_mechanics_soft_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_range_add(a : PhysicsmechanicssoftRange, b : PhysicsmechanicssoftRange) -> PhysicsmechanicssoftRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_range_copy(s : PhysicsmechanicssoftRange) -> PhysicsmechanicssoftRange {
-  let result = physics_mechanics_soft_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_range_fill(s : PhysicsmechanicssoftRange, v : Double) -> PhysicsmechanicssoftRange {
-  let result = physics_mechanics_soft_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_range_min(s : PhysicsmechanicssoftRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_mechanics_soft_slice_sum(s : PhysicsmechanicssoftSlice) -> Double
 pub fn physics_mechanics_soft_slice_mean(s : PhysicsmechanicssoftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_slice_scale(s : PhysicsmechanicssoftSlice, f : Double) -> PhysicsmechanicssoftSlice {
-  let result = physics_mechanics_soft_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_slice_add(a : PhysicsmechanicssoftSlice, b : PhysicsmechanicssoftSlice) -> PhysicsmechanicssoftSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_soft_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_soft_slice_copy(s : PhysicsmechanicssoftSlice) -> PhysicsmechanicssoftSlice {
-  let result = physics_mechanics_soft_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_slice_fill(s : PhysicsmechanicssoftSlice, v : Double) -> PhysicsmechanicssoftSlice {
-  let result = physics_mechanics_soft_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_soft_slice_min(s : PhysicsmechanicssoftSlice) -> Double { @_common.min(s.data) }

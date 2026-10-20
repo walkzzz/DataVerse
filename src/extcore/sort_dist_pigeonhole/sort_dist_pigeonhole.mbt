@@ -383,28 +383,20 @@ pub fn sort_dist_pigeonhole_frame_sum(s : SortdistpigeonholeFrame) -> Double { @
 pub fn sort_dist_pigeonhole_frame_mean(s : SortdistpigeonholeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_frame_scale(s : SortdistpigeonholeFrame, f : Double) -> SortdistpigeonholeFrame {
-  let result = sort_dist_pigeonhole_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_frame_add(a : SortdistpigeonholeFrame, b : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_frame_copy(s : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
-  let result = sort_dist_pigeonhole_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_frame_fill(s : SortdistpigeonholeFrame, v : Double) -> SortdistpigeonholeFrame {
-  let result = sort_dist_pigeonhole_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_frame_min(s : SortdistpigeonholeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_dist_pigeonhole_table_sum(s : SortdistpigeonholeTable) -> Double { @
 pub fn sort_dist_pigeonhole_table_mean(s : SortdistpigeonholeTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_table_scale(s : SortdistpigeonholeTable, f : Double) -> SortdistpigeonholeTable {
-  let result = sort_dist_pigeonhole_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_table_add(a : SortdistpigeonholeTable, b : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_table_copy(s : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
-  let result = sort_dist_pigeonhole_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_table_fill(s : SortdistpigeonholeTable, v : Double) -> SortdistpigeonholeTable {
-  let result = sort_dist_pigeonhole_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_table_min(s : SortdistpigeonholeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_dist_pigeonhole_graphn_sum(s : SortdistpigeonholeGraphN) -> Double {
 pub fn sort_dist_pigeonhole_graphn_mean(s : SortdistpigeonholeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_graphn_scale(s : SortdistpigeonholeGraphN, f : Double) -> SortdistpigeonholeGraphN {
-  let result = sort_dist_pigeonhole_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_graphn_add(a : SortdistpigeonholeGraphN, b : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_graphn_copy(s : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
-  let result = sort_dist_pigeonhole_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_graphn_fill(s : SortdistpigeonholeGraphN, v : Double) -> SortdistpigeonholeGraphN {
-  let result = sort_dist_pigeonhole_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_graphn_min(s : SortdistpigeonholeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_dist_pigeonhole_node_sum(s : SortdistpigeonholeNode) -> Double { @_c
 pub fn sort_dist_pigeonhole_node_mean(s : SortdistpigeonholeNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_node_scale(s : SortdistpigeonholeNode, f : Double) -> SortdistpigeonholeNode {
-  let result = sort_dist_pigeonhole_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_node_add(a : SortdistpigeonholeNode, b : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_node_copy(s : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
-  let result = sort_dist_pigeonhole_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_node_fill(s : SortdistpigeonholeNode, v : Double) -> SortdistpigeonholeNode {
-  let result = sort_dist_pigeonhole_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_node_min(s : SortdistpigeonholeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_dist_pigeonhole_edge_sum(s : SortdistpigeonholeEdge) -> Double { @_c
 pub fn sort_dist_pigeonhole_edge_mean(s : SortdistpigeonholeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_edge_scale(s : SortdistpigeonholeEdge, f : Double) -> SortdistpigeonholeEdge {
-  let result = sort_dist_pigeonhole_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_edge_add(a : SortdistpigeonholeEdge, b : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_edge_copy(s : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
-  let result = sort_dist_pigeonhole_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_edge_fill(s : SortdistpigeonholeEdge, v : Double) -> SortdistpigeonholeEdge {
-  let result = sort_dist_pigeonhole_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_edge_min(s : SortdistpigeonholeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_dist_pigeonhole_path_sum(s : SortdistpigeonholePath) -> Double { @_c
 pub fn sort_dist_pigeonhole_path_mean(s : SortdistpigeonholePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_path_scale(s : SortdistpigeonholePath, f : Double) -> SortdistpigeonholePath {
-  let result = sort_dist_pigeonhole_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_path_add(a : SortdistpigeonholePath, b : SortdistpigeonholePath) -> SortdistpigeonholePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_path_copy(s : SortdistpigeonholePath) -> SortdistpigeonholePath {
-  let result = sort_dist_pigeonhole_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_path_fill(s : SortdistpigeonholePath, v : Double) -> SortdistpigeonholePath {
-  let result = sort_dist_pigeonhole_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_path_min(s : SortdistpigeonholePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_dist_pigeonhole_cluster_sum(s : SortdistpigeonholeCluster) -> Double
 pub fn sort_dist_pigeonhole_cluster_mean(s : SortdistpigeonholeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_cluster_scale(s : SortdistpigeonholeCluster, f : Double) -> SortdistpigeonholeCluster {
-  let result = sort_dist_pigeonhole_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_cluster_add(a : SortdistpigeonholeCluster, b : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_cluster_copy(s : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
-  let result = sort_dist_pigeonhole_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_cluster_fill(s : SortdistpigeonholeCluster, v : Double) -> SortdistpigeonholeCluster {
-  let result = sort_dist_pigeonhole_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_cluster_min(s : SortdistpigeonholeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_dist_pigeonhole_model_sum(s : SortdistpigeonholeModel) -> Double { @
 pub fn sort_dist_pigeonhole_model_mean(s : SortdistpigeonholeModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_model_scale(s : SortdistpigeonholeModel, f : Double) -> SortdistpigeonholeModel {
-  let result = sort_dist_pigeonhole_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_model_add(a : SortdistpigeonholeModel, b : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_model_copy(s : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
-  let result = sort_dist_pigeonhole_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_model_fill(s : SortdistpigeonholeModel, v : Double) -> SortdistpigeonholeModel {
-  let result = sort_dist_pigeonhole_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_model_min(s : SortdistpigeonholeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_dist_pigeonhole_layer_sum(s : SortdistpigeonholeLayer) -> Double { @
 pub fn sort_dist_pigeonhole_layer_mean(s : SortdistpigeonholeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_layer_scale(s : SortdistpigeonholeLayer, f : Double) -> SortdistpigeonholeLayer {
-  let result = sort_dist_pigeonhole_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_layer_add(a : SortdistpigeonholeLayer, b : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_layer_copy(s : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
-  let result = sort_dist_pigeonhole_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_layer_fill(s : SortdistpigeonholeLayer, v : Double) -> SortdistpigeonholeLayer {
-  let result = sort_dist_pigeonhole_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_layer_min(s : SortdistpigeonholeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_dist_pigeonhole_buffer_sum(s : SortdistpigeonholeBuffer) -> Double {
 pub fn sort_dist_pigeonhole_buffer_mean(s : SortdistpigeonholeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_buffer_scale(s : SortdistpigeonholeBuffer, f : Double) -> SortdistpigeonholeBuffer {
-  let result = sort_dist_pigeonhole_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_buffer_add(a : SortdistpigeonholeBuffer, b : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_buffer_copy(s : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
-  let result = sort_dist_pigeonhole_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_buffer_fill(s : SortdistpigeonholeBuffer, v : Double) -> SortdistpigeonholeBuffer {
-  let result = sort_dist_pigeonhole_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_buffer_min(s : SortdistpigeonholeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_dist_pigeonhole_cursor_sum(s : SortdistpigeonholeCursor) -> Double {
 pub fn sort_dist_pigeonhole_cursor_mean(s : SortdistpigeonholeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_cursor_scale(s : SortdistpigeonholeCursor, f : Double) -> SortdistpigeonholeCursor {
-  let result = sort_dist_pigeonhole_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_cursor_add(a : SortdistpigeonholeCursor, b : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_cursor_copy(s : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
-  let result = sort_dist_pigeonhole_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_cursor_fill(s : SortdistpigeonholeCursor, v : Double) -> SortdistpigeonholeCursor {
-  let result = sort_dist_pigeonhole_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_cursor_min(s : SortdistpigeonholeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_dist_pigeonhole_view_sum(s : SortdistpigeonholeView) -> Double { @_c
 pub fn sort_dist_pigeonhole_view_mean(s : SortdistpigeonholeView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_view_scale(s : SortdistpigeonholeView, f : Double) -> SortdistpigeonholeView {
-  let result = sort_dist_pigeonhole_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_view_add(a : SortdistpigeonholeView, b : SortdistpigeonholeView) -> SortdistpigeonholeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_view_copy(s : SortdistpigeonholeView) -> SortdistpigeonholeView {
-  let result = sort_dist_pigeonhole_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_view_fill(s : SortdistpigeonholeView, v : Double) -> SortdistpigeonholeView {
-  let result = sort_dist_pigeonhole_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_view_min(s : SortdistpigeonholeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_dist_pigeonhole_range_sum(s : SortdistpigeonholeRange) -> Double { @
 pub fn sort_dist_pigeonhole_range_mean(s : SortdistpigeonholeRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_range_scale(s : SortdistpigeonholeRange, f : Double) -> SortdistpigeonholeRange {
-  let result = sort_dist_pigeonhole_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_range_add(a : SortdistpigeonholeRange, b : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_range_copy(s : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
-  let result = sort_dist_pigeonhole_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_range_fill(s : SortdistpigeonholeRange, v : Double) -> SortdistpigeonholeRange {
-  let result = sort_dist_pigeonhole_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_range_min(s : SortdistpigeonholeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_dist_pigeonhole_slice_sum(s : SortdistpigeonholeSlice) -> Double { @
 pub fn sort_dist_pigeonhole_slice_mean(s : SortdistpigeonholeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_pigeonhole_slice_scale(s : SortdistpigeonholeSlice, f : Double) -> SortdistpigeonholeSlice {
-  let result = sort_dist_pigeonhole_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_slice_add(a : SortdistpigeonholeSlice, b : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_pigeonhole_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_pigeonhole_slice_copy(s : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
-  let result = sort_dist_pigeonhole_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_slice_fill(s : SortdistpigeonholeSlice, v : Double) -> SortdistpigeonholeSlice {
-  let result = sort_dist_pigeonhole_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_pigeonhole_slice_min(s : SortdistpigeonholeSlice) -> Double { @_common.min(s.data) }

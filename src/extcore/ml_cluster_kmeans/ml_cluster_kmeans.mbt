@@ -383,28 +383,20 @@ pub fn ml_cluster_kmeans_frame_sum(s : MlclusterkmeansFrame) -> Double { @_commo
 pub fn ml_cluster_kmeans_frame_mean(s : MlclusterkmeansFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_frame_scale(s : MlclusterkmeansFrame, f : Double) -> MlclusterkmeansFrame {
-  let result = ml_cluster_kmeans_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_frame_add(a : MlclusterkmeansFrame, b : MlclusterkmeansFrame) -> MlclusterkmeansFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_frame_copy(s : MlclusterkmeansFrame) -> MlclusterkmeansFrame {
-  let result = ml_cluster_kmeans_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_frame_fill(s : MlclusterkmeansFrame, v : Double) -> MlclusterkmeansFrame {
-  let result = ml_cluster_kmeans_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_frame_min(s : MlclusterkmeansFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_cluster_kmeans_table_sum(s : MlclusterkmeansTable) -> Double { @_commo
 pub fn ml_cluster_kmeans_table_mean(s : MlclusterkmeansTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_table_scale(s : MlclusterkmeansTable, f : Double) -> MlclusterkmeansTable {
-  let result = ml_cluster_kmeans_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_table_add(a : MlclusterkmeansTable, b : MlclusterkmeansTable) -> MlclusterkmeansTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_table_copy(s : MlclusterkmeansTable) -> MlclusterkmeansTable {
-  let result = ml_cluster_kmeans_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_table_fill(s : MlclusterkmeansTable, v : Double) -> MlclusterkmeansTable {
-  let result = ml_cluster_kmeans_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_table_min(s : MlclusterkmeansTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_cluster_kmeans_graphn_sum(s : MlclusterkmeansGraphN) -> Double { @_com
 pub fn ml_cluster_kmeans_graphn_mean(s : MlclusterkmeansGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_graphn_scale(s : MlclusterkmeansGraphN, f : Double) -> MlclusterkmeansGraphN {
-  let result = ml_cluster_kmeans_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_graphn_add(a : MlclusterkmeansGraphN, b : MlclusterkmeansGraphN) -> MlclusterkmeansGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_graphn_copy(s : MlclusterkmeansGraphN) -> MlclusterkmeansGraphN {
-  let result = ml_cluster_kmeans_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_graphn_fill(s : MlclusterkmeansGraphN, v : Double) -> MlclusterkmeansGraphN {
-  let result = ml_cluster_kmeans_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_graphn_min(s : MlclusterkmeansGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_cluster_kmeans_node_sum(s : MlclusterkmeansNode) -> Double { @_common.
 pub fn ml_cluster_kmeans_node_mean(s : MlclusterkmeansNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_node_scale(s : MlclusterkmeansNode, f : Double) -> MlclusterkmeansNode {
-  let result = ml_cluster_kmeans_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_node_add(a : MlclusterkmeansNode, b : MlclusterkmeansNode) -> MlclusterkmeansNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_node_copy(s : MlclusterkmeansNode) -> MlclusterkmeansNode {
-  let result = ml_cluster_kmeans_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_node_fill(s : MlclusterkmeansNode, v : Double) -> MlclusterkmeansNode {
-  let result = ml_cluster_kmeans_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_node_min(s : MlclusterkmeansNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_cluster_kmeans_edge_sum(s : MlclusterkmeansEdge) -> Double { @_common.
 pub fn ml_cluster_kmeans_edge_mean(s : MlclusterkmeansEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_edge_scale(s : MlclusterkmeansEdge, f : Double) -> MlclusterkmeansEdge {
-  let result = ml_cluster_kmeans_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_edge_add(a : MlclusterkmeansEdge, b : MlclusterkmeansEdge) -> MlclusterkmeansEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_edge_copy(s : MlclusterkmeansEdge) -> MlclusterkmeansEdge {
-  let result = ml_cluster_kmeans_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_edge_fill(s : MlclusterkmeansEdge, v : Double) -> MlclusterkmeansEdge {
-  let result = ml_cluster_kmeans_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_edge_min(s : MlclusterkmeansEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_cluster_kmeans_path_sum(s : MlclusterkmeansPath) -> Double { @_common.
 pub fn ml_cluster_kmeans_path_mean(s : MlclusterkmeansPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_path_scale(s : MlclusterkmeansPath, f : Double) -> MlclusterkmeansPath {
-  let result = ml_cluster_kmeans_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_path_add(a : MlclusterkmeansPath, b : MlclusterkmeansPath) -> MlclusterkmeansPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_path_copy(s : MlclusterkmeansPath) -> MlclusterkmeansPath {
-  let result = ml_cluster_kmeans_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_path_fill(s : MlclusterkmeansPath, v : Double) -> MlclusterkmeansPath {
-  let result = ml_cluster_kmeans_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_path_min(s : MlclusterkmeansPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_cluster_kmeans_cluster_sum(s : MlclusterkmeansCluster) -> Double { @_c
 pub fn ml_cluster_kmeans_cluster_mean(s : MlclusterkmeansCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_cluster_scale(s : MlclusterkmeansCluster, f : Double) -> MlclusterkmeansCluster {
-  let result = ml_cluster_kmeans_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cluster_add(a : MlclusterkmeansCluster, b : MlclusterkmeansCluster) -> MlclusterkmeansCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_cluster_copy(s : MlclusterkmeansCluster) -> MlclusterkmeansCluster {
-  let result = ml_cluster_kmeans_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cluster_fill(s : MlclusterkmeansCluster, v : Double) -> MlclusterkmeansCluster {
-  let result = ml_cluster_kmeans_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cluster_min(s : MlclusterkmeansCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_cluster_kmeans_model_sum(s : MlclusterkmeansModel) -> Double { @_commo
 pub fn ml_cluster_kmeans_model_mean(s : MlclusterkmeansModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_model_scale(s : MlclusterkmeansModel, f : Double) -> MlclusterkmeansModel {
-  let result = ml_cluster_kmeans_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_model_add(a : MlclusterkmeansModel, b : MlclusterkmeansModel) -> MlclusterkmeansModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_model_copy(s : MlclusterkmeansModel) -> MlclusterkmeansModel {
-  let result = ml_cluster_kmeans_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_model_fill(s : MlclusterkmeansModel, v : Double) -> MlclusterkmeansModel {
-  let result = ml_cluster_kmeans_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_model_min(s : MlclusterkmeansModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_cluster_kmeans_layer_sum(s : MlclusterkmeansLayer) -> Double { @_commo
 pub fn ml_cluster_kmeans_layer_mean(s : MlclusterkmeansLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_layer_scale(s : MlclusterkmeansLayer, f : Double) -> MlclusterkmeansLayer {
-  let result = ml_cluster_kmeans_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_layer_add(a : MlclusterkmeansLayer, b : MlclusterkmeansLayer) -> MlclusterkmeansLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_layer_copy(s : MlclusterkmeansLayer) -> MlclusterkmeansLayer {
-  let result = ml_cluster_kmeans_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_layer_fill(s : MlclusterkmeansLayer, v : Double) -> MlclusterkmeansLayer {
-  let result = ml_cluster_kmeans_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_layer_min(s : MlclusterkmeansLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_cluster_kmeans_buffer_sum(s : MlclusterkmeansBuffer) -> Double { @_com
 pub fn ml_cluster_kmeans_buffer_mean(s : MlclusterkmeansBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_buffer_scale(s : MlclusterkmeansBuffer, f : Double) -> MlclusterkmeansBuffer {
-  let result = ml_cluster_kmeans_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_buffer_add(a : MlclusterkmeansBuffer, b : MlclusterkmeansBuffer) -> MlclusterkmeansBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_buffer_copy(s : MlclusterkmeansBuffer) -> MlclusterkmeansBuffer {
-  let result = ml_cluster_kmeans_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_buffer_fill(s : MlclusterkmeansBuffer, v : Double) -> MlclusterkmeansBuffer {
-  let result = ml_cluster_kmeans_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_buffer_min(s : MlclusterkmeansBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_cluster_kmeans_cursor_sum(s : MlclusterkmeansCursor) -> Double { @_com
 pub fn ml_cluster_kmeans_cursor_mean(s : MlclusterkmeansCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_cursor_scale(s : MlclusterkmeansCursor, f : Double) -> MlclusterkmeansCursor {
-  let result = ml_cluster_kmeans_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cursor_add(a : MlclusterkmeansCursor, b : MlclusterkmeansCursor) -> MlclusterkmeansCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_cursor_copy(s : MlclusterkmeansCursor) -> MlclusterkmeansCursor {
-  let result = ml_cluster_kmeans_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cursor_fill(s : MlclusterkmeansCursor, v : Double) -> MlclusterkmeansCursor {
-  let result = ml_cluster_kmeans_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cursor_min(s : MlclusterkmeansCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_cluster_kmeans_view_sum(s : MlclusterkmeansView) -> Double { @_common.
 pub fn ml_cluster_kmeans_view_mean(s : MlclusterkmeansView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_view_scale(s : MlclusterkmeansView, f : Double) -> MlclusterkmeansView {
-  let result = ml_cluster_kmeans_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_view_add(a : MlclusterkmeansView, b : MlclusterkmeansView) -> MlclusterkmeansView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_view_copy(s : MlclusterkmeansView) -> MlclusterkmeansView {
-  let result = ml_cluster_kmeans_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_view_fill(s : MlclusterkmeansView, v : Double) -> MlclusterkmeansView {
-  let result = ml_cluster_kmeans_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_view_min(s : MlclusterkmeansView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_cluster_kmeans_range_sum(s : MlclusterkmeansRange) -> Double { @_commo
 pub fn ml_cluster_kmeans_range_mean(s : MlclusterkmeansRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_range_scale(s : MlclusterkmeansRange, f : Double) -> MlclusterkmeansRange {
-  let result = ml_cluster_kmeans_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_range_add(a : MlclusterkmeansRange, b : MlclusterkmeansRange) -> MlclusterkmeansRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_range_copy(s : MlclusterkmeansRange) -> MlclusterkmeansRange {
-  let result = ml_cluster_kmeans_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_range_fill(s : MlclusterkmeansRange, v : Double) -> MlclusterkmeansRange {
-  let result = ml_cluster_kmeans_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_range_min(s : MlclusterkmeansRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_cluster_kmeans_slice_sum(s : MlclusterkmeansSlice) -> Double { @_commo
 pub fn ml_cluster_kmeans_slice_mean(s : MlclusterkmeansSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_slice_scale(s : MlclusterkmeansSlice, f : Double) -> MlclusterkmeansSlice {
-  let result = ml_cluster_kmeans_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_slice_add(a : MlclusterkmeansSlice, b : MlclusterkmeansSlice) -> MlclusterkmeansSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_kmeans_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_kmeans_slice_copy(s : MlclusterkmeansSlice) -> MlclusterkmeansSlice {
-  let result = ml_cluster_kmeans_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_slice_fill(s : MlclusterkmeansSlice, v : Double) -> MlclusterkmeansSlice {
-  let result = ml_cluster_kmeans_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_slice_min(s : MlclusterkmeansSlice) -> Double { @_common.min(s.data) }

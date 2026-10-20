@@ -383,28 +383,20 @@ pub fn stats_dist_inverse_gamma_frame_sum(s : StatsdistinversegammaFrame) -> Dou
 pub fn stats_dist_inverse_gamma_frame_mean(s : StatsdistinversegammaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_frame_scale(s : StatsdistinversegammaFrame, f : Double) -> StatsdistinversegammaFrame {
-  let result = stats_dist_inverse_gamma_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_frame_add(a : StatsdistinversegammaFrame, b : StatsdistinversegammaFrame) -> StatsdistinversegammaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_frame_copy(s : StatsdistinversegammaFrame) -> StatsdistinversegammaFrame {
-  let result = stats_dist_inverse_gamma_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_frame_fill(s : StatsdistinversegammaFrame, v : Double) -> StatsdistinversegammaFrame {
-  let result = stats_dist_inverse_gamma_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_frame_min(s : StatsdistinversegammaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_inverse_gamma_table_sum(s : StatsdistinversegammaTable) -> Dou
 pub fn stats_dist_inverse_gamma_table_mean(s : StatsdistinversegammaTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_table_scale(s : StatsdistinversegammaTable, f : Double) -> StatsdistinversegammaTable {
-  let result = stats_dist_inverse_gamma_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_table_add(a : StatsdistinversegammaTable, b : StatsdistinversegammaTable) -> StatsdistinversegammaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_table_copy(s : StatsdistinversegammaTable) -> StatsdistinversegammaTable {
-  let result = stats_dist_inverse_gamma_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_table_fill(s : StatsdistinversegammaTable, v : Double) -> StatsdistinversegammaTable {
-  let result = stats_dist_inverse_gamma_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_table_min(s : StatsdistinversegammaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_inverse_gamma_graphn_sum(s : StatsdistinversegammaGraphN) -> D
 pub fn stats_dist_inverse_gamma_graphn_mean(s : StatsdistinversegammaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_graphn_scale(s : StatsdistinversegammaGraphN, f : Double) -> StatsdistinversegammaGraphN {
-  let result = stats_dist_inverse_gamma_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_graphn_add(a : StatsdistinversegammaGraphN, b : StatsdistinversegammaGraphN) -> StatsdistinversegammaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_graphn_copy(s : StatsdistinversegammaGraphN) -> StatsdistinversegammaGraphN {
-  let result = stats_dist_inverse_gamma_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_graphn_fill(s : StatsdistinversegammaGraphN, v : Double) -> StatsdistinversegammaGraphN {
-  let result = stats_dist_inverse_gamma_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_graphn_min(s : StatsdistinversegammaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_inverse_gamma_node_sum(s : StatsdistinversegammaNode) -> Doubl
 pub fn stats_dist_inverse_gamma_node_mean(s : StatsdistinversegammaNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_node_scale(s : StatsdistinversegammaNode, f : Double) -> StatsdistinversegammaNode {
-  let result = stats_dist_inverse_gamma_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_node_add(a : StatsdistinversegammaNode, b : StatsdistinversegammaNode) -> StatsdistinversegammaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_node_copy(s : StatsdistinversegammaNode) -> StatsdistinversegammaNode {
-  let result = stats_dist_inverse_gamma_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_node_fill(s : StatsdistinversegammaNode, v : Double) -> StatsdistinversegammaNode {
-  let result = stats_dist_inverse_gamma_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_node_min(s : StatsdistinversegammaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_inverse_gamma_edge_sum(s : StatsdistinversegammaEdge) -> Doubl
 pub fn stats_dist_inverse_gamma_edge_mean(s : StatsdistinversegammaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_edge_scale(s : StatsdistinversegammaEdge, f : Double) -> StatsdistinversegammaEdge {
-  let result = stats_dist_inverse_gamma_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_edge_add(a : StatsdistinversegammaEdge, b : StatsdistinversegammaEdge) -> StatsdistinversegammaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_edge_copy(s : StatsdistinversegammaEdge) -> StatsdistinversegammaEdge {
-  let result = stats_dist_inverse_gamma_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_edge_fill(s : StatsdistinversegammaEdge, v : Double) -> StatsdistinversegammaEdge {
-  let result = stats_dist_inverse_gamma_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_edge_min(s : StatsdistinversegammaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_inverse_gamma_path_sum(s : StatsdistinversegammaPath) -> Doubl
 pub fn stats_dist_inverse_gamma_path_mean(s : StatsdistinversegammaPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_path_scale(s : StatsdistinversegammaPath, f : Double) -> StatsdistinversegammaPath {
-  let result = stats_dist_inverse_gamma_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_path_add(a : StatsdistinversegammaPath, b : StatsdistinversegammaPath) -> StatsdistinversegammaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_path_copy(s : StatsdistinversegammaPath) -> StatsdistinversegammaPath {
-  let result = stats_dist_inverse_gamma_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_path_fill(s : StatsdistinversegammaPath, v : Double) -> StatsdistinversegammaPath {
-  let result = stats_dist_inverse_gamma_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_path_min(s : StatsdistinversegammaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_inverse_gamma_cluster_sum(s : StatsdistinversegammaCluster) ->
 pub fn stats_dist_inverse_gamma_cluster_mean(s : StatsdistinversegammaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_cluster_scale(s : StatsdistinversegammaCluster, f : Double) -> StatsdistinversegammaCluster {
-  let result = stats_dist_inverse_gamma_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cluster_add(a : StatsdistinversegammaCluster, b : StatsdistinversegammaCluster) -> StatsdistinversegammaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cluster_copy(s : StatsdistinversegammaCluster) -> StatsdistinversegammaCluster {
-  let result = stats_dist_inverse_gamma_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cluster_fill(s : StatsdistinversegammaCluster, v : Double) -> StatsdistinversegammaCluster {
-  let result = stats_dist_inverse_gamma_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cluster_min(s : StatsdistinversegammaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_inverse_gamma_model_sum(s : StatsdistinversegammaModel) -> Dou
 pub fn stats_dist_inverse_gamma_model_mean(s : StatsdistinversegammaModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_model_scale(s : StatsdistinversegammaModel, f : Double) -> StatsdistinversegammaModel {
-  let result = stats_dist_inverse_gamma_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_model_add(a : StatsdistinversegammaModel, b : StatsdistinversegammaModel) -> StatsdistinversegammaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_model_copy(s : StatsdistinversegammaModel) -> StatsdistinversegammaModel {
-  let result = stats_dist_inverse_gamma_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_model_fill(s : StatsdistinversegammaModel, v : Double) -> StatsdistinversegammaModel {
-  let result = stats_dist_inverse_gamma_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_model_min(s : StatsdistinversegammaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_inverse_gamma_layer_sum(s : StatsdistinversegammaLayer) -> Dou
 pub fn stats_dist_inverse_gamma_layer_mean(s : StatsdistinversegammaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_layer_scale(s : StatsdistinversegammaLayer, f : Double) -> StatsdistinversegammaLayer {
-  let result = stats_dist_inverse_gamma_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_layer_add(a : StatsdistinversegammaLayer, b : StatsdistinversegammaLayer) -> StatsdistinversegammaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_layer_copy(s : StatsdistinversegammaLayer) -> StatsdistinversegammaLayer {
-  let result = stats_dist_inverse_gamma_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_layer_fill(s : StatsdistinversegammaLayer, v : Double) -> StatsdistinversegammaLayer {
-  let result = stats_dist_inverse_gamma_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_layer_min(s : StatsdistinversegammaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_inverse_gamma_buffer_sum(s : StatsdistinversegammaBuffer) -> D
 pub fn stats_dist_inverse_gamma_buffer_mean(s : StatsdistinversegammaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_buffer_scale(s : StatsdistinversegammaBuffer, f : Double) -> StatsdistinversegammaBuffer {
-  let result = stats_dist_inverse_gamma_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_buffer_add(a : StatsdistinversegammaBuffer, b : StatsdistinversegammaBuffer) -> StatsdistinversegammaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_buffer_copy(s : StatsdistinversegammaBuffer) -> StatsdistinversegammaBuffer {
-  let result = stats_dist_inverse_gamma_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_buffer_fill(s : StatsdistinversegammaBuffer, v : Double) -> StatsdistinversegammaBuffer {
-  let result = stats_dist_inverse_gamma_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_buffer_min(s : StatsdistinversegammaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_inverse_gamma_cursor_sum(s : StatsdistinversegammaCursor) -> D
 pub fn stats_dist_inverse_gamma_cursor_mean(s : StatsdistinversegammaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_cursor_scale(s : StatsdistinversegammaCursor, f : Double) -> StatsdistinversegammaCursor {
-  let result = stats_dist_inverse_gamma_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cursor_add(a : StatsdistinversegammaCursor, b : StatsdistinversegammaCursor) -> StatsdistinversegammaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cursor_copy(s : StatsdistinversegammaCursor) -> StatsdistinversegammaCursor {
-  let result = stats_dist_inverse_gamma_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cursor_fill(s : StatsdistinversegammaCursor, v : Double) -> StatsdistinversegammaCursor {
-  let result = stats_dist_inverse_gamma_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cursor_min(s : StatsdistinversegammaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_inverse_gamma_view_sum(s : StatsdistinversegammaView) -> Doubl
 pub fn stats_dist_inverse_gamma_view_mean(s : StatsdistinversegammaView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_view_scale(s : StatsdistinversegammaView, f : Double) -> StatsdistinversegammaView {
-  let result = stats_dist_inverse_gamma_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_view_add(a : StatsdistinversegammaView, b : StatsdistinversegammaView) -> StatsdistinversegammaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_view_copy(s : StatsdistinversegammaView) -> StatsdistinversegammaView {
-  let result = stats_dist_inverse_gamma_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_view_fill(s : StatsdistinversegammaView, v : Double) -> StatsdistinversegammaView {
-  let result = stats_dist_inverse_gamma_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_view_min(s : StatsdistinversegammaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_inverse_gamma_range_sum(s : StatsdistinversegammaRange) -> Dou
 pub fn stats_dist_inverse_gamma_range_mean(s : StatsdistinversegammaRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_range_scale(s : StatsdistinversegammaRange, f : Double) -> StatsdistinversegammaRange {
-  let result = stats_dist_inverse_gamma_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_range_add(a : StatsdistinversegammaRange, b : StatsdistinversegammaRange) -> StatsdistinversegammaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_range_copy(s : StatsdistinversegammaRange) -> StatsdistinversegammaRange {
-  let result = stats_dist_inverse_gamma_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_range_fill(s : StatsdistinversegammaRange, v : Double) -> StatsdistinversegammaRange {
-  let result = stats_dist_inverse_gamma_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_range_min(s : StatsdistinversegammaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_inverse_gamma_slice_sum(s : StatsdistinversegammaSlice) -> Dou
 pub fn stats_dist_inverse_gamma_slice_mean(s : StatsdistinversegammaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_inverse_gamma_slice_scale(s : StatsdistinversegammaSlice, f : Double) -> StatsdistinversegammaSlice {
-  let result = stats_dist_inverse_gamma_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_slice_add(a : StatsdistinversegammaSlice, b : StatsdistinversegammaSlice) -> StatsdistinversegammaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_inverse_gamma_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_inverse_gamma_slice_copy(s : StatsdistinversegammaSlice) -> StatsdistinversegammaSlice {
-  let result = stats_dist_inverse_gamma_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_slice_fill(s : StatsdistinversegammaSlice, v : Double) -> StatsdistinversegammaSlice {
-  let result = stats_dist_inverse_gamma_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_slice_min(s : StatsdistinversegammaSlice) -> Double { @_common.min(s.data) }

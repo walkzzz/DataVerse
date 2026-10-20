@@ -383,28 +383,20 @@ pub fn nlp_pos_perceptron_frame_sum(s : NlpposperceptronFrame) -> Double { @_com
 pub fn nlp_pos_perceptron_frame_mean(s : NlpposperceptronFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_frame_scale(s : NlpposperceptronFrame, f : Double) -> NlpposperceptronFrame {
-  let result = nlp_pos_perceptron_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_frame_add(a : NlpposperceptronFrame, b : NlpposperceptronFrame) -> NlpposperceptronFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_frame_copy(s : NlpposperceptronFrame) -> NlpposperceptronFrame {
-  let result = nlp_pos_perceptron_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_frame_fill(s : NlpposperceptronFrame, v : Double) -> NlpposperceptronFrame {
-  let result = nlp_pos_perceptron_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_frame_min(s : NlpposperceptronFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_pos_perceptron_table_sum(s : NlpposperceptronTable) -> Double { @_com
 pub fn nlp_pos_perceptron_table_mean(s : NlpposperceptronTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_table_scale(s : NlpposperceptronTable, f : Double) -> NlpposperceptronTable {
-  let result = nlp_pos_perceptron_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_table_add(a : NlpposperceptronTable, b : NlpposperceptronTable) -> NlpposperceptronTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_table_copy(s : NlpposperceptronTable) -> NlpposperceptronTable {
-  let result = nlp_pos_perceptron_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_table_fill(s : NlpposperceptronTable, v : Double) -> NlpposperceptronTable {
-  let result = nlp_pos_perceptron_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_table_min(s : NlpposperceptronTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_pos_perceptron_graphn_sum(s : NlpposperceptronGraphN) -> Double { @_c
 pub fn nlp_pos_perceptron_graphn_mean(s : NlpposperceptronGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_graphn_scale(s : NlpposperceptronGraphN, f : Double) -> NlpposperceptronGraphN {
-  let result = nlp_pos_perceptron_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_graphn_add(a : NlpposperceptronGraphN, b : NlpposperceptronGraphN) -> NlpposperceptronGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_graphn_copy(s : NlpposperceptronGraphN) -> NlpposperceptronGraphN {
-  let result = nlp_pos_perceptron_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_graphn_fill(s : NlpposperceptronGraphN, v : Double) -> NlpposperceptronGraphN {
-  let result = nlp_pos_perceptron_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_graphn_min(s : NlpposperceptronGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_pos_perceptron_node_sum(s : NlpposperceptronNode) -> Double { @_commo
 pub fn nlp_pos_perceptron_node_mean(s : NlpposperceptronNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_node_scale(s : NlpposperceptronNode, f : Double) -> NlpposperceptronNode {
-  let result = nlp_pos_perceptron_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_node_add(a : NlpposperceptronNode, b : NlpposperceptronNode) -> NlpposperceptronNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_node_copy(s : NlpposperceptronNode) -> NlpposperceptronNode {
-  let result = nlp_pos_perceptron_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_node_fill(s : NlpposperceptronNode, v : Double) -> NlpposperceptronNode {
-  let result = nlp_pos_perceptron_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_node_min(s : NlpposperceptronNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_pos_perceptron_edge_sum(s : NlpposperceptronEdge) -> Double { @_commo
 pub fn nlp_pos_perceptron_edge_mean(s : NlpposperceptronEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_edge_scale(s : NlpposperceptronEdge, f : Double) -> NlpposperceptronEdge {
-  let result = nlp_pos_perceptron_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_edge_add(a : NlpposperceptronEdge, b : NlpposperceptronEdge) -> NlpposperceptronEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_edge_copy(s : NlpposperceptronEdge) -> NlpposperceptronEdge {
-  let result = nlp_pos_perceptron_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_edge_fill(s : NlpposperceptronEdge, v : Double) -> NlpposperceptronEdge {
-  let result = nlp_pos_perceptron_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_edge_min(s : NlpposperceptronEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_pos_perceptron_path_sum(s : NlpposperceptronPath) -> Double { @_commo
 pub fn nlp_pos_perceptron_path_mean(s : NlpposperceptronPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_path_scale(s : NlpposperceptronPath, f : Double) -> NlpposperceptronPath {
-  let result = nlp_pos_perceptron_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_path_add(a : NlpposperceptronPath, b : NlpposperceptronPath) -> NlpposperceptronPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_path_copy(s : NlpposperceptronPath) -> NlpposperceptronPath {
-  let result = nlp_pos_perceptron_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_path_fill(s : NlpposperceptronPath, v : Double) -> NlpposperceptronPath {
-  let result = nlp_pos_perceptron_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_path_min(s : NlpposperceptronPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_pos_perceptron_cluster_sum(s : NlpposperceptronCluster) -> Double { @
 pub fn nlp_pos_perceptron_cluster_mean(s : NlpposperceptronCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_cluster_scale(s : NlpposperceptronCluster, f : Double) -> NlpposperceptronCluster {
-  let result = nlp_pos_perceptron_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cluster_add(a : NlpposperceptronCluster, b : NlpposperceptronCluster) -> NlpposperceptronCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_cluster_copy(s : NlpposperceptronCluster) -> NlpposperceptronCluster {
-  let result = nlp_pos_perceptron_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cluster_fill(s : NlpposperceptronCluster, v : Double) -> NlpposperceptronCluster {
-  let result = nlp_pos_perceptron_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cluster_min(s : NlpposperceptronCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_pos_perceptron_model_sum(s : NlpposperceptronModel) -> Double { @_com
 pub fn nlp_pos_perceptron_model_mean(s : NlpposperceptronModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_model_scale(s : NlpposperceptronModel, f : Double) -> NlpposperceptronModel {
-  let result = nlp_pos_perceptron_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_model_add(a : NlpposperceptronModel, b : NlpposperceptronModel) -> NlpposperceptronModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_model_copy(s : NlpposperceptronModel) -> NlpposperceptronModel {
-  let result = nlp_pos_perceptron_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_model_fill(s : NlpposperceptronModel, v : Double) -> NlpposperceptronModel {
-  let result = nlp_pos_perceptron_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_model_min(s : NlpposperceptronModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_pos_perceptron_layer_sum(s : NlpposperceptronLayer) -> Double { @_com
 pub fn nlp_pos_perceptron_layer_mean(s : NlpposperceptronLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_layer_scale(s : NlpposperceptronLayer, f : Double) -> NlpposperceptronLayer {
-  let result = nlp_pos_perceptron_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_layer_add(a : NlpposperceptronLayer, b : NlpposperceptronLayer) -> NlpposperceptronLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_layer_copy(s : NlpposperceptronLayer) -> NlpposperceptronLayer {
-  let result = nlp_pos_perceptron_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_layer_fill(s : NlpposperceptronLayer, v : Double) -> NlpposperceptronLayer {
-  let result = nlp_pos_perceptron_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_layer_min(s : NlpposperceptronLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_pos_perceptron_buffer_sum(s : NlpposperceptronBuffer) -> Double { @_c
 pub fn nlp_pos_perceptron_buffer_mean(s : NlpposperceptronBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_buffer_scale(s : NlpposperceptronBuffer, f : Double) -> NlpposperceptronBuffer {
-  let result = nlp_pos_perceptron_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_buffer_add(a : NlpposperceptronBuffer, b : NlpposperceptronBuffer) -> NlpposperceptronBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_buffer_copy(s : NlpposperceptronBuffer) -> NlpposperceptronBuffer {
-  let result = nlp_pos_perceptron_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_buffer_fill(s : NlpposperceptronBuffer, v : Double) -> NlpposperceptronBuffer {
-  let result = nlp_pos_perceptron_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_buffer_min(s : NlpposperceptronBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_pos_perceptron_cursor_sum(s : NlpposperceptronCursor) -> Double { @_c
 pub fn nlp_pos_perceptron_cursor_mean(s : NlpposperceptronCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_cursor_scale(s : NlpposperceptronCursor, f : Double) -> NlpposperceptronCursor {
-  let result = nlp_pos_perceptron_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cursor_add(a : NlpposperceptronCursor, b : NlpposperceptronCursor) -> NlpposperceptronCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_cursor_copy(s : NlpposperceptronCursor) -> NlpposperceptronCursor {
-  let result = nlp_pos_perceptron_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cursor_fill(s : NlpposperceptronCursor, v : Double) -> NlpposperceptronCursor {
-  let result = nlp_pos_perceptron_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cursor_min(s : NlpposperceptronCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_pos_perceptron_view_sum(s : NlpposperceptronView) -> Double { @_commo
 pub fn nlp_pos_perceptron_view_mean(s : NlpposperceptronView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_view_scale(s : NlpposperceptronView, f : Double) -> NlpposperceptronView {
-  let result = nlp_pos_perceptron_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_view_add(a : NlpposperceptronView, b : NlpposperceptronView) -> NlpposperceptronView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_view_copy(s : NlpposperceptronView) -> NlpposperceptronView {
-  let result = nlp_pos_perceptron_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_view_fill(s : NlpposperceptronView, v : Double) -> NlpposperceptronView {
-  let result = nlp_pos_perceptron_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_view_min(s : NlpposperceptronView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_pos_perceptron_range_sum(s : NlpposperceptronRange) -> Double { @_com
 pub fn nlp_pos_perceptron_range_mean(s : NlpposperceptronRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_range_scale(s : NlpposperceptronRange, f : Double) -> NlpposperceptronRange {
-  let result = nlp_pos_perceptron_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_range_add(a : NlpposperceptronRange, b : NlpposperceptronRange) -> NlpposperceptronRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_range_copy(s : NlpposperceptronRange) -> NlpposperceptronRange {
-  let result = nlp_pos_perceptron_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_range_fill(s : NlpposperceptronRange, v : Double) -> NlpposperceptronRange {
-  let result = nlp_pos_perceptron_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_range_min(s : NlpposperceptronRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_pos_perceptron_slice_sum(s : NlpposperceptronSlice) -> Double { @_com
 pub fn nlp_pos_perceptron_slice_mean(s : NlpposperceptronSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_perceptron_slice_scale(s : NlpposperceptronSlice, f : Double) -> NlpposperceptronSlice {
-  let result = nlp_pos_perceptron_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_slice_add(a : NlpposperceptronSlice, b : NlpposperceptronSlice) -> NlpposperceptronSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_perceptron_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_perceptron_slice_copy(s : NlpposperceptronSlice) -> NlpposperceptronSlice {
-  let result = nlp_pos_perceptron_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_slice_fill(s : NlpposperceptronSlice, v : Double) -> NlpposperceptronSlice {
-  let result = nlp_pos_perceptron_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_slice_min(s : NlpposperceptronSlice) -> Double { @_common.min(s.data) }

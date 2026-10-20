@@ -383,28 +383,20 @@ pub fn stats_dist_lognormal_frame_sum(s : StatsdistlognormalFrame) -> Double { @
 pub fn stats_dist_lognormal_frame_mean(s : StatsdistlognormalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_frame_scale(s : StatsdistlognormalFrame, f : Double) -> StatsdistlognormalFrame {
-  let result = stats_dist_lognormal_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_frame_add(a : StatsdistlognormalFrame, b : StatsdistlognormalFrame) -> StatsdistlognormalFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_frame_copy(s : StatsdistlognormalFrame) -> StatsdistlognormalFrame {
-  let result = stats_dist_lognormal_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_frame_fill(s : StatsdistlognormalFrame, v : Double) -> StatsdistlognormalFrame {
-  let result = stats_dist_lognormal_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_frame_min(s : StatsdistlognormalFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_lognormal_table_sum(s : StatsdistlognormalTable) -> Double { @
 pub fn stats_dist_lognormal_table_mean(s : StatsdistlognormalTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_table_scale(s : StatsdistlognormalTable, f : Double) -> StatsdistlognormalTable {
-  let result = stats_dist_lognormal_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_table_add(a : StatsdistlognormalTable, b : StatsdistlognormalTable) -> StatsdistlognormalTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_table_copy(s : StatsdistlognormalTable) -> StatsdistlognormalTable {
-  let result = stats_dist_lognormal_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_table_fill(s : StatsdistlognormalTable, v : Double) -> StatsdistlognormalTable {
-  let result = stats_dist_lognormal_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_table_min(s : StatsdistlognormalTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_lognormal_graphn_sum(s : StatsdistlognormalGraphN) -> Double {
 pub fn stats_dist_lognormal_graphn_mean(s : StatsdistlognormalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_graphn_scale(s : StatsdistlognormalGraphN, f : Double) -> StatsdistlognormalGraphN {
-  let result = stats_dist_lognormal_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_graphn_add(a : StatsdistlognormalGraphN, b : StatsdistlognormalGraphN) -> StatsdistlognormalGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_graphn_copy(s : StatsdistlognormalGraphN) -> StatsdistlognormalGraphN {
-  let result = stats_dist_lognormal_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_graphn_fill(s : StatsdistlognormalGraphN, v : Double) -> StatsdistlognormalGraphN {
-  let result = stats_dist_lognormal_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_graphn_min(s : StatsdistlognormalGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_lognormal_node_sum(s : StatsdistlognormalNode) -> Double { @_c
 pub fn stats_dist_lognormal_node_mean(s : StatsdistlognormalNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_node_scale(s : StatsdistlognormalNode, f : Double) -> StatsdistlognormalNode {
-  let result = stats_dist_lognormal_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_node_add(a : StatsdistlognormalNode, b : StatsdistlognormalNode) -> StatsdistlognormalNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_node_copy(s : StatsdistlognormalNode) -> StatsdistlognormalNode {
-  let result = stats_dist_lognormal_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_node_fill(s : StatsdistlognormalNode, v : Double) -> StatsdistlognormalNode {
-  let result = stats_dist_lognormal_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_node_min(s : StatsdistlognormalNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_lognormal_edge_sum(s : StatsdistlognormalEdge) -> Double { @_c
 pub fn stats_dist_lognormal_edge_mean(s : StatsdistlognormalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_edge_scale(s : StatsdistlognormalEdge, f : Double) -> StatsdistlognormalEdge {
-  let result = stats_dist_lognormal_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_edge_add(a : StatsdistlognormalEdge, b : StatsdistlognormalEdge) -> StatsdistlognormalEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_edge_copy(s : StatsdistlognormalEdge) -> StatsdistlognormalEdge {
-  let result = stats_dist_lognormal_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_edge_fill(s : StatsdistlognormalEdge, v : Double) -> StatsdistlognormalEdge {
-  let result = stats_dist_lognormal_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_edge_min(s : StatsdistlognormalEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_lognormal_path_sum(s : StatsdistlognormalPath) -> Double { @_c
 pub fn stats_dist_lognormal_path_mean(s : StatsdistlognormalPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_path_scale(s : StatsdistlognormalPath, f : Double) -> StatsdistlognormalPath {
-  let result = stats_dist_lognormal_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_path_add(a : StatsdistlognormalPath, b : StatsdistlognormalPath) -> StatsdistlognormalPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_path_copy(s : StatsdistlognormalPath) -> StatsdistlognormalPath {
-  let result = stats_dist_lognormal_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_path_fill(s : StatsdistlognormalPath, v : Double) -> StatsdistlognormalPath {
-  let result = stats_dist_lognormal_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_path_min(s : StatsdistlognormalPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_lognormal_cluster_sum(s : StatsdistlognormalCluster) -> Double
 pub fn stats_dist_lognormal_cluster_mean(s : StatsdistlognormalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_cluster_scale(s : StatsdistlognormalCluster, f : Double) -> StatsdistlognormalCluster {
-  let result = stats_dist_lognormal_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_cluster_add(a : StatsdistlognormalCluster, b : StatsdistlognormalCluster) -> StatsdistlognormalCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_cluster_copy(s : StatsdistlognormalCluster) -> StatsdistlognormalCluster {
-  let result = stats_dist_lognormal_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_cluster_fill(s : StatsdistlognormalCluster, v : Double) -> StatsdistlognormalCluster {
-  let result = stats_dist_lognormal_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_cluster_min(s : StatsdistlognormalCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_lognormal_model_sum(s : StatsdistlognormalModel) -> Double { @
 pub fn stats_dist_lognormal_model_mean(s : StatsdistlognormalModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_model_scale(s : StatsdistlognormalModel, f : Double) -> StatsdistlognormalModel {
-  let result = stats_dist_lognormal_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_model_add(a : StatsdistlognormalModel, b : StatsdistlognormalModel) -> StatsdistlognormalModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_model_copy(s : StatsdistlognormalModel) -> StatsdistlognormalModel {
-  let result = stats_dist_lognormal_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_model_fill(s : StatsdistlognormalModel, v : Double) -> StatsdistlognormalModel {
-  let result = stats_dist_lognormal_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_model_min(s : StatsdistlognormalModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_lognormal_layer_sum(s : StatsdistlognormalLayer) -> Double { @
 pub fn stats_dist_lognormal_layer_mean(s : StatsdistlognormalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_layer_scale(s : StatsdistlognormalLayer, f : Double) -> StatsdistlognormalLayer {
-  let result = stats_dist_lognormal_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_layer_add(a : StatsdistlognormalLayer, b : StatsdistlognormalLayer) -> StatsdistlognormalLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_layer_copy(s : StatsdistlognormalLayer) -> StatsdistlognormalLayer {
-  let result = stats_dist_lognormal_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_layer_fill(s : StatsdistlognormalLayer, v : Double) -> StatsdistlognormalLayer {
-  let result = stats_dist_lognormal_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_layer_min(s : StatsdistlognormalLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_lognormal_buffer_sum(s : StatsdistlognormalBuffer) -> Double {
 pub fn stats_dist_lognormal_buffer_mean(s : StatsdistlognormalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_buffer_scale(s : StatsdistlognormalBuffer, f : Double) -> StatsdistlognormalBuffer {
-  let result = stats_dist_lognormal_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_buffer_add(a : StatsdistlognormalBuffer, b : StatsdistlognormalBuffer) -> StatsdistlognormalBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_buffer_copy(s : StatsdistlognormalBuffer) -> StatsdistlognormalBuffer {
-  let result = stats_dist_lognormal_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_buffer_fill(s : StatsdistlognormalBuffer, v : Double) -> StatsdistlognormalBuffer {
-  let result = stats_dist_lognormal_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_buffer_min(s : StatsdistlognormalBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_lognormal_cursor_sum(s : StatsdistlognormalCursor) -> Double {
 pub fn stats_dist_lognormal_cursor_mean(s : StatsdistlognormalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_cursor_scale(s : StatsdistlognormalCursor, f : Double) -> StatsdistlognormalCursor {
-  let result = stats_dist_lognormal_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_cursor_add(a : StatsdistlognormalCursor, b : StatsdistlognormalCursor) -> StatsdistlognormalCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_cursor_copy(s : StatsdistlognormalCursor) -> StatsdistlognormalCursor {
-  let result = stats_dist_lognormal_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_cursor_fill(s : StatsdistlognormalCursor, v : Double) -> StatsdistlognormalCursor {
-  let result = stats_dist_lognormal_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_cursor_min(s : StatsdistlognormalCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_lognormal_view_sum(s : StatsdistlognormalView) -> Double { @_c
 pub fn stats_dist_lognormal_view_mean(s : StatsdistlognormalView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_view_scale(s : StatsdistlognormalView, f : Double) -> StatsdistlognormalView {
-  let result = stats_dist_lognormal_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_view_add(a : StatsdistlognormalView, b : StatsdistlognormalView) -> StatsdistlognormalView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_view_copy(s : StatsdistlognormalView) -> StatsdistlognormalView {
-  let result = stats_dist_lognormal_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_view_fill(s : StatsdistlognormalView, v : Double) -> StatsdistlognormalView {
-  let result = stats_dist_lognormal_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_view_min(s : StatsdistlognormalView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_lognormal_range_sum(s : StatsdistlognormalRange) -> Double { @
 pub fn stats_dist_lognormal_range_mean(s : StatsdistlognormalRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_range_scale(s : StatsdistlognormalRange, f : Double) -> StatsdistlognormalRange {
-  let result = stats_dist_lognormal_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_range_add(a : StatsdistlognormalRange, b : StatsdistlognormalRange) -> StatsdistlognormalRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_range_copy(s : StatsdistlognormalRange) -> StatsdistlognormalRange {
-  let result = stats_dist_lognormal_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_range_fill(s : StatsdistlognormalRange, v : Double) -> StatsdistlognormalRange {
-  let result = stats_dist_lognormal_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_range_min(s : StatsdistlognormalRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_lognormal_slice_sum(s : StatsdistlognormalSlice) -> Double { @
 pub fn stats_dist_lognormal_slice_mean(s : StatsdistlognormalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_lognormal_slice_scale(s : StatsdistlognormalSlice, f : Double) -> StatsdistlognormalSlice {
-  let result = stats_dist_lognormal_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_slice_add(a : StatsdistlognormalSlice, b : StatsdistlognormalSlice) -> StatsdistlognormalSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_lognormal_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_lognormal_slice_copy(s : StatsdistlognormalSlice) -> StatsdistlognormalSlice {
-  let result = stats_dist_lognormal_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_slice_fill(s : StatsdistlognormalSlice, v : Double) -> StatsdistlognormalSlice {
-  let result = stats_dist_lognormal_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_lognormal_slice_min(s : StatsdistlognormalSlice) -> Double { @_common.min(s.data) }

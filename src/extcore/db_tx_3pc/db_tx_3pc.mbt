@@ -383,28 +383,20 @@ pub fn db_tx_3pc_frame_sum(s : Dbtx3pcFrame) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_frame_mean(s : Dbtx3pcFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_frame_scale(s : Dbtx3pcFrame, f : Double) -> Dbtx3pcFrame {
-  let result = db_tx_3pc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_frame_add(a : Dbtx3pcFrame, b : Dbtx3pcFrame) -> Dbtx3pcFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_frame_copy(s : Dbtx3pcFrame) -> Dbtx3pcFrame {
-  let result = db_tx_3pc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_frame_fill(s : Dbtx3pcFrame, v : Double) -> Dbtx3pcFrame {
-  let result = db_tx_3pc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_frame_min(s : Dbtx3pcFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_tx_3pc_table_sum(s : Dbtx3pcTable) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_table_mean(s : Dbtx3pcTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_table_scale(s : Dbtx3pcTable, f : Double) -> Dbtx3pcTable {
-  let result = db_tx_3pc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_table_add(a : Dbtx3pcTable, b : Dbtx3pcTable) -> Dbtx3pcTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_table_copy(s : Dbtx3pcTable) -> Dbtx3pcTable {
-  let result = db_tx_3pc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_table_fill(s : Dbtx3pcTable, v : Double) -> Dbtx3pcTable {
-  let result = db_tx_3pc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_table_min(s : Dbtx3pcTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_tx_3pc_graphn_sum(s : Dbtx3pcGraphN) -> Double { @_common.sum(s.data) 
 pub fn db_tx_3pc_graphn_mean(s : Dbtx3pcGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_graphn_scale(s : Dbtx3pcGraphN, f : Double) -> Dbtx3pcGraphN {
-  let result = db_tx_3pc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_graphn_add(a : Dbtx3pcGraphN, b : Dbtx3pcGraphN) -> Dbtx3pcGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_graphn_copy(s : Dbtx3pcGraphN) -> Dbtx3pcGraphN {
-  let result = db_tx_3pc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_graphn_fill(s : Dbtx3pcGraphN, v : Double) -> Dbtx3pcGraphN {
-  let result = db_tx_3pc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_graphn_min(s : Dbtx3pcGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_tx_3pc_node_sum(s : Dbtx3pcNode) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_node_mean(s : Dbtx3pcNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_node_scale(s : Dbtx3pcNode, f : Double) -> Dbtx3pcNode {
-  let result = db_tx_3pc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_node_add(a : Dbtx3pcNode, b : Dbtx3pcNode) -> Dbtx3pcNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_node_copy(s : Dbtx3pcNode) -> Dbtx3pcNode {
-  let result = db_tx_3pc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_node_fill(s : Dbtx3pcNode, v : Double) -> Dbtx3pcNode {
-  let result = db_tx_3pc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_node_min(s : Dbtx3pcNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_tx_3pc_edge_sum(s : Dbtx3pcEdge) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_edge_mean(s : Dbtx3pcEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_edge_scale(s : Dbtx3pcEdge, f : Double) -> Dbtx3pcEdge {
-  let result = db_tx_3pc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_edge_add(a : Dbtx3pcEdge, b : Dbtx3pcEdge) -> Dbtx3pcEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_edge_copy(s : Dbtx3pcEdge) -> Dbtx3pcEdge {
-  let result = db_tx_3pc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_edge_fill(s : Dbtx3pcEdge, v : Double) -> Dbtx3pcEdge {
-  let result = db_tx_3pc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_edge_min(s : Dbtx3pcEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_tx_3pc_path_sum(s : Dbtx3pcPath) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_path_mean(s : Dbtx3pcPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_path_scale(s : Dbtx3pcPath, f : Double) -> Dbtx3pcPath {
-  let result = db_tx_3pc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_path_add(a : Dbtx3pcPath, b : Dbtx3pcPath) -> Dbtx3pcPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_path_copy(s : Dbtx3pcPath) -> Dbtx3pcPath {
-  let result = db_tx_3pc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_path_fill(s : Dbtx3pcPath, v : Double) -> Dbtx3pcPath {
-  let result = db_tx_3pc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_path_min(s : Dbtx3pcPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_tx_3pc_cluster_sum(s : Dbtx3pcCluster) -> Double { @_common.sum(s.data
 pub fn db_tx_3pc_cluster_mean(s : Dbtx3pcCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_cluster_scale(s : Dbtx3pcCluster, f : Double) -> Dbtx3pcCluster {
-  let result = db_tx_3pc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cluster_add(a : Dbtx3pcCluster, b : Dbtx3pcCluster) -> Dbtx3pcCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_cluster_copy(s : Dbtx3pcCluster) -> Dbtx3pcCluster {
-  let result = db_tx_3pc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cluster_fill(s : Dbtx3pcCluster, v : Double) -> Dbtx3pcCluster {
-  let result = db_tx_3pc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cluster_min(s : Dbtx3pcCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_tx_3pc_model_sum(s : Dbtx3pcModel) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_model_mean(s : Dbtx3pcModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_model_scale(s : Dbtx3pcModel, f : Double) -> Dbtx3pcModel {
-  let result = db_tx_3pc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_model_add(a : Dbtx3pcModel, b : Dbtx3pcModel) -> Dbtx3pcModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_model_copy(s : Dbtx3pcModel) -> Dbtx3pcModel {
-  let result = db_tx_3pc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_model_fill(s : Dbtx3pcModel, v : Double) -> Dbtx3pcModel {
-  let result = db_tx_3pc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_model_min(s : Dbtx3pcModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_tx_3pc_layer_sum(s : Dbtx3pcLayer) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_layer_mean(s : Dbtx3pcLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_layer_scale(s : Dbtx3pcLayer, f : Double) -> Dbtx3pcLayer {
-  let result = db_tx_3pc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_layer_add(a : Dbtx3pcLayer, b : Dbtx3pcLayer) -> Dbtx3pcLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_layer_copy(s : Dbtx3pcLayer) -> Dbtx3pcLayer {
-  let result = db_tx_3pc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_layer_fill(s : Dbtx3pcLayer, v : Double) -> Dbtx3pcLayer {
-  let result = db_tx_3pc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_layer_min(s : Dbtx3pcLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_tx_3pc_buffer_sum(s : Dbtx3pcBuffer) -> Double { @_common.sum(s.data) 
 pub fn db_tx_3pc_buffer_mean(s : Dbtx3pcBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_buffer_scale(s : Dbtx3pcBuffer, f : Double) -> Dbtx3pcBuffer {
-  let result = db_tx_3pc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_buffer_add(a : Dbtx3pcBuffer, b : Dbtx3pcBuffer) -> Dbtx3pcBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_buffer_copy(s : Dbtx3pcBuffer) -> Dbtx3pcBuffer {
-  let result = db_tx_3pc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_buffer_fill(s : Dbtx3pcBuffer, v : Double) -> Dbtx3pcBuffer {
-  let result = db_tx_3pc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_buffer_min(s : Dbtx3pcBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_tx_3pc_cursor_sum(s : Dbtx3pcCursor) -> Double { @_common.sum(s.data) 
 pub fn db_tx_3pc_cursor_mean(s : Dbtx3pcCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_cursor_scale(s : Dbtx3pcCursor, f : Double) -> Dbtx3pcCursor {
-  let result = db_tx_3pc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cursor_add(a : Dbtx3pcCursor, b : Dbtx3pcCursor) -> Dbtx3pcCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_cursor_copy(s : Dbtx3pcCursor) -> Dbtx3pcCursor {
-  let result = db_tx_3pc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cursor_fill(s : Dbtx3pcCursor, v : Double) -> Dbtx3pcCursor {
-  let result = db_tx_3pc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cursor_min(s : Dbtx3pcCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_tx_3pc_view_sum(s : Dbtx3pcView) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_view_mean(s : Dbtx3pcView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_view_scale(s : Dbtx3pcView, f : Double) -> Dbtx3pcView {
-  let result = db_tx_3pc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_view_add(a : Dbtx3pcView, b : Dbtx3pcView) -> Dbtx3pcView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_view_copy(s : Dbtx3pcView) -> Dbtx3pcView {
-  let result = db_tx_3pc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_view_fill(s : Dbtx3pcView, v : Double) -> Dbtx3pcView {
-  let result = db_tx_3pc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_view_min(s : Dbtx3pcView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_tx_3pc_range_sum(s : Dbtx3pcRange) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_range_mean(s : Dbtx3pcRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_range_scale(s : Dbtx3pcRange, f : Double) -> Dbtx3pcRange {
-  let result = db_tx_3pc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_range_add(a : Dbtx3pcRange, b : Dbtx3pcRange) -> Dbtx3pcRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_range_copy(s : Dbtx3pcRange) -> Dbtx3pcRange {
-  let result = db_tx_3pc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_range_fill(s : Dbtx3pcRange, v : Double) -> Dbtx3pcRange {
-  let result = db_tx_3pc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_range_min(s : Dbtx3pcRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_tx_3pc_slice_sum(s : Dbtx3pcSlice) -> Double { @_common.sum(s.data) }
 pub fn db_tx_3pc_slice_mean(s : Dbtx3pcSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_3pc_slice_scale(s : Dbtx3pcSlice, f : Double) -> Dbtx3pcSlice {
-  let result = db_tx_3pc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_slice_add(a : Dbtx3pcSlice, b : Dbtx3pcSlice) -> Dbtx3pcSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_3pc_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_3pc_slice_copy(s : Dbtx3pcSlice) -> Dbtx3pcSlice {
-  let result = db_tx_3pc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_slice_fill(s : Dbtx3pcSlice, v : Double) -> Dbtx3pcSlice {
-  let result = db_tx_3pc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_slice_min(s : Dbtx3pcSlice) -> Double { @_common.min(s.data) }

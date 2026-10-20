@@ -383,28 +383,20 @@ pub fn chem_rxn_mechanism_frame_sum(s : ChemrxnmechanismFrame) -> Double { @_com
 pub fn chem_rxn_mechanism_frame_mean(s : ChemrxnmechanismFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_frame_scale(s : ChemrxnmechanismFrame, f : Double) -> ChemrxnmechanismFrame {
-  let result = chem_rxn_mechanism_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_frame_add(a : ChemrxnmechanismFrame, b : ChemrxnmechanismFrame) -> ChemrxnmechanismFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_frame_copy(s : ChemrxnmechanismFrame) -> ChemrxnmechanismFrame {
-  let result = chem_rxn_mechanism_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_frame_fill(s : ChemrxnmechanismFrame, v : Double) -> ChemrxnmechanismFrame {
-  let result = chem_rxn_mechanism_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_frame_min(s : ChemrxnmechanismFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_rxn_mechanism_table_sum(s : ChemrxnmechanismTable) -> Double { @_com
 pub fn chem_rxn_mechanism_table_mean(s : ChemrxnmechanismTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_table_scale(s : ChemrxnmechanismTable, f : Double) -> ChemrxnmechanismTable {
-  let result = chem_rxn_mechanism_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_table_add(a : ChemrxnmechanismTable, b : ChemrxnmechanismTable) -> ChemrxnmechanismTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_table_copy(s : ChemrxnmechanismTable) -> ChemrxnmechanismTable {
-  let result = chem_rxn_mechanism_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_table_fill(s : ChemrxnmechanismTable, v : Double) -> ChemrxnmechanismTable {
-  let result = chem_rxn_mechanism_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_table_min(s : ChemrxnmechanismTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_rxn_mechanism_graphn_sum(s : ChemrxnmechanismGraphN) -> Double { @_c
 pub fn chem_rxn_mechanism_graphn_mean(s : ChemrxnmechanismGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_graphn_scale(s : ChemrxnmechanismGraphN, f : Double) -> ChemrxnmechanismGraphN {
-  let result = chem_rxn_mechanism_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_graphn_add(a : ChemrxnmechanismGraphN, b : ChemrxnmechanismGraphN) -> ChemrxnmechanismGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_graphn_copy(s : ChemrxnmechanismGraphN) -> ChemrxnmechanismGraphN {
-  let result = chem_rxn_mechanism_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_graphn_fill(s : ChemrxnmechanismGraphN, v : Double) -> ChemrxnmechanismGraphN {
-  let result = chem_rxn_mechanism_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_graphn_min(s : ChemrxnmechanismGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_rxn_mechanism_node_sum(s : ChemrxnmechanismNode) -> Double { @_commo
 pub fn chem_rxn_mechanism_node_mean(s : ChemrxnmechanismNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_node_scale(s : ChemrxnmechanismNode, f : Double) -> ChemrxnmechanismNode {
-  let result = chem_rxn_mechanism_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_node_add(a : ChemrxnmechanismNode, b : ChemrxnmechanismNode) -> ChemrxnmechanismNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_node_copy(s : ChemrxnmechanismNode) -> ChemrxnmechanismNode {
-  let result = chem_rxn_mechanism_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_node_fill(s : ChemrxnmechanismNode, v : Double) -> ChemrxnmechanismNode {
-  let result = chem_rxn_mechanism_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_node_min(s : ChemrxnmechanismNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_rxn_mechanism_edge_sum(s : ChemrxnmechanismEdge) -> Double { @_commo
 pub fn chem_rxn_mechanism_edge_mean(s : ChemrxnmechanismEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_edge_scale(s : ChemrxnmechanismEdge, f : Double) -> ChemrxnmechanismEdge {
-  let result = chem_rxn_mechanism_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_edge_add(a : ChemrxnmechanismEdge, b : ChemrxnmechanismEdge) -> ChemrxnmechanismEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_edge_copy(s : ChemrxnmechanismEdge) -> ChemrxnmechanismEdge {
-  let result = chem_rxn_mechanism_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_edge_fill(s : ChemrxnmechanismEdge, v : Double) -> ChemrxnmechanismEdge {
-  let result = chem_rxn_mechanism_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_edge_min(s : ChemrxnmechanismEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_rxn_mechanism_path_sum(s : ChemrxnmechanismPath) -> Double { @_commo
 pub fn chem_rxn_mechanism_path_mean(s : ChemrxnmechanismPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_path_scale(s : ChemrxnmechanismPath, f : Double) -> ChemrxnmechanismPath {
-  let result = chem_rxn_mechanism_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_path_add(a : ChemrxnmechanismPath, b : ChemrxnmechanismPath) -> ChemrxnmechanismPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_path_copy(s : ChemrxnmechanismPath) -> ChemrxnmechanismPath {
-  let result = chem_rxn_mechanism_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_path_fill(s : ChemrxnmechanismPath, v : Double) -> ChemrxnmechanismPath {
-  let result = chem_rxn_mechanism_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_path_min(s : ChemrxnmechanismPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_rxn_mechanism_cluster_sum(s : ChemrxnmechanismCluster) -> Double { @
 pub fn chem_rxn_mechanism_cluster_mean(s : ChemrxnmechanismCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_cluster_scale(s : ChemrxnmechanismCluster, f : Double) -> ChemrxnmechanismCluster {
-  let result = chem_rxn_mechanism_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_cluster_add(a : ChemrxnmechanismCluster, b : ChemrxnmechanismCluster) -> ChemrxnmechanismCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_cluster_copy(s : ChemrxnmechanismCluster) -> ChemrxnmechanismCluster {
-  let result = chem_rxn_mechanism_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_cluster_fill(s : ChemrxnmechanismCluster, v : Double) -> ChemrxnmechanismCluster {
-  let result = chem_rxn_mechanism_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_cluster_min(s : ChemrxnmechanismCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_rxn_mechanism_model_sum(s : ChemrxnmechanismModel) -> Double { @_com
 pub fn chem_rxn_mechanism_model_mean(s : ChemrxnmechanismModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_model_scale(s : ChemrxnmechanismModel, f : Double) -> ChemrxnmechanismModel {
-  let result = chem_rxn_mechanism_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_model_add(a : ChemrxnmechanismModel, b : ChemrxnmechanismModel) -> ChemrxnmechanismModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_model_copy(s : ChemrxnmechanismModel) -> ChemrxnmechanismModel {
-  let result = chem_rxn_mechanism_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_model_fill(s : ChemrxnmechanismModel, v : Double) -> ChemrxnmechanismModel {
-  let result = chem_rxn_mechanism_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_model_min(s : ChemrxnmechanismModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_rxn_mechanism_layer_sum(s : ChemrxnmechanismLayer) -> Double { @_com
 pub fn chem_rxn_mechanism_layer_mean(s : ChemrxnmechanismLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_layer_scale(s : ChemrxnmechanismLayer, f : Double) -> ChemrxnmechanismLayer {
-  let result = chem_rxn_mechanism_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_layer_add(a : ChemrxnmechanismLayer, b : ChemrxnmechanismLayer) -> ChemrxnmechanismLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_layer_copy(s : ChemrxnmechanismLayer) -> ChemrxnmechanismLayer {
-  let result = chem_rxn_mechanism_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_layer_fill(s : ChemrxnmechanismLayer, v : Double) -> ChemrxnmechanismLayer {
-  let result = chem_rxn_mechanism_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_layer_min(s : ChemrxnmechanismLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_rxn_mechanism_buffer_sum(s : ChemrxnmechanismBuffer) -> Double { @_c
 pub fn chem_rxn_mechanism_buffer_mean(s : ChemrxnmechanismBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_buffer_scale(s : ChemrxnmechanismBuffer, f : Double) -> ChemrxnmechanismBuffer {
-  let result = chem_rxn_mechanism_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_buffer_add(a : ChemrxnmechanismBuffer, b : ChemrxnmechanismBuffer) -> ChemrxnmechanismBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_buffer_copy(s : ChemrxnmechanismBuffer) -> ChemrxnmechanismBuffer {
-  let result = chem_rxn_mechanism_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_buffer_fill(s : ChemrxnmechanismBuffer, v : Double) -> ChemrxnmechanismBuffer {
-  let result = chem_rxn_mechanism_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_buffer_min(s : ChemrxnmechanismBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_rxn_mechanism_cursor_sum(s : ChemrxnmechanismCursor) -> Double { @_c
 pub fn chem_rxn_mechanism_cursor_mean(s : ChemrxnmechanismCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_cursor_scale(s : ChemrxnmechanismCursor, f : Double) -> ChemrxnmechanismCursor {
-  let result = chem_rxn_mechanism_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_cursor_add(a : ChemrxnmechanismCursor, b : ChemrxnmechanismCursor) -> ChemrxnmechanismCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_cursor_copy(s : ChemrxnmechanismCursor) -> ChemrxnmechanismCursor {
-  let result = chem_rxn_mechanism_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_cursor_fill(s : ChemrxnmechanismCursor, v : Double) -> ChemrxnmechanismCursor {
-  let result = chem_rxn_mechanism_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_cursor_min(s : ChemrxnmechanismCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_rxn_mechanism_view_sum(s : ChemrxnmechanismView) -> Double { @_commo
 pub fn chem_rxn_mechanism_view_mean(s : ChemrxnmechanismView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_view_scale(s : ChemrxnmechanismView, f : Double) -> ChemrxnmechanismView {
-  let result = chem_rxn_mechanism_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_view_add(a : ChemrxnmechanismView, b : ChemrxnmechanismView) -> ChemrxnmechanismView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_view_copy(s : ChemrxnmechanismView) -> ChemrxnmechanismView {
-  let result = chem_rxn_mechanism_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_view_fill(s : ChemrxnmechanismView, v : Double) -> ChemrxnmechanismView {
-  let result = chem_rxn_mechanism_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_view_min(s : ChemrxnmechanismView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_rxn_mechanism_range_sum(s : ChemrxnmechanismRange) -> Double { @_com
 pub fn chem_rxn_mechanism_range_mean(s : ChemrxnmechanismRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_range_scale(s : ChemrxnmechanismRange, f : Double) -> ChemrxnmechanismRange {
-  let result = chem_rxn_mechanism_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_range_add(a : ChemrxnmechanismRange, b : ChemrxnmechanismRange) -> ChemrxnmechanismRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_range_copy(s : ChemrxnmechanismRange) -> ChemrxnmechanismRange {
-  let result = chem_rxn_mechanism_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_range_fill(s : ChemrxnmechanismRange, v : Double) -> ChemrxnmechanismRange {
-  let result = chem_rxn_mechanism_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_range_min(s : ChemrxnmechanismRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_rxn_mechanism_slice_sum(s : ChemrxnmechanismSlice) -> Double { @_com
 pub fn chem_rxn_mechanism_slice_mean(s : ChemrxnmechanismSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_slice_scale(s : ChemrxnmechanismSlice, f : Double) -> ChemrxnmechanismSlice {
-  let result = chem_rxn_mechanism_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_slice_add(a : ChemrxnmechanismSlice, b : ChemrxnmechanismSlice) -> ChemrxnmechanismSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_mechanism_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_mechanism_slice_copy(s : ChemrxnmechanismSlice) -> ChemrxnmechanismSlice {
-  let result = chem_rxn_mechanism_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_slice_fill(s : ChemrxnmechanismSlice, v : Double) -> ChemrxnmechanismSlice {
-  let result = chem_rxn_mechanism_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_mechanism_slice_min(s : ChemrxnmechanismSlice) -> Double { @_common.min(s.data) }

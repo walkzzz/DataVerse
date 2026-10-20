@@ -383,28 +383,20 @@ pub fn geo_intersect_bbox_frame_sum(s : GeointersectbboxFrame) -> Double { @_com
 pub fn geo_intersect_bbox_frame_mean(s : GeointersectbboxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_frame_scale(s : GeointersectbboxFrame, f : Double) -> GeointersectbboxFrame {
-  let result = geo_intersect_bbox_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_frame_add(a : GeointersectbboxFrame, b : GeointersectbboxFrame) -> GeointersectbboxFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_frame_copy(s : GeointersectbboxFrame) -> GeointersectbboxFrame {
-  let result = geo_intersect_bbox_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_frame_fill(s : GeointersectbboxFrame, v : Double) -> GeointersectbboxFrame {
-  let result = geo_intersect_bbox_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_frame_min(s : GeointersectbboxFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_intersect_bbox_table_sum(s : GeointersectbboxTable) -> Double { @_com
 pub fn geo_intersect_bbox_table_mean(s : GeointersectbboxTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_table_scale(s : GeointersectbboxTable, f : Double) -> GeointersectbboxTable {
-  let result = geo_intersect_bbox_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_table_add(a : GeointersectbboxTable, b : GeointersectbboxTable) -> GeointersectbboxTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_table_copy(s : GeointersectbboxTable) -> GeointersectbboxTable {
-  let result = geo_intersect_bbox_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_table_fill(s : GeointersectbboxTable, v : Double) -> GeointersectbboxTable {
-  let result = geo_intersect_bbox_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_table_min(s : GeointersectbboxTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_intersect_bbox_graphn_sum(s : GeointersectbboxGraphN) -> Double { @_c
 pub fn geo_intersect_bbox_graphn_mean(s : GeointersectbboxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_graphn_scale(s : GeointersectbboxGraphN, f : Double) -> GeointersectbboxGraphN {
-  let result = geo_intersect_bbox_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_graphn_add(a : GeointersectbboxGraphN, b : GeointersectbboxGraphN) -> GeointersectbboxGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_graphn_copy(s : GeointersectbboxGraphN) -> GeointersectbboxGraphN {
-  let result = geo_intersect_bbox_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_graphn_fill(s : GeointersectbboxGraphN, v : Double) -> GeointersectbboxGraphN {
-  let result = geo_intersect_bbox_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_graphn_min(s : GeointersectbboxGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_intersect_bbox_node_sum(s : GeointersectbboxNode) -> Double { @_commo
 pub fn geo_intersect_bbox_node_mean(s : GeointersectbboxNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_node_scale(s : GeointersectbboxNode, f : Double) -> GeointersectbboxNode {
-  let result = geo_intersect_bbox_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_node_add(a : GeointersectbboxNode, b : GeointersectbboxNode) -> GeointersectbboxNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_node_copy(s : GeointersectbboxNode) -> GeointersectbboxNode {
-  let result = geo_intersect_bbox_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_node_fill(s : GeointersectbboxNode, v : Double) -> GeointersectbboxNode {
-  let result = geo_intersect_bbox_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_node_min(s : GeointersectbboxNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_intersect_bbox_edge_sum(s : GeointersectbboxEdge) -> Double { @_commo
 pub fn geo_intersect_bbox_edge_mean(s : GeointersectbboxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_edge_scale(s : GeointersectbboxEdge, f : Double) -> GeointersectbboxEdge {
-  let result = geo_intersect_bbox_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_edge_add(a : GeointersectbboxEdge, b : GeointersectbboxEdge) -> GeointersectbboxEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_edge_copy(s : GeointersectbboxEdge) -> GeointersectbboxEdge {
-  let result = geo_intersect_bbox_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_edge_fill(s : GeointersectbboxEdge, v : Double) -> GeointersectbboxEdge {
-  let result = geo_intersect_bbox_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_edge_min(s : GeointersectbboxEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_intersect_bbox_path_sum(s : GeointersectbboxPath) -> Double { @_commo
 pub fn geo_intersect_bbox_path_mean(s : GeointersectbboxPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_path_scale(s : GeointersectbboxPath, f : Double) -> GeointersectbboxPath {
-  let result = geo_intersect_bbox_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_path_add(a : GeointersectbboxPath, b : GeointersectbboxPath) -> GeointersectbboxPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_path_copy(s : GeointersectbboxPath) -> GeointersectbboxPath {
-  let result = geo_intersect_bbox_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_path_fill(s : GeointersectbboxPath, v : Double) -> GeointersectbboxPath {
-  let result = geo_intersect_bbox_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_path_min(s : GeointersectbboxPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_intersect_bbox_cluster_sum(s : GeointersectbboxCluster) -> Double { @
 pub fn geo_intersect_bbox_cluster_mean(s : GeointersectbboxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_cluster_scale(s : GeointersectbboxCluster, f : Double) -> GeointersectbboxCluster {
-  let result = geo_intersect_bbox_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_cluster_add(a : GeointersectbboxCluster, b : GeointersectbboxCluster) -> GeointersectbboxCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_cluster_copy(s : GeointersectbboxCluster) -> GeointersectbboxCluster {
-  let result = geo_intersect_bbox_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_cluster_fill(s : GeointersectbboxCluster, v : Double) -> GeointersectbboxCluster {
-  let result = geo_intersect_bbox_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_cluster_min(s : GeointersectbboxCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_intersect_bbox_model_sum(s : GeointersectbboxModel) -> Double { @_com
 pub fn geo_intersect_bbox_model_mean(s : GeointersectbboxModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_model_scale(s : GeointersectbboxModel, f : Double) -> GeointersectbboxModel {
-  let result = geo_intersect_bbox_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_model_add(a : GeointersectbboxModel, b : GeointersectbboxModel) -> GeointersectbboxModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_model_copy(s : GeointersectbboxModel) -> GeointersectbboxModel {
-  let result = geo_intersect_bbox_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_model_fill(s : GeointersectbboxModel, v : Double) -> GeointersectbboxModel {
-  let result = geo_intersect_bbox_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_model_min(s : GeointersectbboxModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_intersect_bbox_layer_sum(s : GeointersectbboxLayer) -> Double { @_com
 pub fn geo_intersect_bbox_layer_mean(s : GeointersectbboxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_layer_scale(s : GeointersectbboxLayer, f : Double) -> GeointersectbboxLayer {
-  let result = geo_intersect_bbox_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_layer_add(a : GeointersectbboxLayer, b : GeointersectbboxLayer) -> GeointersectbboxLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_layer_copy(s : GeointersectbboxLayer) -> GeointersectbboxLayer {
-  let result = geo_intersect_bbox_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_layer_fill(s : GeointersectbboxLayer, v : Double) -> GeointersectbboxLayer {
-  let result = geo_intersect_bbox_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_layer_min(s : GeointersectbboxLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_intersect_bbox_buffer_sum(s : GeointersectbboxBuffer) -> Double { @_c
 pub fn geo_intersect_bbox_buffer_mean(s : GeointersectbboxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_buffer_scale(s : GeointersectbboxBuffer, f : Double) -> GeointersectbboxBuffer {
-  let result = geo_intersect_bbox_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_buffer_add(a : GeointersectbboxBuffer, b : GeointersectbboxBuffer) -> GeointersectbboxBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_buffer_copy(s : GeointersectbboxBuffer) -> GeointersectbboxBuffer {
-  let result = geo_intersect_bbox_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_buffer_fill(s : GeointersectbboxBuffer, v : Double) -> GeointersectbboxBuffer {
-  let result = geo_intersect_bbox_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_buffer_min(s : GeointersectbboxBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_intersect_bbox_cursor_sum(s : GeointersectbboxCursor) -> Double { @_c
 pub fn geo_intersect_bbox_cursor_mean(s : GeointersectbboxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_cursor_scale(s : GeointersectbboxCursor, f : Double) -> GeointersectbboxCursor {
-  let result = geo_intersect_bbox_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_cursor_add(a : GeointersectbboxCursor, b : GeointersectbboxCursor) -> GeointersectbboxCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_cursor_copy(s : GeointersectbboxCursor) -> GeointersectbboxCursor {
-  let result = geo_intersect_bbox_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_cursor_fill(s : GeointersectbboxCursor, v : Double) -> GeointersectbboxCursor {
-  let result = geo_intersect_bbox_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_cursor_min(s : GeointersectbboxCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_intersect_bbox_view_sum(s : GeointersectbboxView) -> Double { @_commo
 pub fn geo_intersect_bbox_view_mean(s : GeointersectbboxView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_view_scale(s : GeointersectbboxView, f : Double) -> GeointersectbboxView {
-  let result = geo_intersect_bbox_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_view_add(a : GeointersectbboxView, b : GeointersectbboxView) -> GeointersectbboxView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_view_copy(s : GeointersectbboxView) -> GeointersectbboxView {
-  let result = geo_intersect_bbox_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_view_fill(s : GeointersectbboxView, v : Double) -> GeointersectbboxView {
-  let result = geo_intersect_bbox_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_view_min(s : GeointersectbboxView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_intersect_bbox_range_sum(s : GeointersectbboxRange) -> Double { @_com
 pub fn geo_intersect_bbox_range_mean(s : GeointersectbboxRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_range_scale(s : GeointersectbboxRange, f : Double) -> GeointersectbboxRange {
-  let result = geo_intersect_bbox_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_range_add(a : GeointersectbboxRange, b : GeointersectbboxRange) -> GeointersectbboxRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_range_copy(s : GeointersectbboxRange) -> GeointersectbboxRange {
-  let result = geo_intersect_bbox_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_range_fill(s : GeointersectbboxRange, v : Double) -> GeointersectbboxRange {
-  let result = geo_intersect_bbox_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_range_min(s : GeointersectbboxRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_intersect_bbox_slice_sum(s : GeointersectbboxSlice) -> Double { @_com
 pub fn geo_intersect_bbox_slice_mean(s : GeointersectbboxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_bbox_slice_scale(s : GeointersectbboxSlice, f : Double) -> GeointersectbboxSlice {
-  let result = geo_intersect_bbox_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_slice_add(a : GeointersectbboxSlice, b : GeointersectbboxSlice) -> GeointersectbboxSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_bbox_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_bbox_slice_copy(s : GeointersectbboxSlice) -> GeointersectbboxSlice {
-  let result = geo_intersect_bbox_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_slice_fill(s : GeointersectbboxSlice, v : Double) -> GeointersectbboxSlice {
-  let result = geo_intersect_bbox_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_bbox_slice_min(s : GeointersectbboxSlice) -> Double { @_common.min(s.data) }

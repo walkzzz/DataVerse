@@ -383,28 +383,20 @@ pub fn net_sec_tls_frame_sum(s : NetsectlsFrame) -> Double { @_common.sum(s.data
 pub fn net_sec_tls_frame_mean(s : NetsectlsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_frame_scale(s : NetsectlsFrame, f : Double) -> NetsectlsFrame {
-  let result = net_sec_tls_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_frame_add(a : NetsectlsFrame, b : NetsectlsFrame) -> NetsectlsFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_frame_copy(s : NetsectlsFrame) -> NetsectlsFrame {
-  let result = net_sec_tls_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_frame_fill(s : NetsectlsFrame, v : Double) -> NetsectlsFrame {
-  let result = net_sec_tls_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_frame_min(s : NetsectlsFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_sec_tls_table_sum(s : NetsectlsTable) -> Double { @_common.sum(s.data
 pub fn net_sec_tls_table_mean(s : NetsectlsTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_table_scale(s : NetsectlsTable, f : Double) -> NetsectlsTable {
-  let result = net_sec_tls_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_table_add(a : NetsectlsTable, b : NetsectlsTable) -> NetsectlsTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_table_copy(s : NetsectlsTable) -> NetsectlsTable {
-  let result = net_sec_tls_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_table_fill(s : NetsectlsTable, v : Double) -> NetsectlsTable {
-  let result = net_sec_tls_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_table_min(s : NetsectlsTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_sec_tls_graphn_sum(s : NetsectlsGraphN) -> Double { @_common.sum(s.da
 pub fn net_sec_tls_graphn_mean(s : NetsectlsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_graphn_scale(s : NetsectlsGraphN, f : Double) -> NetsectlsGraphN {
-  let result = net_sec_tls_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_graphn_add(a : NetsectlsGraphN, b : NetsectlsGraphN) -> NetsectlsGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_graphn_copy(s : NetsectlsGraphN) -> NetsectlsGraphN {
-  let result = net_sec_tls_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_graphn_fill(s : NetsectlsGraphN, v : Double) -> NetsectlsGraphN {
-  let result = net_sec_tls_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_graphn_min(s : NetsectlsGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_sec_tls_node_sum(s : NetsectlsNode) -> Double { @_common.sum(s.data) 
 pub fn net_sec_tls_node_mean(s : NetsectlsNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_node_scale(s : NetsectlsNode, f : Double) -> NetsectlsNode {
-  let result = net_sec_tls_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_node_add(a : NetsectlsNode, b : NetsectlsNode) -> NetsectlsNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_node_copy(s : NetsectlsNode) -> NetsectlsNode {
-  let result = net_sec_tls_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_node_fill(s : NetsectlsNode, v : Double) -> NetsectlsNode {
-  let result = net_sec_tls_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_node_min(s : NetsectlsNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_sec_tls_edge_sum(s : NetsectlsEdge) -> Double { @_common.sum(s.data) 
 pub fn net_sec_tls_edge_mean(s : NetsectlsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_edge_scale(s : NetsectlsEdge, f : Double) -> NetsectlsEdge {
-  let result = net_sec_tls_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_edge_add(a : NetsectlsEdge, b : NetsectlsEdge) -> NetsectlsEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_edge_copy(s : NetsectlsEdge) -> NetsectlsEdge {
-  let result = net_sec_tls_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_edge_fill(s : NetsectlsEdge, v : Double) -> NetsectlsEdge {
-  let result = net_sec_tls_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_edge_min(s : NetsectlsEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_sec_tls_path_sum(s : NetsectlsPath) -> Double { @_common.sum(s.data) 
 pub fn net_sec_tls_path_mean(s : NetsectlsPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_path_scale(s : NetsectlsPath, f : Double) -> NetsectlsPath {
-  let result = net_sec_tls_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_path_add(a : NetsectlsPath, b : NetsectlsPath) -> NetsectlsPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_path_copy(s : NetsectlsPath) -> NetsectlsPath {
-  let result = net_sec_tls_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_path_fill(s : NetsectlsPath, v : Double) -> NetsectlsPath {
-  let result = net_sec_tls_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_path_min(s : NetsectlsPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_sec_tls_cluster_sum(s : NetsectlsCluster) -> Double { @_common.sum(s.
 pub fn net_sec_tls_cluster_mean(s : NetsectlsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_cluster_scale(s : NetsectlsCluster, f : Double) -> NetsectlsCluster {
-  let result = net_sec_tls_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_cluster_add(a : NetsectlsCluster, b : NetsectlsCluster) -> NetsectlsCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_cluster_copy(s : NetsectlsCluster) -> NetsectlsCluster {
-  let result = net_sec_tls_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_cluster_fill(s : NetsectlsCluster, v : Double) -> NetsectlsCluster {
-  let result = net_sec_tls_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_cluster_min(s : NetsectlsCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_sec_tls_model_sum(s : NetsectlsModel) -> Double { @_common.sum(s.data
 pub fn net_sec_tls_model_mean(s : NetsectlsModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_model_scale(s : NetsectlsModel, f : Double) -> NetsectlsModel {
-  let result = net_sec_tls_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_model_add(a : NetsectlsModel, b : NetsectlsModel) -> NetsectlsModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_model_copy(s : NetsectlsModel) -> NetsectlsModel {
-  let result = net_sec_tls_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_model_fill(s : NetsectlsModel, v : Double) -> NetsectlsModel {
-  let result = net_sec_tls_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_model_min(s : NetsectlsModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_sec_tls_layer_sum(s : NetsectlsLayer) -> Double { @_common.sum(s.data
 pub fn net_sec_tls_layer_mean(s : NetsectlsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_layer_scale(s : NetsectlsLayer, f : Double) -> NetsectlsLayer {
-  let result = net_sec_tls_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_layer_add(a : NetsectlsLayer, b : NetsectlsLayer) -> NetsectlsLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_layer_copy(s : NetsectlsLayer) -> NetsectlsLayer {
-  let result = net_sec_tls_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_layer_fill(s : NetsectlsLayer, v : Double) -> NetsectlsLayer {
-  let result = net_sec_tls_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_layer_min(s : NetsectlsLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_sec_tls_buffer_sum(s : NetsectlsBuffer) -> Double { @_common.sum(s.da
 pub fn net_sec_tls_buffer_mean(s : NetsectlsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_buffer_scale(s : NetsectlsBuffer, f : Double) -> NetsectlsBuffer {
-  let result = net_sec_tls_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_buffer_add(a : NetsectlsBuffer, b : NetsectlsBuffer) -> NetsectlsBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_buffer_copy(s : NetsectlsBuffer) -> NetsectlsBuffer {
-  let result = net_sec_tls_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_buffer_fill(s : NetsectlsBuffer, v : Double) -> NetsectlsBuffer {
-  let result = net_sec_tls_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_buffer_min(s : NetsectlsBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_sec_tls_cursor_sum(s : NetsectlsCursor) -> Double { @_common.sum(s.da
 pub fn net_sec_tls_cursor_mean(s : NetsectlsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_cursor_scale(s : NetsectlsCursor, f : Double) -> NetsectlsCursor {
-  let result = net_sec_tls_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_cursor_add(a : NetsectlsCursor, b : NetsectlsCursor) -> NetsectlsCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_cursor_copy(s : NetsectlsCursor) -> NetsectlsCursor {
-  let result = net_sec_tls_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_cursor_fill(s : NetsectlsCursor, v : Double) -> NetsectlsCursor {
-  let result = net_sec_tls_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_cursor_min(s : NetsectlsCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_sec_tls_view_sum(s : NetsectlsView) -> Double { @_common.sum(s.data) 
 pub fn net_sec_tls_view_mean(s : NetsectlsView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_view_scale(s : NetsectlsView, f : Double) -> NetsectlsView {
-  let result = net_sec_tls_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_view_add(a : NetsectlsView, b : NetsectlsView) -> NetsectlsView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_view_copy(s : NetsectlsView) -> NetsectlsView {
-  let result = net_sec_tls_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_view_fill(s : NetsectlsView, v : Double) -> NetsectlsView {
-  let result = net_sec_tls_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_view_min(s : NetsectlsView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_sec_tls_range_sum(s : NetsectlsRange) -> Double { @_common.sum(s.data
 pub fn net_sec_tls_range_mean(s : NetsectlsRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_range_scale(s : NetsectlsRange, f : Double) -> NetsectlsRange {
-  let result = net_sec_tls_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_range_add(a : NetsectlsRange, b : NetsectlsRange) -> NetsectlsRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_range_copy(s : NetsectlsRange) -> NetsectlsRange {
-  let result = net_sec_tls_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_range_fill(s : NetsectlsRange, v : Double) -> NetsectlsRange {
-  let result = net_sec_tls_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_range_min(s : NetsectlsRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_sec_tls_slice_sum(s : NetsectlsSlice) -> Double { @_common.sum(s.data
 pub fn net_sec_tls_slice_mean(s : NetsectlsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_slice_scale(s : NetsectlsSlice, f : Double) -> NetsectlsSlice {
-  let result = net_sec_tls_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_slice_add(a : NetsectlsSlice, b : NetsectlsSlice) -> NetsectlsSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_tls_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_tls_slice_copy(s : NetsectlsSlice) -> NetsectlsSlice {
-  let result = net_sec_tls_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_slice_fill(s : NetsectlsSlice, v : Double) -> NetsectlsSlice {
-  let result = net_sec_tls_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_tls_slice_min(s : NetsectlsSlice) -> Double { @_common.min(s.data) }

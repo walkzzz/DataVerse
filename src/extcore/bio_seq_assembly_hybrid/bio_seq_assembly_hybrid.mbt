@@ -383,28 +383,20 @@ pub fn bio_seq_assembly_hybrid_frame_sum(s : BioseqassemblyhybridFrame) -> Doubl
 pub fn bio_seq_assembly_hybrid_frame_mean(s : BioseqassemblyhybridFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_frame_scale(s : BioseqassemblyhybridFrame, f : Double) -> BioseqassemblyhybridFrame {
-  let result = bio_seq_assembly_hybrid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_frame_add(a : BioseqassemblyhybridFrame, b : BioseqassemblyhybridFrame) -> BioseqassemblyhybridFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_frame_copy(s : BioseqassemblyhybridFrame) -> BioseqassemblyhybridFrame {
-  let result = bio_seq_assembly_hybrid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_frame_fill(s : BioseqassemblyhybridFrame, v : Double) -> BioseqassemblyhybridFrame {
-  let result = bio_seq_assembly_hybrid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_frame_min(s : BioseqassemblyhybridFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_seq_assembly_hybrid_table_sum(s : BioseqassemblyhybridTable) -> Doubl
 pub fn bio_seq_assembly_hybrid_table_mean(s : BioseqassemblyhybridTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_table_scale(s : BioseqassemblyhybridTable, f : Double) -> BioseqassemblyhybridTable {
-  let result = bio_seq_assembly_hybrid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_table_add(a : BioseqassemblyhybridTable, b : BioseqassemblyhybridTable) -> BioseqassemblyhybridTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_table_copy(s : BioseqassemblyhybridTable) -> BioseqassemblyhybridTable {
-  let result = bio_seq_assembly_hybrid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_table_fill(s : BioseqassemblyhybridTable, v : Double) -> BioseqassemblyhybridTable {
-  let result = bio_seq_assembly_hybrid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_table_min(s : BioseqassemblyhybridTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_seq_assembly_hybrid_graphn_sum(s : BioseqassemblyhybridGraphN) -> Dou
 pub fn bio_seq_assembly_hybrid_graphn_mean(s : BioseqassemblyhybridGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_graphn_scale(s : BioseqassemblyhybridGraphN, f : Double) -> BioseqassemblyhybridGraphN {
-  let result = bio_seq_assembly_hybrid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_graphn_add(a : BioseqassemblyhybridGraphN, b : BioseqassemblyhybridGraphN) -> BioseqassemblyhybridGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_graphn_copy(s : BioseqassemblyhybridGraphN) -> BioseqassemblyhybridGraphN {
-  let result = bio_seq_assembly_hybrid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_graphn_fill(s : BioseqassemblyhybridGraphN, v : Double) -> BioseqassemblyhybridGraphN {
-  let result = bio_seq_assembly_hybrid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_graphn_min(s : BioseqassemblyhybridGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_seq_assembly_hybrid_node_sum(s : BioseqassemblyhybridNode) -> Double 
 pub fn bio_seq_assembly_hybrid_node_mean(s : BioseqassemblyhybridNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_node_scale(s : BioseqassemblyhybridNode, f : Double) -> BioseqassemblyhybridNode {
-  let result = bio_seq_assembly_hybrid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_node_add(a : BioseqassemblyhybridNode, b : BioseqassemblyhybridNode) -> BioseqassemblyhybridNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_node_copy(s : BioseqassemblyhybridNode) -> BioseqassemblyhybridNode {
-  let result = bio_seq_assembly_hybrid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_node_fill(s : BioseqassemblyhybridNode, v : Double) -> BioseqassemblyhybridNode {
-  let result = bio_seq_assembly_hybrid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_node_min(s : BioseqassemblyhybridNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_seq_assembly_hybrid_edge_sum(s : BioseqassemblyhybridEdge) -> Double 
 pub fn bio_seq_assembly_hybrid_edge_mean(s : BioseqassemblyhybridEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_edge_scale(s : BioseqassemblyhybridEdge, f : Double) -> BioseqassemblyhybridEdge {
-  let result = bio_seq_assembly_hybrid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_edge_add(a : BioseqassemblyhybridEdge, b : BioseqassemblyhybridEdge) -> BioseqassemblyhybridEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_edge_copy(s : BioseqassemblyhybridEdge) -> BioseqassemblyhybridEdge {
-  let result = bio_seq_assembly_hybrid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_edge_fill(s : BioseqassemblyhybridEdge, v : Double) -> BioseqassemblyhybridEdge {
-  let result = bio_seq_assembly_hybrid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_edge_min(s : BioseqassemblyhybridEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_seq_assembly_hybrid_path_sum(s : BioseqassemblyhybridPath) -> Double 
 pub fn bio_seq_assembly_hybrid_path_mean(s : BioseqassemblyhybridPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_path_scale(s : BioseqassemblyhybridPath, f : Double) -> BioseqassemblyhybridPath {
-  let result = bio_seq_assembly_hybrid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_path_add(a : BioseqassemblyhybridPath, b : BioseqassemblyhybridPath) -> BioseqassemblyhybridPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_path_copy(s : BioseqassemblyhybridPath) -> BioseqassemblyhybridPath {
-  let result = bio_seq_assembly_hybrid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_path_fill(s : BioseqassemblyhybridPath, v : Double) -> BioseqassemblyhybridPath {
-  let result = bio_seq_assembly_hybrid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_path_min(s : BioseqassemblyhybridPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_seq_assembly_hybrid_cluster_sum(s : BioseqassemblyhybridCluster) -> D
 pub fn bio_seq_assembly_hybrid_cluster_mean(s : BioseqassemblyhybridCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_cluster_scale(s : BioseqassemblyhybridCluster, f : Double) -> BioseqassemblyhybridCluster {
-  let result = bio_seq_assembly_hybrid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cluster_add(a : BioseqassemblyhybridCluster, b : BioseqassemblyhybridCluster) -> BioseqassemblyhybridCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cluster_copy(s : BioseqassemblyhybridCluster) -> BioseqassemblyhybridCluster {
-  let result = bio_seq_assembly_hybrid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cluster_fill(s : BioseqassemblyhybridCluster, v : Double) -> BioseqassemblyhybridCluster {
-  let result = bio_seq_assembly_hybrid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cluster_min(s : BioseqassemblyhybridCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_seq_assembly_hybrid_model_sum(s : BioseqassemblyhybridModel) -> Doubl
 pub fn bio_seq_assembly_hybrid_model_mean(s : BioseqassemblyhybridModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_model_scale(s : BioseqassemblyhybridModel, f : Double) -> BioseqassemblyhybridModel {
-  let result = bio_seq_assembly_hybrid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_model_add(a : BioseqassemblyhybridModel, b : BioseqassemblyhybridModel) -> BioseqassemblyhybridModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_model_copy(s : BioseqassemblyhybridModel) -> BioseqassemblyhybridModel {
-  let result = bio_seq_assembly_hybrid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_model_fill(s : BioseqassemblyhybridModel, v : Double) -> BioseqassemblyhybridModel {
-  let result = bio_seq_assembly_hybrid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_model_min(s : BioseqassemblyhybridModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_seq_assembly_hybrid_layer_sum(s : BioseqassemblyhybridLayer) -> Doubl
 pub fn bio_seq_assembly_hybrid_layer_mean(s : BioseqassemblyhybridLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_layer_scale(s : BioseqassemblyhybridLayer, f : Double) -> BioseqassemblyhybridLayer {
-  let result = bio_seq_assembly_hybrid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_layer_add(a : BioseqassemblyhybridLayer, b : BioseqassemblyhybridLayer) -> BioseqassemblyhybridLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_layer_copy(s : BioseqassemblyhybridLayer) -> BioseqassemblyhybridLayer {
-  let result = bio_seq_assembly_hybrid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_layer_fill(s : BioseqassemblyhybridLayer, v : Double) -> BioseqassemblyhybridLayer {
-  let result = bio_seq_assembly_hybrid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_layer_min(s : BioseqassemblyhybridLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_seq_assembly_hybrid_buffer_sum(s : BioseqassemblyhybridBuffer) -> Dou
 pub fn bio_seq_assembly_hybrid_buffer_mean(s : BioseqassemblyhybridBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_buffer_scale(s : BioseqassemblyhybridBuffer, f : Double) -> BioseqassemblyhybridBuffer {
-  let result = bio_seq_assembly_hybrid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_buffer_add(a : BioseqassemblyhybridBuffer, b : BioseqassemblyhybridBuffer) -> BioseqassemblyhybridBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_buffer_copy(s : BioseqassemblyhybridBuffer) -> BioseqassemblyhybridBuffer {
-  let result = bio_seq_assembly_hybrid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_buffer_fill(s : BioseqassemblyhybridBuffer, v : Double) -> BioseqassemblyhybridBuffer {
-  let result = bio_seq_assembly_hybrid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_buffer_min(s : BioseqassemblyhybridBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_seq_assembly_hybrid_cursor_sum(s : BioseqassemblyhybridCursor) -> Dou
 pub fn bio_seq_assembly_hybrid_cursor_mean(s : BioseqassemblyhybridCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_cursor_scale(s : BioseqassemblyhybridCursor, f : Double) -> BioseqassemblyhybridCursor {
-  let result = bio_seq_assembly_hybrid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cursor_add(a : BioseqassemblyhybridCursor, b : BioseqassemblyhybridCursor) -> BioseqassemblyhybridCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cursor_copy(s : BioseqassemblyhybridCursor) -> BioseqassemblyhybridCursor {
-  let result = bio_seq_assembly_hybrid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cursor_fill(s : BioseqassemblyhybridCursor, v : Double) -> BioseqassemblyhybridCursor {
-  let result = bio_seq_assembly_hybrid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cursor_min(s : BioseqassemblyhybridCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_seq_assembly_hybrid_view_sum(s : BioseqassemblyhybridView) -> Double 
 pub fn bio_seq_assembly_hybrid_view_mean(s : BioseqassemblyhybridView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_view_scale(s : BioseqassemblyhybridView, f : Double) -> BioseqassemblyhybridView {
-  let result = bio_seq_assembly_hybrid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_view_add(a : BioseqassemblyhybridView, b : BioseqassemblyhybridView) -> BioseqassemblyhybridView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_view_copy(s : BioseqassemblyhybridView) -> BioseqassemblyhybridView {
-  let result = bio_seq_assembly_hybrid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_view_fill(s : BioseqassemblyhybridView, v : Double) -> BioseqassemblyhybridView {
-  let result = bio_seq_assembly_hybrid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_view_min(s : BioseqassemblyhybridView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_seq_assembly_hybrid_range_sum(s : BioseqassemblyhybridRange) -> Doubl
 pub fn bio_seq_assembly_hybrid_range_mean(s : BioseqassemblyhybridRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_range_scale(s : BioseqassemblyhybridRange, f : Double) -> BioseqassemblyhybridRange {
-  let result = bio_seq_assembly_hybrid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_range_add(a : BioseqassemblyhybridRange, b : BioseqassemblyhybridRange) -> BioseqassemblyhybridRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_range_copy(s : BioseqassemblyhybridRange) -> BioseqassemblyhybridRange {
-  let result = bio_seq_assembly_hybrid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_range_fill(s : BioseqassemblyhybridRange, v : Double) -> BioseqassemblyhybridRange {
-  let result = bio_seq_assembly_hybrid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_range_min(s : BioseqassemblyhybridRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_seq_assembly_hybrid_slice_sum(s : BioseqassemblyhybridSlice) -> Doubl
 pub fn bio_seq_assembly_hybrid_slice_mean(s : BioseqassemblyhybridSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_hybrid_slice_scale(s : BioseqassemblyhybridSlice, f : Double) -> BioseqassemblyhybridSlice {
-  let result = bio_seq_assembly_hybrid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_slice_add(a : BioseqassemblyhybridSlice, b : BioseqassemblyhybridSlice) -> BioseqassemblyhybridSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_hybrid_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_slice_copy(s : BioseqassemblyhybridSlice) -> BioseqassemblyhybridSlice {
-  let result = bio_seq_assembly_hybrid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_slice_fill(s : BioseqassemblyhybridSlice, v : Double) -> BioseqassemblyhybridSlice {
-  let result = bio_seq_assembly_hybrid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_slice_min(s : BioseqassemblyhybridSlice) -> Double { @_common.min(s.data) }

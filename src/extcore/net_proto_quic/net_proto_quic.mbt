@@ -383,28 +383,20 @@ pub fn net_proto_quic_frame_sum(s : NetprotoquicFrame) -> Double { @_common.sum(
 pub fn net_proto_quic_frame_mean(s : NetprotoquicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_frame_scale(s : NetprotoquicFrame, f : Double) -> NetprotoquicFrame {
-  let result = net_proto_quic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_frame_add(a : NetprotoquicFrame, b : NetprotoquicFrame) -> NetprotoquicFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_frame_copy(s : NetprotoquicFrame) -> NetprotoquicFrame {
-  let result = net_proto_quic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_frame_fill(s : NetprotoquicFrame, v : Double) -> NetprotoquicFrame {
-  let result = net_proto_quic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_frame_min(s : NetprotoquicFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_proto_quic_table_sum(s : NetprotoquicTable) -> Double { @_common.sum(
 pub fn net_proto_quic_table_mean(s : NetprotoquicTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_table_scale(s : NetprotoquicTable, f : Double) -> NetprotoquicTable {
-  let result = net_proto_quic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_table_add(a : NetprotoquicTable, b : NetprotoquicTable) -> NetprotoquicTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_table_copy(s : NetprotoquicTable) -> NetprotoquicTable {
-  let result = net_proto_quic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_table_fill(s : NetprotoquicTable, v : Double) -> NetprotoquicTable {
-  let result = net_proto_quic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_table_min(s : NetprotoquicTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_proto_quic_graphn_sum(s : NetprotoquicGraphN) -> Double { @_common.su
 pub fn net_proto_quic_graphn_mean(s : NetprotoquicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_graphn_scale(s : NetprotoquicGraphN, f : Double) -> NetprotoquicGraphN {
-  let result = net_proto_quic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_graphn_add(a : NetprotoquicGraphN, b : NetprotoquicGraphN) -> NetprotoquicGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_graphn_copy(s : NetprotoquicGraphN) -> NetprotoquicGraphN {
-  let result = net_proto_quic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_graphn_fill(s : NetprotoquicGraphN, v : Double) -> NetprotoquicGraphN {
-  let result = net_proto_quic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_graphn_min(s : NetprotoquicGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_proto_quic_node_sum(s : NetprotoquicNode) -> Double { @_common.sum(s.
 pub fn net_proto_quic_node_mean(s : NetprotoquicNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_node_scale(s : NetprotoquicNode, f : Double) -> NetprotoquicNode {
-  let result = net_proto_quic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_node_add(a : NetprotoquicNode, b : NetprotoquicNode) -> NetprotoquicNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_node_copy(s : NetprotoquicNode) -> NetprotoquicNode {
-  let result = net_proto_quic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_node_fill(s : NetprotoquicNode, v : Double) -> NetprotoquicNode {
-  let result = net_proto_quic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_node_min(s : NetprotoquicNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_proto_quic_edge_sum(s : NetprotoquicEdge) -> Double { @_common.sum(s.
 pub fn net_proto_quic_edge_mean(s : NetprotoquicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_edge_scale(s : NetprotoquicEdge, f : Double) -> NetprotoquicEdge {
-  let result = net_proto_quic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_edge_add(a : NetprotoquicEdge, b : NetprotoquicEdge) -> NetprotoquicEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_edge_copy(s : NetprotoquicEdge) -> NetprotoquicEdge {
-  let result = net_proto_quic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_edge_fill(s : NetprotoquicEdge, v : Double) -> NetprotoquicEdge {
-  let result = net_proto_quic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_edge_min(s : NetprotoquicEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_proto_quic_path_sum(s : NetprotoquicPath) -> Double { @_common.sum(s.
 pub fn net_proto_quic_path_mean(s : NetprotoquicPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_path_scale(s : NetprotoquicPath, f : Double) -> NetprotoquicPath {
-  let result = net_proto_quic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_path_add(a : NetprotoquicPath, b : NetprotoquicPath) -> NetprotoquicPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_path_copy(s : NetprotoquicPath) -> NetprotoquicPath {
-  let result = net_proto_quic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_path_fill(s : NetprotoquicPath, v : Double) -> NetprotoquicPath {
-  let result = net_proto_quic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_path_min(s : NetprotoquicPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_proto_quic_cluster_sum(s : NetprotoquicCluster) -> Double { @_common.
 pub fn net_proto_quic_cluster_mean(s : NetprotoquicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_cluster_scale(s : NetprotoquicCluster, f : Double) -> NetprotoquicCluster {
-  let result = net_proto_quic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cluster_add(a : NetprotoquicCluster, b : NetprotoquicCluster) -> NetprotoquicCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_cluster_copy(s : NetprotoquicCluster) -> NetprotoquicCluster {
-  let result = net_proto_quic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cluster_fill(s : NetprotoquicCluster, v : Double) -> NetprotoquicCluster {
-  let result = net_proto_quic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cluster_min(s : NetprotoquicCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_proto_quic_model_sum(s : NetprotoquicModel) -> Double { @_common.sum(
 pub fn net_proto_quic_model_mean(s : NetprotoquicModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_model_scale(s : NetprotoquicModel, f : Double) -> NetprotoquicModel {
-  let result = net_proto_quic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_model_add(a : NetprotoquicModel, b : NetprotoquicModel) -> NetprotoquicModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_model_copy(s : NetprotoquicModel) -> NetprotoquicModel {
-  let result = net_proto_quic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_model_fill(s : NetprotoquicModel, v : Double) -> NetprotoquicModel {
-  let result = net_proto_quic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_model_min(s : NetprotoquicModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_proto_quic_layer_sum(s : NetprotoquicLayer) -> Double { @_common.sum(
 pub fn net_proto_quic_layer_mean(s : NetprotoquicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_layer_scale(s : NetprotoquicLayer, f : Double) -> NetprotoquicLayer {
-  let result = net_proto_quic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_layer_add(a : NetprotoquicLayer, b : NetprotoquicLayer) -> NetprotoquicLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_layer_copy(s : NetprotoquicLayer) -> NetprotoquicLayer {
-  let result = net_proto_quic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_layer_fill(s : NetprotoquicLayer, v : Double) -> NetprotoquicLayer {
-  let result = net_proto_quic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_layer_min(s : NetprotoquicLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_proto_quic_buffer_sum(s : NetprotoquicBuffer) -> Double { @_common.su
 pub fn net_proto_quic_buffer_mean(s : NetprotoquicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_buffer_scale(s : NetprotoquicBuffer, f : Double) -> NetprotoquicBuffer {
-  let result = net_proto_quic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_buffer_add(a : NetprotoquicBuffer, b : NetprotoquicBuffer) -> NetprotoquicBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_buffer_copy(s : NetprotoquicBuffer) -> NetprotoquicBuffer {
-  let result = net_proto_quic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_buffer_fill(s : NetprotoquicBuffer, v : Double) -> NetprotoquicBuffer {
-  let result = net_proto_quic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_buffer_min(s : NetprotoquicBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_proto_quic_cursor_sum(s : NetprotoquicCursor) -> Double { @_common.su
 pub fn net_proto_quic_cursor_mean(s : NetprotoquicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_cursor_scale(s : NetprotoquicCursor, f : Double) -> NetprotoquicCursor {
-  let result = net_proto_quic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cursor_add(a : NetprotoquicCursor, b : NetprotoquicCursor) -> NetprotoquicCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_cursor_copy(s : NetprotoquicCursor) -> NetprotoquicCursor {
-  let result = net_proto_quic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cursor_fill(s : NetprotoquicCursor, v : Double) -> NetprotoquicCursor {
-  let result = net_proto_quic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cursor_min(s : NetprotoquicCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_proto_quic_view_sum(s : NetprotoquicView) -> Double { @_common.sum(s.
 pub fn net_proto_quic_view_mean(s : NetprotoquicView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_view_scale(s : NetprotoquicView, f : Double) -> NetprotoquicView {
-  let result = net_proto_quic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_view_add(a : NetprotoquicView, b : NetprotoquicView) -> NetprotoquicView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_view_copy(s : NetprotoquicView) -> NetprotoquicView {
-  let result = net_proto_quic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_view_fill(s : NetprotoquicView, v : Double) -> NetprotoquicView {
-  let result = net_proto_quic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_view_min(s : NetprotoquicView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_proto_quic_range_sum(s : NetprotoquicRange) -> Double { @_common.sum(
 pub fn net_proto_quic_range_mean(s : NetprotoquicRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_range_scale(s : NetprotoquicRange, f : Double) -> NetprotoquicRange {
-  let result = net_proto_quic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_range_add(a : NetprotoquicRange, b : NetprotoquicRange) -> NetprotoquicRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_range_copy(s : NetprotoquicRange) -> NetprotoquicRange {
-  let result = net_proto_quic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_range_fill(s : NetprotoquicRange, v : Double) -> NetprotoquicRange {
-  let result = net_proto_quic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_range_min(s : NetprotoquicRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_proto_quic_slice_sum(s : NetprotoquicSlice) -> Double { @_common.sum(
 pub fn net_proto_quic_slice_mean(s : NetprotoquicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_slice_scale(s : NetprotoquicSlice, f : Double) -> NetprotoquicSlice {
-  let result = net_proto_quic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_slice_add(a : NetprotoquicSlice, b : NetprotoquicSlice) -> NetprotoquicSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_quic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_quic_slice_copy(s : NetprotoquicSlice) -> NetprotoquicSlice {
-  let result = net_proto_quic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_slice_fill(s : NetprotoquicSlice, v : Double) -> NetprotoquicSlice {
-  let result = net_proto_quic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_slice_min(s : NetprotoquicSlice) -> Double { @_common.min(s.data) }

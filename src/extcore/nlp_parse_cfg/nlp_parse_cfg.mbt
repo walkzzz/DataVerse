@@ -383,28 +383,20 @@ pub fn nlp_parse_cfg_frame_sum(s : NlpparsecfgFrame) -> Double { @_common.sum(s.
 pub fn nlp_parse_cfg_frame_mean(s : NlpparsecfgFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_frame_scale(s : NlpparsecfgFrame, f : Double) -> NlpparsecfgFrame {
-  let result = nlp_parse_cfg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_frame_add(a : NlpparsecfgFrame, b : NlpparsecfgFrame) -> NlpparsecfgFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_frame_copy(s : NlpparsecfgFrame) -> NlpparsecfgFrame {
-  let result = nlp_parse_cfg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_frame_fill(s : NlpparsecfgFrame, v : Double) -> NlpparsecfgFrame {
-  let result = nlp_parse_cfg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_frame_min(s : NlpparsecfgFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_parse_cfg_table_sum(s : NlpparsecfgTable) -> Double { @_common.sum(s.
 pub fn nlp_parse_cfg_table_mean(s : NlpparsecfgTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_table_scale(s : NlpparsecfgTable, f : Double) -> NlpparsecfgTable {
-  let result = nlp_parse_cfg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_table_add(a : NlpparsecfgTable, b : NlpparsecfgTable) -> NlpparsecfgTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_table_copy(s : NlpparsecfgTable) -> NlpparsecfgTable {
-  let result = nlp_parse_cfg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_table_fill(s : NlpparsecfgTable, v : Double) -> NlpparsecfgTable {
-  let result = nlp_parse_cfg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_table_min(s : NlpparsecfgTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_parse_cfg_graphn_sum(s : NlpparsecfgGraphN) -> Double { @_common.sum(
 pub fn nlp_parse_cfg_graphn_mean(s : NlpparsecfgGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_graphn_scale(s : NlpparsecfgGraphN, f : Double) -> NlpparsecfgGraphN {
-  let result = nlp_parse_cfg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_graphn_add(a : NlpparsecfgGraphN, b : NlpparsecfgGraphN) -> NlpparsecfgGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_graphn_copy(s : NlpparsecfgGraphN) -> NlpparsecfgGraphN {
-  let result = nlp_parse_cfg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_graphn_fill(s : NlpparsecfgGraphN, v : Double) -> NlpparsecfgGraphN {
-  let result = nlp_parse_cfg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_graphn_min(s : NlpparsecfgGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_parse_cfg_node_sum(s : NlpparsecfgNode) -> Double { @_common.sum(s.da
 pub fn nlp_parse_cfg_node_mean(s : NlpparsecfgNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_node_scale(s : NlpparsecfgNode, f : Double) -> NlpparsecfgNode {
-  let result = nlp_parse_cfg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_node_add(a : NlpparsecfgNode, b : NlpparsecfgNode) -> NlpparsecfgNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_node_copy(s : NlpparsecfgNode) -> NlpparsecfgNode {
-  let result = nlp_parse_cfg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_node_fill(s : NlpparsecfgNode, v : Double) -> NlpparsecfgNode {
-  let result = nlp_parse_cfg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_node_min(s : NlpparsecfgNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_parse_cfg_edge_sum(s : NlpparsecfgEdge) -> Double { @_common.sum(s.da
 pub fn nlp_parse_cfg_edge_mean(s : NlpparsecfgEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_edge_scale(s : NlpparsecfgEdge, f : Double) -> NlpparsecfgEdge {
-  let result = nlp_parse_cfg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_edge_add(a : NlpparsecfgEdge, b : NlpparsecfgEdge) -> NlpparsecfgEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_edge_copy(s : NlpparsecfgEdge) -> NlpparsecfgEdge {
-  let result = nlp_parse_cfg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_edge_fill(s : NlpparsecfgEdge, v : Double) -> NlpparsecfgEdge {
-  let result = nlp_parse_cfg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_edge_min(s : NlpparsecfgEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_parse_cfg_path_sum(s : NlpparsecfgPath) -> Double { @_common.sum(s.da
 pub fn nlp_parse_cfg_path_mean(s : NlpparsecfgPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_path_scale(s : NlpparsecfgPath, f : Double) -> NlpparsecfgPath {
-  let result = nlp_parse_cfg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_path_add(a : NlpparsecfgPath, b : NlpparsecfgPath) -> NlpparsecfgPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_path_copy(s : NlpparsecfgPath) -> NlpparsecfgPath {
-  let result = nlp_parse_cfg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_path_fill(s : NlpparsecfgPath, v : Double) -> NlpparsecfgPath {
-  let result = nlp_parse_cfg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_path_min(s : NlpparsecfgPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_parse_cfg_cluster_sum(s : NlpparsecfgCluster) -> Double { @_common.su
 pub fn nlp_parse_cfg_cluster_mean(s : NlpparsecfgCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_cluster_scale(s : NlpparsecfgCluster, f : Double) -> NlpparsecfgCluster {
-  let result = nlp_parse_cfg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_cluster_add(a : NlpparsecfgCluster, b : NlpparsecfgCluster) -> NlpparsecfgCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_cluster_copy(s : NlpparsecfgCluster) -> NlpparsecfgCluster {
-  let result = nlp_parse_cfg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_cluster_fill(s : NlpparsecfgCluster, v : Double) -> NlpparsecfgCluster {
-  let result = nlp_parse_cfg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_cluster_min(s : NlpparsecfgCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_parse_cfg_model_sum(s : NlpparsecfgModel) -> Double { @_common.sum(s.
 pub fn nlp_parse_cfg_model_mean(s : NlpparsecfgModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_model_scale(s : NlpparsecfgModel, f : Double) -> NlpparsecfgModel {
-  let result = nlp_parse_cfg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_model_add(a : NlpparsecfgModel, b : NlpparsecfgModel) -> NlpparsecfgModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_model_copy(s : NlpparsecfgModel) -> NlpparsecfgModel {
-  let result = nlp_parse_cfg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_model_fill(s : NlpparsecfgModel, v : Double) -> NlpparsecfgModel {
-  let result = nlp_parse_cfg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_model_min(s : NlpparsecfgModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_parse_cfg_layer_sum(s : NlpparsecfgLayer) -> Double { @_common.sum(s.
 pub fn nlp_parse_cfg_layer_mean(s : NlpparsecfgLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_layer_scale(s : NlpparsecfgLayer, f : Double) -> NlpparsecfgLayer {
-  let result = nlp_parse_cfg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_layer_add(a : NlpparsecfgLayer, b : NlpparsecfgLayer) -> NlpparsecfgLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_layer_copy(s : NlpparsecfgLayer) -> NlpparsecfgLayer {
-  let result = nlp_parse_cfg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_layer_fill(s : NlpparsecfgLayer, v : Double) -> NlpparsecfgLayer {
-  let result = nlp_parse_cfg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_layer_min(s : NlpparsecfgLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_parse_cfg_buffer_sum(s : NlpparsecfgBuffer) -> Double { @_common.sum(
 pub fn nlp_parse_cfg_buffer_mean(s : NlpparsecfgBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_buffer_scale(s : NlpparsecfgBuffer, f : Double) -> NlpparsecfgBuffer {
-  let result = nlp_parse_cfg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_buffer_add(a : NlpparsecfgBuffer, b : NlpparsecfgBuffer) -> NlpparsecfgBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_buffer_copy(s : NlpparsecfgBuffer) -> NlpparsecfgBuffer {
-  let result = nlp_parse_cfg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_buffer_fill(s : NlpparsecfgBuffer, v : Double) -> NlpparsecfgBuffer {
-  let result = nlp_parse_cfg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_buffer_min(s : NlpparsecfgBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_parse_cfg_cursor_sum(s : NlpparsecfgCursor) -> Double { @_common.sum(
 pub fn nlp_parse_cfg_cursor_mean(s : NlpparsecfgCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_cursor_scale(s : NlpparsecfgCursor, f : Double) -> NlpparsecfgCursor {
-  let result = nlp_parse_cfg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_cursor_add(a : NlpparsecfgCursor, b : NlpparsecfgCursor) -> NlpparsecfgCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_cursor_copy(s : NlpparsecfgCursor) -> NlpparsecfgCursor {
-  let result = nlp_parse_cfg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_cursor_fill(s : NlpparsecfgCursor, v : Double) -> NlpparsecfgCursor {
-  let result = nlp_parse_cfg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_cursor_min(s : NlpparsecfgCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_parse_cfg_view_sum(s : NlpparsecfgView) -> Double { @_common.sum(s.da
 pub fn nlp_parse_cfg_view_mean(s : NlpparsecfgView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_view_scale(s : NlpparsecfgView, f : Double) -> NlpparsecfgView {
-  let result = nlp_parse_cfg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_view_add(a : NlpparsecfgView, b : NlpparsecfgView) -> NlpparsecfgView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_view_copy(s : NlpparsecfgView) -> NlpparsecfgView {
-  let result = nlp_parse_cfg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_view_fill(s : NlpparsecfgView, v : Double) -> NlpparsecfgView {
-  let result = nlp_parse_cfg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_view_min(s : NlpparsecfgView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_parse_cfg_range_sum(s : NlpparsecfgRange) -> Double { @_common.sum(s.
 pub fn nlp_parse_cfg_range_mean(s : NlpparsecfgRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_range_scale(s : NlpparsecfgRange, f : Double) -> NlpparsecfgRange {
-  let result = nlp_parse_cfg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_range_add(a : NlpparsecfgRange, b : NlpparsecfgRange) -> NlpparsecfgRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_range_copy(s : NlpparsecfgRange) -> NlpparsecfgRange {
-  let result = nlp_parse_cfg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_range_fill(s : NlpparsecfgRange, v : Double) -> NlpparsecfgRange {
-  let result = nlp_parse_cfg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_range_min(s : NlpparsecfgRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_parse_cfg_slice_sum(s : NlpparsecfgSlice) -> Double { @_common.sum(s.
 pub fn nlp_parse_cfg_slice_mean(s : NlpparsecfgSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_slice_scale(s : NlpparsecfgSlice, f : Double) -> NlpparsecfgSlice {
-  let result = nlp_parse_cfg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_slice_add(a : NlpparsecfgSlice, b : NlpparsecfgSlice) -> NlpparsecfgSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_cfg_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_cfg_slice_copy(s : NlpparsecfgSlice) -> NlpparsecfgSlice {
-  let result = nlp_parse_cfg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_slice_fill(s : NlpparsecfgSlice, v : Double) -> NlpparsecfgSlice {
-  let result = nlp_parse_cfg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cfg_slice_min(s : NlpparsecfgSlice) -> Double { @_common.min(s.data) }

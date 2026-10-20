@@ -383,28 +383,20 @@ pub fn opt_grad_amsgrad_frame_sum(s : OptgradamsgradFrame) -> Double { @_common.
 pub fn opt_grad_amsgrad_frame_mean(s : OptgradamsgradFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_frame_scale(s : OptgradamsgradFrame, f : Double) -> OptgradamsgradFrame {
-  let result = opt_grad_amsgrad_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_frame_add(a : OptgradamsgradFrame, b : OptgradamsgradFrame) -> OptgradamsgradFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_frame_copy(s : OptgradamsgradFrame) -> OptgradamsgradFrame {
-  let result = opt_grad_amsgrad_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_frame_fill(s : OptgradamsgradFrame, v : Double) -> OptgradamsgradFrame {
-  let result = opt_grad_amsgrad_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_frame_min(s : OptgradamsgradFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn opt_grad_amsgrad_table_sum(s : OptgradamsgradTable) -> Double { @_common.
 pub fn opt_grad_amsgrad_table_mean(s : OptgradamsgradTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_table_scale(s : OptgradamsgradTable, f : Double) -> OptgradamsgradTable {
-  let result = opt_grad_amsgrad_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_table_add(a : OptgradamsgradTable, b : OptgradamsgradTable) -> OptgradamsgradTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_table_copy(s : OptgradamsgradTable) -> OptgradamsgradTable {
-  let result = opt_grad_amsgrad_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_table_fill(s : OptgradamsgradTable, v : Double) -> OptgradamsgradTable {
-  let result = opt_grad_amsgrad_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_table_min(s : OptgradamsgradTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn opt_grad_amsgrad_graphn_sum(s : OptgradamsgradGraphN) -> Double { @_commo
 pub fn opt_grad_amsgrad_graphn_mean(s : OptgradamsgradGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_graphn_scale(s : OptgradamsgradGraphN, f : Double) -> OptgradamsgradGraphN {
-  let result = opt_grad_amsgrad_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_graphn_add(a : OptgradamsgradGraphN, b : OptgradamsgradGraphN) -> OptgradamsgradGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_graphn_copy(s : OptgradamsgradGraphN) -> OptgradamsgradGraphN {
-  let result = opt_grad_amsgrad_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_graphn_fill(s : OptgradamsgradGraphN, v : Double) -> OptgradamsgradGraphN {
-  let result = opt_grad_amsgrad_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_graphn_min(s : OptgradamsgradGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn opt_grad_amsgrad_node_sum(s : OptgradamsgradNode) -> Double { @_common.su
 pub fn opt_grad_amsgrad_node_mean(s : OptgradamsgradNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_node_scale(s : OptgradamsgradNode, f : Double) -> OptgradamsgradNode {
-  let result = opt_grad_amsgrad_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_node_add(a : OptgradamsgradNode, b : OptgradamsgradNode) -> OptgradamsgradNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_node_copy(s : OptgradamsgradNode) -> OptgradamsgradNode {
-  let result = opt_grad_amsgrad_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_node_fill(s : OptgradamsgradNode, v : Double) -> OptgradamsgradNode {
-  let result = opt_grad_amsgrad_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_node_min(s : OptgradamsgradNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn opt_grad_amsgrad_edge_sum(s : OptgradamsgradEdge) -> Double { @_common.su
 pub fn opt_grad_amsgrad_edge_mean(s : OptgradamsgradEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_edge_scale(s : OptgradamsgradEdge, f : Double) -> OptgradamsgradEdge {
-  let result = opt_grad_amsgrad_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_edge_add(a : OptgradamsgradEdge, b : OptgradamsgradEdge) -> OptgradamsgradEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_edge_copy(s : OptgradamsgradEdge) -> OptgradamsgradEdge {
-  let result = opt_grad_amsgrad_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_edge_fill(s : OptgradamsgradEdge, v : Double) -> OptgradamsgradEdge {
-  let result = opt_grad_amsgrad_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_edge_min(s : OptgradamsgradEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn opt_grad_amsgrad_path_sum(s : OptgradamsgradPath) -> Double { @_common.su
 pub fn opt_grad_amsgrad_path_mean(s : OptgradamsgradPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_path_scale(s : OptgradamsgradPath, f : Double) -> OptgradamsgradPath {
-  let result = opt_grad_amsgrad_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_path_add(a : OptgradamsgradPath, b : OptgradamsgradPath) -> OptgradamsgradPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_path_copy(s : OptgradamsgradPath) -> OptgradamsgradPath {
-  let result = opt_grad_amsgrad_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_path_fill(s : OptgradamsgradPath, v : Double) -> OptgradamsgradPath {
-  let result = opt_grad_amsgrad_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_path_min(s : OptgradamsgradPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn opt_grad_amsgrad_cluster_sum(s : OptgradamsgradCluster) -> Double { @_com
 pub fn opt_grad_amsgrad_cluster_mean(s : OptgradamsgradCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_cluster_scale(s : OptgradamsgradCluster, f : Double) -> OptgradamsgradCluster {
-  let result = opt_grad_amsgrad_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_cluster_add(a : OptgradamsgradCluster, b : OptgradamsgradCluster) -> OptgradamsgradCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_cluster_copy(s : OptgradamsgradCluster) -> OptgradamsgradCluster {
-  let result = opt_grad_amsgrad_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_cluster_fill(s : OptgradamsgradCluster, v : Double) -> OptgradamsgradCluster {
-  let result = opt_grad_amsgrad_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_cluster_min(s : OptgradamsgradCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn opt_grad_amsgrad_model_sum(s : OptgradamsgradModel) -> Double { @_common.
 pub fn opt_grad_amsgrad_model_mean(s : OptgradamsgradModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_model_scale(s : OptgradamsgradModel, f : Double) -> OptgradamsgradModel {
-  let result = opt_grad_amsgrad_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_model_add(a : OptgradamsgradModel, b : OptgradamsgradModel) -> OptgradamsgradModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_model_copy(s : OptgradamsgradModel) -> OptgradamsgradModel {
-  let result = opt_grad_amsgrad_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_model_fill(s : OptgradamsgradModel, v : Double) -> OptgradamsgradModel {
-  let result = opt_grad_amsgrad_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_model_min(s : OptgradamsgradModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn opt_grad_amsgrad_layer_sum(s : OptgradamsgradLayer) -> Double { @_common.
 pub fn opt_grad_amsgrad_layer_mean(s : OptgradamsgradLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_layer_scale(s : OptgradamsgradLayer, f : Double) -> OptgradamsgradLayer {
-  let result = opt_grad_amsgrad_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_layer_add(a : OptgradamsgradLayer, b : OptgradamsgradLayer) -> OptgradamsgradLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_layer_copy(s : OptgradamsgradLayer) -> OptgradamsgradLayer {
-  let result = opt_grad_amsgrad_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_layer_fill(s : OptgradamsgradLayer, v : Double) -> OptgradamsgradLayer {
-  let result = opt_grad_amsgrad_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_layer_min(s : OptgradamsgradLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn opt_grad_amsgrad_buffer_sum(s : OptgradamsgradBuffer) -> Double { @_commo
 pub fn opt_grad_amsgrad_buffer_mean(s : OptgradamsgradBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_buffer_scale(s : OptgradamsgradBuffer, f : Double) -> OptgradamsgradBuffer {
-  let result = opt_grad_amsgrad_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_buffer_add(a : OptgradamsgradBuffer, b : OptgradamsgradBuffer) -> OptgradamsgradBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_buffer_copy(s : OptgradamsgradBuffer) -> OptgradamsgradBuffer {
-  let result = opt_grad_amsgrad_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_buffer_fill(s : OptgradamsgradBuffer, v : Double) -> OptgradamsgradBuffer {
-  let result = opt_grad_amsgrad_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_buffer_min(s : OptgradamsgradBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn opt_grad_amsgrad_cursor_sum(s : OptgradamsgradCursor) -> Double { @_commo
 pub fn opt_grad_amsgrad_cursor_mean(s : OptgradamsgradCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_cursor_scale(s : OptgradamsgradCursor, f : Double) -> OptgradamsgradCursor {
-  let result = opt_grad_amsgrad_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_cursor_add(a : OptgradamsgradCursor, b : OptgradamsgradCursor) -> OptgradamsgradCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_cursor_copy(s : OptgradamsgradCursor) -> OptgradamsgradCursor {
-  let result = opt_grad_amsgrad_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_cursor_fill(s : OptgradamsgradCursor, v : Double) -> OptgradamsgradCursor {
-  let result = opt_grad_amsgrad_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_cursor_min(s : OptgradamsgradCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn opt_grad_amsgrad_view_sum(s : OptgradamsgradView) -> Double { @_common.su
 pub fn opt_grad_amsgrad_view_mean(s : OptgradamsgradView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_view_scale(s : OptgradamsgradView, f : Double) -> OptgradamsgradView {
-  let result = opt_grad_amsgrad_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_view_add(a : OptgradamsgradView, b : OptgradamsgradView) -> OptgradamsgradView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_view_copy(s : OptgradamsgradView) -> OptgradamsgradView {
-  let result = opt_grad_amsgrad_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_view_fill(s : OptgradamsgradView, v : Double) -> OptgradamsgradView {
-  let result = opt_grad_amsgrad_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_view_min(s : OptgradamsgradView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn opt_grad_amsgrad_range_sum(s : OptgradamsgradRange) -> Double { @_common.
 pub fn opt_grad_amsgrad_range_mean(s : OptgradamsgradRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_range_scale(s : OptgradamsgradRange, f : Double) -> OptgradamsgradRange {
-  let result = opt_grad_amsgrad_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_range_add(a : OptgradamsgradRange, b : OptgradamsgradRange) -> OptgradamsgradRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_range_copy(s : OptgradamsgradRange) -> OptgradamsgradRange {
-  let result = opt_grad_amsgrad_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_range_fill(s : OptgradamsgradRange, v : Double) -> OptgradamsgradRange {
-  let result = opt_grad_amsgrad_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_range_min(s : OptgradamsgradRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn opt_grad_amsgrad_slice_sum(s : OptgradamsgradSlice) -> Double { @_common.
 pub fn opt_grad_amsgrad_slice_mean(s : OptgradamsgradSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_amsgrad_slice_scale(s : OptgradamsgradSlice, f : Double) -> OptgradamsgradSlice {
-  let result = opt_grad_amsgrad_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_slice_add(a : OptgradamsgradSlice, b : OptgradamsgradSlice) -> OptgradamsgradSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_amsgrad_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_amsgrad_slice_copy(s : OptgradamsgradSlice) -> OptgradamsgradSlice {
-  let result = opt_grad_amsgrad_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_slice_fill(s : OptgradamsgradSlice, v : Double) -> OptgradamsgradSlice {
-  let result = opt_grad_amsgrad_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_amsgrad_slice_min(s : OptgradamsgradSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn bio_phylo_neighbor_frame_sum(s : BiophyloneighborFrame) -> Double { @_com
 pub fn bio_phylo_neighbor_frame_mean(s : BiophyloneighborFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_frame_scale(s : BiophyloneighborFrame, f : Double) -> BiophyloneighborFrame {
-  let result = bio_phylo_neighbor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_frame_add(a : BiophyloneighborFrame, b : BiophyloneighborFrame) -> BiophyloneighborFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_frame_copy(s : BiophyloneighborFrame) -> BiophyloneighborFrame {
-  let result = bio_phylo_neighbor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_frame_fill(s : BiophyloneighborFrame, v : Double) -> BiophyloneighborFrame {
-  let result = bio_phylo_neighbor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_frame_min(s : BiophyloneighborFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_phylo_neighbor_table_sum(s : BiophyloneighborTable) -> Double { @_com
 pub fn bio_phylo_neighbor_table_mean(s : BiophyloneighborTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_table_scale(s : BiophyloneighborTable, f : Double) -> BiophyloneighborTable {
-  let result = bio_phylo_neighbor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_table_add(a : BiophyloneighborTable, b : BiophyloneighborTable) -> BiophyloneighborTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_table_copy(s : BiophyloneighborTable) -> BiophyloneighborTable {
-  let result = bio_phylo_neighbor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_table_fill(s : BiophyloneighborTable, v : Double) -> BiophyloneighborTable {
-  let result = bio_phylo_neighbor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_table_min(s : BiophyloneighborTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_phylo_neighbor_graphn_sum(s : BiophyloneighborGraphN) -> Double { @_c
 pub fn bio_phylo_neighbor_graphn_mean(s : BiophyloneighborGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_graphn_scale(s : BiophyloneighborGraphN, f : Double) -> BiophyloneighborGraphN {
-  let result = bio_phylo_neighbor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_graphn_add(a : BiophyloneighborGraphN, b : BiophyloneighborGraphN) -> BiophyloneighborGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_graphn_copy(s : BiophyloneighborGraphN) -> BiophyloneighborGraphN {
-  let result = bio_phylo_neighbor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_graphn_fill(s : BiophyloneighborGraphN, v : Double) -> BiophyloneighborGraphN {
-  let result = bio_phylo_neighbor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_graphn_min(s : BiophyloneighborGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_phylo_neighbor_node_sum(s : BiophyloneighborNode) -> Double { @_commo
 pub fn bio_phylo_neighbor_node_mean(s : BiophyloneighborNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_node_scale(s : BiophyloneighborNode, f : Double) -> BiophyloneighborNode {
-  let result = bio_phylo_neighbor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_node_add(a : BiophyloneighborNode, b : BiophyloneighborNode) -> BiophyloneighborNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_node_copy(s : BiophyloneighborNode) -> BiophyloneighborNode {
-  let result = bio_phylo_neighbor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_node_fill(s : BiophyloneighborNode, v : Double) -> BiophyloneighborNode {
-  let result = bio_phylo_neighbor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_node_min(s : BiophyloneighborNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_phylo_neighbor_edge_sum(s : BiophyloneighborEdge) -> Double { @_commo
 pub fn bio_phylo_neighbor_edge_mean(s : BiophyloneighborEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_edge_scale(s : BiophyloneighborEdge, f : Double) -> BiophyloneighborEdge {
-  let result = bio_phylo_neighbor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_edge_add(a : BiophyloneighborEdge, b : BiophyloneighborEdge) -> BiophyloneighborEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_edge_copy(s : BiophyloneighborEdge) -> BiophyloneighborEdge {
-  let result = bio_phylo_neighbor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_edge_fill(s : BiophyloneighborEdge, v : Double) -> BiophyloneighborEdge {
-  let result = bio_phylo_neighbor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_edge_min(s : BiophyloneighborEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_phylo_neighbor_path_sum(s : BiophyloneighborPath) -> Double { @_commo
 pub fn bio_phylo_neighbor_path_mean(s : BiophyloneighborPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_path_scale(s : BiophyloneighborPath, f : Double) -> BiophyloneighborPath {
-  let result = bio_phylo_neighbor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_path_add(a : BiophyloneighborPath, b : BiophyloneighborPath) -> BiophyloneighborPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_path_copy(s : BiophyloneighborPath) -> BiophyloneighborPath {
-  let result = bio_phylo_neighbor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_path_fill(s : BiophyloneighborPath, v : Double) -> BiophyloneighborPath {
-  let result = bio_phylo_neighbor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_path_min(s : BiophyloneighborPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_phylo_neighbor_cluster_sum(s : BiophyloneighborCluster) -> Double { @
 pub fn bio_phylo_neighbor_cluster_mean(s : BiophyloneighborCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_cluster_scale(s : BiophyloneighborCluster, f : Double) -> BiophyloneighborCluster {
-  let result = bio_phylo_neighbor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_cluster_add(a : BiophyloneighborCluster, b : BiophyloneighborCluster) -> BiophyloneighborCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_cluster_copy(s : BiophyloneighborCluster) -> BiophyloneighborCluster {
-  let result = bio_phylo_neighbor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_cluster_fill(s : BiophyloneighborCluster, v : Double) -> BiophyloneighborCluster {
-  let result = bio_phylo_neighbor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_cluster_min(s : BiophyloneighborCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_phylo_neighbor_model_sum(s : BiophyloneighborModel) -> Double { @_com
 pub fn bio_phylo_neighbor_model_mean(s : BiophyloneighborModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_model_scale(s : BiophyloneighborModel, f : Double) -> BiophyloneighborModel {
-  let result = bio_phylo_neighbor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_model_add(a : BiophyloneighborModel, b : BiophyloneighborModel) -> BiophyloneighborModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_model_copy(s : BiophyloneighborModel) -> BiophyloneighborModel {
-  let result = bio_phylo_neighbor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_model_fill(s : BiophyloneighborModel, v : Double) -> BiophyloneighborModel {
-  let result = bio_phylo_neighbor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_model_min(s : BiophyloneighborModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_phylo_neighbor_layer_sum(s : BiophyloneighborLayer) -> Double { @_com
 pub fn bio_phylo_neighbor_layer_mean(s : BiophyloneighborLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_layer_scale(s : BiophyloneighborLayer, f : Double) -> BiophyloneighborLayer {
-  let result = bio_phylo_neighbor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_layer_add(a : BiophyloneighborLayer, b : BiophyloneighborLayer) -> BiophyloneighborLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_layer_copy(s : BiophyloneighborLayer) -> BiophyloneighborLayer {
-  let result = bio_phylo_neighbor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_layer_fill(s : BiophyloneighborLayer, v : Double) -> BiophyloneighborLayer {
-  let result = bio_phylo_neighbor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_layer_min(s : BiophyloneighborLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_phylo_neighbor_buffer_sum(s : BiophyloneighborBuffer) -> Double { @_c
 pub fn bio_phylo_neighbor_buffer_mean(s : BiophyloneighborBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_buffer_scale(s : BiophyloneighborBuffer, f : Double) -> BiophyloneighborBuffer {
-  let result = bio_phylo_neighbor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_buffer_add(a : BiophyloneighborBuffer, b : BiophyloneighborBuffer) -> BiophyloneighborBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_buffer_copy(s : BiophyloneighborBuffer) -> BiophyloneighborBuffer {
-  let result = bio_phylo_neighbor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_buffer_fill(s : BiophyloneighborBuffer, v : Double) -> BiophyloneighborBuffer {
-  let result = bio_phylo_neighbor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_buffer_min(s : BiophyloneighborBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_phylo_neighbor_cursor_sum(s : BiophyloneighborCursor) -> Double { @_c
 pub fn bio_phylo_neighbor_cursor_mean(s : BiophyloneighborCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_cursor_scale(s : BiophyloneighborCursor, f : Double) -> BiophyloneighborCursor {
-  let result = bio_phylo_neighbor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_cursor_add(a : BiophyloneighborCursor, b : BiophyloneighborCursor) -> BiophyloneighborCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_cursor_copy(s : BiophyloneighborCursor) -> BiophyloneighborCursor {
-  let result = bio_phylo_neighbor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_cursor_fill(s : BiophyloneighborCursor, v : Double) -> BiophyloneighborCursor {
-  let result = bio_phylo_neighbor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_cursor_min(s : BiophyloneighborCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_phylo_neighbor_view_sum(s : BiophyloneighborView) -> Double { @_commo
 pub fn bio_phylo_neighbor_view_mean(s : BiophyloneighborView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_view_scale(s : BiophyloneighborView, f : Double) -> BiophyloneighborView {
-  let result = bio_phylo_neighbor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_view_add(a : BiophyloneighborView, b : BiophyloneighborView) -> BiophyloneighborView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_view_copy(s : BiophyloneighborView) -> BiophyloneighborView {
-  let result = bio_phylo_neighbor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_view_fill(s : BiophyloneighborView, v : Double) -> BiophyloneighborView {
-  let result = bio_phylo_neighbor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_view_min(s : BiophyloneighborView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_phylo_neighbor_range_sum(s : BiophyloneighborRange) -> Double { @_com
 pub fn bio_phylo_neighbor_range_mean(s : BiophyloneighborRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_range_scale(s : BiophyloneighborRange, f : Double) -> BiophyloneighborRange {
-  let result = bio_phylo_neighbor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_range_add(a : BiophyloneighborRange, b : BiophyloneighborRange) -> BiophyloneighborRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_range_copy(s : BiophyloneighborRange) -> BiophyloneighborRange {
-  let result = bio_phylo_neighbor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_range_fill(s : BiophyloneighborRange, v : Double) -> BiophyloneighborRange {
-  let result = bio_phylo_neighbor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_range_min(s : BiophyloneighborRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_phylo_neighbor_slice_sum(s : BiophyloneighborSlice) -> Double { @_com
 pub fn bio_phylo_neighbor_slice_mean(s : BiophyloneighborSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_slice_scale(s : BiophyloneighborSlice, f : Double) -> BiophyloneighborSlice {
-  let result = bio_phylo_neighbor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_slice_add(a : BiophyloneighborSlice, b : BiophyloneighborSlice) -> BiophyloneighborSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_neighbor_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_neighbor_slice_copy(s : BiophyloneighborSlice) -> BiophyloneighborSlice {
-  let result = bio_phylo_neighbor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_slice_fill(s : BiophyloneighborSlice, v : Double) -> BiophyloneighborSlice {
-  let result = bio_phylo_neighbor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_neighbor_slice_min(s : BiophyloneighborSlice) -> Double { @_common.min(s.data) }

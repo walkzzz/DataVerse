@@ -383,28 +383,20 @@ pub fn stats_dist_exponential_frame_sum(s : StatsdistexponentialFrame) -> Double
 pub fn stats_dist_exponential_frame_mean(s : StatsdistexponentialFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_frame_scale(s : StatsdistexponentialFrame, f : Double) -> StatsdistexponentialFrame {
-  let result = stats_dist_exponential_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_frame_add(a : StatsdistexponentialFrame, b : StatsdistexponentialFrame) -> StatsdistexponentialFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_frame_copy(s : StatsdistexponentialFrame) -> StatsdistexponentialFrame {
-  let result = stats_dist_exponential_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_frame_fill(s : StatsdistexponentialFrame, v : Double) -> StatsdistexponentialFrame {
-  let result = stats_dist_exponential_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_frame_min(s : StatsdistexponentialFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_exponential_table_sum(s : StatsdistexponentialTable) -> Double
 pub fn stats_dist_exponential_table_mean(s : StatsdistexponentialTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_table_scale(s : StatsdistexponentialTable, f : Double) -> StatsdistexponentialTable {
-  let result = stats_dist_exponential_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_table_add(a : StatsdistexponentialTable, b : StatsdistexponentialTable) -> StatsdistexponentialTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_table_copy(s : StatsdistexponentialTable) -> StatsdistexponentialTable {
-  let result = stats_dist_exponential_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_table_fill(s : StatsdistexponentialTable, v : Double) -> StatsdistexponentialTable {
-  let result = stats_dist_exponential_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_table_min(s : StatsdistexponentialTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_exponential_graphn_sum(s : StatsdistexponentialGraphN) -> Doub
 pub fn stats_dist_exponential_graphn_mean(s : StatsdistexponentialGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_graphn_scale(s : StatsdistexponentialGraphN, f : Double) -> StatsdistexponentialGraphN {
-  let result = stats_dist_exponential_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_graphn_add(a : StatsdistexponentialGraphN, b : StatsdistexponentialGraphN) -> StatsdistexponentialGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_graphn_copy(s : StatsdistexponentialGraphN) -> StatsdistexponentialGraphN {
-  let result = stats_dist_exponential_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_graphn_fill(s : StatsdistexponentialGraphN, v : Double) -> StatsdistexponentialGraphN {
-  let result = stats_dist_exponential_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_graphn_min(s : StatsdistexponentialGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_exponential_node_sum(s : StatsdistexponentialNode) -> Double {
 pub fn stats_dist_exponential_node_mean(s : StatsdistexponentialNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_node_scale(s : StatsdistexponentialNode, f : Double) -> StatsdistexponentialNode {
-  let result = stats_dist_exponential_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_node_add(a : StatsdistexponentialNode, b : StatsdistexponentialNode) -> StatsdistexponentialNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_node_copy(s : StatsdistexponentialNode) -> StatsdistexponentialNode {
-  let result = stats_dist_exponential_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_node_fill(s : StatsdistexponentialNode, v : Double) -> StatsdistexponentialNode {
-  let result = stats_dist_exponential_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_node_min(s : StatsdistexponentialNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_exponential_edge_sum(s : StatsdistexponentialEdge) -> Double {
 pub fn stats_dist_exponential_edge_mean(s : StatsdistexponentialEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_edge_scale(s : StatsdistexponentialEdge, f : Double) -> StatsdistexponentialEdge {
-  let result = stats_dist_exponential_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_edge_add(a : StatsdistexponentialEdge, b : StatsdistexponentialEdge) -> StatsdistexponentialEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_edge_copy(s : StatsdistexponentialEdge) -> StatsdistexponentialEdge {
-  let result = stats_dist_exponential_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_edge_fill(s : StatsdistexponentialEdge, v : Double) -> StatsdistexponentialEdge {
-  let result = stats_dist_exponential_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_edge_min(s : StatsdistexponentialEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_exponential_path_sum(s : StatsdistexponentialPath) -> Double {
 pub fn stats_dist_exponential_path_mean(s : StatsdistexponentialPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_path_scale(s : StatsdistexponentialPath, f : Double) -> StatsdistexponentialPath {
-  let result = stats_dist_exponential_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_path_add(a : StatsdistexponentialPath, b : StatsdistexponentialPath) -> StatsdistexponentialPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_path_copy(s : StatsdistexponentialPath) -> StatsdistexponentialPath {
-  let result = stats_dist_exponential_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_path_fill(s : StatsdistexponentialPath, v : Double) -> StatsdistexponentialPath {
-  let result = stats_dist_exponential_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_path_min(s : StatsdistexponentialPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_exponential_cluster_sum(s : StatsdistexponentialCluster) -> Do
 pub fn stats_dist_exponential_cluster_mean(s : StatsdistexponentialCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_cluster_scale(s : StatsdistexponentialCluster, f : Double) -> StatsdistexponentialCluster {
-  let result = stats_dist_exponential_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cluster_add(a : StatsdistexponentialCluster, b : StatsdistexponentialCluster) -> StatsdistexponentialCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_cluster_copy(s : StatsdistexponentialCluster) -> StatsdistexponentialCluster {
-  let result = stats_dist_exponential_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cluster_fill(s : StatsdistexponentialCluster, v : Double) -> StatsdistexponentialCluster {
-  let result = stats_dist_exponential_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cluster_min(s : StatsdistexponentialCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_exponential_model_sum(s : StatsdistexponentialModel) -> Double
 pub fn stats_dist_exponential_model_mean(s : StatsdistexponentialModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_model_scale(s : StatsdistexponentialModel, f : Double) -> StatsdistexponentialModel {
-  let result = stats_dist_exponential_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_model_add(a : StatsdistexponentialModel, b : StatsdistexponentialModel) -> StatsdistexponentialModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_model_copy(s : StatsdistexponentialModel) -> StatsdistexponentialModel {
-  let result = stats_dist_exponential_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_model_fill(s : StatsdistexponentialModel, v : Double) -> StatsdistexponentialModel {
-  let result = stats_dist_exponential_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_model_min(s : StatsdistexponentialModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_exponential_layer_sum(s : StatsdistexponentialLayer) -> Double
 pub fn stats_dist_exponential_layer_mean(s : StatsdistexponentialLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_layer_scale(s : StatsdistexponentialLayer, f : Double) -> StatsdistexponentialLayer {
-  let result = stats_dist_exponential_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_layer_add(a : StatsdistexponentialLayer, b : StatsdistexponentialLayer) -> StatsdistexponentialLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_layer_copy(s : StatsdistexponentialLayer) -> StatsdistexponentialLayer {
-  let result = stats_dist_exponential_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_layer_fill(s : StatsdistexponentialLayer, v : Double) -> StatsdistexponentialLayer {
-  let result = stats_dist_exponential_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_layer_min(s : StatsdistexponentialLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_exponential_buffer_sum(s : StatsdistexponentialBuffer) -> Doub
 pub fn stats_dist_exponential_buffer_mean(s : StatsdistexponentialBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_buffer_scale(s : StatsdistexponentialBuffer, f : Double) -> StatsdistexponentialBuffer {
-  let result = stats_dist_exponential_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_buffer_add(a : StatsdistexponentialBuffer, b : StatsdistexponentialBuffer) -> StatsdistexponentialBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_buffer_copy(s : StatsdistexponentialBuffer) -> StatsdistexponentialBuffer {
-  let result = stats_dist_exponential_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_buffer_fill(s : StatsdistexponentialBuffer, v : Double) -> StatsdistexponentialBuffer {
-  let result = stats_dist_exponential_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_buffer_min(s : StatsdistexponentialBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_exponential_cursor_sum(s : StatsdistexponentialCursor) -> Doub
 pub fn stats_dist_exponential_cursor_mean(s : StatsdistexponentialCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_cursor_scale(s : StatsdistexponentialCursor, f : Double) -> StatsdistexponentialCursor {
-  let result = stats_dist_exponential_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cursor_add(a : StatsdistexponentialCursor, b : StatsdistexponentialCursor) -> StatsdistexponentialCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_cursor_copy(s : StatsdistexponentialCursor) -> StatsdistexponentialCursor {
-  let result = stats_dist_exponential_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cursor_fill(s : StatsdistexponentialCursor, v : Double) -> StatsdistexponentialCursor {
-  let result = stats_dist_exponential_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cursor_min(s : StatsdistexponentialCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_exponential_view_sum(s : StatsdistexponentialView) -> Double {
 pub fn stats_dist_exponential_view_mean(s : StatsdistexponentialView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_view_scale(s : StatsdistexponentialView, f : Double) -> StatsdistexponentialView {
-  let result = stats_dist_exponential_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_view_add(a : StatsdistexponentialView, b : StatsdistexponentialView) -> StatsdistexponentialView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_view_copy(s : StatsdistexponentialView) -> StatsdistexponentialView {
-  let result = stats_dist_exponential_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_view_fill(s : StatsdistexponentialView, v : Double) -> StatsdistexponentialView {
-  let result = stats_dist_exponential_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_view_min(s : StatsdistexponentialView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_exponential_range_sum(s : StatsdistexponentialRange) -> Double
 pub fn stats_dist_exponential_range_mean(s : StatsdistexponentialRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_range_scale(s : StatsdistexponentialRange, f : Double) -> StatsdistexponentialRange {
-  let result = stats_dist_exponential_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_range_add(a : StatsdistexponentialRange, b : StatsdistexponentialRange) -> StatsdistexponentialRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_range_copy(s : StatsdistexponentialRange) -> StatsdistexponentialRange {
-  let result = stats_dist_exponential_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_range_fill(s : StatsdistexponentialRange, v : Double) -> StatsdistexponentialRange {
-  let result = stats_dist_exponential_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_range_min(s : StatsdistexponentialRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_exponential_slice_sum(s : StatsdistexponentialSlice) -> Double
 pub fn stats_dist_exponential_slice_mean(s : StatsdistexponentialSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_slice_scale(s : StatsdistexponentialSlice, f : Double) -> StatsdistexponentialSlice {
-  let result = stats_dist_exponential_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_slice_add(a : StatsdistexponentialSlice, b : StatsdistexponentialSlice) -> StatsdistexponentialSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_exponential_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_exponential_slice_copy(s : StatsdistexponentialSlice) -> StatsdistexponentialSlice {
-  let result = stats_dist_exponential_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_slice_fill(s : StatsdistexponentialSlice, v : Double) -> StatsdistexponentialSlice {
-  let result = stats_dist_exponential_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_slice_min(s : StatsdistexponentialSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn nlp_pos_transformer_frame_sum(s : NlppostransformerFrame) -> Double { @_c
 pub fn nlp_pos_transformer_frame_mean(s : NlppostransformerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_frame_scale(s : NlppostransformerFrame, f : Double) -> NlppostransformerFrame {
-  let result = nlp_pos_transformer_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_frame_add(a : NlppostransformerFrame, b : NlppostransformerFrame) -> NlppostransformerFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_frame_copy(s : NlppostransformerFrame) -> NlppostransformerFrame {
-  let result = nlp_pos_transformer_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_frame_fill(s : NlppostransformerFrame, v : Double) -> NlppostransformerFrame {
-  let result = nlp_pos_transformer_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_frame_min(s : NlppostransformerFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_pos_transformer_table_sum(s : NlppostransformerTable) -> Double { @_c
 pub fn nlp_pos_transformer_table_mean(s : NlppostransformerTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_table_scale(s : NlppostransformerTable, f : Double) -> NlppostransformerTable {
-  let result = nlp_pos_transformer_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_table_add(a : NlppostransformerTable, b : NlppostransformerTable) -> NlppostransformerTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_table_copy(s : NlppostransformerTable) -> NlppostransformerTable {
-  let result = nlp_pos_transformer_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_table_fill(s : NlppostransformerTable, v : Double) -> NlppostransformerTable {
-  let result = nlp_pos_transformer_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_table_min(s : NlppostransformerTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_pos_transformer_graphn_sum(s : NlppostransformerGraphN) -> Double { @
 pub fn nlp_pos_transformer_graphn_mean(s : NlppostransformerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_graphn_scale(s : NlppostransformerGraphN, f : Double) -> NlppostransformerGraphN {
-  let result = nlp_pos_transformer_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_graphn_add(a : NlppostransformerGraphN, b : NlppostransformerGraphN) -> NlppostransformerGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_graphn_copy(s : NlppostransformerGraphN) -> NlppostransformerGraphN {
-  let result = nlp_pos_transformer_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_graphn_fill(s : NlppostransformerGraphN, v : Double) -> NlppostransformerGraphN {
-  let result = nlp_pos_transformer_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_graphn_min(s : NlppostransformerGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_pos_transformer_node_sum(s : NlppostransformerNode) -> Double { @_com
 pub fn nlp_pos_transformer_node_mean(s : NlppostransformerNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_node_scale(s : NlppostransformerNode, f : Double) -> NlppostransformerNode {
-  let result = nlp_pos_transformer_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_node_add(a : NlppostransformerNode, b : NlppostransformerNode) -> NlppostransformerNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_node_copy(s : NlppostransformerNode) -> NlppostransformerNode {
-  let result = nlp_pos_transformer_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_node_fill(s : NlppostransformerNode, v : Double) -> NlppostransformerNode {
-  let result = nlp_pos_transformer_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_node_min(s : NlppostransformerNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_pos_transformer_edge_sum(s : NlppostransformerEdge) -> Double { @_com
 pub fn nlp_pos_transformer_edge_mean(s : NlppostransformerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_edge_scale(s : NlppostransformerEdge, f : Double) -> NlppostransformerEdge {
-  let result = nlp_pos_transformer_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_edge_add(a : NlppostransformerEdge, b : NlppostransformerEdge) -> NlppostransformerEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_edge_copy(s : NlppostransformerEdge) -> NlppostransformerEdge {
-  let result = nlp_pos_transformer_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_edge_fill(s : NlppostransformerEdge, v : Double) -> NlppostransformerEdge {
-  let result = nlp_pos_transformer_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_edge_min(s : NlppostransformerEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_pos_transformer_path_sum(s : NlppostransformerPath) -> Double { @_com
 pub fn nlp_pos_transformer_path_mean(s : NlppostransformerPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_path_scale(s : NlppostransformerPath, f : Double) -> NlppostransformerPath {
-  let result = nlp_pos_transformer_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_path_add(a : NlppostransformerPath, b : NlppostransformerPath) -> NlppostransformerPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_path_copy(s : NlppostransformerPath) -> NlppostransformerPath {
-  let result = nlp_pos_transformer_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_path_fill(s : NlppostransformerPath, v : Double) -> NlppostransformerPath {
-  let result = nlp_pos_transformer_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_path_min(s : NlppostransformerPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_pos_transformer_cluster_sum(s : NlppostransformerCluster) -> Double {
 pub fn nlp_pos_transformer_cluster_mean(s : NlppostransformerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_cluster_scale(s : NlppostransformerCluster, f : Double) -> NlppostransformerCluster {
-  let result = nlp_pos_transformer_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_cluster_add(a : NlppostransformerCluster, b : NlppostransformerCluster) -> NlppostransformerCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_cluster_copy(s : NlppostransformerCluster) -> NlppostransformerCluster {
-  let result = nlp_pos_transformer_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_cluster_fill(s : NlppostransformerCluster, v : Double) -> NlppostransformerCluster {
-  let result = nlp_pos_transformer_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_cluster_min(s : NlppostransformerCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_pos_transformer_model_sum(s : NlppostransformerModel) -> Double { @_c
 pub fn nlp_pos_transformer_model_mean(s : NlppostransformerModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_model_scale(s : NlppostransformerModel, f : Double) -> NlppostransformerModel {
-  let result = nlp_pos_transformer_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_model_add(a : NlppostransformerModel, b : NlppostransformerModel) -> NlppostransformerModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_model_copy(s : NlppostransformerModel) -> NlppostransformerModel {
-  let result = nlp_pos_transformer_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_model_fill(s : NlppostransformerModel, v : Double) -> NlppostransformerModel {
-  let result = nlp_pos_transformer_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_model_min(s : NlppostransformerModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_pos_transformer_layer_sum(s : NlppostransformerLayer) -> Double { @_c
 pub fn nlp_pos_transformer_layer_mean(s : NlppostransformerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_layer_scale(s : NlppostransformerLayer, f : Double) -> NlppostransformerLayer {
-  let result = nlp_pos_transformer_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_layer_add(a : NlppostransformerLayer, b : NlppostransformerLayer) -> NlppostransformerLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_layer_copy(s : NlppostransformerLayer) -> NlppostransformerLayer {
-  let result = nlp_pos_transformer_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_layer_fill(s : NlppostransformerLayer, v : Double) -> NlppostransformerLayer {
-  let result = nlp_pos_transformer_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_layer_min(s : NlppostransformerLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_pos_transformer_buffer_sum(s : NlppostransformerBuffer) -> Double { @
 pub fn nlp_pos_transformer_buffer_mean(s : NlppostransformerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_buffer_scale(s : NlppostransformerBuffer, f : Double) -> NlppostransformerBuffer {
-  let result = nlp_pos_transformer_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_buffer_add(a : NlppostransformerBuffer, b : NlppostransformerBuffer) -> NlppostransformerBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_buffer_copy(s : NlppostransformerBuffer) -> NlppostransformerBuffer {
-  let result = nlp_pos_transformer_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_buffer_fill(s : NlppostransformerBuffer, v : Double) -> NlppostransformerBuffer {
-  let result = nlp_pos_transformer_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_buffer_min(s : NlppostransformerBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_pos_transformer_cursor_sum(s : NlppostransformerCursor) -> Double { @
 pub fn nlp_pos_transformer_cursor_mean(s : NlppostransformerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_cursor_scale(s : NlppostransformerCursor, f : Double) -> NlppostransformerCursor {
-  let result = nlp_pos_transformer_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_cursor_add(a : NlppostransformerCursor, b : NlppostransformerCursor) -> NlppostransformerCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_cursor_copy(s : NlppostransformerCursor) -> NlppostransformerCursor {
-  let result = nlp_pos_transformer_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_cursor_fill(s : NlppostransformerCursor, v : Double) -> NlppostransformerCursor {
-  let result = nlp_pos_transformer_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_cursor_min(s : NlppostransformerCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_pos_transformer_view_sum(s : NlppostransformerView) -> Double { @_com
 pub fn nlp_pos_transformer_view_mean(s : NlppostransformerView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_view_scale(s : NlppostransformerView, f : Double) -> NlppostransformerView {
-  let result = nlp_pos_transformer_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_view_add(a : NlppostransformerView, b : NlppostransformerView) -> NlppostransformerView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_view_copy(s : NlppostransformerView) -> NlppostransformerView {
-  let result = nlp_pos_transformer_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_view_fill(s : NlppostransformerView, v : Double) -> NlppostransformerView {
-  let result = nlp_pos_transformer_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_view_min(s : NlppostransformerView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_pos_transformer_range_sum(s : NlppostransformerRange) -> Double { @_c
 pub fn nlp_pos_transformer_range_mean(s : NlppostransformerRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_range_scale(s : NlppostransformerRange, f : Double) -> NlppostransformerRange {
-  let result = nlp_pos_transformer_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_range_add(a : NlppostransformerRange, b : NlppostransformerRange) -> NlppostransformerRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_range_copy(s : NlppostransformerRange) -> NlppostransformerRange {
-  let result = nlp_pos_transformer_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_range_fill(s : NlppostransformerRange, v : Double) -> NlppostransformerRange {
-  let result = nlp_pos_transformer_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_range_min(s : NlppostransformerRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_pos_transformer_slice_sum(s : NlppostransformerSlice) -> Double { @_c
 pub fn nlp_pos_transformer_slice_mean(s : NlppostransformerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_slice_scale(s : NlppostransformerSlice, f : Double) -> NlppostransformerSlice {
-  let result = nlp_pos_transformer_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_slice_add(a : NlppostransformerSlice, b : NlppostransformerSlice) -> NlppostransformerSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_transformer_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_transformer_slice_copy(s : NlppostransformerSlice) -> NlppostransformerSlice {
-  let result = nlp_pos_transformer_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_slice_fill(s : NlppostransformerSlice, v : Double) -> NlppostransformerSlice {
-  let result = nlp_pos_transformer_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_transformer_slice_min(s : NlppostransformerSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ml_metric_classify_frame_sum(s : MlmetricclassifyFrame) -> Double { @_com
 pub fn ml_metric_classify_frame_mean(s : MlmetricclassifyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_frame_scale(s : MlmetricclassifyFrame, f : Double) -> MlmetricclassifyFrame {
-  let result = ml_metric_classify_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_frame_add(a : MlmetricclassifyFrame, b : MlmetricclassifyFrame) -> MlmetricclassifyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_frame_copy(s : MlmetricclassifyFrame) -> MlmetricclassifyFrame {
-  let result = ml_metric_classify_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_frame_fill(s : MlmetricclassifyFrame, v : Double) -> MlmetricclassifyFrame {
-  let result = ml_metric_classify_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_frame_min(s : MlmetricclassifyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_metric_classify_table_sum(s : MlmetricclassifyTable) -> Double { @_com
 pub fn ml_metric_classify_table_mean(s : MlmetricclassifyTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_table_scale(s : MlmetricclassifyTable, f : Double) -> MlmetricclassifyTable {
-  let result = ml_metric_classify_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_table_add(a : MlmetricclassifyTable, b : MlmetricclassifyTable) -> MlmetricclassifyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_table_copy(s : MlmetricclassifyTable) -> MlmetricclassifyTable {
-  let result = ml_metric_classify_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_table_fill(s : MlmetricclassifyTable, v : Double) -> MlmetricclassifyTable {
-  let result = ml_metric_classify_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_table_min(s : MlmetricclassifyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_metric_classify_graphn_sum(s : MlmetricclassifyGraphN) -> Double { @_c
 pub fn ml_metric_classify_graphn_mean(s : MlmetricclassifyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_graphn_scale(s : MlmetricclassifyGraphN, f : Double) -> MlmetricclassifyGraphN {
-  let result = ml_metric_classify_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_graphn_add(a : MlmetricclassifyGraphN, b : MlmetricclassifyGraphN) -> MlmetricclassifyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_graphn_copy(s : MlmetricclassifyGraphN) -> MlmetricclassifyGraphN {
-  let result = ml_metric_classify_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_graphn_fill(s : MlmetricclassifyGraphN, v : Double) -> MlmetricclassifyGraphN {
-  let result = ml_metric_classify_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_graphn_min(s : MlmetricclassifyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_metric_classify_node_sum(s : MlmetricclassifyNode) -> Double { @_commo
 pub fn ml_metric_classify_node_mean(s : MlmetricclassifyNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_node_scale(s : MlmetricclassifyNode, f : Double) -> MlmetricclassifyNode {
-  let result = ml_metric_classify_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_node_add(a : MlmetricclassifyNode, b : MlmetricclassifyNode) -> MlmetricclassifyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_node_copy(s : MlmetricclassifyNode) -> MlmetricclassifyNode {
-  let result = ml_metric_classify_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_node_fill(s : MlmetricclassifyNode, v : Double) -> MlmetricclassifyNode {
-  let result = ml_metric_classify_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_node_min(s : MlmetricclassifyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_metric_classify_edge_sum(s : MlmetricclassifyEdge) -> Double { @_commo
 pub fn ml_metric_classify_edge_mean(s : MlmetricclassifyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_edge_scale(s : MlmetricclassifyEdge, f : Double) -> MlmetricclassifyEdge {
-  let result = ml_metric_classify_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_edge_add(a : MlmetricclassifyEdge, b : MlmetricclassifyEdge) -> MlmetricclassifyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_edge_copy(s : MlmetricclassifyEdge) -> MlmetricclassifyEdge {
-  let result = ml_metric_classify_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_edge_fill(s : MlmetricclassifyEdge, v : Double) -> MlmetricclassifyEdge {
-  let result = ml_metric_classify_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_edge_min(s : MlmetricclassifyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_metric_classify_path_sum(s : MlmetricclassifyPath) -> Double { @_commo
 pub fn ml_metric_classify_path_mean(s : MlmetricclassifyPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_path_scale(s : MlmetricclassifyPath, f : Double) -> MlmetricclassifyPath {
-  let result = ml_metric_classify_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_path_add(a : MlmetricclassifyPath, b : MlmetricclassifyPath) -> MlmetricclassifyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_path_copy(s : MlmetricclassifyPath) -> MlmetricclassifyPath {
-  let result = ml_metric_classify_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_path_fill(s : MlmetricclassifyPath, v : Double) -> MlmetricclassifyPath {
-  let result = ml_metric_classify_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_path_min(s : MlmetricclassifyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_metric_classify_cluster_sum(s : MlmetricclassifyCluster) -> Double { @
 pub fn ml_metric_classify_cluster_mean(s : MlmetricclassifyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_cluster_scale(s : MlmetricclassifyCluster, f : Double) -> MlmetricclassifyCluster {
-  let result = ml_metric_classify_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cluster_add(a : MlmetricclassifyCluster, b : MlmetricclassifyCluster) -> MlmetricclassifyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_cluster_copy(s : MlmetricclassifyCluster) -> MlmetricclassifyCluster {
-  let result = ml_metric_classify_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cluster_fill(s : MlmetricclassifyCluster, v : Double) -> MlmetricclassifyCluster {
-  let result = ml_metric_classify_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cluster_min(s : MlmetricclassifyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_metric_classify_model_sum(s : MlmetricclassifyModel) -> Double { @_com
 pub fn ml_metric_classify_model_mean(s : MlmetricclassifyModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_model_scale(s : MlmetricclassifyModel, f : Double) -> MlmetricclassifyModel {
-  let result = ml_metric_classify_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_model_add(a : MlmetricclassifyModel, b : MlmetricclassifyModel) -> MlmetricclassifyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_model_copy(s : MlmetricclassifyModel) -> MlmetricclassifyModel {
-  let result = ml_metric_classify_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_model_fill(s : MlmetricclassifyModel, v : Double) -> MlmetricclassifyModel {
-  let result = ml_metric_classify_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_model_min(s : MlmetricclassifyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_metric_classify_layer_sum(s : MlmetricclassifyLayer) -> Double { @_com
 pub fn ml_metric_classify_layer_mean(s : MlmetricclassifyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_layer_scale(s : MlmetricclassifyLayer, f : Double) -> MlmetricclassifyLayer {
-  let result = ml_metric_classify_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_layer_add(a : MlmetricclassifyLayer, b : MlmetricclassifyLayer) -> MlmetricclassifyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_layer_copy(s : MlmetricclassifyLayer) -> MlmetricclassifyLayer {
-  let result = ml_metric_classify_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_layer_fill(s : MlmetricclassifyLayer, v : Double) -> MlmetricclassifyLayer {
-  let result = ml_metric_classify_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_layer_min(s : MlmetricclassifyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_metric_classify_buffer_sum(s : MlmetricclassifyBuffer) -> Double { @_c
 pub fn ml_metric_classify_buffer_mean(s : MlmetricclassifyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_buffer_scale(s : MlmetricclassifyBuffer, f : Double) -> MlmetricclassifyBuffer {
-  let result = ml_metric_classify_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_buffer_add(a : MlmetricclassifyBuffer, b : MlmetricclassifyBuffer) -> MlmetricclassifyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_buffer_copy(s : MlmetricclassifyBuffer) -> MlmetricclassifyBuffer {
-  let result = ml_metric_classify_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_buffer_fill(s : MlmetricclassifyBuffer, v : Double) -> MlmetricclassifyBuffer {
-  let result = ml_metric_classify_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_buffer_min(s : MlmetricclassifyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_metric_classify_cursor_sum(s : MlmetricclassifyCursor) -> Double { @_c
 pub fn ml_metric_classify_cursor_mean(s : MlmetricclassifyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_cursor_scale(s : MlmetricclassifyCursor, f : Double) -> MlmetricclassifyCursor {
-  let result = ml_metric_classify_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cursor_add(a : MlmetricclassifyCursor, b : MlmetricclassifyCursor) -> MlmetricclassifyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_cursor_copy(s : MlmetricclassifyCursor) -> MlmetricclassifyCursor {
-  let result = ml_metric_classify_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cursor_fill(s : MlmetricclassifyCursor, v : Double) -> MlmetricclassifyCursor {
-  let result = ml_metric_classify_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cursor_min(s : MlmetricclassifyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_metric_classify_view_sum(s : MlmetricclassifyView) -> Double { @_commo
 pub fn ml_metric_classify_view_mean(s : MlmetricclassifyView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_view_scale(s : MlmetricclassifyView, f : Double) -> MlmetricclassifyView {
-  let result = ml_metric_classify_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_view_add(a : MlmetricclassifyView, b : MlmetricclassifyView) -> MlmetricclassifyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_view_copy(s : MlmetricclassifyView) -> MlmetricclassifyView {
-  let result = ml_metric_classify_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_view_fill(s : MlmetricclassifyView, v : Double) -> MlmetricclassifyView {
-  let result = ml_metric_classify_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_view_min(s : MlmetricclassifyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_metric_classify_range_sum(s : MlmetricclassifyRange) -> Double { @_com
 pub fn ml_metric_classify_range_mean(s : MlmetricclassifyRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_range_scale(s : MlmetricclassifyRange, f : Double) -> MlmetricclassifyRange {
-  let result = ml_metric_classify_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_range_add(a : MlmetricclassifyRange, b : MlmetricclassifyRange) -> MlmetricclassifyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_range_copy(s : MlmetricclassifyRange) -> MlmetricclassifyRange {
-  let result = ml_metric_classify_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_range_fill(s : MlmetricclassifyRange, v : Double) -> MlmetricclassifyRange {
-  let result = ml_metric_classify_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_range_min(s : MlmetricclassifyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_metric_classify_slice_sum(s : MlmetricclassifySlice) -> Double { @_com
 pub fn ml_metric_classify_slice_mean(s : MlmetricclassifySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_classify_slice_scale(s : MlmetricclassifySlice, f : Double) -> MlmetricclassifySlice {
-  let result = ml_metric_classify_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_slice_add(a : MlmetricclassifySlice, b : MlmetricclassifySlice) -> MlmetricclassifySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_classify_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_classify_slice_copy(s : MlmetricclassifySlice) -> MlmetricclassifySlice {
-  let result = ml_metric_classify_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_slice_fill(s : MlmetricclassifySlice, v : Double) -> MlmetricclassifySlice {
-  let result = ml_metric_classify_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_slice_min(s : MlmetricclassifySlice) -> Double { @_common.min(s.data) }

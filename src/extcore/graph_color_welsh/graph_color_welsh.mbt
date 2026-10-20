@@ -383,28 +383,20 @@ pub fn graph_color_welsh_frame_sum(s : GraphcolorwelshFrame) -> Double { @_commo
 pub fn graph_color_welsh_frame_mean(s : GraphcolorwelshFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_frame_scale(s : GraphcolorwelshFrame, f : Double) -> GraphcolorwelshFrame {
-  let result = graph_color_welsh_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_frame_add(a : GraphcolorwelshFrame, b : GraphcolorwelshFrame) -> GraphcolorwelshFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_frame_copy(s : GraphcolorwelshFrame) -> GraphcolorwelshFrame {
-  let result = graph_color_welsh_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_frame_fill(s : GraphcolorwelshFrame, v : Double) -> GraphcolorwelshFrame {
-  let result = graph_color_welsh_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_frame_min(s : GraphcolorwelshFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_welsh_table_sum(s : GraphcolorwelshTable) -> Double { @_commo
 pub fn graph_color_welsh_table_mean(s : GraphcolorwelshTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_table_scale(s : GraphcolorwelshTable, f : Double) -> GraphcolorwelshTable {
-  let result = graph_color_welsh_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_table_add(a : GraphcolorwelshTable, b : GraphcolorwelshTable) -> GraphcolorwelshTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_table_copy(s : GraphcolorwelshTable) -> GraphcolorwelshTable {
-  let result = graph_color_welsh_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_table_fill(s : GraphcolorwelshTable, v : Double) -> GraphcolorwelshTable {
-  let result = graph_color_welsh_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_table_min(s : GraphcolorwelshTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_welsh_graphn_sum(s : GraphcolorwelshGraphN) -> Double { @_com
 pub fn graph_color_welsh_graphn_mean(s : GraphcolorwelshGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_graphn_scale(s : GraphcolorwelshGraphN, f : Double) -> GraphcolorwelshGraphN {
-  let result = graph_color_welsh_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_graphn_add(a : GraphcolorwelshGraphN, b : GraphcolorwelshGraphN) -> GraphcolorwelshGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_graphn_copy(s : GraphcolorwelshGraphN) -> GraphcolorwelshGraphN {
-  let result = graph_color_welsh_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_graphn_fill(s : GraphcolorwelshGraphN, v : Double) -> GraphcolorwelshGraphN {
-  let result = graph_color_welsh_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_graphn_min(s : GraphcolorwelshGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_welsh_node_sum(s : GraphcolorwelshNode) -> Double { @_common.
 pub fn graph_color_welsh_node_mean(s : GraphcolorwelshNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_node_scale(s : GraphcolorwelshNode, f : Double) -> GraphcolorwelshNode {
-  let result = graph_color_welsh_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_node_add(a : GraphcolorwelshNode, b : GraphcolorwelshNode) -> GraphcolorwelshNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_node_copy(s : GraphcolorwelshNode) -> GraphcolorwelshNode {
-  let result = graph_color_welsh_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_node_fill(s : GraphcolorwelshNode, v : Double) -> GraphcolorwelshNode {
-  let result = graph_color_welsh_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_node_min(s : GraphcolorwelshNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_welsh_edge_sum(s : GraphcolorwelshEdge) -> Double { @_common.
 pub fn graph_color_welsh_edge_mean(s : GraphcolorwelshEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_edge_scale(s : GraphcolorwelshEdge, f : Double) -> GraphcolorwelshEdge {
-  let result = graph_color_welsh_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_edge_add(a : GraphcolorwelshEdge, b : GraphcolorwelshEdge) -> GraphcolorwelshEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_edge_copy(s : GraphcolorwelshEdge) -> GraphcolorwelshEdge {
-  let result = graph_color_welsh_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_edge_fill(s : GraphcolorwelshEdge, v : Double) -> GraphcolorwelshEdge {
-  let result = graph_color_welsh_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_edge_min(s : GraphcolorwelshEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_welsh_path_sum(s : GraphcolorwelshPath) -> Double { @_common.
 pub fn graph_color_welsh_path_mean(s : GraphcolorwelshPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_path_scale(s : GraphcolorwelshPath, f : Double) -> GraphcolorwelshPath {
-  let result = graph_color_welsh_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_path_add(a : GraphcolorwelshPath, b : GraphcolorwelshPath) -> GraphcolorwelshPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_path_copy(s : GraphcolorwelshPath) -> GraphcolorwelshPath {
-  let result = graph_color_welsh_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_path_fill(s : GraphcolorwelshPath, v : Double) -> GraphcolorwelshPath {
-  let result = graph_color_welsh_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_path_min(s : GraphcolorwelshPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_welsh_cluster_sum(s : GraphcolorwelshCluster) -> Double { @_c
 pub fn graph_color_welsh_cluster_mean(s : GraphcolorwelshCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_cluster_scale(s : GraphcolorwelshCluster, f : Double) -> GraphcolorwelshCluster {
-  let result = graph_color_welsh_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_cluster_add(a : GraphcolorwelshCluster, b : GraphcolorwelshCluster) -> GraphcolorwelshCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_cluster_copy(s : GraphcolorwelshCluster) -> GraphcolorwelshCluster {
-  let result = graph_color_welsh_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_cluster_fill(s : GraphcolorwelshCluster, v : Double) -> GraphcolorwelshCluster {
-  let result = graph_color_welsh_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_cluster_min(s : GraphcolorwelshCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_welsh_model_sum(s : GraphcolorwelshModel) -> Double { @_commo
 pub fn graph_color_welsh_model_mean(s : GraphcolorwelshModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_model_scale(s : GraphcolorwelshModel, f : Double) -> GraphcolorwelshModel {
-  let result = graph_color_welsh_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_model_add(a : GraphcolorwelshModel, b : GraphcolorwelshModel) -> GraphcolorwelshModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_model_copy(s : GraphcolorwelshModel) -> GraphcolorwelshModel {
-  let result = graph_color_welsh_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_model_fill(s : GraphcolorwelshModel, v : Double) -> GraphcolorwelshModel {
-  let result = graph_color_welsh_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_model_min(s : GraphcolorwelshModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_welsh_layer_sum(s : GraphcolorwelshLayer) -> Double { @_commo
 pub fn graph_color_welsh_layer_mean(s : GraphcolorwelshLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_layer_scale(s : GraphcolorwelshLayer, f : Double) -> GraphcolorwelshLayer {
-  let result = graph_color_welsh_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_layer_add(a : GraphcolorwelshLayer, b : GraphcolorwelshLayer) -> GraphcolorwelshLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_layer_copy(s : GraphcolorwelshLayer) -> GraphcolorwelshLayer {
-  let result = graph_color_welsh_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_layer_fill(s : GraphcolorwelshLayer, v : Double) -> GraphcolorwelshLayer {
-  let result = graph_color_welsh_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_layer_min(s : GraphcolorwelshLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_welsh_buffer_sum(s : GraphcolorwelshBuffer) -> Double { @_com
 pub fn graph_color_welsh_buffer_mean(s : GraphcolorwelshBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_buffer_scale(s : GraphcolorwelshBuffer, f : Double) -> GraphcolorwelshBuffer {
-  let result = graph_color_welsh_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_buffer_add(a : GraphcolorwelshBuffer, b : GraphcolorwelshBuffer) -> GraphcolorwelshBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_buffer_copy(s : GraphcolorwelshBuffer) -> GraphcolorwelshBuffer {
-  let result = graph_color_welsh_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_buffer_fill(s : GraphcolorwelshBuffer, v : Double) -> GraphcolorwelshBuffer {
-  let result = graph_color_welsh_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_buffer_min(s : GraphcolorwelshBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_welsh_cursor_sum(s : GraphcolorwelshCursor) -> Double { @_com
 pub fn graph_color_welsh_cursor_mean(s : GraphcolorwelshCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_cursor_scale(s : GraphcolorwelshCursor, f : Double) -> GraphcolorwelshCursor {
-  let result = graph_color_welsh_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_cursor_add(a : GraphcolorwelshCursor, b : GraphcolorwelshCursor) -> GraphcolorwelshCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_cursor_copy(s : GraphcolorwelshCursor) -> GraphcolorwelshCursor {
-  let result = graph_color_welsh_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_cursor_fill(s : GraphcolorwelshCursor, v : Double) -> GraphcolorwelshCursor {
-  let result = graph_color_welsh_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_cursor_min(s : GraphcolorwelshCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_welsh_view_sum(s : GraphcolorwelshView) -> Double { @_common.
 pub fn graph_color_welsh_view_mean(s : GraphcolorwelshView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_view_scale(s : GraphcolorwelshView, f : Double) -> GraphcolorwelshView {
-  let result = graph_color_welsh_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_view_add(a : GraphcolorwelshView, b : GraphcolorwelshView) -> GraphcolorwelshView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_view_copy(s : GraphcolorwelshView) -> GraphcolorwelshView {
-  let result = graph_color_welsh_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_view_fill(s : GraphcolorwelshView, v : Double) -> GraphcolorwelshView {
-  let result = graph_color_welsh_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_view_min(s : GraphcolorwelshView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_welsh_range_sum(s : GraphcolorwelshRange) -> Double { @_commo
 pub fn graph_color_welsh_range_mean(s : GraphcolorwelshRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_range_scale(s : GraphcolorwelshRange, f : Double) -> GraphcolorwelshRange {
-  let result = graph_color_welsh_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_range_add(a : GraphcolorwelshRange, b : GraphcolorwelshRange) -> GraphcolorwelshRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_range_copy(s : GraphcolorwelshRange) -> GraphcolorwelshRange {
-  let result = graph_color_welsh_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_range_fill(s : GraphcolorwelshRange, v : Double) -> GraphcolorwelshRange {
-  let result = graph_color_welsh_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_range_min(s : GraphcolorwelshRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_welsh_slice_sum(s : GraphcolorwelshSlice) -> Double { @_commo
 pub fn graph_color_welsh_slice_mean(s : GraphcolorwelshSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_welsh_slice_scale(s : GraphcolorwelshSlice, f : Double) -> GraphcolorwelshSlice {
-  let result = graph_color_welsh_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_slice_add(a : GraphcolorwelshSlice, b : GraphcolorwelshSlice) -> GraphcolorwelshSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_welsh_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_welsh_slice_copy(s : GraphcolorwelshSlice) -> GraphcolorwelshSlice {
-  let result = graph_color_welsh_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_slice_fill(s : GraphcolorwelshSlice, v : Double) -> GraphcolorwelshSlice {
-  let result = graph_color_welsh_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_welsh_slice_min(s : GraphcolorwelshSlice) -> Double { @_common.min(s.data) }

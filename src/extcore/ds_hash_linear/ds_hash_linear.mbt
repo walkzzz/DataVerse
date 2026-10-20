@@ -383,28 +383,20 @@ pub fn ds_hash_linear_frame_sum(s : DshashlinearFrame) -> Double { @_common.sum(
 pub fn ds_hash_linear_frame_mean(s : DshashlinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_frame_scale(s : DshashlinearFrame, f : Double) -> DshashlinearFrame {
-  let result = ds_hash_linear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_frame_add(a : DshashlinearFrame, b : DshashlinearFrame) -> DshashlinearFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_frame_copy(s : DshashlinearFrame) -> DshashlinearFrame {
-  let result = ds_hash_linear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_frame_fill(s : DshashlinearFrame, v : Double) -> DshashlinearFrame {
-  let result = ds_hash_linear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_frame_min(s : DshashlinearFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_hash_linear_table_sum(s : DshashlinearTable) -> Double { @_common.sum(
 pub fn ds_hash_linear_table_mean(s : DshashlinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_table_scale(s : DshashlinearTable, f : Double) -> DshashlinearTable {
-  let result = ds_hash_linear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_table_add(a : DshashlinearTable, b : DshashlinearTable) -> DshashlinearTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_table_copy(s : DshashlinearTable) -> DshashlinearTable {
-  let result = ds_hash_linear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_table_fill(s : DshashlinearTable, v : Double) -> DshashlinearTable {
-  let result = ds_hash_linear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_table_min(s : DshashlinearTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_hash_linear_graphn_sum(s : DshashlinearGraphN) -> Double { @_common.su
 pub fn ds_hash_linear_graphn_mean(s : DshashlinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_graphn_scale(s : DshashlinearGraphN, f : Double) -> DshashlinearGraphN {
-  let result = ds_hash_linear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_graphn_add(a : DshashlinearGraphN, b : DshashlinearGraphN) -> DshashlinearGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_graphn_copy(s : DshashlinearGraphN) -> DshashlinearGraphN {
-  let result = ds_hash_linear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_graphn_fill(s : DshashlinearGraphN, v : Double) -> DshashlinearGraphN {
-  let result = ds_hash_linear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_graphn_min(s : DshashlinearGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_hash_linear_node_sum(s : DshashlinearNode) -> Double { @_common.sum(s.
 pub fn ds_hash_linear_node_mean(s : DshashlinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_node_scale(s : DshashlinearNode, f : Double) -> DshashlinearNode {
-  let result = ds_hash_linear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_node_add(a : DshashlinearNode, b : DshashlinearNode) -> DshashlinearNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_node_copy(s : DshashlinearNode) -> DshashlinearNode {
-  let result = ds_hash_linear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_node_fill(s : DshashlinearNode, v : Double) -> DshashlinearNode {
-  let result = ds_hash_linear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_node_min(s : DshashlinearNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_hash_linear_edge_sum(s : DshashlinearEdge) -> Double { @_common.sum(s.
 pub fn ds_hash_linear_edge_mean(s : DshashlinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_edge_scale(s : DshashlinearEdge, f : Double) -> DshashlinearEdge {
-  let result = ds_hash_linear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_edge_add(a : DshashlinearEdge, b : DshashlinearEdge) -> DshashlinearEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_edge_copy(s : DshashlinearEdge) -> DshashlinearEdge {
-  let result = ds_hash_linear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_edge_fill(s : DshashlinearEdge, v : Double) -> DshashlinearEdge {
-  let result = ds_hash_linear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_edge_min(s : DshashlinearEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_hash_linear_path_sum(s : DshashlinearPath) -> Double { @_common.sum(s.
 pub fn ds_hash_linear_path_mean(s : DshashlinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_path_scale(s : DshashlinearPath, f : Double) -> DshashlinearPath {
-  let result = ds_hash_linear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_path_add(a : DshashlinearPath, b : DshashlinearPath) -> DshashlinearPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_path_copy(s : DshashlinearPath) -> DshashlinearPath {
-  let result = ds_hash_linear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_path_fill(s : DshashlinearPath, v : Double) -> DshashlinearPath {
-  let result = ds_hash_linear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_path_min(s : DshashlinearPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_hash_linear_cluster_sum(s : DshashlinearCluster) -> Double { @_common.
 pub fn ds_hash_linear_cluster_mean(s : DshashlinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_cluster_scale(s : DshashlinearCluster, f : Double) -> DshashlinearCluster {
-  let result = ds_hash_linear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_cluster_add(a : DshashlinearCluster, b : DshashlinearCluster) -> DshashlinearCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_cluster_copy(s : DshashlinearCluster) -> DshashlinearCluster {
-  let result = ds_hash_linear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_cluster_fill(s : DshashlinearCluster, v : Double) -> DshashlinearCluster {
-  let result = ds_hash_linear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_cluster_min(s : DshashlinearCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_hash_linear_model_sum(s : DshashlinearModel) -> Double { @_common.sum(
 pub fn ds_hash_linear_model_mean(s : DshashlinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_model_scale(s : DshashlinearModel, f : Double) -> DshashlinearModel {
-  let result = ds_hash_linear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_model_add(a : DshashlinearModel, b : DshashlinearModel) -> DshashlinearModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_model_copy(s : DshashlinearModel) -> DshashlinearModel {
-  let result = ds_hash_linear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_model_fill(s : DshashlinearModel, v : Double) -> DshashlinearModel {
-  let result = ds_hash_linear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_model_min(s : DshashlinearModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_hash_linear_layer_sum(s : DshashlinearLayer) -> Double { @_common.sum(
 pub fn ds_hash_linear_layer_mean(s : DshashlinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_layer_scale(s : DshashlinearLayer, f : Double) -> DshashlinearLayer {
-  let result = ds_hash_linear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_layer_add(a : DshashlinearLayer, b : DshashlinearLayer) -> DshashlinearLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_layer_copy(s : DshashlinearLayer) -> DshashlinearLayer {
-  let result = ds_hash_linear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_layer_fill(s : DshashlinearLayer, v : Double) -> DshashlinearLayer {
-  let result = ds_hash_linear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_layer_min(s : DshashlinearLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_hash_linear_buffer_sum(s : DshashlinearBuffer) -> Double { @_common.su
 pub fn ds_hash_linear_buffer_mean(s : DshashlinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_buffer_scale(s : DshashlinearBuffer, f : Double) -> DshashlinearBuffer {
-  let result = ds_hash_linear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_buffer_add(a : DshashlinearBuffer, b : DshashlinearBuffer) -> DshashlinearBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_buffer_copy(s : DshashlinearBuffer) -> DshashlinearBuffer {
-  let result = ds_hash_linear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_buffer_fill(s : DshashlinearBuffer, v : Double) -> DshashlinearBuffer {
-  let result = ds_hash_linear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_buffer_min(s : DshashlinearBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_hash_linear_cursor_sum(s : DshashlinearCursor) -> Double { @_common.su
 pub fn ds_hash_linear_cursor_mean(s : DshashlinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_cursor_scale(s : DshashlinearCursor, f : Double) -> DshashlinearCursor {
-  let result = ds_hash_linear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_cursor_add(a : DshashlinearCursor, b : DshashlinearCursor) -> DshashlinearCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_cursor_copy(s : DshashlinearCursor) -> DshashlinearCursor {
-  let result = ds_hash_linear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_cursor_fill(s : DshashlinearCursor, v : Double) -> DshashlinearCursor {
-  let result = ds_hash_linear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_cursor_min(s : DshashlinearCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_hash_linear_view_sum(s : DshashlinearView) -> Double { @_common.sum(s.
 pub fn ds_hash_linear_view_mean(s : DshashlinearView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_view_scale(s : DshashlinearView, f : Double) -> DshashlinearView {
-  let result = ds_hash_linear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_view_add(a : DshashlinearView, b : DshashlinearView) -> DshashlinearView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_view_copy(s : DshashlinearView) -> DshashlinearView {
-  let result = ds_hash_linear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_view_fill(s : DshashlinearView, v : Double) -> DshashlinearView {
-  let result = ds_hash_linear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_view_min(s : DshashlinearView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_hash_linear_range_sum(s : DshashlinearRange) -> Double { @_common.sum(
 pub fn ds_hash_linear_range_mean(s : DshashlinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_range_scale(s : DshashlinearRange, f : Double) -> DshashlinearRange {
-  let result = ds_hash_linear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_range_add(a : DshashlinearRange, b : DshashlinearRange) -> DshashlinearRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_range_copy(s : DshashlinearRange) -> DshashlinearRange {
-  let result = ds_hash_linear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_range_fill(s : DshashlinearRange, v : Double) -> DshashlinearRange {
-  let result = ds_hash_linear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_range_min(s : DshashlinearRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_hash_linear_slice_sum(s : DshashlinearSlice) -> Double { @_common.sum(
 pub fn ds_hash_linear_slice_mean(s : DshashlinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_slice_scale(s : DshashlinearSlice, f : Double) -> DshashlinearSlice {
-  let result = ds_hash_linear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_slice_add(a : DshashlinearSlice, b : DshashlinearSlice) -> DshashlinearSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_linear_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_linear_slice_copy(s : DshashlinearSlice) -> DshashlinearSlice {
-  let result = ds_hash_linear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_slice_fill(s : DshashlinearSlice, v : Double) -> DshashlinearSlice {
-  let result = ds_hash_linear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_linear_slice_min(s : DshashlinearSlice) -> Double { @_common.min(s.data) }

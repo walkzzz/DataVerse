@@ -383,28 +383,20 @@ pub fn stats_model_nonlinear_frame_sum(s : StatsmodelnonlinearFrame) -> Double {
 pub fn stats_model_nonlinear_frame_mean(s : StatsmodelnonlinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_frame_scale(s : StatsmodelnonlinearFrame, f : Double) -> StatsmodelnonlinearFrame {
-  let result = stats_model_nonlinear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_frame_add(a : StatsmodelnonlinearFrame, b : StatsmodelnonlinearFrame) -> StatsmodelnonlinearFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_frame_copy(s : StatsmodelnonlinearFrame) -> StatsmodelnonlinearFrame {
-  let result = stats_model_nonlinear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_frame_fill(s : StatsmodelnonlinearFrame, v : Double) -> StatsmodelnonlinearFrame {
-  let result = stats_model_nonlinear_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_frame_min(s : StatsmodelnonlinearFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_model_nonlinear_table_sum(s : StatsmodelnonlinearTable) -> Double {
 pub fn stats_model_nonlinear_table_mean(s : StatsmodelnonlinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_table_scale(s : StatsmodelnonlinearTable, f : Double) -> StatsmodelnonlinearTable {
-  let result = stats_model_nonlinear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_table_add(a : StatsmodelnonlinearTable, b : StatsmodelnonlinearTable) -> StatsmodelnonlinearTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_table_copy(s : StatsmodelnonlinearTable) -> StatsmodelnonlinearTable {
-  let result = stats_model_nonlinear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_table_fill(s : StatsmodelnonlinearTable, v : Double) -> StatsmodelnonlinearTable {
-  let result = stats_model_nonlinear_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_table_min(s : StatsmodelnonlinearTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_model_nonlinear_graphn_sum(s : StatsmodelnonlinearGraphN) -> Double
 pub fn stats_model_nonlinear_graphn_mean(s : StatsmodelnonlinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_graphn_scale(s : StatsmodelnonlinearGraphN, f : Double) -> StatsmodelnonlinearGraphN {
-  let result = stats_model_nonlinear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_graphn_add(a : StatsmodelnonlinearGraphN, b : StatsmodelnonlinearGraphN) -> StatsmodelnonlinearGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_graphn_copy(s : StatsmodelnonlinearGraphN) -> StatsmodelnonlinearGraphN {
-  let result = stats_model_nonlinear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_graphn_fill(s : StatsmodelnonlinearGraphN, v : Double) -> StatsmodelnonlinearGraphN {
-  let result = stats_model_nonlinear_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_graphn_min(s : StatsmodelnonlinearGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_model_nonlinear_node_sum(s : StatsmodelnonlinearNode) -> Double { @
 pub fn stats_model_nonlinear_node_mean(s : StatsmodelnonlinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_node_scale(s : StatsmodelnonlinearNode, f : Double) -> StatsmodelnonlinearNode {
-  let result = stats_model_nonlinear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_node_add(a : StatsmodelnonlinearNode, b : StatsmodelnonlinearNode) -> StatsmodelnonlinearNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_node_copy(s : StatsmodelnonlinearNode) -> StatsmodelnonlinearNode {
-  let result = stats_model_nonlinear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_node_fill(s : StatsmodelnonlinearNode, v : Double) -> StatsmodelnonlinearNode {
-  let result = stats_model_nonlinear_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_node_min(s : StatsmodelnonlinearNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_model_nonlinear_edge_sum(s : StatsmodelnonlinearEdge) -> Double { @
 pub fn stats_model_nonlinear_edge_mean(s : StatsmodelnonlinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_edge_scale(s : StatsmodelnonlinearEdge, f : Double) -> StatsmodelnonlinearEdge {
-  let result = stats_model_nonlinear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_edge_add(a : StatsmodelnonlinearEdge, b : StatsmodelnonlinearEdge) -> StatsmodelnonlinearEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_edge_copy(s : StatsmodelnonlinearEdge) -> StatsmodelnonlinearEdge {
-  let result = stats_model_nonlinear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_edge_fill(s : StatsmodelnonlinearEdge, v : Double) -> StatsmodelnonlinearEdge {
-  let result = stats_model_nonlinear_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_edge_min(s : StatsmodelnonlinearEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_model_nonlinear_path_sum(s : StatsmodelnonlinearPath) -> Double { @
 pub fn stats_model_nonlinear_path_mean(s : StatsmodelnonlinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_path_scale(s : StatsmodelnonlinearPath, f : Double) -> StatsmodelnonlinearPath {
-  let result = stats_model_nonlinear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_path_add(a : StatsmodelnonlinearPath, b : StatsmodelnonlinearPath) -> StatsmodelnonlinearPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_path_copy(s : StatsmodelnonlinearPath) -> StatsmodelnonlinearPath {
-  let result = stats_model_nonlinear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_path_fill(s : StatsmodelnonlinearPath, v : Double) -> StatsmodelnonlinearPath {
-  let result = stats_model_nonlinear_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_path_min(s : StatsmodelnonlinearPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_model_nonlinear_cluster_sum(s : StatsmodelnonlinearCluster) -> Doub
 pub fn stats_model_nonlinear_cluster_mean(s : StatsmodelnonlinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_cluster_scale(s : StatsmodelnonlinearCluster, f : Double) -> StatsmodelnonlinearCluster {
-  let result = stats_model_nonlinear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cluster_add(a : StatsmodelnonlinearCluster, b : StatsmodelnonlinearCluster) -> StatsmodelnonlinearCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_cluster_copy(s : StatsmodelnonlinearCluster) -> StatsmodelnonlinearCluster {
-  let result = stats_model_nonlinear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cluster_fill(s : StatsmodelnonlinearCluster, v : Double) -> StatsmodelnonlinearCluster {
-  let result = stats_model_nonlinear_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cluster_min(s : StatsmodelnonlinearCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_model_nonlinear_model_sum(s : StatsmodelnonlinearModel) -> Double {
 pub fn stats_model_nonlinear_model_mean(s : StatsmodelnonlinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_model_scale(s : StatsmodelnonlinearModel, f : Double) -> StatsmodelnonlinearModel {
-  let result = stats_model_nonlinear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_model_add(a : StatsmodelnonlinearModel, b : StatsmodelnonlinearModel) -> StatsmodelnonlinearModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_model_copy(s : StatsmodelnonlinearModel) -> StatsmodelnonlinearModel {
-  let result = stats_model_nonlinear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_model_fill(s : StatsmodelnonlinearModel, v : Double) -> StatsmodelnonlinearModel {
-  let result = stats_model_nonlinear_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_model_min(s : StatsmodelnonlinearModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_model_nonlinear_layer_sum(s : StatsmodelnonlinearLayer) -> Double {
 pub fn stats_model_nonlinear_layer_mean(s : StatsmodelnonlinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_layer_scale(s : StatsmodelnonlinearLayer, f : Double) -> StatsmodelnonlinearLayer {
-  let result = stats_model_nonlinear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_layer_add(a : StatsmodelnonlinearLayer, b : StatsmodelnonlinearLayer) -> StatsmodelnonlinearLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_layer_copy(s : StatsmodelnonlinearLayer) -> StatsmodelnonlinearLayer {
-  let result = stats_model_nonlinear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_layer_fill(s : StatsmodelnonlinearLayer, v : Double) -> StatsmodelnonlinearLayer {
-  let result = stats_model_nonlinear_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_layer_min(s : StatsmodelnonlinearLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_model_nonlinear_buffer_sum(s : StatsmodelnonlinearBuffer) -> Double
 pub fn stats_model_nonlinear_buffer_mean(s : StatsmodelnonlinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_buffer_scale(s : StatsmodelnonlinearBuffer, f : Double) -> StatsmodelnonlinearBuffer {
-  let result = stats_model_nonlinear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_buffer_add(a : StatsmodelnonlinearBuffer, b : StatsmodelnonlinearBuffer) -> StatsmodelnonlinearBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_buffer_copy(s : StatsmodelnonlinearBuffer) -> StatsmodelnonlinearBuffer {
-  let result = stats_model_nonlinear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_buffer_fill(s : StatsmodelnonlinearBuffer, v : Double) -> StatsmodelnonlinearBuffer {
-  let result = stats_model_nonlinear_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_buffer_min(s : StatsmodelnonlinearBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_model_nonlinear_cursor_sum(s : StatsmodelnonlinearCursor) -> Double
 pub fn stats_model_nonlinear_cursor_mean(s : StatsmodelnonlinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_cursor_scale(s : StatsmodelnonlinearCursor, f : Double) -> StatsmodelnonlinearCursor {
-  let result = stats_model_nonlinear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cursor_add(a : StatsmodelnonlinearCursor, b : StatsmodelnonlinearCursor) -> StatsmodelnonlinearCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_cursor_copy(s : StatsmodelnonlinearCursor) -> StatsmodelnonlinearCursor {
-  let result = stats_model_nonlinear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cursor_fill(s : StatsmodelnonlinearCursor, v : Double) -> StatsmodelnonlinearCursor {
-  let result = stats_model_nonlinear_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cursor_min(s : StatsmodelnonlinearCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_model_nonlinear_view_sum(s : StatsmodelnonlinearView) -> Double { @
 pub fn stats_model_nonlinear_view_mean(s : StatsmodelnonlinearView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_view_scale(s : StatsmodelnonlinearView, f : Double) -> StatsmodelnonlinearView {
-  let result = stats_model_nonlinear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_view_add(a : StatsmodelnonlinearView, b : StatsmodelnonlinearView) -> StatsmodelnonlinearView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_view_copy(s : StatsmodelnonlinearView) -> StatsmodelnonlinearView {
-  let result = stats_model_nonlinear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_view_fill(s : StatsmodelnonlinearView, v : Double) -> StatsmodelnonlinearView {
-  let result = stats_model_nonlinear_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_view_min(s : StatsmodelnonlinearView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_model_nonlinear_range_sum(s : StatsmodelnonlinearRange) -> Double {
 pub fn stats_model_nonlinear_range_mean(s : StatsmodelnonlinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_range_scale(s : StatsmodelnonlinearRange, f : Double) -> StatsmodelnonlinearRange {
-  let result = stats_model_nonlinear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_range_add(a : StatsmodelnonlinearRange, b : StatsmodelnonlinearRange) -> StatsmodelnonlinearRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_range_copy(s : StatsmodelnonlinearRange) -> StatsmodelnonlinearRange {
-  let result = stats_model_nonlinear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_range_fill(s : StatsmodelnonlinearRange, v : Double) -> StatsmodelnonlinearRange {
-  let result = stats_model_nonlinear_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_range_min(s : StatsmodelnonlinearRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_model_nonlinear_slice_sum(s : StatsmodelnonlinearSlice) -> Double {
 pub fn stats_model_nonlinear_slice_mean(s : StatsmodelnonlinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_slice_scale(s : StatsmodelnonlinearSlice, f : Double) -> StatsmodelnonlinearSlice {
-  let result = stats_model_nonlinear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_slice_add(a : StatsmodelnonlinearSlice, b : StatsmodelnonlinearSlice) -> StatsmodelnonlinearSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_nonlinear_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_nonlinear_slice_copy(s : StatsmodelnonlinearSlice) -> StatsmodelnonlinearSlice {
-  let result = stats_model_nonlinear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_slice_fill(s : StatsmodelnonlinearSlice, v : Double) -> StatsmodelnonlinearSlice {
-  let result = stats_model_nonlinear_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_slice_min(s : StatsmodelnonlinearSlice) -> Double { @_common.min(s.data) }

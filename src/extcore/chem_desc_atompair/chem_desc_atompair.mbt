@@ -383,28 +383,20 @@ pub fn chem_desc_atompair_frame_sum(s : ChemdescatompairFrame) -> Double { @_com
 pub fn chem_desc_atompair_frame_mean(s : ChemdescatompairFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_frame_scale(s : ChemdescatompairFrame, f : Double) -> ChemdescatompairFrame {
-  let result = chem_desc_atompair_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_frame_add(a : ChemdescatompairFrame, b : ChemdescatompairFrame) -> ChemdescatompairFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_frame_copy(s : ChemdescatompairFrame) -> ChemdescatompairFrame {
-  let result = chem_desc_atompair_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_frame_fill(s : ChemdescatompairFrame, v : Double) -> ChemdescatompairFrame {
-  let result = chem_desc_atompair_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_frame_min(s : ChemdescatompairFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_desc_atompair_table_sum(s : ChemdescatompairTable) -> Double { @_com
 pub fn chem_desc_atompair_table_mean(s : ChemdescatompairTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_table_scale(s : ChemdescatompairTable, f : Double) -> ChemdescatompairTable {
-  let result = chem_desc_atompair_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_table_add(a : ChemdescatompairTable, b : ChemdescatompairTable) -> ChemdescatompairTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_table_copy(s : ChemdescatompairTable) -> ChemdescatompairTable {
-  let result = chem_desc_atompair_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_table_fill(s : ChemdescatompairTable, v : Double) -> ChemdescatompairTable {
-  let result = chem_desc_atompair_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_table_min(s : ChemdescatompairTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_desc_atompair_graphn_sum(s : ChemdescatompairGraphN) -> Double { @_c
 pub fn chem_desc_atompair_graphn_mean(s : ChemdescatompairGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_graphn_scale(s : ChemdescatompairGraphN, f : Double) -> ChemdescatompairGraphN {
-  let result = chem_desc_atompair_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_graphn_add(a : ChemdescatompairGraphN, b : ChemdescatompairGraphN) -> ChemdescatompairGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_graphn_copy(s : ChemdescatompairGraphN) -> ChemdescatompairGraphN {
-  let result = chem_desc_atompair_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_graphn_fill(s : ChemdescatompairGraphN, v : Double) -> ChemdescatompairGraphN {
-  let result = chem_desc_atompair_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_graphn_min(s : ChemdescatompairGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_desc_atompair_node_sum(s : ChemdescatompairNode) -> Double { @_commo
 pub fn chem_desc_atompair_node_mean(s : ChemdescatompairNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_node_scale(s : ChemdescatompairNode, f : Double) -> ChemdescatompairNode {
-  let result = chem_desc_atompair_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_node_add(a : ChemdescatompairNode, b : ChemdescatompairNode) -> ChemdescatompairNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_node_copy(s : ChemdescatompairNode) -> ChemdescatompairNode {
-  let result = chem_desc_atompair_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_node_fill(s : ChemdescatompairNode, v : Double) -> ChemdescatompairNode {
-  let result = chem_desc_atompair_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_node_min(s : ChemdescatompairNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_desc_atompair_edge_sum(s : ChemdescatompairEdge) -> Double { @_commo
 pub fn chem_desc_atompair_edge_mean(s : ChemdescatompairEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_edge_scale(s : ChemdescatompairEdge, f : Double) -> ChemdescatompairEdge {
-  let result = chem_desc_atompair_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_edge_add(a : ChemdescatompairEdge, b : ChemdescatompairEdge) -> ChemdescatompairEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_edge_copy(s : ChemdescatompairEdge) -> ChemdescatompairEdge {
-  let result = chem_desc_atompair_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_edge_fill(s : ChemdescatompairEdge, v : Double) -> ChemdescatompairEdge {
-  let result = chem_desc_atompair_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_edge_min(s : ChemdescatompairEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_desc_atompair_path_sum(s : ChemdescatompairPath) -> Double { @_commo
 pub fn chem_desc_atompair_path_mean(s : ChemdescatompairPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_path_scale(s : ChemdescatompairPath, f : Double) -> ChemdescatompairPath {
-  let result = chem_desc_atompair_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_path_add(a : ChemdescatompairPath, b : ChemdescatompairPath) -> ChemdescatompairPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_path_copy(s : ChemdescatompairPath) -> ChemdescatompairPath {
-  let result = chem_desc_atompair_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_path_fill(s : ChemdescatompairPath, v : Double) -> ChemdescatompairPath {
-  let result = chem_desc_atompair_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_path_min(s : ChemdescatompairPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_desc_atompair_cluster_sum(s : ChemdescatompairCluster) -> Double { @
 pub fn chem_desc_atompair_cluster_mean(s : ChemdescatompairCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_cluster_scale(s : ChemdescatompairCluster, f : Double) -> ChemdescatompairCluster {
-  let result = chem_desc_atompair_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cluster_add(a : ChemdescatompairCluster, b : ChemdescatompairCluster) -> ChemdescatompairCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_cluster_copy(s : ChemdescatompairCluster) -> ChemdescatompairCluster {
-  let result = chem_desc_atompair_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cluster_fill(s : ChemdescatompairCluster, v : Double) -> ChemdescatompairCluster {
-  let result = chem_desc_atompair_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cluster_min(s : ChemdescatompairCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_desc_atompair_model_sum(s : ChemdescatompairModel) -> Double { @_com
 pub fn chem_desc_atompair_model_mean(s : ChemdescatompairModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_model_scale(s : ChemdescatompairModel, f : Double) -> ChemdescatompairModel {
-  let result = chem_desc_atompair_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_model_add(a : ChemdescatompairModel, b : ChemdescatompairModel) -> ChemdescatompairModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_model_copy(s : ChemdescatompairModel) -> ChemdescatompairModel {
-  let result = chem_desc_atompair_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_model_fill(s : ChemdescatompairModel, v : Double) -> ChemdescatompairModel {
-  let result = chem_desc_atompair_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_model_min(s : ChemdescatompairModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_desc_atompair_layer_sum(s : ChemdescatompairLayer) -> Double { @_com
 pub fn chem_desc_atompair_layer_mean(s : ChemdescatompairLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_layer_scale(s : ChemdescatompairLayer, f : Double) -> ChemdescatompairLayer {
-  let result = chem_desc_atompair_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_layer_add(a : ChemdescatompairLayer, b : ChemdescatompairLayer) -> ChemdescatompairLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_layer_copy(s : ChemdescatompairLayer) -> ChemdescatompairLayer {
-  let result = chem_desc_atompair_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_layer_fill(s : ChemdescatompairLayer, v : Double) -> ChemdescatompairLayer {
-  let result = chem_desc_atompair_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_layer_min(s : ChemdescatompairLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_desc_atompair_buffer_sum(s : ChemdescatompairBuffer) -> Double { @_c
 pub fn chem_desc_atompair_buffer_mean(s : ChemdescatompairBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_buffer_scale(s : ChemdescatompairBuffer, f : Double) -> ChemdescatompairBuffer {
-  let result = chem_desc_atompair_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_buffer_add(a : ChemdescatompairBuffer, b : ChemdescatompairBuffer) -> ChemdescatompairBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_buffer_copy(s : ChemdescatompairBuffer) -> ChemdescatompairBuffer {
-  let result = chem_desc_atompair_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_buffer_fill(s : ChemdescatompairBuffer, v : Double) -> ChemdescatompairBuffer {
-  let result = chem_desc_atompair_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_buffer_min(s : ChemdescatompairBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_desc_atompair_cursor_sum(s : ChemdescatompairCursor) -> Double { @_c
 pub fn chem_desc_atompair_cursor_mean(s : ChemdescatompairCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_cursor_scale(s : ChemdescatompairCursor, f : Double) -> ChemdescatompairCursor {
-  let result = chem_desc_atompair_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cursor_add(a : ChemdescatompairCursor, b : ChemdescatompairCursor) -> ChemdescatompairCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_cursor_copy(s : ChemdescatompairCursor) -> ChemdescatompairCursor {
-  let result = chem_desc_atompair_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cursor_fill(s : ChemdescatompairCursor, v : Double) -> ChemdescatompairCursor {
-  let result = chem_desc_atompair_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cursor_min(s : ChemdescatompairCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_desc_atompair_view_sum(s : ChemdescatompairView) -> Double { @_commo
 pub fn chem_desc_atompair_view_mean(s : ChemdescatompairView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_view_scale(s : ChemdescatompairView, f : Double) -> ChemdescatompairView {
-  let result = chem_desc_atompair_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_view_add(a : ChemdescatompairView, b : ChemdescatompairView) -> ChemdescatompairView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_view_copy(s : ChemdescatompairView) -> ChemdescatompairView {
-  let result = chem_desc_atompair_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_view_fill(s : ChemdescatompairView, v : Double) -> ChemdescatompairView {
-  let result = chem_desc_atompair_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_view_min(s : ChemdescatompairView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_desc_atompair_range_sum(s : ChemdescatompairRange) -> Double { @_com
 pub fn chem_desc_atompair_range_mean(s : ChemdescatompairRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_range_scale(s : ChemdescatompairRange, f : Double) -> ChemdescatompairRange {
-  let result = chem_desc_atompair_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_range_add(a : ChemdescatompairRange, b : ChemdescatompairRange) -> ChemdescatompairRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_range_copy(s : ChemdescatompairRange) -> ChemdescatompairRange {
-  let result = chem_desc_atompair_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_range_fill(s : ChemdescatompairRange, v : Double) -> ChemdescatompairRange {
-  let result = chem_desc_atompair_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_range_min(s : ChemdescatompairRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_desc_atompair_slice_sum(s : ChemdescatompairSlice) -> Double { @_com
 pub fn chem_desc_atompair_slice_mean(s : ChemdescatompairSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_slice_scale(s : ChemdescatompairSlice, f : Double) -> ChemdescatompairSlice {
-  let result = chem_desc_atompair_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_slice_add(a : ChemdescatompairSlice, b : ChemdescatompairSlice) -> ChemdescatompairSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_atompair_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_atompair_slice_copy(s : ChemdescatompairSlice) -> ChemdescatompairSlice {
-  let result = chem_desc_atompair_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_slice_fill(s : ChemdescatompairSlice, v : Double) -> ChemdescatompairSlice {
-  let result = chem_desc_atompair_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_slice_min(s : ChemdescatompairSlice) -> Double { @_common.min(s.data) }

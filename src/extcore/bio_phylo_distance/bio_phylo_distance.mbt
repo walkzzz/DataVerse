@@ -383,28 +383,20 @@ pub fn bio_phylo_distance_frame_sum(s : BiophylodistanceFrame) -> Double { @_com
 pub fn bio_phylo_distance_frame_mean(s : BiophylodistanceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_frame_scale(s : BiophylodistanceFrame, f : Double) -> BiophylodistanceFrame {
-  let result = bio_phylo_distance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_frame_add(a : BiophylodistanceFrame, b : BiophylodistanceFrame) -> BiophylodistanceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_frame_copy(s : BiophylodistanceFrame) -> BiophylodistanceFrame {
-  let result = bio_phylo_distance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_frame_fill(s : BiophylodistanceFrame, v : Double) -> BiophylodistanceFrame {
-  let result = bio_phylo_distance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_frame_min(s : BiophylodistanceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_phylo_distance_table_sum(s : BiophylodistanceTable) -> Double { @_com
 pub fn bio_phylo_distance_table_mean(s : BiophylodistanceTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_table_scale(s : BiophylodistanceTable, f : Double) -> BiophylodistanceTable {
-  let result = bio_phylo_distance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_table_add(a : BiophylodistanceTable, b : BiophylodistanceTable) -> BiophylodistanceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_table_copy(s : BiophylodistanceTable) -> BiophylodistanceTable {
-  let result = bio_phylo_distance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_table_fill(s : BiophylodistanceTable, v : Double) -> BiophylodistanceTable {
-  let result = bio_phylo_distance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_table_min(s : BiophylodistanceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_phylo_distance_graphn_sum(s : BiophylodistanceGraphN) -> Double { @_c
 pub fn bio_phylo_distance_graphn_mean(s : BiophylodistanceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_graphn_scale(s : BiophylodistanceGraphN, f : Double) -> BiophylodistanceGraphN {
-  let result = bio_phylo_distance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_graphn_add(a : BiophylodistanceGraphN, b : BiophylodistanceGraphN) -> BiophylodistanceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_graphn_copy(s : BiophylodistanceGraphN) -> BiophylodistanceGraphN {
-  let result = bio_phylo_distance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_graphn_fill(s : BiophylodistanceGraphN, v : Double) -> BiophylodistanceGraphN {
-  let result = bio_phylo_distance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_graphn_min(s : BiophylodistanceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_phylo_distance_node_sum(s : BiophylodistanceNode) -> Double { @_commo
 pub fn bio_phylo_distance_node_mean(s : BiophylodistanceNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_node_scale(s : BiophylodistanceNode, f : Double) -> BiophylodistanceNode {
-  let result = bio_phylo_distance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_node_add(a : BiophylodistanceNode, b : BiophylodistanceNode) -> BiophylodistanceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_node_copy(s : BiophylodistanceNode) -> BiophylodistanceNode {
-  let result = bio_phylo_distance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_node_fill(s : BiophylodistanceNode, v : Double) -> BiophylodistanceNode {
-  let result = bio_phylo_distance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_node_min(s : BiophylodistanceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_phylo_distance_edge_sum(s : BiophylodistanceEdge) -> Double { @_commo
 pub fn bio_phylo_distance_edge_mean(s : BiophylodistanceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_edge_scale(s : BiophylodistanceEdge, f : Double) -> BiophylodistanceEdge {
-  let result = bio_phylo_distance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_edge_add(a : BiophylodistanceEdge, b : BiophylodistanceEdge) -> BiophylodistanceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_edge_copy(s : BiophylodistanceEdge) -> BiophylodistanceEdge {
-  let result = bio_phylo_distance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_edge_fill(s : BiophylodistanceEdge, v : Double) -> BiophylodistanceEdge {
-  let result = bio_phylo_distance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_edge_min(s : BiophylodistanceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_phylo_distance_path_sum(s : BiophylodistancePath) -> Double { @_commo
 pub fn bio_phylo_distance_path_mean(s : BiophylodistancePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_path_scale(s : BiophylodistancePath, f : Double) -> BiophylodistancePath {
-  let result = bio_phylo_distance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_path_add(a : BiophylodistancePath, b : BiophylodistancePath) -> BiophylodistancePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_path_copy(s : BiophylodistancePath) -> BiophylodistancePath {
-  let result = bio_phylo_distance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_path_fill(s : BiophylodistancePath, v : Double) -> BiophylodistancePath {
-  let result = bio_phylo_distance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_path_min(s : BiophylodistancePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_phylo_distance_cluster_sum(s : BiophylodistanceCluster) -> Double { @
 pub fn bio_phylo_distance_cluster_mean(s : BiophylodistanceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_cluster_scale(s : BiophylodistanceCluster, f : Double) -> BiophylodistanceCluster {
-  let result = bio_phylo_distance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_cluster_add(a : BiophylodistanceCluster, b : BiophylodistanceCluster) -> BiophylodistanceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_cluster_copy(s : BiophylodistanceCluster) -> BiophylodistanceCluster {
-  let result = bio_phylo_distance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_cluster_fill(s : BiophylodistanceCluster, v : Double) -> BiophylodistanceCluster {
-  let result = bio_phylo_distance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_cluster_min(s : BiophylodistanceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_phylo_distance_model_sum(s : BiophylodistanceModel) -> Double { @_com
 pub fn bio_phylo_distance_model_mean(s : BiophylodistanceModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_model_scale(s : BiophylodistanceModel, f : Double) -> BiophylodistanceModel {
-  let result = bio_phylo_distance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_model_add(a : BiophylodistanceModel, b : BiophylodistanceModel) -> BiophylodistanceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_model_copy(s : BiophylodistanceModel) -> BiophylodistanceModel {
-  let result = bio_phylo_distance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_model_fill(s : BiophylodistanceModel, v : Double) -> BiophylodistanceModel {
-  let result = bio_phylo_distance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_model_min(s : BiophylodistanceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_phylo_distance_layer_sum(s : BiophylodistanceLayer) -> Double { @_com
 pub fn bio_phylo_distance_layer_mean(s : BiophylodistanceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_layer_scale(s : BiophylodistanceLayer, f : Double) -> BiophylodistanceLayer {
-  let result = bio_phylo_distance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_layer_add(a : BiophylodistanceLayer, b : BiophylodistanceLayer) -> BiophylodistanceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_layer_copy(s : BiophylodistanceLayer) -> BiophylodistanceLayer {
-  let result = bio_phylo_distance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_layer_fill(s : BiophylodistanceLayer, v : Double) -> BiophylodistanceLayer {
-  let result = bio_phylo_distance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_layer_min(s : BiophylodistanceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_phylo_distance_buffer_sum(s : BiophylodistanceBuffer) -> Double { @_c
 pub fn bio_phylo_distance_buffer_mean(s : BiophylodistanceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_buffer_scale(s : BiophylodistanceBuffer, f : Double) -> BiophylodistanceBuffer {
-  let result = bio_phylo_distance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_buffer_add(a : BiophylodistanceBuffer, b : BiophylodistanceBuffer) -> BiophylodistanceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_buffer_copy(s : BiophylodistanceBuffer) -> BiophylodistanceBuffer {
-  let result = bio_phylo_distance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_buffer_fill(s : BiophylodistanceBuffer, v : Double) -> BiophylodistanceBuffer {
-  let result = bio_phylo_distance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_buffer_min(s : BiophylodistanceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_phylo_distance_cursor_sum(s : BiophylodistanceCursor) -> Double { @_c
 pub fn bio_phylo_distance_cursor_mean(s : BiophylodistanceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_cursor_scale(s : BiophylodistanceCursor, f : Double) -> BiophylodistanceCursor {
-  let result = bio_phylo_distance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_cursor_add(a : BiophylodistanceCursor, b : BiophylodistanceCursor) -> BiophylodistanceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_cursor_copy(s : BiophylodistanceCursor) -> BiophylodistanceCursor {
-  let result = bio_phylo_distance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_cursor_fill(s : BiophylodistanceCursor, v : Double) -> BiophylodistanceCursor {
-  let result = bio_phylo_distance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_cursor_min(s : BiophylodistanceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_phylo_distance_view_sum(s : BiophylodistanceView) -> Double { @_commo
 pub fn bio_phylo_distance_view_mean(s : BiophylodistanceView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_view_scale(s : BiophylodistanceView, f : Double) -> BiophylodistanceView {
-  let result = bio_phylo_distance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_view_add(a : BiophylodistanceView, b : BiophylodistanceView) -> BiophylodistanceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_view_copy(s : BiophylodistanceView) -> BiophylodistanceView {
-  let result = bio_phylo_distance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_view_fill(s : BiophylodistanceView, v : Double) -> BiophylodistanceView {
-  let result = bio_phylo_distance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_view_min(s : BiophylodistanceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_phylo_distance_range_sum(s : BiophylodistanceRange) -> Double { @_com
 pub fn bio_phylo_distance_range_mean(s : BiophylodistanceRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_range_scale(s : BiophylodistanceRange, f : Double) -> BiophylodistanceRange {
-  let result = bio_phylo_distance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_range_add(a : BiophylodistanceRange, b : BiophylodistanceRange) -> BiophylodistanceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_range_copy(s : BiophylodistanceRange) -> BiophylodistanceRange {
-  let result = bio_phylo_distance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_range_fill(s : BiophylodistanceRange, v : Double) -> BiophylodistanceRange {
-  let result = bio_phylo_distance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_range_min(s : BiophylodistanceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_phylo_distance_slice_sum(s : BiophylodistanceSlice) -> Double { @_com
 pub fn bio_phylo_distance_slice_mean(s : BiophylodistanceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_slice_scale(s : BiophylodistanceSlice, f : Double) -> BiophylodistanceSlice {
-  let result = bio_phylo_distance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_slice_add(a : BiophylodistanceSlice, b : BiophylodistanceSlice) -> BiophylodistanceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_distance_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_distance_slice_copy(s : BiophylodistanceSlice) -> BiophylodistanceSlice {
-  let result = bio_phylo_distance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_slice_fill(s : BiophylodistanceSlice, v : Double) -> BiophylodistanceSlice {
-  let result = bio_phylo_distance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_distance_slice_min(s : BiophylodistanceSlice) -> Double { @_common.min(s.data) }

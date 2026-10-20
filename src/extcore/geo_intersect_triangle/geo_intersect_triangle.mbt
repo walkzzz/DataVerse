@@ -383,28 +383,20 @@ pub fn geo_intersect_triangle_frame_sum(s : GeointersecttriangleFrame) -> Double
 pub fn geo_intersect_triangle_frame_mean(s : GeointersecttriangleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_frame_scale(s : GeointersecttriangleFrame, f : Double) -> GeointersecttriangleFrame {
-  let result = geo_intersect_triangle_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_frame_add(a : GeointersecttriangleFrame, b : GeointersecttriangleFrame) -> GeointersecttriangleFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_frame_copy(s : GeointersecttriangleFrame) -> GeointersecttriangleFrame {
-  let result = geo_intersect_triangle_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_frame_fill(s : GeointersecttriangleFrame, v : Double) -> GeointersecttriangleFrame {
-  let result = geo_intersect_triangle_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_frame_min(s : GeointersecttriangleFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_intersect_triangle_table_sum(s : GeointersecttriangleTable) -> Double
 pub fn geo_intersect_triangle_table_mean(s : GeointersecttriangleTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_table_scale(s : GeointersecttriangleTable, f : Double) -> GeointersecttriangleTable {
-  let result = geo_intersect_triangle_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_table_add(a : GeointersecttriangleTable, b : GeointersecttriangleTable) -> GeointersecttriangleTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_table_copy(s : GeointersecttriangleTable) -> GeointersecttriangleTable {
-  let result = geo_intersect_triangle_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_table_fill(s : GeointersecttriangleTable, v : Double) -> GeointersecttriangleTable {
-  let result = geo_intersect_triangle_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_table_min(s : GeointersecttriangleTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_intersect_triangle_graphn_sum(s : GeointersecttriangleGraphN) -> Doub
 pub fn geo_intersect_triangle_graphn_mean(s : GeointersecttriangleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_graphn_scale(s : GeointersecttriangleGraphN, f : Double) -> GeointersecttriangleGraphN {
-  let result = geo_intersect_triangle_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_graphn_add(a : GeointersecttriangleGraphN, b : GeointersecttriangleGraphN) -> GeointersecttriangleGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_graphn_copy(s : GeointersecttriangleGraphN) -> GeointersecttriangleGraphN {
-  let result = geo_intersect_triangle_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_graphn_fill(s : GeointersecttriangleGraphN, v : Double) -> GeointersecttriangleGraphN {
-  let result = geo_intersect_triangle_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_graphn_min(s : GeointersecttriangleGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_intersect_triangle_node_sum(s : GeointersecttriangleNode) -> Double {
 pub fn geo_intersect_triangle_node_mean(s : GeointersecttriangleNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_node_scale(s : GeointersecttriangleNode, f : Double) -> GeointersecttriangleNode {
-  let result = geo_intersect_triangle_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_node_add(a : GeointersecttriangleNode, b : GeointersecttriangleNode) -> GeointersecttriangleNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_node_copy(s : GeointersecttriangleNode) -> GeointersecttriangleNode {
-  let result = geo_intersect_triangle_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_node_fill(s : GeointersecttriangleNode, v : Double) -> GeointersecttriangleNode {
-  let result = geo_intersect_triangle_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_node_min(s : GeointersecttriangleNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_intersect_triangle_edge_sum(s : GeointersecttriangleEdge) -> Double {
 pub fn geo_intersect_triangle_edge_mean(s : GeointersecttriangleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_edge_scale(s : GeointersecttriangleEdge, f : Double) -> GeointersecttriangleEdge {
-  let result = geo_intersect_triangle_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_edge_add(a : GeointersecttriangleEdge, b : GeointersecttriangleEdge) -> GeointersecttriangleEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_edge_copy(s : GeointersecttriangleEdge) -> GeointersecttriangleEdge {
-  let result = geo_intersect_triangle_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_edge_fill(s : GeointersecttriangleEdge, v : Double) -> GeointersecttriangleEdge {
-  let result = geo_intersect_triangle_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_edge_min(s : GeointersecttriangleEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_intersect_triangle_path_sum(s : GeointersecttrianglePath) -> Double {
 pub fn geo_intersect_triangle_path_mean(s : GeointersecttrianglePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_path_scale(s : GeointersecttrianglePath, f : Double) -> GeointersecttrianglePath {
-  let result = geo_intersect_triangle_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_path_add(a : GeointersecttrianglePath, b : GeointersecttrianglePath) -> GeointersecttrianglePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_path_copy(s : GeointersecttrianglePath) -> GeointersecttrianglePath {
-  let result = geo_intersect_triangle_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_path_fill(s : GeointersecttrianglePath, v : Double) -> GeointersecttrianglePath {
-  let result = geo_intersect_triangle_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_path_min(s : GeointersecttrianglePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_intersect_triangle_cluster_sum(s : GeointersecttriangleCluster) -> Do
 pub fn geo_intersect_triangle_cluster_mean(s : GeointersecttriangleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_cluster_scale(s : GeointersecttriangleCluster, f : Double) -> GeointersecttriangleCluster {
-  let result = geo_intersect_triangle_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cluster_add(a : GeointersecttriangleCluster, b : GeointersecttriangleCluster) -> GeointersecttriangleCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_cluster_copy(s : GeointersecttriangleCluster) -> GeointersecttriangleCluster {
-  let result = geo_intersect_triangle_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cluster_fill(s : GeointersecttriangleCluster, v : Double) -> GeointersecttriangleCluster {
-  let result = geo_intersect_triangle_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cluster_min(s : GeointersecttriangleCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_intersect_triangle_model_sum(s : GeointersecttriangleModel) -> Double
 pub fn geo_intersect_triangle_model_mean(s : GeointersecttriangleModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_model_scale(s : GeointersecttriangleModel, f : Double) -> GeointersecttriangleModel {
-  let result = geo_intersect_triangle_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_model_add(a : GeointersecttriangleModel, b : GeointersecttriangleModel) -> GeointersecttriangleModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_model_copy(s : GeointersecttriangleModel) -> GeointersecttriangleModel {
-  let result = geo_intersect_triangle_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_model_fill(s : GeointersecttriangleModel, v : Double) -> GeointersecttriangleModel {
-  let result = geo_intersect_triangle_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_model_min(s : GeointersecttriangleModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_intersect_triangle_layer_sum(s : GeointersecttriangleLayer) -> Double
 pub fn geo_intersect_triangle_layer_mean(s : GeointersecttriangleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_layer_scale(s : GeointersecttriangleLayer, f : Double) -> GeointersecttriangleLayer {
-  let result = geo_intersect_triangle_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_layer_add(a : GeointersecttriangleLayer, b : GeointersecttriangleLayer) -> GeointersecttriangleLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_layer_copy(s : GeointersecttriangleLayer) -> GeointersecttriangleLayer {
-  let result = geo_intersect_triangle_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_layer_fill(s : GeointersecttriangleLayer, v : Double) -> GeointersecttriangleLayer {
-  let result = geo_intersect_triangle_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_layer_min(s : GeointersecttriangleLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_intersect_triangle_buffer_sum(s : GeointersecttriangleBuffer) -> Doub
 pub fn geo_intersect_triangle_buffer_mean(s : GeointersecttriangleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_buffer_scale(s : GeointersecttriangleBuffer, f : Double) -> GeointersecttriangleBuffer {
-  let result = geo_intersect_triangle_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_buffer_add(a : GeointersecttriangleBuffer, b : GeointersecttriangleBuffer) -> GeointersecttriangleBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_buffer_copy(s : GeointersecttriangleBuffer) -> GeointersecttriangleBuffer {
-  let result = geo_intersect_triangle_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_buffer_fill(s : GeointersecttriangleBuffer, v : Double) -> GeointersecttriangleBuffer {
-  let result = geo_intersect_triangle_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_buffer_min(s : GeointersecttriangleBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_intersect_triangle_cursor_sum(s : GeointersecttriangleCursor) -> Doub
 pub fn geo_intersect_triangle_cursor_mean(s : GeointersecttriangleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_cursor_scale(s : GeointersecttriangleCursor, f : Double) -> GeointersecttriangleCursor {
-  let result = geo_intersect_triangle_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cursor_add(a : GeointersecttriangleCursor, b : GeointersecttriangleCursor) -> GeointersecttriangleCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_cursor_copy(s : GeointersecttriangleCursor) -> GeointersecttriangleCursor {
-  let result = geo_intersect_triangle_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cursor_fill(s : GeointersecttriangleCursor, v : Double) -> GeointersecttriangleCursor {
-  let result = geo_intersect_triangle_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cursor_min(s : GeointersecttriangleCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_intersect_triangle_view_sum(s : GeointersecttriangleView) -> Double {
 pub fn geo_intersect_triangle_view_mean(s : GeointersecttriangleView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_view_scale(s : GeointersecttriangleView, f : Double) -> GeointersecttriangleView {
-  let result = geo_intersect_triangle_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_view_add(a : GeointersecttriangleView, b : GeointersecttriangleView) -> GeointersecttriangleView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_view_copy(s : GeointersecttriangleView) -> GeointersecttriangleView {
-  let result = geo_intersect_triangle_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_view_fill(s : GeointersecttriangleView, v : Double) -> GeointersecttriangleView {
-  let result = geo_intersect_triangle_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_view_min(s : GeointersecttriangleView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_intersect_triangle_range_sum(s : GeointersecttriangleRange) -> Double
 pub fn geo_intersect_triangle_range_mean(s : GeointersecttriangleRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_range_scale(s : GeointersecttriangleRange, f : Double) -> GeointersecttriangleRange {
-  let result = geo_intersect_triangle_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_range_add(a : GeointersecttriangleRange, b : GeointersecttriangleRange) -> GeointersecttriangleRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_range_copy(s : GeointersecttriangleRange) -> GeointersecttriangleRange {
-  let result = geo_intersect_triangle_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_range_fill(s : GeointersecttriangleRange, v : Double) -> GeointersecttriangleRange {
-  let result = geo_intersect_triangle_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_range_min(s : GeointersecttriangleRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_intersect_triangle_slice_sum(s : GeointersecttriangleSlice) -> Double
 pub fn geo_intersect_triangle_slice_mean(s : GeointersecttriangleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_triangle_slice_scale(s : GeointersecttriangleSlice, f : Double) -> GeointersecttriangleSlice {
-  let result = geo_intersect_triangle_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_slice_add(a : GeointersecttriangleSlice, b : GeointersecttriangleSlice) -> GeointersecttriangleSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_triangle_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_triangle_slice_copy(s : GeointersecttriangleSlice) -> GeointersecttriangleSlice {
-  let result = geo_intersect_triangle_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_slice_fill(s : GeointersecttriangleSlice, v : Double) -> GeointersecttriangleSlice {
-  let result = geo_intersect_triangle_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_slice_min(s : GeointersecttriangleSlice) -> Double { @_common.min(s.data) }

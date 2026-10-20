@@ -383,28 +383,20 @@ pub fn image_morph_thinning_frame_sum(s : ImagemorphthinningFrame) -> Double { @
 pub fn image_morph_thinning_frame_mean(s : ImagemorphthinningFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_frame_scale(s : ImagemorphthinningFrame, f : Double) -> ImagemorphthinningFrame {
-  let result = image_morph_thinning_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_frame_add(a : ImagemorphthinningFrame, b : ImagemorphthinningFrame) -> ImagemorphthinningFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_frame_copy(s : ImagemorphthinningFrame) -> ImagemorphthinningFrame {
-  let result = image_morph_thinning_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_frame_fill(s : ImagemorphthinningFrame, v : Double) -> ImagemorphthinningFrame {
-  let result = image_morph_thinning_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_frame_min(s : ImagemorphthinningFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_morph_thinning_table_sum(s : ImagemorphthinningTable) -> Double { @
 pub fn image_morph_thinning_table_mean(s : ImagemorphthinningTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_table_scale(s : ImagemorphthinningTable, f : Double) -> ImagemorphthinningTable {
-  let result = image_morph_thinning_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_table_add(a : ImagemorphthinningTable, b : ImagemorphthinningTable) -> ImagemorphthinningTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_table_copy(s : ImagemorphthinningTable) -> ImagemorphthinningTable {
-  let result = image_morph_thinning_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_table_fill(s : ImagemorphthinningTable, v : Double) -> ImagemorphthinningTable {
-  let result = image_morph_thinning_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_table_min(s : ImagemorphthinningTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_morph_thinning_graphn_sum(s : ImagemorphthinningGraphN) -> Double {
 pub fn image_morph_thinning_graphn_mean(s : ImagemorphthinningGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_graphn_scale(s : ImagemorphthinningGraphN, f : Double) -> ImagemorphthinningGraphN {
-  let result = image_morph_thinning_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_graphn_add(a : ImagemorphthinningGraphN, b : ImagemorphthinningGraphN) -> ImagemorphthinningGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_graphn_copy(s : ImagemorphthinningGraphN) -> ImagemorphthinningGraphN {
-  let result = image_morph_thinning_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_graphn_fill(s : ImagemorphthinningGraphN, v : Double) -> ImagemorphthinningGraphN {
-  let result = image_morph_thinning_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_graphn_min(s : ImagemorphthinningGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_morph_thinning_node_sum(s : ImagemorphthinningNode) -> Double { @_c
 pub fn image_morph_thinning_node_mean(s : ImagemorphthinningNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_node_scale(s : ImagemorphthinningNode, f : Double) -> ImagemorphthinningNode {
-  let result = image_morph_thinning_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_node_add(a : ImagemorphthinningNode, b : ImagemorphthinningNode) -> ImagemorphthinningNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_node_copy(s : ImagemorphthinningNode) -> ImagemorphthinningNode {
-  let result = image_morph_thinning_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_node_fill(s : ImagemorphthinningNode, v : Double) -> ImagemorphthinningNode {
-  let result = image_morph_thinning_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_node_min(s : ImagemorphthinningNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_morph_thinning_edge_sum(s : ImagemorphthinningEdge) -> Double { @_c
 pub fn image_morph_thinning_edge_mean(s : ImagemorphthinningEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_edge_scale(s : ImagemorphthinningEdge, f : Double) -> ImagemorphthinningEdge {
-  let result = image_morph_thinning_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_edge_add(a : ImagemorphthinningEdge, b : ImagemorphthinningEdge) -> ImagemorphthinningEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_edge_copy(s : ImagemorphthinningEdge) -> ImagemorphthinningEdge {
-  let result = image_morph_thinning_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_edge_fill(s : ImagemorphthinningEdge, v : Double) -> ImagemorphthinningEdge {
-  let result = image_morph_thinning_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_edge_min(s : ImagemorphthinningEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_morph_thinning_path_sum(s : ImagemorphthinningPath) -> Double { @_c
 pub fn image_morph_thinning_path_mean(s : ImagemorphthinningPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_path_scale(s : ImagemorphthinningPath, f : Double) -> ImagemorphthinningPath {
-  let result = image_morph_thinning_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_path_add(a : ImagemorphthinningPath, b : ImagemorphthinningPath) -> ImagemorphthinningPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_path_copy(s : ImagemorphthinningPath) -> ImagemorphthinningPath {
-  let result = image_morph_thinning_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_path_fill(s : ImagemorphthinningPath, v : Double) -> ImagemorphthinningPath {
-  let result = image_morph_thinning_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_path_min(s : ImagemorphthinningPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_morph_thinning_cluster_sum(s : ImagemorphthinningCluster) -> Double
 pub fn image_morph_thinning_cluster_mean(s : ImagemorphthinningCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_cluster_scale(s : ImagemorphthinningCluster, f : Double) -> ImagemorphthinningCluster {
-  let result = image_morph_thinning_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_cluster_add(a : ImagemorphthinningCluster, b : ImagemorphthinningCluster) -> ImagemorphthinningCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_cluster_copy(s : ImagemorphthinningCluster) -> ImagemorphthinningCluster {
-  let result = image_morph_thinning_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_cluster_fill(s : ImagemorphthinningCluster, v : Double) -> ImagemorphthinningCluster {
-  let result = image_morph_thinning_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_cluster_min(s : ImagemorphthinningCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_morph_thinning_model_sum(s : ImagemorphthinningModel) -> Double { @
 pub fn image_morph_thinning_model_mean(s : ImagemorphthinningModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_model_scale(s : ImagemorphthinningModel, f : Double) -> ImagemorphthinningModel {
-  let result = image_morph_thinning_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_model_add(a : ImagemorphthinningModel, b : ImagemorphthinningModel) -> ImagemorphthinningModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_model_copy(s : ImagemorphthinningModel) -> ImagemorphthinningModel {
-  let result = image_morph_thinning_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_model_fill(s : ImagemorphthinningModel, v : Double) -> ImagemorphthinningModel {
-  let result = image_morph_thinning_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_model_min(s : ImagemorphthinningModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_morph_thinning_layer_sum(s : ImagemorphthinningLayer) -> Double { @
 pub fn image_morph_thinning_layer_mean(s : ImagemorphthinningLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_layer_scale(s : ImagemorphthinningLayer, f : Double) -> ImagemorphthinningLayer {
-  let result = image_morph_thinning_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_layer_add(a : ImagemorphthinningLayer, b : ImagemorphthinningLayer) -> ImagemorphthinningLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_layer_copy(s : ImagemorphthinningLayer) -> ImagemorphthinningLayer {
-  let result = image_morph_thinning_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_layer_fill(s : ImagemorphthinningLayer, v : Double) -> ImagemorphthinningLayer {
-  let result = image_morph_thinning_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_layer_min(s : ImagemorphthinningLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_morph_thinning_buffer_sum(s : ImagemorphthinningBuffer) -> Double {
 pub fn image_morph_thinning_buffer_mean(s : ImagemorphthinningBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_buffer_scale(s : ImagemorphthinningBuffer, f : Double) -> ImagemorphthinningBuffer {
-  let result = image_morph_thinning_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_buffer_add(a : ImagemorphthinningBuffer, b : ImagemorphthinningBuffer) -> ImagemorphthinningBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_buffer_copy(s : ImagemorphthinningBuffer) -> ImagemorphthinningBuffer {
-  let result = image_morph_thinning_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_buffer_fill(s : ImagemorphthinningBuffer, v : Double) -> ImagemorphthinningBuffer {
-  let result = image_morph_thinning_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_buffer_min(s : ImagemorphthinningBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_morph_thinning_cursor_sum(s : ImagemorphthinningCursor) -> Double {
 pub fn image_morph_thinning_cursor_mean(s : ImagemorphthinningCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_cursor_scale(s : ImagemorphthinningCursor, f : Double) -> ImagemorphthinningCursor {
-  let result = image_morph_thinning_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_cursor_add(a : ImagemorphthinningCursor, b : ImagemorphthinningCursor) -> ImagemorphthinningCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_cursor_copy(s : ImagemorphthinningCursor) -> ImagemorphthinningCursor {
-  let result = image_morph_thinning_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_cursor_fill(s : ImagemorphthinningCursor, v : Double) -> ImagemorphthinningCursor {
-  let result = image_morph_thinning_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_cursor_min(s : ImagemorphthinningCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_morph_thinning_view_sum(s : ImagemorphthinningView) -> Double { @_c
 pub fn image_morph_thinning_view_mean(s : ImagemorphthinningView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_view_scale(s : ImagemorphthinningView, f : Double) -> ImagemorphthinningView {
-  let result = image_morph_thinning_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_view_add(a : ImagemorphthinningView, b : ImagemorphthinningView) -> ImagemorphthinningView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_view_copy(s : ImagemorphthinningView) -> ImagemorphthinningView {
-  let result = image_morph_thinning_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_view_fill(s : ImagemorphthinningView, v : Double) -> ImagemorphthinningView {
-  let result = image_morph_thinning_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_view_min(s : ImagemorphthinningView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_morph_thinning_range_sum(s : ImagemorphthinningRange) -> Double { @
 pub fn image_morph_thinning_range_mean(s : ImagemorphthinningRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_range_scale(s : ImagemorphthinningRange, f : Double) -> ImagemorphthinningRange {
-  let result = image_morph_thinning_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_range_add(a : ImagemorphthinningRange, b : ImagemorphthinningRange) -> ImagemorphthinningRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_range_copy(s : ImagemorphthinningRange) -> ImagemorphthinningRange {
-  let result = image_morph_thinning_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_range_fill(s : ImagemorphthinningRange, v : Double) -> ImagemorphthinningRange {
-  let result = image_morph_thinning_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_range_min(s : ImagemorphthinningRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_morph_thinning_slice_sum(s : ImagemorphthinningSlice) -> Double { @
 pub fn image_morph_thinning_slice_mean(s : ImagemorphthinningSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thinning_slice_scale(s : ImagemorphthinningSlice, f : Double) -> ImagemorphthinningSlice {
-  let result = image_morph_thinning_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_slice_add(a : ImagemorphthinningSlice, b : ImagemorphthinningSlice) -> ImagemorphthinningSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_thinning_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_thinning_slice_copy(s : ImagemorphthinningSlice) -> ImagemorphthinningSlice {
-  let result = image_morph_thinning_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_slice_fill(s : ImagemorphthinningSlice, v : Double) -> ImagemorphthinningSlice {
-  let result = image_morph_thinning_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thinning_slice_min(s : ImagemorphthinningSlice) -> Double { @_common.min(s.data) }

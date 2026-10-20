@@ -383,28 +383,20 @@ pub fn db_index_brin_frame_sum(s : DbindexbrinFrame) -> Double { @_common.sum(s.
 pub fn db_index_brin_frame_mean(s : DbindexbrinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_frame_scale(s : DbindexbrinFrame, f : Double) -> DbindexbrinFrame {
-  let result = db_index_brin_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_frame_add(a : DbindexbrinFrame, b : DbindexbrinFrame) -> DbindexbrinFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_frame_copy(s : DbindexbrinFrame) -> DbindexbrinFrame {
-  let result = db_index_brin_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_frame_fill(s : DbindexbrinFrame, v : Double) -> DbindexbrinFrame {
-  let result = db_index_brin_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_frame_min(s : DbindexbrinFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_index_brin_table_sum(s : DbindexbrinTable) -> Double { @_common.sum(s.
 pub fn db_index_brin_table_mean(s : DbindexbrinTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_table_scale(s : DbindexbrinTable, f : Double) -> DbindexbrinTable {
-  let result = db_index_brin_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_table_add(a : DbindexbrinTable, b : DbindexbrinTable) -> DbindexbrinTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_table_copy(s : DbindexbrinTable) -> DbindexbrinTable {
-  let result = db_index_brin_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_table_fill(s : DbindexbrinTable, v : Double) -> DbindexbrinTable {
-  let result = db_index_brin_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_table_min(s : DbindexbrinTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_index_brin_graphn_sum(s : DbindexbrinGraphN) -> Double { @_common.sum(
 pub fn db_index_brin_graphn_mean(s : DbindexbrinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_graphn_scale(s : DbindexbrinGraphN, f : Double) -> DbindexbrinGraphN {
-  let result = db_index_brin_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_graphn_add(a : DbindexbrinGraphN, b : DbindexbrinGraphN) -> DbindexbrinGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_graphn_copy(s : DbindexbrinGraphN) -> DbindexbrinGraphN {
-  let result = db_index_brin_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_graphn_fill(s : DbindexbrinGraphN, v : Double) -> DbindexbrinGraphN {
-  let result = db_index_brin_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_graphn_min(s : DbindexbrinGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_index_brin_node_sum(s : DbindexbrinNode) -> Double { @_common.sum(s.da
 pub fn db_index_brin_node_mean(s : DbindexbrinNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_node_scale(s : DbindexbrinNode, f : Double) -> DbindexbrinNode {
-  let result = db_index_brin_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_node_add(a : DbindexbrinNode, b : DbindexbrinNode) -> DbindexbrinNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_node_copy(s : DbindexbrinNode) -> DbindexbrinNode {
-  let result = db_index_brin_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_node_fill(s : DbindexbrinNode, v : Double) -> DbindexbrinNode {
-  let result = db_index_brin_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_node_min(s : DbindexbrinNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_index_brin_edge_sum(s : DbindexbrinEdge) -> Double { @_common.sum(s.da
 pub fn db_index_brin_edge_mean(s : DbindexbrinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_edge_scale(s : DbindexbrinEdge, f : Double) -> DbindexbrinEdge {
-  let result = db_index_brin_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_edge_add(a : DbindexbrinEdge, b : DbindexbrinEdge) -> DbindexbrinEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_edge_copy(s : DbindexbrinEdge) -> DbindexbrinEdge {
-  let result = db_index_brin_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_edge_fill(s : DbindexbrinEdge, v : Double) -> DbindexbrinEdge {
-  let result = db_index_brin_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_edge_min(s : DbindexbrinEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_index_brin_path_sum(s : DbindexbrinPath) -> Double { @_common.sum(s.da
 pub fn db_index_brin_path_mean(s : DbindexbrinPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_path_scale(s : DbindexbrinPath, f : Double) -> DbindexbrinPath {
-  let result = db_index_brin_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_path_add(a : DbindexbrinPath, b : DbindexbrinPath) -> DbindexbrinPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_path_copy(s : DbindexbrinPath) -> DbindexbrinPath {
-  let result = db_index_brin_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_path_fill(s : DbindexbrinPath, v : Double) -> DbindexbrinPath {
-  let result = db_index_brin_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_path_min(s : DbindexbrinPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_index_brin_cluster_sum(s : DbindexbrinCluster) -> Double { @_common.su
 pub fn db_index_brin_cluster_mean(s : DbindexbrinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_cluster_scale(s : DbindexbrinCluster, f : Double) -> DbindexbrinCluster {
-  let result = db_index_brin_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_cluster_add(a : DbindexbrinCluster, b : DbindexbrinCluster) -> DbindexbrinCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_cluster_copy(s : DbindexbrinCluster) -> DbindexbrinCluster {
-  let result = db_index_brin_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_cluster_fill(s : DbindexbrinCluster, v : Double) -> DbindexbrinCluster {
-  let result = db_index_brin_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_cluster_min(s : DbindexbrinCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_index_brin_model_sum(s : DbindexbrinModel) -> Double { @_common.sum(s.
 pub fn db_index_brin_model_mean(s : DbindexbrinModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_model_scale(s : DbindexbrinModel, f : Double) -> DbindexbrinModel {
-  let result = db_index_brin_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_model_add(a : DbindexbrinModel, b : DbindexbrinModel) -> DbindexbrinModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_model_copy(s : DbindexbrinModel) -> DbindexbrinModel {
-  let result = db_index_brin_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_model_fill(s : DbindexbrinModel, v : Double) -> DbindexbrinModel {
-  let result = db_index_brin_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_model_min(s : DbindexbrinModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_index_brin_layer_sum(s : DbindexbrinLayer) -> Double { @_common.sum(s.
 pub fn db_index_brin_layer_mean(s : DbindexbrinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_layer_scale(s : DbindexbrinLayer, f : Double) -> DbindexbrinLayer {
-  let result = db_index_brin_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_layer_add(a : DbindexbrinLayer, b : DbindexbrinLayer) -> DbindexbrinLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_layer_copy(s : DbindexbrinLayer) -> DbindexbrinLayer {
-  let result = db_index_brin_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_layer_fill(s : DbindexbrinLayer, v : Double) -> DbindexbrinLayer {
-  let result = db_index_brin_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_layer_min(s : DbindexbrinLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_index_brin_buffer_sum(s : DbindexbrinBuffer) -> Double { @_common.sum(
 pub fn db_index_brin_buffer_mean(s : DbindexbrinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_buffer_scale(s : DbindexbrinBuffer, f : Double) -> DbindexbrinBuffer {
-  let result = db_index_brin_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_buffer_add(a : DbindexbrinBuffer, b : DbindexbrinBuffer) -> DbindexbrinBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_buffer_copy(s : DbindexbrinBuffer) -> DbindexbrinBuffer {
-  let result = db_index_brin_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_buffer_fill(s : DbindexbrinBuffer, v : Double) -> DbindexbrinBuffer {
-  let result = db_index_brin_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_buffer_min(s : DbindexbrinBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_index_brin_cursor_sum(s : DbindexbrinCursor) -> Double { @_common.sum(
 pub fn db_index_brin_cursor_mean(s : DbindexbrinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_cursor_scale(s : DbindexbrinCursor, f : Double) -> DbindexbrinCursor {
-  let result = db_index_brin_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_cursor_add(a : DbindexbrinCursor, b : DbindexbrinCursor) -> DbindexbrinCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_cursor_copy(s : DbindexbrinCursor) -> DbindexbrinCursor {
-  let result = db_index_brin_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_cursor_fill(s : DbindexbrinCursor, v : Double) -> DbindexbrinCursor {
-  let result = db_index_brin_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_cursor_min(s : DbindexbrinCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_index_brin_view_sum(s : DbindexbrinView) -> Double { @_common.sum(s.da
 pub fn db_index_brin_view_mean(s : DbindexbrinView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_view_scale(s : DbindexbrinView, f : Double) -> DbindexbrinView {
-  let result = db_index_brin_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_view_add(a : DbindexbrinView, b : DbindexbrinView) -> DbindexbrinView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_view_copy(s : DbindexbrinView) -> DbindexbrinView {
-  let result = db_index_brin_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_view_fill(s : DbindexbrinView, v : Double) -> DbindexbrinView {
-  let result = db_index_brin_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_view_min(s : DbindexbrinView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_index_brin_range_sum(s : DbindexbrinRange) -> Double { @_common.sum(s.
 pub fn db_index_brin_range_mean(s : DbindexbrinRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_range_scale(s : DbindexbrinRange, f : Double) -> DbindexbrinRange {
-  let result = db_index_brin_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_range_add(a : DbindexbrinRange, b : DbindexbrinRange) -> DbindexbrinRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_range_copy(s : DbindexbrinRange) -> DbindexbrinRange {
-  let result = db_index_brin_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_range_fill(s : DbindexbrinRange, v : Double) -> DbindexbrinRange {
-  let result = db_index_brin_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_range_min(s : DbindexbrinRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_index_brin_slice_sum(s : DbindexbrinSlice) -> Double { @_common.sum(s.
 pub fn db_index_brin_slice_mean(s : DbindexbrinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_slice_scale(s : DbindexbrinSlice, f : Double) -> DbindexbrinSlice {
-  let result = db_index_brin_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_slice_add(a : DbindexbrinSlice, b : DbindexbrinSlice) -> DbindexbrinSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_brin_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_brin_slice_copy(s : DbindexbrinSlice) -> DbindexbrinSlice {
-  let result = db_index_brin_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_slice_fill(s : DbindexbrinSlice, v : Double) -> DbindexbrinSlice {
-  let result = db_index_brin_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_brin_slice_min(s : DbindexbrinSlice) -> Double { @_common.min(s.data) }

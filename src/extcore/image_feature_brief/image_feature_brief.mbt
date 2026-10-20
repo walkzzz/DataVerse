@@ -383,28 +383,20 @@ pub fn image_feature_brief_frame_sum(s : ImagefeaturebriefFrame) -> Double { @_c
 pub fn image_feature_brief_frame_mean(s : ImagefeaturebriefFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_frame_scale(s : ImagefeaturebriefFrame, f : Double) -> ImagefeaturebriefFrame {
-  let result = image_feature_brief_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_frame_add(a : ImagefeaturebriefFrame, b : ImagefeaturebriefFrame) -> ImagefeaturebriefFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_frame_copy(s : ImagefeaturebriefFrame) -> ImagefeaturebriefFrame {
-  let result = image_feature_brief_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_frame_fill(s : ImagefeaturebriefFrame, v : Double) -> ImagefeaturebriefFrame {
-  let result = image_feature_brief_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_frame_min(s : ImagefeaturebriefFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_feature_brief_table_sum(s : ImagefeaturebriefTable) -> Double { @_c
 pub fn image_feature_brief_table_mean(s : ImagefeaturebriefTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_table_scale(s : ImagefeaturebriefTable, f : Double) -> ImagefeaturebriefTable {
-  let result = image_feature_brief_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_table_add(a : ImagefeaturebriefTable, b : ImagefeaturebriefTable) -> ImagefeaturebriefTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_table_copy(s : ImagefeaturebriefTable) -> ImagefeaturebriefTable {
-  let result = image_feature_brief_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_table_fill(s : ImagefeaturebriefTable, v : Double) -> ImagefeaturebriefTable {
-  let result = image_feature_brief_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_table_min(s : ImagefeaturebriefTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_feature_brief_graphn_sum(s : ImagefeaturebriefGraphN) -> Double { @
 pub fn image_feature_brief_graphn_mean(s : ImagefeaturebriefGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_graphn_scale(s : ImagefeaturebriefGraphN, f : Double) -> ImagefeaturebriefGraphN {
-  let result = image_feature_brief_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_graphn_add(a : ImagefeaturebriefGraphN, b : ImagefeaturebriefGraphN) -> ImagefeaturebriefGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_graphn_copy(s : ImagefeaturebriefGraphN) -> ImagefeaturebriefGraphN {
-  let result = image_feature_brief_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_graphn_fill(s : ImagefeaturebriefGraphN, v : Double) -> ImagefeaturebriefGraphN {
-  let result = image_feature_brief_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_graphn_min(s : ImagefeaturebriefGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_feature_brief_node_sum(s : ImagefeaturebriefNode) -> Double { @_com
 pub fn image_feature_brief_node_mean(s : ImagefeaturebriefNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_node_scale(s : ImagefeaturebriefNode, f : Double) -> ImagefeaturebriefNode {
-  let result = image_feature_brief_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_node_add(a : ImagefeaturebriefNode, b : ImagefeaturebriefNode) -> ImagefeaturebriefNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_node_copy(s : ImagefeaturebriefNode) -> ImagefeaturebriefNode {
-  let result = image_feature_brief_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_node_fill(s : ImagefeaturebriefNode, v : Double) -> ImagefeaturebriefNode {
-  let result = image_feature_brief_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_node_min(s : ImagefeaturebriefNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_feature_brief_edge_sum(s : ImagefeaturebriefEdge) -> Double { @_com
 pub fn image_feature_brief_edge_mean(s : ImagefeaturebriefEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_edge_scale(s : ImagefeaturebriefEdge, f : Double) -> ImagefeaturebriefEdge {
-  let result = image_feature_brief_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_edge_add(a : ImagefeaturebriefEdge, b : ImagefeaturebriefEdge) -> ImagefeaturebriefEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_edge_copy(s : ImagefeaturebriefEdge) -> ImagefeaturebriefEdge {
-  let result = image_feature_brief_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_edge_fill(s : ImagefeaturebriefEdge, v : Double) -> ImagefeaturebriefEdge {
-  let result = image_feature_brief_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_edge_min(s : ImagefeaturebriefEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_feature_brief_path_sum(s : ImagefeaturebriefPath) -> Double { @_com
 pub fn image_feature_brief_path_mean(s : ImagefeaturebriefPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_path_scale(s : ImagefeaturebriefPath, f : Double) -> ImagefeaturebriefPath {
-  let result = image_feature_brief_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_path_add(a : ImagefeaturebriefPath, b : ImagefeaturebriefPath) -> ImagefeaturebriefPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_path_copy(s : ImagefeaturebriefPath) -> ImagefeaturebriefPath {
-  let result = image_feature_brief_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_path_fill(s : ImagefeaturebriefPath, v : Double) -> ImagefeaturebriefPath {
-  let result = image_feature_brief_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_path_min(s : ImagefeaturebriefPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_feature_brief_cluster_sum(s : ImagefeaturebriefCluster) -> Double {
 pub fn image_feature_brief_cluster_mean(s : ImagefeaturebriefCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_cluster_scale(s : ImagefeaturebriefCluster, f : Double) -> ImagefeaturebriefCluster {
-  let result = image_feature_brief_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cluster_add(a : ImagefeaturebriefCluster, b : ImagefeaturebriefCluster) -> ImagefeaturebriefCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_cluster_copy(s : ImagefeaturebriefCluster) -> ImagefeaturebriefCluster {
-  let result = image_feature_brief_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cluster_fill(s : ImagefeaturebriefCluster, v : Double) -> ImagefeaturebriefCluster {
-  let result = image_feature_brief_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cluster_min(s : ImagefeaturebriefCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_feature_brief_model_sum(s : ImagefeaturebriefModel) -> Double { @_c
 pub fn image_feature_brief_model_mean(s : ImagefeaturebriefModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_model_scale(s : ImagefeaturebriefModel, f : Double) -> ImagefeaturebriefModel {
-  let result = image_feature_brief_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_model_add(a : ImagefeaturebriefModel, b : ImagefeaturebriefModel) -> ImagefeaturebriefModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_model_copy(s : ImagefeaturebriefModel) -> ImagefeaturebriefModel {
-  let result = image_feature_brief_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_model_fill(s : ImagefeaturebriefModel, v : Double) -> ImagefeaturebriefModel {
-  let result = image_feature_brief_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_model_min(s : ImagefeaturebriefModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_feature_brief_layer_sum(s : ImagefeaturebriefLayer) -> Double { @_c
 pub fn image_feature_brief_layer_mean(s : ImagefeaturebriefLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_layer_scale(s : ImagefeaturebriefLayer, f : Double) -> ImagefeaturebriefLayer {
-  let result = image_feature_brief_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_layer_add(a : ImagefeaturebriefLayer, b : ImagefeaturebriefLayer) -> ImagefeaturebriefLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_layer_copy(s : ImagefeaturebriefLayer) -> ImagefeaturebriefLayer {
-  let result = image_feature_brief_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_layer_fill(s : ImagefeaturebriefLayer, v : Double) -> ImagefeaturebriefLayer {
-  let result = image_feature_brief_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_layer_min(s : ImagefeaturebriefLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_feature_brief_buffer_sum(s : ImagefeaturebriefBuffer) -> Double { @
 pub fn image_feature_brief_buffer_mean(s : ImagefeaturebriefBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_buffer_scale(s : ImagefeaturebriefBuffer, f : Double) -> ImagefeaturebriefBuffer {
-  let result = image_feature_brief_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_buffer_add(a : ImagefeaturebriefBuffer, b : ImagefeaturebriefBuffer) -> ImagefeaturebriefBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_buffer_copy(s : ImagefeaturebriefBuffer) -> ImagefeaturebriefBuffer {
-  let result = image_feature_brief_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_buffer_fill(s : ImagefeaturebriefBuffer, v : Double) -> ImagefeaturebriefBuffer {
-  let result = image_feature_brief_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_buffer_min(s : ImagefeaturebriefBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_feature_brief_cursor_sum(s : ImagefeaturebriefCursor) -> Double { @
 pub fn image_feature_brief_cursor_mean(s : ImagefeaturebriefCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_cursor_scale(s : ImagefeaturebriefCursor, f : Double) -> ImagefeaturebriefCursor {
-  let result = image_feature_brief_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cursor_add(a : ImagefeaturebriefCursor, b : ImagefeaturebriefCursor) -> ImagefeaturebriefCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_cursor_copy(s : ImagefeaturebriefCursor) -> ImagefeaturebriefCursor {
-  let result = image_feature_brief_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cursor_fill(s : ImagefeaturebriefCursor, v : Double) -> ImagefeaturebriefCursor {
-  let result = image_feature_brief_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cursor_min(s : ImagefeaturebriefCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_feature_brief_view_sum(s : ImagefeaturebriefView) -> Double { @_com
 pub fn image_feature_brief_view_mean(s : ImagefeaturebriefView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_view_scale(s : ImagefeaturebriefView, f : Double) -> ImagefeaturebriefView {
-  let result = image_feature_brief_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_view_add(a : ImagefeaturebriefView, b : ImagefeaturebriefView) -> ImagefeaturebriefView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_view_copy(s : ImagefeaturebriefView) -> ImagefeaturebriefView {
-  let result = image_feature_brief_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_view_fill(s : ImagefeaturebriefView, v : Double) -> ImagefeaturebriefView {
-  let result = image_feature_brief_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_view_min(s : ImagefeaturebriefView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_feature_brief_range_sum(s : ImagefeaturebriefRange) -> Double { @_c
 pub fn image_feature_brief_range_mean(s : ImagefeaturebriefRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_range_scale(s : ImagefeaturebriefRange, f : Double) -> ImagefeaturebriefRange {
-  let result = image_feature_brief_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_range_add(a : ImagefeaturebriefRange, b : ImagefeaturebriefRange) -> ImagefeaturebriefRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_range_copy(s : ImagefeaturebriefRange) -> ImagefeaturebriefRange {
-  let result = image_feature_brief_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_range_fill(s : ImagefeaturebriefRange, v : Double) -> ImagefeaturebriefRange {
-  let result = image_feature_brief_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_range_min(s : ImagefeaturebriefRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_feature_brief_slice_sum(s : ImagefeaturebriefSlice) -> Double { @_c
 pub fn image_feature_brief_slice_mean(s : ImagefeaturebriefSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_slice_scale(s : ImagefeaturebriefSlice, f : Double) -> ImagefeaturebriefSlice {
-  let result = image_feature_brief_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_slice_add(a : ImagefeaturebriefSlice, b : ImagefeaturebriefSlice) -> ImagefeaturebriefSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_brief_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_brief_slice_copy(s : ImagefeaturebriefSlice) -> ImagefeaturebriefSlice {
-  let result = image_feature_brief_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_slice_fill(s : ImagefeaturebriefSlice, v : Double) -> ImagefeaturebriefSlice {
-  let result = image_feature_brief_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_slice_min(s : ImagefeaturebriefSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_desc_bivariate_frame_sum(s : StatsdescbivariateFrame) -> Double { @
 pub fn stats_desc_bivariate_frame_mean(s : StatsdescbivariateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_frame_scale(s : StatsdescbivariateFrame, f : Double) -> StatsdescbivariateFrame {
-  let result = stats_desc_bivariate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_frame_add(a : StatsdescbivariateFrame, b : StatsdescbivariateFrame) -> StatsdescbivariateFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_frame_copy(s : StatsdescbivariateFrame) -> StatsdescbivariateFrame {
-  let result = stats_desc_bivariate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_frame_fill(s : StatsdescbivariateFrame, v : Double) -> StatsdescbivariateFrame {
-  let result = stats_desc_bivariate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_frame_min(s : StatsdescbivariateFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_desc_bivariate_table_sum(s : StatsdescbivariateTable) -> Double { @
 pub fn stats_desc_bivariate_table_mean(s : StatsdescbivariateTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_table_scale(s : StatsdescbivariateTable, f : Double) -> StatsdescbivariateTable {
-  let result = stats_desc_bivariate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_table_add(a : StatsdescbivariateTable, b : StatsdescbivariateTable) -> StatsdescbivariateTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_table_copy(s : StatsdescbivariateTable) -> StatsdescbivariateTable {
-  let result = stats_desc_bivariate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_table_fill(s : StatsdescbivariateTable, v : Double) -> StatsdescbivariateTable {
-  let result = stats_desc_bivariate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_table_min(s : StatsdescbivariateTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_desc_bivariate_graphn_sum(s : StatsdescbivariateGraphN) -> Double {
 pub fn stats_desc_bivariate_graphn_mean(s : StatsdescbivariateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_graphn_scale(s : StatsdescbivariateGraphN, f : Double) -> StatsdescbivariateGraphN {
-  let result = stats_desc_bivariate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_graphn_add(a : StatsdescbivariateGraphN, b : StatsdescbivariateGraphN) -> StatsdescbivariateGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_graphn_copy(s : StatsdescbivariateGraphN) -> StatsdescbivariateGraphN {
-  let result = stats_desc_bivariate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_graphn_fill(s : StatsdescbivariateGraphN, v : Double) -> StatsdescbivariateGraphN {
-  let result = stats_desc_bivariate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_graphn_min(s : StatsdescbivariateGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_desc_bivariate_node_sum(s : StatsdescbivariateNode) -> Double { @_c
 pub fn stats_desc_bivariate_node_mean(s : StatsdescbivariateNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_node_scale(s : StatsdescbivariateNode, f : Double) -> StatsdescbivariateNode {
-  let result = stats_desc_bivariate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_node_add(a : StatsdescbivariateNode, b : StatsdescbivariateNode) -> StatsdescbivariateNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_node_copy(s : StatsdescbivariateNode) -> StatsdescbivariateNode {
-  let result = stats_desc_bivariate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_node_fill(s : StatsdescbivariateNode, v : Double) -> StatsdescbivariateNode {
-  let result = stats_desc_bivariate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_node_min(s : StatsdescbivariateNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_desc_bivariate_edge_sum(s : StatsdescbivariateEdge) -> Double { @_c
 pub fn stats_desc_bivariate_edge_mean(s : StatsdescbivariateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_edge_scale(s : StatsdescbivariateEdge, f : Double) -> StatsdescbivariateEdge {
-  let result = stats_desc_bivariate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_edge_add(a : StatsdescbivariateEdge, b : StatsdescbivariateEdge) -> StatsdescbivariateEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_edge_copy(s : StatsdescbivariateEdge) -> StatsdescbivariateEdge {
-  let result = stats_desc_bivariate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_edge_fill(s : StatsdescbivariateEdge, v : Double) -> StatsdescbivariateEdge {
-  let result = stats_desc_bivariate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_edge_min(s : StatsdescbivariateEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_desc_bivariate_path_sum(s : StatsdescbivariatePath) -> Double { @_c
 pub fn stats_desc_bivariate_path_mean(s : StatsdescbivariatePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_path_scale(s : StatsdescbivariatePath, f : Double) -> StatsdescbivariatePath {
-  let result = stats_desc_bivariate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_path_add(a : StatsdescbivariatePath, b : StatsdescbivariatePath) -> StatsdescbivariatePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_path_copy(s : StatsdescbivariatePath) -> StatsdescbivariatePath {
-  let result = stats_desc_bivariate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_path_fill(s : StatsdescbivariatePath, v : Double) -> StatsdescbivariatePath {
-  let result = stats_desc_bivariate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_path_min(s : StatsdescbivariatePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_desc_bivariate_cluster_sum(s : StatsdescbivariateCluster) -> Double
 pub fn stats_desc_bivariate_cluster_mean(s : StatsdescbivariateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_cluster_scale(s : StatsdescbivariateCluster, f : Double) -> StatsdescbivariateCluster {
-  let result = stats_desc_bivariate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cluster_add(a : StatsdescbivariateCluster, b : StatsdescbivariateCluster) -> StatsdescbivariateCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_cluster_copy(s : StatsdescbivariateCluster) -> StatsdescbivariateCluster {
-  let result = stats_desc_bivariate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cluster_fill(s : StatsdescbivariateCluster, v : Double) -> StatsdescbivariateCluster {
-  let result = stats_desc_bivariate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cluster_min(s : StatsdescbivariateCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_desc_bivariate_model_sum(s : StatsdescbivariateModel) -> Double { @
 pub fn stats_desc_bivariate_model_mean(s : StatsdescbivariateModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_model_scale(s : StatsdescbivariateModel, f : Double) -> StatsdescbivariateModel {
-  let result = stats_desc_bivariate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_model_add(a : StatsdescbivariateModel, b : StatsdescbivariateModel) -> StatsdescbivariateModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_model_copy(s : StatsdescbivariateModel) -> StatsdescbivariateModel {
-  let result = stats_desc_bivariate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_model_fill(s : StatsdescbivariateModel, v : Double) -> StatsdescbivariateModel {
-  let result = stats_desc_bivariate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_model_min(s : StatsdescbivariateModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_desc_bivariate_layer_sum(s : StatsdescbivariateLayer) -> Double { @
 pub fn stats_desc_bivariate_layer_mean(s : StatsdescbivariateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_layer_scale(s : StatsdescbivariateLayer, f : Double) -> StatsdescbivariateLayer {
-  let result = stats_desc_bivariate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_layer_add(a : StatsdescbivariateLayer, b : StatsdescbivariateLayer) -> StatsdescbivariateLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_layer_copy(s : StatsdescbivariateLayer) -> StatsdescbivariateLayer {
-  let result = stats_desc_bivariate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_layer_fill(s : StatsdescbivariateLayer, v : Double) -> StatsdescbivariateLayer {
-  let result = stats_desc_bivariate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_layer_min(s : StatsdescbivariateLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_desc_bivariate_buffer_sum(s : StatsdescbivariateBuffer) -> Double {
 pub fn stats_desc_bivariate_buffer_mean(s : StatsdescbivariateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_buffer_scale(s : StatsdescbivariateBuffer, f : Double) -> StatsdescbivariateBuffer {
-  let result = stats_desc_bivariate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_buffer_add(a : StatsdescbivariateBuffer, b : StatsdescbivariateBuffer) -> StatsdescbivariateBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_buffer_copy(s : StatsdescbivariateBuffer) -> StatsdescbivariateBuffer {
-  let result = stats_desc_bivariate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_buffer_fill(s : StatsdescbivariateBuffer, v : Double) -> StatsdescbivariateBuffer {
-  let result = stats_desc_bivariate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_buffer_min(s : StatsdescbivariateBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_desc_bivariate_cursor_sum(s : StatsdescbivariateCursor) -> Double {
 pub fn stats_desc_bivariate_cursor_mean(s : StatsdescbivariateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_cursor_scale(s : StatsdescbivariateCursor, f : Double) -> StatsdescbivariateCursor {
-  let result = stats_desc_bivariate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cursor_add(a : StatsdescbivariateCursor, b : StatsdescbivariateCursor) -> StatsdescbivariateCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_cursor_copy(s : StatsdescbivariateCursor) -> StatsdescbivariateCursor {
-  let result = stats_desc_bivariate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cursor_fill(s : StatsdescbivariateCursor, v : Double) -> StatsdescbivariateCursor {
-  let result = stats_desc_bivariate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cursor_min(s : StatsdescbivariateCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_desc_bivariate_view_sum(s : StatsdescbivariateView) -> Double { @_c
 pub fn stats_desc_bivariate_view_mean(s : StatsdescbivariateView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_view_scale(s : StatsdescbivariateView, f : Double) -> StatsdescbivariateView {
-  let result = stats_desc_bivariate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_view_add(a : StatsdescbivariateView, b : StatsdescbivariateView) -> StatsdescbivariateView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_view_copy(s : StatsdescbivariateView) -> StatsdescbivariateView {
-  let result = stats_desc_bivariate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_view_fill(s : StatsdescbivariateView, v : Double) -> StatsdescbivariateView {
-  let result = stats_desc_bivariate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_view_min(s : StatsdescbivariateView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_desc_bivariate_range_sum(s : StatsdescbivariateRange) -> Double { @
 pub fn stats_desc_bivariate_range_mean(s : StatsdescbivariateRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_range_scale(s : StatsdescbivariateRange, f : Double) -> StatsdescbivariateRange {
-  let result = stats_desc_bivariate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_range_add(a : StatsdescbivariateRange, b : StatsdescbivariateRange) -> StatsdescbivariateRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_range_copy(s : StatsdescbivariateRange) -> StatsdescbivariateRange {
-  let result = stats_desc_bivariate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_range_fill(s : StatsdescbivariateRange, v : Double) -> StatsdescbivariateRange {
-  let result = stats_desc_bivariate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_range_min(s : StatsdescbivariateRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_desc_bivariate_slice_sum(s : StatsdescbivariateSlice) -> Double { @
 pub fn stats_desc_bivariate_slice_mean(s : StatsdescbivariateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_slice_scale(s : StatsdescbivariateSlice, f : Double) -> StatsdescbivariateSlice {
-  let result = stats_desc_bivariate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_slice_add(a : StatsdescbivariateSlice, b : StatsdescbivariateSlice) -> StatsdescbivariateSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_bivariate_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_bivariate_slice_copy(s : StatsdescbivariateSlice) -> StatsdescbivariateSlice {
-  let result = stats_desc_bivariate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_slice_fill(s : StatsdescbivariateSlice, v : Double) -> StatsdescbivariateSlice {
-  let result = stats_desc_bivariate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_slice_min(s : StatsdescbivariateSlice) -> Double { @_common.min(s.data) }

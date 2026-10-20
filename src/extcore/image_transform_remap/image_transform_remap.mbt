@@ -383,28 +383,20 @@ pub fn image_transform_remap_frame_sum(s : ImagetransformremapFrame) -> Double {
 pub fn image_transform_remap_frame_mean(s : ImagetransformremapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_frame_scale(s : ImagetransformremapFrame, f : Double) -> ImagetransformremapFrame {
-  let result = image_transform_remap_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_frame_add(a : ImagetransformremapFrame, b : ImagetransformremapFrame) -> ImagetransformremapFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_frame_copy(s : ImagetransformremapFrame) -> ImagetransformremapFrame {
-  let result = image_transform_remap_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_frame_fill(s : ImagetransformremapFrame, v : Double) -> ImagetransformremapFrame {
-  let result = image_transform_remap_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_frame_min(s : ImagetransformremapFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_transform_remap_table_sum(s : ImagetransformremapTable) -> Double {
 pub fn image_transform_remap_table_mean(s : ImagetransformremapTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_table_scale(s : ImagetransformremapTable, f : Double) -> ImagetransformremapTable {
-  let result = image_transform_remap_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_table_add(a : ImagetransformremapTable, b : ImagetransformremapTable) -> ImagetransformremapTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_table_copy(s : ImagetransformremapTable) -> ImagetransformremapTable {
-  let result = image_transform_remap_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_table_fill(s : ImagetransformremapTable, v : Double) -> ImagetransformremapTable {
-  let result = image_transform_remap_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_table_min(s : ImagetransformremapTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_transform_remap_graphn_sum(s : ImagetransformremapGraphN) -> Double
 pub fn image_transform_remap_graphn_mean(s : ImagetransformremapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_graphn_scale(s : ImagetransformremapGraphN, f : Double) -> ImagetransformremapGraphN {
-  let result = image_transform_remap_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_graphn_add(a : ImagetransformremapGraphN, b : ImagetransformremapGraphN) -> ImagetransformremapGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_graphn_copy(s : ImagetransformremapGraphN) -> ImagetransformremapGraphN {
-  let result = image_transform_remap_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_graphn_fill(s : ImagetransformremapGraphN, v : Double) -> ImagetransformremapGraphN {
-  let result = image_transform_remap_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_graphn_min(s : ImagetransformremapGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_transform_remap_node_sum(s : ImagetransformremapNode) -> Double { @
 pub fn image_transform_remap_node_mean(s : ImagetransformremapNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_node_scale(s : ImagetransformremapNode, f : Double) -> ImagetransformremapNode {
-  let result = image_transform_remap_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_node_add(a : ImagetransformremapNode, b : ImagetransformremapNode) -> ImagetransformremapNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_node_copy(s : ImagetransformremapNode) -> ImagetransformremapNode {
-  let result = image_transform_remap_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_node_fill(s : ImagetransformremapNode, v : Double) -> ImagetransformremapNode {
-  let result = image_transform_remap_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_node_min(s : ImagetransformremapNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_transform_remap_edge_sum(s : ImagetransformremapEdge) -> Double { @
 pub fn image_transform_remap_edge_mean(s : ImagetransformremapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_edge_scale(s : ImagetransformremapEdge, f : Double) -> ImagetransformremapEdge {
-  let result = image_transform_remap_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_edge_add(a : ImagetransformremapEdge, b : ImagetransformremapEdge) -> ImagetransformremapEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_edge_copy(s : ImagetransformremapEdge) -> ImagetransformremapEdge {
-  let result = image_transform_remap_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_edge_fill(s : ImagetransformremapEdge, v : Double) -> ImagetransformremapEdge {
-  let result = image_transform_remap_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_edge_min(s : ImagetransformremapEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_transform_remap_path_sum(s : ImagetransformremapPath) -> Double { @
 pub fn image_transform_remap_path_mean(s : ImagetransformremapPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_path_scale(s : ImagetransformremapPath, f : Double) -> ImagetransformremapPath {
-  let result = image_transform_remap_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_path_add(a : ImagetransformremapPath, b : ImagetransformremapPath) -> ImagetransformremapPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_path_copy(s : ImagetransformremapPath) -> ImagetransformremapPath {
-  let result = image_transform_remap_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_path_fill(s : ImagetransformremapPath, v : Double) -> ImagetransformremapPath {
-  let result = image_transform_remap_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_path_min(s : ImagetransformremapPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_transform_remap_cluster_sum(s : ImagetransformremapCluster) -> Doub
 pub fn image_transform_remap_cluster_mean(s : ImagetransformremapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_cluster_scale(s : ImagetransformremapCluster, f : Double) -> ImagetransformremapCluster {
-  let result = image_transform_remap_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_cluster_add(a : ImagetransformremapCluster, b : ImagetransformremapCluster) -> ImagetransformremapCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_cluster_copy(s : ImagetransformremapCluster) -> ImagetransformremapCluster {
-  let result = image_transform_remap_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_cluster_fill(s : ImagetransformremapCluster, v : Double) -> ImagetransformremapCluster {
-  let result = image_transform_remap_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_cluster_min(s : ImagetransformremapCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_transform_remap_model_sum(s : ImagetransformremapModel) -> Double {
 pub fn image_transform_remap_model_mean(s : ImagetransformremapModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_model_scale(s : ImagetransformremapModel, f : Double) -> ImagetransformremapModel {
-  let result = image_transform_remap_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_model_add(a : ImagetransformremapModel, b : ImagetransformremapModel) -> ImagetransformremapModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_model_copy(s : ImagetransformremapModel) -> ImagetransformremapModel {
-  let result = image_transform_remap_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_model_fill(s : ImagetransformremapModel, v : Double) -> ImagetransformremapModel {
-  let result = image_transform_remap_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_model_min(s : ImagetransformremapModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_transform_remap_layer_sum(s : ImagetransformremapLayer) -> Double {
 pub fn image_transform_remap_layer_mean(s : ImagetransformremapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_layer_scale(s : ImagetransformremapLayer, f : Double) -> ImagetransformremapLayer {
-  let result = image_transform_remap_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_layer_add(a : ImagetransformremapLayer, b : ImagetransformremapLayer) -> ImagetransformremapLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_layer_copy(s : ImagetransformremapLayer) -> ImagetransformremapLayer {
-  let result = image_transform_remap_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_layer_fill(s : ImagetransformremapLayer, v : Double) -> ImagetransformremapLayer {
-  let result = image_transform_remap_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_layer_min(s : ImagetransformremapLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_transform_remap_buffer_sum(s : ImagetransformremapBuffer) -> Double
 pub fn image_transform_remap_buffer_mean(s : ImagetransformremapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_buffer_scale(s : ImagetransformremapBuffer, f : Double) -> ImagetransformremapBuffer {
-  let result = image_transform_remap_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_buffer_add(a : ImagetransformremapBuffer, b : ImagetransformremapBuffer) -> ImagetransformremapBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_buffer_copy(s : ImagetransformremapBuffer) -> ImagetransformremapBuffer {
-  let result = image_transform_remap_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_buffer_fill(s : ImagetransformremapBuffer, v : Double) -> ImagetransformremapBuffer {
-  let result = image_transform_remap_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_buffer_min(s : ImagetransformremapBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_transform_remap_cursor_sum(s : ImagetransformremapCursor) -> Double
 pub fn image_transform_remap_cursor_mean(s : ImagetransformremapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_cursor_scale(s : ImagetransformremapCursor, f : Double) -> ImagetransformremapCursor {
-  let result = image_transform_remap_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_cursor_add(a : ImagetransformremapCursor, b : ImagetransformremapCursor) -> ImagetransformremapCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_cursor_copy(s : ImagetransformremapCursor) -> ImagetransformremapCursor {
-  let result = image_transform_remap_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_cursor_fill(s : ImagetransformremapCursor, v : Double) -> ImagetransformremapCursor {
-  let result = image_transform_remap_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_cursor_min(s : ImagetransformremapCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_transform_remap_view_sum(s : ImagetransformremapView) -> Double { @
 pub fn image_transform_remap_view_mean(s : ImagetransformremapView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_view_scale(s : ImagetransformremapView, f : Double) -> ImagetransformremapView {
-  let result = image_transform_remap_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_view_add(a : ImagetransformremapView, b : ImagetransformremapView) -> ImagetransformremapView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_view_copy(s : ImagetransformremapView) -> ImagetransformremapView {
-  let result = image_transform_remap_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_view_fill(s : ImagetransformremapView, v : Double) -> ImagetransformremapView {
-  let result = image_transform_remap_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_view_min(s : ImagetransformremapView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_transform_remap_range_sum(s : ImagetransformremapRange) -> Double {
 pub fn image_transform_remap_range_mean(s : ImagetransformremapRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_range_scale(s : ImagetransformremapRange, f : Double) -> ImagetransformremapRange {
-  let result = image_transform_remap_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_range_add(a : ImagetransformremapRange, b : ImagetransformremapRange) -> ImagetransformremapRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_range_copy(s : ImagetransformremapRange) -> ImagetransformremapRange {
-  let result = image_transform_remap_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_range_fill(s : ImagetransformremapRange, v : Double) -> ImagetransformremapRange {
-  let result = image_transform_remap_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_range_min(s : ImagetransformremapRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_transform_remap_slice_sum(s : ImagetransformremapSlice) -> Double {
 pub fn image_transform_remap_slice_mean(s : ImagetransformremapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_slice_scale(s : ImagetransformremapSlice, f : Double) -> ImagetransformremapSlice {
-  let result = image_transform_remap_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_slice_add(a : ImagetransformremapSlice, b : ImagetransformremapSlice) -> ImagetransformremapSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_remap_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_remap_slice_copy(s : ImagetransformremapSlice) -> ImagetransformremapSlice {
-  let result = image_transform_remap_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_slice_fill(s : ImagetransformremapSlice, v : Double) -> ImagetransformremapSlice {
-  let result = image_transform_remap_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_remap_slice_min(s : ImagetransformremapSlice) -> Double { @_common.min(s.data) }

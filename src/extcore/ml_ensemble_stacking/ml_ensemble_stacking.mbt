@@ -383,28 +383,20 @@ pub fn ml_ensemble_stacking_frame_sum(s : MlensemblestackingFrame) -> Double { @
 pub fn ml_ensemble_stacking_frame_mean(s : MlensemblestackingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_frame_scale(s : MlensemblestackingFrame, f : Double) -> MlensemblestackingFrame {
-  let result = ml_ensemble_stacking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_frame_add(a : MlensemblestackingFrame, b : MlensemblestackingFrame) -> MlensemblestackingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_frame_copy(s : MlensemblestackingFrame) -> MlensemblestackingFrame {
-  let result = ml_ensemble_stacking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_frame_fill(s : MlensemblestackingFrame, v : Double) -> MlensemblestackingFrame {
-  let result = ml_ensemble_stacking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_frame_min(s : MlensemblestackingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_ensemble_stacking_table_sum(s : MlensemblestackingTable) -> Double { @
 pub fn ml_ensemble_stacking_table_mean(s : MlensemblestackingTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_table_scale(s : MlensemblestackingTable, f : Double) -> MlensemblestackingTable {
-  let result = ml_ensemble_stacking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_table_add(a : MlensemblestackingTable, b : MlensemblestackingTable) -> MlensemblestackingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_table_copy(s : MlensemblestackingTable) -> MlensemblestackingTable {
-  let result = ml_ensemble_stacking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_table_fill(s : MlensemblestackingTable, v : Double) -> MlensemblestackingTable {
-  let result = ml_ensemble_stacking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_table_min(s : MlensemblestackingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_ensemble_stacking_graphn_sum(s : MlensemblestackingGraphN) -> Double {
 pub fn ml_ensemble_stacking_graphn_mean(s : MlensemblestackingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_graphn_scale(s : MlensemblestackingGraphN, f : Double) -> MlensemblestackingGraphN {
-  let result = ml_ensemble_stacking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_graphn_add(a : MlensemblestackingGraphN, b : MlensemblestackingGraphN) -> MlensemblestackingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_graphn_copy(s : MlensemblestackingGraphN) -> MlensemblestackingGraphN {
-  let result = ml_ensemble_stacking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_graphn_fill(s : MlensemblestackingGraphN, v : Double) -> MlensemblestackingGraphN {
-  let result = ml_ensemble_stacking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_graphn_min(s : MlensemblestackingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_ensemble_stacking_node_sum(s : MlensemblestackingNode) -> Double { @_c
 pub fn ml_ensemble_stacking_node_mean(s : MlensemblestackingNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_node_scale(s : MlensemblestackingNode, f : Double) -> MlensemblestackingNode {
-  let result = ml_ensemble_stacking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_node_add(a : MlensemblestackingNode, b : MlensemblestackingNode) -> MlensemblestackingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_node_copy(s : MlensemblestackingNode) -> MlensemblestackingNode {
-  let result = ml_ensemble_stacking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_node_fill(s : MlensemblestackingNode, v : Double) -> MlensemblestackingNode {
-  let result = ml_ensemble_stacking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_node_min(s : MlensemblestackingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_ensemble_stacking_edge_sum(s : MlensemblestackingEdge) -> Double { @_c
 pub fn ml_ensemble_stacking_edge_mean(s : MlensemblestackingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_edge_scale(s : MlensemblestackingEdge, f : Double) -> MlensemblestackingEdge {
-  let result = ml_ensemble_stacking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_edge_add(a : MlensemblestackingEdge, b : MlensemblestackingEdge) -> MlensemblestackingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_edge_copy(s : MlensemblestackingEdge) -> MlensemblestackingEdge {
-  let result = ml_ensemble_stacking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_edge_fill(s : MlensemblestackingEdge, v : Double) -> MlensemblestackingEdge {
-  let result = ml_ensemble_stacking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_edge_min(s : MlensemblestackingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_ensemble_stacking_path_sum(s : MlensemblestackingPath) -> Double { @_c
 pub fn ml_ensemble_stacking_path_mean(s : MlensemblestackingPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_path_scale(s : MlensemblestackingPath, f : Double) -> MlensemblestackingPath {
-  let result = ml_ensemble_stacking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_path_add(a : MlensemblestackingPath, b : MlensemblestackingPath) -> MlensemblestackingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_path_copy(s : MlensemblestackingPath) -> MlensemblestackingPath {
-  let result = ml_ensemble_stacking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_path_fill(s : MlensemblestackingPath, v : Double) -> MlensemblestackingPath {
-  let result = ml_ensemble_stacking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_path_min(s : MlensemblestackingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_ensemble_stacking_cluster_sum(s : MlensemblestackingCluster) -> Double
 pub fn ml_ensemble_stacking_cluster_mean(s : MlensemblestackingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_cluster_scale(s : MlensemblestackingCluster, f : Double) -> MlensemblestackingCluster {
-  let result = ml_ensemble_stacking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_cluster_add(a : MlensemblestackingCluster, b : MlensemblestackingCluster) -> MlensemblestackingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_cluster_copy(s : MlensemblestackingCluster) -> MlensemblestackingCluster {
-  let result = ml_ensemble_stacking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_cluster_fill(s : MlensemblestackingCluster, v : Double) -> MlensemblestackingCluster {
-  let result = ml_ensemble_stacking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_cluster_min(s : MlensemblestackingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_ensemble_stacking_model_sum(s : MlensemblestackingModel) -> Double { @
 pub fn ml_ensemble_stacking_model_mean(s : MlensemblestackingModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_model_scale(s : MlensemblestackingModel, f : Double) -> MlensemblestackingModel {
-  let result = ml_ensemble_stacking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_model_add(a : MlensemblestackingModel, b : MlensemblestackingModel) -> MlensemblestackingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_model_copy(s : MlensemblestackingModel) -> MlensemblestackingModel {
-  let result = ml_ensemble_stacking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_model_fill(s : MlensemblestackingModel, v : Double) -> MlensemblestackingModel {
-  let result = ml_ensemble_stacking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_model_min(s : MlensemblestackingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_ensemble_stacking_layer_sum(s : MlensemblestackingLayer) -> Double { @
 pub fn ml_ensemble_stacking_layer_mean(s : MlensemblestackingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_layer_scale(s : MlensemblestackingLayer, f : Double) -> MlensemblestackingLayer {
-  let result = ml_ensemble_stacking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_layer_add(a : MlensemblestackingLayer, b : MlensemblestackingLayer) -> MlensemblestackingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_layer_copy(s : MlensemblestackingLayer) -> MlensemblestackingLayer {
-  let result = ml_ensemble_stacking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_layer_fill(s : MlensemblestackingLayer, v : Double) -> MlensemblestackingLayer {
-  let result = ml_ensemble_stacking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_layer_min(s : MlensemblestackingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_ensemble_stacking_buffer_sum(s : MlensemblestackingBuffer) -> Double {
 pub fn ml_ensemble_stacking_buffer_mean(s : MlensemblestackingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_buffer_scale(s : MlensemblestackingBuffer, f : Double) -> MlensemblestackingBuffer {
-  let result = ml_ensemble_stacking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_buffer_add(a : MlensemblestackingBuffer, b : MlensemblestackingBuffer) -> MlensemblestackingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_buffer_copy(s : MlensemblestackingBuffer) -> MlensemblestackingBuffer {
-  let result = ml_ensemble_stacking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_buffer_fill(s : MlensemblestackingBuffer, v : Double) -> MlensemblestackingBuffer {
-  let result = ml_ensemble_stacking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_buffer_min(s : MlensemblestackingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_ensemble_stacking_cursor_sum(s : MlensemblestackingCursor) -> Double {
 pub fn ml_ensemble_stacking_cursor_mean(s : MlensemblestackingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_cursor_scale(s : MlensemblestackingCursor, f : Double) -> MlensemblestackingCursor {
-  let result = ml_ensemble_stacking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_cursor_add(a : MlensemblestackingCursor, b : MlensemblestackingCursor) -> MlensemblestackingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_cursor_copy(s : MlensemblestackingCursor) -> MlensemblestackingCursor {
-  let result = ml_ensemble_stacking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_cursor_fill(s : MlensemblestackingCursor, v : Double) -> MlensemblestackingCursor {
-  let result = ml_ensemble_stacking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_cursor_min(s : MlensemblestackingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_ensemble_stacking_view_sum(s : MlensemblestackingView) -> Double { @_c
 pub fn ml_ensemble_stacking_view_mean(s : MlensemblestackingView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_view_scale(s : MlensemblestackingView, f : Double) -> MlensemblestackingView {
-  let result = ml_ensemble_stacking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_view_add(a : MlensemblestackingView, b : MlensemblestackingView) -> MlensemblestackingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_view_copy(s : MlensemblestackingView) -> MlensemblestackingView {
-  let result = ml_ensemble_stacking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_view_fill(s : MlensemblestackingView, v : Double) -> MlensemblestackingView {
-  let result = ml_ensemble_stacking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_view_min(s : MlensemblestackingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_ensemble_stacking_range_sum(s : MlensemblestackingRange) -> Double { @
 pub fn ml_ensemble_stacking_range_mean(s : MlensemblestackingRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_range_scale(s : MlensemblestackingRange, f : Double) -> MlensemblestackingRange {
-  let result = ml_ensemble_stacking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_range_add(a : MlensemblestackingRange, b : MlensemblestackingRange) -> MlensemblestackingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_range_copy(s : MlensemblestackingRange) -> MlensemblestackingRange {
-  let result = ml_ensemble_stacking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_range_fill(s : MlensemblestackingRange, v : Double) -> MlensemblestackingRange {
-  let result = ml_ensemble_stacking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_range_min(s : MlensemblestackingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_ensemble_stacking_slice_sum(s : MlensemblestackingSlice) -> Double { @
 pub fn ml_ensemble_stacking_slice_mean(s : MlensemblestackingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_slice_scale(s : MlensemblestackingSlice, f : Double) -> MlensemblestackingSlice {
-  let result = ml_ensemble_stacking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_slice_add(a : MlensemblestackingSlice, b : MlensemblestackingSlice) -> MlensemblestackingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_stacking_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_stacking_slice_copy(s : MlensemblestackingSlice) -> MlensemblestackingSlice {
-  let result = ml_ensemble_stacking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_slice_fill(s : MlensemblestackingSlice, v : Double) -> MlensemblestackingSlice {
-  let result = ml_ensemble_stacking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_stacking_slice_min(s : MlensemblestackingSlice) -> Double { @_common.min(s.data) }

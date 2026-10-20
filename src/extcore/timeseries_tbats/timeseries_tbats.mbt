@@ -383,28 +383,20 @@ pub fn timeseries_tbats_frame_sum(s : TimeseriestbatsFrame) -> Double { @_common
 pub fn timeseries_tbats_frame_mean(s : TimeseriestbatsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_frame_scale(s : TimeseriestbatsFrame, f : Double) -> TimeseriestbatsFrame {
-  let result = timeseries_tbats_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_frame_add(a : TimeseriestbatsFrame, b : TimeseriestbatsFrame) -> TimeseriestbatsFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_frame_copy(s : TimeseriestbatsFrame) -> TimeseriestbatsFrame {
-  let result = timeseries_tbats_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_frame_fill(s : TimeseriestbatsFrame, v : Double) -> TimeseriestbatsFrame {
-  let result = timeseries_tbats_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_frame_min(s : TimeseriestbatsFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_tbats_table_sum(s : TimeseriestbatsTable) -> Double { @_common
 pub fn timeseries_tbats_table_mean(s : TimeseriestbatsTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_table_scale(s : TimeseriestbatsTable, f : Double) -> TimeseriestbatsTable {
-  let result = timeseries_tbats_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_table_add(a : TimeseriestbatsTable, b : TimeseriestbatsTable) -> TimeseriestbatsTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_table_copy(s : TimeseriestbatsTable) -> TimeseriestbatsTable {
-  let result = timeseries_tbats_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_table_fill(s : TimeseriestbatsTable, v : Double) -> TimeseriestbatsTable {
-  let result = timeseries_tbats_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_table_min(s : TimeseriestbatsTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_tbats_graphn_sum(s : TimeseriestbatsGraphN) -> Double { @_comm
 pub fn timeseries_tbats_graphn_mean(s : TimeseriestbatsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_graphn_scale(s : TimeseriestbatsGraphN, f : Double) -> TimeseriestbatsGraphN {
-  let result = timeseries_tbats_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_graphn_add(a : TimeseriestbatsGraphN, b : TimeseriestbatsGraphN) -> TimeseriestbatsGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_graphn_copy(s : TimeseriestbatsGraphN) -> TimeseriestbatsGraphN {
-  let result = timeseries_tbats_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_graphn_fill(s : TimeseriestbatsGraphN, v : Double) -> TimeseriestbatsGraphN {
-  let result = timeseries_tbats_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_graphn_min(s : TimeseriestbatsGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_tbats_node_sum(s : TimeseriestbatsNode) -> Double { @_common.s
 pub fn timeseries_tbats_node_mean(s : TimeseriestbatsNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_node_scale(s : TimeseriestbatsNode, f : Double) -> TimeseriestbatsNode {
-  let result = timeseries_tbats_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_node_add(a : TimeseriestbatsNode, b : TimeseriestbatsNode) -> TimeseriestbatsNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_node_copy(s : TimeseriestbatsNode) -> TimeseriestbatsNode {
-  let result = timeseries_tbats_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_node_fill(s : TimeseriestbatsNode, v : Double) -> TimeseriestbatsNode {
-  let result = timeseries_tbats_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_node_min(s : TimeseriestbatsNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_tbats_edge_sum(s : TimeseriestbatsEdge) -> Double { @_common.s
 pub fn timeseries_tbats_edge_mean(s : TimeseriestbatsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_edge_scale(s : TimeseriestbatsEdge, f : Double) -> TimeseriestbatsEdge {
-  let result = timeseries_tbats_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_edge_add(a : TimeseriestbatsEdge, b : TimeseriestbatsEdge) -> TimeseriestbatsEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_edge_copy(s : TimeseriestbatsEdge) -> TimeseriestbatsEdge {
-  let result = timeseries_tbats_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_edge_fill(s : TimeseriestbatsEdge, v : Double) -> TimeseriestbatsEdge {
-  let result = timeseries_tbats_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_edge_min(s : TimeseriestbatsEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_tbats_path_sum(s : TimeseriestbatsPath) -> Double { @_common.s
 pub fn timeseries_tbats_path_mean(s : TimeseriestbatsPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_path_scale(s : TimeseriestbatsPath, f : Double) -> TimeseriestbatsPath {
-  let result = timeseries_tbats_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_path_add(a : TimeseriestbatsPath, b : TimeseriestbatsPath) -> TimeseriestbatsPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_path_copy(s : TimeseriestbatsPath) -> TimeseriestbatsPath {
-  let result = timeseries_tbats_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_path_fill(s : TimeseriestbatsPath, v : Double) -> TimeseriestbatsPath {
-  let result = timeseries_tbats_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_path_min(s : TimeseriestbatsPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_tbats_cluster_sum(s : TimeseriestbatsCluster) -> Double { @_co
 pub fn timeseries_tbats_cluster_mean(s : TimeseriestbatsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_cluster_scale(s : TimeseriestbatsCluster, f : Double) -> TimeseriestbatsCluster {
-  let result = timeseries_tbats_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_cluster_add(a : TimeseriestbatsCluster, b : TimeseriestbatsCluster) -> TimeseriestbatsCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_cluster_copy(s : TimeseriestbatsCluster) -> TimeseriestbatsCluster {
-  let result = timeseries_tbats_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_cluster_fill(s : TimeseriestbatsCluster, v : Double) -> TimeseriestbatsCluster {
-  let result = timeseries_tbats_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_cluster_min(s : TimeseriestbatsCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_tbats_model_sum(s : TimeseriestbatsModel) -> Double { @_common
 pub fn timeseries_tbats_model_mean(s : TimeseriestbatsModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_model_scale(s : TimeseriestbatsModel, f : Double) -> TimeseriestbatsModel {
-  let result = timeseries_tbats_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_model_add(a : TimeseriestbatsModel, b : TimeseriestbatsModel) -> TimeseriestbatsModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_model_copy(s : TimeseriestbatsModel) -> TimeseriestbatsModel {
-  let result = timeseries_tbats_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_model_fill(s : TimeseriestbatsModel, v : Double) -> TimeseriestbatsModel {
-  let result = timeseries_tbats_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_model_min(s : TimeseriestbatsModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_tbats_layer_sum(s : TimeseriestbatsLayer) -> Double { @_common
 pub fn timeseries_tbats_layer_mean(s : TimeseriestbatsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_layer_scale(s : TimeseriestbatsLayer, f : Double) -> TimeseriestbatsLayer {
-  let result = timeseries_tbats_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_layer_add(a : TimeseriestbatsLayer, b : TimeseriestbatsLayer) -> TimeseriestbatsLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_layer_copy(s : TimeseriestbatsLayer) -> TimeseriestbatsLayer {
-  let result = timeseries_tbats_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_layer_fill(s : TimeseriestbatsLayer, v : Double) -> TimeseriestbatsLayer {
-  let result = timeseries_tbats_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_layer_min(s : TimeseriestbatsLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_tbats_buffer_sum(s : TimeseriestbatsBuffer) -> Double { @_comm
 pub fn timeseries_tbats_buffer_mean(s : TimeseriestbatsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_buffer_scale(s : TimeseriestbatsBuffer, f : Double) -> TimeseriestbatsBuffer {
-  let result = timeseries_tbats_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_buffer_add(a : TimeseriestbatsBuffer, b : TimeseriestbatsBuffer) -> TimeseriestbatsBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_buffer_copy(s : TimeseriestbatsBuffer) -> TimeseriestbatsBuffer {
-  let result = timeseries_tbats_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_buffer_fill(s : TimeseriestbatsBuffer, v : Double) -> TimeseriestbatsBuffer {
-  let result = timeseries_tbats_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_buffer_min(s : TimeseriestbatsBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_tbats_cursor_sum(s : TimeseriestbatsCursor) -> Double { @_comm
 pub fn timeseries_tbats_cursor_mean(s : TimeseriestbatsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_cursor_scale(s : TimeseriestbatsCursor, f : Double) -> TimeseriestbatsCursor {
-  let result = timeseries_tbats_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_cursor_add(a : TimeseriestbatsCursor, b : TimeseriestbatsCursor) -> TimeseriestbatsCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_cursor_copy(s : TimeseriestbatsCursor) -> TimeseriestbatsCursor {
-  let result = timeseries_tbats_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_cursor_fill(s : TimeseriestbatsCursor, v : Double) -> TimeseriestbatsCursor {
-  let result = timeseries_tbats_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_cursor_min(s : TimeseriestbatsCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_tbats_view_sum(s : TimeseriestbatsView) -> Double { @_common.s
 pub fn timeseries_tbats_view_mean(s : TimeseriestbatsView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_view_scale(s : TimeseriestbatsView, f : Double) -> TimeseriestbatsView {
-  let result = timeseries_tbats_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_view_add(a : TimeseriestbatsView, b : TimeseriestbatsView) -> TimeseriestbatsView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_view_copy(s : TimeseriestbatsView) -> TimeseriestbatsView {
-  let result = timeseries_tbats_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_view_fill(s : TimeseriestbatsView, v : Double) -> TimeseriestbatsView {
-  let result = timeseries_tbats_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_view_min(s : TimeseriestbatsView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_tbats_range_sum(s : TimeseriestbatsRange) -> Double { @_common
 pub fn timeseries_tbats_range_mean(s : TimeseriestbatsRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_range_scale(s : TimeseriestbatsRange, f : Double) -> TimeseriestbatsRange {
-  let result = timeseries_tbats_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_range_add(a : TimeseriestbatsRange, b : TimeseriestbatsRange) -> TimeseriestbatsRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_range_copy(s : TimeseriestbatsRange) -> TimeseriestbatsRange {
-  let result = timeseries_tbats_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_range_fill(s : TimeseriestbatsRange, v : Double) -> TimeseriestbatsRange {
-  let result = timeseries_tbats_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_range_min(s : TimeseriestbatsRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_tbats_slice_sum(s : TimeseriestbatsSlice) -> Double { @_common
 pub fn timeseries_tbats_slice_mean(s : TimeseriestbatsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_tbats_slice_scale(s : TimeseriestbatsSlice, f : Double) -> TimeseriestbatsSlice {
-  let result = timeseries_tbats_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_slice_add(a : TimeseriestbatsSlice, b : TimeseriestbatsSlice) -> TimeseriestbatsSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_tbats_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_tbats_slice_copy(s : TimeseriestbatsSlice) -> TimeseriestbatsSlice {
-  let result = timeseries_tbats_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_slice_fill(s : TimeseriestbatsSlice, v : Double) -> TimeseriestbatsSlice {
-  let result = timeseries_tbats_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_tbats_slice_min(s : TimeseriestbatsSlice) -> Double { @_common.min(s.data) }

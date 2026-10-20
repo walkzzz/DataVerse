@@ -383,28 +383,20 @@ pub fn geo_buffer_segment_frame_sum(s : GeobuffersegmentFrame) -> Double { @_com
 pub fn geo_buffer_segment_frame_mean(s : GeobuffersegmentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_frame_scale(s : GeobuffersegmentFrame, f : Double) -> GeobuffersegmentFrame {
-  let result = geo_buffer_segment_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_frame_add(a : GeobuffersegmentFrame, b : GeobuffersegmentFrame) -> GeobuffersegmentFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_frame_copy(s : GeobuffersegmentFrame) -> GeobuffersegmentFrame {
-  let result = geo_buffer_segment_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_frame_fill(s : GeobuffersegmentFrame, v : Double) -> GeobuffersegmentFrame {
-  let result = geo_buffer_segment_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_frame_min(s : GeobuffersegmentFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_buffer_segment_table_sum(s : GeobuffersegmentTable) -> Double { @_com
 pub fn geo_buffer_segment_table_mean(s : GeobuffersegmentTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_table_scale(s : GeobuffersegmentTable, f : Double) -> GeobuffersegmentTable {
-  let result = geo_buffer_segment_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_table_add(a : GeobuffersegmentTable, b : GeobuffersegmentTable) -> GeobuffersegmentTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_table_copy(s : GeobuffersegmentTable) -> GeobuffersegmentTable {
-  let result = geo_buffer_segment_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_table_fill(s : GeobuffersegmentTable, v : Double) -> GeobuffersegmentTable {
-  let result = geo_buffer_segment_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_table_min(s : GeobuffersegmentTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_buffer_segment_graphn_sum(s : GeobuffersegmentGraphN) -> Double { @_c
 pub fn geo_buffer_segment_graphn_mean(s : GeobuffersegmentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_graphn_scale(s : GeobuffersegmentGraphN, f : Double) -> GeobuffersegmentGraphN {
-  let result = geo_buffer_segment_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_graphn_add(a : GeobuffersegmentGraphN, b : GeobuffersegmentGraphN) -> GeobuffersegmentGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_graphn_copy(s : GeobuffersegmentGraphN) -> GeobuffersegmentGraphN {
-  let result = geo_buffer_segment_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_graphn_fill(s : GeobuffersegmentGraphN, v : Double) -> GeobuffersegmentGraphN {
-  let result = geo_buffer_segment_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_graphn_min(s : GeobuffersegmentGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_buffer_segment_node_sum(s : GeobuffersegmentNode) -> Double { @_commo
 pub fn geo_buffer_segment_node_mean(s : GeobuffersegmentNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_node_scale(s : GeobuffersegmentNode, f : Double) -> GeobuffersegmentNode {
-  let result = geo_buffer_segment_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_node_add(a : GeobuffersegmentNode, b : GeobuffersegmentNode) -> GeobuffersegmentNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_node_copy(s : GeobuffersegmentNode) -> GeobuffersegmentNode {
-  let result = geo_buffer_segment_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_node_fill(s : GeobuffersegmentNode, v : Double) -> GeobuffersegmentNode {
-  let result = geo_buffer_segment_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_node_min(s : GeobuffersegmentNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_buffer_segment_edge_sum(s : GeobuffersegmentEdge) -> Double { @_commo
 pub fn geo_buffer_segment_edge_mean(s : GeobuffersegmentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_edge_scale(s : GeobuffersegmentEdge, f : Double) -> GeobuffersegmentEdge {
-  let result = geo_buffer_segment_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_edge_add(a : GeobuffersegmentEdge, b : GeobuffersegmentEdge) -> GeobuffersegmentEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_edge_copy(s : GeobuffersegmentEdge) -> GeobuffersegmentEdge {
-  let result = geo_buffer_segment_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_edge_fill(s : GeobuffersegmentEdge, v : Double) -> GeobuffersegmentEdge {
-  let result = geo_buffer_segment_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_edge_min(s : GeobuffersegmentEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_buffer_segment_path_sum(s : GeobuffersegmentPath) -> Double { @_commo
 pub fn geo_buffer_segment_path_mean(s : GeobuffersegmentPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_path_scale(s : GeobuffersegmentPath, f : Double) -> GeobuffersegmentPath {
-  let result = geo_buffer_segment_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_path_add(a : GeobuffersegmentPath, b : GeobuffersegmentPath) -> GeobuffersegmentPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_path_copy(s : GeobuffersegmentPath) -> GeobuffersegmentPath {
-  let result = geo_buffer_segment_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_path_fill(s : GeobuffersegmentPath, v : Double) -> GeobuffersegmentPath {
-  let result = geo_buffer_segment_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_path_min(s : GeobuffersegmentPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_buffer_segment_cluster_sum(s : GeobuffersegmentCluster) -> Double { @
 pub fn geo_buffer_segment_cluster_mean(s : GeobuffersegmentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_cluster_scale(s : GeobuffersegmentCluster, f : Double) -> GeobuffersegmentCluster {
-  let result = geo_buffer_segment_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cluster_add(a : GeobuffersegmentCluster, b : GeobuffersegmentCluster) -> GeobuffersegmentCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_cluster_copy(s : GeobuffersegmentCluster) -> GeobuffersegmentCluster {
-  let result = geo_buffer_segment_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cluster_fill(s : GeobuffersegmentCluster, v : Double) -> GeobuffersegmentCluster {
-  let result = geo_buffer_segment_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cluster_min(s : GeobuffersegmentCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_buffer_segment_model_sum(s : GeobuffersegmentModel) -> Double { @_com
 pub fn geo_buffer_segment_model_mean(s : GeobuffersegmentModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_model_scale(s : GeobuffersegmentModel, f : Double) -> GeobuffersegmentModel {
-  let result = geo_buffer_segment_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_model_add(a : GeobuffersegmentModel, b : GeobuffersegmentModel) -> GeobuffersegmentModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_model_copy(s : GeobuffersegmentModel) -> GeobuffersegmentModel {
-  let result = geo_buffer_segment_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_model_fill(s : GeobuffersegmentModel, v : Double) -> GeobuffersegmentModel {
-  let result = geo_buffer_segment_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_model_min(s : GeobuffersegmentModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_buffer_segment_layer_sum(s : GeobuffersegmentLayer) -> Double { @_com
 pub fn geo_buffer_segment_layer_mean(s : GeobuffersegmentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_layer_scale(s : GeobuffersegmentLayer, f : Double) -> GeobuffersegmentLayer {
-  let result = geo_buffer_segment_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_layer_add(a : GeobuffersegmentLayer, b : GeobuffersegmentLayer) -> GeobuffersegmentLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_layer_copy(s : GeobuffersegmentLayer) -> GeobuffersegmentLayer {
-  let result = geo_buffer_segment_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_layer_fill(s : GeobuffersegmentLayer, v : Double) -> GeobuffersegmentLayer {
-  let result = geo_buffer_segment_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_layer_min(s : GeobuffersegmentLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_buffer_segment_buffer_sum(s : GeobuffersegmentBuffer) -> Double { @_c
 pub fn geo_buffer_segment_buffer_mean(s : GeobuffersegmentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_buffer_scale(s : GeobuffersegmentBuffer, f : Double) -> GeobuffersegmentBuffer {
-  let result = geo_buffer_segment_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_buffer_add(a : GeobuffersegmentBuffer, b : GeobuffersegmentBuffer) -> GeobuffersegmentBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_buffer_copy(s : GeobuffersegmentBuffer) -> GeobuffersegmentBuffer {
-  let result = geo_buffer_segment_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_buffer_fill(s : GeobuffersegmentBuffer, v : Double) -> GeobuffersegmentBuffer {
-  let result = geo_buffer_segment_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_buffer_min(s : GeobuffersegmentBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_buffer_segment_cursor_sum(s : GeobuffersegmentCursor) -> Double { @_c
 pub fn geo_buffer_segment_cursor_mean(s : GeobuffersegmentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_cursor_scale(s : GeobuffersegmentCursor, f : Double) -> GeobuffersegmentCursor {
-  let result = geo_buffer_segment_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cursor_add(a : GeobuffersegmentCursor, b : GeobuffersegmentCursor) -> GeobuffersegmentCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_cursor_copy(s : GeobuffersegmentCursor) -> GeobuffersegmentCursor {
-  let result = geo_buffer_segment_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cursor_fill(s : GeobuffersegmentCursor, v : Double) -> GeobuffersegmentCursor {
-  let result = geo_buffer_segment_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cursor_min(s : GeobuffersegmentCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_buffer_segment_view_sum(s : GeobuffersegmentView) -> Double { @_commo
 pub fn geo_buffer_segment_view_mean(s : GeobuffersegmentView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_view_scale(s : GeobuffersegmentView, f : Double) -> GeobuffersegmentView {
-  let result = geo_buffer_segment_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_view_add(a : GeobuffersegmentView, b : GeobuffersegmentView) -> GeobuffersegmentView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_view_copy(s : GeobuffersegmentView) -> GeobuffersegmentView {
-  let result = geo_buffer_segment_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_view_fill(s : GeobuffersegmentView, v : Double) -> GeobuffersegmentView {
-  let result = geo_buffer_segment_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_view_min(s : GeobuffersegmentView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_buffer_segment_range_sum(s : GeobuffersegmentRange) -> Double { @_com
 pub fn geo_buffer_segment_range_mean(s : GeobuffersegmentRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_range_scale(s : GeobuffersegmentRange, f : Double) -> GeobuffersegmentRange {
-  let result = geo_buffer_segment_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_range_add(a : GeobuffersegmentRange, b : GeobuffersegmentRange) -> GeobuffersegmentRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_range_copy(s : GeobuffersegmentRange) -> GeobuffersegmentRange {
-  let result = geo_buffer_segment_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_range_fill(s : GeobuffersegmentRange, v : Double) -> GeobuffersegmentRange {
-  let result = geo_buffer_segment_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_range_min(s : GeobuffersegmentRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_buffer_segment_slice_sum(s : GeobuffersegmentSlice) -> Double { @_com
 pub fn geo_buffer_segment_slice_mean(s : GeobuffersegmentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_slice_scale(s : GeobuffersegmentSlice, f : Double) -> GeobuffersegmentSlice {
-  let result = geo_buffer_segment_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_slice_add(a : GeobuffersegmentSlice, b : GeobuffersegmentSlice) -> GeobuffersegmentSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_segment_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_segment_slice_copy(s : GeobuffersegmentSlice) -> GeobuffersegmentSlice {
-  let result = geo_buffer_segment_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_slice_fill(s : GeobuffersegmentSlice, v : Double) -> GeobuffersegmentSlice {
-  let result = geo_buffer_segment_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_slice_min(s : GeobuffersegmentSlice) -> Double { @_common.min(s.data) }

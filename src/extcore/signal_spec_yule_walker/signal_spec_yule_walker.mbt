@@ -383,28 +383,20 @@ pub fn signal_spec_yule_walker_frame_sum(s : SignalspecyulewalkerFrame) -> Doubl
 pub fn signal_spec_yule_walker_frame_mean(s : SignalspecyulewalkerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_frame_scale(s : SignalspecyulewalkerFrame, f : Double) -> SignalspecyulewalkerFrame {
-  let result = signal_spec_yule_walker_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_frame_add(a : SignalspecyulewalkerFrame, b : SignalspecyulewalkerFrame) -> SignalspecyulewalkerFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_frame_copy(s : SignalspecyulewalkerFrame) -> SignalspecyulewalkerFrame {
-  let result = signal_spec_yule_walker_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_frame_fill(s : SignalspecyulewalkerFrame, v : Double) -> SignalspecyulewalkerFrame {
-  let result = signal_spec_yule_walker_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_frame_min(s : SignalspecyulewalkerFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_spec_yule_walker_table_sum(s : SignalspecyulewalkerTable) -> Doubl
 pub fn signal_spec_yule_walker_table_mean(s : SignalspecyulewalkerTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_table_scale(s : SignalspecyulewalkerTable, f : Double) -> SignalspecyulewalkerTable {
-  let result = signal_spec_yule_walker_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_table_add(a : SignalspecyulewalkerTable, b : SignalspecyulewalkerTable) -> SignalspecyulewalkerTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_table_copy(s : SignalspecyulewalkerTable) -> SignalspecyulewalkerTable {
-  let result = signal_spec_yule_walker_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_table_fill(s : SignalspecyulewalkerTable, v : Double) -> SignalspecyulewalkerTable {
-  let result = signal_spec_yule_walker_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_table_min(s : SignalspecyulewalkerTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_spec_yule_walker_graphn_sum(s : SignalspecyulewalkerGraphN) -> Dou
 pub fn signal_spec_yule_walker_graphn_mean(s : SignalspecyulewalkerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_graphn_scale(s : SignalspecyulewalkerGraphN, f : Double) -> SignalspecyulewalkerGraphN {
-  let result = signal_spec_yule_walker_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_graphn_add(a : SignalspecyulewalkerGraphN, b : SignalspecyulewalkerGraphN) -> SignalspecyulewalkerGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_graphn_copy(s : SignalspecyulewalkerGraphN) -> SignalspecyulewalkerGraphN {
-  let result = signal_spec_yule_walker_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_graphn_fill(s : SignalspecyulewalkerGraphN, v : Double) -> SignalspecyulewalkerGraphN {
-  let result = signal_spec_yule_walker_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_graphn_min(s : SignalspecyulewalkerGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_spec_yule_walker_node_sum(s : SignalspecyulewalkerNode) -> Double 
 pub fn signal_spec_yule_walker_node_mean(s : SignalspecyulewalkerNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_node_scale(s : SignalspecyulewalkerNode, f : Double) -> SignalspecyulewalkerNode {
-  let result = signal_spec_yule_walker_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_node_add(a : SignalspecyulewalkerNode, b : SignalspecyulewalkerNode) -> SignalspecyulewalkerNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_node_copy(s : SignalspecyulewalkerNode) -> SignalspecyulewalkerNode {
-  let result = signal_spec_yule_walker_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_node_fill(s : SignalspecyulewalkerNode, v : Double) -> SignalspecyulewalkerNode {
-  let result = signal_spec_yule_walker_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_node_min(s : SignalspecyulewalkerNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_spec_yule_walker_edge_sum(s : SignalspecyulewalkerEdge) -> Double 
 pub fn signal_spec_yule_walker_edge_mean(s : SignalspecyulewalkerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_edge_scale(s : SignalspecyulewalkerEdge, f : Double) -> SignalspecyulewalkerEdge {
-  let result = signal_spec_yule_walker_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_edge_add(a : SignalspecyulewalkerEdge, b : SignalspecyulewalkerEdge) -> SignalspecyulewalkerEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_edge_copy(s : SignalspecyulewalkerEdge) -> SignalspecyulewalkerEdge {
-  let result = signal_spec_yule_walker_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_edge_fill(s : SignalspecyulewalkerEdge, v : Double) -> SignalspecyulewalkerEdge {
-  let result = signal_spec_yule_walker_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_edge_min(s : SignalspecyulewalkerEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_spec_yule_walker_path_sum(s : SignalspecyulewalkerPath) -> Double 
 pub fn signal_spec_yule_walker_path_mean(s : SignalspecyulewalkerPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_path_scale(s : SignalspecyulewalkerPath, f : Double) -> SignalspecyulewalkerPath {
-  let result = signal_spec_yule_walker_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_path_add(a : SignalspecyulewalkerPath, b : SignalspecyulewalkerPath) -> SignalspecyulewalkerPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_path_copy(s : SignalspecyulewalkerPath) -> SignalspecyulewalkerPath {
-  let result = signal_spec_yule_walker_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_path_fill(s : SignalspecyulewalkerPath, v : Double) -> SignalspecyulewalkerPath {
-  let result = signal_spec_yule_walker_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_path_min(s : SignalspecyulewalkerPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_spec_yule_walker_cluster_sum(s : SignalspecyulewalkerCluster) -> D
 pub fn signal_spec_yule_walker_cluster_mean(s : SignalspecyulewalkerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_cluster_scale(s : SignalspecyulewalkerCluster, f : Double) -> SignalspecyulewalkerCluster {
-  let result = signal_spec_yule_walker_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_cluster_add(a : SignalspecyulewalkerCluster, b : SignalspecyulewalkerCluster) -> SignalspecyulewalkerCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_cluster_copy(s : SignalspecyulewalkerCluster) -> SignalspecyulewalkerCluster {
-  let result = signal_spec_yule_walker_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_cluster_fill(s : SignalspecyulewalkerCluster, v : Double) -> SignalspecyulewalkerCluster {
-  let result = signal_spec_yule_walker_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_cluster_min(s : SignalspecyulewalkerCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_spec_yule_walker_model_sum(s : SignalspecyulewalkerModel) -> Doubl
 pub fn signal_spec_yule_walker_model_mean(s : SignalspecyulewalkerModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_model_scale(s : SignalspecyulewalkerModel, f : Double) -> SignalspecyulewalkerModel {
-  let result = signal_spec_yule_walker_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_model_add(a : SignalspecyulewalkerModel, b : SignalspecyulewalkerModel) -> SignalspecyulewalkerModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_model_copy(s : SignalspecyulewalkerModel) -> SignalspecyulewalkerModel {
-  let result = signal_spec_yule_walker_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_model_fill(s : SignalspecyulewalkerModel, v : Double) -> SignalspecyulewalkerModel {
-  let result = signal_spec_yule_walker_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_model_min(s : SignalspecyulewalkerModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_spec_yule_walker_layer_sum(s : SignalspecyulewalkerLayer) -> Doubl
 pub fn signal_spec_yule_walker_layer_mean(s : SignalspecyulewalkerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_layer_scale(s : SignalspecyulewalkerLayer, f : Double) -> SignalspecyulewalkerLayer {
-  let result = signal_spec_yule_walker_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_layer_add(a : SignalspecyulewalkerLayer, b : SignalspecyulewalkerLayer) -> SignalspecyulewalkerLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_layer_copy(s : SignalspecyulewalkerLayer) -> SignalspecyulewalkerLayer {
-  let result = signal_spec_yule_walker_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_layer_fill(s : SignalspecyulewalkerLayer, v : Double) -> SignalspecyulewalkerLayer {
-  let result = signal_spec_yule_walker_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_layer_min(s : SignalspecyulewalkerLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_spec_yule_walker_buffer_sum(s : SignalspecyulewalkerBuffer) -> Dou
 pub fn signal_spec_yule_walker_buffer_mean(s : SignalspecyulewalkerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_buffer_scale(s : SignalspecyulewalkerBuffer, f : Double) -> SignalspecyulewalkerBuffer {
-  let result = signal_spec_yule_walker_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_buffer_add(a : SignalspecyulewalkerBuffer, b : SignalspecyulewalkerBuffer) -> SignalspecyulewalkerBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_buffer_copy(s : SignalspecyulewalkerBuffer) -> SignalspecyulewalkerBuffer {
-  let result = signal_spec_yule_walker_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_buffer_fill(s : SignalspecyulewalkerBuffer, v : Double) -> SignalspecyulewalkerBuffer {
-  let result = signal_spec_yule_walker_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_buffer_min(s : SignalspecyulewalkerBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_spec_yule_walker_cursor_sum(s : SignalspecyulewalkerCursor) -> Dou
 pub fn signal_spec_yule_walker_cursor_mean(s : SignalspecyulewalkerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_cursor_scale(s : SignalspecyulewalkerCursor, f : Double) -> SignalspecyulewalkerCursor {
-  let result = signal_spec_yule_walker_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_cursor_add(a : SignalspecyulewalkerCursor, b : SignalspecyulewalkerCursor) -> SignalspecyulewalkerCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_cursor_copy(s : SignalspecyulewalkerCursor) -> SignalspecyulewalkerCursor {
-  let result = signal_spec_yule_walker_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_cursor_fill(s : SignalspecyulewalkerCursor, v : Double) -> SignalspecyulewalkerCursor {
-  let result = signal_spec_yule_walker_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_cursor_min(s : SignalspecyulewalkerCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_spec_yule_walker_view_sum(s : SignalspecyulewalkerView) -> Double 
 pub fn signal_spec_yule_walker_view_mean(s : SignalspecyulewalkerView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_view_scale(s : SignalspecyulewalkerView, f : Double) -> SignalspecyulewalkerView {
-  let result = signal_spec_yule_walker_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_view_add(a : SignalspecyulewalkerView, b : SignalspecyulewalkerView) -> SignalspecyulewalkerView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_view_copy(s : SignalspecyulewalkerView) -> SignalspecyulewalkerView {
-  let result = signal_spec_yule_walker_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_view_fill(s : SignalspecyulewalkerView, v : Double) -> SignalspecyulewalkerView {
-  let result = signal_spec_yule_walker_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_view_min(s : SignalspecyulewalkerView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_spec_yule_walker_range_sum(s : SignalspecyulewalkerRange) -> Doubl
 pub fn signal_spec_yule_walker_range_mean(s : SignalspecyulewalkerRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_range_scale(s : SignalspecyulewalkerRange, f : Double) -> SignalspecyulewalkerRange {
-  let result = signal_spec_yule_walker_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_range_add(a : SignalspecyulewalkerRange, b : SignalspecyulewalkerRange) -> SignalspecyulewalkerRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_range_copy(s : SignalspecyulewalkerRange) -> SignalspecyulewalkerRange {
-  let result = signal_spec_yule_walker_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_range_fill(s : SignalspecyulewalkerRange, v : Double) -> SignalspecyulewalkerRange {
-  let result = signal_spec_yule_walker_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_range_min(s : SignalspecyulewalkerRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_spec_yule_walker_slice_sum(s : SignalspecyulewalkerSlice) -> Doubl
 pub fn signal_spec_yule_walker_slice_mean(s : SignalspecyulewalkerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_slice_scale(s : SignalspecyulewalkerSlice, f : Double) -> SignalspecyulewalkerSlice {
-  let result = signal_spec_yule_walker_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_slice_add(a : SignalspecyulewalkerSlice, b : SignalspecyulewalkerSlice) -> SignalspecyulewalkerSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_yule_walker_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_yule_walker_slice_copy(s : SignalspecyulewalkerSlice) -> SignalspecyulewalkerSlice {
-  let result = signal_spec_yule_walker_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_slice_fill(s : SignalspecyulewalkerSlice, v : Double) -> SignalspecyulewalkerSlice {
-  let result = signal_spec_yule_walker_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_yule_walker_slice_min(s : SignalspecyulewalkerSlice) -> Double { @_common.min(s.data) }

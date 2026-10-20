@@ -383,28 +383,20 @@ pub fn stats_dist_laplace_frame_sum(s : StatsdistlaplaceFrame) -> Double { @_com
 pub fn stats_dist_laplace_frame_mean(s : StatsdistlaplaceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_frame_scale(s : StatsdistlaplaceFrame, f : Double) -> StatsdistlaplaceFrame {
-  let result = stats_dist_laplace_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_frame_add(a : StatsdistlaplaceFrame, b : StatsdistlaplaceFrame) -> StatsdistlaplaceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_frame_copy(s : StatsdistlaplaceFrame) -> StatsdistlaplaceFrame {
-  let result = stats_dist_laplace_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_frame_fill(s : StatsdistlaplaceFrame, v : Double) -> StatsdistlaplaceFrame {
-  let result = stats_dist_laplace_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_frame_min(s : StatsdistlaplaceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_laplace_table_sum(s : StatsdistlaplaceTable) -> Double { @_com
 pub fn stats_dist_laplace_table_mean(s : StatsdistlaplaceTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_table_scale(s : StatsdistlaplaceTable, f : Double) -> StatsdistlaplaceTable {
-  let result = stats_dist_laplace_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_table_add(a : StatsdistlaplaceTable, b : StatsdistlaplaceTable) -> StatsdistlaplaceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_table_copy(s : StatsdistlaplaceTable) -> StatsdistlaplaceTable {
-  let result = stats_dist_laplace_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_table_fill(s : StatsdistlaplaceTable, v : Double) -> StatsdistlaplaceTable {
-  let result = stats_dist_laplace_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_table_min(s : StatsdistlaplaceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_laplace_graphn_sum(s : StatsdistlaplaceGraphN) -> Double { @_c
 pub fn stats_dist_laplace_graphn_mean(s : StatsdistlaplaceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_graphn_scale(s : StatsdistlaplaceGraphN, f : Double) -> StatsdistlaplaceGraphN {
-  let result = stats_dist_laplace_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_graphn_add(a : StatsdistlaplaceGraphN, b : StatsdistlaplaceGraphN) -> StatsdistlaplaceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_graphn_copy(s : StatsdistlaplaceGraphN) -> StatsdistlaplaceGraphN {
-  let result = stats_dist_laplace_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_graphn_fill(s : StatsdistlaplaceGraphN, v : Double) -> StatsdistlaplaceGraphN {
-  let result = stats_dist_laplace_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_graphn_min(s : StatsdistlaplaceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_laplace_node_sum(s : StatsdistlaplaceNode) -> Double { @_commo
 pub fn stats_dist_laplace_node_mean(s : StatsdistlaplaceNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_node_scale(s : StatsdistlaplaceNode, f : Double) -> StatsdistlaplaceNode {
-  let result = stats_dist_laplace_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_node_add(a : StatsdistlaplaceNode, b : StatsdistlaplaceNode) -> StatsdistlaplaceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_node_copy(s : StatsdistlaplaceNode) -> StatsdistlaplaceNode {
-  let result = stats_dist_laplace_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_node_fill(s : StatsdistlaplaceNode, v : Double) -> StatsdistlaplaceNode {
-  let result = stats_dist_laplace_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_node_min(s : StatsdistlaplaceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_laplace_edge_sum(s : StatsdistlaplaceEdge) -> Double { @_commo
 pub fn stats_dist_laplace_edge_mean(s : StatsdistlaplaceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_edge_scale(s : StatsdistlaplaceEdge, f : Double) -> StatsdistlaplaceEdge {
-  let result = stats_dist_laplace_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_edge_add(a : StatsdistlaplaceEdge, b : StatsdistlaplaceEdge) -> StatsdistlaplaceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_edge_copy(s : StatsdistlaplaceEdge) -> StatsdistlaplaceEdge {
-  let result = stats_dist_laplace_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_edge_fill(s : StatsdistlaplaceEdge, v : Double) -> StatsdistlaplaceEdge {
-  let result = stats_dist_laplace_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_edge_min(s : StatsdistlaplaceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_laplace_path_sum(s : StatsdistlaplacePath) -> Double { @_commo
 pub fn stats_dist_laplace_path_mean(s : StatsdistlaplacePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_path_scale(s : StatsdistlaplacePath, f : Double) -> StatsdistlaplacePath {
-  let result = stats_dist_laplace_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_path_add(a : StatsdistlaplacePath, b : StatsdistlaplacePath) -> StatsdistlaplacePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_path_copy(s : StatsdistlaplacePath) -> StatsdistlaplacePath {
-  let result = stats_dist_laplace_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_path_fill(s : StatsdistlaplacePath, v : Double) -> StatsdistlaplacePath {
-  let result = stats_dist_laplace_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_path_min(s : StatsdistlaplacePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_laplace_cluster_sum(s : StatsdistlaplaceCluster) -> Double { @
 pub fn stats_dist_laplace_cluster_mean(s : StatsdistlaplaceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_cluster_scale(s : StatsdistlaplaceCluster, f : Double) -> StatsdistlaplaceCluster {
-  let result = stats_dist_laplace_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_cluster_add(a : StatsdistlaplaceCluster, b : StatsdistlaplaceCluster) -> StatsdistlaplaceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_cluster_copy(s : StatsdistlaplaceCluster) -> StatsdistlaplaceCluster {
-  let result = stats_dist_laplace_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_cluster_fill(s : StatsdistlaplaceCluster, v : Double) -> StatsdistlaplaceCluster {
-  let result = stats_dist_laplace_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_cluster_min(s : StatsdistlaplaceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_laplace_model_sum(s : StatsdistlaplaceModel) -> Double { @_com
 pub fn stats_dist_laplace_model_mean(s : StatsdistlaplaceModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_model_scale(s : StatsdistlaplaceModel, f : Double) -> StatsdistlaplaceModel {
-  let result = stats_dist_laplace_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_model_add(a : StatsdistlaplaceModel, b : StatsdistlaplaceModel) -> StatsdistlaplaceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_model_copy(s : StatsdistlaplaceModel) -> StatsdistlaplaceModel {
-  let result = stats_dist_laplace_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_model_fill(s : StatsdistlaplaceModel, v : Double) -> StatsdistlaplaceModel {
-  let result = stats_dist_laplace_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_model_min(s : StatsdistlaplaceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_laplace_layer_sum(s : StatsdistlaplaceLayer) -> Double { @_com
 pub fn stats_dist_laplace_layer_mean(s : StatsdistlaplaceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_layer_scale(s : StatsdistlaplaceLayer, f : Double) -> StatsdistlaplaceLayer {
-  let result = stats_dist_laplace_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_layer_add(a : StatsdistlaplaceLayer, b : StatsdistlaplaceLayer) -> StatsdistlaplaceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_layer_copy(s : StatsdistlaplaceLayer) -> StatsdistlaplaceLayer {
-  let result = stats_dist_laplace_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_layer_fill(s : StatsdistlaplaceLayer, v : Double) -> StatsdistlaplaceLayer {
-  let result = stats_dist_laplace_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_layer_min(s : StatsdistlaplaceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_laplace_buffer_sum(s : StatsdistlaplaceBuffer) -> Double { @_c
 pub fn stats_dist_laplace_buffer_mean(s : StatsdistlaplaceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_buffer_scale(s : StatsdistlaplaceBuffer, f : Double) -> StatsdistlaplaceBuffer {
-  let result = stats_dist_laplace_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_buffer_add(a : StatsdistlaplaceBuffer, b : StatsdistlaplaceBuffer) -> StatsdistlaplaceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_buffer_copy(s : StatsdistlaplaceBuffer) -> StatsdistlaplaceBuffer {
-  let result = stats_dist_laplace_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_buffer_fill(s : StatsdistlaplaceBuffer, v : Double) -> StatsdistlaplaceBuffer {
-  let result = stats_dist_laplace_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_buffer_min(s : StatsdistlaplaceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_laplace_cursor_sum(s : StatsdistlaplaceCursor) -> Double { @_c
 pub fn stats_dist_laplace_cursor_mean(s : StatsdistlaplaceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_cursor_scale(s : StatsdistlaplaceCursor, f : Double) -> StatsdistlaplaceCursor {
-  let result = stats_dist_laplace_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_cursor_add(a : StatsdistlaplaceCursor, b : StatsdistlaplaceCursor) -> StatsdistlaplaceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_cursor_copy(s : StatsdistlaplaceCursor) -> StatsdistlaplaceCursor {
-  let result = stats_dist_laplace_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_cursor_fill(s : StatsdistlaplaceCursor, v : Double) -> StatsdistlaplaceCursor {
-  let result = stats_dist_laplace_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_cursor_min(s : StatsdistlaplaceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_laplace_view_sum(s : StatsdistlaplaceView) -> Double { @_commo
 pub fn stats_dist_laplace_view_mean(s : StatsdistlaplaceView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_view_scale(s : StatsdistlaplaceView, f : Double) -> StatsdistlaplaceView {
-  let result = stats_dist_laplace_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_view_add(a : StatsdistlaplaceView, b : StatsdistlaplaceView) -> StatsdistlaplaceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_view_copy(s : StatsdistlaplaceView) -> StatsdistlaplaceView {
-  let result = stats_dist_laplace_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_view_fill(s : StatsdistlaplaceView, v : Double) -> StatsdistlaplaceView {
-  let result = stats_dist_laplace_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_view_min(s : StatsdistlaplaceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_laplace_range_sum(s : StatsdistlaplaceRange) -> Double { @_com
 pub fn stats_dist_laplace_range_mean(s : StatsdistlaplaceRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_range_scale(s : StatsdistlaplaceRange, f : Double) -> StatsdistlaplaceRange {
-  let result = stats_dist_laplace_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_range_add(a : StatsdistlaplaceRange, b : StatsdistlaplaceRange) -> StatsdistlaplaceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_range_copy(s : StatsdistlaplaceRange) -> StatsdistlaplaceRange {
-  let result = stats_dist_laplace_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_range_fill(s : StatsdistlaplaceRange, v : Double) -> StatsdistlaplaceRange {
-  let result = stats_dist_laplace_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_range_min(s : StatsdistlaplaceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_laplace_slice_sum(s : StatsdistlaplaceSlice) -> Double { @_com
 pub fn stats_dist_laplace_slice_mean(s : StatsdistlaplaceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_laplace_slice_scale(s : StatsdistlaplaceSlice, f : Double) -> StatsdistlaplaceSlice {
-  let result = stats_dist_laplace_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_slice_add(a : StatsdistlaplaceSlice, b : StatsdistlaplaceSlice) -> StatsdistlaplaceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_laplace_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_laplace_slice_copy(s : StatsdistlaplaceSlice) -> StatsdistlaplaceSlice {
-  let result = stats_dist_laplace_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_slice_fill(s : StatsdistlaplaceSlice, v : Double) -> StatsdistlaplaceSlice {
-  let result = stats_dist_laplace_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_laplace_slice_min(s : StatsdistlaplaceSlice) -> Double { @_common.min(s.data) }

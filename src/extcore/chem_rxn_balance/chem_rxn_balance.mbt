@@ -383,28 +383,20 @@ pub fn chem_rxn_balance_frame_sum(s : ChemrxnbalanceFrame) -> Double { @_common.
 pub fn chem_rxn_balance_frame_mean(s : ChemrxnbalanceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_frame_scale(s : ChemrxnbalanceFrame, f : Double) -> ChemrxnbalanceFrame {
-  let result = chem_rxn_balance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_frame_add(a : ChemrxnbalanceFrame, b : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_frame_copy(s : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
-  let result = chem_rxn_balance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_frame_fill(s : ChemrxnbalanceFrame, v : Double) -> ChemrxnbalanceFrame {
-  let result = chem_rxn_balance_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_frame_min(s : ChemrxnbalanceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_rxn_balance_table_sum(s : ChemrxnbalanceTable) -> Double { @_common.
 pub fn chem_rxn_balance_table_mean(s : ChemrxnbalanceTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_table_scale(s : ChemrxnbalanceTable, f : Double) -> ChemrxnbalanceTable {
-  let result = chem_rxn_balance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_table_add(a : ChemrxnbalanceTable, b : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_table_copy(s : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
-  let result = chem_rxn_balance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_table_fill(s : ChemrxnbalanceTable, v : Double) -> ChemrxnbalanceTable {
-  let result = chem_rxn_balance_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_table_min(s : ChemrxnbalanceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_rxn_balance_graphn_sum(s : ChemrxnbalanceGraphN) -> Double { @_commo
 pub fn chem_rxn_balance_graphn_mean(s : ChemrxnbalanceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_graphn_scale(s : ChemrxnbalanceGraphN, f : Double) -> ChemrxnbalanceGraphN {
-  let result = chem_rxn_balance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_graphn_add(a : ChemrxnbalanceGraphN, b : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_graphn_copy(s : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
-  let result = chem_rxn_balance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_graphn_fill(s : ChemrxnbalanceGraphN, v : Double) -> ChemrxnbalanceGraphN {
-  let result = chem_rxn_balance_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_graphn_min(s : ChemrxnbalanceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_rxn_balance_node_sum(s : ChemrxnbalanceNode) -> Double { @_common.su
 pub fn chem_rxn_balance_node_mean(s : ChemrxnbalanceNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_node_scale(s : ChemrxnbalanceNode, f : Double) -> ChemrxnbalanceNode {
-  let result = chem_rxn_balance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_node_add(a : ChemrxnbalanceNode, b : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_node_copy(s : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
-  let result = chem_rxn_balance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_node_fill(s : ChemrxnbalanceNode, v : Double) -> ChemrxnbalanceNode {
-  let result = chem_rxn_balance_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_node_min(s : ChemrxnbalanceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_rxn_balance_edge_sum(s : ChemrxnbalanceEdge) -> Double { @_common.su
 pub fn chem_rxn_balance_edge_mean(s : ChemrxnbalanceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_edge_scale(s : ChemrxnbalanceEdge, f : Double) -> ChemrxnbalanceEdge {
-  let result = chem_rxn_balance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_edge_add(a : ChemrxnbalanceEdge, b : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_edge_copy(s : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
-  let result = chem_rxn_balance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_edge_fill(s : ChemrxnbalanceEdge, v : Double) -> ChemrxnbalanceEdge {
-  let result = chem_rxn_balance_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_edge_min(s : ChemrxnbalanceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_rxn_balance_path_sum(s : ChemrxnbalancePath) -> Double { @_common.su
 pub fn chem_rxn_balance_path_mean(s : ChemrxnbalancePath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_path_scale(s : ChemrxnbalancePath, f : Double) -> ChemrxnbalancePath {
-  let result = chem_rxn_balance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_path_add(a : ChemrxnbalancePath, b : ChemrxnbalancePath) -> ChemrxnbalancePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_path_copy(s : ChemrxnbalancePath) -> ChemrxnbalancePath {
-  let result = chem_rxn_balance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_path_fill(s : ChemrxnbalancePath, v : Double) -> ChemrxnbalancePath {
-  let result = chem_rxn_balance_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_path_min(s : ChemrxnbalancePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_rxn_balance_cluster_sum(s : ChemrxnbalanceCluster) -> Double { @_com
 pub fn chem_rxn_balance_cluster_mean(s : ChemrxnbalanceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_cluster_scale(s : ChemrxnbalanceCluster, f : Double) -> ChemrxnbalanceCluster {
-  let result = chem_rxn_balance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_cluster_add(a : ChemrxnbalanceCluster, b : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_cluster_copy(s : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
-  let result = chem_rxn_balance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_cluster_fill(s : ChemrxnbalanceCluster, v : Double) -> ChemrxnbalanceCluster {
-  let result = chem_rxn_balance_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_cluster_min(s : ChemrxnbalanceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_rxn_balance_model_sum(s : ChemrxnbalanceModel) -> Double { @_common.
 pub fn chem_rxn_balance_model_mean(s : ChemrxnbalanceModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_model_scale(s : ChemrxnbalanceModel, f : Double) -> ChemrxnbalanceModel {
-  let result = chem_rxn_balance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_model_add(a : ChemrxnbalanceModel, b : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_model_copy(s : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
-  let result = chem_rxn_balance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_model_fill(s : ChemrxnbalanceModel, v : Double) -> ChemrxnbalanceModel {
-  let result = chem_rxn_balance_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_model_min(s : ChemrxnbalanceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_rxn_balance_layer_sum(s : ChemrxnbalanceLayer) -> Double { @_common.
 pub fn chem_rxn_balance_layer_mean(s : ChemrxnbalanceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_layer_scale(s : ChemrxnbalanceLayer, f : Double) -> ChemrxnbalanceLayer {
-  let result = chem_rxn_balance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_layer_add(a : ChemrxnbalanceLayer, b : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_layer_copy(s : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
-  let result = chem_rxn_balance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_layer_fill(s : ChemrxnbalanceLayer, v : Double) -> ChemrxnbalanceLayer {
-  let result = chem_rxn_balance_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_layer_min(s : ChemrxnbalanceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_rxn_balance_buffer_sum(s : ChemrxnbalanceBuffer) -> Double { @_commo
 pub fn chem_rxn_balance_buffer_mean(s : ChemrxnbalanceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_buffer_scale(s : ChemrxnbalanceBuffer, f : Double) -> ChemrxnbalanceBuffer {
-  let result = chem_rxn_balance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_buffer_add(a : ChemrxnbalanceBuffer, b : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_buffer_copy(s : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
-  let result = chem_rxn_balance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_buffer_fill(s : ChemrxnbalanceBuffer, v : Double) -> ChemrxnbalanceBuffer {
-  let result = chem_rxn_balance_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_buffer_min(s : ChemrxnbalanceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_rxn_balance_cursor_sum(s : ChemrxnbalanceCursor) -> Double { @_commo
 pub fn chem_rxn_balance_cursor_mean(s : ChemrxnbalanceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_cursor_scale(s : ChemrxnbalanceCursor, f : Double) -> ChemrxnbalanceCursor {
-  let result = chem_rxn_balance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_cursor_add(a : ChemrxnbalanceCursor, b : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_cursor_copy(s : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
-  let result = chem_rxn_balance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_cursor_fill(s : ChemrxnbalanceCursor, v : Double) -> ChemrxnbalanceCursor {
-  let result = chem_rxn_balance_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_cursor_min(s : ChemrxnbalanceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_rxn_balance_view_sum(s : ChemrxnbalanceView) -> Double { @_common.su
 pub fn chem_rxn_balance_view_mean(s : ChemrxnbalanceView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_view_scale(s : ChemrxnbalanceView, f : Double) -> ChemrxnbalanceView {
-  let result = chem_rxn_balance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_view_add(a : ChemrxnbalanceView, b : ChemrxnbalanceView) -> ChemrxnbalanceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_view_copy(s : ChemrxnbalanceView) -> ChemrxnbalanceView {
-  let result = chem_rxn_balance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_view_fill(s : ChemrxnbalanceView, v : Double) -> ChemrxnbalanceView {
-  let result = chem_rxn_balance_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_view_min(s : ChemrxnbalanceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_rxn_balance_range_sum(s : ChemrxnbalanceRange) -> Double { @_common.
 pub fn chem_rxn_balance_range_mean(s : ChemrxnbalanceRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_range_scale(s : ChemrxnbalanceRange, f : Double) -> ChemrxnbalanceRange {
-  let result = chem_rxn_balance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_range_add(a : ChemrxnbalanceRange, b : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_range_copy(s : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
-  let result = chem_rxn_balance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_range_fill(s : ChemrxnbalanceRange, v : Double) -> ChemrxnbalanceRange {
-  let result = chem_rxn_balance_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_range_min(s : ChemrxnbalanceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_rxn_balance_slice_sum(s : ChemrxnbalanceSlice) -> Double { @_common.
 pub fn chem_rxn_balance_slice_mean(s : ChemrxnbalanceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_slice_scale(s : ChemrxnbalanceSlice, f : Double) -> ChemrxnbalanceSlice {
-  let result = chem_rxn_balance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_slice_add(a : ChemrxnbalanceSlice, b : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_balance_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_balance_slice_copy(s : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
-  let result = chem_rxn_balance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_slice_fill(s : ChemrxnbalanceSlice, v : Double) -> ChemrxnbalanceSlice {
-  let result = chem_rxn_balance_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_balance_slice_min(s : ChemrxnbalanceSlice) -> Double { @_common.min(s.data) }

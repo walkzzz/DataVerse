@@ -383,28 +383,20 @@ pub fn math_special_bessel_frame_sum(s : MathspecialbesselFrame) -> Double { @_c
 pub fn math_special_bessel_frame_mean(s : MathspecialbesselFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_frame_scale(s : MathspecialbesselFrame, f : Double) -> MathspecialbesselFrame {
-  let result = math_special_bessel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_frame_add(a : MathspecialbesselFrame, b : MathspecialbesselFrame) -> MathspecialbesselFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_frame_copy(s : MathspecialbesselFrame) -> MathspecialbesselFrame {
-  let result = math_special_bessel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_frame_fill(s : MathspecialbesselFrame, v : Double) -> MathspecialbesselFrame {
-  let result = math_special_bessel_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_frame_min(s : MathspecialbesselFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_special_bessel_table_sum(s : MathspecialbesselTable) -> Double { @_c
 pub fn math_special_bessel_table_mean(s : MathspecialbesselTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_table_scale(s : MathspecialbesselTable, f : Double) -> MathspecialbesselTable {
-  let result = math_special_bessel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_table_add(a : MathspecialbesselTable, b : MathspecialbesselTable) -> MathspecialbesselTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_table_copy(s : MathspecialbesselTable) -> MathspecialbesselTable {
-  let result = math_special_bessel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_table_fill(s : MathspecialbesselTable, v : Double) -> MathspecialbesselTable {
-  let result = math_special_bessel_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_table_min(s : MathspecialbesselTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_special_bessel_graphn_sum(s : MathspecialbesselGraphN) -> Double { @
 pub fn math_special_bessel_graphn_mean(s : MathspecialbesselGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_graphn_scale(s : MathspecialbesselGraphN, f : Double) -> MathspecialbesselGraphN {
-  let result = math_special_bessel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_graphn_add(a : MathspecialbesselGraphN, b : MathspecialbesselGraphN) -> MathspecialbesselGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_graphn_copy(s : MathspecialbesselGraphN) -> MathspecialbesselGraphN {
-  let result = math_special_bessel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_graphn_fill(s : MathspecialbesselGraphN, v : Double) -> MathspecialbesselGraphN {
-  let result = math_special_bessel_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_graphn_min(s : MathspecialbesselGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_special_bessel_node_sum(s : MathspecialbesselNode) -> Double { @_com
 pub fn math_special_bessel_node_mean(s : MathspecialbesselNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_node_scale(s : MathspecialbesselNode, f : Double) -> MathspecialbesselNode {
-  let result = math_special_bessel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_node_add(a : MathspecialbesselNode, b : MathspecialbesselNode) -> MathspecialbesselNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_node_copy(s : MathspecialbesselNode) -> MathspecialbesselNode {
-  let result = math_special_bessel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_node_fill(s : MathspecialbesselNode, v : Double) -> MathspecialbesselNode {
-  let result = math_special_bessel_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_node_min(s : MathspecialbesselNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_special_bessel_edge_sum(s : MathspecialbesselEdge) -> Double { @_com
 pub fn math_special_bessel_edge_mean(s : MathspecialbesselEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_edge_scale(s : MathspecialbesselEdge, f : Double) -> MathspecialbesselEdge {
-  let result = math_special_bessel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_edge_add(a : MathspecialbesselEdge, b : MathspecialbesselEdge) -> MathspecialbesselEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_edge_copy(s : MathspecialbesselEdge) -> MathspecialbesselEdge {
-  let result = math_special_bessel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_edge_fill(s : MathspecialbesselEdge, v : Double) -> MathspecialbesselEdge {
-  let result = math_special_bessel_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_edge_min(s : MathspecialbesselEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_special_bessel_path_sum(s : MathspecialbesselPath) -> Double { @_com
 pub fn math_special_bessel_path_mean(s : MathspecialbesselPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_path_scale(s : MathspecialbesselPath, f : Double) -> MathspecialbesselPath {
-  let result = math_special_bessel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_path_add(a : MathspecialbesselPath, b : MathspecialbesselPath) -> MathspecialbesselPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_path_copy(s : MathspecialbesselPath) -> MathspecialbesselPath {
-  let result = math_special_bessel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_path_fill(s : MathspecialbesselPath, v : Double) -> MathspecialbesselPath {
-  let result = math_special_bessel_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_path_min(s : MathspecialbesselPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_special_bessel_cluster_sum(s : MathspecialbesselCluster) -> Double {
 pub fn math_special_bessel_cluster_mean(s : MathspecialbesselCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_cluster_scale(s : MathspecialbesselCluster, f : Double) -> MathspecialbesselCluster {
-  let result = math_special_bessel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_cluster_add(a : MathspecialbesselCluster, b : MathspecialbesselCluster) -> MathspecialbesselCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_cluster_copy(s : MathspecialbesselCluster) -> MathspecialbesselCluster {
-  let result = math_special_bessel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_cluster_fill(s : MathspecialbesselCluster, v : Double) -> MathspecialbesselCluster {
-  let result = math_special_bessel_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_cluster_min(s : MathspecialbesselCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_special_bessel_model_sum(s : MathspecialbesselModel) -> Double { @_c
 pub fn math_special_bessel_model_mean(s : MathspecialbesselModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_model_scale(s : MathspecialbesselModel, f : Double) -> MathspecialbesselModel {
-  let result = math_special_bessel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_model_add(a : MathspecialbesselModel, b : MathspecialbesselModel) -> MathspecialbesselModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_model_copy(s : MathspecialbesselModel) -> MathspecialbesselModel {
-  let result = math_special_bessel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_model_fill(s : MathspecialbesselModel, v : Double) -> MathspecialbesselModel {
-  let result = math_special_bessel_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_model_min(s : MathspecialbesselModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_special_bessel_layer_sum(s : MathspecialbesselLayer) -> Double { @_c
 pub fn math_special_bessel_layer_mean(s : MathspecialbesselLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_layer_scale(s : MathspecialbesselLayer, f : Double) -> MathspecialbesselLayer {
-  let result = math_special_bessel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_layer_add(a : MathspecialbesselLayer, b : MathspecialbesselLayer) -> MathspecialbesselLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_layer_copy(s : MathspecialbesselLayer) -> MathspecialbesselLayer {
-  let result = math_special_bessel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_layer_fill(s : MathspecialbesselLayer, v : Double) -> MathspecialbesselLayer {
-  let result = math_special_bessel_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_layer_min(s : MathspecialbesselLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_special_bessel_buffer_sum(s : MathspecialbesselBuffer) -> Double { @
 pub fn math_special_bessel_buffer_mean(s : MathspecialbesselBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_buffer_scale(s : MathspecialbesselBuffer, f : Double) -> MathspecialbesselBuffer {
-  let result = math_special_bessel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_buffer_add(a : MathspecialbesselBuffer, b : MathspecialbesselBuffer) -> MathspecialbesselBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_buffer_copy(s : MathspecialbesselBuffer) -> MathspecialbesselBuffer {
-  let result = math_special_bessel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_buffer_fill(s : MathspecialbesselBuffer, v : Double) -> MathspecialbesselBuffer {
-  let result = math_special_bessel_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_buffer_min(s : MathspecialbesselBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_special_bessel_cursor_sum(s : MathspecialbesselCursor) -> Double { @
 pub fn math_special_bessel_cursor_mean(s : MathspecialbesselCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_cursor_scale(s : MathspecialbesselCursor, f : Double) -> MathspecialbesselCursor {
-  let result = math_special_bessel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_cursor_add(a : MathspecialbesselCursor, b : MathspecialbesselCursor) -> MathspecialbesselCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_cursor_copy(s : MathspecialbesselCursor) -> MathspecialbesselCursor {
-  let result = math_special_bessel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_cursor_fill(s : MathspecialbesselCursor, v : Double) -> MathspecialbesselCursor {
-  let result = math_special_bessel_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_cursor_min(s : MathspecialbesselCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_special_bessel_view_sum(s : MathspecialbesselView) -> Double { @_com
 pub fn math_special_bessel_view_mean(s : MathspecialbesselView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_view_scale(s : MathspecialbesselView, f : Double) -> MathspecialbesselView {
-  let result = math_special_bessel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_view_add(a : MathspecialbesselView, b : MathspecialbesselView) -> MathspecialbesselView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_view_copy(s : MathspecialbesselView) -> MathspecialbesselView {
-  let result = math_special_bessel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_view_fill(s : MathspecialbesselView, v : Double) -> MathspecialbesselView {
-  let result = math_special_bessel_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_view_min(s : MathspecialbesselView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_special_bessel_range_sum(s : MathspecialbesselRange) -> Double { @_c
 pub fn math_special_bessel_range_mean(s : MathspecialbesselRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_range_scale(s : MathspecialbesselRange, f : Double) -> MathspecialbesselRange {
-  let result = math_special_bessel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_range_add(a : MathspecialbesselRange, b : MathspecialbesselRange) -> MathspecialbesselRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_range_copy(s : MathspecialbesselRange) -> MathspecialbesselRange {
-  let result = math_special_bessel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_range_fill(s : MathspecialbesselRange, v : Double) -> MathspecialbesselRange {
-  let result = math_special_bessel_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_range_min(s : MathspecialbesselRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_special_bessel_slice_sum(s : MathspecialbesselSlice) -> Double { @_c
 pub fn math_special_bessel_slice_mean(s : MathspecialbesselSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_slice_scale(s : MathspecialbesselSlice, f : Double) -> MathspecialbesselSlice {
-  let result = math_special_bessel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_slice_add(a : MathspecialbesselSlice, b : MathspecialbesselSlice) -> MathspecialbesselSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_bessel_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_bessel_slice_copy(s : MathspecialbesselSlice) -> MathspecialbesselSlice {
-  let result = math_special_bessel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_slice_fill(s : MathspecialbesselSlice, v : Double) -> MathspecialbesselSlice {
-  let result = math_special_bessel_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_bessel_slice_min(s : MathspecialbesselSlice) -> Double { @_common.min(s.data) }

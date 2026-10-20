@@ -383,28 +383,20 @@ pub fn stats_model_glm_frame_sum(s : StatsmodelglmFrame) -> Double { @_common.su
 pub fn stats_model_glm_frame_mean(s : StatsmodelglmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_frame_scale(s : StatsmodelglmFrame, f : Double) -> StatsmodelglmFrame {
-  let result = stats_model_glm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_frame_add(a : StatsmodelglmFrame, b : StatsmodelglmFrame) -> StatsmodelglmFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_frame_copy(s : StatsmodelglmFrame) -> StatsmodelglmFrame {
-  let result = stats_model_glm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_frame_fill(s : StatsmodelglmFrame, v : Double) -> StatsmodelglmFrame {
-  let result = stats_model_glm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_frame_min(s : StatsmodelglmFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_model_glm_table_sum(s : StatsmodelglmTable) -> Double { @_common.su
 pub fn stats_model_glm_table_mean(s : StatsmodelglmTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_table_scale(s : StatsmodelglmTable, f : Double) -> StatsmodelglmTable {
-  let result = stats_model_glm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_table_add(a : StatsmodelglmTable, b : StatsmodelglmTable) -> StatsmodelglmTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_table_copy(s : StatsmodelglmTable) -> StatsmodelglmTable {
-  let result = stats_model_glm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_table_fill(s : StatsmodelglmTable, v : Double) -> StatsmodelglmTable {
-  let result = stats_model_glm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_table_min(s : StatsmodelglmTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_model_glm_graphn_sum(s : StatsmodelglmGraphN) -> Double { @_common.
 pub fn stats_model_glm_graphn_mean(s : StatsmodelglmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_graphn_scale(s : StatsmodelglmGraphN, f : Double) -> StatsmodelglmGraphN {
-  let result = stats_model_glm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_graphn_add(a : StatsmodelglmGraphN, b : StatsmodelglmGraphN) -> StatsmodelglmGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_graphn_copy(s : StatsmodelglmGraphN) -> StatsmodelglmGraphN {
-  let result = stats_model_glm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_graphn_fill(s : StatsmodelglmGraphN, v : Double) -> StatsmodelglmGraphN {
-  let result = stats_model_glm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_graphn_min(s : StatsmodelglmGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_model_glm_node_sum(s : StatsmodelglmNode) -> Double { @_common.sum(
 pub fn stats_model_glm_node_mean(s : StatsmodelglmNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_node_scale(s : StatsmodelglmNode, f : Double) -> StatsmodelglmNode {
-  let result = stats_model_glm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_node_add(a : StatsmodelglmNode, b : StatsmodelglmNode) -> StatsmodelglmNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_node_copy(s : StatsmodelglmNode) -> StatsmodelglmNode {
-  let result = stats_model_glm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_node_fill(s : StatsmodelglmNode, v : Double) -> StatsmodelglmNode {
-  let result = stats_model_glm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_node_min(s : StatsmodelglmNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_model_glm_edge_sum(s : StatsmodelglmEdge) -> Double { @_common.sum(
 pub fn stats_model_glm_edge_mean(s : StatsmodelglmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_edge_scale(s : StatsmodelglmEdge, f : Double) -> StatsmodelglmEdge {
-  let result = stats_model_glm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_edge_add(a : StatsmodelglmEdge, b : StatsmodelglmEdge) -> StatsmodelglmEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_edge_copy(s : StatsmodelglmEdge) -> StatsmodelglmEdge {
-  let result = stats_model_glm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_edge_fill(s : StatsmodelglmEdge, v : Double) -> StatsmodelglmEdge {
-  let result = stats_model_glm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_edge_min(s : StatsmodelglmEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_model_glm_path_sum(s : StatsmodelglmPath) -> Double { @_common.sum(
 pub fn stats_model_glm_path_mean(s : StatsmodelglmPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_path_scale(s : StatsmodelglmPath, f : Double) -> StatsmodelglmPath {
-  let result = stats_model_glm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_path_add(a : StatsmodelglmPath, b : StatsmodelglmPath) -> StatsmodelglmPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_path_copy(s : StatsmodelglmPath) -> StatsmodelglmPath {
-  let result = stats_model_glm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_path_fill(s : StatsmodelglmPath, v : Double) -> StatsmodelglmPath {
-  let result = stats_model_glm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_path_min(s : StatsmodelglmPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_model_glm_cluster_sum(s : StatsmodelglmCluster) -> Double { @_commo
 pub fn stats_model_glm_cluster_mean(s : StatsmodelglmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_cluster_scale(s : StatsmodelglmCluster, f : Double) -> StatsmodelglmCluster {
-  let result = stats_model_glm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_cluster_add(a : StatsmodelglmCluster, b : StatsmodelglmCluster) -> StatsmodelglmCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_cluster_copy(s : StatsmodelglmCluster) -> StatsmodelglmCluster {
-  let result = stats_model_glm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_cluster_fill(s : StatsmodelglmCluster, v : Double) -> StatsmodelglmCluster {
-  let result = stats_model_glm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_cluster_min(s : StatsmodelglmCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_model_glm_model_sum(s : StatsmodelglmModel) -> Double { @_common.su
 pub fn stats_model_glm_model_mean(s : StatsmodelglmModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_model_scale(s : StatsmodelglmModel, f : Double) -> StatsmodelglmModel {
-  let result = stats_model_glm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_model_add(a : StatsmodelglmModel, b : StatsmodelglmModel) -> StatsmodelglmModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_model_copy(s : StatsmodelglmModel) -> StatsmodelglmModel {
-  let result = stats_model_glm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_model_fill(s : StatsmodelglmModel, v : Double) -> StatsmodelglmModel {
-  let result = stats_model_glm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_model_min(s : StatsmodelglmModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_model_glm_layer_sum(s : StatsmodelglmLayer) -> Double { @_common.su
 pub fn stats_model_glm_layer_mean(s : StatsmodelglmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_layer_scale(s : StatsmodelglmLayer, f : Double) -> StatsmodelglmLayer {
-  let result = stats_model_glm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_layer_add(a : StatsmodelglmLayer, b : StatsmodelglmLayer) -> StatsmodelglmLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_layer_copy(s : StatsmodelglmLayer) -> StatsmodelglmLayer {
-  let result = stats_model_glm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_layer_fill(s : StatsmodelglmLayer, v : Double) -> StatsmodelglmLayer {
-  let result = stats_model_glm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_layer_min(s : StatsmodelglmLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_model_glm_buffer_sum(s : StatsmodelglmBuffer) -> Double { @_common.
 pub fn stats_model_glm_buffer_mean(s : StatsmodelglmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_buffer_scale(s : StatsmodelglmBuffer, f : Double) -> StatsmodelglmBuffer {
-  let result = stats_model_glm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_buffer_add(a : StatsmodelglmBuffer, b : StatsmodelglmBuffer) -> StatsmodelglmBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_buffer_copy(s : StatsmodelglmBuffer) -> StatsmodelglmBuffer {
-  let result = stats_model_glm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_buffer_fill(s : StatsmodelglmBuffer, v : Double) -> StatsmodelglmBuffer {
-  let result = stats_model_glm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_buffer_min(s : StatsmodelglmBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_model_glm_cursor_sum(s : StatsmodelglmCursor) -> Double { @_common.
 pub fn stats_model_glm_cursor_mean(s : StatsmodelglmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_cursor_scale(s : StatsmodelglmCursor, f : Double) -> StatsmodelglmCursor {
-  let result = stats_model_glm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_cursor_add(a : StatsmodelglmCursor, b : StatsmodelglmCursor) -> StatsmodelglmCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_cursor_copy(s : StatsmodelglmCursor) -> StatsmodelglmCursor {
-  let result = stats_model_glm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_cursor_fill(s : StatsmodelglmCursor, v : Double) -> StatsmodelglmCursor {
-  let result = stats_model_glm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_cursor_min(s : StatsmodelglmCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_model_glm_view_sum(s : StatsmodelglmView) -> Double { @_common.sum(
 pub fn stats_model_glm_view_mean(s : StatsmodelglmView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_view_scale(s : StatsmodelglmView, f : Double) -> StatsmodelglmView {
-  let result = stats_model_glm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_view_add(a : StatsmodelglmView, b : StatsmodelglmView) -> StatsmodelglmView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_view_copy(s : StatsmodelglmView) -> StatsmodelglmView {
-  let result = stats_model_glm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_view_fill(s : StatsmodelglmView, v : Double) -> StatsmodelglmView {
-  let result = stats_model_glm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_view_min(s : StatsmodelglmView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_model_glm_range_sum(s : StatsmodelglmRange) -> Double { @_common.su
 pub fn stats_model_glm_range_mean(s : StatsmodelglmRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_range_scale(s : StatsmodelglmRange, f : Double) -> StatsmodelglmRange {
-  let result = stats_model_glm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_range_add(a : StatsmodelglmRange, b : StatsmodelglmRange) -> StatsmodelglmRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_range_copy(s : StatsmodelglmRange) -> StatsmodelglmRange {
-  let result = stats_model_glm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_range_fill(s : StatsmodelglmRange, v : Double) -> StatsmodelglmRange {
-  let result = stats_model_glm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_range_min(s : StatsmodelglmRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_model_glm_slice_sum(s : StatsmodelglmSlice) -> Double { @_common.su
 pub fn stats_model_glm_slice_mean(s : StatsmodelglmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_glm_slice_scale(s : StatsmodelglmSlice, f : Double) -> StatsmodelglmSlice {
-  let result = stats_model_glm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_slice_add(a : StatsmodelglmSlice, b : StatsmodelglmSlice) -> StatsmodelglmSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_glm_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_glm_slice_copy(s : StatsmodelglmSlice) -> StatsmodelglmSlice {
-  let result = stats_model_glm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_slice_fill(s : StatsmodelglmSlice, v : Double) -> StatsmodelglmSlice {
-  let result = stats_model_glm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_glm_slice_min(s : StatsmodelglmSlice) -> Double { @_common.min(s.data) }

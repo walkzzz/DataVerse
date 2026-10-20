@@ -383,28 +383,20 @@ pub fn bio_phylo_bayesian_frame_sum(s : BiophylobayesianFrame) -> Double { @_com
 pub fn bio_phylo_bayesian_frame_mean(s : BiophylobayesianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_frame_scale(s : BiophylobayesianFrame, f : Double) -> BiophylobayesianFrame {
-  let result = bio_phylo_bayesian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_frame_add(a : BiophylobayesianFrame, b : BiophylobayesianFrame) -> BiophylobayesianFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_frame_copy(s : BiophylobayesianFrame) -> BiophylobayesianFrame {
-  let result = bio_phylo_bayesian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_frame_fill(s : BiophylobayesianFrame, v : Double) -> BiophylobayesianFrame {
-  let result = bio_phylo_bayesian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_frame_min(s : BiophylobayesianFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_phylo_bayesian_table_sum(s : BiophylobayesianTable) -> Double { @_com
 pub fn bio_phylo_bayesian_table_mean(s : BiophylobayesianTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_table_scale(s : BiophylobayesianTable, f : Double) -> BiophylobayesianTable {
-  let result = bio_phylo_bayesian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_table_add(a : BiophylobayesianTable, b : BiophylobayesianTable) -> BiophylobayesianTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_table_copy(s : BiophylobayesianTable) -> BiophylobayesianTable {
-  let result = bio_phylo_bayesian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_table_fill(s : BiophylobayesianTable, v : Double) -> BiophylobayesianTable {
-  let result = bio_phylo_bayesian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_table_min(s : BiophylobayesianTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_phylo_bayesian_graphn_sum(s : BiophylobayesianGraphN) -> Double { @_c
 pub fn bio_phylo_bayesian_graphn_mean(s : BiophylobayesianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_graphn_scale(s : BiophylobayesianGraphN, f : Double) -> BiophylobayesianGraphN {
-  let result = bio_phylo_bayesian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_graphn_add(a : BiophylobayesianGraphN, b : BiophylobayesianGraphN) -> BiophylobayesianGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_graphn_copy(s : BiophylobayesianGraphN) -> BiophylobayesianGraphN {
-  let result = bio_phylo_bayesian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_graphn_fill(s : BiophylobayesianGraphN, v : Double) -> BiophylobayesianGraphN {
-  let result = bio_phylo_bayesian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_graphn_min(s : BiophylobayesianGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_phylo_bayesian_node_sum(s : BiophylobayesianNode) -> Double { @_commo
 pub fn bio_phylo_bayesian_node_mean(s : BiophylobayesianNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_node_scale(s : BiophylobayesianNode, f : Double) -> BiophylobayesianNode {
-  let result = bio_phylo_bayesian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_node_add(a : BiophylobayesianNode, b : BiophylobayesianNode) -> BiophylobayesianNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_node_copy(s : BiophylobayesianNode) -> BiophylobayesianNode {
-  let result = bio_phylo_bayesian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_node_fill(s : BiophylobayesianNode, v : Double) -> BiophylobayesianNode {
-  let result = bio_phylo_bayesian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_node_min(s : BiophylobayesianNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_phylo_bayesian_edge_sum(s : BiophylobayesianEdge) -> Double { @_commo
 pub fn bio_phylo_bayesian_edge_mean(s : BiophylobayesianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_edge_scale(s : BiophylobayesianEdge, f : Double) -> BiophylobayesianEdge {
-  let result = bio_phylo_bayesian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_edge_add(a : BiophylobayesianEdge, b : BiophylobayesianEdge) -> BiophylobayesianEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_edge_copy(s : BiophylobayesianEdge) -> BiophylobayesianEdge {
-  let result = bio_phylo_bayesian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_edge_fill(s : BiophylobayesianEdge, v : Double) -> BiophylobayesianEdge {
-  let result = bio_phylo_bayesian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_edge_min(s : BiophylobayesianEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_phylo_bayesian_path_sum(s : BiophylobayesianPath) -> Double { @_commo
 pub fn bio_phylo_bayesian_path_mean(s : BiophylobayesianPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_path_scale(s : BiophylobayesianPath, f : Double) -> BiophylobayesianPath {
-  let result = bio_phylo_bayesian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_path_add(a : BiophylobayesianPath, b : BiophylobayesianPath) -> BiophylobayesianPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_path_copy(s : BiophylobayesianPath) -> BiophylobayesianPath {
-  let result = bio_phylo_bayesian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_path_fill(s : BiophylobayesianPath, v : Double) -> BiophylobayesianPath {
-  let result = bio_phylo_bayesian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_path_min(s : BiophylobayesianPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_phylo_bayesian_cluster_sum(s : BiophylobayesianCluster) -> Double { @
 pub fn bio_phylo_bayesian_cluster_mean(s : BiophylobayesianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_cluster_scale(s : BiophylobayesianCluster, f : Double) -> BiophylobayesianCluster {
-  let result = bio_phylo_bayesian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cluster_add(a : BiophylobayesianCluster, b : BiophylobayesianCluster) -> BiophylobayesianCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_cluster_copy(s : BiophylobayesianCluster) -> BiophylobayesianCluster {
-  let result = bio_phylo_bayesian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cluster_fill(s : BiophylobayesianCluster, v : Double) -> BiophylobayesianCluster {
-  let result = bio_phylo_bayesian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cluster_min(s : BiophylobayesianCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_phylo_bayesian_model_sum(s : BiophylobayesianModel) -> Double { @_com
 pub fn bio_phylo_bayesian_model_mean(s : BiophylobayesianModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_model_scale(s : BiophylobayesianModel, f : Double) -> BiophylobayesianModel {
-  let result = bio_phylo_bayesian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_model_add(a : BiophylobayesianModel, b : BiophylobayesianModel) -> BiophylobayesianModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_model_copy(s : BiophylobayesianModel) -> BiophylobayesianModel {
-  let result = bio_phylo_bayesian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_model_fill(s : BiophylobayesianModel, v : Double) -> BiophylobayesianModel {
-  let result = bio_phylo_bayesian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_model_min(s : BiophylobayesianModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_phylo_bayesian_layer_sum(s : BiophylobayesianLayer) -> Double { @_com
 pub fn bio_phylo_bayesian_layer_mean(s : BiophylobayesianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_layer_scale(s : BiophylobayesianLayer, f : Double) -> BiophylobayesianLayer {
-  let result = bio_phylo_bayesian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_layer_add(a : BiophylobayesianLayer, b : BiophylobayesianLayer) -> BiophylobayesianLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_layer_copy(s : BiophylobayesianLayer) -> BiophylobayesianLayer {
-  let result = bio_phylo_bayesian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_layer_fill(s : BiophylobayesianLayer, v : Double) -> BiophylobayesianLayer {
-  let result = bio_phylo_bayesian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_layer_min(s : BiophylobayesianLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_phylo_bayesian_buffer_sum(s : BiophylobayesianBuffer) -> Double { @_c
 pub fn bio_phylo_bayesian_buffer_mean(s : BiophylobayesianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_buffer_scale(s : BiophylobayesianBuffer, f : Double) -> BiophylobayesianBuffer {
-  let result = bio_phylo_bayesian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_buffer_add(a : BiophylobayesianBuffer, b : BiophylobayesianBuffer) -> BiophylobayesianBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_buffer_copy(s : BiophylobayesianBuffer) -> BiophylobayesianBuffer {
-  let result = bio_phylo_bayesian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_buffer_fill(s : BiophylobayesianBuffer, v : Double) -> BiophylobayesianBuffer {
-  let result = bio_phylo_bayesian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_buffer_min(s : BiophylobayesianBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_phylo_bayesian_cursor_sum(s : BiophylobayesianCursor) -> Double { @_c
 pub fn bio_phylo_bayesian_cursor_mean(s : BiophylobayesianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_cursor_scale(s : BiophylobayesianCursor, f : Double) -> BiophylobayesianCursor {
-  let result = bio_phylo_bayesian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cursor_add(a : BiophylobayesianCursor, b : BiophylobayesianCursor) -> BiophylobayesianCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_cursor_copy(s : BiophylobayesianCursor) -> BiophylobayesianCursor {
-  let result = bio_phylo_bayesian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cursor_fill(s : BiophylobayesianCursor, v : Double) -> BiophylobayesianCursor {
-  let result = bio_phylo_bayesian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cursor_min(s : BiophylobayesianCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_phylo_bayesian_view_sum(s : BiophylobayesianView) -> Double { @_commo
 pub fn bio_phylo_bayesian_view_mean(s : BiophylobayesianView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_view_scale(s : BiophylobayesianView, f : Double) -> BiophylobayesianView {
-  let result = bio_phylo_bayesian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_view_add(a : BiophylobayesianView, b : BiophylobayesianView) -> BiophylobayesianView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_view_copy(s : BiophylobayesianView) -> BiophylobayesianView {
-  let result = bio_phylo_bayesian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_view_fill(s : BiophylobayesianView, v : Double) -> BiophylobayesianView {
-  let result = bio_phylo_bayesian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_view_min(s : BiophylobayesianView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_phylo_bayesian_range_sum(s : BiophylobayesianRange) -> Double { @_com
 pub fn bio_phylo_bayesian_range_mean(s : BiophylobayesianRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_range_scale(s : BiophylobayesianRange, f : Double) -> BiophylobayesianRange {
-  let result = bio_phylo_bayesian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_range_add(a : BiophylobayesianRange, b : BiophylobayesianRange) -> BiophylobayesianRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_range_copy(s : BiophylobayesianRange) -> BiophylobayesianRange {
-  let result = bio_phylo_bayesian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_range_fill(s : BiophylobayesianRange, v : Double) -> BiophylobayesianRange {
-  let result = bio_phylo_bayesian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_range_min(s : BiophylobayesianRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_phylo_bayesian_slice_sum(s : BiophylobayesianSlice) -> Double { @_com
 pub fn bio_phylo_bayesian_slice_mean(s : BiophylobayesianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_slice_scale(s : BiophylobayesianSlice, f : Double) -> BiophylobayesianSlice {
-  let result = bio_phylo_bayesian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_slice_add(a : BiophylobayesianSlice, b : BiophylobayesianSlice) -> BiophylobayesianSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_bayesian_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_bayesian_slice_copy(s : BiophylobayesianSlice) -> BiophylobayesianSlice {
-  let result = bio_phylo_bayesian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_slice_fill(s : BiophylobayesianSlice, v : Double) -> BiophylobayesianSlice {
-  let result = bio_phylo_bayesian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_slice_min(s : BiophylobayesianSlice) -> Double { @_common.min(s.data) }

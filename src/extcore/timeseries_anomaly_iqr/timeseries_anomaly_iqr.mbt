@@ -383,28 +383,20 @@ pub fn timeseries_anomaly_iqr_frame_sum(s : TimeseriesanomalyiqrFrame) -> Double
 pub fn timeseries_anomaly_iqr_frame_mean(s : TimeseriesanomalyiqrFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_frame_scale(s : TimeseriesanomalyiqrFrame, f : Double) -> TimeseriesanomalyiqrFrame {
-  let result = timeseries_anomaly_iqr_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_frame_add(a : TimeseriesanomalyiqrFrame, b : TimeseriesanomalyiqrFrame) -> TimeseriesanomalyiqrFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_frame_copy(s : TimeseriesanomalyiqrFrame) -> TimeseriesanomalyiqrFrame {
-  let result = timeseries_anomaly_iqr_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_frame_fill(s : TimeseriesanomalyiqrFrame, v : Double) -> TimeseriesanomalyiqrFrame {
-  let result = timeseries_anomaly_iqr_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_frame_min(s : TimeseriesanomalyiqrFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_anomaly_iqr_table_sum(s : TimeseriesanomalyiqrTable) -> Double
 pub fn timeseries_anomaly_iqr_table_mean(s : TimeseriesanomalyiqrTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_table_scale(s : TimeseriesanomalyiqrTable, f : Double) -> TimeseriesanomalyiqrTable {
-  let result = timeseries_anomaly_iqr_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_table_add(a : TimeseriesanomalyiqrTable, b : TimeseriesanomalyiqrTable) -> TimeseriesanomalyiqrTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_table_copy(s : TimeseriesanomalyiqrTable) -> TimeseriesanomalyiqrTable {
-  let result = timeseries_anomaly_iqr_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_table_fill(s : TimeseriesanomalyiqrTable, v : Double) -> TimeseriesanomalyiqrTable {
-  let result = timeseries_anomaly_iqr_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_table_min(s : TimeseriesanomalyiqrTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_anomaly_iqr_graphn_sum(s : TimeseriesanomalyiqrGraphN) -> Doub
 pub fn timeseries_anomaly_iqr_graphn_mean(s : TimeseriesanomalyiqrGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_graphn_scale(s : TimeseriesanomalyiqrGraphN, f : Double) -> TimeseriesanomalyiqrGraphN {
-  let result = timeseries_anomaly_iqr_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_graphn_add(a : TimeseriesanomalyiqrGraphN, b : TimeseriesanomalyiqrGraphN) -> TimeseriesanomalyiqrGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_graphn_copy(s : TimeseriesanomalyiqrGraphN) -> TimeseriesanomalyiqrGraphN {
-  let result = timeseries_anomaly_iqr_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_graphn_fill(s : TimeseriesanomalyiqrGraphN, v : Double) -> TimeseriesanomalyiqrGraphN {
-  let result = timeseries_anomaly_iqr_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_graphn_min(s : TimeseriesanomalyiqrGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_anomaly_iqr_node_sum(s : TimeseriesanomalyiqrNode) -> Double {
 pub fn timeseries_anomaly_iqr_node_mean(s : TimeseriesanomalyiqrNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_node_scale(s : TimeseriesanomalyiqrNode, f : Double) -> TimeseriesanomalyiqrNode {
-  let result = timeseries_anomaly_iqr_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_node_add(a : TimeseriesanomalyiqrNode, b : TimeseriesanomalyiqrNode) -> TimeseriesanomalyiqrNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_node_copy(s : TimeseriesanomalyiqrNode) -> TimeseriesanomalyiqrNode {
-  let result = timeseries_anomaly_iqr_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_node_fill(s : TimeseriesanomalyiqrNode, v : Double) -> TimeseriesanomalyiqrNode {
-  let result = timeseries_anomaly_iqr_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_node_min(s : TimeseriesanomalyiqrNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_anomaly_iqr_edge_sum(s : TimeseriesanomalyiqrEdge) -> Double {
 pub fn timeseries_anomaly_iqr_edge_mean(s : TimeseriesanomalyiqrEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_edge_scale(s : TimeseriesanomalyiqrEdge, f : Double) -> TimeseriesanomalyiqrEdge {
-  let result = timeseries_anomaly_iqr_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_edge_add(a : TimeseriesanomalyiqrEdge, b : TimeseriesanomalyiqrEdge) -> TimeseriesanomalyiqrEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_edge_copy(s : TimeseriesanomalyiqrEdge) -> TimeseriesanomalyiqrEdge {
-  let result = timeseries_anomaly_iqr_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_edge_fill(s : TimeseriesanomalyiqrEdge, v : Double) -> TimeseriesanomalyiqrEdge {
-  let result = timeseries_anomaly_iqr_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_edge_min(s : TimeseriesanomalyiqrEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_anomaly_iqr_path_sum(s : TimeseriesanomalyiqrPath) -> Double {
 pub fn timeseries_anomaly_iqr_path_mean(s : TimeseriesanomalyiqrPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_path_scale(s : TimeseriesanomalyiqrPath, f : Double) -> TimeseriesanomalyiqrPath {
-  let result = timeseries_anomaly_iqr_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_path_add(a : TimeseriesanomalyiqrPath, b : TimeseriesanomalyiqrPath) -> TimeseriesanomalyiqrPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_path_copy(s : TimeseriesanomalyiqrPath) -> TimeseriesanomalyiqrPath {
-  let result = timeseries_anomaly_iqr_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_path_fill(s : TimeseriesanomalyiqrPath, v : Double) -> TimeseriesanomalyiqrPath {
-  let result = timeseries_anomaly_iqr_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_path_min(s : TimeseriesanomalyiqrPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_anomaly_iqr_cluster_sum(s : TimeseriesanomalyiqrCluster) -> Do
 pub fn timeseries_anomaly_iqr_cluster_mean(s : TimeseriesanomalyiqrCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_cluster_scale(s : TimeseriesanomalyiqrCluster, f : Double) -> TimeseriesanomalyiqrCluster {
-  let result = timeseries_anomaly_iqr_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cluster_add(a : TimeseriesanomalyiqrCluster, b : TimeseriesanomalyiqrCluster) -> TimeseriesanomalyiqrCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cluster_copy(s : TimeseriesanomalyiqrCluster) -> TimeseriesanomalyiqrCluster {
-  let result = timeseries_anomaly_iqr_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cluster_fill(s : TimeseriesanomalyiqrCluster, v : Double) -> TimeseriesanomalyiqrCluster {
-  let result = timeseries_anomaly_iqr_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cluster_min(s : TimeseriesanomalyiqrCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_anomaly_iqr_model_sum(s : TimeseriesanomalyiqrModel) -> Double
 pub fn timeseries_anomaly_iqr_model_mean(s : TimeseriesanomalyiqrModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_model_scale(s : TimeseriesanomalyiqrModel, f : Double) -> TimeseriesanomalyiqrModel {
-  let result = timeseries_anomaly_iqr_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_model_add(a : TimeseriesanomalyiqrModel, b : TimeseriesanomalyiqrModel) -> TimeseriesanomalyiqrModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_model_copy(s : TimeseriesanomalyiqrModel) -> TimeseriesanomalyiqrModel {
-  let result = timeseries_anomaly_iqr_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_model_fill(s : TimeseriesanomalyiqrModel, v : Double) -> TimeseriesanomalyiqrModel {
-  let result = timeseries_anomaly_iqr_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_model_min(s : TimeseriesanomalyiqrModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_anomaly_iqr_layer_sum(s : TimeseriesanomalyiqrLayer) -> Double
 pub fn timeseries_anomaly_iqr_layer_mean(s : TimeseriesanomalyiqrLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_layer_scale(s : TimeseriesanomalyiqrLayer, f : Double) -> TimeseriesanomalyiqrLayer {
-  let result = timeseries_anomaly_iqr_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_layer_add(a : TimeseriesanomalyiqrLayer, b : TimeseriesanomalyiqrLayer) -> TimeseriesanomalyiqrLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_layer_copy(s : TimeseriesanomalyiqrLayer) -> TimeseriesanomalyiqrLayer {
-  let result = timeseries_anomaly_iqr_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_layer_fill(s : TimeseriesanomalyiqrLayer, v : Double) -> TimeseriesanomalyiqrLayer {
-  let result = timeseries_anomaly_iqr_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_layer_min(s : TimeseriesanomalyiqrLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_anomaly_iqr_buffer_sum(s : TimeseriesanomalyiqrBuffer) -> Doub
 pub fn timeseries_anomaly_iqr_buffer_mean(s : TimeseriesanomalyiqrBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_buffer_scale(s : TimeseriesanomalyiqrBuffer, f : Double) -> TimeseriesanomalyiqrBuffer {
-  let result = timeseries_anomaly_iqr_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_buffer_add(a : TimeseriesanomalyiqrBuffer, b : TimeseriesanomalyiqrBuffer) -> TimeseriesanomalyiqrBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_buffer_copy(s : TimeseriesanomalyiqrBuffer) -> TimeseriesanomalyiqrBuffer {
-  let result = timeseries_anomaly_iqr_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_buffer_fill(s : TimeseriesanomalyiqrBuffer, v : Double) -> TimeseriesanomalyiqrBuffer {
-  let result = timeseries_anomaly_iqr_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_buffer_min(s : TimeseriesanomalyiqrBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_anomaly_iqr_cursor_sum(s : TimeseriesanomalyiqrCursor) -> Doub
 pub fn timeseries_anomaly_iqr_cursor_mean(s : TimeseriesanomalyiqrCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_cursor_scale(s : TimeseriesanomalyiqrCursor, f : Double) -> TimeseriesanomalyiqrCursor {
-  let result = timeseries_anomaly_iqr_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cursor_add(a : TimeseriesanomalyiqrCursor, b : TimeseriesanomalyiqrCursor) -> TimeseriesanomalyiqrCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cursor_copy(s : TimeseriesanomalyiqrCursor) -> TimeseriesanomalyiqrCursor {
-  let result = timeseries_anomaly_iqr_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cursor_fill(s : TimeseriesanomalyiqrCursor, v : Double) -> TimeseriesanomalyiqrCursor {
-  let result = timeseries_anomaly_iqr_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_cursor_min(s : TimeseriesanomalyiqrCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_anomaly_iqr_view_sum(s : TimeseriesanomalyiqrView) -> Double {
 pub fn timeseries_anomaly_iqr_view_mean(s : TimeseriesanomalyiqrView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_view_scale(s : TimeseriesanomalyiqrView, f : Double) -> TimeseriesanomalyiqrView {
-  let result = timeseries_anomaly_iqr_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_view_add(a : TimeseriesanomalyiqrView, b : TimeseriesanomalyiqrView) -> TimeseriesanomalyiqrView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_view_copy(s : TimeseriesanomalyiqrView) -> TimeseriesanomalyiqrView {
-  let result = timeseries_anomaly_iqr_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_view_fill(s : TimeseriesanomalyiqrView, v : Double) -> TimeseriesanomalyiqrView {
-  let result = timeseries_anomaly_iqr_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_view_min(s : TimeseriesanomalyiqrView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_anomaly_iqr_range_sum(s : TimeseriesanomalyiqrRange) -> Double
 pub fn timeseries_anomaly_iqr_range_mean(s : TimeseriesanomalyiqrRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_range_scale(s : TimeseriesanomalyiqrRange, f : Double) -> TimeseriesanomalyiqrRange {
-  let result = timeseries_anomaly_iqr_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_range_add(a : TimeseriesanomalyiqrRange, b : TimeseriesanomalyiqrRange) -> TimeseriesanomalyiqrRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_range_copy(s : TimeseriesanomalyiqrRange) -> TimeseriesanomalyiqrRange {
-  let result = timeseries_anomaly_iqr_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_range_fill(s : TimeseriesanomalyiqrRange, v : Double) -> TimeseriesanomalyiqrRange {
-  let result = timeseries_anomaly_iqr_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_range_min(s : TimeseriesanomalyiqrRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_anomaly_iqr_slice_sum(s : TimeseriesanomalyiqrSlice) -> Double
 pub fn timeseries_anomaly_iqr_slice_mean(s : TimeseriesanomalyiqrSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_iqr_slice_scale(s : TimeseriesanomalyiqrSlice, f : Double) -> TimeseriesanomalyiqrSlice {
-  let result = timeseries_anomaly_iqr_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_slice_add(a : TimeseriesanomalyiqrSlice, b : TimeseriesanomalyiqrSlice) -> TimeseriesanomalyiqrSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_iqr_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_iqr_slice_copy(s : TimeseriesanomalyiqrSlice) -> TimeseriesanomalyiqrSlice {
-  let result = timeseries_anomaly_iqr_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_slice_fill(s : TimeseriesanomalyiqrSlice, v : Double) -> TimeseriesanomalyiqrSlice {
-  let result = timeseries_anomaly_iqr_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_iqr_slice_min(s : TimeseriesanomalyiqrSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn math_special_beta_frame_sum(s : MathspecialbetaFrame) -> Double { @_commo
 pub fn math_special_beta_frame_mean(s : MathspecialbetaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_frame_scale(s : MathspecialbetaFrame, f : Double) -> MathspecialbetaFrame {
-  let result = math_special_beta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_frame_add(a : MathspecialbetaFrame, b : MathspecialbetaFrame) -> MathspecialbetaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_frame_copy(s : MathspecialbetaFrame) -> MathspecialbetaFrame {
-  let result = math_special_beta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_frame_fill(s : MathspecialbetaFrame, v : Double) -> MathspecialbetaFrame {
-  let result = math_special_beta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_frame_min(s : MathspecialbetaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_special_beta_table_sum(s : MathspecialbetaTable) -> Double { @_commo
 pub fn math_special_beta_table_mean(s : MathspecialbetaTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_table_scale(s : MathspecialbetaTable, f : Double) -> MathspecialbetaTable {
-  let result = math_special_beta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_table_add(a : MathspecialbetaTable, b : MathspecialbetaTable) -> MathspecialbetaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_table_copy(s : MathspecialbetaTable) -> MathspecialbetaTable {
-  let result = math_special_beta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_table_fill(s : MathspecialbetaTable, v : Double) -> MathspecialbetaTable {
-  let result = math_special_beta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_table_min(s : MathspecialbetaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_special_beta_graphn_sum(s : MathspecialbetaGraphN) -> Double { @_com
 pub fn math_special_beta_graphn_mean(s : MathspecialbetaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_graphn_scale(s : MathspecialbetaGraphN, f : Double) -> MathspecialbetaGraphN {
-  let result = math_special_beta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_graphn_add(a : MathspecialbetaGraphN, b : MathspecialbetaGraphN) -> MathspecialbetaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_graphn_copy(s : MathspecialbetaGraphN) -> MathspecialbetaGraphN {
-  let result = math_special_beta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_graphn_fill(s : MathspecialbetaGraphN, v : Double) -> MathspecialbetaGraphN {
-  let result = math_special_beta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_graphn_min(s : MathspecialbetaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_special_beta_node_sum(s : MathspecialbetaNode) -> Double { @_common.
 pub fn math_special_beta_node_mean(s : MathspecialbetaNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_node_scale(s : MathspecialbetaNode, f : Double) -> MathspecialbetaNode {
-  let result = math_special_beta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_node_add(a : MathspecialbetaNode, b : MathspecialbetaNode) -> MathspecialbetaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_node_copy(s : MathspecialbetaNode) -> MathspecialbetaNode {
-  let result = math_special_beta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_node_fill(s : MathspecialbetaNode, v : Double) -> MathspecialbetaNode {
-  let result = math_special_beta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_node_min(s : MathspecialbetaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_special_beta_edge_sum(s : MathspecialbetaEdge) -> Double { @_common.
 pub fn math_special_beta_edge_mean(s : MathspecialbetaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_edge_scale(s : MathspecialbetaEdge, f : Double) -> MathspecialbetaEdge {
-  let result = math_special_beta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_edge_add(a : MathspecialbetaEdge, b : MathspecialbetaEdge) -> MathspecialbetaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_edge_copy(s : MathspecialbetaEdge) -> MathspecialbetaEdge {
-  let result = math_special_beta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_edge_fill(s : MathspecialbetaEdge, v : Double) -> MathspecialbetaEdge {
-  let result = math_special_beta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_edge_min(s : MathspecialbetaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_special_beta_path_sum(s : MathspecialbetaPath) -> Double { @_common.
 pub fn math_special_beta_path_mean(s : MathspecialbetaPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_path_scale(s : MathspecialbetaPath, f : Double) -> MathspecialbetaPath {
-  let result = math_special_beta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_path_add(a : MathspecialbetaPath, b : MathspecialbetaPath) -> MathspecialbetaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_path_copy(s : MathspecialbetaPath) -> MathspecialbetaPath {
-  let result = math_special_beta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_path_fill(s : MathspecialbetaPath, v : Double) -> MathspecialbetaPath {
-  let result = math_special_beta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_path_min(s : MathspecialbetaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_special_beta_cluster_sum(s : MathspecialbetaCluster) -> Double { @_c
 pub fn math_special_beta_cluster_mean(s : MathspecialbetaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_cluster_scale(s : MathspecialbetaCluster, f : Double) -> MathspecialbetaCluster {
-  let result = math_special_beta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_cluster_add(a : MathspecialbetaCluster, b : MathspecialbetaCluster) -> MathspecialbetaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_cluster_copy(s : MathspecialbetaCluster) -> MathspecialbetaCluster {
-  let result = math_special_beta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_cluster_fill(s : MathspecialbetaCluster, v : Double) -> MathspecialbetaCluster {
-  let result = math_special_beta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_cluster_min(s : MathspecialbetaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_special_beta_model_sum(s : MathspecialbetaModel) -> Double { @_commo
 pub fn math_special_beta_model_mean(s : MathspecialbetaModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_model_scale(s : MathspecialbetaModel, f : Double) -> MathspecialbetaModel {
-  let result = math_special_beta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_model_add(a : MathspecialbetaModel, b : MathspecialbetaModel) -> MathspecialbetaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_model_copy(s : MathspecialbetaModel) -> MathspecialbetaModel {
-  let result = math_special_beta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_model_fill(s : MathspecialbetaModel, v : Double) -> MathspecialbetaModel {
-  let result = math_special_beta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_model_min(s : MathspecialbetaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_special_beta_layer_sum(s : MathspecialbetaLayer) -> Double { @_commo
 pub fn math_special_beta_layer_mean(s : MathspecialbetaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_layer_scale(s : MathspecialbetaLayer, f : Double) -> MathspecialbetaLayer {
-  let result = math_special_beta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_layer_add(a : MathspecialbetaLayer, b : MathspecialbetaLayer) -> MathspecialbetaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_layer_copy(s : MathspecialbetaLayer) -> MathspecialbetaLayer {
-  let result = math_special_beta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_layer_fill(s : MathspecialbetaLayer, v : Double) -> MathspecialbetaLayer {
-  let result = math_special_beta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_layer_min(s : MathspecialbetaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_special_beta_buffer_sum(s : MathspecialbetaBuffer) -> Double { @_com
 pub fn math_special_beta_buffer_mean(s : MathspecialbetaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_buffer_scale(s : MathspecialbetaBuffer, f : Double) -> MathspecialbetaBuffer {
-  let result = math_special_beta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_buffer_add(a : MathspecialbetaBuffer, b : MathspecialbetaBuffer) -> MathspecialbetaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_buffer_copy(s : MathspecialbetaBuffer) -> MathspecialbetaBuffer {
-  let result = math_special_beta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_buffer_fill(s : MathspecialbetaBuffer, v : Double) -> MathspecialbetaBuffer {
-  let result = math_special_beta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_buffer_min(s : MathspecialbetaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_special_beta_cursor_sum(s : MathspecialbetaCursor) -> Double { @_com
 pub fn math_special_beta_cursor_mean(s : MathspecialbetaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_cursor_scale(s : MathspecialbetaCursor, f : Double) -> MathspecialbetaCursor {
-  let result = math_special_beta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_cursor_add(a : MathspecialbetaCursor, b : MathspecialbetaCursor) -> MathspecialbetaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_cursor_copy(s : MathspecialbetaCursor) -> MathspecialbetaCursor {
-  let result = math_special_beta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_cursor_fill(s : MathspecialbetaCursor, v : Double) -> MathspecialbetaCursor {
-  let result = math_special_beta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_cursor_min(s : MathspecialbetaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_special_beta_view_sum(s : MathspecialbetaView) -> Double { @_common.
 pub fn math_special_beta_view_mean(s : MathspecialbetaView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_view_scale(s : MathspecialbetaView, f : Double) -> MathspecialbetaView {
-  let result = math_special_beta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_view_add(a : MathspecialbetaView, b : MathspecialbetaView) -> MathspecialbetaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_view_copy(s : MathspecialbetaView) -> MathspecialbetaView {
-  let result = math_special_beta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_view_fill(s : MathspecialbetaView, v : Double) -> MathspecialbetaView {
-  let result = math_special_beta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_view_min(s : MathspecialbetaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_special_beta_range_sum(s : MathspecialbetaRange) -> Double { @_commo
 pub fn math_special_beta_range_mean(s : MathspecialbetaRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_range_scale(s : MathspecialbetaRange, f : Double) -> MathspecialbetaRange {
-  let result = math_special_beta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_range_add(a : MathspecialbetaRange, b : MathspecialbetaRange) -> MathspecialbetaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_range_copy(s : MathspecialbetaRange) -> MathspecialbetaRange {
-  let result = math_special_beta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_range_fill(s : MathspecialbetaRange, v : Double) -> MathspecialbetaRange {
-  let result = math_special_beta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_range_min(s : MathspecialbetaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_special_beta_slice_sum(s : MathspecialbetaSlice) -> Double { @_commo
 pub fn math_special_beta_slice_mean(s : MathspecialbetaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_slice_scale(s : MathspecialbetaSlice, f : Double) -> MathspecialbetaSlice {
-  let result = math_special_beta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_slice_add(a : MathspecialbetaSlice, b : MathspecialbetaSlice) -> MathspecialbetaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_beta_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_beta_slice_copy(s : MathspecialbetaSlice) -> MathspecialbetaSlice {
-  let result = math_special_beta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_slice_fill(s : MathspecialbetaSlice, v : Double) -> MathspecialbetaSlice {
-  let result = math_special_beta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_beta_slice_min(s : MathspecialbetaSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn db_store_kv_frame_sum(s : DbstorekvFrame) -> Double { @_common.sum(s.data
 pub fn db_store_kv_frame_mean(s : DbstorekvFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_frame_scale(s : DbstorekvFrame, f : Double) -> DbstorekvFrame {
-  let result = db_store_kv_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_frame_add(a : DbstorekvFrame, b : DbstorekvFrame) -> DbstorekvFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_frame_copy(s : DbstorekvFrame) -> DbstorekvFrame {
-  let result = db_store_kv_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_frame_fill(s : DbstorekvFrame, v : Double) -> DbstorekvFrame {
-  let result = db_store_kv_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_frame_min(s : DbstorekvFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_store_kv_table_sum(s : DbstorekvTable) -> Double { @_common.sum(s.data
 pub fn db_store_kv_table_mean(s : DbstorekvTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_table_scale(s : DbstorekvTable, f : Double) -> DbstorekvTable {
-  let result = db_store_kv_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_table_add(a : DbstorekvTable, b : DbstorekvTable) -> DbstorekvTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_table_copy(s : DbstorekvTable) -> DbstorekvTable {
-  let result = db_store_kv_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_table_fill(s : DbstorekvTable, v : Double) -> DbstorekvTable {
-  let result = db_store_kv_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_table_min(s : DbstorekvTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_store_kv_graphn_sum(s : DbstorekvGraphN) -> Double { @_common.sum(s.da
 pub fn db_store_kv_graphn_mean(s : DbstorekvGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_graphn_scale(s : DbstorekvGraphN, f : Double) -> DbstorekvGraphN {
-  let result = db_store_kv_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_graphn_add(a : DbstorekvGraphN, b : DbstorekvGraphN) -> DbstorekvGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_graphn_copy(s : DbstorekvGraphN) -> DbstorekvGraphN {
-  let result = db_store_kv_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_graphn_fill(s : DbstorekvGraphN, v : Double) -> DbstorekvGraphN {
-  let result = db_store_kv_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_graphn_min(s : DbstorekvGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_store_kv_node_sum(s : DbstorekvNode) -> Double { @_common.sum(s.data) 
 pub fn db_store_kv_node_mean(s : DbstorekvNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_node_scale(s : DbstorekvNode, f : Double) -> DbstorekvNode {
-  let result = db_store_kv_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_node_add(a : DbstorekvNode, b : DbstorekvNode) -> DbstorekvNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_node_copy(s : DbstorekvNode) -> DbstorekvNode {
-  let result = db_store_kv_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_node_fill(s : DbstorekvNode, v : Double) -> DbstorekvNode {
-  let result = db_store_kv_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_node_min(s : DbstorekvNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_store_kv_edge_sum(s : DbstorekvEdge) -> Double { @_common.sum(s.data) 
 pub fn db_store_kv_edge_mean(s : DbstorekvEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_edge_scale(s : DbstorekvEdge, f : Double) -> DbstorekvEdge {
-  let result = db_store_kv_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_edge_add(a : DbstorekvEdge, b : DbstorekvEdge) -> DbstorekvEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_edge_copy(s : DbstorekvEdge) -> DbstorekvEdge {
-  let result = db_store_kv_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_edge_fill(s : DbstorekvEdge, v : Double) -> DbstorekvEdge {
-  let result = db_store_kv_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_edge_min(s : DbstorekvEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_store_kv_path_sum(s : DbstorekvPath) -> Double { @_common.sum(s.data) 
 pub fn db_store_kv_path_mean(s : DbstorekvPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_path_scale(s : DbstorekvPath, f : Double) -> DbstorekvPath {
-  let result = db_store_kv_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_path_add(a : DbstorekvPath, b : DbstorekvPath) -> DbstorekvPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_path_copy(s : DbstorekvPath) -> DbstorekvPath {
-  let result = db_store_kv_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_path_fill(s : DbstorekvPath, v : Double) -> DbstorekvPath {
-  let result = db_store_kv_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_path_min(s : DbstorekvPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_store_kv_cluster_sum(s : DbstorekvCluster) -> Double { @_common.sum(s.
 pub fn db_store_kv_cluster_mean(s : DbstorekvCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_cluster_scale(s : DbstorekvCluster, f : Double) -> DbstorekvCluster {
-  let result = db_store_kv_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_cluster_add(a : DbstorekvCluster, b : DbstorekvCluster) -> DbstorekvCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_cluster_copy(s : DbstorekvCluster) -> DbstorekvCluster {
-  let result = db_store_kv_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_cluster_fill(s : DbstorekvCluster, v : Double) -> DbstorekvCluster {
-  let result = db_store_kv_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_cluster_min(s : DbstorekvCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_store_kv_model_sum(s : DbstorekvModel) -> Double { @_common.sum(s.data
 pub fn db_store_kv_model_mean(s : DbstorekvModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_model_scale(s : DbstorekvModel, f : Double) -> DbstorekvModel {
-  let result = db_store_kv_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_model_add(a : DbstorekvModel, b : DbstorekvModel) -> DbstorekvModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_model_copy(s : DbstorekvModel) -> DbstorekvModel {
-  let result = db_store_kv_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_model_fill(s : DbstorekvModel, v : Double) -> DbstorekvModel {
-  let result = db_store_kv_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_model_min(s : DbstorekvModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_store_kv_layer_sum(s : DbstorekvLayer) -> Double { @_common.sum(s.data
 pub fn db_store_kv_layer_mean(s : DbstorekvLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_layer_scale(s : DbstorekvLayer, f : Double) -> DbstorekvLayer {
-  let result = db_store_kv_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_layer_add(a : DbstorekvLayer, b : DbstorekvLayer) -> DbstorekvLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_layer_copy(s : DbstorekvLayer) -> DbstorekvLayer {
-  let result = db_store_kv_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_layer_fill(s : DbstorekvLayer, v : Double) -> DbstorekvLayer {
-  let result = db_store_kv_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_layer_min(s : DbstorekvLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_store_kv_buffer_sum(s : DbstorekvBuffer) -> Double { @_common.sum(s.da
 pub fn db_store_kv_buffer_mean(s : DbstorekvBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_buffer_scale(s : DbstorekvBuffer, f : Double) -> DbstorekvBuffer {
-  let result = db_store_kv_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_buffer_add(a : DbstorekvBuffer, b : DbstorekvBuffer) -> DbstorekvBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_buffer_copy(s : DbstorekvBuffer) -> DbstorekvBuffer {
-  let result = db_store_kv_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_buffer_fill(s : DbstorekvBuffer, v : Double) -> DbstorekvBuffer {
-  let result = db_store_kv_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_buffer_min(s : DbstorekvBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_store_kv_cursor_sum(s : DbstorekvCursor) -> Double { @_common.sum(s.da
 pub fn db_store_kv_cursor_mean(s : DbstorekvCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_cursor_scale(s : DbstorekvCursor, f : Double) -> DbstorekvCursor {
-  let result = db_store_kv_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_cursor_add(a : DbstorekvCursor, b : DbstorekvCursor) -> DbstorekvCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_cursor_copy(s : DbstorekvCursor) -> DbstorekvCursor {
-  let result = db_store_kv_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_cursor_fill(s : DbstorekvCursor, v : Double) -> DbstorekvCursor {
-  let result = db_store_kv_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_cursor_min(s : DbstorekvCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_store_kv_view_sum(s : DbstorekvView) -> Double { @_common.sum(s.data) 
 pub fn db_store_kv_view_mean(s : DbstorekvView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_view_scale(s : DbstorekvView, f : Double) -> DbstorekvView {
-  let result = db_store_kv_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_view_add(a : DbstorekvView, b : DbstorekvView) -> DbstorekvView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_view_copy(s : DbstorekvView) -> DbstorekvView {
-  let result = db_store_kv_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_view_fill(s : DbstorekvView, v : Double) -> DbstorekvView {
-  let result = db_store_kv_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_view_min(s : DbstorekvView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_store_kv_range_sum(s : DbstorekvRange) -> Double { @_common.sum(s.data
 pub fn db_store_kv_range_mean(s : DbstorekvRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_range_scale(s : DbstorekvRange, f : Double) -> DbstorekvRange {
-  let result = db_store_kv_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_range_add(a : DbstorekvRange, b : DbstorekvRange) -> DbstorekvRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_range_copy(s : DbstorekvRange) -> DbstorekvRange {
-  let result = db_store_kv_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_range_fill(s : DbstorekvRange, v : Double) -> DbstorekvRange {
-  let result = db_store_kv_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_range_min(s : DbstorekvRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_store_kv_slice_sum(s : DbstorekvSlice) -> Double { @_common.sum(s.data
 pub fn db_store_kv_slice_mean(s : DbstorekvSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_slice_scale(s : DbstorekvSlice, f : Double) -> DbstorekvSlice {
-  let result = db_store_kv_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_slice_add(a : DbstorekvSlice, b : DbstorekvSlice) -> DbstorekvSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_kv_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_kv_slice_copy(s : DbstorekvSlice) -> DbstorekvSlice {
-  let result = db_store_kv_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_slice_fill(s : DbstorekvSlice, v : Double) -> DbstorekvSlice {
-  let result = db_store_kv_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_kv_slice_min(s : DbstorekvSlice) -> Double { @_common.min(s.data) }

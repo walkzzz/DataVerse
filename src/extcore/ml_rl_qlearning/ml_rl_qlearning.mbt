@@ -383,28 +383,20 @@ pub fn ml_rl_qlearning_frame_sum(s : MlrlqlearningFrame) -> Double { @_common.su
 pub fn ml_rl_qlearning_frame_mean(s : MlrlqlearningFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_frame_scale(s : MlrlqlearningFrame, f : Double) -> MlrlqlearningFrame {
-  let result = ml_rl_qlearning_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_frame_add(a : MlrlqlearningFrame, b : MlrlqlearningFrame) -> MlrlqlearningFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_frame_copy(s : MlrlqlearningFrame) -> MlrlqlearningFrame {
-  let result = ml_rl_qlearning_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_frame_fill(s : MlrlqlearningFrame, v : Double) -> MlrlqlearningFrame {
-  let result = ml_rl_qlearning_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_frame_min(s : MlrlqlearningFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_qlearning_table_sum(s : MlrlqlearningTable) -> Double { @_common.su
 pub fn ml_rl_qlearning_table_mean(s : MlrlqlearningTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_table_scale(s : MlrlqlearningTable, f : Double) -> MlrlqlearningTable {
-  let result = ml_rl_qlearning_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_table_add(a : MlrlqlearningTable, b : MlrlqlearningTable) -> MlrlqlearningTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_table_copy(s : MlrlqlearningTable) -> MlrlqlearningTable {
-  let result = ml_rl_qlearning_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_table_fill(s : MlrlqlearningTable, v : Double) -> MlrlqlearningTable {
-  let result = ml_rl_qlearning_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_table_min(s : MlrlqlearningTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_qlearning_graphn_sum(s : MlrlqlearningGraphN) -> Double { @_common.
 pub fn ml_rl_qlearning_graphn_mean(s : MlrlqlearningGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_graphn_scale(s : MlrlqlearningGraphN, f : Double) -> MlrlqlearningGraphN {
-  let result = ml_rl_qlearning_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_graphn_add(a : MlrlqlearningGraphN, b : MlrlqlearningGraphN) -> MlrlqlearningGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_graphn_copy(s : MlrlqlearningGraphN) -> MlrlqlearningGraphN {
-  let result = ml_rl_qlearning_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_graphn_fill(s : MlrlqlearningGraphN, v : Double) -> MlrlqlearningGraphN {
-  let result = ml_rl_qlearning_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_graphn_min(s : MlrlqlearningGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_qlearning_node_sum(s : MlrlqlearningNode) -> Double { @_common.sum(
 pub fn ml_rl_qlearning_node_mean(s : MlrlqlearningNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_node_scale(s : MlrlqlearningNode, f : Double) -> MlrlqlearningNode {
-  let result = ml_rl_qlearning_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_node_add(a : MlrlqlearningNode, b : MlrlqlearningNode) -> MlrlqlearningNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_node_copy(s : MlrlqlearningNode) -> MlrlqlearningNode {
-  let result = ml_rl_qlearning_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_node_fill(s : MlrlqlearningNode, v : Double) -> MlrlqlearningNode {
-  let result = ml_rl_qlearning_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_node_min(s : MlrlqlearningNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_qlearning_edge_sum(s : MlrlqlearningEdge) -> Double { @_common.sum(
 pub fn ml_rl_qlearning_edge_mean(s : MlrlqlearningEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_edge_scale(s : MlrlqlearningEdge, f : Double) -> MlrlqlearningEdge {
-  let result = ml_rl_qlearning_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_edge_add(a : MlrlqlearningEdge, b : MlrlqlearningEdge) -> MlrlqlearningEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_edge_copy(s : MlrlqlearningEdge) -> MlrlqlearningEdge {
-  let result = ml_rl_qlearning_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_edge_fill(s : MlrlqlearningEdge, v : Double) -> MlrlqlearningEdge {
-  let result = ml_rl_qlearning_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_edge_min(s : MlrlqlearningEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_qlearning_path_sum(s : MlrlqlearningPath) -> Double { @_common.sum(
 pub fn ml_rl_qlearning_path_mean(s : MlrlqlearningPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_path_scale(s : MlrlqlearningPath, f : Double) -> MlrlqlearningPath {
-  let result = ml_rl_qlearning_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_path_add(a : MlrlqlearningPath, b : MlrlqlearningPath) -> MlrlqlearningPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_path_copy(s : MlrlqlearningPath) -> MlrlqlearningPath {
-  let result = ml_rl_qlearning_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_path_fill(s : MlrlqlearningPath, v : Double) -> MlrlqlearningPath {
-  let result = ml_rl_qlearning_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_path_min(s : MlrlqlearningPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_qlearning_cluster_sum(s : MlrlqlearningCluster) -> Double { @_commo
 pub fn ml_rl_qlearning_cluster_mean(s : MlrlqlearningCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_cluster_scale(s : MlrlqlearningCluster, f : Double) -> MlrlqlearningCluster {
-  let result = ml_rl_qlearning_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_cluster_add(a : MlrlqlearningCluster, b : MlrlqlearningCluster) -> MlrlqlearningCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_cluster_copy(s : MlrlqlearningCluster) -> MlrlqlearningCluster {
-  let result = ml_rl_qlearning_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_cluster_fill(s : MlrlqlearningCluster, v : Double) -> MlrlqlearningCluster {
-  let result = ml_rl_qlearning_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_cluster_min(s : MlrlqlearningCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_qlearning_model_sum(s : MlrlqlearningModel) -> Double { @_common.su
 pub fn ml_rl_qlearning_model_mean(s : MlrlqlearningModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_model_scale(s : MlrlqlearningModel, f : Double) -> MlrlqlearningModel {
-  let result = ml_rl_qlearning_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_model_add(a : MlrlqlearningModel, b : MlrlqlearningModel) -> MlrlqlearningModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_model_copy(s : MlrlqlearningModel) -> MlrlqlearningModel {
-  let result = ml_rl_qlearning_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_model_fill(s : MlrlqlearningModel, v : Double) -> MlrlqlearningModel {
-  let result = ml_rl_qlearning_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_model_min(s : MlrlqlearningModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_qlearning_layer_sum(s : MlrlqlearningLayer) -> Double { @_common.su
 pub fn ml_rl_qlearning_layer_mean(s : MlrlqlearningLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_layer_scale(s : MlrlqlearningLayer, f : Double) -> MlrlqlearningLayer {
-  let result = ml_rl_qlearning_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_layer_add(a : MlrlqlearningLayer, b : MlrlqlearningLayer) -> MlrlqlearningLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_layer_copy(s : MlrlqlearningLayer) -> MlrlqlearningLayer {
-  let result = ml_rl_qlearning_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_layer_fill(s : MlrlqlearningLayer, v : Double) -> MlrlqlearningLayer {
-  let result = ml_rl_qlearning_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_layer_min(s : MlrlqlearningLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_qlearning_buffer_sum(s : MlrlqlearningBuffer) -> Double { @_common.
 pub fn ml_rl_qlearning_buffer_mean(s : MlrlqlearningBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_buffer_scale(s : MlrlqlearningBuffer, f : Double) -> MlrlqlearningBuffer {
-  let result = ml_rl_qlearning_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_buffer_add(a : MlrlqlearningBuffer, b : MlrlqlearningBuffer) -> MlrlqlearningBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_buffer_copy(s : MlrlqlearningBuffer) -> MlrlqlearningBuffer {
-  let result = ml_rl_qlearning_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_buffer_fill(s : MlrlqlearningBuffer, v : Double) -> MlrlqlearningBuffer {
-  let result = ml_rl_qlearning_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_buffer_min(s : MlrlqlearningBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_qlearning_cursor_sum(s : MlrlqlearningCursor) -> Double { @_common.
 pub fn ml_rl_qlearning_cursor_mean(s : MlrlqlearningCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_cursor_scale(s : MlrlqlearningCursor, f : Double) -> MlrlqlearningCursor {
-  let result = ml_rl_qlearning_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_cursor_add(a : MlrlqlearningCursor, b : MlrlqlearningCursor) -> MlrlqlearningCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_cursor_copy(s : MlrlqlearningCursor) -> MlrlqlearningCursor {
-  let result = ml_rl_qlearning_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_cursor_fill(s : MlrlqlearningCursor, v : Double) -> MlrlqlearningCursor {
-  let result = ml_rl_qlearning_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_cursor_min(s : MlrlqlearningCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_qlearning_view_sum(s : MlrlqlearningView) -> Double { @_common.sum(
 pub fn ml_rl_qlearning_view_mean(s : MlrlqlearningView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_view_scale(s : MlrlqlearningView, f : Double) -> MlrlqlearningView {
-  let result = ml_rl_qlearning_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_view_add(a : MlrlqlearningView, b : MlrlqlearningView) -> MlrlqlearningView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_view_copy(s : MlrlqlearningView) -> MlrlqlearningView {
-  let result = ml_rl_qlearning_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_view_fill(s : MlrlqlearningView, v : Double) -> MlrlqlearningView {
-  let result = ml_rl_qlearning_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_view_min(s : MlrlqlearningView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_qlearning_range_sum(s : MlrlqlearningRange) -> Double { @_common.su
 pub fn ml_rl_qlearning_range_mean(s : MlrlqlearningRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_range_scale(s : MlrlqlearningRange, f : Double) -> MlrlqlearningRange {
-  let result = ml_rl_qlearning_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_range_add(a : MlrlqlearningRange, b : MlrlqlearningRange) -> MlrlqlearningRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_range_copy(s : MlrlqlearningRange) -> MlrlqlearningRange {
-  let result = ml_rl_qlearning_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_range_fill(s : MlrlqlearningRange, v : Double) -> MlrlqlearningRange {
-  let result = ml_rl_qlearning_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_range_min(s : MlrlqlearningRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_qlearning_slice_sum(s : MlrlqlearningSlice) -> Double { @_common.su
 pub fn ml_rl_qlearning_slice_mean(s : MlrlqlearningSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_slice_scale(s : MlrlqlearningSlice, f : Double) -> MlrlqlearningSlice {
-  let result = ml_rl_qlearning_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_slice_add(a : MlrlqlearningSlice, b : MlrlqlearningSlice) -> MlrlqlearningSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_qlearning_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_qlearning_slice_copy(s : MlrlqlearningSlice) -> MlrlqlearningSlice {
-  let result = ml_rl_qlearning_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_slice_fill(s : MlrlqlearningSlice, v : Double) -> MlrlqlearningSlice {
-  let result = ml_rl_qlearning_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_qlearning_slice_min(s : MlrlqlearningSlice) -> Double { @_common.min(s.data) }

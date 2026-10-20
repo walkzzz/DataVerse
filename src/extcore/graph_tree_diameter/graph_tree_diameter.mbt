@@ -383,28 +383,20 @@ pub fn graph_tree_diameter_frame_sum(s : GraphtreediameterFrame) -> Double { @_c
 pub fn graph_tree_diameter_frame_mean(s : GraphtreediameterFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_frame_scale(s : GraphtreediameterFrame, f : Double) -> GraphtreediameterFrame {
-  let result = graph_tree_diameter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_frame_add(a : GraphtreediameterFrame, b : GraphtreediameterFrame) -> GraphtreediameterFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_frame_copy(s : GraphtreediameterFrame) -> GraphtreediameterFrame {
-  let result = graph_tree_diameter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_frame_fill(s : GraphtreediameterFrame, v : Double) -> GraphtreediameterFrame {
-  let result = graph_tree_diameter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_frame_min(s : GraphtreediameterFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_tree_diameter_table_sum(s : GraphtreediameterTable) -> Double { @_c
 pub fn graph_tree_diameter_table_mean(s : GraphtreediameterTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_table_scale(s : GraphtreediameterTable, f : Double) -> GraphtreediameterTable {
-  let result = graph_tree_diameter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_table_add(a : GraphtreediameterTable, b : GraphtreediameterTable) -> GraphtreediameterTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_table_copy(s : GraphtreediameterTable) -> GraphtreediameterTable {
-  let result = graph_tree_diameter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_table_fill(s : GraphtreediameterTable, v : Double) -> GraphtreediameterTable {
-  let result = graph_tree_diameter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_table_min(s : GraphtreediameterTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_tree_diameter_graphn_sum(s : GraphtreediameterGraphN) -> Double { @
 pub fn graph_tree_diameter_graphn_mean(s : GraphtreediameterGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_graphn_scale(s : GraphtreediameterGraphN, f : Double) -> GraphtreediameterGraphN {
-  let result = graph_tree_diameter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_graphn_add(a : GraphtreediameterGraphN, b : GraphtreediameterGraphN) -> GraphtreediameterGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_graphn_copy(s : GraphtreediameterGraphN) -> GraphtreediameterGraphN {
-  let result = graph_tree_diameter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_graphn_fill(s : GraphtreediameterGraphN, v : Double) -> GraphtreediameterGraphN {
-  let result = graph_tree_diameter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_graphn_min(s : GraphtreediameterGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_tree_diameter_node_sum(s : GraphtreediameterNode) -> Double { @_com
 pub fn graph_tree_diameter_node_mean(s : GraphtreediameterNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_node_scale(s : GraphtreediameterNode, f : Double) -> GraphtreediameterNode {
-  let result = graph_tree_diameter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_node_add(a : GraphtreediameterNode, b : GraphtreediameterNode) -> GraphtreediameterNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_node_copy(s : GraphtreediameterNode) -> GraphtreediameterNode {
-  let result = graph_tree_diameter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_node_fill(s : GraphtreediameterNode, v : Double) -> GraphtreediameterNode {
-  let result = graph_tree_diameter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_node_min(s : GraphtreediameterNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_tree_diameter_edge_sum(s : GraphtreediameterEdge) -> Double { @_com
 pub fn graph_tree_diameter_edge_mean(s : GraphtreediameterEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_edge_scale(s : GraphtreediameterEdge, f : Double) -> GraphtreediameterEdge {
-  let result = graph_tree_diameter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_edge_add(a : GraphtreediameterEdge, b : GraphtreediameterEdge) -> GraphtreediameterEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_edge_copy(s : GraphtreediameterEdge) -> GraphtreediameterEdge {
-  let result = graph_tree_diameter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_edge_fill(s : GraphtreediameterEdge, v : Double) -> GraphtreediameterEdge {
-  let result = graph_tree_diameter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_edge_min(s : GraphtreediameterEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_tree_diameter_path_sum(s : GraphtreediameterPath) -> Double { @_com
 pub fn graph_tree_diameter_path_mean(s : GraphtreediameterPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_path_scale(s : GraphtreediameterPath, f : Double) -> GraphtreediameterPath {
-  let result = graph_tree_diameter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_path_add(a : GraphtreediameterPath, b : GraphtreediameterPath) -> GraphtreediameterPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_path_copy(s : GraphtreediameterPath) -> GraphtreediameterPath {
-  let result = graph_tree_diameter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_path_fill(s : GraphtreediameterPath, v : Double) -> GraphtreediameterPath {
-  let result = graph_tree_diameter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_path_min(s : GraphtreediameterPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_tree_diameter_cluster_sum(s : GraphtreediameterCluster) -> Double {
 pub fn graph_tree_diameter_cluster_mean(s : GraphtreediameterCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_cluster_scale(s : GraphtreediameterCluster, f : Double) -> GraphtreediameterCluster {
-  let result = graph_tree_diameter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_cluster_add(a : GraphtreediameterCluster, b : GraphtreediameterCluster) -> GraphtreediameterCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_cluster_copy(s : GraphtreediameterCluster) -> GraphtreediameterCluster {
-  let result = graph_tree_diameter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_cluster_fill(s : GraphtreediameterCluster, v : Double) -> GraphtreediameterCluster {
-  let result = graph_tree_diameter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_cluster_min(s : GraphtreediameterCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_tree_diameter_model_sum(s : GraphtreediameterModel) -> Double { @_c
 pub fn graph_tree_diameter_model_mean(s : GraphtreediameterModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_model_scale(s : GraphtreediameterModel, f : Double) -> GraphtreediameterModel {
-  let result = graph_tree_diameter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_model_add(a : GraphtreediameterModel, b : GraphtreediameterModel) -> GraphtreediameterModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_model_copy(s : GraphtreediameterModel) -> GraphtreediameterModel {
-  let result = graph_tree_diameter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_model_fill(s : GraphtreediameterModel, v : Double) -> GraphtreediameterModel {
-  let result = graph_tree_diameter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_model_min(s : GraphtreediameterModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_tree_diameter_layer_sum(s : GraphtreediameterLayer) -> Double { @_c
 pub fn graph_tree_diameter_layer_mean(s : GraphtreediameterLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_layer_scale(s : GraphtreediameterLayer, f : Double) -> GraphtreediameterLayer {
-  let result = graph_tree_diameter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_layer_add(a : GraphtreediameterLayer, b : GraphtreediameterLayer) -> GraphtreediameterLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_layer_copy(s : GraphtreediameterLayer) -> GraphtreediameterLayer {
-  let result = graph_tree_diameter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_layer_fill(s : GraphtreediameterLayer, v : Double) -> GraphtreediameterLayer {
-  let result = graph_tree_diameter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_layer_min(s : GraphtreediameterLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_tree_diameter_buffer_sum(s : GraphtreediameterBuffer) -> Double { @
 pub fn graph_tree_diameter_buffer_mean(s : GraphtreediameterBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_buffer_scale(s : GraphtreediameterBuffer, f : Double) -> GraphtreediameterBuffer {
-  let result = graph_tree_diameter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_buffer_add(a : GraphtreediameterBuffer, b : GraphtreediameterBuffer) -> GraphtreediameterBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_buffer_copy(s : GraphtreediameterBuffer) -> GraphtreediameterBuffer {
-  let result = graph_tree_diameter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_buffer_fill(s : GraphtreediameterBuffer, v : Double) -> GraphtreediameterBuffer {
-  let result = graph_tree_diameter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_buffer_min(s : GraphtreediameterBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_tree_diameter_cursor_sum(s : GraphtreediameterCursor) -> Double { @
 pub fn graph_tree_diameter_cursor_mean(s : GraphtreediameterCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_cursor_scale(s : GraphtreediameterCursor, f : Double) -> GraphtreediameterCursor {
-  let result = graph_tree_diameter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_cursor_add(a : GraphtreediameterCursor, b : GraphtreediameterCursor) -> GraphtreediameterCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_cursor_copy(s : GraphtreediameterCursor) -> GraphtreediameterCursor {
-  let result = graph_tree_diameter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_cursor_fill(s : GraphtreediameterCursor, v : Double) -> GraphtreediameterCursor {
-  let result = graph_tree_diameter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_cursor_min(s : GraphtreediameterCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_tree_diameter_view_sum(s : GraphtreediameterView) -> Double { @_com
 pub fn graph_tree_diameter_view_mean(s : GraphtreediameterView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_view_scale(s : GraphtreediameterView, f : Double) -> GraphtreediameterView {
-  let result = graph_tree_diameter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_view_add(a : GraphtreediameterView, b : GraphtreediameterView) -> GraphtreediameterView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_view_copy(s : GraphtreediameterView) -> GraphtreediameterView {
-  let result = graph_tree_diameter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_view_fill(s : GraphtreediameterView, v : Double) -> GraphtreediameterView {
-  let result = graph_tree_diameter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_view_min(s : GraphtreediameterView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_tree_diameter_range_sum(s : GraphtreediameterRange) -> Double { @_c
 pub fn graph_tree_diameter_range_mean(s : GraphtreediameterRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_range_scale(s : GraphtreediameterRange, f : Double) -> GraphtreediameterRange {
-  let result = graph_tree_diameter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_range_add(a : GraphtreediameterRange, b : GraphtreediameterRange) -> GraphtreediameterRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_range_copy(s : GraphtreediameterRange) -> GraphtreediameterRange {
-  let result = graph_tree_diameter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_range_fill(s : GraphtreediameterRange, v : Double) -> GraphtreediameterRange {
-  let result = graph_tree_diameter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_range_min(s : GraphtreediameterRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_tree_diameter_slice_sum(s : GraphtreediameterSlice) -> Double { @_c
 pub fn graph_tree_diameter_slice_mean(s : GraphtreediameterSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_diameter_slice_scale(s : GraphtreediameterSlice, f : Double) -> GraphtreediameterSlice {
-  let result = graph_tree_diameter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_slice_add(a : GraphtreediameterSlice, b : GraphtreediameterSlice) -> GraphtreediameterSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_diameter_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_diameter_slice_copy(s : GraphtreediameterSlice) -> GraphtreediameterSlice {
-  let result = graph_tree_diameter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_slice_fill(s : GraphtreediameterSlice, v : Double) -> GraphtreediameterSlice {
-  let result = graph_tree_diameter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_diameter_slice_min(s : GraphtreediameterSlice) -> Double { @_common.min(s.data) }

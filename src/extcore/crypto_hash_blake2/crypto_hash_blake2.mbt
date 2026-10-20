@@ -383,28 +383,20 @@ pub fn crypto_hash_blake2_frame_sum(s : Cryptohashblake2Frame) -> Double { @_com
 pub fn crypto_hash_blake2_frame_mean(s : Cryptohashblake2Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_frame_scale(s : Cryptohashblake2Frame, f : Double) -> Cryptohashblake2Frame {
-  let result = crypto_hash_blake2_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_frame_add(a : Cryptohashblake2Frame, b : Cryptohashblake2Frame) -> Cryptohashblake2Frame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_frame_copy(s : Cryptohashblake2Frame) -> Cryptohashblake2Frame {
-  let result = crypto_hash_blake2_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_frame_fill(s : Cryptohashblake2Frame, v : Double) -> Cryptohashblake2Frame {
-  let result = crypto_hash_blake2_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_frame_min(s : Cryptohashblake2Frame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_hash_blake2_table_sum(s : Cryptohashblake2Table) -> Double { @_com
 pub fn crypto_hash_blake2_table_mean(s : Cryptohashblake2Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_table_scale(s : Cryptohashblake2Table, f : Double) -> Cryptohashblake2Table {
-  let result = crypto_hash_blake2_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_table_add(a : Cryptohashblake2Table, b : Cryptohashblake2Table) -> Cryptohashblake2Table {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_table_copy(s : Cryptohashblake2Table) -> Cryptohashblake2Table {
-  let result = crypto_hash_blake2_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_table_fill(s : Cryptohashblake2Table, v : Double) -> Cryptohashblake2Table {
-  let result = crypto_hash_blake2_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_table_min(s : Cryptohashblake2Table) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_hash_blake2_graphn_sum(s : Cryptohashblake2GraphN) -> Double { @_c
 pub fn crypto_hash_blake2_graphn_mean(s : Cryptohashblake2GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_graphn_scale(s : Cryptohashblake2GraphN, f : Double) -> Cryptohashblake2GraphN {
-  let result = crypto_hash_blake2_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_graphn_add(a : Cryptohashblake2GraphN, b : Cryptohashblake2GraphN) -> Cryptohashblake2GraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_graphn_copy(s : Cryptohashblake2GraphN) -> Cryptohashblake2GraphN {
-  let result = crypto_hash_blake2_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_graphn_fill(s : Cryptohashblake2GraphN, v : Double) -> Cryptohashblake2GraphN {
-  let result = crypto_hash_blake2_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_graphn_min(s : Cryptohashblake2GraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_hash_blake2_node_sum(s : Cryptohashblake2Node) -> Double { @_commo
 pub fn crypto_hash_blake2_node_mean(s : Cryptohashblake2Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_node_scale(s : Cryptohashblake2Node, f : Double) -> Cryptohashblake2Node {
-  let result = crypto_hash_blake2_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_node_add(a : Cryptohashblake2Node, b : Cryptohashblake2Node) -> Cryptohashblake2Node {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_node_copy(s : Cryptohashblake2Node) -> Cryptohashblake2Node {
-  let result = crypto_hash_blake2_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_node_fill(s : Cryptohashblake2Node, v : Double) -> Cryptohashblake2Node {
-  let result = crypto_hash_blake2_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_node_min(s : Cryptohashblake2Node) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_hash_blake2_edge_sum(s : Cryptohashblake2Edge) -> Double { @_commo
 pub fn crypto_hash_blake2_edge_mean(s : Cryptohashblake2Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_edge_scale(s : Cryptohashblake2Edge, f : Double) -> Cryptohashblake2Edge {
-  let result = crypto_hash_blake2_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_edge_add(a : Cryptohashblake2Edge, b : Cryptohashblake2Edge) -> Cryptohashblake2Edge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_edge_copy(s : Cryptohashblake2Edge) -> Cryptohashblake2Edge {
-  let result = crypto_hash_blake2_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_edge_fill(s : Cryptohashblake2Edge, v : Double) -> Cryptohashblake2Edge {
-  let result = crypto_hash_blake2_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_edge_min(s : Cryptohashblake2Edge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_hash_blake2_path_sum(s : Cryptohashblake2Path) -> Double { @_commo
 pub fn crypto_hash_blake2_path_mean(s : Cryptohashblake2Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_path_scale(s : Cryptohashblake2Path, f : Double) -> Cryptohashblake2Path {
-  let result = crypto_hash_blake2_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_path_add(a : Cryptohashblake2Path, b : Cryptohashblake2Path) -> Cryptohashblake2Path {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_path_copy(s : Cryptohashblake2Path) -> Cryptohashblake2Path {
-  let result = crypto_hash_blake2_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_path_fill(s : Cryptohashblake2Path, v : Double) -> Cryptohashblake2Path {
-  let result = crypto_hash_blake2_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_path_min(s : Cryptohashblake2Path) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_hash_blake2_cluster_sum(s : Cryptohashblake2Cluster) -> Double { @
 pub fn crypto_hash_blake2_cluster_mean(s : Cryptohashblake2Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_cluster_scale(s : Cryptohashblake2Cluster, f : Double) -> Cryptohashblake2Cluster {
-  let result = crypto_hash_blake2_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_cluster_add(a : Cryptohashblake2Cluster, b : Cryptohashblake2Cluster) -> Cryptohashblake2Cluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_cluster_copy(s : Cryptohashblake2Cluster) -> Cryptohashblake2Cluster {
-  let result = crypto_hash_blake2_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_cluster_fill(s : Cryptohashblake2Cluster, v : Double) -> Cryptohashblake2Cluster {
-  let result = crypto_hash_blake2_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_cluster_min(s : Cryptohashblake2Cluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_hash_blake2_model_sum(s : Cryptohashblake2Model) -> Double { @_com
 pub fn crypto_hash_blake2_model_mean(s : Cryptohashblake2Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_model_scale(s : Cryptohashblake2Model, f : Double) -> Cryptohashblake2Model {
-  let result = crypto_hash_blake2_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_model_add(a : Cryptohashblake2Model, b : Cryptohashblake2Model) -> Cryptohashblake2Model {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_model_copy(s : Cryptohashblake2Model) -> Cryptohashblake2Model {
-  let result = crypto_hash_blake2_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_model_fill(s : Cryptohashblake2Model, v : Double) -> Cryptohashblake2Model {
-  let result = crypto_hash_blake2_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_model_min(s : Cryptohashblake2Model) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_hash_blake2_layer_sum(s : Cryptohashblake2Layer) -> Double { @_com
 pub fn crypto_hash_blake2_layer_mean(s : Cryptohashblake2Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_layer_scale(s : Cryptohashblake2Layer, f : Double) -> Cryptohashblake2Layer {
-  let result = crypto_hash_blake2_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_layer_add(a : Cryptohashblake2Layer, b : Cryptohashblake2Layer) -> Cryptohashblake2Layer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_layer_copy(s : Cryptohashblake2Layer) -> Cryptohashblake2Layer {
-  let result = crypto_hash_blake2_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_layer_fill(s : Cryptohashblake2Layer, v : Double) -> Cryptohashblake2Layer {
-  let result = crypto_hash_blake2_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_layer_min(s : Cryptohashblake2Layer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_hash_blake2_buffer_sum(s : Cryptohashblake2Buffer) -> Double { @_c
 pub fn crypto_hash_blake2_buffer_mean(s : Cryptohashblake2Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_buffer_scale(s : Cryptohashblake2Buffer, f : Double) -> Cryptohashblake2Buffer {
-  let result = crypto_hash_blake2_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_buffer_add(a : Cryptohashblake2Buffer, b : Cryptohashblake2Buffer) -> Cryptohashblake2Buffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_buffer_copy(s : Cryptohashblake2Buffer) -> Cryptohashblake2Buffer {
-  let result = crypto_hash_blake2_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_buffer_fill(s : Cryptohashblake2Buffer, v : Double) -> Cryptohashblake2Buffer {
-  let result = crypto_hash_blake2_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_buffer_min(s : Cryptohashblake2Buffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_hash_blake2_cursor_sum(s : Cryptohashblake2Cursor) -> Double { @_c
 pub fn crypto_hash_blake2_cursor_mean(s : Cryptohashblake2Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_cursor_scale(s : Cryptohashblake2Cursor, f : Double) -> Cryptohashblake2Cursor {
-  let result = crypto_hash_blake2_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_cursor_add(a : Cryptohashblake2Cursor, b : Cryptohashblake2Cursor) -> Cryptohashblake2Cursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_cursor_copy(s : Cryptohashblake2Cursor) -> Cryptohashblake2Cursor {
-  let result = crypto_hash_blake2_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_cursor_fill(s : Cryptohashblake2Cursor, v : Double) -> Cryptohashblake2Cursor {
-  let result = crypto_hash_blake2_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_cursor_min(s : Cryptohashblake2Cursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_hash_blake2_view_sum(s : Cryptohashblake2View) -> Double { @_commo
 pub fn crypto_hash_blake2_view_mean(s : Cryptohashblake2View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_view_scale(s : Cryptohashblake2View, f : Double) -> Cryptohashblake2View {
-  let result = crypto_hash_blake2_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_view_add(a : Cryptohashblake2View, b : Cryptohashblake2View) -> Cryptohashblake2View {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_view_copy(s : Cryptohashblake2View) -> Cryptohashblake2View {
-  let result = crypto_hash_blake2_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_view_fill(s : Cryptohashblake2View, v : Double) -> Cryptohashblake2View {
-  let result = crypto_hash_blake2_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_view_min(s : Cryptohashblake2View) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_hash_blake2_range_sum(s : Cryptohashblake2Range) -> Double { @_com
 pub fn crypto_hash_blake2_range_mean(s : Cryptohashblake2Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_range_scale(s : Cryptohashblake2Range, f : Double) -> Cryptohashblake2Range {
-  let result = crypto_hash_blake2_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_range_add(a : Cryptohashblake2Range, b : Cryptohashblake2Range) -> Cryptohashblake2Range {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_range_copy(s : Cryptohashblake2Range) -> Cryptohashblake2Range {
-  let result = crypto_hash_blake2_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_range_fill(s : Cryptohashblake2Range, v : Double) -> Cryptohashblake2Range {
-  let result = crypto_hash_blake2_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_range_min(s : Cryptohashblake2Range) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_hash_blake2_slice_sum(s : Cryptohashblake2Slice) -> Double { @_com
 pub fn crypto_hash_blake2_slice_mean(s : Cryptohashblake2Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake2_slice_scale(s : Cryptohashblake2Slice, f : Double) -> Cryptohashblake2Slice {
-  let result = crypto_hash_blake2_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_slice_add(a : Cryptohashblake2Slice, b : Cryptohashblake2Slice) -> Cryptohashblake2Slice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake2_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake2_slice_copy(s : Cryptohashblake2Slice) -> Cryptohashblake2Slice {
-  let result = crypto_hash_blake2_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_slice_fill(s : Cryptohashblake2Slice, v : Double) -> Cryptohashblake2Slice {
-  let result = crypto_hash_blake2_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake2_slice_min(s : Cryptohashblake2Slice) -> Double { @_common.min(s.data) }

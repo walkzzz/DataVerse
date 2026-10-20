@@ -383,28 +383,20 @@ pub fn db_query_join_frame_sum(s : DbqueryjoinFrame) -> Double { @_common.sum(s.
 pub fn db_query_join_frame_mean(s : DbqueryjoinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_frame_scale(s : DbqueryjoinFrame, f : Double) -> DbqueryjoinFrame {
-  let result = db_query_join_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_frame_add(a : DbqueryjoinFrame, b : DbqueryjoinFrame) -> DbqueryjoinFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_frame_copy(s : DbqueryjoinFrame) -> DbqueryjoinFrame {
-  let result = db_query_join_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_frame_fill(s : DbqueryjoinFrame, v : Double) -> DbqueryjoinFrame {
-  let result = db_query_join_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_frame_min(s : DbqueryjoinFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_query_join_table_sum(s : DbqueryjoinTable) -> Double { @_common.sum(s.
 pub fn db_query_join_table_mean(s : DbqueryjoinTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_table_scale(s : DbqueryjoinTable, f : Double) -> DbqueryjoinTable {
-  let result = db_query_join_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_table_add(a : DbqueryjoinTable, b : DbqueryjoinTable) -> DbqueryjoinTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_table_copy(s : DbqueryjoinTable) -> DbqueryjoinTable {
-  let result = db_query_join_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_table_fill(s : DbqueryjoinTable, v : Double) -> DbqueryjoinTable {
-  let result = db_query_join_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_table_min(s : DbqueryjoinTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_query_join_graphn_sum(s : DbqueryjoinGraphN) -> Double { @_common.sum(
 pub fn db_query_join_graphn_mean(s : DbqueryjoinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_graphn_scale(s : DbqueryjoinGraphN, f : Double) -> DbqueryjoinGraphN {
-  let result = db_query_join_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_graphn_add(a : DbqueryjoinGraphN, b : DbqueryjoinGraphN) -> DbqueryjoinGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_graphn_copy(s : DbqueryjoinGraphN) -> DbqueryjoinGraphN {
-  let result = db_query_join_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_graphn_fill(s : DbqueryjoinGraphN, v : Double) -> DbqueryjoinGraphN {
-  let result = db_query_join_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_graphn_min(s : DbqueryjoinGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_query_join_node_sum(s : DbqueryjoinNode) -> Double { @_common.sum(s.da
 pub fn db_query_join_node_mean(s : DbqueryjoinNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_node_scale(s : DbqueryjoinNode, f : Double) -> DbqueryjoinNode {
-  let result = db_query_join_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_node_add(a : DbqueryjoinNode, b : DbqueryjoinNode) -> DbqueryjoinNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_node_copy(s : DbqueryjoinNode) -> DbqueryjoinNode {
-  let result = db_query_join_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_node_fill(s : DbqueryjoinNode, v : Double) -> DbqueryjoinNode {
-  let result = db_query_join_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_node_min(s : DbqueryjoinNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_query_join_edge_sum(s : DbqueryjoinEdge) -> Double { @_common.sum(s.da
 pub fn db_query_join_edge_mean(s : DbqueryjoinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_edge_scale(s : DbqueryjoinEdge, f : Double) -> DbqueryjoinEdge {
-  let result = db_query_join_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_edge_add(a : DbqueryjoinEdge, b : DbqueryjoinEdge) -> DbqueryjoinEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_edge_copy(s : DbqueryjoinEdge) -> DbqueryjoinEdge {
-  let result = db_query_join_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_edge_fill(s : DbqueryjoinEdge, v : Double) -> DbqueryjoinEdge {
-  let result = db_query_join_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_edge_min(s : DbqueryjoinEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_query_join_path_sum(s : DbqueryjoinPath) -> Double { @_common.sum(s.da
 pub fn db_query_join_path_mean(s : DbqueryjoinPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_path_scale(s : DbqueryjoinPath, f : Double) -> DbqueryjoinPath {
-  let result = db_query_join_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_path_add(a : DbqueryjoinPath, b : DbqueryjoinPath) -> DbqueryjoinPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_path_copy(s : DbqueryjoinPath) -> DbqueryjoinPath {
-  let result = db_query_join_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_path_fill(s : DbqueryjoinPath, v : Double) -> DbqueryjoinPath {
-  let result = db_query_join_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_path_min(s : DbqueryjoinPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_query_join_cluster_sum(s : DbqueryjoinCluster) -> Double { @_common.su
 pub fn db_query_join_cluster_mean(s : DbqueryjoinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_cluster_scale(s : DbqueryjoinCluster, f : Double) -> DbqueryjoinCluster {
-  let result = db_query_join_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_cluster_add(a : DbqueryjoinCluster, b : DbqueryjoinCluster) -> DbqueryjoinCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_cluster_copy(s : DbqueryjoinCluster) -> DbqueryjoinCluster {
-  let result = db_query_join_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_cluster_fill(s : DbqueryjoinCluster, v : Double) -> DbqueryjoinCluster {
-  let result = db_query_join_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_cluster_min(s : DbqueryjoinCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_query_join_model_sum(s : DbqueryjoinModel) -> Double { @_common.sum(s.
 pub fn db_query_join_model_mean(s : DbqueryjoinModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_model_scale(s : DbqueryjoinModel, f : Double) -> DbqueryjoinModel {
-  let result = db_query_join_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_model_add(a : DbqueryjoinModel, b : DbqueryjoinModel) -> DbqueryjoinModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_model_copy(s : DbqueryjoinModel) -> DbqueryjoinModel {
-  let result = db_query_join_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_model_fill(s : DbqueryjoinModel, v : Double) -> DbqueryjoinModel {
-  let result = db_query_join_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_model_min(s : DbqueryjoinModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_query_join_layer_sum(s : DbqueryjoinLayer) -> Double { @_common.sum(s.
 pub fn db_query_join_layer_mean(s : DbqueryjoinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_layer_scale(s : DbqueryjoinLayer, f : Double) -> DbqueryjoinLayer {
-  let result = db_query_join_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_layer_add(a : DbqueryjoinLayer, b : DbqueryjoinLayer) -> DbqueryjoinLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_layer_copy(s : DbqueryjoinLayer) -> DbqueryjoinLayer {
-  let result = db_query_join_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_layer_fill(s : DbqueryjoinLayer, v : Double) -> DbqueryjoinLayer {
-  let result = db_query_join_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_layer_min(s : DbqueryjoinLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_query_join_buffer_sum(s : DbqueryjoinBuffer) -> Double { @_common.sum(
 pub fn db_query_join_buffer_mean(s : DbqueryjoinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_buffer_scale(s : DbqueryjoinBuffer, f : Double) -> DbqueryjoinBuffer {
-  let result = db_query_join_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_buffer_add(a : DbqueryjoinBuffer, b : DbqueryjoinBuffer) -> DbqueryjoinBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_buffer_copy(s : DbqueryjoinBuffer) -> DbqueryjoinBuffer {
-  let result = db_query_join_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_buffer_fill(s : DbqueryjoinBuffer, v : Double) -> DbqueryjoinBuffer {
-  let result = db_query_join_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_buffer_min(s : DbqueryjoinBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_query_join_cursor_sum(s : DbqueryjoinCursor) -> Double { @_common.sum(
 pub fn db_query_join_cursor_mean(s : DbqueryjoinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_cursor_scale(s : DbqueryjoinCursor, f : Double) -> DbqueryjoinCursor {
-  let result = db_query_join_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_cursor_add(a : DbqueryjoinCursor, b : DbqueryjoinCursor) -> DbqueryjoinCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_cursor_copy(s : DbqueryjoinCursor) -> DbqueryjoinCursor {
-  let result = db_query_join_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_cursor_fill(s : DbqueryjoinCursor, v : Double) -> DbqueryjoinCursor {
-  let result = db_query_join_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_cursor_min(s : DbqueryjoinCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_query_join_view_sum(s : DbqueryjoinView) -> Double { @_common.sum(s.da
 pub fn db_query_join_view_mean(s : DbqueryjoinView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_view_scale(s : DbqueryjoinView, f : Double) -> DbqueryjoinView {
-  let result = db_query_join_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_view_add(a : DbqueryjoinView, b : DbqueryjoinView) -> DbqueryjoinView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_view_copy(s : DbqueryjoinView) -> DbqueryjoinView {
-  let result = db_query_join_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_view_fill(s : DbqueryjoinView, v : Double) -> DbqueryjoinView {
-  let result = db_query_join_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_view_min(s : DbqueryjoinView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_query_join_range_sum(s : DbqueryjoinRange) -> Double { @_common.sum(s.
 pub fn db_query_join_range_mean(s : DbqueryjoinRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_range_scale(s : DbqueryjoinRange, f : Double) -> DbqueryjoinRange {
-  let result = db_query_join_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_range_add(a : DbqueryjoinRange, b : DbqueryjoinRange) -> DbqueryjoinRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_range_copy(s : DbqueryjoinRange) -> DbqueryjoinRange {
-  let result = db_query_join_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_range_fill(s : DbqueryjoinRange, v : Double) -> DbqueryjoinRange {
-  let result = db_query_join_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_range_min(s : DbqueryjoinRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_query_join_slice_sum(s : DbqueryjoinSlice) -> Double { @_common.sum(s.
 pub fn db_query_join_slice_mean(s : DbqueryjoinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_slice_scale(s : DbqueryjoinSlice, f : Double) -> DbqueryjoinSlice {
-  let result = db_query_join_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_slice_add(a : DbqueryjoinSlice, b : DbqueryjoinSlice) -> DbqueryjoinSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_join_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_join_slice_copy(s : DbqueryjoinSlice) -> DbqueryjoinSlice {
-  let result = db_query_join_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_slice_fill(s : DbqueryjoinSlice, v : Double) -> DbqueryjoinSlice {
-  let result = db_query_join_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_join_slice_min(s : DbqueryjoinSlice) -> Double { @_common.min(s.data) }

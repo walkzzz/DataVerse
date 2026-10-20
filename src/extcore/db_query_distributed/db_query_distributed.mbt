@@ -383,28 +383,20 @@ pub fn db_query_distributed_frame_sum(s : DbquerydistributedFrame) -> Double { @
 pub fn db_query_distributed_frame_mean(s : DbquerydistributedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_frame_scale(s : DbquerydistributedFrame, f : Double) -> DbquerydistributedFrame {
-  let result = db_query_distributed_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_frame_add(a : DbquerydistributedFrame, b : DbquerydistributedFrame) -> DbquerydistributedFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_frame_copy(s : DbquerydistributedFrame) -> DbquerydistributedFrame {
-  let result = db_query_distributed_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_frame_fill(s : DbquerydistributedFrame, v : Double) -> DbquerydistributedFrame {
-  let result = db_query_distributed_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_frame_min(s : DbquerydistributedFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_query_distributed_table_sum(s : DbquerydistributedTable) -> Double { @
 pub fn db_query_distributed_table_mean(s : DbquerydistributedTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_table_scale(s : DbquerydistributedTable, f : Double) -> DbquerydistributedTable {
-  let result = db_query_distributed_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_table_add(a : DbquerydistributedTable, b : DbquerydistributedTable) -> DbquerydistributedTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_table_copy(s : DbquerydistributedTable) -> DbquerydistributedTable {
-  let result = db_query_distributed_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_table_fill(s : DbquerydistributedTable, v : Double) -> DbquerydistributedTable {
-  let result = db_query_distributed_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_table_min(s : DbquerydistributedTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_query_distributed_graphn_sum(s : DbquerydistributedGraphN) -> Double {
 pub fn db_query_distributed_graphn_mean(s : DbquerydistributedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_graphn_scale(s : DbquerydistributedGraphN, f : Double) -> DbquerydistributedGraphN {
-  let result = db_query_distributed_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_graphn_add(a : DbquerydistributedGraphN, b : DbquerydistributedGraphN) -> DbquerydistributedGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_graphn_copy(s : DbquerydistributedGraphN) -> DbquerydistributedGraphN {
-  let result = db_query_distributed_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_graphn_fill(s : DbquerydistributedGraphN, v : Double) -> DbquerydistributedGraphN {
-  let result = db_query_distributed_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_graphn_min(s : DbquerydistributedGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_query_distributed_node_sum(s : DbquerydistributedNode) -> Double { @_c
 pub fn db_query_distributed_node_mean(s : DbquerydistributedNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_node_scale(s : DbquerydistributedNode, f : Double) -> DbquerydistributedNode {
-  let result = db_query_distributed_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_node_add(a : DbquerydistributedNode, b : DbquerydistributedNode) -> DbquerydistributedNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_node_copy(s : DbquerydistributedNode) -> DbquerydistributedNode {
-  let result = db_query_distributed_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_node_fill(s : DbquerydistributedNode, v : Double) -> DbquerydistributedNode {
-  let result = db_query_distributed_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_node_min(s : DbquerydistributedNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_query_distributed_edge_sum(s : DbquerydistributedEdge) -> Double { @_c
 pub fn db_query_distributed_edge_mean(s : DbquerydistributedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_edge_scale(s : DbquerydistributedEdge, f : Double) -> DbquerydistributedEdge {
-  let result = db_query_distributed_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_edge_add(a : DbquerydistributedEdge, b : DbquerydistributedEdge) -> DbquerydistributedEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_edge_copy(s : DbquerydistributedEdge) -> DbquerydistributedEdge {
-  let result = db_query_distributed_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_edge_fill(s : DbquerydistributedEdge, v : Double) -> DbquerydistributedEdge {
-  let result = db_query_distributed_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_edge_min(s : DbquerydistributedEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_query_distributed_path_sum(s : DbquerydistributedPath) -> Double { @_c
 pub fn db_query_distributed_path_mean(s : DbquerydistributedPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_path_scale(s : DbquerydistributedPath, f : Double) -> DbquerydistributedPath {
-  let result = db_query_distributed_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_path_add(a : DbquerydistributedPath, b : DbquerydistributedPath) -> DbquerydistributedPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_path_copy(s : DbquerydistributedPath) -> DbquerydistributedPath {
-  let result = db_query_distributed_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_path_fill(s : DbquerydistributedPath, v : Double) -> DbquerydistributedPath {
-  let result = db_query_distributed_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_path_min(s : DbquerydistributedPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_query_distributed_cluster_sum(s : DbquerydistributedCluster) -> Double
 pub fn db_query_distributed_cluster_mean(s : DbquerydistributedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_cluster_scale(s : DbquerydistributedCluster, f : Double) -> DbquerydistributedCluster {
-  let result = db_query_distributed_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_cluster_add(a : DbquerydistributedCluster, b : DbquerydistributedCluster) -> DbquerydistributedCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_cluster_copy(s : DbquerydistributedCluster) -> DbquerydistributedCluster {
-  let result = db_query_distributed_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_cluster_fill(s : DbquerydistributedCluster, v : Double) -> DbquerydistributedCluster {
-  let result = db_query_distributed_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_cluster_min(s : DbquerydistributedCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_query_distributed_model_sum(s : DbquerydistributedModel) -> Double { @
 pub fn db_query_distributed_model_mean(s : DbquerydistributedModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_model_scale(s : DbquerydistributedModel, f : Double) -> DbquerydistributedModel {
-  let result = db_query_distributed_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_model_add(a : DbquerydistributedModel, b : DbquerydistributedModel) -> DbquerydistributedModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_model_copy(s : DbquerydistributedModel) -> DbquerydistributedModel {
-  let result = db_query_distributed_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_model_fill(s : DbquerydistributedModel, v : Double) -> DbquerydistributedModel {
-  let result = db_query_distributed_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_model_min(s : DbquerydistributedModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_query_distributed_layer_sum(s : DbquerydistributedLayer) -> Double { @
 pub fn db_query_distributed_layer_mean(s : DbquerydistributedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_layer_scale(s : DbquerydistributedLayer, f : Double) -> DbquerydistributedLayer {
-  let result = db_query_distributed_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_layer_add(a : DbquerydistributedLayer, b : DbquerydistributedLayer) -> DbquerydistributedLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_layer_copy(s : DbquerydistributedLayer) -> DbquerydistributedLayer {
-  let result = db_query_distributed_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_layer_fill(s : DbquerydistributedLayer, v : Double) -> DbquerydistributedLayer {
-  let result = db_query_distributed_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_layer_min(s : DbquerydistributedLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_query_distributed_buffer_sum(s : DbquerydistributedBuffer) -> Double {
 pub fn db_query_distributed_buffer_mean(s : DbquerydistributedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_buffer_scale(s : DbquerydistributedBuffer, f : Double) -> DbquerydistributedBuffer {
-  let result = db_query_distributed_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_buffer_add(a : DbquerydistributedBuffer, b : DbquerydistributedBuffer) -> DbquerydistributedBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_buffer_copy(s : DbquerydistributedBuffer) -> DbquerydistributedBuffer {
-  let result = db_query_distributed_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_buffer_fill(s : DbquerydistributedBuffer, v : Double) -> DbquerydistributedBuffer {
-  let result = db_query_distributed_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_buffer_min(s : DbquerydistributedBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_query_distributed_cursor_sum(s : DbquerydistributedCursor) -> Double {
 pub fn db_query_distributed_cursor_mean(s : DbquerydistributedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_cursor_scale(s : DbquerydistributedCursor, f : Double) -> DbquerydistributedCursor {
-  let result = db_query_distributed_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_cursor_add(a : DbquerydistributedCursor, b : DbquerydistributedCursor) -> DbquerydistributedCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_cursor_copy(s : DbquerydistributedCursor) -> DbquerydistributedCursor {
-  let result = db_query_distributed_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_cursor_fill(s : DbquerydistributedCursor, v : Double) -> DbquerydistributedCursor {
-  let result = db_query_distributed_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_cursor_min(s : DbquerydistributedCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_query_distributed_view_sum(s : DbquerydistributedView) -> Double { @_c
 pub fn db_query_distributed_view_mean(s : DbquerydistributedView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_view_scale(s : DbquerydistributedView, f : Double) -> DbquerydistributedView {
-  let result = db_query_distributed_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_view_add(a : DbquerydistributedView, b : DbquerydistributedView) -> DbquerydistributedView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_view_copy(s : DbquerydistributedView) -> DbquerydistributedView {
-  let result = db_query_distributed_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_view_fill(s : DbquerydistributedView, v : Double) -> DbquerydistributedView {
-  let result = db_query_distributed_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_view_min(s : DbquerydistributedView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_query_distributed_range_sum(s : DbquerydistributedRange) -> Double { @
 pub fn db_query_distributed_range_mean(s : DbquerydistributedRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_range_scale(s : DbquerydistributedRange, f : Double) -> DbquerydistributedRange {
-  let result = db_query_distributed_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_range_add(a : DbquerydistributedRange, b : DbquerydistributedRange) -> DbquerydistributedRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_range_copy(s : DbquerydistributedRange) -> DbquerydistributedRange {
-  let result = db_query_distributed_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_range_fill(s : DbquerydistributedRange, v : Double) -> DbquerydistributedRange {
-  let result = db_query_distributed_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_range_min(s : DbquerydistributedRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_query_distributed_slice_sum(s : DbquerydistributedSlice) -> Double { @
 pub fn db_query_distributed_slice_mean(s : DbquerydistributedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_slice_scale(s : DbquerydistributedSlice, f : Double) -> DbquerydistributedSlice {
-  let result = db_query_distributed_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_slice_add(a : DbquerydistributedSlice, b : DbquerydistributedSlice) -> DbquerydistributedSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_distributed_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_distributed_slice_copy(s : DbquerydistributedSlice) -> DbquerydistributedSlice {
-  let result = db_query_distributed_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_slice_fill(s : DbquerydistributedSlice, v : Double) -> DbquerydistributedSlice {
-  let result = db_query_distributed_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_distributed_slice_min(s : DbquerydistributedSlice) -> Double { @_common.min(s.data) }

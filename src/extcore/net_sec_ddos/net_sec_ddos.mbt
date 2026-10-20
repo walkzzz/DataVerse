@@ -383,28 +383,20 @@ pub fn net_sec_ddos_frame_sum(s : NetsecddosFrame) -> Double { @_common.sum(s.da
 pub fn net_sec_ddos_frame_mean(s : NetsecddosFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_frame_scale(s : NetsecddosFrame, f : Double) -> NetsecddosFrame {
-  let result = net_sec_ddos_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_frame_add(a : NetsecddosFrame, b : NetsecddosFrame) -> NetsecddosFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_frame_copy(s : NetsecddosFrame) -> NetsecddosFrame {
-  let result = net_sec_ddos_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_frame_fill(s : NetsecddosFrame, v : Double) -> NetsecddosFrame {
-  let result = net_sec_ddos_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_frame_min(s : NetsecddosFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_sec_ddos_table_sum(s : NetsecddosTable) -> Double { @_common.sum(s.da
 pub fn net_sec_ddos_table_mean(s : NetsecddosTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_table_scale(s : NetsecddosTable, f : Double) -> NetsecddosTable {
-  let result = net_sec_ddos_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_table_add(a : NetsecddosTable, b : NetsecddosTable) -> NetsecddosTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_table_copy(s : NetsecddosTable) -> NetsecddosTable {
-  let result = net_sec_ddos_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_table_fill(s : NetsecddosTable, v : Double) -> NetsecddosTable {
-  let result = net_sec_ddos_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_table_min(s : NetsecddosTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_sec_ddos_graphn_sum(s : NetsecddosGraphN) -> Double { @_common.sum(s.
 pub fn net_sec_ddos_graphn_mean(s : NetsecddosGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_graphn_scale(s : NetsecddosGraphN, f : Double) -> NetsecddosGraphN {
-  let result = net_sec_ddos_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_graphn_add(a : NetsecddosGraphN, b : NetsecddosGraphN) -> NetsecddosGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_graphn_copy(s : NetsecddosGraphN) -> NetsecddosGraphN {
-  let result = net_sec_ddos_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_graphn_fill(s : NetsecddosGraphN, v : Double) -> NetsecddosGraphN {
-  let result = net_sec_ddos_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_graphn_min(s : NetsecddosGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_sec_ddos_node_sum(s : NetsecddosNode) -> Double { @_common.sum(s.data
 pub fn net_sec_ddos_node_mean(s : NetsecddosNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_node_scale(s : NetsecddosNode, f : Double) -> NetsecddosNode {
-  let result = net_sec_ddos_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_node_add(a : NetsecddosNode, b : NetsecddosNode) -> NetsecddosNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_node_copy(s : NetsecddosNode) -> NetsecddosNode {
-  let result = net_sec_ddos_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_node_fill(s : NetsecddosNode, v : Double) -> NetsecddosNode {
-  let result = net_sec_ddos_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_node_min(s : NetsecddosNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_sec_ddos_edge_sum(s : NetsecddosEdge) -> Double { @_common.sum(s.data
 pub fn net_sec_ddos_edge_mean(s : NetsecddosEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_edge_scale(s : NetsecddosEdge, f : Double) -> NetsecddosEdge {
-  let result = net_sec_ddos_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_edge_add(a : NetsecddosEdge, b : NetsecddosEdge) -> NetsecddosEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_edge_copy(s : NetsecddosEdge) -> NetsecddosEdge {
-  let result = net_sec_ddos_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_edge_fill(s : NetsecddosEdge, v : Double) -> NetsecddosEdge {
-  let result = net_sec_ddos_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_edge_min(s : NetsecddosEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_sec_ddos_path_sum(s : NetsecddosPath) -> Double { @_common.sum(s.data
 pub fn net_sec_ddos_path_mean(s : NetsecddosPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_path_scale(s : NetsecddosPath, f : Double) -> NetsecddosPath {
-  let result = net_sec_ddos_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_path_add(a : NetsecddosPath, b : NetsecddosPath) -> NetsecddosPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_path_copy(s : NetsecddosPath) -> NetsecddosPath {
-  let result = net_sec_ddos_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_path_fill(s : NetsecddosPath, v : Double) -> NetsecddosPath {
-  let result = net_sec_ddos_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_path_min(s : NetsecddosPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_sec_ddos_cluster_sum(s : NetsecddosCluster) -> Double { @_common.sum(
 pub fn net_sec_ddos_cluster_mean(s : NetsecddosCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_cluster_scale(s : NetsecddosCluster, f : Double) -> NetsecddosCluster {
-  let result = net_sec_ddos_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_cluster_add(a : NetsecddosCluster, b : NetsecddosCluster) -> NetsecddosCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_cluster_copy(s : NetsecddosCluster) -> NetsecddosCluster {
-  let result = net_sec_ddos_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_cluster_fill(s : NetsecddosCluster, v : Double) -> NetsecddosCluster {
-  let result = net_sec_ddos_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_cluster_min(s : NetsecddosCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_sec_ddos_model_sum(s : NetsecddosModel) -> Double { @_common.sum(s.da
 pub fn net_sec_ddos_model_mean(s : NetsecddosModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_model_scale(s : NetsecddosModel, f : Double) -> NetsecddosModel {
-  let result = net_sec_ddos_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_model_add(a : NetsecddosModel, b : NetsecddosModel) -> NetsecddosModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_model_copy(s : NetsecddosModel) -> NetsecddosModel {
-  let result = net_sec_ddos_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_model_fill(s : NetsecddosModel, v : Double) -> NetsecddosModel {
-  let result = net_sec_ddos_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_model_min(s : NetsecddosModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_sec_ddos_layer_sum(s : NetsecddosLayer) -> Double { @_common.sum(s.da
 pub fn net_sec_ddos_layer_mean(s : NetsecddosLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_layer_scale(s : NetsecddosLayer, f : Double) -> NetsecddosLayer {
-  let result = net_sec_ddos_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_layer_add(a : NetsecddosLayer, b : NetsecddosLayer) -> NetsecddosLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_layer_copy(s : NetsecddosLayer) -> NetsecddosLayer {
-  let result = net_sec_ddos_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_layer_fill(s : NetsecddosLayer, v : Double) -> NetsecddosLayer {
-  let result = net_sec_ddos_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_layer_min(s : NetsecddosLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_sec_ddos_buffer_sum(s : NetsecddosBuffer) -> Double { @_common.sum(s.
 pub fn net_sec_ddos_buffer_mean(s : NetsecddosBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_buffer_scale(s : NetsecddosBuffer, f : Double) -> NetsecddosBuffer {
-  let result = net_sec_ddos_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_buffer_add(a : NetsecddosBuffer, b : NetsecddosBuffer) -> NetsecddosBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_buffer_copy(s : NetsecddosBuffer) -> NetsecddosBuffer {
-  let result = net_sec_ddos_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_buffer_fill(s : NetsecddosBuffer, v : Double) -> NetsecddosBuffer {
-  let result = net_sec_ddos_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_buffer_min(s : NetsecddosBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_sec_ddos_cursor_sum(s : NetsecddosCursor) -> Double { @_common.sum(s.
 pub fn net_sec_ddos_cursor_mean(s : NetsecddosCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_cursor_scale(s : NetsecddosCursor, f : Double) -> NetsecddosCursor {
-  let result = net_sec_ddos_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_cursor_add(a : NetsecddosCursor, b : NetsecddosCursor) -> NetsecddosCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_cursor_copy(s : NetsecddosCursor) -> NetsecddosCursor {
-  let result = net_sec_ddos_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_cursor_fill(s : NetsecddosCursor, v : Double) -> NetsecddosCursor {
-  let result = net_sec_ddos_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_cursor_min(s : NetsecddosCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_sec_ddos_view_sum(s : NetsecddosView) -> Double { @_common.sum(s.data
 pub fn net_sec_ddos_view_mean(s : NetsecddosView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_view_scale(s : NetsecddosView, f : Double) -> NetsecddosView {
-  let result = net_sec_ddos_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_view_add(a : NetsecddosView, b : NetsecddosView) -> NetsecddosView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_view_copy(s : NetsecddosView) -> NetsecddosView {
-  let result = net_sec_ddos_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_view_fill(s : NetsecddosView, v : Double) -> NetsecddosView {
-  let result = net_sec_ddos_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_view_min(s : NetsecddosView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_sec_ddos_range_sum(s : NetsecddosRange) -> Double { @_common.sum(s.da
 pub fn net_sec_ddos_range_mean(s : NetsecddosRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_range_scale(s : NetsecddosRange, f : Double) -> NetsecddosRange {
-  let result = net_sec_ddos_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_range_add(a : NetsecddosRange, b : NetsecddosRange) -> NetsecddosRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_range_copy(s : NetsecddosRange) -> NetsecddosRange {
-  let result = net_sec_ddos_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_range_fill(s : NetsecddosRange, v : Double) -> NetsecddosRange {
-  let result = net_sec_ddos_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_range_min(s : NetsecddosRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_sec_ddos_slice_sum(s : NetsecddosSlice) -> Double { @_common.sum(s.da
 pub fn net_sec_ddos_slice_mean(s : NetsecddosSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_slice_scale(s : NetsecddosSlice, f : Double) -> NetsecddosSlice {
-  let result = net_sec_ddos_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_slice_add(a : NetsecddosSlice, b : NetsecddosSlice) -> NetsecddosSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_ddos_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_ddos_slice_copy(s : NetsecddosSlice) -> NetsecddosSlice {
-  let result = net_sec_ddos_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_slice_fill(s : NetsecddosSlice, v : Double) -> NetsecddosSlice {
-  let result = net_sec_ddos_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ddos_slice_min(s : NetsecddosSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn bio_seq_align_global_frame_sum(s : BioseqalignglobalFrame) -> Double { @_
 pub fn bio_seq_align_global_frame_mean(s : BioseqalignglobalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_frame_scale(s : BioseqalignglobalFrame, f : Double) -> BioseqalignglobalFrame {
-  let result = bio_seq_align_global_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_frame_add(a : BioseqalignglobalFrame, b : BioseqalignglobalFrame) -> BioseqalignglobalFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_frame_copy(s : BioseqalignglobalFrame) -> BioseqalignglobalFrame {
-  let result = bio_seq_align_global_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_frame_fill(s : BioseqalignglobalFrame, v : Double) -> BioseqalignglobalFrame {
-  let result = bio_seq_align_global_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_frame_min(s : BioseqalignglobalFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_seq_align_global_table_sum(s : BioseqalignglobalTable) -> Double { @_
 pub fn bio_seq_align_global_table_mean(s : BioseqalignglobalTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_table_scale(s : BioseqalignglobalTable, f : Double) -> BioseqalignglobalTable {
-  let result = bio_seq_align_global_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_table_add(a : BioseqalignglobalTable, b : BioseqalignglobalTable) -> BioseqalignglobalTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_table_copy(s : BioseqalignglobalTable) -> BioseqalignglobalTable {
-  let result = bio_seq_align_global_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_table_fill(s : BioseqalignglobalTable, v : Double) -> BioseqalignglobalTable {
-  let result = bio_seq_align_global_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_table_min(s : BioseqalignglobalTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_seq_align_global_graphn_sum(s : BioseqalignglobalGraphN) -> Double { 
 pub fn bio_seq_align_global_graphn_mean(s : BioseqalignglobalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_graphn_scale(s : BioseqalignglobalGraphN, f : Double) -> BioseqalignglobalGraphN {
-  let result = bio_seq_align_global_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_graphn_add(a : BioseqalignglobalGraphN, b : BioseqalignglobalGraphN) -> BioseqalignglobalGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_graphn_copy(s : BioseqalignglobalGraphN) -> BioseqalignglobalGraphN {
-  let result = bio_seq_align_global_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_graphn_fill(s : BioseqalignglobalGraphN, v : Double) -> BioseqalignglobalGraphN {
-  let result = bio_seq_align_global_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_graphn_min(s : BioseqalignglobalGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_seq_align_global_node_sum(s : BioseqalignglobalNode) -> Double { @_co
 pub fn bio_seq_align_global_node_mean(s : BioseqalignglobalNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_node_scale(s : BioseqalignglobalNode, f : Double) -> BioseqalignglobalNode {
-  let result = bio_seq_align_global_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_node_add(a : BioseqalignglobalNode, b : BioseqalignglobalNode) -> BioseqalignglobalNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_node_copy(s : BioseqalignglobalNode) -> BioseqalignglobalNode {
-  let result = bio_seq_align_global_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_node_fill(s : BioseqalignglobalNode, v : Double) -> BioseqalignglobalNode {
-  let result = bio_seq_align_global_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_node_min(s : BioseqalignglobalNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_seq_align_global_edge_sum(s : BioseqalignglobalEdge) -> Double { @_co
 pub fn bio_seq_align_global_edge_mean(s : BioseqalignglobalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_edge_scale(s : BioseqalignglobalEdge, f : Double) -> BioseqalignglobalEdge {
-  let result = bio_seq_align_global_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_edge_add(a : BioseqalignglobalEdge, b : BioseqalignglobalEdge) -> BioseqalignglobalEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_edge_copy(s : BioseqalignglobalEdge) -> BioseqalignglobalEdge {
-  let result = bio_seq_align_global_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_edge_fill(s : BioseqalignglobalEdge, v : Double) -> BioseqalignglobalEdge {
-  let result = bio_seq_align_global_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_edge_min(s : BioseqalignglobalEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_seq_align_global_path_sum(s : BioseqalignglobalPath) -> Double { @_co
 pub fn bio_seq_align_global_path_mean(s : BioseqalignglobalPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_path_scale(s : BioseqalignglobalPath, f : Double) -> BioseqalignglobalPath {
-  let result = bio_seq_align_global_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_path_add(a : BioseqalignglobalPath, b : BioseqalignglobalPath) -> BioseqalignglobalPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_path_copy(s : BioseqalignglobalPath) -> BioseqalignglobalPath {
-  let result = bio_seq_align_global_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_path_fill(s : BioseqalignglobalPath, v : Double) -> BioseqalignglobalPath {
-  let result = bio_seq_align_global_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_path_min(s : BioseqalignglobalPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_seq_align_global_cluster_sum(s : BioseqalignglobalCluster) -> Double 
 pub fn bio_seq_align_global_cluster_mean(s : BioseqalignglobalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_cluster_scale(s : BioseqalignglobalCluster, f : Double) -> BioseqalignglobalCluster {
-  let result = bio_seq_align_global_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_cluster_add(a : BioseqalignglobalCluster, b : BioseqalignglobalCluster) -> BioseqalignglobalCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_cluster_copy(s : BioseqalignglobalCluster) -> BioseqalignglobalCluster {
-  let result = bio_seq_align_global_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_cluster_fill(s : BioseqalignglobalCluster, v : Double) -> BioseqalignglobalCluster {
-  let result = bio_seq_align_global_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_cluster_min(s : BioseqalignglobalCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_seq_align_global_model_sum(s : BioseqalignglobalModel) -> Double { @_
 pub fn bio_seq_align_global_model_mean(s : BioseqalignglobalModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_model_scale(s : BioseqalignglobalModel, f : Double) -> BioseqalignglobalModel {
-  let result = bio_seq_align_global_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_model_add(a : BioseqalignglobalModel, b : BioseqalignglobalModel) -> BioseqalignglobalModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_model_copy(s : BioseqalignglobalModel) -> BioseqalignglobalModel {
-  let result = bio_seq_align_global_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_model_fill(s : BioseqalignglobalModel, v : Double) -> BioseqalignglobalModel {
-  let result = bio_seq_align_global_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_model_min(s : BioseqalignglobalModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_seq_align_global_layer_sum(s : BioseqalignglobalLayer) -> Double { @_
 pub fn bio_seq_align_global_layer_mean(s : BioseqalignglobalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_layer_scale(s : BioseqalignglobalLayer, f : Double) -> BioseqalignglobalLayer {
-  let result = bio_seq_align_global_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_layer_add(a : BioseqalignglobalLayer, b : BioseqalignglobalLayer) -> BioseqalignglobalLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_layer_copy(s : BioseqalignglobalLayer) -> BioseqalignglobalLayer {
-  let result = bio_seq_align_global_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_layer_fill(s : BioseqalignglobalLayer, v : Double) -> BioseqalignglobalLayer {
-  let result = bio_seq_align_global_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_layer_min(s : BioseqalignglobalLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_seq_align_global_buffer_sum(s : BioseqalignglobalBuffer) -> Double { 
 pub fn bio_seq_align_global_buffer_mean(s : BioseqalignglobalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_buffer_scale(s : BioseqalignglobalBuffer, f : Double) -> BioseqalignglobalBuffer {
-  let result = bio_seq_align_global_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_buffer_add(a : BioseqalignglobalBuffer, b : BioseqalignglobalBuffer) -> BioseqalignglobalBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_buffer_copy(s : BioseqalignglobalBuffer) -> BioseqalignglobalBuffer {
-  let result = bio_seq_align_global_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_buffer_fill(s : BioseqalignglobalBuffer, v : Double) -> BioseqalignglobalBuffer {
-  let result = bio_seq_align_global_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_buffer_min(s : BioseqalignglobalBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_seq_align_global_cursor_sum(s : BioseqalignglobalCursor) -> Double { 
 pub fn bio_seq_align_global_cursor_mean(s : BioseqalignglobalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_cursor_scale(s : BioseqalignglobalCursor, f : Double) -> BioseqalignglobalCursor {
-  let result = bio_seq_align_global_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_cursor_add(a : BioseqalignglobalCursor, b : BioseqalignglobalCursor) -> BioseqalignglobalCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_cursor_copy(s : BioseqalignglobalCursor) -> BioseqalignglobalCursor {
-  let result = bio_seq_align_global_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_cursor_fill(s : BioseqalignglobalCursor, v : Double) -> BioseqalignglobalCursor {
-  let result = bio_seq_align_global_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_cursor_min(s : BioseqalignglobalCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_seq_align_global_view_sum(s : BioseqalignglobalView) -> Double { @_co
 pub fn bio_seq_align_global_view_mean(s : BioseqalignglobalView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_view_scale(s : BioseqalignglobalView, f : Double) -> BioseqalignglobalView {
-  let result = bio_seq_align_global_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_view_add(a : BioseqalignglobalView, b : BioseqalignglobalView) -> BioseqalignglobalView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_view_copy(s : BioseqalignglobalView) -> BioseqalignglobalView {
-  let result = bio_seq_align_global_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_view_fill(s : BioseqalignglobalView, v : Double) -> BioseqalignglobalView {
-  let result = bio_seq_align_global_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_view_min(s : BioseqalignglobalView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_seq_align_global_range_sum(s : BioseqalignglobalRange) -> Double { @_
 pub fn bio_seq_align_global_range_mean(s : BioseqalignglobalRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_range_scale(s : BioseqalignglobalRange, f : Double) -> BioseqalignglobalRange {
-  let result = bio_seq_align_global_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_range_add(a : BioseqalignglobalRange, b : BioseqalignglobalRange) -> BioseqalignglobalRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_range_copy(s : BioseqalignglobalRange) -> BioseqalignglobalRange {
-  let result = bio_seq_align_global_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_range_fill(s : BioseqalignglobalRange, v : Double) -> BioseqalignglobalRange {
-  let result = bio_seq_align_global_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_range_min(s : BioseqalignglobalRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_seq_align_global_slice_sum(s : BioseqalignglobalSlice) -> Double { @_
 pub fn bio_seq_align_global_slice_mean(s : BioseqalignglobalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_global_slice_scale(s : BioseqalignglobalSlice, f : Double) -> BioseqalignglobalSlice {
-  let result = bio_seq_align_global_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_slice_add(a : BioseqalignglobalSlice, b : BioseqalignglobalSlice) -> BioseqalignglobalSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_global_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_global_slice_copy(s : BioseqalignglobalSlice) -> BioseqalignglobalSlice {
-  let result = bio_seq_align_global_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_slice_fill(s : BioseqalignglobalSlice, v : Double) -> BioseqalignglobalSlice {
-  let result = bio_seq_align_global_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_global_slice_min(s : BioseqalignglobalSlice) -> Double { @_common.min(s.data) }

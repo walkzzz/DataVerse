@@ -383,28 +383,20 @@ pub fn graph_connect_hamilton_frame_sum(s : GraphconnecthamiltonFrame) -> Double
 pub fn graph_connect_hamilton_frame_mean(s : GraphconnecthamiltonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_frame_scale(s : GraphconnecthamiltonFrame, f : Double) -> GraphconnecthamiltonFrame {
-  let result = graph_connect_hamilton_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_frame_add(a : GraphconnecthamiltonFrame, b : GraphconnecthamiltonFrame) -> GraphconnecthamiltonFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_frame_copy(s : GraphconnecthamiltonFrame) -> GraphconnecthamiltonFrame {
-  let result = graph_connect_hamilton_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_frame_fill(s : GraphconnecthamiltonFrame, v : Double) -> GraphconnecthamiltonFrame {
-  let result = graph_connect_hamilton_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_frame_min(s : GraphconnecthamiltonFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_connect_hamilton_table_sum(s : GraphconnecthamiltonTable) -> Double
 pub fn graph_connect_hamilton_table_mean(s : GraphconnecthamiltonTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_table_scale(s : GraphconnecthamiltonTable, f : Double) -> GraphconnecthamiltonTable {
-  let result = graph_connect_hamilton_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_table_add(a : GraphconnecthamiltonTable, b : GraphconnecthamiltonTable) -> GraphconnecthamiltonTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_table_copy(s : GraphconnecthamiltonTable) -> GraphconnecthamiltonTable {
-  let result = graph_connect_hamilton_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_table_fill(s : GraphconnecthamiltonTable, v : Double) -> GraphconnecthamiltonTable {
-  let result = graph_connect_hamilton_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_table_min(s : GraphconnecthamiltonTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_connect_hamilton_graphn_sum(s : GraphconnecthamiltonGraphN) -> Doub
 pub fn graph_connect_hamilton_graphn_mean(s : GraphconnecthamiltonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_graphn_scale(s : GraphconnecthamiltonGraphN, f : Double) -> GraphconnecthamiltonGraphN {
-  let result = graph_connect_hamilton_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_graphn_add(a : GraphconnecthamiltonGraphN, b : GraphconnecthamiltonGraphN) -> GraphconnecthamiltonGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_graphn_copy(s : GraphconnecthamiltonGraphN) -> GraphconnecthamiltonGraphN {
-  let result = graph_connect_hamilton_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_graphn_fill(s : GraphconnecthamiltonGraphN, v : Double) -> GraphconnecthamiltonGraphN {
-  let result = graph_connect_hamilton_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_graphn_min(s : GraphconnecthamiltonGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_connect_hamilton_node_sum(s : GraphconnecthamiltonNode) -> Double {
 pub fn graph_connect_hamilton_node_mean(s : GraphconnecthamiltonNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_node_scale(s : GraphconnecthamiltonNode, f : Double) -> GraphconnecthamiltonNode {
-  let result = graph_connect_hamilton_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_node_add(a : GraphconnecthamiltonNode, b : GraphconnecthamiltonNode) -> GraphconnecthamiltonNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_node_copy(s : GraphconnecthamiltonNode) -> GraphconnecthamiltonNode {
-  let result = graph_connect_hamilton_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_node_fill(s : GraphconnecthamiltonNode, v : Double) -> GraphconnecthamiltonNode {
-  let result = graph_connect_hamilton_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_node_min(s : GraphconnecthamiltonNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_connect_hamilton_edge_sum(s : GraphconnecthamiltonEdge) -> Double {
 pub fn graph_connect_hamilton_edge_mean(s : GraphconnecthamiltonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_edge_scale(s : GraphconnecthamiltonEdge, f : Double) -> GraphconnecthamiltonEdge {
-  let result = graph_connect_hamilton_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_edge_add(a : GraphconnecthamiltonEdge, b : GraphconnecthamiltonEdge) -> GraphconnecthamiltonEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_edge_copy(s : GraphconnecthamiltonEdge) -> GraphconnecthamiltonEdge {
-  let result = graph_connect_hamilton_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_edge_fill(s : GraphconnecthamiltonEdge, v : Double) -> GraphconnecthamiltonEdge {
-  let result = graph_connect_hamilton_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_edge_min(s : GraphconnecthamiltonEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_connect_hamilton_path_sum(s : GraphconnecthamiltonPath) -> Double {
 pub fn graph_connect_hamilton_path_mean(s : GraphconnecthamiltonPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_path_scale(s : GraphconnecthamiltonPath, f : Double) -> GraphconnecthamiltonPath {
-  let result = graph_connect_hamilton_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_path_add(a : GraphconnecthamiltonPath, b : GraphconnecthamiltonPath) -> GraphconnecthamiltonPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_path_copy(s : GraphconnecthamiltonPath) -> GraphconnecthamiltonPath {
-  let result = graph_connect_hamilton_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_path_fill(s : GraphconnecthamiltonPath, v : Double) -> GraphconnecthamiltonPath {
-  let result = graph_connect_hamilton_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_path_min(s : GraphconnecthamiltonPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_connect_hamilton_cluster_sum(s : GraphconnecthamiltonCluster) -> Do
 pub fn graph_connect_hamilton_cluster_mean(s : GraphconnecthamiltonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_cluster_scale(s : GraphconnecthamiltonCluster, f : Double) -> GraphconnecthamiltonCluster {
-  let result = graph_connect_hamilton_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_cluster_add(a : GraphconnecthamiltonCluster, b : GraphconnecthamiltonCluster) -> GraphconnecthamiltonCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_cluster_copy(s : GraphconnecthamiltonCluster) -> GraphconnecthamiltonCluster {
-  let result = graph_connect_hamilton_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_cluster_fill(s : GraphconnecthamiltonCluster, v : Double) -> GraphconnecthamiltonCluster {
-  let result = graph_connect_hamilton_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_cluster_min(s : GraphconnecthamiltonCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_connect_hamilton_model_sum(s : GraphconnecthamiltonModel) -> Double
 pub fn graph_connect_hamilton_model_mean(s : GraphconnecthamiltonModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_model_scale(s : GraphconnecthamiltonModel, f : Double) -> GraphconnecthamiltonModel {
-  let result = graph_connect_hamilton_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_model_add(a : GraphconnecthamiltonModel, b : GraphconnecthamiltonModel) -> GraphconnecthamiltonModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_model_copy(s : GraphconnecthamiltonModel) -> GraphconnecthamiltonModel {
-  let result = graph_connect_hamilton_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_model_fill(s : GraphconnecthamiltonModel, v : Double) -> GraphconnecthamiltonModel {
-  let result = graph_connect_hamilton_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_model_min(s : GraphconnecthamiltonModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_connect_hamilton_layer_sum(s : GraphconnecthamiltonLayer) -> Double
 pub fn graph_connect_hamilton_layer_mean(s : GraphconnecthamiltonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_layer_scale(s : GraphconnecthamiltonLayer, f : Double) -> GraphconnecthamiltonLayer {
-  let result = graph_connect_hamilton_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_layer_add(a : GraphconnecthamiltonLayer, b : GraphconnecthamiltonLayer) -> GraphconnecthamiltonLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_layer_copy(s : GraphconnecthamiltonLayer) -> GraphconnecthamiltonLayer {
-  let result = graph_connect_hamilton_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_layer_fill(s : GraphconnecthamiltonLayer, v : Double) -> GraphconnecthamiltonLayer {
-  let result = graph_connect_hamilton_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_layer_min(s : GraphconnecthamiltonLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_connect_hamilton_buffer_sum(s : GraphconnecthamiltonBuffer) -> Doub
 pub fn graph_connect_hamilton_buffer_mean(s : GraphconnecthamiltonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_buffer_scale(s : GraphconnecthamiltonBuffer, f : Double) -> GraphconnecthamiltonBuffer {
-  let result = graph_connect_hamilton_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_buffer_add(a : GraphconnecthamiltonBuffer, b : GraphconnecthamiltonBuffer) -> GraphconnecthamiltonBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_buffer_copy(s : GraphconnecthamiltonBuffer) -> GraphconnecthamiltonBuffer {
-  let result = graph_connect_hamilton_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_buffer_fill(s : GraphconnecthamiltonBuffer, v : Double) -> GraphconnecthamiltonBuffer {
-  let result = graph_connect_hamilton_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_buffer_min(s : GraphconnecthamiltonBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_connect_hamilton_cursor_sum(s : GraphconnecthamiltonCursor) -> Doub
 pub fn graph_connect_hamilton_cursor_mean(s : GraphconnecthamiltonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_cursor_scale(s : GraphconnecthamiltonCursor, f : Double) -> GraphconnecthamiltonCursor {
-  let result = graph_connect_hamilton_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_cursor_add(a : GraphconnecthamiltonCursor, b : GraphconnecthamiltonCursor) -> GraphconnecthamiltonCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_cursor_copy(s : GraphconnecthamiltonCursor) -> GraphconnecthamiltonCursor {
-  let result = graph_connect_hamilton_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_cursor_fill(s : GraphconnecthamiltonCursor, v : Double) -> GraphconnecthamiltonCursor {
-  let result = graph_connect_hamilton_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_cursor_min(s : GraphconnecthamiltonCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_connect_hamilton_view_sum(s : GraphconnecthamiltonView) -> Double {
 pub fn graph_connect_hamilton_view_mean(s : GraphconnecthamiltonView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_view_scale(s : GraphconnecthamiltonView, f : Double) -> GraphconnecthamiltonView {
-  let result = graph_connect_hamilton_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_view_add(a : GraphconnecthamiltonView, b : GraphconnecthamiltonView) -> GraphconnecthamiltonView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_view_copy(s : GraphconnecthamiltonView) -> GraphconnecthamiltonView {
-  let result = graph_connect_hamilton_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_view_fill(s : GraphconnecthamiltonView, v : Double) -> GraphconnecthamiltonView {
-  let result = graph_connect_hamilton_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_view_min(s : GraphconnecthamiltonView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_connect_hamilton_range_sum(s : GraphconnecthamiltonRange) -> Double
 pub fn graph_connect_hamilton_range_mean(s : GraphconnecthamiltonRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_range_scale(s : GraphconnecthamiltonRange, f : Double) -> GraphconnecthamiltonRange {
-  let result = graph_connect_hamilton_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_range_add(a : GraphconnecthamiltonRange, b : GraphconnecthamiltonRange) -> GraphconnecthamiltonRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_range_copy(s : GraphconnecthamiltonRange) -> GraphconnecthamiltonRange {
-  let result = graph_connect_hamilton_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_range_fill(s : GraphconnecthamiltonRange, v : Double) -> GraphconnecthamiltonRange {
-  let result = graph_connect_hamilton_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_range_min(s : GraphconnecthamiltonRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_connect_hamilton_slice_sum(s : GraphconnecthamiltonSlice) -> Double
 pub fn graph_connect_hamilton_slice_mean(s : GraphconnecthamiltonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_slice_scale(s : GraphconnecthamiltonSlice, f : Double) -> GraphconnecthamiltonSlice {
-  let result = graph_connect_hamilton_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_slice_add(a : GraphconnecthamiltonSlice, b : GraphconnecthamiltonSlice) -> GraphconnecthamiltonSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_hamilton_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_hamilton_slice_copy(s : GraphconnecthamiltonSlice) -> GraphconnecthamiltonSlice {
-  let result = graph_connect_hamilton_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_slice_fill(s : GraphconnecthamiltonSlice, v : Double) -> GraphconnecthamiltonSlice {
-  let result = graph_connect_hamilton_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_hamilton_slice_min(s : GraphconnecthamiltonSlice) -> Double { @_common.min(s.data) }

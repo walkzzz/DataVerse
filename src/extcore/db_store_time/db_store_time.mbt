@@ -383,28 +383,20 @@ pub fn db_store_time_frame_sum(s : DbstoretimeFrame) -> Double { @_common.sum(s.
 pub fn db_store_time_frame_mean(s : DbstoretimeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_frame_scale(s : DbstoretimeFrame, f : Double) -> DbstoretimeFrame {
-  let result = db_store_time_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_frame_add(a : DbstoretimeFrame, b : DbstoretimeFrame) -> DbstoretimeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_frame_copy(s : DbstoretimeFrame) -> DbstoretimeFrame {
-  let result = db_store_time_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_frame_fill(s : DbstoretimeFrame, v : Double) -> DbstoretimeFrame {
-  let result = db_store_time_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_frame_min(s : DbstoretimeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_store_time_table_sum(s : DbstoretimeTable) -> Double { @_common.sum(s.
 pub fn db_store_time_table_mean(s : DbstoretimeTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_table_scale(s : DbstoretimeTable, f : Double) -> DbstoretimeTable {
-  let result = db_store_time_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_table_add(a : DbstoretimeTable, b : DbstoretimeTable) -> DbstoretimeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_table_copy(s : DbstoretimeTable) -> DbstoretimeTable {
-  let result = db_store_time_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_table_fill(s : DbstoretimeTable, v : Double) -> DbstoretimeTable {
-  let result = db_store_time_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_table_min(s : DbstoretimeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_store_time_graphn_sum(s : DbstoretimeGraphN) -> Double { @_common.sum(
 pub fn db_store_time_graphn_mean(s : DbstoretimeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_graphn_scale(s : DbstoretimeGraphN, f : Double) -> DbstoretimeGraphN {
-  let result = db_store_time_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_graphn_add(a : DbstoretimeGraphN, b : DbstoretimeGraphN) -> DbstoretimeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_graphn_copy(s : DbstoretimeGraphN) -> DbstoretimeGraphN {
-  let result = db_store_time_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_graphn_fill(s : DbstoretimeGraphN, v : Double) -> DbstoretimeGraphN {
-  let result = db_store_time_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_graphn_min(s : DbstoretimeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_store_time_node_sum(s : DbstoretimeNode) -> Double { @_common.sum(s.da
 pub fn db_store_time_node_mean(s : DbstoretimeNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_node_scale(s : DbstoretimeNode, f : Double) -> DbstoretimeNode {
-  let result = db_store_time_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_node_add(a : DbstoretimeNode, b : DbstoretimeNode) -> DbstoretimeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_node_copy(s : DbstoretimeNode) -> DbstoretimeNode {
-  let result = db_store_time_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_node_fill(s : DbstoretimeNode, v : Double) -> DbstoretimeNode {
-  let result = db_store_time_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_node_min(s : DbstoretimeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_store_time_edge_sum(s : DbstoretimeEdge) -> Double { @_common.sum(s.da
 pub fn db_store_time_edge_mean(s : DbstoretimeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_edge_scale(s : DbstoretimeEdge, f : Double) -> DbstoretimeEdge {
-  let result = db_store_time_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_edge_add(a : DbstoretimeEdge, b : DbstoretimeEdge) -> DbstoretimeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_edge_copy(s : DbstoretimeEdge) -> DbstoretimeEdge {
-  let result = db_store_time_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_edge_fill(s : DbstoretimeEdge, v : Double) -> DbstoretimeEdge {
-  let result = db_store_time_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_edge_min(s : DbstoretimeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_store_time_path_sum(s : DbstoretimePath) -> Double { @_common.sum(s.da
 pub fn db_store_time_path_mean(s : DbstoretimePath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_path_scale(s : DbstoretimePath, f : Double) -> DbstoretimePath {
-  let result = db_store_time_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_path_add(a : DbstoretimePath, b : DbstoretimePath) -> DbstoretimePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_path_copy(s : DbstoretimePath) -> DbstoretimePath {
-  let result = db_store_time_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_path_fill(s : DbstoretimePath, v : Double) -> DbstoretimePath {
-  let result = db_store_time_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_path_min(s : DbstoretimePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_store_time_cluster_sum(s : DbstoretimeCluster) -> Double { @_common.su
 pub fn db_store_time_cluster_mean(s : DbstoretimeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_cluster_scale(s : DbstoretimeCluster, f : Double) -> DbstoretimeCluster {
-  let result = db_store_time_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cluster_add(a : DbstoretimeCluster, b : DbstoretimeCluster) -> DbstoretimeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_cluster_copy(s : DbstoretimeCluster) -> DbstoretimeCluster {
-  let result = db_store_time_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cluster_fill(s : DbstoretimeCluster, v : Double) -> DbstoretimeCluster {
-  let result = db_store_time_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cluster_min(s : DbstoretimeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_store_time_model_sum(s : DbstoretimeModel) -> Double { @_common.sum(s.
 pub fn db_store_time_model_mean(s : DbstoretimeModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_model_scale(s : DbstoretimeModel, f : Double) -> DbstoretimeModel {
-  let result = db_store_time_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_model_add(a : DbstoretimeModel, b : DbstoretimeModel) -> DbstoretimeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_model_copy(s : DbstoretimeModel) -> DbstoretimeModel {
-  let result = db_store_time_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_model_fill(s : DbstoretimeModel, v : Double) -> DbstoretimeModel {
-  let result = db_store_time_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_model_min(s : DbstoretimeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_store_time_layer_sum(s : DbstoretimeLayer) -> Double { @_common.sum(s.
 pub fn db_store_time_layer_mean(s : DbstoretimeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_layer_scale(s : DbstoretimeLayer, f : Double) -> DbstoretimeLayer {
-  let result = db_store_time_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_layer_add(a : DbstoretimeLayer, b : DbstoretimeLayer) -> DbstoretimeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_layer_copy(s : DbstoretimeLayer) -> DbstoretimeLayer {
-  let result = db_store_time_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_layer_fill(s : DbstoretimeLayer, v : Double) -> DbstoretimeLayer {
-  let result = db_store_time_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_layer_min(s : DbstoretimeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_store_time_buffer_sum(s : DbstoretimeBuffer) -> Double { @_common.sum(
 pub fn db_store_time_buffer_mean(s : DbstoretimeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_buffer_scale(s : DbstoretimeBuffer, f : Double) -> DbstoretimeBuffer {
-  let result = db_store_time_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_buffer_add(a : DbstoretimeBuffer, b : DbstoretimeBuffer) -> DbstoretimeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_buffer_copy(s : DbstoretimeBuffer) -> DbstoretimeBuffer {
-  let result = db_store_time_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_buffer_fill(s : DbstoretimeBuffer, v : Double) -> DbstoretimeBuffer {
-  let result = db_store_time_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_buffer_min(s : DbstoretimeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_store_time_cursor_sum(s : DbstoretimeCursor) -> Double { @_common.sum(
 pub fn db_store_time_cursor_mean(s : DbstoretimeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_cursor_scale(s : DbstoretimeCursor, f : Double) -> DbstoretimeCursor {
-  let result = db_store_time_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cursor_add(a : DbstoretimeCursor, b : DbstoretimeCursor) -> DbstoretimeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_cursor_copy(s : DbstoretimeCursor) -> DbstoretimeCursor {
-  let result = db_store_time_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cursor_fill(s : DbstoretimeCursor, v : Double) -> DbstoretimeCursor {
-  let result = db_store_time_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cursor_min(s : DbstoretimeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_store_time_view_sum(s : DbstoretimeView) -> Double { @_common.sum(s.da
 pub fn db_store_time_view_mean(s : DbstoretimeView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_view_scale(s : DbstoretimeView, f : Double) -> DbstoretimeView {
-  let result = db_store_time_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_view_add(a : DbstoretimeView, b : DbstoretimeView) -> DbstoretimeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_view_copy(s : DbstoretimeView) -> DbstoretimeView {
-  let result = db_store_time_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_view_fill(s : DbstoretimeView, v : Double) -> DbstoretimeView {
-  let result = db_store_time_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_view_min(s : DbstoretimeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_store_time_range_sum(s : DbstoretimeRange) -> Double { @_common.sum(s.
 pub fn db_store_time_range_mean(s : DbstoretimeRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_range_scale(s : DbstoretimeRange, f : Double) -> DbstoretimeRange {
-  let result = db_store_time_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_range_add(a : DbstoretimeRange, b : DbstoretimeRange) -> DbstoretimeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_range_copy(s : DbstoretimeRange) -> DbstoretimeRange {
-  let result = db_store_time_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_range_fill(s : DbstoretimeRange, v : Double) -> DbstoretimeRange {
-  let result = db_store_time_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_range_min(s : DbstoretimeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_store_time_slice_sum(s : DbstoretimeSlice) -> Double { @_common.sum(s.
 pub fn db_store_time_slice_mean(s : DbstoretimeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_slice_scale(s : DbstoretimeSlice, f : Double) -> DbstoretimeSlice {
-  let result = db_store_time_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_slice_add(a : DbstoretimeSlice, b : DbstoretimeSlice) -> DbstoretimeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_time_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_time_slice_copy(s : DbstoretimeSlice) -> DbstoretimeSlice {
-  let result = db_store_time_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_slice_fill(s : DbstoretimeSlice, v : Double) -> DbstoretimeSlice {
-  let result = db_store_time_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_slice_min(s : DbstoretimeSlice) -> Double { @_common.min(s.data) }

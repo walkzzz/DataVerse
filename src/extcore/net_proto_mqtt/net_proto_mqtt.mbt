@@ -383,28 +383,20 @@ pub fn net_proto_mqtt_frame_sum(s : NetprotomqttFrame) -> Double { @_common.sum(
 pub fn net_proto_mqtt_frame_mean(s : NetprotomqttFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_frame_scale(s : NetprotomqttFrame, f : Double) -> NetprotomqttFrame {
-  let result = net_proto_mqtt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_frame_add(a : NetprotomqttFrame, b : NetprotomqttFrame) -> NetprotomqttFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_frame_copy(s : NetprotomqttFrame) -> NetprotomqttFrame {
-  let result = net_proto_mqtt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_frame_fill(s : NetprotomqttFrame, v : Double) -> NetprotomqttFrame {
-  let result = net_proto_mqtt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_frame_min(s : NetprotomqttFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_proto_mqtt_table_sum(s : NetprotomqttTable) -> Double { @_common.sum(
 pub fn net_proto_mqtt_table_mean(s : NetprotomqttTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_table_scale(s : NetprotomqttTable, f : Double) -> NetprotomqttTable {
-  let result = net_proto_mqtt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_table_add(a : NetprotomqttTable, b : NetprotomqttTable) -> NetprotomqttTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_table_copy(s : NetprotomqttTable) -> NetprotomqttTable {
-  let result = net_proto_mqtt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_table_fill(s : NetprotomqttTable, v : Double) -> NetprotomqttTable {
-  let result = net_proto_mqtt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_table_min(s : NetprotomqttTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_proto_mqtt_graphn_sum(s : NetprotomqttGraphN) -> Double { @_common.su
 pub fn net_proto_mqtt_graphn_mean(s : NetprotomqttGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_graphn_scale(s : NetprotomqttGraphN, f : Double) -> NetprotomqttGraphN {
-  let result = net_proto_mqtt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_graphn_add(a : NetprotomqttGraphN, b : NetprotomqttGraphN) -> NetprotomqttGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_graphn_copy(s : NetprotomqttGraphN) -> NetprotomqttGraphN {
-  let result = net_proto_mqtt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_graphn_fill(s : NetprotomqttGraphN, v : Double) -> NetprotomqttGraphN {
-  let result = net_proto_mqtt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_graphn_min(s : NetprotomqttGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_proto_mqtt_node_sum(s : NetprotomqttNode) -> Double { @_common.sum(s.
 pub fn net_proto_mqtt_node_mean(s : NetprotomqttNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_node_scale(s : NetprotomqttNode, f : Double) -> NetprotomqttNode {
-  let result = net_proto_mqtt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_node_add(a : NetprotomqttNode, b : NetprotomqttNode) -> NetprotomqttNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_node_copy(s : NetprotomqttNode) -> NetprotomqttNode {
-  let result = net_proto_mqtt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_node_fill(s : NetprotomqttNode, v : Double) -> NetprotomqttNode {
-  let result = net_proto_mqtt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_node_min(s : NetprotomqttNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_proto_mqtt_edge_sum(s : NetprotomqttEdge) -> Double { @_common.sum(s.
 pub fn net_proto_mqtt_edge_mean(s : NetprotomqttEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_edge_scale(s : NetprotomqttEdge, f : Double) -> NetprotomqttEdge {
-  let result = net_proto_mqtt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_edge_add(a : NetprotomqttEdge, b : NetprotomqttEdge) -> NetprotomqttEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_edge_copy(s : NetprotomqttEdge) -> NetprotomqttEdge {
-  let result = net_proto_mqtt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_edge_fill(s : NetprotomqttEdge, v : Double) -> NetprotomqttEdge {
-  let result = net_proto_mqtt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_edge_min(s : NetprotomqttEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_proto_mqtt_path_sum(s : NetprotomqttPath) -> Double { @_common.sum(s.
 pub fn net_proto_mqtt_path_mean(s : NetprotomqttPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_path_scale(s : NetprotomqttPath, f : Double) -> NetprotomqttPath {
-  let result = net_proto_mqtt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_path_add(a : NetprotomqttPath, b : NetprotomqttPath) -> NetprotomqttPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_path_copy(s : NetprotomqttPath) -> NetprotomqttPath {
-  let result = net_proto_mqtt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_path_fill(s : NetprotomqttPath, v : Double) -> NetprotomqttPath {
-  let result = net_proto_mqtt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_path_min(s : NetprotomqttPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_proto_mqtt_cluster_sum(s : NetprotomqttCluster) -> Double { @_common.
 pub fn net_proto_mqtt_cluster_mean(s : NetprotomqttCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_cluster_scale(s : NetprotomqttCluster, f : Double) -> NetprotomqttCluster {
-  let result = net_proto_mqtt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cluster_add(a : NetprotomqttCluster, b : NetprotomqttCluster) -> NetprotomqttCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_cluster_copy(s : NetprotomqttCluster) -> NetprotomqttCluster {
-  let result = net_proto_mqtt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cluster_fill(s : NetprotomqttCluster, v : Double) -> NetprotomqttCluster {
-  let result = net_proto_mqtt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cluster_min(s : NetprotomqttCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_proto_mqtt_model_sum(s : NetprotomqttModel) -> Double { @_common.sum(
 pub fn net_proto_mqtt_model_mean(s : NetprotomqttModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_model_scale(s : NetprotomqttModel, f : Double) -> NetprotomqttModel {
-  let result = net_proto_mqtt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_model_add(a : NetprotomqttModel, b : NetprotomqttModel) -> NetprotomqttModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_model_copy(s : NetprotomqttModel) -> NetprotomqttModel {
-  let result = net_proto_mqtt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_model_fill(s : NetprotomqttModel, v : Double) -> NetprotomqttModel {
-  let result = net_proto_mqtt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_model_min(s : NetprotomqttModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_proto_mqtt_layer_sum(s : NetprotomqttLayer) -> Double { @_common.sum(
 pub fn net_proto_mqtt_layer_mean(s : NetprotomqttLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_layer_scale(s : NetprotomqttLayer, f : Double) -> NetprotomqttLayer {
-  let result = net_proto_mqtt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_layer_add(a : NetprotomqttLayer, b : NetprotomqttLayer) -> NetprotomqttLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_layer_copy(s : NetprotomqttLayer) -> NetprotomqttLayer {
-  let result = net_proto_mqtt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_layer_fill(s : NetprotomqttLayer, v : Double) -> NetprotomqttLayer {
-  let result = net_proto_mqtt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_layer_min(s : NetprotomqttLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_proto_mqtt_buffer_sum(s : NetprotomqttBuffer) -> Double { @_common.su
 pub fn net_proto_mqtt_buffer_mean(s : NetprotomqttBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_buffer_scale(s : NetprotomqttBuffer, f : Double) -> NetprotomqttBuffer {
-  let result = net_proto_mqtt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_buffer_add(a : NetprotomqttBuffer, b : NetprotomqttBuffer) -> NetprotomqttBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_buffer_copy(s : NetprotomqttBuffer) -> NetprotomqttBuffer {
-  let result = net_proto_mqtt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_buffer_fill(s : NetprotomqttBuffer, v : Double) -> NetprotomqttBuffer {
-  let result = net_proto_mqtt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_buffer_min(s : NetprotomqttBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_proto_mqtt_cursor_sum(s : NetprotomqttCursor) -> Double { @_common.su
 pub fn net_proto_mqtt_cursor_mean(s : NetprotomqttCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_cursor_scale(s : NetprotomqttCursor, f : Double) -> NetprotomqttCursor {
-  let result = net_proto_mqtt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cursor_add(a : NetprotomqttCursor, b : NetprotomqttCursor) -> NetprotomqttCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_cursor_copy(s : NetprotomqttCursor) -> NetprotomqttCursor {
-  let result = net_proto_mqtt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cursor_fill(s : NetprotomqttCursor, v : Double) -> NetprotomqttCursor {
-  let result = net_proto_mqtt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cursor_min(s : NetprotomqttCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_proto_mqtt_view_sum(s : NetprotomqttView) -> Double { @_common.sum(s.
 pub fn net_proto_mqtt_view_mean(s : NetprotomqttView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_view_scale(s : NetprotomqttView, f : Double) -> NetprotomqttView {
-  let result = net_proto_mqtt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_view_add(a : NetprotomqttView, b : NetprotomqttView) -> NetprotomqttView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_view_copy(s : NetprotomqttView) -> NetprotomqttView {
-  let result = net_proto_mqtt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_view_fill(s : NetprotomqttView, v : Double) -> NetprotomqttView {
-  let result = net_proto_mqtt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_view_min(s : NetprotomqttView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_proto_mqtt_range_sum(s : NetprotomqttRange) -> Double { @_common.sum(
 pub fn net_proto_mqtt_range_mean(s : NetprotomqttRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_range_scale(s : NetprotomqttRange, f : Double) -> NetprotomqttRange {
-  let result = net_proto_mqtt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_range_add(a : NetprotomqttRange, b : NetprotomqttRange) -> NetprotomqttRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_range_copy(s : NetprotomqttRange) -> NetprotomqttRange {
-  let result = net_proto_mqtt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_range_fill(s : NetprotomqttRange, v : Double) -> NetprotomqttRange {
-  let result = net_proto_mqtt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_range_min(s : NetprotomqttRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_proto_mqtt_slice_sum(s : NetprotomqttSlice) -> Double { @_common.sum(
 pub fn net_proto_mqtt_slice_mean(s : NetprotomqttSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_slice_scale(s : NetprotomqttSlice, f : Double) -> NetprotomqttSlice {
-  let result = net_proto_mqtt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_slice_add(a : NetprotomqttSlice, b : NetprotomqttSlice) -> NetprotomqttSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_mqtt_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_mqtt_slice_copy(s : NetprotomqttSlice) -> NetprotomqttSlice {
-  let result = net_proto_mqtt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_slice_fill(s : NetprotomqttSlice, v : Double) -> NetprotomqttSlice {
-  let result = net_proto_mqtt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_slice_min(s : NetprotomqttSlice) -> Double { @_common.min(s.data) }

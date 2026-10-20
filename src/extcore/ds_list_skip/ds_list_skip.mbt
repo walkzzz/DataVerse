@@ -383,28 +383,20 @@ pub fn ds_list_skip_frame_sum(s : DslistskipFrame) -> Double { @_common.sum(s.da
 pub fn ds_list_skip_frame_mean(s : DslistskipFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_frame_scale(s : DslistskipFrame, f : Double) -> DslistskipFrame {
-  let result = ds_list_skip_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_frame_add(a : DslistskipFrame, b : DslistskipFrame) -> DslistskipFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_frame_copy(s : DslistskipFrame) -> DslistskipFrame {
-  let result = ds_list_skip_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_frame_fill(s : DslistskipFrame, v : Double) -> DslistskipFrame {
-  let result = ds_list_skip_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_frame_min(s : DslistskipFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_list_skip_table_sum(s : DslistskipTable) -> Double { @_common.sum(s.da
 pub fn ds_list_skip_table_mean(s : DslistskipTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_table_scale(s : DslistskipTable, f : Double) -> DslistskipTable {
-  let result = ds_list_skip_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_table_add(a : DslistskipTable, b : DslistskipTable) -> DslistskipTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_table_copy(s : DslistskipTable) -> DslistskipTable {
-  let result = ds_list_skip_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_table_fill(s : DslistskipTable, v : Double) -> DslistskipTable {
-  let result = ds_list_skip_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_table_min(s : DslistskipTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_list_skip_graphn_sum(s : DslistskipGraphN) -> Double { @_common.sum(s.
 pub fn ds_list_skip_graphn_mean(s : DslistskipGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_graphn_scale(s : DslistskipGraphN, f : Double) -> DslistskipGraphN {
-  let result = ds_list_skip_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_graphn_add(a : DslistskipGraphN, b : DslistskipGraphN) -> DslistskipGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_graphn_copy(s : DslistskipGraphN) -> DslistskipGraphN {
-  let result = ds_list_skip_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_graphn_fill(s : DslistskipGraphN, v : Double) -> DslistskipGraphN {
-  let result = ds_list_skip_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_graphn_min(s : DslistskipGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_list_skip_node_sum(s : DslistskipNode) -> Double { @_common.sum(s.data
 pub fn ds_list_skip_node_mean(s : DslistskipNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_node_scale(s : DslistskipNode, f : Double) -> DslistskipNode {
-  let result = ds_list_skip_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_node_add(a : DslistskipNode, b : DslistskipNode) -> DslistskipNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_node_copy(s : DslistskipNode) -> DslistskipNode {
-  let result = ds_list_skip_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_node_fill(s : DslistskipNode, v : Double) -> DslistskipNode {
-  let result = ds_list_skip_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_node_min(s : DslistskipNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_list_skip_edge_sum(s : DslistskipEdge) -> Double { @_common.sum(s.data
 pub fn ds_list_skip_edge_mean(s : DslistskipEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_edge_scale(s : DslistskipEdge, f : Double) -> DslistskipEdge {
-  let result = ds_list_skip_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_edge_add(a : DslistskipEdge, b : DslistskipEdge) -> DslistskipEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_edge_copy(s : DslistskipEdge) -> DslistskipEdge {
-  let result = ds_list_skip_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_edge_fill(s : DslistskipEdge, v : Double) -> DslistskipEdge {
-  let result = ds_list_skip_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_edge_min(s : DslistskipEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_list_skip_path_sum(s : DslistskipPath) -> Double { @_common.sum(s.data
 pub fn ds_list_skip_path_mean(s : DslistskipPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_path_scale(s : DslistskipPath, f : Double) -> DslistskipPath {
-  let result = ds_list_skip_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_path_add(a : DslistskipPath, b : DslistskipPath) -> DslistskipPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_path_copy(s : DslistskipPath) -> DslistskipPath {
-  let result = ds_list_skip_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_path_fill(s : DslistskipPath, v : Double) -> DslistskipPath {
-  let result = ds_list_skip_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_path_min(s : DslistskipPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_list_skip_cluster_sum(s : DslistskipCluster) -> Double { @_common.sum(
 pub fn ds_list_skip_cluster_mean(s : DslistskipCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_cluster_scale(s : DslistskipCluster, f : Double) -> DslistskipCluster {
-  let result = ds_list_skip_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cluster_add(a : DslistskipCluster, b : DslistskipCluster) -> DslistskipCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_cluster_copy(s : DslistskipCluster) -> DslistskipCluster {
-  let result = ds_list_skip_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cluster_fill(s : DslistskipCluster, v : Double) -> DslistskipCluster {
-  let result = ds_list_skip_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cluster_min(s : DslistskipCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_list_skip_model_sum(s : DslistskipModel) -> Double { @_common.sum(s.da
 pub fn ds_list_skip_model_mean(s : DslistskipModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_model_scale(s : DslistskipModel, f : Double) -> DslistskipModel {
-  let result = ds_list_skip_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_model_add(a : DslistskipModel, b : DslistskipModel) -> DslistskipModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_model_copy(s : DslistskipModel) -> DslistskipModel {
-  let result = ds_list_skip_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_model_fill(s : DslistskipModel, v : Double) -> DslistskipModel {
-  let result = ds_list_skip_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_model_min(s : DslistskipModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_list_skip_layer_sum(s : DslistskipLayer) -> Double { @_common.sum(s.da
 pub fn ds_list_skip_layer_mean(s : DslistskipLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_layer_scale(s : DslistskipLayer, f : Double) -> DslistskipLayer {
-  let result = ds_list_skip_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_layer_add(a : DslistskipLayer, b : DslistskipLayer) -> DslistskipLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_layer_copy(s : DslistskipLayer) -> DslistskipLayer {
-  let result = ds_list_skip_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_layer_fill(s : DslistskipLayer, v : Double) -> DslistskipLayer {
-  let result = ds_list_skip_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_layer_min(s : DslistskipLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_list_skip_buffer_sum(s : DslistskipBuffer) -> Double { @_common.sum(s.
 pub fn ds_list_skip_buffer_mean(s : DslistskipBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_buffer_scale(s : DslistskipBuffer, f : Double) -> DslistskipBuffer {
-  let result = ds_list_skip_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_buffer_add(a : DslistskipBuffer, b : DslistskipBuffer) -> DslistskipBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_buffer_copy(s : DslistskipBuffer) -> DslistskipBuffer {
-  let result = ds_list_skip_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_buffer_fill(s : DslistskipBuffer, v : Double) -> DslistskipBuffer {
-  let result = ds_list_skip_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_buffer_min(s : DslistskipBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_list_skip_cursor_sum(s : DslistskipCursor) -> Double { @_common.sum(s.
 pub fn ds_list_skip_cursor_mean(s : DslistskipCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_cursor_scale(s : DslistskipCursor, f : Double) -> DslistskipCursor {
-  let result = ds_list_skip_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cursor_add(a : DslistskipCursor, b : DslistskipCursor) -> DslistskipCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_cursor_copy(s : DslistskipCursor) -> DslistskipCursor {
-  let result = ds_list_skip_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cursor_fill(s : DslistskipCursor, v : Double) -> DslistskipCursor {
-  let result = ds_list_skip_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cursor_min(s : DslistskipCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_list_skip_view_sum(s : DslistskipView) -> Double { @_common.sum(s.data
 pub fn ds_list_skip_view_mean(s : DslistskipView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_view_scale(s : DslistskipView, f : Double) -> DslistskipView {
-  let result = ds_list_skip_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_view_add(a : DslistskipView, b : DslistskipView) -> DslistskipView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_view_copy(s : DslistskipView) -> DslistskipView {
-  let result = ds_list_skip_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_view_fill(s : DslistskipView, v : Double) -> DslistskipView {
-  let result = ds_list_skip_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_view_min(s : DslistskipView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_list_skip_range_sum(s : DslistskipRange) -> Double { @_common.sum(s.da
 pub fn ds_list_skip_range_mean(s : DslistskipRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_range_scale(s : DslistskipRange, f : Double) -> DslistskipRange {
-  let result = ds_list_skip_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_range_add(a : DslistskipRange, b : DslistskipRange) -> DslistskipRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_range_copy(s : DslistskipRange) -> DslistskipRange {
-  let result = ds_list_skip_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_range_fill(s : DslistskipRange, v : Double) -> DslistskipRange {
-  let result = ds_list_skip_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_range_min(s : DslistskipRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_list_skip_slice_sum(s : DslistskipSlice) -> Double { @_common.sum(s.da
 pub fn ds_list_skip_slice_mean(s : DslistskipSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_slice_scale(s : DslistskipSlice, f : Double) -> DslistskipSlice {
-  let result = ds_list_skip_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_slice_add(a : DslistskipSlice, b : DslistskipSlice) -> DslistskipSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_skip_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_skip_slice_copy(s : DslistskipSlice) -> DslistskipSlice {
-  let result = ds_list_skip_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_slice_fill(s : DslistskipSlice, v : Double) -> DslistskipSlice {
-  let result = ds_list_skip_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_slice_min(s : DslistskipSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn db_index_invert_frame_sum(s : DbindexinvertFrame) -> Double { @_common.su
 pub fn db_index_invert_frame_mean(s : DbindexinvertFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_frame_scale(s : DbindexinvertFrame, f : Double) -> DbindexinvertFrame {
-  let result = db_index_invert_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_frame_add(a : DbindexinvertFrame, b : DbindexinvertFrame) -> DbindexinvertFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_frame_copy(s : DbindexinvertFrame) -> DbindexinvertFrame {
-  let result = db_index_invert_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_frame_fill(s : DbindexinvertFrame, v : Double) -> DbindexinvertFrame {
-  let result = db_index_invert_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_frame_min(s : DbindexinvertFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_index_invert_table_sum(s : DbindexinvertTable) -> Double { @_common.su
 pub fn db_index_invert_table_mean(s : DbindexinvertTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_table_scale(s : DbindexinvertTable, f : Double) -> DbindexinvertTable {
-  let result = db_index_invert_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_table_add(a : DbindexinvertTable, b : DbindexinvertTable) -> DbindexinvertTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_table_copy(s : DbindexinvertTable) -> DbindexinvertTable {
-  let result = db_index_invert_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_table_fill(s : DbindexinvertTable, v : Double) -> DbindexinvertTable {
-  let result = db_index_invert_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_table_min(s : DbindexinvertTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_index_invert_graphn_sum(s : DbindexinvertGraphN) -> Double { @_common.
 pub fn db_index_invert_graphn_mean(s : DbindexinvertGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_graphn_scale(s : DbindexinvertGraphN, f : Double) -> DbindexinvertGraphN {
-  let result = db_index_invert_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_graphn_add(a : DbindexinvertGraphN, b : DbindexinvertGraphN) -> DbindexinvertGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_graphn_copy(s : DbindexinvertGraphN) -> DbindexinvertGraphN {
-  let result = db_index_invert_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_graphn_fill(s : DbindexinvertGraphN, v : Double) -> DbindexinvertGraphN {
-  let result = db_index_invert_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_graphn_min(s : DbindexinvertGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_index_invert_node_sum(s : DbindexinvertNode) -> Double { @_common.sum(
 pub fn db_index_invert_node_mean(s : DbindexinvertNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_node_scale(s : DbindexinvertNode, f : Double) -> DbindexinvertNode {
-  let result = db_index_invert_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_node_add(a : DbindexinvertNode, b : DbindexinvertNode) -> DbindexinvertNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_node_copy(s : DbindexinvertNode) -> DbindexinvertNode {
-  let result = db_index_invert_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_node_fill(s : DbindexinvertNode, v : Double) -> DbindexinvertNode {
-  let result = db_index_invert_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_node_min(s : DbindexinvertNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_index_invert_edge_sum(s : DbindexinvertEdge) -> Double { @_common.sum(
 pub fn db_index_invert_edge_mean(s : DbindexinvertEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_edge_scale(s : DbindexinvertEdge, f : Double) -> DbindexinvertEdge {
-  let result = db_index_invert_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_edge_add(a : DbindexinvertEdge, b : DbindexinvertEdge) -> DbindexinvertEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_edge_copy(s : DbindexinvertEdge) -> DbindexinvertEdge {
-  let result = db_index_invert_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_edge_fill(s : DbindexinvertEdge, v : Double) -> DbindexinvertEdge {
-  let result = db_index_invert_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_edge_min(s : DbindexinvertEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_index_invert_path_sum(s : DbindexinvertPath) -> Double { @_common.sum(
 pub fn db_index_invert_path_mean(s : DbindexinvertPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_path_scale(s : DbindexinvertPath, f : Double) -> DbindexinvertPath {
-  let result = db_index_invert_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_path_add(a : DbindexinvertPath, b : DbindexinvertPath) -> DbindexinvertPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_path_copy(s : DbindexinvertPath) -> DbindexinvertPath {
-  let result = db_index_invert_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_path_fill(s : DbindexinvertPath, v : Double) -> DbindexinvertPath {
-  let result = db_index_invert_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_path_min(s : DbindexinvertPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_index_invert_cluster_sum(s : DbindexinvertCluster) -> Double { @_commo
 pub fn db_index_invert_cluster_mean(s : DbindexinvertCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_cluster_scale(s : DbindexinvertCluster, f : Double) -> DbindexinvertCluster {
-  let result = db_index_invert_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cluster_add(a : DbindexinvertCluster, b : DbindexinvertCluster) -> DbindexinvertCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_cluster_copy(s : DbindexinvertCluster) -> DbindexinvertCluster {
-  let result = db_index_invert_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cluster_fill(s : DbindexinvertCluster, v : Double) -> DbindexinvertCluster {
-  let result = db_index_invert_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cluster_min(s : DbindexinvertCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_index_invert_model_sum(s : DbindexinvertModel) -> Double { @_common.su
 pub fn db_index_invert_model_mean(s : DbindexinvertModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_model_scale(s : DbindexinvertModel, f : Double) -> DbindexinvertModel {
-  let result = db_index_invert_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_model_add(a : DbindexinvertModel, b : DbindexinvertModel) -> DbindexinvertModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_model_copy(s : DbindexinvertModel) -> DbindexinvertModel {
-  let result = db_index_invert_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_model_fill(s : DbindexinvertModel, v : Double) -> DbindexinvertModel {
-  let result = db_index_invert_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_model_min(s : DbindexinvertModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_index_invert_layer_sum(s : DbindexinvertLayer) -> Double { @_common.su
 pub fn db_index_invert_layer_mean(s : DbindexinvertLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_layer_scale(s : DbindexinvertLayer, f : Double) -> DbindexinvertLayer {
-  let result = db_index_invert_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_layer_add(a : DbindexinvertLayer, b : DbindexinvertLayer) -> DbindexinvertLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_layer_copy(s : DbindexinvertLayer) -> DbindexinvertLayer {
-  let result = db_index_invert_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_layer_fill(s : DbindexinvertLayer, v : Double) -> DbindexinvertLayer {
-  let result = db_index_invert_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_layer_min(s : DbindexinvertLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_index_invert_buffer_sum(s : DbindexinvertBuffer) -> Double { @_common.
 pub fn db_index_invert_buffer_mean(s : DbindexinvertBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_buffer_scale(s : DbindexinvertBuffer, f : Double) -> DbindexinvertBuffer {
-  let result = db_index_invert_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_buffer_add(a : DbindexinvertBuffer, b : DbindexinvertBuffer) -> DbindexinvertBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_buffer_copy(s : DbindexinvertBuffer) -> DbindexinvertBuffer {
-  let result = db_index_invert_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_buffer_fill(s : DbindexinvertBuffer, v : Double) -> DbindexinvertBuffer {
-  let result = db_index_invert_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_buffer_min(s : DbindexinvertBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_index_invert_cursor_sum(s : DbindexinvertCursor) -> Double { @_common.
 pub fn db_index_invert_cursor_mean(s : DbindexinvertCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_cursor_scale(s : DbindexinvertCursor, f : Double) -> DbindexinvertCursor {
-  let result = db_index_invert_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cursor_add(a : DbindexinvertCursor, b : DbindexinvertCursor) -> DbindexinvertCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_cursor_copy(s : DbindexinvertCursor) -> DbindexinvertCursor {
-  let result = db_index_invert_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cursor_fill(s : DbindexinvertCursor, v : Double) -> DbindexinvertCursor {
-  let result = db_index_invert_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cursor_min(s : DbindexinvertCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_index_invert_view_sum(s : DbindexinvertView) -> Double { @_common.sum(
 pub fn db_index_invert_view_mean(s : DbindexinvertView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_view_scale(s : DbindexinvertView, f : Double) -> DbindexinvertView {
-  let result = db_index_invert_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_view_add(a : DbindexinvertView, b : DbindexinvertView) -> DbindexinvertView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_view_copy(s : DbindexinvertView) -> DbindexinvertView {
-  let result = db_index_invert_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_view_fill(s : DbindexinvertView, v : Double) -> DbindexinvertView {
-  let result = db_index_invert_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_view_min(s : DbindexinvertView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_index_invert_range_sum(s : DbindexinvertRange) -> Double { @_common.su
 pub fn db_index_invert_range_mean(s : DbindexinvertRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_range_scale(s : DbindexinvertRange, f : Double) -> DbindexinvertRange {
-  let result = db_index_invert_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_range_add(a : DbindexinvertRange, b : DbindexinvertRange) -> DbindexinvertRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_range_copy(s : DbindexinvertRange) -> DbindexinvertRange {
-  let result = db_index_invert_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_range_fill(s : DbindexinvertRange, v : Double) -> DbindexinvertRange {
-  let result = db_index_invert_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_range_min(s : DbindexinvertRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_index_invert_slice_sum(s : DbindexinvertSlice) -> Double { @_common.su
 pub fn db_index_invert_slice_mean(s : DbindexinvertSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_invert_slice_scale(s : DbindexinvertSlice, f : Double) -> DbindexinvertSlice {
-  let result = db_index_invert_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_slice_add(a : DbindexinvertSlice, b : DbindexinvertSlice) -> DbindexinvertSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_invert_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_invert_slice_copy(s : DbindexinvertSlice) -> DbindexinvertSlice {
-  let result = db_index_invert_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_slice_fill(s : DbindexinvertSlice, v : Double) -> DbindexinvertSlice {
-  let result = db_index_invert_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_slice_min(s : DbindexinvertSlice) -> Double { @_common.min(s.data) }

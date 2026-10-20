@@ -383,28 +383,20 @@ pub fn crypto_hash_ripemd_frame_sum(s : CryptohashripemdFrame) -> Double { @_com
 pub fn crypto_hash_ripemd_frame_mean(s : CryptohashripemdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_frame_scale(s : CryptohashripemdFrame, f : Double) -> CryptohashripemdFrame {
-  let result = crypto_hash_ripemd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_frame_add(a : CryptohashripemdFrame, b : CryptohashripemdFrame) -> CryptohashripemdFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_frame_copy(s : CryptohashripemdFrame) -> CryptohashripemdFrame {
-  let result = crypto_hash_ripemd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_frame_fill(s : CryptohashripemdFrame, v : Double) -> CryptohashripemdFrame {
-  let result = crypto_hash_ripemd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_frame_min(s : CryptohashripemdFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_hash_ripemd_table_sum(s : CryptohashripemdTable) -> Double { @_com
 pub fn crypto_hash_ripemd_table_mean(s : CryptohashripemdTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_table_scale(s : CryptohashripemdTable, f : Double) -> CryptohashripemdTable {
-  let result = crypto_hash_ripemd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_table_add(a : CryptohashripemdTable, b : CryptohashripemdTable) -> CryptohashripemdTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_table_copy(s : CryptohashripemdTable) -> CryptohashripemdTable {
-  let result = crypto_hash_ripemd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_table_fill(s : CryptohashripemdTable, v : Double) -> CryptohashripemdTable {
-  let result = crypto_hash_ripemd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_table_min(s : CryptohashripemdTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_hash_ripemd_graphn_sum(s : CryptohashripemdGraphN) -> Double { @_c
 pub fn crypto_hash_ripemd_graphn_mean(s : CryptohashripemdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_graphn_scale(s : CryptohashripemdGraphN, f : Double) -> CryptohashripemdGraphN {
-  let result = crypto_hash_ripemd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_graphn_add(a : CryptohashripemdGraphN, b : CryptohashripemdGraphN) -> CryptohashripemdGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_graphn_copy(s : CryptohashripemdGraphN) -> CryptohashripemdGraphN {
-  let result = crypto_hash_ripemd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_graphn_fill(s : CryptohashripemdGraphN, v : Double) -> CryptohashripemdGraphN {
-  let result = crypto_hash_ripemd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_graphn_min(s : CryptohashripemdGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_hash_ripemd_node_sum(s : CryptohashripemdNode) -> Double { @_commo
 pub fn crypto_hash_ripemd_node_mean(s : CryptohashripemdNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_node_scale(s : CryptohashripemdNode, f : Double) -> CryptohashripemdNode {
-  let result = crypto_hash_ripemd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_node_add(a : CryptohashripemdNode, b : CryptohashripemdNode) -> CryptohashripemdNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_node_copy(s : CryptohashripemdNode) -> CryptohashripemdNode {
-  let result = crypto_hash_ripemd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_node_fill(s : CryptohashripemdNode, v : Double) -> CryptohashripemdNode {
-  let result = crypto_hash_ripemd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_node_min(s : CryptohashripemdNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_hash_ripemd_edge_sum(s : CryptohashripemdEdge) -> Double { @_commo
 pub fn crypto_hash_ripemd_edge_mean(s : CryptohashripemdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_edge_scale(s : CryptohashripemdEdge, f : Double) -> CryptohashripemdEdge {
-  let result = crypto_hash_ripemd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_edge_add(a : CryptohashripemdEdge, b : CryptohashripemdEdge) -> CryptohashripemdEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_edge_copy(s : CryptohashripemdEdge) -> CryptohashripemdEdge {
-  let result = crypto_hash_ripemd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_edge_fill(s : CryptohashripemdEdge, v : Double) -> CryptohashripemdEdge {
-  let result = crypto_hash_ripemd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_edge_min(s : CryptohashripemdEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_hash_ripemd_path_sum(s : CryptohashripemdPath) -> Double { @_commo
 pub fn crypto_hash_ripemd_path_mean(s : CryptohashripemdPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_path_scale(s : CryptohashripemdPath, f : Double) -> CryptohashripemdPath {
-  let result = crypto_hash_ripemd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_path_add(a : CryptohashripemdPath, b : CryptohashripemdPath) -> CryptohashripemdPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_path_copy(s : CryptohashripemdPath) -> CryptohashripemdPath {
-  let result = crypto_hash_ripemd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_path_fill(s : CryptohashripemdPath, v : Double) -> CryptohashripemdPath {
-  let result = crypto_hash_ripemd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_path_min(s : CryptohashripemdPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_hash_ripemd_cluster_sum(s : CryptohashripemdCluster) -> Double { @
 pub fn crypto_hash_ripemd_cluster_mean(s : CryptohashripemdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_cluster_scale(s : CryptohashripemdCluster, f : Double) -> CryptohashripemdCluster {
-  let result = crypto_hash_ripemd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cluster_add(a : CryptohashripemdCluster, b : CryptohashripemdCluster) -> CryptohashripemdCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_cluster_copy(s : CryptohashripemdCluster) -> CryptohashripemdCluster {
-  let result = crypto_hash_ripemd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cluster_fill(s : CryptohashripemdCluster, v : Double) -> CryptohashripemdCluster {
-  let result = crypto_hash_ripemd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cluster_min(s : CryptohashripemdCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_hash_ripemd_model_sum(s : CryptohashripemdModel) -> Double { @_com
 pub fn crypto_hash_ripemd_model_mean(s : CryptohashripemdModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_model_scale(s : CryptohashripemdModel, f : Double) -> CryptohashripemdModel {
-  let result = crypto_hash_ripemd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_model_add(a : CryptohashripemdModel, b : CryptohashripemdModel) -> CryptohashripemdModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_model_copy(s : CryptohashripemdModel) -> CryptohashripemdModel {
-  let result = crypto_hash_ripemd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_model_fill(s : CryptohashripemdModel, v : Double) -> CryptohashripemdModel {
-  let result = crypto_hash_ripemd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_model_min(s : CryptohashripemdModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_hash_ripemd_layer_sum(s : CryptohashripemdLayer) -> Double { @_com
 pub fn crypto_hash_ripemd_layer_mean(s : CryptohashripemdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_layer_scale(s : CryptohashripemdLayer, f : Double) -> CryptohashripemdLayer {
-  let result = crypto_hash_ripemd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_layer_add(a : CryptohashripemdLayer, b : CryptohashripemdLayer) -> CryptohashripemdLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_layer_copy(s : CryptohashripemdLayer) -> CryptohashripemdLayer {
-  let result = crypto_hash_ripemd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_layer_fill(s : CryptohashripemdLayer, v : Double) -> CryptohashripemdLayer {
-  let result = crypto_hash_ripemd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_layer_min(s : CryptohashripemdLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_hash_ripemd_buffer_sum(s : CryptohashripemdBuffer) -> Double { @_c
 pub fn crypto_hash_ripemd_buffer_mean(s : CryptohashripemdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_buffer_scale(s : CryptohashripemdBuffer, f : Double) -> CryptohashripemdBuffer {
-  let result = crypto_hash_ripemd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_buffer_add(a : CryptohashripemdBuffer, b : CryptohashripemdBuffer) -> CryptohashripemdBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_buffer_copy(s : CryptohashripemdBuffer) -> CryptohashripemdBuffer {
-  let result = crypto_hash_ripemd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_buffer_fill(s : CryptohashripemdBuffer, v : Double) -> CryptohashripemdBuffer {
-  let result = crypto_hash_ripemd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_buffer_min(s : CryptohashripemdBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_hash_ripemd_cursor_sum(s : CryptohashripemdCursor) -> Double { @_c
 pub fn crypto_hash_ripemd_cursor_mean(s : CryptohashripemdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_cursor_scale(s : CryptohashripemdCursor, f : Double) -> CryptohashripemdCursor {
-  let result = crypto_hash_ripemd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cursor_add(a : CryptohashripemdCursor, b : CryptohashripemdCursor) -> CryptohashripemdCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_cursor_copy(s : CryptohashripemdCursor) -> CryptohashripemdCursor {
-  let result = crypto_hash_ripemd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cursor_fill(s : CryptohashripemdCursor, v : Double) -> CryptohashripemdCursor {
-  let result = crypto_hash_ripemd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cursor_min(s : CryptohashripemdCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_hash_ripemd_view_sum(s : CryptohashripemdView) -> Double { @_commo
 pub fn crypto_hash_ripemd_view_mean(s : CryptohashripemdView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_view_scale(s : CryptohashripemdView, f : Double) -> CryptohashripemdView {
-  let result = crypto_hash_ripemd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_view_add(a : CryptohashripemdView, b : CryptohashripemdView) -> CryptohashripemdView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_view_copy(s : CryptohashripemdView) -> CryptohashripemdView {
-  let result = crypto_hash_ripemd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_view_fill(s : CryptohashripemdView, v : Double) -> CryptohashripemdView {
-  let result = crypto_hash_ripemd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_view_min(s : CryptohashripemdView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_hash_ripemd_range_sum(s : CryptohashripemdRange) -> Double { @_com
 pub fn crypto_hash_ripemd_range_mean(s : CryptohashripemdRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_range_scale(s : CryptohashripemdRange, f : Double) -> CryptohashripemdRange {
-  let result = crypto_hash_ripemd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_range_add(a : CryptohashripemdRange, b : CryptohashripemdRange) -> CryptohashripemdRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_range_copy(s : CryptohashripemdRange) -> CryptohashripemdRange {
-  let result = crypto_hash_ripemd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_range_fill(s : CryptohashripemdRange, v : Double) -> CryptohashripemdRange {
-  let result = crypto_hash_ripemd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_range_min(s : CryptohashripemdRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_hash_ripemd_slice_sum(s : CryptohashripemdSlice) -> Double { @_com
 pub fn crypto_hash_ripemd_slice_mean(s : CryptohashripemdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_slice_scale(s : CryptohashripemdSlice, f : Double) -> CryptohashripemdSlice {
-  let result = crypto_hash_ripemd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_slice_add(a : CryptohashripemdSlice, b : CryptohashripemdSlice) -> CryptohashripemdSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_ripemd_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_ripemd_slice_copy(s : CryptohashripemdSlice) -> CryptohashripemdSlice {
-  let result = crypto_hash_ripemd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_slice_fill(s : CryptohashripemdSlice, v : Double) -> CryptohashripemdSlice {
-  let result = crypto_hash_ripemd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_slice_min(s : CryptohashripemdSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn graph_tree_center_frame_sum(s : GraphtreecenterFrame) -> Double { @_commo
 pub fn graph_tree_center_frame_mean(s : GraphtreecenterFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_frame_scale(s : GraphtreecenterFrame, f : Double) -> GraphtreecenterFrame {
-  let result = graph_tree_center_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_frame_add(a : GraphtreecenterFrame, b : GraphtreecenterFrame) -> GraphtreecenterFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_frame_copy(s : GraphtreecenterFrame) -> GraphtreecenterFrame {
-  let result = graph_tree_center_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_frame_fill(s : GraphtreecenterFrame, v : Double) -> GraphtreecenterFrame {
-  let result = graph_tree_center_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_frame_min(s : GraphtreecenterFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_tree_center_table_sum(s : GraphtreecenterTable) -> Double { @_commo
 pub fn graph_tree_center_table_mean(s : GraphtreecenterTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_table_scale(s : GraphtreecenterTable, f : Double) -> GraphtreecenterTable {
-  let result = graph_tree_center_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_table_add(a : GraphtreecenterTable, b : GraphtreecenterTable) -> GraphtreecenterTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_table_copy(s : GraphtreecenterTable) -> GraphtreecenterTable {
-  let result = graph_tree_center_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_table_fill(s : GraphtreecenterTable, v : Double) -> GraphtreecenterTable {
-  let result = graph_tree_center_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_table_min(s : GraphtreecenterTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_tree_center_graphn_sum(s : GraphtreecenterGraphN) -> Double { @_com
 pub fn graph_tree_center_graphn_mean(s : GraphtreecenterGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_graphn_scale(s : GraphtreecenterGraphN, f : Double) -> GraphtreecenterGraphN {
-  let result = graph_tree_center_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_graphn_add(a : GraphtreecenterGraphN, b : GraphtreecenterGraphN) -> GraphtreecenterGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_graphn_copy(s : GraphtreecenterGraphN) -> GraphtreecenterGraphN {
-  let result = graph_tree_center_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_graphn_fill(s : GraphtreecenterGraphN, v : Double) -> GraphtreecenterGraphN {
-  let result = graph_tree_center_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_graphn_min(s : GraphtreecenterGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_tree_center_node_sum(s : GraphtreecenterNode) -> Double { @_common.
 pub fn graph_tree_center_node_mean(s : GraphtreecenterNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_node_scale(s : GraphtreecenterNode, f : Double) -> GraphtreecenterNode {
-  let result = graph_tree_center_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_node_add(a : GraphtreecenterNode, b : GraphtreecenterNode) -> GraphtreecenterNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_node_copy(s : GraphtreecenterNode) -> GraphtreecenterNode {
-  let result = graph_tree_center_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_node_fill(s : GraphtreecenterNode, v : Double) -> GraphtreecenterNode {
-  let result = graph_tree_center_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_node_min(s : GraphtreecenterNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_tree_center_edge_sum(s : GraphtreecenterEdge) -> Double { @_common.
 pub fn graph_tree_center_edge_mean(s : GraphtreecenterEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_edge_scale(s : GraphtreecenterEdge, f : Double) -> GraphtreecenterEdge {
-  let result = graph_tree_center_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_edge_add(a : GraphtreecenterEdge, b : GraphtreecenterEdge) -> GraphtreecenterEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_edge_copy(s : GraphtreecenterEdge) -> GraphtreecenterEdge {
-  let result = graph_tree_center_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_edge_fill(s : GraphtreecenterEdge, v : Double) -> GraphtreecenterEdge {
-  let result = graph_tree_center_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_edge_min(s : GraphtreecenterEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_tree_center_path_sum(s : GraphtreecenterPath) -> Double { @_common.
 pub fn graph_tree_center_path_mean(s : GraphtreecenterPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_path_scale(s : GraphtreecenterPath, f : Double) -> GraphtreecenterPath {
-  let result = graph_tree_center_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_path_add(a : GraphtreecenterPath, b : GraphtreecenterPath) -> GraphtreecenterPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_path_copy(s : GraphtreecenterPath) -> GraphtreecenterPath {
-  let result = graph_tree_center_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_path_fill(s : GraphtreecenterPath, v : Double) -> GraphtreecenterPath {
-  let result = graph_tree_center_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_path_min(s : GraphtreecenterPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_tree_center_cluster_sum(s : GraphtreecenterCluster) -> Double { @_c
 pub fn graph_tree_center_cluster_mean(s : GraphtreecenterCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_cluster_scale(s : GraphtreecenterCluster, f : Double) -> GraphtreecenterCluster {
-  let result = graph_tree_center_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_cluster_add(a : GraphtreecenterCluster, b : GraphtreecenterCluster) -> GraphtreecenterCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_cluster_copy(s : GraphtreecenterCluster) -> GraphtreecenterCluster {
-  let result = graph_tree_center_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_cluster_fill(s : GraphtreecenterCluster, v : Double) -> GraphtreecenterCluster {
-  let result = graph_tree_center_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_cluster_min(s : GraphtreecenterCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_tree_center_model_sum(s : GraphtreecenterModel) -> Double { @_commo
 pub fn graph_tree_center_model_mean(s : GraphtreecenterModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_model_scale(s : GraphtreecenterModel, f : Double) -> GraphtreecenterModel {
-  let result = graph_tree_center_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_model_add(a : GraphtreecenterModel, b : GraphtreecenterModel) -> GraphtreecenterModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_model_copy(s : GraphtreecenterModel) -> GraphtreecenterModel {
-  let result = graph_tree_center_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_model_fill(s : GraphtreecenterModel, v : Double) -> GraphtreecenterModel {
-  let result = graph_tree_center_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_model_min(s : GraphtreecenterModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_tree_center_layer_sum(s : GraphtreecenterLayer) -> Double { @_commo
 pub fn graph_tree_center_layer_mean(s : GraphtreecenterLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_layer_scale(s : GraphtreecenterLayer, f : Double) -> GraphtreecenterLayer {
-  let result = graph_tree_center_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_layer_add(a : GraphtreecenterLayer, b : GraphtreecenterLayer) -> GraphtreecenterLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_layer_copy(s : GraphtreecenterLayer) -> GraphtreecenterLayer {
-  let result = graph_tree_center_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_layer_fill(s : GraphtreecenterLayer, v : Double) -> GraphtreecenterLayer {
-  let result = graph_tree_center_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_layer_min(s : GraphtreecenterLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_tree_center_buffer_sum(s : GraphtreecenterBuffer) -> Double { @_com
 pub fn graph_tree_center_buffer_mean(s : GraphtreecenterBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_buffer_scale(s : GraphtreecenterBuffer, f : Double) -> GraphtreecenterBuffer {
-  let result = graph_tree_center_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_buffer_add(a : GraphtreecenterBuffer, b : GraphtreecenterBuffer) -> GraphtreecenterBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_buffer_copy(s : GraphtreecenterBuffer) -> GraphtreecenterBuffer {
-  let result = graph_tree_center_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_buffer_fill(s : GraphtreecenterBuffer, v : Double) -> GraphtreecenterBuffer {
-  let result = graph_tree_center_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_buffer_min(s : GraphtreecenterBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_tree_center_cursor_sum(s : GraphtreecenterCursor) -> Double { @_com
 pub fn graph_tree_center_cursor_mean(s : GraphtreecenterCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_cursor_scale(s : GraphtreecenterCursor, f : Double) -> GraphtreecenterCursor {
-  let result = graph_tree_center_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_cursor_add(a : GraphtreecenterCursor, b : GraphtreecenterCursor) -> GraphtreecenterCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_cursor_copy(s : GraphtreecenterCursor) -> GraphtreecenterCursor {
-  let result = graph_tree_center_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_cursor_fill(s : GraphtreecenterCursor, v : Double) -> GraphtreecenterCursor {
-  let result = graph_tree_center_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_cursor_min(s : GraphtreecenterCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_tree_center_view_sum(s : GraphtreecenterView) -> Double { @_common.
 pub fn graph_tree_center_view_mean(s : GraphtreecenterView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_view_scale(s : GraphtreecenterView, f : Double) -> GraphtreecenterView {
-  let result = graph_tree_center_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_view_add(a : GraphtreecenterView, b : GraphtreecenterView) -> GraphtreecenterView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_view_copy(s : GraphtreecenterView) -> GraphtreecenterView {
-  let result = graph_tree_center_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_view_fill(s : GraphtreecenterView, v : Double) -> GraphtreecenterView {
-  let result = graph_tree_center_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_view_min(s : GraphtreecenterView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_tree_center_range_sum(s : GraphtreecenterRange) -> Double { @_commo
 pub fn graph_tree_center_range_mean(s : GraphtreecenterRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_range_scale(s : GraphtreecenterRange, f : Double) -> GraphtreecenterRange {
-  let result = graph_tree_center_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_range_add(a : GraphtreecenterRange, b : GraphtreecenterRange) -> GraphtreecenterRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_range_copy(s : GraphtreecenterRange) -> GraphtreecenterRange {
-  let result = graph_tree_center_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_range_fill(s : GraphtreecenterRange, v : Double) -> GraphtreecenterRange {
-  let result = graph_tree_center_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_range_min(s : GraphtreecenterRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_tree_center_slice_sum(s : GraphtreecenterSlice) -> Double { @_commo
 pub fn graph_tree_center_slice_mean(s : GraphtreecenterSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_slice_scale(s : GraphtreecenterSlice, f : Double) -> GraphtreecenterSlice {
-  let result = graph_tree_center_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_slice_add(a : GraphtreecenterSlice, b : GraphtreecenterSlice) -> GraphtreecenterSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_center_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_center_slice_copy(s : GraphtreecenterSlice) -> GraphtreecenterSlice {
-  let result = graph_tree_center_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_slice_fill(s : GraphtreecenterSlice, v : Double) -> GraphtreecenterSlice {
-  let result = graph_tree_center_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_center_slice_min(s : GraphtreecenterSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn net_proto_ws_frame_sum(s : NetprotowsFrame) -> Double { @_common.sum(s.da
 pub fn net_proto_ws_frame_mean(s : NetprotowsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_frame_scale(s : NetprotowsFrame, f : Double) -> NetprotowsFrame {
-  let result = net_proto_ws_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_frame_add(a : NetprotowsFrame, b : NetprotowsFrame) -> NetprotowsFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_frame_copy(s : NetprotowsFrame) -> NetprotowsFrame {
-  let result = net_proto_ws_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_frame_fill(s : NetprotowsFrame, v : Double) -> NetprotowsFrame {
-  let result = net_proto_ws_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_frame_min(s : NetprotowsFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_proto_ws_table_sum(s : NetprotowsTable) -> Double { @_common.sum(s.da
 pub fn net_proto_ws_table_mean(s : NetprotowsTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_table_scale(s : NetprotowsTable, f : Double) -> NetprotowsTable {
-  let result = net_proto_ws_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_table_add(a : NetprotowsTable, b : NetprotowsTable) -> NetprotowsTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_table_copy(s : NetprotowsTable) -> NetprotowsTable {
-  let result = net_proto_ws_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_table_fill(s : NetprotowsTable, v : Double) -> NetprotowsTable {
-  let result = net_proto_ws_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_table_min(s : NetprotowsTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_proto_ws_graphn_sum(s : NetprotowsGraphN) -> Double { @_common.sum(s.
 pub fn net_proto_ws_graphn_mean(s : NetprotowsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_graphn_scale(s : NetprotowsGraphN, f : Double) -> NetprotowsGraphN {
-  let result = net_proto_ws_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_graphn_add(a : NetprotowsGraphN, b : NetprotowsGraphN) -> NetprotowsGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_graphn_copy(s : NetprotowsGraphN) -> NetprotowsGraphN {
-  let result = net_proto_ws_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_graphn_fill(s : NetprotowsGraphN, v : Double) -> NetprotowsGraphN {
-  let result = net_proto_ws_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_graphn_min(s : NetprotowsGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_proto_ws_node_sum(s : NetprotowsNode) -> Double { @_common.sum(s.data
 pub fn net_proto_ws_node_mean(s : NetprotowsNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_node_scale(s : NetprotowsNode, f : Double) -> NetprotowsNode {
-  let result = net_proto_ws_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_node_add(a : NetprotowsNode, b : NetprotowsNode) -> NetprotowsNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_node_copy(s : NetprotowsNode) -> NetprotowsNode {
-  let result = net_proto_ws_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_node_fill(s : NetprotowsNode, v : Double) -> NetprotowsNode {
-  let result = net_proto_ws_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_node_min(s : NetprotowsNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_proto_ws_edge_sum(s : NetprotowsEdge) -> Double { @_common.sum(s.data
 pub fn net_proto_ws_edge_mean(s : NetprotowsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_edge_scale(s : NetprotowsEdge, f : Double) -> NetprotowsEdge {
-  let result = net_proto_ws_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_edge_add(a : NetprotowsEdge, b : NetprotowsEdge) -> NetprotowsEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_edge_copy(s : NetprotowsEdge) -> NetprotowsEdge {
-  let result = net_proto_ws_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_edge_fill(s : NetprotowsEdge, v : Double) -> NetprotowsEdge {
-  let result = net_proto_ws_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_edge_min(s : NetprotowsEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_proto_ws_path_sum(s : NetprotowsPath) -> Double { @_common.sum(s.data
 pub fn net_proto_ws_path_mean(s : NetprotowsPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_path_scale(s : NetprotowsPath, f : Double) -> NetprotowsPath {
-  let result = net_proto_ws_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_path_add(a : NetprotowsPath, b : NetprotowsPath) -> NetprotowsPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_path_copy(s : NetprotowsPath) -> NetprotowsPath {
-  let result = net_proto_ws_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_path_fill(s : NetprotowsPath, v : Double) -> NetprotowsPath {
-  let result = net_proto_ws_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_path_min(s : NetprotowsPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_proto_ws_cluster_sum(s : NetprotowsCluster) -> Double { @_common.sum(
 pub fn net_proto_ws_cluster_mean(s : NetprotowsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_cluster_scale(s : NetprotowsCluster, f : Double) -> NetprotowsCluster {
-  let result = net_proto_ws_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cluster_add(a : NetprotowsCluster, b : NetprotowsCluster) -> NetprotowsCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_cluster_copy(s : NetprotowsCluster) -> NetprotowsCluster {
-  let result = net_proto_ws_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cluster_fill(s : NetprotowsCluster, v : Double) -> NetprotowsCluster {
-  let result = net_proto_ws_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cluster_min(s : NetprotowsCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_proto_ws_model_sum(s : NetprotowsModel) -> Double { @_common.sum(s.da
 pub fn net_proto_ws_model_mean(s : NetprotowsModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_model_scale(s : NetprotowsModel, f : Double) -> NetprotowsModel {
-  let result = net_proto_ws_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_model_add(a : NetprotowsModel, b : NetprotowsModel) -> NetprotowsModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_model_copy(s : NetprotowsModel) -> NetprotowsModel {
-  let result = net_proto_ws_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_model_fill(s : NetprotowsModel, v : Double) -> NetprotowsModel {
-  let result = net_proto_ws_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_model_min(s : NetprotowsModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_proto_ws_layer_sum(s : NetprotowsLayer) -> Double { @_common.sum(s.da
 pub fn net_proto_ws_layer_mean(s : NetprotowsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_layer_scale(s : NetprotowsLayer, f : Double) -> NetprotowsLayer {
-  let result = net_proto_ws_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_layer_add(a : NetprotowsLayer, b : NetprotowsLayer) -> NetprotowsLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_layer_copy(s : NetprotowsLayer) -> NetprotowsLayer {
-  let result = net_proto_ws_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_layer_fill(s : NetprotowsLayer, v : Double) -> NetprotowsLayer {
-  let result = net_proto_ws_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_layer_min(s : NetprotowsLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_proto_ws_buffer_sum(s : NetprotowsBuffer) -> Double { @_common.sum(s.
 pub fn net_proto_ws_buffer_mean(s : NetprotowsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_buffer_scale(s : NetprotowsBuffer, f : Double) -> NetprotowsBuffer {
-  let result = net_proto_ws_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_buffer_add(a : NetprotowsBuffer, b : NetprotowsBuffer) -> NetprotowsBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_buffer_copy(s : NetprotowsBuffer) -> NetprotowsBuffer {
-  let result = net_proto_ws_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_buffer_fill(s : NetprotowsBuffer, v : Double) -> NetprotowsBuffer {
-  let result = net_proto_ws_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_buffer_min(s : NetprotowsBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_proto_ws_cursor_sum(s : NetprotowsCursor) -> Double { @_common.sum(s.
 pub fn net_proto_ws_cursor_mean(s : NetprotowsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_cursor_scale(s : NetprotowsCursor, f : Double) -> NetprotowsCursor {
-  let result = net_proto_ws_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cursor_add(a : NetprotowsCursor, b : NetprotowsCursor) -> NetprotowsCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_cursor_copy(s : NetprotowsCursor) -> NetprotowsCursor {
-  let result = net_proto_ws_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cursor_fill(s : NetprotowsCursor, v : Double) -> NetprotowsCursor {
-  let result = net_proto_ws_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cursor_min(s : NetprotowsCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_proto_ws_view_sum(s : NetprotowsView) -> Double { @_common.sum(s.data
 pub fn net_proto_ws_view_mean(s : NetprotowsView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_view_scale(s : NetprotowsView, f : Double) -> NetprotowsView {
-  let result = net_proto_ws_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_view_add(a : NetprotowsView, b : NetprotowsView) -> NetprotowsView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_view_copy(s : NetprotowsView) -> NetprotowsView {
-  let result = net_proto_ws_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_view_fill(s : NetprotowsView, v : Double) -> NetprotowsView {
-  let result = net_proto_ws_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_view_min(s : NetprotowsView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_proto_ws_range_sum(s : NetprotowsRange) -> Double { @_common.sum(s.da
 pub fn net_proto_ws_range_mean(s : NetprotowsRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_range_scale(s : NetprotowsRange, f : Double) -> NetprotowsRange {
-  let result = net_proto_ws_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_range_add(a : NetprotowsRange, b : NetprotowsRange) -> NetprotowsRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_range_copy(s : NetprotowsRange) -> NetprotowsRange {
-  let result = net_proto_ws_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_range_fill(s : NetprotowsRange, v : Double) -> NetprotowsRange {
-  let result = net_proto_ws_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_range_min(s : NetprotowsRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_proto_ws_slice_sum(s : NetprotowsSlice) -> Double { @_common.sum(s.da
 pub fn net_proto_ws_slice_mean(s : NetprotowsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_slice_scale(s : NetprotowsSlice, f : Double) -> NetprotowsSlice {
-  let result = net_proto_ws_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_slice_add(a : NetprotowsSlice, b : NetprotowsSlice) -> NetprotowsSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_ws_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_ws_slice_copy(s : NetprotowsSlice) -> NetprotowsSlice {
-  let result = net_proto_ws_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_slice_fill(s : NetprotowsSlice, v : Double) -> NetprotowsSlice {
-  let result = net_proto_ws_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_slice_min(s : NetprotowsSlice) -> Double { @_common.min(s.data) }

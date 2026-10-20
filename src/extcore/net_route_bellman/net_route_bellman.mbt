@@ -383,28 +383,20 @@ pub fn net_route_bellman_frame_sum(s : NetroutebellmanFrame) -> Double { @_commo
 pub fn net_route_bellman_frame_mean(s : NetroutebellmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_frame_scale(s : NetroutebellmanFrame, f : Double) -> NetroutebellmanFrame {
-  let result = net_route_bellman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_frame_add(a : NetroutebellmanFrame, b : NetroutebellmanFrame) -> NetroutebellmanFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_frame_copy(s : NetroutebellmanFrame) -> NetroutebellmanFrame {
-  let result = net_route_bellman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_frame_fill(s : NetroutebellmanFrame, v : Double) -> NetroutebellmanFrame {
-  let result = net_route_bellman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_frame_min(s : NetroutebellmanFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_route_bellman_table_sum(s : NetroutebellmanTable) -> Double { @_commo
 pub fn net_route_bellman_table_mean(s : NetroutebellmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_table_scale(s : NetroutebellmanTable, f : Double) -> NetroutebellmanTable {
-  let result = net_route_bellman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_table_add(a : NetroutebellmanTable, b : NetroutebellmanTable) -> NetroutebellmanTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_table_copy(s : NetroutebellmanTable) -> NetroutebellmanTable {
-  let result = net_route_bellman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_table_fill(s : NetroutebellmanTable, v : Double) -> NetroutebellmanTable {
-  let result = net_route_bellman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_table_min(s : NetroutebellmanTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_route_bellman_graphn_sum(s : NetroutebellmanGraphN) -> Double { @_com
 pub fn net_route_bellman_graphn_mean(s : NetroutebellmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_graphn_scale(s : NetroutebellmanGraphN, f : Double) -> NetroutebellmanGraphN {
-  let result = net_route_bellman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_graphn_add(a : NetroutebellmanGraphN, b : NetroutebellmanGraphN) -> NetroutebellmanGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_graphn_copy(s : NetroutebellmanGraphN) -> NetroutebellmanGraphN {
-  let result = net_route_bellman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_graphn_fill(s : NetroutebellmanGraphN, v : Double) -> NetroutebellmanGraphN {
-  let result = net_route_bellman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_graphn_min(s : NetroutebellmanGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_route_bellman_node_sum(s : NetroutebellmanNode) -> Double { @_common.
 pub fn net_route_bellman_node_mean(s : NetroutebellmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_node_scale(s : NetroutebellmanNode, f : Double) -> NetroutebellmanNode {
-  let result = net_route_bellman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_node_add(a : NetroutebellmanNode, b : NetroutebellmanNode) -> NetroutebellmanNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_node_copy(s : NetroutebellmanNode) -> NetroutebellmanNode {
-  let result = net_route_bellman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_node_fill(s : NetroutebellmanNode, v : Double) -> NetroutebellmanNode {
-  let result = net_route_bellman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_node_min(s : NetroutebellmanNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_route_bellman_edge_sum(s : NetroutebellmanEdge) -> Double { @_common.
 pub fn net_route_bellman_edge_mean(s : NetroutebellmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_edge_scale(s : NetroutebellmanEdge, f : Double) -> NetroutebellmanEdge {
-  let result = net_route_bellman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_edge_add(a : NetroutebellmanEdge, b : NetroutebellmanEdge) -> NetroutebellmanEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_edge_copy(s : NetroutebellmanEdge) -> NetroutebellmanEdge {
-  let result = net_route_bellman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_edge_fill(s : NetroutebellmanEdge, v : Double) -> NetroutebellmanEdge {
-  let result = net_route_bellman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_edge_min(s : NetroutebellmanEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_route_bellman_path_sum(s : NetroutebellmanPath) -> Double { @_common.
 pub fn net_route_bellman_path_mean(s : NetroutebellmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_path_scale(s : NetroutebellmanPath, f : Double) -> NetroutebellmanPath {
-  let result = net_route_bellman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_path_add(a : NetroutebellmanPath, b : NetroutebellmanPath) -> NetroutebellmanPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_path_copy(s : NetroutebellmanPath) -> NetroutebellmanPath {
-  let result = net_route_bellman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_path_fill(s : NetroutebellmanPath, v : Double) -> NetroutebellmanPath {
-  let result = net_route_bellman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_path_min(s : NetroutebellmanPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_route_bellman_cluster_sum(s : NetroutebellmanCluster) -> Double { @_c
 pub fn net_route_bellman_cluster_mean(s : NetroutebellmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_cluster_scale(s : NetroutebellmanCluster, f : Double) -> NetroutebellmanCluster {
-  let result = net_route_bellman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cluster_add(a : NetroutebellmanCluster, b : NetroutebellmanCluster) -> NetroutebellmanCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_cluster_copy(s : NetroutebellmanCluster) -> NetroutebellmanCluster {
-  let result = net_route_bellman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cluster_fill(s : NetroutebellmanCluster, v : Double) -> NetroutebellmanCluster {
-  let result = net_route_bellman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cluster_min(s : NetroutebellmanCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_route_bellman_model_sum(s : NetroutebellmanModel) -> Double { @_commo
 pub fn net_route_bellman_model_mean(s : NetroutebellmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_model_scale(s : NetroutebellmanModel, f : Double) -> NetroutebellmanModel {
-  let result = net_route_bellman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_model_add(a : NetroutebellmanModel, b : NetroutebellmanModel) -> NetroutebellmanModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_model_copy(s : NetroutebellmanModel) -> NetroutebellmanModel {
-  let result = net_route_bellman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_model_fill(s : NetroutebellmanModel, v : Double) -> NetroutebellmanModel {
-  let result = net_route_bellman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_model_min(s : NetroutebellmanModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_route_bellman_layer_sum(s : NetroutebellmanLayer) -> Double { @_commo
 pub fn net_route_bellman_layer_mean(s : NetroutebellmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_layer_scale(s : NetroutebellmanLayer, f : Double) -> NetroutebellmanLayer {
-  let result = net_route_bellman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_layer_add(a : NetroutebellmanLayer, b : NetroutebellmanLayer) -> NetroutebellmanLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_layer_copy(s : NetroutebellmanLayer) -> NetroutebellmanLayer {
-  let result = net_route_bellman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_layer_fill(s : NetroutebellmanLayer, v : Double) -> NetroutebellmanLayer {
-  let result = net_route_bellman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_layer_min(s : NetroutebellmanLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_route_bellman_buffer_sum(s : NetroutebellmanBuffer) -> Double { @_com
 pub fn net_route_bellman_buffer_mean(s : NetroutebellmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_buffer_scale(s : NetroutebellmanBuffer, f : Double) -> NetroutebellmanBuffer {
-  let result = net_route_bellman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_buffer_add(a : NetroutebellmanBuffer, b : NetroutebellmanBuffer) -> NetroutebellmanBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_buffer_copy(s : NetroutebellmanBuffer) -> NetroutebellmanBuffer {
-  let result = net_route_bellman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_buffer_fill(s : NetroutebellmanBuffer, v : Double) -> NetroutebellmanBuffer {
-  let result = net_route_bellman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_buffer_min(s : NetroutebellmanBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_route_bellman_cursor_sum(s : NetroutebellmanCursor) -> Double { @_com
 pub fn net_route_bellman_cursor_mean(s : NetroutebellmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_cursor_scale(s : NetroutebellmanCursor, f : Double) -> NetroutebellmanCursor {
-  let result = net_route_bellman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cursor_add(a : NetroutebellmanCursor, b : NetroutebellmanCursor) -> NetroutebellmanCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_cursor_copy(s : NetroutebellmanCursor) -> NetroutebellmanCursor {
-  let result = net_route_bellman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cursor_fill(s : NetroutebellmanCursor, v : Double) -> NetroutebellmanCursor {
-  let result = net_route_bellman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cursor_min(s : NetroutebellmanCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_route_bellman_view_sum(s : NetroutebellmanView) -> Double { @_common.
 pub fn net_route_bellman_view_mean(s : NetroutebellmanView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_view_scale(s : NetroutebellmanView, f : Double) -> NetroutebellmanView {
-  let result = net_route_bellman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_view_add(a : NetroutebellmanView, b : NetroutebellmanView) -> NetroutebellmanView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_view_copy(s : NetroutebellmanView) -> NetroutebellmanView {
-  let result = net_route_bellman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_view_fill(s : NetroutebellmanView, v : Double) -> NetroutebellmanView {
-  let result = net_route_bellman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_view_min(s : NetroutebellmanView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_route_bellman_range_sum(s : NetroutebellmanRange) -> Double { @_commo
 pub fn net_route_bellman_range_mean(s : NetroutebellmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_range_scale(s : NetroutebellmanRange, f : Double) -> NetroutebellmanRange {
-  let result = net_route_bellman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_range_add(a : NetroutebellmanRange, b : NetroutebellmanRange) -> NetroutebellmanRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_range_copy(s : NetroutebellmanRange) -> NetroutebellmanRange {
-  let result = net_route_bellman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_range_fill(s : NetroutebellmanRange, v : Double) -> NetroutebellmanRange {
-  let result = net_route_bellman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_range_min(s : NetroutebellmanRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_route_bellman_slice_sum(s : NetroutebellmanSlice) -> Double { @_commo
 pub fn net_route_bellman_slice_mean(s : NetroutebellmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_slice_scale(s : NetroutebellmanSlice, f : Double) -> NetroutebellmanSlice {
-  let result = net_route_bellman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_slice_add(a : NetroutebellmanSlice, b : NetroutebellmanSlice) -> NetroutebellmanSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bellman_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bellman_slice_copy(s : NetroutebellmanSlice) -> NetroutebellmanSlice {
-  let result = net_route_bellman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_slice_fill(s : NetroutebellmanSlice, v : Double) -> NetroutebellmanSlice {
-  let result = net_route_bellman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_slice_min(s : NetroutebellmanSlice) -> Double { @_common.min(s.data) }

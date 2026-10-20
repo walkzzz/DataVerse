@@ -383,28 +383,20 @@ pub fn graph_color_backtrack_frame_sum(s : GraphcolorbacktrackFrame) -> Double {
 pub fn graph_color_backtrack_frame_mean(s : GraphcolorbacktrackFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_frame_scale(s : GraphcolorbacktrackFrame, f : Double) -> GraphcolorbacktrackFrame {
-  let result = graph_color_backtrack_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_frame_add(a : GraphcolorbacktrackFrame, b : GraphcolorbacktrackFrame) -> GraphcolorbacktrackFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_frame_copy(s : GraphcolorbacktrackFrame) -> GraphcolorbacktrackFrame {
-  let result = graph_color_backtrack_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_frame_fill(s : GraphcolorbacktrackFrame, v : Double) -> GraphcolorbacktrackFrame {
-  let result = graph_color_backtrack_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_frame_min(s : GraphcolorbacktrackFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_backtrack_table_sum(s : GraphcolorbacktrackTable) -> Double {
 pub fn graph_color_backtrack_table_mean(s : GraphcolorbacktrackTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_table_scale(s : GraphcolorbacktrackTable, f : Double) -> GraphcolorbacktrackTable {
-  let result = graph_color_backtrack_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_table_add(a : GraphcolorbacktrackTable, b : GraphcolorbacktrackTable) -> GraphcolorbacktrackTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_table_copy(s : GraphcolorbacktrackTable) -> GraphcolorbacktrackTable {
-  let result = graph_color_backtrack_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_table_fill(s : GraphcolorbacktrackTable, v : Double) -> GraphcolorbacktrackTable {
-  let result = graph_color_backtrack_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_table_min(s : GraphcolorbacktrackTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_backtrack_graphn_sum(s : GraphcolorbacktrackGraphN) -> Double
 pub fn graph_color_backtrack_graphn_mean(s : GraphcolorbacktrackGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_graphn_scale(s : GraphcolorbacktrackGraphN, f : Double) -> GraphcolorbacktrackGraphN {
-  let result = graph_color_backtrack_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_graphn_add(a : GraphcolorbacktrackGraphN, b : GraphcolorbacktrackGraphN) -> GraphcolorbacktrackGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_graphn_copy(s : GraphcolorbacktrackGraphN) -> GraphcolorbacktrackGraphN {
-  let result = graph_color_backtrack_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_graphn_fill(s : GraphcolorbacktrackGraphN, v : Double) -> GraphcolorbacktrackGraphN {
-  let result = graph_color_backtrack_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_graphn_min(s : GraphcolorbacktrackGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_backtrack_node_sum(s : GraphcolorbacktrackNode) -> Double { @
 pub fn graph_color_backtrack_node_mean(s : GraphcolorbacktrackNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_node_scale(s : GraphcolorbacktrackNode, f : Double) -> GraphcolorbacktrackNode {
-  let result = graph_color_backtrack_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_node_add(a : GraphcolorbacktrackNode, b : GraphcolorbacktrackNode) -> GraphcolorbacktrackNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_node_copy(s : GraphcolorbacktrackNode) -> GraphcolorbacktrackNode {
-  let result = graph_color_backtrack_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_node_fill(s : GraphcolorbacktrackNode, v : Double) -> GraphcolorbacktrackNode {
-  let result = graph_color_backtrack_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_node_min(s : GraphcolorbacktrackNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_backtrack_edge_sum(s : GraphcolorbacktrackEdge) -> Double { @
 pub fn graph_color_backtrack_edge_mean(s : GraphcolorbacktrackEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_edge_scale(s : GraphcolorbacktrackEdge, f : Double) -> GraphcolorbacktrackEdge {
-  let result = graph_color_backtrack_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_edge_add(a : GraphcolorbacktrackEdge, b : GraphcolorbacktrackEdge) -> GraphcolorbacktrackEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_edge_copy(s : GraphcolorbacktrackEdge) -> GraphcolorbacktrackEdge {
-  let result = graph_color_backtrack_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_edge_fill(s : GraphcolorbacktrackEdge, v : Double) -> GraphcolorbacktrackEdge {
-  let result = graph_color_backtrack_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_edge_min(s : GraphcolorbacktrackEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_backtrack_path_sum(s : GraphcolorbacktrackPath) -> Double { @
 pub fn graph_color_backtrack_path_mean(s : GraphcolorbacktrackPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_path_scale(s : GraphcolorbacktrackPath, f : Double) -> GraphcolorbacktrackPath {
-  let result = graph_color_backtrack_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_path_add(a : GraphcolorbacktrackPath, b : GraphcolorbacktrackPath) -> GraphcolorbacktrackPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_path_copy(s : GraphcolorbacktrackPath) -> GraphcolorbacktrackPath {
-  let result = graph_color_backtrack_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_path_fill(s : GraphcolorbacktrackPath, v : Double) -> GraphcolorbacktrackPath {
-  let result = graph_color_backtrack_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_path_min(s : GraphcolorbacktrackPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_backtrack_cluster_sum(s : GraphcolorbacktrackCluster) -> Doub
 pub fn graph_color_backtrack_cluster_mean(s : GraphcolorbacktrackCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_cluster_scale(s : GraphcolorbacktrackCluster, f : Double) -> GraphcolorbacktrackCluster {
-  let result = graph_color_backtrack_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cluster_add(a : GraphcolorbacktrackCluster, b : GraphcolorbacktrackCluster) -> GraphcolorbacktrackCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_cluster_copy(s : GraphcolorbacktrackCluster) -> GraphcolorbacktrackCluster {
-  let result = graph_color_backtrack_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cluster_fill(s : GraphcolorbacktrackCluster, v : Double) -> GraphcolorbacktrackCluster {
-  let result = graph_color_backtrack_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cluster_min(s : GraphcolorbacktrackCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_backtrack_model_sum(s : GraphcolorbacktrackModel) -> Double {
 pub fn graph_color_backtrack_model_mean(s : GraphcolorbacktrackModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_model_scale(s : GraphcolorbacktrackModel, f : Double) -> GraphcolorbacktrackModel {
-  let result = graph_color_backtrack_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_model_add(a : GraphcolorbacktrackModel, b : GraphcolorbacktrackModel) -> GraphcolorbacktrackModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_model_copy(s : GraphcolorbacktrackModel) -> GraphcolorbacktrackModel {
-  let result = graph_color_backtrack_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_model_fill(s : GraphcolorbacktrackModel, v : Double) -> GraphcolorbacktrackModel {
-  let result = graph_color_backtrack_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_model_min(s : GraphcolorbacktrackModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_backtrack_layer_sum(s : GraphcolorbacktrackLayer) -> Double {
 pub fn graph_color_backtrack_layer_mean(s : GraphcolorbacktrackLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_layer_scale(s : GraphcolorbacktrackLayer, f : Double) -> GraphcolorbacktrackLayer {
-  let result = graph_color_backtrack_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_layer_add(a : GraphcolorbacktrackLayer, b : GraphcolorbacktrackLayer) -> GraphcolorbacktrackLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_layer_copy(s : GraphcolorbacktrackLayer) -> GraphcolorbacktrackLayer {
-  let result = graph_color_backtrack_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_layer_fill(s : GraphcolorbacktrackLayer, v : Double) -> GraphcolorbacktrackLayer {
-  let result = graph_color_backtrack_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_layer_min(s : GraphcolorbacktrackLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_backtrack_buffer_sum(s : GraphcolorbacktrackBuffer) -> Double
 pub fn graph_color_backtrack_buffer_mean(s : GraphcolorbacktrackBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_buffer_scale(s : GraphcolorbacktrackBuffer, f : Double) -> GraphcolorbacktrackBuffer {
-  let result = graph_color_backtrack_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_buffer_add(a : GraphcolorbacktrackBuffer, b : GraphcolorbacktrackBuffer) -> GraphcolorbacktrackBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_buffer_copy(s : GraphcolorbacktrackBuffer) -> GraphcolorbacktrackBuffer {
-  let result = graph_color_backtrack_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_buffer_fill(s : GraphcolorbacktrackBuffer, v : Double) -> GraphcolorbacktrackBuffer {
-  let result = graph_color_backtrack_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_buffer_min(s : GraphcolorbacktrackBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_backtrack_cursor_sum(s : GraphcolorbacktrackCursor) -> Double
 pub fn graph_color_backtrack_cursor_mean(s : GraphcolorbacktrackCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_cursor_scale(s : GraphcolorbacktrackCursor, f : Double) -> GraphcolorbacktrackCursor {
-  let result = graph_color_backtrack_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cursor_add(a : GraphcolorbacktrackCursor, b : GraphcolorbacktrackCursor) -> GraphcolorbacktrackCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_cursor_copy(s : GraphcolorbacktrackCursor) -> GraphcolorbacktrackCursor {
-  let result = graph_color_backtrack_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cursor_fill(s : GraphcolorbacktrackCursor, v : Double) -> GraphcolorbacktrackCursor {
-  let result = graph_color_backtrack_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cursor_min(s : GraphcolorbacktrackCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_backtrack_view_sum(s : GraphcolorbacktrackView) -> Double { @
 pub fn graph_color_backtrack_view_mean(s : GraphcolorbacktrackView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_view_scale(s : GraphcolorbacktrackView, f : Double) -> GraphcolorbacktrackView {
-  let result = graph_color_backtrack_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_view_add(a : GraphcolorbacktrackView, b : GraphcolorbacktrackView) -> GraphcolorbacktrackView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_view_copy(s : GraphcolorbacktrackView) -> GraphcolorbacktrackView {
-  let result = graph_color_backtrack_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_view_fill(s : GraphcolorbacktrackView, v : Double) -> GraphcolorbacktrackView {
-  let result = graph_color_backtrack_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_view_min(s : GraphcolorbacktrackView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_backtrack_range_sum(s : GraphcolorbacktrackRange) -> Double {
 pub fn graph_color_backtrack_range_mean(s : GraphcolorbacktrackRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_range_scale(s : GraphcolorbacktrackRange, f : Double) -> GraphcolorbacktrackRange {
-  let result = graph_color_backtrack_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_range_add(a : GraphcolorbacktrackRange, b : GraphcolorbacktrackRange) -> GraphcolorbacktrackRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_range_copy(s : GraphcolorbacktrackRange) -> GraphcolorbacktrackRange {
-  let result = graph_color_backtrack_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_range_fill(s : GraphcolorbacktrackRange, v : Double) -> GraphcolorbacktrackRange {
-  let result = graph_color_backtrack_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_range_min(s : GraphcolorbacktrackRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_backtrack_slice_sum(s : GraphcolorbacktrackSlice) -> Double {
 pub fn graph_color_backtrack_slice_mean(s : GraphcolorbacktrackSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_slice_scale(s : GraphcolorbacktrackSlice, f : Double) -> GraphcolorbacktrackSlice {
-  let result = graph_color_backtrack_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_slice_add(a : GraphcolorbacktrackSlice, b : GraphcolorbacktrackSlice) -> GraphcolorbacktrackSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_backtrack_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_backtrack_slice_copy(s : GraphcolorbacktrackSlice) -> GraphcolorbacktrackSlice {
-  let result = graph_color_backtrack_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_slice_fill(s : GraphcolorbacktrackSlice, v : Double) -> GraphcolorbacktrackSlice {
-  let result = graph_color_backtrack_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_slice_min(s : GraphcolorbacktrackSlice) -> Double { @_common.min(s.data) }

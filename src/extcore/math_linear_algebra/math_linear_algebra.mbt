@@ -383,28 +383,20 @@ pub fn math_linear_algebra_frame_sum(s : MathlinearalgebraFrame) -> Double { @_c
 pub fn math_linear_algebra_frame_mean(s : MathlinearalgebraFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_frame_scale(s : MathlinearalgebraFrame, f : Double) -> MathlinearalgebraFrame {
-  let result = math_linear_algebra_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_frame_add(a : MathlinearalgebraFrame, b : MathlinearalgebraFrame) -> MathlinearalgebraFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_frame_copy(s : MathlinearalgebraFrame) -> MathlinearalgebraFrame {
-  let result = math_linear_algebra_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_frame_fill(s : MathlinearalgebraFrame, v : Double) -> MathlinearalgebraFrame {
-  let result = math_linear_algebra_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_frame_min(s : MathlinearalgebraFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_linear_algebra_table_sum(s : MathlinearalgebraTable) -> Double { @_c
 pub fn math_linear_algebra_table_mean(s : MathlinearalgebraTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_table_scale(s : MathlinearalgebraTable, f : Double) -> MathlinearalgebraTable {
-  let result = math_linear_algebra_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_table_add(a : MathlinearalgebraTable, b : MathlinearalgebraTable) -> MathlinearalgebraTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_table_copy(s : MathlinearalgebraTable) -> MathlinearalgebraTable {
-  let result = math_linear_algebra_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_table_fill(s : MathlinearalgebraTable, v : Double) -> MathlinearalgebraTable {
-  let result = math_linear_algebra_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_table_min(s : MathlinearalgebraTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_linear_algebra_graphn_sum(s : MathlinearalgebraGraphN) -> Double { @
 pub fn math_linear_algebra_graphn_mean(s : MathlinearalgebraGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_graphn_scale(s : MathlinearalgebraGraphN, f : Double) -> MathlinearalgebraGraphN {
-  let result = math_linear_algebra_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_graphn_add(a : MathlinearalgebraGraphN, b : MathlinearalgebraGraphN) -> MathlinearalgebraGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_graphn_copy(s : MathlinearalgebraGraphN) -> MathlinearalgebraGraphN {
-  let result = math_linear_algebra_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_graphn_fill(s : MathlinearalgebraGraphN, v : Double) -> MathlinearalgebraGraphN {
-  let result = math_linear_algebra_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_graphn_min(s : MathlinearalgebraGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_linear_algebra_node_sum(s : MathlinearalgebraNode) -> Double { @_com
 pub fn math_linear_algebra_node_mean(s : MathlinearalgebraNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_node_scale(s : MathlinearalgebraNode, f : Double) -> MathlinearalgebraNode {
-  let result = math_linear_algebra_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_node_add(a : MathlinearalgebraNode, b : MathlinearalgebraNode) -> MathlinearalgebraNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_node_copy(s : MathlinearalgebraNode) -> MathlinearalgebraNode {
-  let result = math_linear_algebra_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_node_fill(s : MathlinearalgebraNode, v : Double) -> MathlinearalgebraNode {
-  let result = math_linear_algebra_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_node_min(s : MathlinearalgebraNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_linear_algebra_edge_sum(s : MathlinearalgebraEdge) -> Double { @_com
 pub fn math_linear_algebra_edge_mean(s : MathlinearalgebraEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_edge_scale(s : MathlinearalgebraEdge, f : Double) -> MathlinearalgebraEdge {
-  let result = math_linear_algebra_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_edge_add(a : MathlinearalgebraEdge, b : MathlinearalgebraEdge) -> MathlinearalgebraEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_edge_copy(s : MathlinearalgebraEdge) -> MathlinearalgebraEdge {
-  let result = math_linear_algebra_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_edge_fill(s : MathlinearalgebraEdge, v : Double) -> MathlinearalgebraEdge {
-  let result = math_linear_algebra_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_edge_min(s : MathlinearalgebraEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_linear_algebra_path_sum(s : MathlinearalgebraPath) -> Double { @_com
 pub fn math_linear_algebra_path_mean(s : MathlinearalgebraPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_path_scale(s : MathlinearalgebraPath, f : Double) -> MathlinearalgebraPath {
-  let result = math_linear_algebra_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_path_add(a : MathlinearalgebraPath, b : MathlinearalgebraPath) -> MathlinearalgebraPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_path_copy(s : MathlinearalgebraPath) -> MathlinearalgebraPath {
-  let result = math_linear_algebra_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_path_fill(s : MathlinearalgebraPath, v : Double) -> MathlinearalgebraPath {
-  let result = math_linear_algebra_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_path_min(s : MathlinearalgebraPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_linear_algebra_cluster_sum(s : MathlinearalgebraCluster) -> Double {
 pub fn math_linear_algebra_cluster_mean(s : MathlinearalgebraCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_cluster_scale(s : MathlinearalgebraCluster, f : Double) -> MathlinearalgebraCluster {
-  let result = math_linear_algebra_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_cluster_add(a : MathlinearalgebraCluster, b : MathlinearalgebraCluster) -> MathlinearalgebraCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_cluster_copy(s : MathlinearalgebraCluster) -> MathlinearalgebraCluster {
-  let result = math_linear_algebra_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_cluster_fill(s : MathlinearalgebraCluster, v : Double) -> MathlinearalgebraCluster {
-  let result = math_linear_algebra_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_cluster_min(s : MathlinearalgebraCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_linear_algebra_model_sum(s : MathlinearalgebraModel) -> Double { @_c
 pub fn math_linear_algebra_model_mean(s : MathlinearalgebraModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_model_scale(s : MathlinearalgebraModel, f : Double) -> MathlinearalgebraModel {
-  let result = math_linear_algebra_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_model_add(a : MathlinearalgebraModel, b : MathlinearalgebraModel) -> MathlinearalgebraModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_model_copy(s : MathlinearalgebraModel) -> MathlinearalgebraModel {
-  let result = math_linear_algebra_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_model_fill(s : MathlinearalgebraModel, v : Double) -> MathlinearalgebraModel {
-  let result = math_linear_algebra_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_model_min(s : MathlinearalgebraModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_linear_algebra_layer_sum(s : MathlinearalgebraLayer) -> Double { @_c
 pub fn math_linear_algebra_layer_mean(s : MathlinearalgebraLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_layer_scale(s : MathlinearalgebraLayer, f : Double) -> MathlinearalgebraLayer {
-  let result = math_linear_algebra_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_layer_add(a : MathlinearalgebraLayer, b : MathlinearalgebraLayer) -> MathlinearalgebraLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_layer_copy(s : MathlinearalgebraLayer) -> MathlinearalgebraLayer {
-  let result = math_linear_algebra_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_layer_fill(s : MathlinearalgebraLayer, v : Double) -> MathlinearalgebraLayer {
-  let result = math_linear_algebra_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_layer_min(s : MathlinearalgebraLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_linear_algebra_buffer_sum(s : MathlinearalgebraBuffer) -> Double { @
 pub fn math_linear_algebra_buffer_mean(s : MathlinearalgebraBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_buffer_scale(s : MathlinearalgebraBuffer, f : Double) -> MathlinearalgebraBuffer {
-  let result = math_linear_algebra_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_buffer_add(a : MathlinearalgebraBuffer, b : MathlinearalgebraBuffer) -> MathlinearalgebraBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_buffer_copy(s : MathlinearalgebraBuffer) -> MathlinearalgebraBuffer {
-  let result = math_linear_algebra_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_buffer_fill(s : MathlinearalgebraBuffer, v : Double) -> MathlinearalgebraBuffer {
-  let result = math_linear_algebra_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_buffer_min(s : MathlinearalgebraBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_linear_algebra_cursor_sum(s : MathlinearalgebraCursor) -> Double { @
 pub fn math_linear_algebra_cursor_mean(s : MathlinearalgebraCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_cursor_scale(s : MathlinearalgebraCursor, f : Double) -> MathlinearalgebraCursor {
-  let result = math_linear_algebra_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_cursor_add(a : MathlinearalgebraCursor, b : MathlinearalgebraCursor) -> MathlinearalgebraCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_cursor_copy(s : MathlinearalgebraCursor) -> MathlinearalgebraCursor {
-  let result = math_linear_algebra_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_cursor_fill(s : MathlinearalgebraCursor, v : Double) -> MathlinearalgebraCursor {
-  let result = math_linear_algebra_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_cursor_min(s : MathlinearalgebraCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_linear_algebra_view_sum(s : MathlinearalgebraView) -> Double { @_com
 pub fn math_linear_algebra_view_mean(s : MathlinearalgebraView) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_view_scale(s : MathlinearalgebraView, f : Double) -> MathlinearalgebraView {
-  let result = math_linear_algebra_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_view_add(a : MathlinearalgebraView, b : MathlinearalgebraView) -> MathlinearalgebraView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_view_copy(s : MathlinearalgebraView) -> MathlinearalgebraView {
-  let result = math_linear_algebra_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_view_fill(s : MathlinearalgebraView, v : Double) -> MathlinearalgebraView {
-  let result = math_linear_algebra_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_view_min(s : MathlinearalgebraView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_linear_algebra_range_sum(s : MathlinearalgebraRange) -> Double { @_c
 pub fn math_linear_algebra_range_mean(s : MathlinearalgebraRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_range_scale(s : MathlinearalgebraRange, f : Double) -> MathlinearalgebraRange {
-  let result = math_linear_algebra_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_range_add(a : MathlinearalgebraRange, b : MathlinearalgebraRange) -> MathlinearalgebraRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_range_copy(s : MathlinearalgebraRange) -> MathlinearalgebraRange {
-  let result = math_linear_algebra_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_range_fill(s : MathlinearalgebraRange, v : Double) -> MathlinearalgebraRange {
-  let result = math_linear_algebra_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_range_min(s : MathlinearalgebraRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_linear_algebra_slice_sum(s : MathlinearalgebraSlice) -> Double { @_c
 pub fn math_linear_algebra_slice_mean(s : MathlinearalgebraSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_slice_scale(s : MathlinearalgebraSlice, f : Double) -> MathlinearalgebraSlice {
-  let result = math_linear_algebra_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_slice_add(a : MathlinearalgebraSlice, b : MathlinearalgebraSlice) -> MathlinearalgebraSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_linear_algebra_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_linear_algebra_slice_copy(s : MathlinearalgebraSlice) -> MathlinearalgebraSlice {
-  let result = math_linear_algebra_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_slice_fill(s : MathlinearalgebraSlice, v : Double) -> MathlinearalgebraSlice {
-  let result = math_linear_algebra_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_algebra_slice_min(s : MathlinearalgebraSlice) -> Double { @_common.min(s.data) }

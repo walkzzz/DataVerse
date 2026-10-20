@@ -383,28 +383,20 @@ pub fn ml_regress_poisson_frame_sum(s : MlregresspoissonFrame) -> Double { @_com
 pub fn ml_regress_poisson_frame_mean(s : MlregresspoissonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_frame_scale(s : MlregresspoissonFrame, f : Double) -> MlregresspoissonFrame {
-  let result = ml_regress_poisson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_frame_add(a : MlregresspoissonFrame, b : MlregresspoissonFrame) -> MlregresspoissonFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_frame_copy(s : MlregresspoissonFrame) -> MlregresspoissonFrame {
-  let result = ml_regress_poisson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_frame_fill(s : MlregresspoissonFrame, v : Double) -> MlregresspoissonFrame {
-  let result = ml_regress_poisson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_frame_min(s : MlregresspoissonFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_regress_poisson_table_sum(s : MlregresspoissonTable) -> Double { @_com
 pub fn ml_regress_poisson_table_mean(s : MlregresspoissonTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_table_scale(s : MlregresspoissonTable, f : Double) -> MlregresspoissonTable {
-  let result = ml_regress_poisson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_table_add(a : MlregresspoissonTable, b : MlregresspoissonTable) -> MlregresspoissonTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_table_copy(s : MlregresspoissonTable) -> MlregresspoissonTable {
-  let result = ml_regress_poisson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_table_fill(s : MlregresspoissonTable, v : Double) -> MlregresspoissonTable {
-  let result = ml_regress_poisson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_table_min(s : MlregresspoissonTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_regress_poisson_graphn_sum(s : MlregresspoissonGraphN) -> Double { @_c
 pub fn ml_regress_poisson_graphn_mean(s : MlregresspoissonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_graphn_scale(s : MlregresspoissonGraphN, f : Double) -> MlregresspoissonGraphN {
-  let result = ml_regress_poisson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_graphn_add(a : MlregresspoissonGraphN, b : MlregresspoissonGraphN) -> MlregresspoissonGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_graphn_copy(s : MlregresspoissonGraphN) -> MlregresspoissonGraphN {
-  let result = ml_regress_poisson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_graphn_fill(s : MlregresspoissonGraphN, v : Double) -> MlregresspoissonGraphN {
-  let result = ml_regress_poisson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_graphn_min(s : MlregresspoissonGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_regress_poisson_node_sum(s : MlregresspoissonNode) -> Double { @_commo
 pub fn ml_regress_poisson_node_mean(s : MlregresspoissonNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_node_scale(s : MlregresspoissonNode, f : Double) -> MlregresspoissonNode {
-  let result = ml_regress_poisson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_node_add(a : MlregresspoissonNode, b : MlregresspoissonNode) -> MlregresspoissonNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_node_copy(s : MlregresspoissonNode) -> MlregresspoissonNode {
-  let result = ml_regress_poisson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_node_fill(s : MlregresspoissonNode, v : Double) -> MlregresspoissonNode {
-  let result = ml_regress_poisson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_node_min(s : MlregresspoissonNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_regress_poisson_edge_sum(s : MlregresspoissonEdge) -> Double { @_commo
 pub fn ml_regress_poisson_edge_mean(s : MlregresspoissonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_edge_scale(s : MlregresspoissonEdge, f : Double) -> MlregresspoissonEdge {
-  let result = ml_regress_poisson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_edge_add(a : MlregresspoissonEdge, b : MlregresspoissonEdge) -> MlregresspoissonEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_edge_copy(s : MlregresspoissonEdge) -> MlregresspoissonEdge {
-  let result = ml_regress_poisson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_edge_fill(s : MlregresspoissonEdge, v : Double) -> MlregresspoissonEdge {
-  let result = ml_regress_poisson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_edge_min(s : MlregresspoissonEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_regress_poisson_path_sum(s : MlregresspoissonPath) -> Double { @_commo
 pub fn ml_regress_poisson_path_mean(s : MlregresspoissonPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_path_scale(s : MlregresspoissonPath, f : Double) -> MlregresspoissonPath {
-  let result = ml_regress_poisson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_path_add(a : MlregresspoissonPath, b : MlregresspoissonPath) -> MlregresspoissonPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_path_copy(s : MlregresspoissonPath) -> MlregresspoissonPath {
-  let result = ml_regress_poisson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_path_fill(s : MlregresspoissonPath, v : Double) -> MlregresspoissonPath {
-  let result = ml_regress_poisson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_path_min(s : MlregresspoissonPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_regress_poisson_cluster_sum(s : MlregresspoissonCluster) -> Double { @
 pub fn ml_regress_poisson_cluster_mean(s : MlregresspoissonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_cluster_scale(s : MlregresspoissonCluster, f : Double) -> MlregresspoissonCluster {
-  let result = ml_regress_poisson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_cluster_add(a : MlregresspoissonCluster, b : MlregresspoissonCluster) -> MlregresspoissonCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_cluster_copy(s : MlregresspoissonCluster) -> MlregresspoissonCluster {
-  let result = ml_regress_poisson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_cluster_fill(s : MlregresspoissonCluster, v : Double) -> MlregresspoissonCluster {
-  let result = ml_regress_poisson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_cluster_min(s : MlregresspoissonCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_regress_poisson_model_sum(s : MlregresspoissonModel) -> Double { @_com
 pub fn ml_regress_poisson_model_mean(s : MlregresspoissonModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_model_scale(s : MlregresspoissonModel, f : Double) -> MlregresspoissonModel {
-  let result = ml_regress_poisson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_model_add(a : MlregresspoissonModel, b : MlregresspoissonModel) -> MlregresspoissonModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_model_copy(s : MlregresspoissonModel) -> MlregresspoissonModel {
-  let result = ml_regress_poisson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_model_fill(s : MlregresspoissonModel, v : Double) -> MlregresspoissonModel {
-  let result = ml_regress_poisson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_model_min(s : MlregresspoissonModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_regress_poisson_layer_sum(s : MlregresspoissonLayer) -> Double { @_com
 pub fn ml_regress_poisson_layer_mean(s : MlregresspoissonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_layer_scale(s : MlregresspoissonLayer, f : Double) -> MlregresspoissonLayer {
-  let result = ml_regress_poisson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_layer_add(a : MlregresspoissonLayer, b : MlregresspoissonLayer) -> MlregresspoissonLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_layer_copy(s : MlregresspoissonLayer) -> MlregresspoissonLayer {
-  let result = ml_regress_poisson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_layer_fill(s : MlregresspoissonLayer, v : Double) -> MlregresspoissonLayer {
-  let result = ml_regress_poisson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_layer_min(s : MlregresspoissonLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_regress_poisson_buffer_sum(s : MlregresspoissonBuffer) -> Double { @_c
 pub fn ml_regress_poisson_buffer_mean(s : MlregresspoissonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_buffer_scale(s : MlregresspoissonBuffer, f : Double) -> MlregresspoissonBuffer {
-  let result = ml_regress_poisson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_buffer_add(a : MlregresspoissonBuffer, b : MlregresspoissonBuffer) -> MlregresspoissonBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_buffer_copy(s : MlregresspoissonBuffer) -> MlregresspoissonBuffer {
-  let result = ml_regress_poisson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_buffer_fill(s : MlregresspoissonBuffer, v : Double) -> MlregresspoissonBuffer {
-  let result = ml_regress_poisson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_buffer_min(s : MlregresspoissonBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_regress_poisson_cursor_sum(s : MlregresspoissonCursor) -> Double { @_c
 pub fn ml_regress_poisson_cursor_mean(s : MlregresspoissonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_cursor_scale(s : MlregresspoissonCursor, f : Double) -> MlregresspoissonCursor {
-  let result = ml_regress_poisson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_cursor_add(a : MlregresspoissonCursor, b : MlregresspoissonCursor) -> MlregresspoissonCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_cursor_copy(s : MlregresspoissonCursor) -> MlregresspoissonCursor {
-  let result = ml_regress_poisson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_cursor_fill(s : MlregresspoissonCursor, v : Double) -> MlregresspoissonCursor {
-  let result = ml_regress_poisson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_cursor_min(s : MlregresspoissonCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_regress_poisson_view_sum(s : MlregresspoissonView) -> Double { @_commo
 pub fn ml_regress_poisson_view_mean(s : MlregresspoissonView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_view_scale(s : MlregresspoissonView, f : Double) -> MlregresspoissonView {
-  let result = ml_regress_poisson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_view_add(a : MlregresspoissonView, b : MlregresspoissonView) -> MlregresspoissonView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_view_copy(s : MlregresspoissonView) -> MlregresspoissonView {
-  let result = ml_regress_poisson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_view_fill(s : MlregresspoissonView, v : Double) -> MlregresspoissonView {
-  let result = ml_regress_poisson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_view_min(s : MlregresspoissonView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_regress_poisson_range_sum(s : MlregresspoissonRange) -> Double { @_com
 pub fn ml_regress_poisson_range_mean(s : MlregresspoissonRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_range_scale(s : MlregresspoissonRange, f : Double) -> MlregresspoissonRange {
-  let result = ml_regress_poisson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_range_add(a : MlregresspoissonRange, b : MlregresspoissonRange) -> MlregresspoissonRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_range_copy(s : MlregresspoissonRange) -> MlregresspoissonRange {
-  let result = ml_regress_poisson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_range_fill(s : MlregresspoissonRange, v : Double) -> MlregresspoissonRange {
-  let result = ml_regress_poisson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_range_min(s : MlregresspoissonRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_regress_poisson_slice_sum(s : MlregresspoissonSlice) -> Double { @_com
 pub fn ml_regress_poisson_slice_mean(s : MlregresspoissonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_slice_scale(s : MlregresspoissonSlice, f : Double) -> MlregresspoissonSlice {
-  let result = ml_regress_poisson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_slice_add(a : MlregresspoissonSlice, b : MlregresspoissonSlice) -> MlregresspoissonSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_poisson_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_poisson_slice_copy(s : MlregresspoissonSlice) -> MlregresspoissonSlice {
-  let result = ml_regress_poisson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_slice_fill(s : MlregresspoissonSlice, v : Double) -> MlregresspoissonSlice {
-  let result = ml_regress_poisson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_poisson_slice_min(s : MlregresspoissonSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn net_flow_congestion_frame_sum(s : NetflowcongestionFrame) -> Double { @_c
 pub fn net_flow_congestion_frame_mean(s : NetflowcongestionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_frame_scale(s : NetflowcongestionFrame, f : Double) -> NetflowcongestionFrame {
-  let result = net_flow_congestion_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_frame_add(a : NetflowcongestionFrame, b : NetflowcongestionFrame) -> NetflowcongestionFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_frame_copy(s : NetflowcongestionFrame) -> NetflowcongestionFrame {
-  let result = net_flow_congestion_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_frame_fill(s : NetflowcongestionFrame, v : Double) -> NetflowcongestionFrame {
-  let result = net_flow_congestion_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_frame_min(s : NetflowcongestionFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_flow_congestion_table_sum(s : NetflowcongestionTable) -> Double { @_c
 pub fn net_flow_congestion_table_mean(s : NetflowcongestionTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_table_scale(s : NetflowcongestionTable, f : Double) -> NetflowcongestionTable {
-  let result = net_flow_congestion_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_table_add(a : NetflowcongestionTable, b : NetflowcongestionTable) -> NetflowcongestionTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_table_copy(s : NetflowcongestionTable) -> NetflowcongestionTable {
-  let result = net_flow_congestion_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_table_fill(s : NetflowcongestionTable, v : Double) -> NetflowcongestionTable {
-  let result = net_flow_congestion_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_table_min(s : NetflowcongestionTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_flow_congestion_graphn_sum(s : NetflowcongestionGraphN) -> Double { @
 pub fn net_flow_congestion_graphn_mean(s : NetflowcongestionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_graphn_scale(s : NetflowcongestionGraphN, f : Double) -> NetflowcongestionGraphN {
-  let result = net_flow_congestion_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_graphn_add(a : NetflowcongestionGraphN, b : NetflowcongestionGraphN) -> NetflowcongestionGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_graphn_copy(s : NetflowcongestionGraphN) -> NetflowcongestionGraphN {
-  let result = net_flow_congestion_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_graphn_fill(s : NetflowcongestionGraphN, v : Double) -> NetflowcongestionGraphN {
-  let result = net_flow_congestion_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_graphn_min(s : NetflowcongestionGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_flow_congestion_node_sum(s : NetflowcongestionNode) -> Double { @_com
 pub fn net_flow_congestion_node_mean(s : NetflowcongestionNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_node_scale(s : NetflowcongestionNode, f : Double) -> NetflowcongestionNode {
-  let result = net_flow_congestion_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_node_add(a : NetflowcongestionNode, b : NetflowcongestionNode) -> NetflowcongestionNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_node_copy(s : NetflowcongestionNode) -> NetflowcongestionNode {
-  let result = net_flow_congestion_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_node_fill(s : NetflowcongestionNode, v : Double) -> NetflowcongestionNode {
-  let result = net_flow_congestion_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_node_min(s : NetflowcongestionNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_flow_congestion_edge_sum(s : NetflowcongestionEdge) -> Double { @_com
 pub fn net_flow_congestion_edge_mean(s : NetflowcongestionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_edge_scale(s : NetflowcongestionEdge, f : Double) -> NetflowcongestionEdge {
-  let result = net_flow_congestion_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_edge_add(a : NetflowcongestionEdge, b : NetflowcongestionEdge) -> NetflowcongestionEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_edge_copy(s : NetflowcongestionEdge) -> NetflowcongestionEdge {
-  let result = net_flow_congestion_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_edge_fill(s : NetflowcongestionEdge, v : Double) -> NetflowcongestionEdge {
-  let result = net_flow_congestion_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_edge_min(s : NetflowcongestionEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_flow_congestion_path_sum(s : NetflowcongestionPath) -> Double { @_com
 pub fn net_flow_congestion_path_mean(s : NetflowcongestionPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_path_scale(s : NetflowcongestionPath, f : Double) -> NetflowcongestionPath {
-  let result = net_flow_congestion_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_path_add(a : NetflowcongestionPath, b : NetflowcongestionPath) -> NetflowcongestionPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_path_copy(s : NetflowcongestionPath) -> NetflowcongestionPath {
-  let result = net_flow_congestion_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_path_fill(s : NetflowcongestionPath, v : Double) -> NetflowcongestionPath {
-  let result = net_flow_congestion_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_path_min(s : NetflowcongestionPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_flow_congestion_cluster_sum(s : NetflowcongestionCluster) -> Double {
 pub fn net_flow_congestion_cluster_mean(s : NetflowcongestionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_cluster_scale(s : NetflowcongestionCluster, f : Double) -> NetflowcongestionCluster {
-  let result = net_flow_congestion_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_cluster_add(a : NetflowcongestionCluster, b : NetflowcongestionCluster) -> NetflowcongestionCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_cluster_copy(s : NetflowcongestionCluster) -> NetflowcongestionCluster {
-  let result = net_flow_congestion_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_cluster_fill(s : NetflowcongestionCluster, v : Double) -> NetflowcongestionCluster {
-  let result = net_flow_congestion_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_cluster_min(s : NetflowcongestionCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_flow_congestion_model_sum(s : NetflowcongestionModel) -> Double { @_c
 pub fn net_flow_congestion_model_mean(s : NetflowcongestionModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_model_scale(s : NetflowcongestionModel, f : Double) -> NetflowcongestionModel {
-  let result = net_flow_congestion_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_model_add(a : NetflowcongestionModel, b : NetflowcongestionModel) -> NetflowcongestionModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_model_copy(s : NetflowcongestionModel) -> NetflowcongestionModel {
-  let result = net_flow_congestion_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_model_fill(s : NetflowcongestionModel, v : Double) -> NetflowcongestionModel {
-  let result = net_flow_congestion_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_model_min(s : NetflowcongestionModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_flow_congestion_layer_sum(s : NetflowcongestionLayer) -> Double { @_c
 pub fn net_flow_congestion_layer_mean(s : NetflowcongestionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_layer_scale(s : NetflowcongestionLayer, f : Double) -> NetflowcongestionLayer {
-  let result = net_flow_congestion_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_layer_add(a : NetflowcongestionLayer, b : NetflowcongestionLayer) -> NetflowcongestionLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_layer_copy(s : NetflowcongestionLayer) -> NetflowcongestionLayer {
-  let result = net_flow_congestion_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_layer_fill(s : NetflowcongestionLayer, v : Double) -> NetflowcongestionLayer {
-  let result = net_flow_congestion_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_layer_min(s : NetflowcongestionLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_flow_congestion_buffer_sum(s : NetflowcongestionBuffer) -> Double { @
 pub fn net_flow_congestion_buffer_mean(s : NetflowcongestionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_buffer_scale(s : NetflowcongestionBuffer, f : Double) -> NetflowcongestionBuffer {
-  let result = net_flow_congestion_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_buffer_add(a : NetflowcongestionBuffer, b : NetflowcongestionBuffer) -> NetflowcongestionBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_buffer_copy(s : NetflowcongestionBuffer) -> NetflowcongestionBuffer {
-  let result = net_flow_congestion_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_buffer_fill(s : NetflowcongestionBuffer, v : Double) -> NetflowcongestionBuffer {
-  let result = net_flow_congestion_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_buffer_min(s : NetflowcongestionBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_flow_congestion_cursor_sum(s : NetflowcongestionCursor) -> Double { @
 pub fn net_flow_congestion_cursor_mean(s : NetflowcongestionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_cursor_scale(s : NetflowcongestionCursor, f : Double) -> NetflowcongestionCursor {
-  let result = net_flow_congestion_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_cursor_add(a : NetflowcongestionCursor, b : NetflowcongestionCursor) -> NetflowcongestionCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_cursor_copy(s : NetflowcongestionCursor) -> NetflowcongestionCursor {
-  let result = net_flow_congestion_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_cursor_fill(s : NetflowcongestionCursor, v : Double) -> NetflowcongestionCursor {
-  let result = net_flow_congestion_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_cursor_min(s : NetflowcongestionCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_flow_congestion_view_sum(s : NetflowcongestionView) -> Double { @_com
 pub fn net_flow_congestion_view_mean(s : NetflowcongestionView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_view_scale(s : NetflowcongestionView, f : Double) -> NetflowcongestionView {
-  let result = net_flow_congestion_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_view_add(a : NetflowcongestionView, b : NetflowcongestionView) -> NetflowcongestionView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_view_copy(s : NetflowcongestionView) -> NetflowcongestionView {
-  let result = net_flow_congestion_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_view_fill(s : NetflowcongestionView, v : Double) -> NetflowcongestionView {
-  let result = net_flow_congestion_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_view_min(s : NetflowcongestionView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_flow_congestion_range_sum(s : NetflowcongestionRange) -> Double { @_c
 pub fn net_flow_congestion_range_mean(s : NetflowcongestionRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_range_scale(s : NetflowcongestionRange, f : Double) -> NetflowcongestionRange {
-  let result = net_flow_congestion_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_range_add(a : NetflowcongestionRange, b : NetflowcongestionRange) -> NetflowcongestionRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_range_copy(s : NetflowcongestionRange) -> NetflowcongestionRange {
-  let result = net_flow_congestion_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_range_fill(s : NetflowcongestionRange, v : Double) -> NetflowcongestionRange {
-  let result = net_flow_congestion_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_range_min(s : NetflowcongestionRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_flow_congestion_slice_sum(s : NetflowcongestionSlice) -> Double { @_c
 pub fn net_flow_congestion_slice_mean(s : NetflowcongestionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_slice_scale(s : NetflowcongestionSlice, f : Double) -> NetflowcongestionSlice {
-  let result = net_flow_congestion_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_slice_add(a : NetflowcongestionSlice, b : NetflowcongestionSlice) -> NetflowcongestionSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_congestion_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_congestion_slice_copy(s : NetflowcongestionSlice) -> NetflowcongestionSlice {
-  let result = net_flow_congestion_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_slice_fill(s : NetflowcongestionSlice, v : Double) -> NetflowcongestionSlice {
-  let result = net_flow_congestion_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_congestion_slice_min(s : NetflowcongestionSlice) -> Double { @_common.min(s.data) }

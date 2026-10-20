@@ -383,28 +383,20 @@ pub fn ml_rl_sarsa_frame_sum(s : MlrlsarsaFrame) -> Double { @_common.sum(s.data
 pub fn ml_rl_sarsa_frame_mean(s : MlrlsarsaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_frame_scale(s : MlrlsarsaFrame, f : Double) -> MlrlsarsaFrame {
-  let result = ml_rl_sarsa_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_frame_add(a : MlrlsarsaFrame, b : MlrlsarsaFrame) -> MlrlsarsaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_frame_copy(s : MlrlsarsaFrame) -> MlrlsarsaFrame {
-  let result = ml_rl_sarsa_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_frame_fill(s : MlrlsarsaFrame, v : Double) -> MlrlsarsaFrame {
-  let result = ml_rl_sarsa_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_frame_min(s : MlrlsarsaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_sarsa_table_sum(s : MlrlsarsaTable) -> Double { @_common.sum(s.data
 pub fn ml_rl_sarsa_table_mean(s : MlrlsarsaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_table_scale(s : MlrlsarsaTable, f : Double) -> MlrlsarsaTable {
-  let result = ml_rl_sarsa_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_table_add(a : MlrlsarsaTable, b : MlrlsarsaTable) -> MlrlsarsaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_table_copy(s : MlrlsarsaTable) -> MlrlsarsaTable {
-  let result = ml_rl_sarsa_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_table_fill(s : MlrlsarsaTable, v : Double) -> MlrlsarsaTable {
-  let result = ml_rl_sarsa_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_table_min(s : MlrlsarsaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_sarsa_graphn_sum(s : MlrlsarsaGraphN) -> Double { @_common.sum(s.da
 pub fn ml_rl_sarsa_graphn_mean(s : MlrlsarsaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_graphn_scale(s : MlrlsarsaGraphN, f : Double) -> MlrlsarsaGraphN {
-  let result = ml_rl_sarsa_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_graphn_add(a : MlrlsarsaGraphN, b : MlrlsarsaGraphN) -> MlrlsarsaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_graphn_copy(s : MlrlsarsaGraphN) -> MlrlsarsaGraphN {
-  let result = ml_rl_sarsa_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_graphn_fill(s : MlrlsarsaGraphN, v : Double) -> MlrlsarsaGraphN {
-  let result = ml_rl_sarsa_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_graphn_min(s : MlrlsarsaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_sarsa_node_sum(s : MlrlsarsaNode) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_sarsa_node_mean(s : MlrlsarsaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_node_scale(s : MlrlsarsaNode, f : Double) -> MlrlsarsaNode {
-  let result = ml_rl_sarsa_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_node_add(a : MlrlsarsaNode, b : MlrlsarsaNode) -> MlrlsarsaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_node_copy(s : MlrlsarsaNode) -> MlrlsarsaNode {
-  let result = ml_rl_sarsa_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_node_fill(s : MlrlsarsaNode, v : Double) -> MlrlsarsaNode {
-  let result = ml_rl_sarsa_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_node_min(s : MlrlsarsaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_sarsa_edge_sum(s : MlrlsarsaEdge) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_sarsa_edge_mean(s : MlrlsarsaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_edge_scale(s : MlrlsarsaEdge, f : Double) -> MlrlsarsaEdge {
-  let result = ml_rl_sarsa_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_edge_add(a : MlrlsarsaEdge, b : MlrlsarsaEdge) -> MlrlsarsaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_edge_copy(s : MlrlsarsaEdge) -> MlrlsarsaEdge {
-  let result = ml_rl_sarsa_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_edge_fill(s : MlrlsarsaEdge, v : Double) -> MlrlsarsaEdge {
-  let result = ml_rl_sarsa_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_edge_min(s : MlrlsarsaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_sarsa_path_sum(s : MlrlsarsaPath) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_sarsa_path_mean(s : MlrlsarsaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_path_scale(s : MlrlsarsaPath, f : Double) -> MlrlsarsaPath {
-  let result = ml_rl_sarsa_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_path_add(a : MlrlsarsaPath, b : MlrlsarsaPath) -> MlrlsarsaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_path_copy(s : MlrlsarsaPath) -> MlrlsarsaPath {
-  let result = ml_rl_sarsa_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_path_fill(s : MlrlsarsaPath, v : Double) -> MlrlsarsaPath {
-  let result = ml_rl_sarsa_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_path_min(s : MlrlsarsaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_sarsa_cluster_sum(s : MlrlsarsaCluster) -> Double { @_common.sum(s.
 pub fn ml_rl_sarsa_cluster_mean(s : MlrlsarsaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_cluster_scale(s : MlrlsarsaCluster, f : Double) -> MlrlsarsaCluster {
-  let result = ml_rl_sarsa_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_cluster_add(a : MlrlsarsaCluster, b : MlrlsarsaCluster) -> MlrlsarsaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_cluster_copy(s : MlrlsarsaCluster) -> MlrlsarsaCluster {
-  let result = ml_rl_sarsa_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_cluster_fill(s : MlrlsarsaCluster, v : Double) -> MlrlsarsaCluster {
-  let result = ml_rl_sarsa_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_cluster_min(s : MlrlsarsaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_sarsa_model_sum(s : MlrlsarsaModel) -> Double { @_common.sum(s.data
 pub fn ml_rl_sarsa_model_mean(s : MlrlsarsaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_model_scale(s : MlrlsarsaModel, f : Double) -> MlrlsarsaModel {
-  let result = ml_rl_sarsa_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_model_add(a : MlrlsarsaModel, b : MlrlsarsaModel) -> MlrlsarsaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_model_copy(s : MlrlsarsaModel) -> MlrlsarsaModel {
-  let result = ml_rl_sarsa_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_model_fill(s : MlrlsarsaModel, v : Double) -> MlrlsarsaModel {
-  let result = ml_rl_sarsa_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_model_min(s : MlrlsarsaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_sarsa_layer_sum(s : MlrlsarsaLayer) -> Double { @_common.sum(s.data
 pub fn ml_rl_sarsa_layer_mean(s : MlrlsarsaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_layer_scale(s : MlrlsarsaLayer, f : Double) -> MlrlsarsaLayer {
-  let result = ml_rl_sarsa_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_layer_add(a : MlrlsarsaLayer, b : MlrlsarsaLayer) -> MlrlsarsaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_layer_copy(s : MlrlsarsaLayer) -> MlrlsarsaLayer {
-  let result = ml_rl_sarsa_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_layer_fill(s : MlrlsarsaLayer, v : Double) -> MlrlsarsaLayer {
-  let result = ml_rl_sarsa_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_layer_min(s : MlrlsarsaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_sarsa_buffer_sum(s : MlrlsarsaBuffer) -> Double { @_common.sum(s.da
 pub fn ml_rl_sarsa_buffer_mean(s : MlrlsarsaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_buffer_scale(s : MlrlsarsaBuffer, f : Double) -> MlrlsarsaBuffer {
-  let result = ml_rl_sarsa_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_buffer_add(a : MlrlsarsaBuffer, b : MlrlsarsaBuffer) -> MlrlsarsaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_buffer_copy(s : MlrlsarsaBuffer) -> MlrlsarsaBuffer {
-  let result = ml_rl_sarsa_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_buffer_fill(s : MlrlsarsaBuffer, v : Double) -> MlrlsarsaBuffer {
-  let result = ml_rl_sarsa_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_buffer_min(s : MlrlsarsaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_sarsa_cursor_sum(s : MlrlsarsaCursor) -> Double { @_common.sum(s.da
 pub fn ml_rl_sarsa_cursor_mean(s : MlrlsarsaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_cursor_scale(s : MlrlsarsaCursor, f : Double) -> MlrlsarsaCursor {
-  let result = ml_rl_sarsa_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_cursor_add(a : MlrlsarsaCursor, b : MlrlsarsaCursor) -> MlrlsarsaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_cursor_copy(s : MlrlsarsaCursor) -> MlrlsarsaCursor {
-  let result = ml_rl_sarsa_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_cursor_fill(s : MlrlsarsaCursor, v : Double) -> MlrlsarsaCursor {
-  let result = ml_rl_sarsa_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_cursor_min(s : MlrlsarsaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_sarsa_view_sum(s : MlrlsarsaView) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_sarsa_view_mean(s : MlrlsarsaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_view_scale(s : MlrlsarsaView, f : Double) -> MlrlsarsaView {
-  let result = ml_rl_sarsa_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_view_add(a : MlrlsarsaView, b : MlrlsarsaView) -> MlrlsarsaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_view_copy(s : MlrlsarsaView) -> MlrlsarsaView {
-  let result = ml_rl_sarsa_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_view_fill(s : MlrlsarsaView, v : Double) -> MlrlsarsaView {
-  let result = ml_rl_sarsa_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_view_min(s : MlrlsarsaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_sarsa_range_sum(s : MlrlsarsaRange) -> Double { @_common.sum(s.data
 pub fn ml_rl_sarsa_range_mean(s : MlrlsarsaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_range_scale(s : MlrlsarsaRange, f : Double) -> MlrlsarsaRange {
-  let result = ml_rl_sarsa_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_range_add(a : MlrlsarsaRange, b : MlrlsarsaRange) -> MlrlsarsaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_range_copy(s : MlrlsarsaRange) -> MlrlsarsaRange {
-  let result = ml_rl_sarsa_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_range_fill(s : MlrlsarsaRange, v : Double) -> MlrlsarsaRange {
-  let result = ml_rl_sarsa_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_range_min(s : MlrlsarsaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_sarsa_slice_sum(s : MlrlsarsaSlice) -> Double { @_common.sum(s.data
 pub fn ml_rl_sarsa_slice_mean(s : MlrlsarsaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_slice_scale(s : MlrlsarsaSlice, f : Double) -> MlrlsarsaSlice {
-  let result = ml_rl_sarsa_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_slice_add(a : MlrlsarsaSlice, b : MlrlsarsaSlice) -> MlrlsarsaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_sarsa_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_sarsa_slice_copy(s : MlrlsarsaSlice) -> MlrlsarsaSlice {
-  let result = ml_rl_sarsa_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_slice_fill(s : MlrlsarsaSlice, v : Double) -> MlrlsarsaSlice {
-  let result = ml_rl_sarsa_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_sarsa_slice_min(s : MlrlsarsaSlice) -> Double { @_common.min(s.data) }

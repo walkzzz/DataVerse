@@ -383,28 +383,20 @@ pub fn signal_window_gaussian_frame_sum(s : SignalwindowgaussianFrame) -> Double
 pub fn signal_window_gaussian_frame_mean(s : SignalwindowgaussianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_frame_scale(s : SignalwindowgaussianFrame, f : Double) -> SignalwindowgaussianFrame {
-  let result = signal_window_gaussian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_frame_add(a : SignalwindowgaussianFrame, b : SignalwindowgaussianFrame) -> SignalwindowgaussianFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_frame_copy(s : SignalwindowgaussianFrame) -> SignalwindowgaussianFrame {
-  let result = signal_window_gaussian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_frame_fill(s : SignalwindowgaussianFrame, v : Double) -> SignalwindowgaussianFrame {
-  let result = signal_window_gaussian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_frame_min(s : SignalwindowgaussianFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_window_gaussian_table_sum(s : SignalwindowgaussianTable) -> Double
 pub fn signal_window_gaussian_table_mean(s : SignalwindowgaussianTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_table_scale(s : SignalwindowgaussianTable, f : Double) -> SignalwindowgaussianTable {
-  let result = signal_window_gaussian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_table_add(a : SignalwindowgaussianTable, b : SignalwindowgaussianTable) -> SignalwindowgaussianTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_table_copy(s : SignalwindowgaussianTable) -> SignalwindowgaussianTable {
-  let result = signal_window_gaussian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_table_fill(s : SignalwindowgaussianTable, v : Double) -> SignalwindowgaussianTable {
-  let result = signal_window_gaussian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_table_min(s : SignalwindowgaussianTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_window_gaussian_graphn_sum(s : SignalwindowgaussianGraphN) -> Doub
 pub fn signal_window_gaussian_graphn_mean(s : SignalwindowgaussianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_graphn_scale(s : SignalwindowgaussianGraphN, f : Double) -> SignalwindowgaussianGraphN {
-  let result = signal_window_gaussian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_graphn_add(a : SignalwindowgaussianGraphN, b : SignalwindowgaussianGraphN) -> SignalwindowgaussianGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_graphn_copy(s : SignalwindowgaussianGraphN) -> SignalwindowgaussianGraphN {
-  let result = signal_window_gaussian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_graphn_fill(s : SignalwindowgaussianGraphN, v : Double) -> SignalwindowgaussianGraphN {
-  let result = signal_window_gaussian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_graphn_min(s : SignalwindowgaussianGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_window_gaussian_node_sum(s : SignalwindowgaussianNode) -> Double {
 pub fn signal_window_gaussian_node_mean(s : SignalwindowgaussianNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_node_scale(s : SignalwindowgaussianNode, f : Double) -> SignalwindowgaussianNode {
-  let result = signal_window_gaussian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_node_add(a : SignalwindowgaussianNode, b : SignalwindowgaussianNode) -> SignalwindowgaussianNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_node_copy(s : SignalwindowgaussianNode) -> SignalwindowgaussianNode {
-  let result = signal_window_gaussian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_node_fill(s : SignalwindowgaussianNode, v : Double) -> SignalwindowgaussianNode {
-  let result = signal_window_gaussian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_node_min(s : SignalwindowgaussianNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_window_gaussian_edge_sum(s : SignalwindowgaussianEdge) -> Double {
 pub fn signal_window_gaussian_edge_mean(s : SignalwindowgaussianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_edge_scale(s : SignalwindowgaussianEdge, f : Double) -> SignalwindowgaussianEdge {
-  let result = signal_window_gaussian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_edge_add(a : SignalwindowgaussianEdge, b : SignalwindowgaussianEdge) -> SignalwindowgaussianEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_edge_copy(s : SignalwindowgaussianEdge) -> SignalwindowgaussianEdge {
-  let result = signal_window_gaussian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_edge_fill(s : SignalwindowgaussianEdge, v : Double) -> SignalwindowgaussianEdge {
-  let result = signal_window_gaussian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_edge_min(s : SignalwindowgaussianEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_window_gaussian_path_sum(s : SignalwindowgaussianPath) -> Double {
 pub fn signal_window_gaussian_path_mean(s : SignalwindowgaussianPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_path_scale(s : SignalwindowgaussianPath, f : Double) -> SignalwindowgaussianPath {
-  let result = signal_window_gaussian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_path_add(a : SignalwindowgaussianPath, b : SignalwindowgaussianPath) -> SignalwindowgaussianPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_path_copy(s : SignalwindowgaussianPath) -> SignalwindowgaussianPath {
-  let result = signal_window_gaussian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_path_fill(s : SignalwindowgaussianPath, v : Double) -> SignalwindowgaussianPath {
-  let result = signal_window_gaussian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_path_min(s : SignalwindowgaussianPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_window_gaussian_cluster_sum(s : SignalwindowgaussianCluster) -> Do
 pub fn signal_window_gaussian_cluster_mean(s : SignalwindowgaussianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_cluster_scale(s : SignalwindowgaussianCluster, f : Double) -> SignalwindowgaussianCluster {
-  let result = signal_window_gaussian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cluster_add(a : SignalwindowgaussianCluster, b : SignalwindowgaussianCluster) -> SignalwindowgaussianCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_cluster_copy(s : SignalwindowgaussianCluster) -> SignalwindowgaussianCluster {
-  let result = signal_window_gaussian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cluster_fill(s : SignalwindowgaussianCluster, v : Double) -> SignalwindowgaussianCluster {
-  let result = signal_window_gaussian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cluster_min(s : SignalwindowgaussianCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_window_gaussian_model_sum(s : SignalwindowgaussianModel) -> Double
 pub fn signal_window_gaussian_model_mean(s : SignalwindowgaussianModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_model_scale(s : SignalwindowgaussianModel, f : Double) -> SignalwindowgaussianModel {
-  let result = signal_window_gaussian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_model_add(a : SignalwindowgaussianModel, b : SignalwindowgaussianModel) -> SignalwindowgaussianModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_model_copy(s : SignalwindowgaussianModel) -> SignalwindowgaussianModel {
-  let result = signal_window_gaussian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_model_fill(s : SignalwindowgaussianModel, v : Double) -> SignalwindowgaussianModel {
-  let result = signal_window_gaussian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_model_min(s : SignalwindowgaussianModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_window_gaussian_layer_sum(s : SignalwindowgaussianLayer) -> Double
 pub fn signal_window_gaussian_layer_mean(s : SignalwindowgaussianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_layer_scale(s : SignalwindowgaussianLayer, f : Double) -> SignalwindowgaussianLayer {
-  let result = signal_window_gaussian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_layer_add(a : SignalwindowgaussianLayer, b : SignalwindowgaussianLayer) -> SignalwindowgaussianLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_layer_copy(s : SignalwindowgaussianLayer) -> SignalwindowgaussianLayer {
-  let result = signal_window_gaussian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_layer_fill(s : SignalwindowgaussianLayer, v : Double) -> SignalwindowgaussianLayer {
-  let result = signal_window_gaussian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_layer_min(s : SignalwindowgaussianLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_window_gaussian_buffer_sum(s : SignalwindowgaussianBuffer) -> Doub
 pub fn signal_window_gaussian_buffer_mean(s : SignalwindowgaussianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_buffer_scale(s : SignalwindowgaussianBuffer, f : Double) -> SignalwindowgaussianBuffer {
-  let result = signal_window_gaussian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_buffer_add(a : SignalwindowgaussianBuffer, b : SignalwindowgaussianBuffer) -> SignalwindowgaussianBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_buffer_copy(s : SignalwindowgaussianBuffer) -> SignalwindowgaussianBuffer {
-  let result = signal_window_gaussian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_buffer_fill(s : SignalwindowgaussianBuffer, v : Double) -> SignalwindowgaussianBuffer {
-  let result = signal_window_gaussian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_buffer_min(s : SignalwindowgaussianBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_window_gaussian_cursor_sum(s : SignalwindowgaussianCursor) -> Doub
 pub fn signal_window_gaussian_cursor_mean(s : SignalwindowgaussianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_cursor_scale(s : SignalwindowgaussianCursor, f : Double) -> SignalwindowgaussianCursor {
-  let result = signal_window_gaussian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cursor_add(a : SignalwindowgaussianCursor, b : SignalwindowgaussianCursor) -> SignalwindowgaussianCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_cursor_copy(s : SignalwindowgaussianCursor) -> SignalwindowgaussianCursor {
-  let result = signal_window_gaussian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cursor_fill(s : SignalwindowgaussianCursor, v : Double) -> SignalwindowgaussianCursor {
-  let result = signal_window_gaussian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cursor_min(s : SignalwindowgaussianCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_window_gaussian_view_sum(s : SignalwindowgaussianView) -> Double {
 pub fn signal_window_gaussian_view_mean(s : SignalwindowgaussianView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_view_scale(s : SignalwindowgaussianView, f : Double) -> SignalwindowgaussianView {
-  let result = signal_window_gaussian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_view_add(a : SignalwindowgaussianView, b : SignalwindowgaussianView) -> SignalwindowgaussianView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_view_copy(s : SignalwindowgaussianView) -> SignalwindowgaussianView {
-  let result = signal_window_gaussian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_view_fill(s : SignalwindowgaussianView, v : Double) -> SignalwindowgaussianView {
-  let result = signal_window_gaussian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_view_min(s : SignalwindowgaussianView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_window_gaussian_range_sum(s : SignalwindowgaussianRange) -> Double
 pub fn signal_window_gaussian_range_mean(s : SignalwindowgaussianRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_range_scale(s : SignalwindowgaussianRange, f : Double) -> SignalwindowgaussianRange {
-  let result = signal_window_gaussian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_range_add(a : SignalwindowgaussianRange, b : SignalwindowgaussianRange) -> SignalwindowgaussianRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_range_copy(s : SignalwindowgaussianRange) -> SignalwindowgaussianRange {
-  let result = signal_window_gaussian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_range_fill(s : SignalwindowgaussianRange, v : Double) -> SignalwindowgaussianRange {
-  let result = signal_window_gaussian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_range_min(s : SignalwindowgaussianRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_window_gaussian_slice_sum(s : SignalwindowgaussianSlice) -> Double
 pub fn signal_window_gaussian_slice_mean(s : SignalwindowgaussianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_slice_scale(s : SignalwindowgaussianSlice, f : Double) -> SignalwindowgaussianSlice {
-  let result = signal_window_gaussian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_slice_add(a : SignalwindowgaussianSlice, b : SignalwindowgaussianSlice) -> SignalwindowgaussianSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_gaussian_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_gaussian_slice_copy(s : SignalwindowgaussianSlice) -> SignalwindowgaussianSlice {
-  let result = signal_window_gaussian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_slice_fill(s : SignalwindowgaussianSlice, v : Double) -> SignalwindowgaussianSlice {
-  let result = signal_window_gaussian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_slice_min(s : SignalwindowgaussianSlice) -> Double { @_common.min(s.data) }

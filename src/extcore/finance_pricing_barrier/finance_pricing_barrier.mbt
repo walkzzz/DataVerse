@@ -383,28 +383,20 @@ pub fn finance_pricing_barrier_frame_sum(s : FinancepricingbarrierFrame) -> Doub
 pub fn finance_pricing_barrier_frame_mean(s : FinancepricingbarrierFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_frame_scale(s : FinancepricingbarrierFrame, f : Double) -> FinancepricingbarrierFrame {
-  let result = finance_pricing_barrier_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_frame_add(a : FinancepricingbarrierFrame, b : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_frame_copy(s : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
-  let result = finance_pricing_barrier_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_frame_fill(s : FinancepricingbarrierFrame, v : Double) -> FinancepricingbarrierFrame {
-  let result = finance_pricing_barrier_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_frame_min(s : FinancepricingbarrierFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_pricing_barrier_table_sum(s : FinancepricingbarrierTable) -> Doub
 pub fn finance_pricing_barrier_table_mean(s : FinancepricingbarrierTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_table_scale(s : FinancepricingbarrierTable, f : Double) -> FinancepricingbarrierTable {
-  let result = finance_pricing_barrier_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_table_add(a : FinancepricingbarrierTable, b : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_table_copy(s : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
-  let result = finance_pricing_barrier_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_table_fill(s : FinancepricingbarrierTable, v : Double) -> FinancepricingbarrierTable {
-  let result = finance_pricing_barrier_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_table_min(s : FinancepricingbarrierTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_pricing_barrier_graphn_sum(s : FinancepricingbarrierGraphN) -> Do
 pub fn finance_pricing_barrier_graphn_mean(s : FinancepricingbarrierGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_graphn_scale(s : FinancepricingbarrierGraphN, f : Double) -> FinancepricingbarrierGraphN {
-  let result = finance_pricing_barrier_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_graphn_add(a : FinancepricingbarrierGraphN, b : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_graphn_copy(s : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
-  let result = finance_pricing_barrier_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_graphn_fill(s : FinancepricingbarrierGraphN, v : Double) -> FinancepricingbarrierGraphN {
-  let result = finance_pricing_barrier_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_graphn_min(s : FinancepricingbarrierGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_pricing_barrier_node_sum(s : FinancepricingbarrierNode) -> Double
 pub fn finance_pricing_barrier_node_mean(s : FinancepricingbarrierNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_node_scale(s : FinancepricingbarrierNode, f : Double) -> FinancepricingbarrierNode {
-  let result = finance_pricing_barrier_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_node_add(a : FinancepricingbarrierNode, b : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_node_copy(s : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
-  let result = finance_pricing_barrier_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_node_fill(s : FinancepricingbarrierNode, v : Double) -> FinancepricingbarrierNode {
-  let result = finance_pricing_barrier_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_node_min(s : FinancepricingbarrierNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_pricing_barrier_edge_sum(s : FinancepricingbarrierEdge) -> Double
 pub fn finance_pricing_barrier_edge_mean(s : FinancepricingbarrierEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_edge_scale(s : FinancepricingbarrierEdge, f : Double) -> FinancepricingbarrierEdge {
-  let result = finance_pricing_barrier_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_edge_add(a : FinancepricingbarrierEdge, b : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_edge_copy(s : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
-  let result = finance_pricing_barrier_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_edge_fill(s : FinancepricingbarrierEdge, v : Double) -> FinancepricingbarrierEdge {
-  let result = finance_pricing_barrier_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_edge_min(s : FinancepricingbarrierEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_pricing_barrier_path_sum(s : FinancepricingbarrierPath) -> Double
 pub fn finance_pricing_barrier_path_mean(s : FinancepricingbarrierPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_path_scale(s : FinancepricingbarrierPath, f : Double) -> FinancepricingbarrierPath {
-  let result = finance_pricing_barrier_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_path_add(a : FinancepricingbarrierPath, b : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_path_copy(s : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
-  let result = finance_pricing_barrier_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_path_fill(s : FinancepricingbarrierPath, v : Double) -> FinancepricingbarrierPath {
-  let result = finance_pricing_barrier_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_path_min(s : FinancepricingbarrierPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_pricing_barrier_cluster_sum(s : FinancepricingbarrierCluster) -> 
 pub fn finance_pricing_barrier_cluster_mean(s : FinancepricingbarrierCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_cluster_scale(s : FinancepricingbarrierCluster, f : Double) -> FinancepricingbarrierCluster {
-  let result = finance_pricing_barrier_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_cluster_add(a : FinancepricingbarrierCluster, b : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_cluster_copy(s : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
-  let result = finance_pricing_barrier_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_cluster_fill(s : FinancepricingbarrierCluster, v : Double) -> FinancepricingbarrierCluster {
-  let result = finance_pricing_barrier_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_cluster_min(s : FinancepricingbarrierCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_pricing_barrier_model_sum(s : FinancepricingbarrierModel) -> Doub
 pub fn finance_pricing_barrier_model_mean(s : FinancepricingbarrierModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_model_scale(s : FinancepricingbarrierModel, f : Double) -> FinancepricingbarrierModel {
-  let result = finance_pricing_barrier_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_model_add(a : FinancepricingbarrierModel, b : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_model_copy(s : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
-  let result = finance_pricing_barrier_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_model_fill(s : FinancepricingbarrierModel, v : Double) -> FinancepricingbarrierModel {
-  let result = finance_pricing_barrier_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_model_min(s : FinancepricingbarrierModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_pricing_barrier_layer_sum(s : FinancepricingbarrierLayer) -> Doub
 pub fn finance_pricing_barrier_layer_mean(s : FinancepricingbarrierLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_layer_scale(s : FinancepricingbarrierLayer, f : Double) -> FinancepricingbarrierLayer {
-  let result = finance_pricing_barrier_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_layer_add(a : FinancepricingbarrierLayer, b : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_layer_copy(s : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
-  let result = finance_pricing_barrier_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_layer_fill(s : FinancepricingbarrierLayer, v : Double) -> FinancepricingbarrierLayer {
-  let result = finance_pricing_barrier_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_layer_min(s : FinancepricingbarrierLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_pricing_barrier_buffer_sum(s : FinancepricingbarrierBuffer) -> Do
 pub fn finance_pricing_barrier_buffer_mean(s : FinancepricingbarrierBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_buffer_scale(s : FinancepricingbarrierBuffer, f : Double) -> FinancepricingbarrierBuffer {
-  let result = finance_pricing_barrier_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_buffer_add(a : FinancepricingbarrierBuffer, b : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_buffer_copy(s : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
-  let result = finance_pricing_barrier_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_buffer_fill(s : FinancepricingbarrierBuffer, v : Double) -> FinancepricingbarrierBuffer {
-  let result = finance_pricing_barrier_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_buffer_min(s : FinancepricingbarrierBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_pricing_barrier_cursor_sum(s : FinancepricingbarrierCursor) -> Do
 pub fn finance_pricing_barrier_cursor_mean(s : FinancepricingbarrierCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_cursor_scale(s : FinancepricingbarrierCursor, f : Double) -> FinancepricingbarrierCursor {
-  let result = finance_pricing_barrier_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_cursor_add(a : FinancepricingbarrierCursor, b : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_cursor_copy(s : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
-  let result = finance_pricing_barrier_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_cursor_fill(s : FinancepricingbarrierCursor, v : Double) -> FinancepricingbarrierCursor {
-  let result = finance_pricing_barrier_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_cursor_min(s : FinancepricingbarrierCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_pricing_barrier_view_sum(s : FinancepricingbarrierView) -> Double
 pub fn finance_pricing_barrier_view_mean(s : FinancepricingbarrierView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_view_scale(s : FinancepricingbarrierView, f : Double) -> FinancepricingbarrierView {
-  let result = finance_pricing_barrier_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_view_add(a : FinancepricingbarrierView, b : FinancepricingbarrierView) -> FinancepricingbarrierView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_view_copy(s : FinancepricingbarrierView) -> FinancepricingbarrierView {
-  let result = finance_pricing_barrier_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_view_fill(s : FinancepricingbarrierView, v : Double) -> FinancepricingbarrierView {
-  let result = finance_pricing_barrier_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_view_min(s : FinancepricingbarrierView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_pricing_barrier_range_sum(s : FinancepricingbarrierRange) -> Doub
 pub fn finance_pricing_barrier_range_mean(s : FinancepricingbarrierRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_range_scale(s : FinancepricingbarrierRange, f : Double) -> FinancepricingbarrierRange {
-  let result = finance_pricing_barrier_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_range_add(a : FinancepricingbarrierRange, b : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_range_copy(s : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
-  let result = finance_pricing_barrier_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_range_fill(s : FinancepricingbarrierRange, v : Double) -> FinancepricingbarrierRange {
-  let result = finance_pricing_barrier_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_range_min(s : FinancepricingbarrierRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_pricing_barrier_slice_sum(s : FinancepricingbarrierSlice) -> Doub
 pub fn finance_pricing_barrier_slice_mean(s : FinancepricingbarrierSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_slice_scale(s : FinancepricingbarrierSlice, f : Double) -> FinancepricingbarrierSlice {
-  let result = finance_pricing_barrier_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_slice_add(a : FinancepricingbarrierSlice, b : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_barrier_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_barrier_slice_copy(s : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
-  let result = finance_pricing_barrier_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_slice_fill(s : FinancepricingbarrierSlice, v : Double) -> FinancepricingbarrierSlice {
-  let result = finance_pricing_barrier_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_barrier_slice_min(s : FinancepricingbarrierSlice) -> Double { @_common.min(s.data) }

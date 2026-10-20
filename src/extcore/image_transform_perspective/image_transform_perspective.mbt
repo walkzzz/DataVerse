@@ -383,28 +383,20 @@ pub fn image_transform_perspective_frame_sum(s : ImagetransformperspectiveFrame)
 pub fn image_transform_perspective_frame_mean(s : ImagetransformperspectiveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_frame_scale(s : ImagetransformperspectiveFrame, f : Double) -> ImagetransformperspectiveFrame {
-  let result = image_transform_perspective_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_frame_add(a : ImagetransformperspectiveFrame, b : ImagetransformperspectiveFrame) -> ImagetransformperspectiveFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_frame_copy(s : ImagetransformperspectiveFrame) -> ImagetransformperspectiveFrame {
-  let result = image_transform_perspective_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_frame_fill(s : ImagetransformperspectiveFrame, v : Double) -> ImagetransformperspectiveFrame {
-  let result = image_transform_perspective_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_frame_min(s : ImagetransformperspectiveFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_transform_perspective_table_sum(s : ImagetransformperspectiveTable)
 pub fn image_transform_perspective_table_mean(s : ImagetransformperspectiveTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_table_scale(s : ImagetransformperspectiveTable, f : Double) -> ImagetransformperspectiveTable {
-  let result = image_transform_perspective_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_table_add(a : ImagetransformperspectiveTable, b : ImagetransformperspectiveTable) -> ImagetransformperspectiveTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_table_copy(s : ImagetransformperspectiveTable) -> ImagetransformperspectiveTable {
-  let result = image_transform_perspective_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_table_fill(s : ImagetransformperspectiveTable, v : Double) -> ImagetransformperspectiveTable {
-  let result = image_transform_perspective_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_table_min(s : ImagetransformperspectiveTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_transform_perspective_graphn_sum(s : ImagetransformperspectiveGraph
 pub fn image_transform_perspective_graphn_mean(s : ImagetransformperspectiveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_graphn_scale(s : ImagetransformperspectiveGraphN, f : Double) -> ImagetransformperspectiveGraphN {
-  let result = image_transform_perspective_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_graphn_add(a : ImagetransformperspectiveGraphN, b : ImagetransformperspectiveGraphN) -> ImagetransformperspectiveGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_graphn_copy(s : ImagetransformperspectiveGraphN) -> ImagetransformperspectiveGraphN {
-  let result = image_transform_perspective_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_graphn_fill(s : ImagetransformperspectiveGraphN, v : Double) -> ImagetransformperspectiveGraphN {
-  let result = image_transform_perspective_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_graphn_min(s : ImagetransformperspectiveGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_transform_perspective_node_sum(s : ImagetransformperspectiveNode) -
 pub fn image_transform_perspective_node_mean(s : ImagetransformperspectiveNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_node_scale(s : ImagetransformperspectiveNode, f : Double) -> ImagetransformperspectiveNode {
-  let result = image_transform_perspective_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_node_add(a : ImagetransformperspectiveNode, b : ImagetransformperspectiveNode) -> ImagetransformperspectiveNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_node_copy(s : ImagetransformperspectiveNode) -> ImagetransformperspectiveNode {
-  let result = image_transform_perspective_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_node_fill(s : ImagetransformperspectiveNode, v : Double) -> ImagetransformperspectiveNode {
-  let result = image_transform_perspective_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_node_min(s : ImagetransformperspectiveNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_transform_perspective_edge_sum(s : ImagetransformperspectiveEdge) -
 pub fn image_transform_perspective_edge_mean(s : ImagetransformperspectiveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_edge_scale(s : ImagetransformperspectiveEdge, f : Double) -> ImagetransformperspectiveEdge {
-  let result = image_transform_perspective_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_edge_add(a : ImagetransformperspectiveEdge, b : ImagetransformperspectiveEdge) -> ImagetransformperspectiveEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_edge_copy(s : ImagetransformperspectiveEdge) -> ImagetransformperspectiveEdge {
-  let result = image_transform_perspective_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_edge_fill(s : ImagetransformperspectiveEdge, v : Double) -> ImagetransformperspectiveEdge {
-  let result = image_transform_perspective_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_edge_min(s : ImagetransformperspectiveEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_transform_perspective_path_sum(s : ImagetransformperspectivePath) -
 pub fn image_transform_perspective_path_mean(s : ImagetransformperspectivePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_path_scale(s : ImagetransformperspectivePath, f : Double) -> ImagetransformperspectivePath {
-  let result = image_transform_perspective_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_path_add(a : ImagetransformperspectivePath, b : ImagetransformperspectivePath) -> ImagetransformperspectivePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_path_copy(s : ImagetransformperspectivePath) -> ImagetransformperspectivePath {
-  let result = image_transform_perspective_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_path_fill(s : ImagetransformperspectivePath, v : Double) -> ImagetransformperspectivePath {
-  let result = image_transform_perspective_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_path_min(s : ImagetransformperspectivePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_transform_perspective_cluster_sum(s : ImagetransformperspectiveClus
 pub fn image_transform_perspective_cluster_mean(s : ImagetransformperspectiveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_cluster_scale(s : ImagetransformperspectiveCluster, f : Double) -> ImagetransformperspectiveCluster {
-  let result = image_transform_perspective_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cluster_add(a : ImagetransformperspectiveCluster, b : ImagetransformperspectiveCluster) -> ImagetransformperspectiveCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_cluster_copy(s : ImagetransformperspectiveCluster) -> ImagetransformperspectiveCluster {
-  let result = image_transform_perspective_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cluster_fill(s : ImagetransformperspectiveCluster, v : Double) -> ImagetransformperspectiveCluster {
-  let result = image_transform_perspective_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cluster_min(s : ImagetransformperspectiveCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_transform_perspective_model_sum(s : ImagetransformperspectiveModel)
 pub fn image_transform_perspective_model_mean(s : ImagetransformperspectiveModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_model_scale(s : ImagetransformperspectiveModel, f : Double) -> ImagetransformperspectiveModel {
-  let result = image_transform_perspective_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_model_add(a : ImagetransformperspectiveModel, b : ImagetransformperspectiveModel) -> ImagetransformperspectiveModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_model_copy(s : ImagetransformperspectiveModel) -> ImagetransformperspectiveModel {
-  let result = image_transform_perspective_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_model_fill(s : ImagetransformperspectiveModel, v : Double) -> ImagetransformperspectiveModel {
-  let result = image_transform_perspective_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_model_min(s : ImagetransformperspectiveModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_transform_perspective_layer_sum(s : ImagetransformperspectiveLayer)
 pub fn image_transform_perspective_layer_mean(s : ImagetransformperspectiveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_layer_scale(s : ImagetransformperspectiveLayer, f : Double) -> ImagetransformperspectiveLayer {
-  let result = image_transform_perspective_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_layer_add(a : ImagetransformperspectiveLayer, b : ImagetransformperspectiveLayer) -> ImagetransformperspectiveLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_layer_copy(s : ImagetransformperspectiveLayer) -> ImagetransformperspectiveLayer {
-  let result = image_transform_perspective_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_layer_fill(s : ImagetransformperspectiveLayer, v : Double) -> ImagetransformperspectiveLayer {
-  let result = image_transform_perspective_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_layer_min(s : ImagetransformperspectiveLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_transform_perspective_buffer_sum(s : ImagetransformperspectiveBuffe
 pub fn image_transform_perspective_buffer_mean(s : ImagetransformperspectiveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_buffer_scale(s : ImagetransformperspectiveBuffer, f : Double) -> ImagetransformperspectiveBuffer {
-  let result = image_transform_perspective_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_buffer_add(a : ImagetransformperspectiveBuffer, b : ImagetransformperspectiveBuffer) -> ImagetransformperspectiveBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_buffer_copy(s : ImagetransformperspectiveBuffer) -> ImagetransformperspectiveBuffer {
-  let result = image_transform_perspective_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_buffer_fill(s : ImagetransformperspectiveBuffer, v : Double) -> ImagetransformperspectiveBuffer {
-  let result = image_transform_perspective_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_buffer_min(s : ImagetransformperspectiveBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_transform_perspective_cursor_sum(s : ImagetransformperspectiveCurso
 pub fn image_transform_perspective_cursor_mean(s : ImagetransformperspectiveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_cursor_scale(s : ImagetransformperspectiveCursor, f : Double) -> ImagetransformperspectiveCursor {
-  let result = image_transform_perspective_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cursor_add(a : ImagetransformperspectiveCursor, b : ImagetransformperspectiveCursor) -> ImagetransformperspectiveCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_cursor_copy(s : ImagetransformperspectiveCursor) -> ImagetransformperspectiveCursor {
-  let result = image_transform_perspective_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cursor_fill(s : ImagetransformperspectiveCursor, v : Double) -> ImagetransformperspectiveCursor {
-  let result = image_transform_perspective_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cursor_min(s : ImagetransformperspectiveCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_transform_perspective_view_sum(s : ImagetransformperspectiveView) -
 pub fn image_transform_perspective_view_mean(s : ImagetransformperspectiveView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_view_scale(s : ImagetransformperspectiveView, f : Double) -> ImagetransformperspectiveView {
-  let result = image_transform_perspective_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_view_add(a : ImagetransformperspectiveView, b : ImagetransformperspectiveView) -> ImagetransformperspectiveView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_view_copy(s : ImagetransformperspectiveView) -> ImagetransformperspectiveView {
-  let result = image_transform_perspective_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_view_fill(s : ImagetransformperspectiveView, v : Double) -> ImagetransformperspectiveView {
-  let result = image_transform_perspective_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_view_min(s : ImagetransformperspectiveView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_transform_perspective_range_sum(s : ImagetransformperspectiveRange)
 pub fn image_transform_perspective_range_mean(s : ImagetransformperspectiveRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_range_scale(s : ImagetransformperspectiveRange, f : Double) -> ImagetransformperspectiveRange {
-  let result = image_transform_perspective_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_range_add(a : ImagetransformperspectiveRange, b : ImagetransformperspectiveRange) -> ImagetransformperspectiveRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_range_copy(s : ImagetransformperspectiveRange) -> ImagetransformperspectiveRange {
-  let result = image_transform_perspective_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_range_fill(s : ImagetransformperspectiveRange, v : Double) -> ImagetransformperspectiveRange {
-  let result = image_transform_perspective_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_range_min(s : ImagetransformperspectiveRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_transform_perspective_slice_sum(s : ImagetransformperspectiveSlice)
 pub fn image_transform_perspective_slice_mean(s : ImagetransformperspectiveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_slice_scale(s : ImagetransformperspectiveSlice, f : Double) -> ImagetransformperspectiveSlice {
-  let result = image_transform_perspective_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_slice_add(a : ImagetransformperspectiveSlice, b : ImagetransformperspectiveSlice) -> ImagetransformperspectiveSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_perspective_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_perspective_slice_copy(s : ImagetransformperspectiveSlice) -> ImagetransformperspectiveSlice {
-  let result = image_transform_perspective_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_slice_fill(s : ImagetransformperspectiveSlice, v : Double) -> ImagetransformperspectiveSlice {
-  let result = image_transform_perspective_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_slice_min(s : ImagetransformperspectiveSlice) -> Double { @_common.min(s.data) }

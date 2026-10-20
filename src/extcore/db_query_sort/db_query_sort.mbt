@@ -383,28 +383,20 @@ pub fn db_query_sort_frame_sum(s : DbquerysortFrame) -> Double { @_common.sum(s.
 pub fn db_query_sort_frame_mean(s : DbquerysortFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_frame_scale(s : DbquerysortFrame, f : Double) -> DbquerysortFrame {
-  let result = db_query_sort_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_frame_add(a : DbquerysortFrame, b : DbquerysortFrame) -> DbquerysortFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_frame_copy(s : DbquerysortFrame) -> DbquerysortFrame {
-  let result = db_query_sort_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_frame_fill(s : DbquerysortFrame, v : Double) -> DbquerysortFrame {
-  let result = db_query_sort_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_frame_min(s : DbquerysortFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_query_sort_table_sum(s : DbquerysortTable) -> Double { @_common.sum(s.
 pub fn db_query_sort_table_mean(s : DbquerysortTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_table_scale(s : DbquerysortTable, f : Double) -> DbquerysortTable {
-  let result = db_query_sort_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_table_add(a : DbquerysortTable, b : DbquerysortTable) -> DbquerysortTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_table_copy(s : DbquerysortTable) -> DbquerysortTable {
-  let result = db_query_sort_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_table_fill(s : DbquerysortTable, v : Double) -> DbquerysortTable {
-  let result = db_query_sort_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_table_min(s : DbquerysortTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_query_sort_graphn_sum(s : DbquerysortGraphN) -> Double { @_common.sum(
 pub fn db_query_sort_graphn_mean(s : DbquerysortGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_graphn_scale(s : DbquerysortGraphN, f : Double) -> DbquerysortGraphN {
-  let result = db_query_sort_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_graphn_add(a : DbquerysortGraphN, b : DbquerysortGraphN) -> DbquerysortGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_graphn_copy(s : DbquerysortGraphN) -> DbquerysortGraphN {
-  let result = db_query_sort_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_graphn_fill(s : DbquerysortGraphN, v : Double) -> DbquerysortGraphN {
-  let result = db_query_sort_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_graphn_min(s : DbquerysortGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_query_sort_node_sum(s : DbquerysortNode) -> Double { @_common.sum(s.da
 pub fn db_query_sort_node_mean(s : DbquerysortNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_node_scale(s : DbquerysortNode, f : Double) -> DbquerysortNode {
-  let result = db_query_sort_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_node_add(a : DbquerysortNode, b : DbquerysortNode) -> DbquerysortNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_node_copy(s : DbquerysortNode) -> DbquerysortNode {
-  let result = db_query_sort_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_node_fill(s : DbquerysortNode, v : Double) -> DbquerysortNode {
-  let result = db_query_sort_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_node_min(s : DbquerysortNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_query_sort_edge_sum(s : DbquerysortEdge) -> Double { @_common.sum(s.da
 pub fn db_query_sort_edge_mean(s : DbquerysortEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_edge_scale(s : DbquerysortEdge, f : Double) -> DbquerysortEdge {
-  let result = db_query_sort_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_edge_add(a : DbquerysortEdge, b : DbquerysortEdge) -> DbquerysortEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_edge_copy(s : DbquerysortEdge) -> DbquerysortEdge {
-  let result = db_query_sort_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_edge_fill(s : DbquerysortEdge, v : Double) -> DbquerysortEdge {
-  let result = db_query_sort_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_edge_min(s : DbquerysortEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_query_sort_path_sum(s : DbquerysortPath) -> Double { @_common.sum(s.da
 pub fn db_query_sort_path_mean(s : DbquerysortPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_path_scale(s : DbquerysortPath, f : Double) -> DbquerysortPath {
-  let result = db_query_sort_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_path_add(a : DbquerysortPath, b : DbquerysortPath) -> DbquerysortPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_path_copy(s : DbquerysortPath) -> DbquerysortPath {
-  let result = db_query_sort_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_path_fill(s : DbquerysortPath, v : Double) -> DbquerysortPath {
-  let result = db_query_sort_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_path_min(s : DbquerysortPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_query_sort_cluster_sum(s : DbquerysortCluster) -> Double { @_common.su
 pub fn db_query_sort_cluster_mean(s : DbquerysortCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_cluster_scale(s : DbquerysortCluster, f : Double) -> DbquerysortCluster {
-  let result = db_query_sort_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cluster_add(a : DbquerysortCluster, b : DbquerysortCluster) -> DbquerysortCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_cluster_copy(s : DbquerysortCluster) -> DbquerysortCluster {
-  let result = db_query_sort_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cluster_fill(s : DbquerysortCluster, v : Double) -> DbquerysortCluster {
-  let result = db_query_sort_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cluster_min(s : DbquerysortCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_query_sort_model_sum(s : DbquerysortModel) -> Double { @_common.sum(s.
 pub fn db_query_sort_model_mean(s : DbquerysortModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_model_scale(s : DbquerysortModel, f : Double) -> DbquerysortModel {
-  let result = db_query_sort_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_model_add(a : DbquerysortModel, b : DbquerysortModel) -> DbquerysortModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_model_copy(s : DbquerysortModel) -> DbquerysortModel {
-  let result = db_query_sort_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_model_fill(s : DbquerysortModel, v : Double) -> DbquerysortModel {
-  let result = db_query_sort_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_model_min(s : DbquerysortModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_query_sort_layer_sum(s : DbquerysortLayer) -> Double { @_common.sum(s.
 pub fn db_query_sort_layer_mean(s : DbquerysortLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_layer_scale(s : DbquerysortLayer, f : Double) -> DbquerysortLayer {
-  let result = db_query_sort_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_layer_add(a : DbquerysortLayer, b : DbquerysortLayer) -> DbquerysortLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_layer_copy(s : DbquerysortLayer) -> DbquerysortLayer {
-  let result = db_query_sort_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_layer_fill(s : DbquerysortLayer, v : Double) -> DbquerysortLayer {
-  let result = db_query_sort_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_layer_min(s : DbquerysortLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_query_sort_buffer_sum(s : DbquerysortBuffer) -> Double { @_common.sum(
 pub fn db_query_sort_buffer_mean(s : DbquerysortBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_buffer_scale(s : DbquerysortBuffer, f : Double) -> DbquerysortBuffer {
-  let result = db_query_sort_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_buffer_add(a : DbquerysortBuffer, b : DbquerysortBuffer) -> DbquerysortBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_buffer_copy(s : DbquerysortBuffer) -> DbquerysortBuffer {
-  let result = db_query_sort_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_buffer_fill(s : DbquerysortBuffer, v : Double) -> DbquerysortBuffer {
-  let result = db_query_sort_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_buffer_min(s : DbquerysortBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_query_sort_cursor_sum(s : DbquerysortCursor) -> Double { @_common.sum(
 pub fn db_query_sort_cursor_mean(s : DbquerysortCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_cursor_scale(s : DbquerysortCursor, f : Double) -> DbquerysortCursor {
-  let result = db_query_sort_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cursor_add(a : DbquerysortCursor, b : DbquerysortCursor) -> DbquerysortCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_cursor_copy(s : DbquerysortCursor) -> DbquerysortCursor {
-  let result = db_query_sort_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cursor_fill(s : DbquerysortCursor, v : Double) -> DbquerysortCursor {
-  let result = db_query_sort_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cursor_min(s : DbquerysortCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_query_sort_view_sum(s : DbquerysortView) -> Double { @_common.sum(s.da
 pub fn db_query_sort_view_mean(s : DbquerysortView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_view_scale(s : DbquerysortView, f : Double) -> DbquerysortView {
-  let result = db_query_sort_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_view_add(a : DbquerysortView, b : DbquerysortView) -> DbquerysortView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_view_copy(s : DbquerysortView) -> DbquerysortView {
-  let result = db_query_sort_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_view_fill(s : DbquerysortView, v : Double) -> DbquerysortView {
-  let result = db_query_sort_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_view_min(s : DbquerysortView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_query_sort_range_sum(s : DbquerysortRange) -> Double { @_common.sum(s.
 pub fn db_query_sort_range_mean(s : DbquerysortRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_range_scale(s : DbquerysortRange, f : Double) -> DbquerysortRange {
-  let result = db_query_sort_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_range_add(a : DbquerysortRange, b : DbquerysortRange) -> DbquerysortRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_range_copy(s : DbquerysortRange) -> DbquerysortRange {
-  let result = db_query_sort_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_range_fill(s : DbquerysortRange, v : Double) -> DbquerysortRange {
-  let result = db_query_sort_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_range_min(s : DbquerysortRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_query_sort_slice_sum(s : DbquerysortSlice) -> Double { @_common.sum(s.
 pub fn db_query_sort_slice_mean(s : DbquerysortSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_sort_slice_scale(s : DbquerysortSlice, f : Double) -> DbquerysortSlice {
-  let result = db_query_sort_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_slice_add(a : DbquerysortSlice, b : DbquerysortSlice) -> DbquerysortSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_sort_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_sort_slice_copy(s : DbquerysortSlice) -> DbquerysortSlice {
-  let result = db_query_sort_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_slice_fill(s : DbquerysortSlice, v : Double) -> DbquerysortSlice {
-  let result = db_query_sort_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_slice_min(s : DbquerysortSlice) -> Double { @_common.min(s.data) }

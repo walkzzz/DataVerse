@@ -383,28 +383,20 @@ pub fn nlp_parse_arc_standard_frame_sum(s : NlpparsearcstandardFrame) -> Double 
 pub fn nlp_parse_arc_standard_frame_mean(s : NlpparsearcstandardFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_frame_scale(s : NlpparsearcstandardFrame, f : Double) -> NlpparsearcstandardFrame {
-  let result = nlp_parse_arc_standard_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_frame_add(a : NlpparsearcstandardFrame, b : NlpparsearcstandardFrame) -> NlpparsearcstandardFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_frame_copy(s : NlpparsearcstandardFrame) -> NlpparsearcstandardFrame {
-  let result = nlp_parse_arc_standard_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_frame_fill(s : NlpparsearcstandardFrame, v : Double) -> NlpparsearcstandardFrame {
-  let result = nlp_parse_arc_standard_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_frame_min(s : NlpparsearcstandardFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_parse_arc_standard_table_sum(s : NlpparsearcstandardTable) -> Double 
 pub fn nlp_parse_arc_standard_table_mean(s : NlpparsearcstandardTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_table_scale(s : NlpparsearcstandardTable, f : Double) -> NlpparsearcstandardTable {
-  let result = nlp_parse_arc_standard_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_table_add(a : NlpparsearcstandardTable, b : NlpparsearcstandardTable) -> NlpparsearcstandardTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_table_copy(s : NlpparsearcstandardTable) -> NlpparsearcstandardTable {
-  let result = nlp_parse_arc_standard_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_table_fill(s : NlpparsearcstandardTable, v : Double) -> NlpparsearcstandardTable {
-  let result = nlp_parse_arc_standard_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_table_min(s : NlpparsearcstandardTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_parse_arc_standard_graphn_sum(s : NlpparsearcstandardGraphN) -> Doubl
 pub fn nlp_parse_arc_standard_graphn_mean(s : NlpparsearcstandardGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_graphn_scale(s : NlpparsearcstandardGraphN, f : Double) -> NlpparsearcstandardGraphN {
-  let result = nlp_parse_arc_standard_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_graphn_add(a : NlpparsearcstandardGraphN, b : NlpparsearcstandardGraphN) -> NlpparsearcstandardGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_graphn_copy(s : NlpparsearcstandardGraphN) -> NlpparsearcstandardGraphN {
-  let result = nlp_parse_arc_standard_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_graphn_fill(s : NlpparsearcstandardGraphN, v : Double) -> NlpparsearcstandardGraphN {
-  let result = nlp_parse_arc_standard_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_graphn_min(s : NlpparsearcstandardGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_parse_arc_standard_node_sum(s : NlpparsearcstandardNode) -> Double { 
 pub fn nlp_parse_arc_standard_node_mean(s : NlpparsearcstandardNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_node_scale(s : NlpparsearcstandardNode, f : Double) -> NlpparsearcstandardNode {
-  let result = nlp_parse_arc_standard_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_node_add(a : NlpparsearcstandardNode, b : NlpparsearcstandardNode) -> NlpparsearcstandardNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_node_copy(s : NlpparsearcstandardNode) -> NlpparsearcstandardNode {
-  let result = nlp_parse_arc_standard_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_node_fill(s : NlpparsearcstandardNode, v : Double) -> NlpparsearcstandardNode {
-  let result = nlp_parse_arc_standard_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_node_min(s : NlpparsearcstandardNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_parse_arc_standard_edge_sum(s : NlpparsearcstandardEdge) -> Double { 
 pub fn nlp_parse_arc_standard_edge_mean(s : NlpparsearcstandardEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_edge_scale(s : NlpparsearcstandardEdge, f : Double) -> NlpparsearcstandardEdge {
-  let result = nlp_parse_arc_standard_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_edge_add(a : NlpparsearcstandardEdge, b : NlpparsearcstandardEdge) -> NlpparsearcstandardEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_edge_copy(s : NlpparsearcstandardEdge) -> NlpparsearcstandardEdge {
-  let result = nlp_parse_arc_standard_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_edge_fill(s : NlpparsearcstandardEdge, v : Double) -> NlpparsearcstandardEdge {
-  let result = nlp_parse_arc_standard_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_edge_min(s : NlpparsearcstandardEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_parse_arc_standard_path_sum(s : NlpparsearcstandardPath) -> Double { 
 pub fn nlp_parse_arc_standard_path_mean(s : NlpparsearcstandardPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_path_scale(s : NlpparsearcstandardPath, f : Double) -> NlpparsearcstandardPath {
-  let result = nlp_parse_arc_standard_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_path_add(a : NlpparsearcstandardPath, b : NlpparsearcstandardPath) -> NlpparsearcstandardPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_path_copy(s : NlpparsearcstandardPath) -> NlpparsearcstandardPath {
-  let result = nlp_parse_arc_standard_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_path_fill(s : NlpparsearcstandardPath, v : Double) -> NlpparsearcstandardPath {
-  let result = nlp_parse_arc_standard_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_path_min(s : NlpparsearcstandardPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_parse_arc_standard_cluster_sum(s : NlpparsearcstandardCluster) -> Dou
 pub fn nlp_parse_arc_standard_cluster_mean(s : NlpparsearcstandardCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_cluster_scale(s : NlpparsearcstandardCluster, f : Double) -> NlpparsearcstandardCluster {
-  let result = nlp_parse_arc_standard_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_cluster_add(a : NlpparsearcstandardCluster, b : NlpparsearcstandardCluster) -> NlpparsearcstandardCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_cluster_copy(s : NlpparsearcstandardCluster) -> NlpparsearcstandardCluster {
-  let result = nlp_parse_arc_standard_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_cluster_fill(s : NlpparsearcstandardCluster, v : Double) -> NlpparsearcstandardCluster {
-  let result = nlp_parse_arc_standard_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_cluster_min(s : NlpparsearcstandardCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_parse_arc_standard_model_sum(s : NlpparsearcstandardModel) -> Double 
 pub fn nlp_parse_arc_standard_model_mean(s : NlpparsearcstandardModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_model_scale(s : NlpparsearcstandardModel, f : Double) -> NlpparsearcstandardModel {
-  let result = nlp_parse_arc_standard_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_model_add(a : NlpparsearcstandardModel, b : NlpparsearcstandardModel) -> NlpparsearcstandardModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_model_copy(s : NlpparsearcstandardModel) -> NlpparsearcstandardModel {
-  let result = nlp_parse_arc_standard_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_model_fill(s : NlpparsearcstandardModel, v : Double) -> NlpparsearcstandardModel {
-  let result = nlp_parse_arc_standard_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_model_min(s : NlpparsearcstandardModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_parse_arc_standard_layer_sum(s : NlpparsearcstandardLayer) -> Double 
 pub fn nlp_parse_arc_standard_layer_mean(s : NlpparsearcstandardLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_layer_scale(s : NlpparsearcstandardLayer, f : Double) -> NlpparsearcstandardLayer {
-  let result = nlp_parse_arc_standard_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_layer_add(a : NlpparsearcstandardLayer, b : NlpparsearcstandardLayer) -> NlpparsearcstandardLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_layer_copy(s : NlpparsearcstandardLayer) -> NlpparsearcstandardLayer {
-  let result = nlp_parse_arc_standard_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_layer_fill(s : NlpparsearcstandardLayer, v : Double) -> NlpparsearcstandardLayer {
-  let result = nlp_parse_arc_standard_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_layer_min(s : NlpparsearcstandardLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_parse_arc_standard_buffer_sum(s : NlpparsearcstandardBuffer) -> Doubl
 pub fn nlp_parse_arc_standard_buffer_mean(s : NlpparsearcstandardBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_buffer_scale(s : NlpparsearcstandardBuffer, f : Double) -> NlpparsearcstandardBuffer {
-  let result = nlp_parse_arc_standard_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_buffer_add(a : NlpparsearcstandardBuffer, b : NlpparsearcstandardBuffer) -> NlpparsearcstandardBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_buffer_copy(s : NlpparsearcstandardBuffer) -> NlpparsearcstandardBuffer {
-  let result = nlp_parse_arc_standard_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_buffer_fill(s : NlpparsearcstandardBuffer, v : Double) -> NlpparsearcstandardBuffer {
-  let result = nlp_parse_arc_standard_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_buffer_min(s : NlpparsearcstandardBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_parse_arc_standard_cursor_sum(s : NlpparsearcstandardCursor) -> Doubl
 pub fn nlp_parse_arc_standard_cursor_mean(s : NlpparsearcstandardCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_cursor_scale(s : NlpparsearcstandardCursor, f : Double) -> NlpparsearcstandardCursor {
-  let result = nlp_parse_arc_standard_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_cursor_add(a : NlpparsearcstandardCursor, b : NlpparsearcstandardCursor) -> NlpparsearcstandardCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_cursor_copy(s : NlpparsearcstandardCursor) -> NlpparsearcstandardCursor {
-  let result = nlp_parse_arc_standard_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_cursor_fill(s : NlpparsearcstandardCursor, v : Double) -> NlpparsearcstandardCursor {
-  let result = nlp_parse_arc_standard_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_cursor_min(s : NlpparsearcstandardCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_parse_arc_standard_view_sum(s : NlpparsearcstandardView) -> Double { 
 pub fn nlp_parse_arc_standard_view_mean(s : NlpparsearcstandardView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_view_scale(s : NlpparsearcstandardView, f : Double) -> NlpparsearcstandardView {
-  let result = nlp_parse_arc_standard_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_view_add(a : NlpparsearcstandardView, b : NlpparsearcstandardView) -> NlpparsearcstandardView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_view_copy(s : NlpparsearcstandardView) -> NlpparsearcstandardView {
-  let result = nlp_parse_arc_standard_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_view_fill(s : NlpparsearcstandardView, v : Double) -> NlpparsearcstandardView {
-  let result = nlp_parse_arc_standard_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_view_min(s : NlpparsearcstandardView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_parse_arc_standard_range_sum(s : NlpparsearcstandardRange) -> Double 
 pub fn nlp_parse_arc_standard_range_mean(s : NlpparsearcstandardRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_range_scale(s : NlpparsearcstandardRange, f : Double) -> NlpparsearcstandardRange {
-  let result = nlp_parse_arc_standard_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_range_add(a : NlpparsearcstandardRange, b : NlpparsearcstandardRange) -> NlpparsearcstandardRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_range_copy(s : NlpparsearcstandardRange) -> NlpparsearcstandardRange {
-  let result = nlp_parse_arc_standard_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_range_fill(s : NlpparsearcstandardRange, v : Double) -> NlpparsearcstandardRange {
-  let result = nlp_parse_arc_standard_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_range_min(s : NlpparsearcstandardRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_parse_arc_standard_slice_sum(s : NlpparsearcstandardSlice) -> Double 
 pub fn nlp_parse_arc_standard_slice_mean(s : NlpparsearcstandardSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_arc_standard_slice_scale(s : NlpparsearcstandardSlice, f : Double) -> NlpparsearcstandardSlice {
-  let result = nlp_parse_arc_standard_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_slice_add(a : NlpparsearcstandardSlice, b : NlpparsearcstandardSlice) -> NlpparsearcstandardSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_arc_standard_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_arc_standard_slice_copy(s : NlpparsearcstandardSlice) -> NlpparsearcstandardSlice {
-  let result = nlp_parse_arc_standard_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_slice_fill(s : NlpparsearcstandardSlice, v : Double) -> NlpparsearcstandardSlice {
-  let result = nlp_parse_arc_standard_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_standard_slice_min(s : NlpparsearcstandardSlice) -> Double { @_common.min(s.data) }

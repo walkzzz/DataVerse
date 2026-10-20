@@ -383,28 +383,20 @@ pub fn graph_tree_mst_prim_frame_sum(s : GraphtreemstprimFrame) -> Double { @_co
 pub fn graph_tree_mst_prim_frame_mean(s : GraphtreemstprimFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_frame_scale(s : GraphtreemstprimFrame, f : Double) -> GraphtreemstprimFrame {
-  let result = graph_tree_mst_prim_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_frame_add(a : GraphtreemstprimFrame, b : GraphtreemstprimFrame) -> GraphtreemstprimFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_frame_copy(s : GraphtreemstprimFrame) -> GraphtreemstprimFrame {
-  let result = graph_tree_mst_prim_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_frame_fill(s : GraphtreemstprimFrame, v : Double) -> GraphtreemstprimFrame {
-  let result = graph_tree_mst_prim_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_frame_min(s : GraphtreemstprimFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_tree_mst_prim_table_sum(s : GraphtreemstprimTable) -> Double { @_co
 pub fn graph_tree_mst_prim_table_mean(s : GraphtreemstprimTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_table_scale(s : GraphtreemstprimTable, f : Double) -> GraphtreemstprimTable {
-  let result = graph_tree_mst_prim_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_table_add(a : GraphtreemstprimTable, b : GraphtreemstprimTable) -> GraphtreemstprimTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_table_copy(s : GraphtreemstprimTable) -> GraphtreemstprimTable {
-  let result = graph_tree_mst_prim_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_table_fill(s : GraphtreemstprimTable, v : Double) -> GraphtreemstprimTable {
-  let result = graph_tree_mst_prim_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_table_min(s : GraphtreemstprimTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_tree_mst_prim_graphn_sum(s : GraphtreemstprimGraphN) -> Double { @_
 pub fn graph_tree_mst_prim_graphn_mean(s : GraphtreemstprimGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_graphn_scale(s : GraphtreemstprimGraphN, f : Double) -> GraphtreemstprimGraphN {
-  let result = graph_tree_mst_prim_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_graphn_add(a : GraphtreemstprimGraphN, b : GraphtreemstprimGraphN) -> GraphtreemstprimGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_graphn_copy(s : GraphtreemstprimGraphN) -> GraphtreemstprimGraphN {
-  let result = graph_tree_mst_prim_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_graphn_fill(s : GraphtreemstprimGraphN, v : Double) -> GraphtreemstprimGraphN {
-  let result = graph_tree_mst_prim_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_graphn_min(s : GraphtreemstprimGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_tree_mst_prim_node_sum(s : GraphtreemstprimNode) -> Double { @_comm
 pub fn graph_tree_mst_prim_node_mean(s : GraphtreemstprimNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_node_scale(s : GraphtreemstprimNode, f : Double) -> GraphtreemstprimNode {
-  let result = graph_tree_mst_prim_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_node_add(a : GraphtreemstprimNode, b : GraphtreemstprimNode) -> GraphtreemstprimNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_node_copy(s : GraphtreemstprimNode) -> GraphtreemstprimNode {
-  let result = graph_tree_mst_prim_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_node_fill(s : GraphtreemstprimNode, v : Double) -> GraphtreemstprimNode {
-  let result = graph_tree_mst_prim_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_node_min(s : GraphtreemstprimNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_tree_mst_prim_edge_sum(s : GraphtreemstprimEdge) -> Double { @_comm
 pub fn graph_tree_mst_prim_edge_mean(s : GraphtreemstprimEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_edge_scale(s : GraphtreemstprimEdge, f : Double) -> GraphtreemstprimEdge {
-  let result = graph_tree_mst_prim_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_edge_add(a : GraphtreemstprimEdge, b : GraphtreemstprimEdge) -> GraphtreemstprimEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_edge_copy(s : GraphtreemstprimEdge) -> GraphtreemstprimEdge {
-  let result = graph_tree_mst_prim_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_edge_fill(s : GraphtreemstprimEdge, v : Double) -> GraphtreemstprimEdge {
-  let result = graph_tree_mst_prim_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_edge_min(s : GraphtreemstprimEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_tree_mst_prim_path_sum(s : GraphtreemstprimPath) -> Double { @_comm
 pub fn graph_tree_mst_prim_path_mean(s : GraphtreemstprimPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_path_scale(s : GraphtreemstprimPath, f : Double) -> GraphtreemstprimPath {
-  let result = graph_tree_mst_prim_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_path_add(a : GraphtreemstprimPath, b : GraphtreemstprimPath) -> GraphtreemstprimPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_path_copy(s : GraphtreemstprimPath) -> GraphtreemstprimPath {
-  let result = graph_tree_mst_prim_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_path_fill(s : GraphtreemstprimPath, v : Double) -> GraphtreemstprimPath {
-  let result = graph_tree_mst_prim_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_path_min(s : GraphtreemstprimPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_tree_mst_prim_cluster_sum(s : GraphtreemstprimCluster) -> Double { 
 pub fn graph_tree_mst_prim_cluster_mean(s : GraphtreemstprimCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_cluster_scale(s : GraphtreemstprimCluster, f : Double) -> GraphtreemstprimCluster {
-  let result = graph_tree_mst_prim_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_cluster_add(a : GraphtreemstprimCluster, b : GraphtreemstprimCluster) -> GraphtreemstprimCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_cluster_copy(s : GraphtreemstprimCluster) -> GraphtreemstprimCluster {
-  let result = graph_tree_mst_prim_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_cluster_fill(s : GraphtreemstprimCluster, v : Double) -> GraphtreemstprimCluster {
-  let result = graph_tree_mst_prim_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_cluster_min(s : GraphtreemstprimCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_tree_mst_prim_model_sum(s : GraphtreemstprimModel) -> Double { @_co
 pub fn graph_tree_mst_prim_model_mean(s : GraphtreemstprimModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_model_scale(s : GraphtreemstprimModel, f : Double) -> GraphtreemstprimModel {
-  let result = graph_tree_mst_prim_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_model_add(a : GraphtreemstprimModel, b : GraphtreemstprimModel) -> GraphtreemstprimModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_model_copy(s : GraphtreemstprimModel) -> GraphtreemstprimModel {
-  let result = graph_tree_mst_prim_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_model_fill(s : GraphtreemstprimModel, v : Double) -> GraphtreemstprimModel {
-  let result = graph_tree_mst_prim_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_model_min(s : GraphtreemstprimModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_tree_mst_prim_layer_sum(s : GraphtreemstprimLayer) -> Double { @_co
 pub fn graph_tree_mst_prim_layer_mean(s : GraphtreemstprimLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_layer_scale(s : GraphtreemstprimLayer, f : Double) -> GraphtreemstprimLayer {
-  let result = graph_tree_mst_prim_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_layer_add(a : GraphtreemstprimLayer, b : GraphtreemstprimLayer) -> GraphtreemstprimLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_layer_copy(s : GraphtreemstprimLayer) -> GraphtreemstprimLayer {
-  let result = graph_tree_mst_prim_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_layer_fill(s : GraphtreemstprimLayer, v : Double) -> GraphtreemstprimLayer {
-  let result = graph_tree_mst_prim_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_layer_min(s : GraphtreemstprimLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_tree_mst_prim_buffer_sum(s : GraphtreemstprimBuffer) -> Double { @_
 pub fn graph_tree_mst_prim_buffer_mean(s : GraphtreemstprimBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_buffer_scale(s : GraphtreemstprimBuffer, f : Double) -> GraphtreemstprimBuffer {
-  let result = graph_tree_mst_prim_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_buffer_add(a : GraphtreemstprimBuffer, b : GraphtreemstprimBuffer) -> GraphtreemstprimBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_buffer_copy(s : GraphtreemstprimBuffer) -> GraphtreemstprimBuffer {
-  let result = graph_tree_mst_prim_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_buffer_fill(s : GraphtreemstprimBuffer, v : Double) -> GraphtreemstprimBuffer {
-  let result = graph_tree_mst_prim_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_buffer_min(s : GraphtreemstprimBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_tree_mst_prim_cursor_sum(s : GraphtreemstprimCursor) -> Double { @_
 pub fn graph_tree_mst_prim_cursor_mean(s : GraphtreemstprimCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_cursor_scale(s : GraphtreemstprimCursor, f : Double) -> GraphtreemstprimCursor {
-  let result = graph_tree_mst_prim_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_cursor_add(a : GraphtreemstprimCursor, b : GraphtreemstprimCursor) -> GraphtreemstprimCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_cursor_copy(s : GraphtreemstprimCursor) -> GraphtreemstprimCursor {
-  let result = graph_tree_mst_prim_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_cursor_fill(s : GraphtreemstprimCursor, v : Double) -> GraphtreemstprimCursor {
-  let result = graph_tree_mst_prim_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_cursor_min(s : GraphtreemstprimCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_tree_mst_prim_view_sum(s : GraphtreemstprimView) -> Double { @_comm
 pub fn graph_tree_mst_prim_view_mean(s : GraphtreemstprimView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_view_scale(s : GraphtreemstprimView, f : Double) -> GraphtreemstprimView {
-  let result = graph_tree_mst_prim_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_view_add(a : GraphtreemstprimView, b : GraphtreemstprimView) -> GraphtreemstprimView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_view_copy(s : GraphtreemstprimView) -> GraphtreemstprimView {
-  let result = graph_tree_mst_prim_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_view_fill(s : GraphtreemstprimView, v : Double) -> GraphtreemstprimView {
-  let result = graph_tree_mst_prim_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_view_min(s : GraphtreemstprimView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_tree_mst_prim_range_sum(s : GraphtreemstprimRange) -> Double { @_co
 pub fn graph_tree_mst_prim_range_mean(s : GraphtreemstprimRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_range_scale(s : GraphtreemstprimRange, f : Double) -> GraphtreemstprimRange {
-  let result = graph_tree_mst_prim_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_range_add(a : GraphtreemstprimRange, b : GraphtreemstprimRange) -> GraphtreemstprimRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_range_copy(s : GraphtreemstprimRange) -> GraphtreemstprimRange {
-  let result = graph_tree_mst_prim_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_range_fill(s : GraphtreemstprimRange, v : Double) -> GraphtreemstprimRange {
-  let result = graph_tree_mst_prim_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_range_min(s : GraphtreemstprimRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_tree_mst_prim_slice_sum(s : GraphtreemstprimSlice) -> Double { @_co
 pub fn graph_tree_mst_prim_slice_mean(s : GraphtreemstprimSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_slice_scale(s : GraphtreemstprimSlice, f : Double) -> GraphtreemstprimSlice {
-  let result = graph_tree_mst_prim_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_slice_add(a : GraphtreemstprimSlice, b : GraphtreemstprimSlice) -> GraphtreemstprimSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_mst_prim_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_mst_prim_slice_copy(s : GraphtreemstprimSlice) -> GraphtreemstprimSlice {
-  let result = graph_tree_mst_prim_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_slice_fill(s : GraphtreemstprimSlice, v : Double) -> GraphtreemstprimSlice {
-  let result = graph_tree_mst_prim_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_prim_slice_min(s : GraphtreemstprimSlice) -> Double { @_common.min(s.data) }

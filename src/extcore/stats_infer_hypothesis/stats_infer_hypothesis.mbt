@@ -383,28 +383,20 @@ pub fn stats_infer_hypothesis_frame_sum(s : StatsinferhypothesisFrame) -> Double
 pub fn stats_infer_hypothesis_frame_mean(s : StatsinferhypothesisFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_frame_scale(s : StatsinferhypothesisFrame, f : Double) -> StatsinferhypothesisFrame {
-  let result = stats_infer_hypothesis_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_frame_add(a : StatsinferhypothesisFrame, b : StatsinferhypothesisFrame) -> StatsinferhypothesisFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_frame_copy(s : StatsinferhypothesisFrame) -> StatsinferhypothesisFrame {
-  let result = stats_infer_hypothesis_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_frame_fill(s : StatsinferhypothesisFrame, v : Double) -> StatsinferhypothesisFrame {
-  let result = stats_infer_hypothesis_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_frame_min(s : StatsinferhypothesisFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_infer_hypothesis_table_sum(s : StatsinferhypothesisTable) -> Double
 pub fn stats_infer_hypothesis_table_mean(s : StatsinferhypothesisTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_table_scale(s : StatsinferhypothesisTable, f : Double) -> StatsinferhypothesisTable {
-  let result = stats_infer_hypothesis_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_table_add(a : StatsinferhypothesisTable, b : StatsinferhypothesisTable) -> StatsinferhypothesisTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_table_copy(s : StatsinferhypothesisTable) -> StatsinferhypothesisTable {
-  let result = stats_infer_hypothesis_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_table_fill(s : StatsinferhypothesisTable, v : Double) -> StatsinferhypothesisTable {
-  let result = stats_infer_hypothesis_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_table_min(s : StatsinferhypothesisTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_infer_hypothesis_graphn_sum(s : StatsinferhypothesisGraphN) -> Doub
 pub fn stats_infer_hypothesis_graphn_mean(s : StatsinferhypothesisGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_graphn_scale(s : StatsinferhypothesisGraphN, f : Double) -> StatsinferhypothesisGraphN {
-  let result = stats_infer_hypothesis_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_graphn_add(a : StatsinferhypothesisGraphN, b : StatsinferhypothesisGraphN) -> StatsinferhypothesisGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_graphn_copy(s : StatsinferhypothesisGraphN) -> StatsinferhypothesisGraphN {
-  let result = stats_infer_hypothesis_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_graphn_fill(s : StatsinferhypothesisGraphN, v : Double) -> StatsinferhypothesisGraphN {
-  let result = stats_infer_hypothesis_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_graphn_min(s : StatsinferhypothesisGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_infer_hypothesis_node_sum(s : StatsinferhypothesisNode) -> Double {
 pub fn stats_infer_hypothesis_node_mean(s : StatsinferhypothesisNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_node_scale(s : StatsinferhypothesisNode, f : Double) -> StatsinferhypothesisNode {
-  let result = stats_infer_hypothesis_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_node_add(a : StatsinferhypothesisNode, b : StatsinferhypothesisNode) -> StatsinferhypothesisNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_node_copy(s : StatsinferhypothesisNode) -> StatsinferhypothesisNode {
-  let result = stats_infer_hypothesis_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_node_fill(s : StatsinferhypothesisNode, v : Double) -> StatsinferhypothesisNode {
-  let result = stats_infer_hypothesis_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_node_min(s : StatsinferhypothesisNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_infer_hypothesis_edge_sum(s : StatsinferhypothesisEdge) -> Double {
 pub fn stats_infer_hypothesis_edge_mean(s : StatsinferhypothesisEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_edge_scale(s : StatsinferhypothesisEdge, f : Double) -> StatsinferhypothesisEdge {
-  let result = stats_infer_hypothesis_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_edge_add(a : StatsinferhypothesisEdge, b : StatsinferhypothesisEdge) -> StatsinferhypothesisEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_edge_copy(s : StatsinferhypothesisEdge) -> StatsinferhypothesisEdge {
-  let result = stats_infer_hypothesis_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_edge_fill(s : StatsinferhypothesisEdge, v : Double) -> StatsinferhypothesisEdge {
-  let result = stats_infer_hypothesis_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_edge_min(s : StatsinferhypothesisEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_infer_hypothesis_path_sum(s : StatsinferhypothesisPath) -> Double {
 pub fn stats_infer_hypothesis_path_mean(s : StatsinferhypothesisPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_path_scale(s : StatsinferhypothesisPath, f : Double) -> StatsinferhypothesisPath {
-  let result = stats_infer_hypothesis_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_path_add(a : StatsinferhypothesisPath, b : StatsinferhypothesisPath) -> StatsinferhypothesisPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_path_copy(s : StatsinferhypothesisPath) -> StatsinferhypothesisPath {
-  let result = stats_infer_hypothesis_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_path_fill(s : StatsinferhypothesisPath, v : Double) -> StatsinferhypothesisPath {
-  let result = stats_infer_hypothesis_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_path_min(s : StatsinferhypothesisPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_infer_hypothesis_cluster_sum(s : StatsinferhypothesisCluster) -> Do
 pub fn stats_infer_hypothesis_cluster_mean(s : StatsinferhypothesisCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_cluster_scale(s : StatsinferhypothesisCluster, f : Double) -> StatsinferhypothesisCluster {
-  let result = stats_infer_hypothesis_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cluster_add(a : StatsinferhypothesisCluster, b : StatsinferhypothesisCluster) -> StatsinferhypothesisCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_cluster_copy(s : StatsinferhypothesisCluster) -> StatsinferhypothesisCluster {
-  let result = stats_infer_hypothesis_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cluster_fill(s : StatsinferhypothesisCluster, v : Double) -> StatsinferhypothesisCluster {
-  let result = stats_infer_hypothesis_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cluster_min(s : StatsinferhypothesisCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_infer_hypothesis_model_sum(s : StatsinferhypothesisModel) -> Double
 pub fn stats_infer_hypothesis_model_mean(s : StatsinferhypothesisModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_model_scale(s : StatsinferhypothesisModel, f : Double) -> StatsinferhypothesisModel {
-  let result = stats_infer_hypothesis_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_model_add(a : StatsinferhypothesisModel, b : StatsinferhypothesisModel) -> StatsinferhypothesisModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_model_copy(s : StatsinferhypothesisModel) -> StatsinferhypothesisModel {
-  let result = stats_infer_hypothesis_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_model_fill(s : StatsinferhypothesisModel, v : Double) -> StatsinferhypothesisModel {
-  let result = stats_infer_hypothesis_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_model_min(s : StatsinferhypothesisModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_infer_hypothesis_layer_sum(s : StatsinferhypothesisLayer) -> Double
 pub fn stats_infer_hypothesis_layer_mean(s : StatsinferhypothesisLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_layer_scale(s : StatsinferhypothesisLayer, f : Double) -> StatsinferhypothesisLayer {
-  let result = stats_infer_hypothesis_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_layer_add(a : StatsinferhypothesisLayer, b : StatsinferhypothesisLayer) -> StatsinferhypothesisLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_layer_copy(s : StatsinferhypothesisLayer) -> StatsinferhypothesisLayer {
-  let result = stats_infer_hypothesis_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_layer_fill(s : StatsinferhypothesisLayer, v : Double) -> StatsinferhypothesisLayer {
-  let result = stats_infer_hypothesis_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_layer_min(s : StatsinferhypothesisLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_infer_hypothesis_buffer_sum(s : StatsinferhypothesisBuffer) -> Doub
 pub fn stats_infer_hypothesis_buffer_mean(s : StatsinferhypothesisBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_buffer_scale(s : StatsinferhypothesisBuffer, f : Double) -> StatsinferhypothesisBuffer {
-  let result = stats_infer_hypothesis_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_buffer_add(a : StatsinferhypothesisBuffer, b : StatsinferhypothesisBuffer) -> StatsinferhypothesisBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_buffer_copy(s : StatsinferhypothesisBuffer) -> StatsinferhypothesisBuffer {
-  let result = stats_infer_hypothesis_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_buffer_fill(s : StatsinferhypothesisBuffer, v : Double) -> StatsinferhypothesisBuffer {
-  let result = stats_infer_hypothesis_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_buffer_min(s : StatsinferhypothesisBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_infer_hypothesis_cursor_sum(s : StatsinferhypothesisCursor) -> Doub
 pub fn stats_infer_hypothesis_cursor_mean(s : StatsinferhypothesisCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_cursor_scale(s : StatsinferhypothesisCursor, f : Double) -> StatsinferhypothesisCursor {
-  let result = stats_infer_hypothesis_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cursor_add(a : StatsinferhypothesisCursor, b : StatsinferhypothesisCursor) -> StatsinferhypothesisCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_cursor_copy(s : StatsinferhypothesisCursor) -> StatsinferhypothesisCursor {
-  let result = stats_infer_hypothesis_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cursor_fill(s : StatsinferhypothesisCursor, v : Double) -> StatsinferhypothesisCursor {
-  let result = stats_infer_hypothesis_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cursor_min(s : StatsinferhypothesisCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_infer_hypothesis_view_sum(s : StatsinferhypothesisView) -> Double {
 pub fn stats_infer_hypothesis_view_mean(s : StatsinferhypothesisView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_view_scale(s : StatsinferhypothesisView, f : Double) -> StatsinferhypothesisView {
-  let result = stats_infer_hypothesis_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_view_add(a : StatsinferhypothesisView, b : StatsinferhypothesisView) -> StatsinferhypothesisView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_view_copy(s : StatsinferhypothesisView) -> StatsinferhypothesisView {
-  let result = stats_infer_hypothesis_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_view_fill(s : StatsinferhypothesisView, v : Double) -> StatsinferhypothesisView {
-  let result = stats_infer_hypothesis_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_view_min(s : StatsinferhypothesisView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_infer_hypothesis_range_sum(s : StatsinferhypothesisRange) -> Double
 pub fn stats_infer_hypothesis_range_mean(s : StatsinferhypothesisRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_range_scale(s : StatsinferhypothesisRange, f : Double) -> StatsinferhypothesisRange {
-  let result = stats_infer_hypothesis_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_range_add(a : StatsinferhypothesisRange, b : StatsinferhypothesisRange) -> StatsinferhypothesisRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_range_copy(s : StatsinferhypothesisRange) -> StatsinferhypothesisRange {
-  let result = stats_infer_hypothesis_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_range_fill(s : StatsinferhypothesisRange, v : Double) -> StatsinferhypothesisRange {
-  let result = stats_infer_hypothesis_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_range_min(s : StatsinferhypothesisRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_infer_hypothesis_slice_sum(s : StatsinferhypothesisSlice) -> Double
 pub fn stats_infer_hypothesis_slice_mean(s : StatsinferhypothesisSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_slice_scale(s : StatsinferhypothesisSlice, f : Double) -> StatsinferhypothesisSlice {
-  let result = stats_infer_hypothesis_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_slice_add(a : StatsinferhypothesisSlice, b : StatsinferhypothesisSlice) -> StatsinferhypothesisSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_hypothesis_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_hypothesis_slice_copy(s : StatsinferhypothesisSlice) -> StatsinferhypothesisSlice {
-  let result = stats_infer_hypothesis_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_slice_fill(s : StatsinferhypothesisSlice, v : Double) -> StatsinferhypothesisSlice {
-  let result = stats_infer_hypothesis_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_slice_min(s : StatsinferhypothesisSlice) -> Double { @_common.min(s.data) }

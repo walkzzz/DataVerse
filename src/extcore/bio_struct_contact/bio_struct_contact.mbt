@@ -383,28 +383,20 @@ pub fn bio_struct_contact_frame_sum(s : BiostructcontactFrame) -> Double { @_com
 pub fn bio_struct_contact_frame_mean(s : BiostructcontactFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_frame_scale(s : BiostructcontactFrame, f : Double) -> BiostructcontactFrame {
-  let result = bio_struct_contact_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_frame_add(a : BiostructcontactFrame, b : BiostructcontactFrame) -> BiostructcontactFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_frame_copy(s : BiostructcontactFrame) -> BiostructcontactFrame {
-  let result = bio_struct_contact_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_frame_fill(s : BiostructcontactFrame, v : Double) -> BiostructcontactFrame {
-  let result = bio_struct_contact_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_frame_min(s : BiostructcontactFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_struct_contact_table_sum(s : BiostructcontactTable) -> Double { @_com
 pub fn bio_struct_contact_table_mean(s : BiostructcontactTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_table_scale(s : BiostructcontactTable, f : Double) -> BiostructcontactTable {
-  let result = bio_struct_contact_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_table_add(a : BiostructcontactTable, b : BiostructcontactTable) -> BiostructcontactTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_table_copy(s : BiostructcontactTable) -> BiostructcontactTable {
-  let result = bio_struct_contact_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_table_fill(s : BiostructcontactTable, v : Double) -> BiostructcontactTable {
-  let result = bio_struct_contact_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_table_min(s : BiostructcontactTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_struct_contact_graphn_sum(s : BiostructcontactGraphN) -> Double { @_c
 pub fn bio_struct_contact_graphn_mean(s : BiostructcontactGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_graphn_scale(s : BiostructcontactGraphN, f : Double) -> BiostructcontactGraphN {
-  let result = bio_struct_contact_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_graphn_add(a : BiostructcontactGraphN, b : BiostructcontactGraphN) -> BiostructcontactGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_graphn_copy(s : BiostructcontactGraphN) -> BiostructcontactGraphN {
-  let result = bio_struct_contact_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_graphn_fill(s : BiostructcontactGraphN, v : Double) -> BiostructcontactGraphN {
-  let result = bio_struct_contact_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_graphn_min(s : BiostructcontactGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_struct_contact_node_sum(s : BiostructcontactNode) -> Double { @_commo
 pub fn bio_struct_contact_node_mean(s : BiostructcontactNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_node_scale(s : BiostructcontactNode, f : Double) -> BiostructcontactNode {
-  let result = bio_struct_contact_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_node_add(a : BiostructcontactNode, b : BiostructcontactNode) -> BiostructcontactNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_node_copy(s : BiostructcontactNode) -> BiostructcontactNode {
-  let result = bio_struct_contact_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_node_fill(s : BiostructcontactNode, v : Double) -> BiostructcontactNode {
-  let result = bio_struct_contact_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_node_min(s : BiostructcontactNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_struct_contact_edge_sum(s : BiostructcontactEdge) -> Double { @_commo
 pub fn bio_struct_contact_edge_mean(s : BiostructcontactEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_edge_scale(s : BiostructcontactEdge, f : Double) -> BiostructcontactEdge {
-  let result = bio_struct_contact_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_edge_add(a : BiostructcontactEdge, b : BiostructcontactEdge) -> BiostructcontactEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_edge_copy(s : BiostructcontactEdge) -> BiostructcontactEdge {
-  let result = bio_struct_contact_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_edge_fill(s : BiostructcontactEdge, v : Double) -> BiostructcontactEdge {
-  let result = bio_struct_contact_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_edge_min(s : BiostructcontactEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_struct_contact_path_sum(s : BiostructcontactPath) -> Double { @_commo
 pub fn bio_struct_contact_path_mean(s : BiostructcontactPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_path_scale(s : BiostructcontactPath, f : Double) -> BiostructcontactPath {
-  let result = bio_struct_contact_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_path_add(a : BiostructcontactPath, b : BiostructcontactPath) -> BiostructcontactPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_path_copy(s : BiostructcontactPath) -> BiostructcontactPath {
-  let result = bio_struct_contact_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_path_fill(s : BiostructcontactPath, v : Double) -> BiostructcontactPath {
-  let result = bio_struct_contact_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_path_min(s : BiostructcontactPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_struct_contact_cluster_sum(s : BiostructcontactCluster) -> Double { @
 pub fn bio_struct_contact_cluster_mean(s : BiostructcontactCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_cluster_scale(s : BiostructcontactCluster, f : Double) -> BiostructcontactCluster {
-  let result = bio_struct_contact_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_cluster_add(a : BiostructcontactCluster, b : BiostructcontactCluster) -> BiostructcontactCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_cluster_copy(s : BiostructcontactCluster) -> BiostructcontactCluster {
-  let result = bio_struct_contact_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_cluster_fill(s : BiostructcontactCluster, v : Double) -> BiostructcontactCluster {
-  let result = bio_struct_contact_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_cluster_min(s : BiostructcontactCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_struct_contact_model_sum(s : BiostructcontactModel) -> Double { @_com
 pub fn bio_struct_contact_model_mean(s : BiostructcontactModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_model_scale(s : BiostructcontactModel, f : Double) -> BiostructcontactModel {
-  let result = bio_struct_contact_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_model_add(a : BiostructcontactModel, b : BiostructcontactModel) -> BiostructcontactModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_model_copy(s : BiostructcontactModel) -> BiostructcontactModel {
-  let result = bio_struct_contact_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_model_fill(s : BiostructcontactModel, v : Double) -> BiostructcontactModel {
-  let result = bio_struct_contact_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_model_min(s : BiostructcontactModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_struct_contact_layer_sum(s : BiostructcontactLayer) -> Double { @_com
 pub fn bio_struct_contact_layer_mean(s : BiostructcontactLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_layer_scale(s : BiostructcontactLayer, f : Double) -> BiostructcontactLayer {
-  let result = bio_struct_contact_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_layer_add(a : BiostructcontactLayer, b : BiostructcontactLayer) -> BiostructcontactLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_layer_copy(s : BiostructcontactLayer) -> BiostructcontactLayer {
-  let result = bio_struct_contact_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_layer_fill(s : BiostructcontactLayer, v : Double) -> BiostructcontactLayer {
-  let result = bio_struct_contact_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_layer_min(s : BiostructcontactLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_struct_contact_buffer_sum(s : BiostructcontactBuffer) -> Double { @_c
 pub fn bio_struct_contact_buffer_mean(s : BiostructcontactBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_buffer_scale(s : BiostructcontactBuffer, f : Double) -> BiostructcontactBuffer {
-  let result = bio_struct_contact_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_buffer_add(a : BiostructcontactBuffer, b : BiostructcontactBuffer) -> BiostructcontactBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_buffer_copy(s : BiostructcontactBuffer) -> BiostructcontactBuffer {
-  let result = bio_struct_contact_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_buffer_fill(s : BiostructcontactBuffer, v : Double) -> BiostructcontactBuffer {
-  let result = bio_struct_contact_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_buffer_min(s : BiostructcontactBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_struct_contact_cursor_sum(s : BiostructcontactCursor) -> Double { @_c
 pub fn bio_struct_contact_cursor_mean(s : BiostructcontactCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_cursor_scale(s : BiostructcontactCursor, f : Double) -> BiostructcontactCursor {
-  let result = bio_struct_contact_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_cursor_add(a : BiostructcontactCursor, b : BiostructcontactCursor) -> BiostructcontactCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_cursor_copy(s : BiostructcontactCursor) -> BiostructcontactCursor {
-  let result = bio_struct_contact_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_cursor_fill(s : BiostructcontactCursor, v : Double) -> BiostructcontactCursor {
-  let result = bio_struct_contact_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_cursor_min(s : BiostructcontactCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_struct_contact_view_sum(s : BiostructcontactView) -> Double { @_commo
 pub fn bio_struct_contact_view_mean(s : BiostructcontactView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_view_scale(s : BiostructcontactView, f : Double) -> BiostructcontactView {
-  let result = bio_struct_contact_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_view_add(a : BiostructcontactView, b : BiostructcontactView) -> BiostructcontactView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_view_copy(s : BiostructcontactView) -> BiostructcontactView {
-  let result = bio_struct_contact_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_view_fill(s : BiostructcontactView, v : Double) -> BiostructcontactView {
-  let result = bio_struct_contact_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_view_min(s : BiostructcontactView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_struct_contact_range_sum(s : BiostructcontactRange) -> Double { @_com
 pub fn bio_struct_contact_range_mean(s : BiostructcontactRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_range_scale(s : BiostructcontactRange, f : Double) -> BiostructcontactRange {
-  let result = bio_struct_contact_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_range_add(a : BiostructcontactRange, b : BiostructcontactRange) -> BiostructcontactRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_range_copy(s : BiostructcontactRange) -> BiostructcontactRange {
-  let result = bio_struct_contact_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_range_fill(s : BiostructcontactRange, v : Double) -> BiostructcontactRange {
-  let result = bio_struct_contact_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_range_min(s : BiostructcontactRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_struct_contact_slice_sum(s : BiostructcontactSlice) -> Double { @_com
 pub fn bio_struct_contact_slice_mean(s : BiostructcontactSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_slice_scale(s : BiostructcontactSlice, f : Double) -> BiostructcontactSlice {
-  let result = bio_struct_contact_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_slice_add(a : BiostructcontactSlice, b : BiostructcontactSlice) -> BiostructcontactSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_contact_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_contact_slice_copy(s : BiostructcontactSlice) -> BiostructcontactSlice {
-  let result = bio_struct_contact_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_slice_fill(s : BiostructcontactSlice, v : Double) -> BiostructcontactSlice {
-  let result = bio_struct_contact_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_contact_slice_min(s : BiostructcontactSlice) -> Double { @_common.min(s.data) }

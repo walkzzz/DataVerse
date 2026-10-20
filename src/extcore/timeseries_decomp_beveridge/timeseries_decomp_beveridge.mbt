@@ -383,28 +383,20 @@ pub fn timeseries_decomp_beveridge_frame_sum(s : TimeseriesdecompbeveridgeFrame)
 pub fn timeseries_decomp_beveridge_frame_mean(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_frame_scale(s : TimeseriesdecompbeveridgeFrame, f : Double) -> TimeseriesdecompbeveridgeFrame {
-  let result = timeseries_decomp_beveridge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_frame_add(a : TimeseriesdecompbeveridgeFrame, b : TimeseriesdecompbeveridgeFrame) -> TimeseriesdecompbeveridgeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_frame_copy(s : TimeseriesdecompbeveridgeFrame) -> TimeseriesdecompbeveridgeFrame {
-  let result = timeseries_decomp_beveridge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_frame_fill(s : TimeseriesdecompbeveridgeFrame, v : Double) -> TimeseriesdecompbeveridgeFrame {
-  let result = timeseries_decomp_beveridge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_frame_min(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_decomp_beveridge_table_sum(s : TimeseriesdecompbeveridgeTable)
 pub fn timeseries_decomp_beveridge_table_mean(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_table_scale(s : TimeseriesdecompbeveridgeTable, f : Double) -> TimeseriesdecompbeveridgeTable {
-  let result = timeseries_decomp_beveridge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_table_add(a : TimeseriesdecompbeveridgeTable, b : TimeseriesdecompbeveridgeTable) -> TimeseriesdecompbeveridgeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_table_copy(s : TimeseriesdecompbeveridgeTable) -> TimeseriesdecompbeveridgeTable {
-  let result = timeseries_decomp_beveridge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_table_fill(s : TimeseriesdecompbeveridgeTable, v : Double) -> TimeseriesdecompbeveridgeTable {
-  let result = timeseries_decomp_beveridge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_table_min(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_decomp_beveridge_graphn_sum(s : TimeseriesdecompbeveridgeGraph
 pub fn timeseries_decomp_beveridge_graphn_mean(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_graphn_scale(s : TimeseriesdecompbeveridgeGraphN, f : Double) -> TimeseriesdecompbeveridgeGraphN {
-  let result = timeseries_decomp_beveridge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_graphn_add(a : TimeseriesdecompbeveridgeGraphN, b : TimeseriesdecompbeveridgeGraphN) -> TimeseriesdecompbeveridgeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_graphn_copy(s : TimeseriesdecompbeveridgeGraphN) -> TimeseriesdecompbeveridgeGraphN {
-  let result = timeseries_decomp_beveridge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_graphn_fill(s : TimeseriesdecompbeveridgeGraphN, v : Double) -> TimeseriesdecompbeveridgeGraphN {
-  let result = timeseries_decomp_beveridge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_graphn_min(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_decomp_beveridge_node_sum(s : TimeseriesdecompbeveridgeNode) -
 pub fn timeseries_decomp_beveridge_node_mean(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_node_scale(s : TimeseriesdecompbeveridgeNode, f : Double) -> TimeseriesdecompbeveridgeNode {
-  let result = timeseries_decomp_beveridge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_node_add(a : TimeseriesdecompbeveridgeNode, b : TimeseriesdecompbeveridgeNode) -> TimeseriesdecompbeveridgeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_node_copy(s : TimeseriesdecompbeveridgeNode) -> TimeseriesdecompbeveridgeNode {
-  let result = timeseries_decomp_beveridge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_node_fill(s : TimeseriesdecompbeveridgeNode, v : Double) -> TimeseriesdecompbeveridgeNode {
-  let result = timeseries_decomp_beveridge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_node_min(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_decomp_beveridge_edge_sum(s : TimeseriesdecompbeveridgeEdge) -
 pub fn timeseries_decomp_beveridge_edge_mean(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_edge_scale(s : TimeseriesdecompbeveridgeEdge, f : Double) -> TimeseriesdecompbeveridgeEdge {
-  let result = timeseries_decomp_beveridge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_edge_add(a : TimeseriesdecompbeveridgeEdge, b : TimeseriesdecompbeveridgeEdge) -> TimeseriesdecompbeveridgeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_edge_copy(s : TimeseriesdecompbeveridgeEdge) -> TimeseriesdecompbeveridgeEdge {
-  let result = timeseries_decomp_beveridge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_edge_fill(s : TimeseriesdecompbeveridgeEdge, v : Double) -> TimeseriesdecompbeveridgeEdge {
-  let result = timeseries_decomp_beveridge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_edge_min(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_decomp_beveridge_path_sum(s : TimeseriesdecompbeveridgePath) -
 pub fn timeseries_decomp_beveridge_path_mean(s : TimeseriesdecompbeveridgePath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_path_scale(s : TimeseriesdecompbeveridgePath, f : Double) -> TimeseriesdecompbeveridgePath {
-  let result = timeseries_decomp_beveridge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_path_add(a : TimeseriesdecompbeveridgePath, b : TimeseriesdecompbeveridgePath) -> TimeseriesdecompbeveridgePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_path_copy(s : TimeseriesdecompbeveridgePath) -> TimeseriesdecompbeveridgePath {
-  let result = timeseries_decomp_beveridge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_path_fill(s : TimeseriesdecompbeveridgePath, v : Double) -> TimeseriesdecompbeveridgePath {
-  let result = timeseries_decomp_beveridge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_path_min(s : TimeseriesdecompbeveridgePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_decomp_beveridge_cluster_sum(s : TimeseriesdecompbeveridgeClus
 pub fn timeseries_decomp_beveridge_cluster_mean(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_cluster_scale(s : TimeseriesdecompbeveridgeCluster, f : Double) -> TimeseriesdecompbeveridgeCluster {
-  let result = timeseries_decomp_beveridge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cluster_add(a : TimeseriesdecompbeveridgeCluster, b : TimeseriesdecompbeveridgeCluster) -> TimeseriesdecompbeveridgeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cluster_copy(s : TimeseriesdecompbeveridgeCluster) -> TimeseriesdecompbeveridgeCluster {
-  let result = timeseries_decomp_beveridge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cluster_fill(s : TimeseriesdecompbeveridgeCluster, v : Double) -> TimeseriesdecompbeveridgeCluster {
-  let result = timeseries_decomp_beveridge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cluster_min(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_decomp_beveridge_model_sum(s : TimeseriesdecompbeveridgeModel)
 pub fn timeseries_decomp_beveridge_model_mean(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_model_scale(s : TimeseriesdecompbeveridgeModel, f : Double) -> TimeseriesdecompbeveridgeModel {
-  let result = timeseries_decomp_beveridge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_model_add(a : TimeseriesdecompbeveridgeModel, b : TimeseriesdecompbeveridgeModel) -> TimeseriesdecompbeveridgeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_model_copy(s : TimeseriesdecompbeveridgeModel) -> TimeseriesdecompbeveridgeModel {
-  let result = timeseries_decomp_beveridge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_model_fill(s : TimeseriesdecompbeveridgeModel, v : Double) -> TimeseriesdecompbeveridgeModel {
-  let result = timeseries_decomp_beveridge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_model_min(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_decomp_beveridge_layer_sum(s : TimeseriesdecompbeveridgeLayer)
 pub fn timeseries_decomp_beveridge_layer_mean(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_layer_scale(s : TimeseriesdecompbeveridgeLayer, f : Double) -> TimeseriesdecompbeveridgeLayer {
-  let result = timeseries_decomp_beveridge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_layer_add(a : TimeseriesdecompbeveridgeLayer, b : TimeseriesdecompbeveridgeLayer) -> TimeseriesdecompbeveridgeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_layer_copy(s : TimeseriesdecompbeveridgeLayer) -> TimeseriesdecompbeveridgeLayer {
-  let result = timeseries_decomp_beveridge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_layer_fill(s : TimeseriesdecompbeveridgeLayer, v : Double) -> TimeseriesdecompbeveridgeLayer {
-  let result = timeseries_decomp_beveridge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_layer_min(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_decomp_beveridge_buffer_sum(s : TimeseriesdecompbeveridgeBuffe
 pub fn timeseries_decomp_beveridge_buffer_mean(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_buffer_scale(s : TimeseriesdecompbeveridgeBuffer, f : Double) -> TimeseriesdecompbeveridgeBuffer {
-  let result = timeseries_decomp_beveridge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_buffer_add(a : TimeseriesdecompbeveridgeBuffer, b : TimeseriesdecompbeveridgeBuffer) -> TimeseriesdecompbeveridgeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_buffer_copy(s : TimeseriesdecompbeveridgeBuffer) -> TimeseriesdecompbeveridgeBuffer {
-  let result = timeseries_decomp_beveridge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_buffer_fill(s : TimeseriesdecompbeveridgeBuffer, v : Double) -> TimeseriesdecompbeveridgeBuffer {
-  let result = timeseries_decomp_beveridge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_buffer_min(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_decomp_beveridge_cursor_sum(s : TimeseriesdecompbeveridgeCurso
 pub fn timeseries_decomp_beveridge_cursor_mean(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_cursor_scale(s : TimeseriesdecompbeveridgeCursor, f : Double) -> TimeseriesdecompbeveridgeCursor {
-  let result = timeseries_decomp_beveridge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cursor_add(a : TimeseriesdecompbeveridgeCursor, b : TimeseriesdecompbeveridgeCursor) -> TimeseriesdecompbeveridgeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cursor_copy(s : TimeseriesdecompbeveridgeCursor) -> TimeseriesdecompbeveridgeCursor {
-  let result = timeseries_decomp_beveridge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cursor_fill(s : TimeseriesdecompbeveridgeCursor, v : Double) -> TimeseriesdecompbeveridgeCursor {
-  let result = timeseries_decomp_beveridge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_cursor_min(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_decomp_beveridge_view_sum(s : TimeseriesdecompbeveridgeView) -
 pub fn timeseries_decomp_beveridge_view_mean(s : TimeseriesdecompbeveridgeView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_view_scale(s : TimeseriesdecompbeveridgeView, f : Double) -> TimeseriesdecompbeveridgeView {
-  let result = timeseries_decomp_beveridge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_view_add(a : TimeseriesdecompbeveridgeView, b : TimeseriesdecompbeveridgeView) -> TimeseriesdecompbeveridgeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_view_copy(s : TimeseriesdecompbeveridgeView) -> TimeseriesdecompbeveridgeView {
-  let result = timeseries_decomp_beveridge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_view_fill(s : TimeseriesdecompbeveridgeView, v : Double) -> TimeseriesdecompbeveridgeView {
-  let result = timeseries_decomp_beveridge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_view_min(s : TimeseriesdecompbeveridgeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_decomp_beveridge_range_sum(s : TimeseriesdecompbeveridgeRange)
 pub fn timeseries_decomp_beveridge_range_mean(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_range_scale(s : TimeseriesdecompbeveridgeRange, f : Double) -> TimeseriesdecompbeveridgeRange {
-  let result = timeseries_decomp_beveridge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_range_add(a : TimeseriesdecompbeveridgeRange, b : TimeseriesdecompbeveridgeRange) -> TimeseriesdecompbeveridgeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_range_copy(s : TimeseriesdecompbeveridgeRange) -> TimeseriesdecompbeveridgeRange {
-  let result = timeseries_decomp_beveridge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_range_fill(s : TimeseriesdecompbeveridgeRange, v : Double) -> TimeseriesdecompbeveridgeRange {
-  let result = timeseries_decomp_beveridge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_range_min(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_decomp_beveridge_slice_sum(s : TimeseriesdecompbeveridgeSlice)
 pub fn timeseries_decomp_beveridge_slice_mean(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_slice_scale(s : TimeseriesdecompbeveridgeSlice, f : Double) -> TimeseriesdecompbeveridgeSlice {
-  let result = timeseries_decomp_beveridge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_slice_add(a : TimeseriesdecompbeveridgeSlice, b : TimeseriesdecompbeveridgeSlice) -> TimeseriesdecompbeveridgeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_decomp_beveridge_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_decomp_beveridge_slice_copy(s : TimeseriesdecompbeveridgeSlice) -> TimeseriesdecompbeveridgeSlice {
-  let result = timeseries_decomp_beveridge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_slice_fill(s : TimeseriesdecompbeveridgeSlice, v : Double) -> TimeseriesdecompbeveridgeSlice {
-  let result = timeseries_decomp_beveridge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_beveridge_slice_min(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.min(s.data) }

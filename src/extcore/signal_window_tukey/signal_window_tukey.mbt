@@ -383,28 +383,20 @@ pub fn signal_window_tukey_frame_sum(s : SignalwindowtukeyFrame) -> Double { @_c
 pub fn signal_window_tukey_frame_mean(s : SignalwindowtukeyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_frame_scale(s : SignalwindowtukeyFrame, f : Double) -> SignalwindowtukeyFrame {
-  let result = signal_window_tukey_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_frame_add(a : SignalwindowtukeyFrame, b : SignalwindowtukeyFrame) -> SignalwindowtukeyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_frame_copy(s : SignalwindowtukeyFrame) -> SignalwindowtukeyFrame {
-  let result = signal_window_tukey_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_frame_fill(s : SignalwindowtukeyFrame, v : Double) -> SignalwindowtukeyFrame {
-  let result = signal_window_tukey_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_frame_min(s : SignalwindowtukeyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_window_tukey_table_sum(s : SignalwindowtukeyTable) -> Double { @_c
 pub fn signal_window_tukey_table_mean(s : SignalwindowtukeyTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_table_scale(s : SignalwindowtukeyTable, f : Double) -> SignalwindowtukeyTable {
-  let result = signal_window_tukey_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_table_add(a : SignalwindowtukeyTable, b : SignalwindowtukeyTable) -> SignalwindowtukeyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_table_copy(s : SignalwindowtukeyTable) -> SignalwindowtukeyTable {
-  let result = signal_window_tukey_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_table_fill(s : SignalwindowtukeyTable, v : Double) -> SignalwindowtukeyTable {
-  let result = signal_window_tukey_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_table_min(s : SignalwindowtukeyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_window_tukey_graphn_sum(s : SignalwindowtukeyGraphN) -> Double { @
 pub fn signal_window_tukey_graphn_mean(s : SignalwindowtukeyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_graphn_scale(s : SignalwindowtukeyGraphN, f : Double) -> SignalwindowtukeyGraphN {
-  let result = signal_window_tukey_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_graphn_add(a : SignalwindowtukeyGraphN, b : SignalwindowtukeyGraphN) -> SignalwindowtukeyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_graphn_copy(s : SignalwindowtukeyGraphN) -> SignalwindowtukeyGraphN {
-  let result = signal_window_tukey_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_graphn_fill(s : SignalwindowtukeyGraphN, v : Double) -> SignalwindowtukeyGraphN {
-  let result = signal_window_tukey_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_graphn_min(s : SignalwindowtukeyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_window_tukey_node_sum(s : SignalwindowtukeyNode) -> Double { @_com
 pub fn signal_window_tukey_node_mean(s : SignalwindowtukeyNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_node_scale(s : SignalwindowtukeyNode, f : Double) -> SignalwindowtukeyNode {
-  let result = signal_window_tukey_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_node_add(a : SignalwindowtukeyNode, b : SignalwindowtukeyNode) -> SignalwindowtukeyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_node_copy(s : SignalwindowtukeyNode) -> SignalwindowtukeyNode {
-  let result = signal_window_tukey_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_node_fill(s : SignalwindowtukeyNode, v : Double) -> SignalwindowtukeyNode {
-  let result = signal_window_tukey_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_node_min(s : SignalwindowtukeyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_window_tukey_edge_sum(s : SignalwindowtukeyEdge) -> Double { @_com
 pub fn signal_window_tukey_edge_mean(s : SignalwindowtukeyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_edge_scale(s : SignalwindowtukeyEdge, f : Double) -> SignalwindowtukeyEdge {
-  let result = signal_window_tukey_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_edge_add(a : SignalwindowtukeyEdge, b : SignalwindowtukeyEdge) -> SignalwindowtukeyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_edge_copy(s : SignalwindowtukeyEdge) -> SignalwindowtukeyEdge {
-  let result = signal_window_tukey_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_edge_fill(s : SignalwindowtukeyEdge, v : Double) -> SignalwindowtukeyEdge {
-  let result = signal_window_tukey_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_edge_min(s : SignalwindowtukeyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_window_tukey_path_sum(s : SignalwindowtukeyPath) -> Double { @_com
 pub fn signal_window_tukey_path_mean(s : SignalwindowtukeyPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_path_scale(s : SignalwindowtukeyPath, f : Double) -> SignalwindowtukeyPath {
-  let result = signal_window_tukey_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_path_add(a : SignalwindowtukeyPath, b : SignalwindowtukeyPath) -> SignalwindowtukeyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_path_copy(s : SignalwindowtukeyPath) -> SignalwindowtukeyPath {
-  let result = signal_window_tukey_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_path_fill(s : SignalwindowtukeyPath, v : Double) -> SignalwindowtukeyPath {
-  let result = signal_window_tukey_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_path_min(s : SignalwindowtukeyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_window_tukey_cluster_sum(s : SignalwindowtukeyCluster) -> Double {
 pub fn signal_window_tukey_cluster_mean(s : SignalwindowtukeyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_cluster_scale(s : SignalwindowtukeyCluster, f : Double) -> SignalwindowtukeyCluster {
-  let result = signal_window_tukey_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_cluster_add(a : SignalwindowtukeyCluster, b : SignalwindowtukeyCluster) -> SignalwindowtukeyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_cluster_copy(s : SignalwindowtukeyCluster) -> SignalwindowtukeyCluster {
-  let result = signal_window_tukey_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_cluster_fill(s : SignalwindowtukeyCluster, v : Double) -> SignalwindowtukeyCluster {
-  let result = signal_window_tukey_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_cluster_min(s : SignalwindowtukeyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_window_tukey_model_sum(s : SignalwindowtukeyModel) -> Double { @_c
 pub fn signal_window_tukey_model_mean(s : SignalwindowtukeyModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_model_scale(s : SignalwindowtukeyModel, f : Double) -> SignalwindowtukeyModel {
-  let result = signal_window_tukey_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_model_add(a : SignalwindowtukeyModel, b : SignalwindowtukeyModel) -> SignalwindowtukeyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_model_copy(s : SignalwindowtukeyModel) -> SignalwindowtukeyModel {
-  let result = signal_window_tukey_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_model_fill(s : SignalwindowtukeyModel, v : Double) -> SignalwindowtukeyModel {
-  let result = signal_window_tukey_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_model_min(s : SignalwindowtukeyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_window_tukey_layer_sum(s : SignalwindowtukeyLayer) -> Double { @_c
 pub fn signal_window_tukey_layer_mean(s : SignalwindowtukeyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_layer_scale(s : SignalwindowtukeyLayer, f : Double) -> SignalwindowtukeyLayer {
-  let result = signal_window_tukey_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_layer_add(a : SignalwindowtukeyLayer, b : SignalwindowtukeyLayer) -> SignalwindowtukeyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_layer_copy(s : SignalwindowtukeyLayer) -> SignalwindowtukeyLayer {
-  let result = signal_window_tukey_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_layer_fill(s : SignalwindowtukeyLayer, v : Double) -> SignalwindowtukeyLayer {
-  let result = signal_window_tukey_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_layer_min(s : SignalwindowtukeyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_window_tukey_buffer_sum(s : SignalwindowtukeyBuffer) -> Double { @
 pub fn signal_window_tukey_buffer_mean(s : SignalwindowtukeyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_buffer_scale(s : SignalwindowtukeyBuffer, f : Double) -> SignalwindowtukeyBuffer {
-  let result = signal_window_tukey_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_buffer_add(a : SignalwindowtukeyBuffer, b : SignalwindowtukeyBuffer) -> SignalwindowtukeyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_buffer_copy(s : SignalwindowtukeyBuffer) -> SignalwindowtukeyBuffer {
-  let result = signal_window_tukey_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_buffer_fill(s : SignalwindowtukeyBuffer, v : Double) -> SignalwindowtukeyBuffer {
-  let result = signal_window_tukey_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_buffer_min(s : SignalwindowtukeyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_window_tukey_cursor_sum(s : SignalwindowtukeyCursor) -> Double { @
 pub fn signal_window_tukey_cursor_mean(s : SignalwindowtukeyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_cursor_scale(s : SignalwindowtukeyCursor, f : Double) -> SignalwindowtukeyCursor {
-  let result = signal_window_tukey_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_cursor_add(a : SignalwindowtukeyCursor, b : SignalwindowtukeyCursor) -> SignalwindowtukeyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_cursor_copy(s : SignalwindowtukeyCursor) -> SignalwindowtukeyCursor {
-  let result = signal_window_tukey_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_cursor_fill(s : SignalwindowtukeyCursor, v : Double) -> SignalwindowtukeyCursor {
-  let result = signal_window_tukey_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_cursor_min(s : SignalwindowtukeyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_window_tukey_view_sum(s : SignalwindowtukeyView) -> Double { @_com
 pub fn signal_window_tukey_view_mean(s : SignalwindowtukeyView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_view_scale(s : SignalwindowtukeyView, f : Double) -> SignalwindowtukeyView {
-  let result = signal_window_tukey_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_view_add(a : SignalwindowtukeyView, b : SignalwindowtukeyView) -> SignalwindowtukeyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_view_copy(s : SignalwindowtukeyView) -> SignalwindowtukeyView {
-  let result = signal_window_tukey_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_view_fill(s : SignalwindowtukeyView, v : Double) -> SignalwindowtukeyView {
-  let result = signal_window_tukey_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_view_min(s : SignalwindowtukeyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_window_tukey_range_sum(s : SignalwindowtukeyRange) -> Double { @_c
 pub fn signal_window_tukey_range_mean(s : SignalwindowtukeyRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_range_scale(s : SignalwindowtukeyRange, f : Double) -> SignalwindowtukeyRange {
-  let result = signal_window_tukey_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_range_add(a : SignalwindowtukeyRange, b : SignalwindowtukeyRange) -> SignalwindowtukeyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_range_copy(s : SignalwindowtukeyRange) -> SignalwindowtukeyRange {
-  let result = signal_window_tukey_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_range_fill(s : SignalwindowtukeyRange, v : Double) -> SignalwindowtukeyRange {
-  let result = signal_window_tukey_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_range_min(s : SignalwindowtukeyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_window_tukey_slice_sum(s : SignalwindowtukeySlice) -> Double { @_c
 pub fn signal_window_tukey_slice_mean(s : SignalwindowtukeySlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_slice_scale(s : SignalwindowtukeySlice, f : Double) -> SignalwindowtukeySlice {
-  let result = signal_window_tukey_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_slice_add(a : SignalwindowtukeySlice, b : SignalwindowtukeySlice) -> SignalwindowtukeySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_tukey_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_tukey_slice_copy(s : SignalwindowtukeySlice) -> SignalwindowtukeySlice {
-  let result = signal_window_tukey_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_slice_fill(s : SignalwindowtukeySlice, v : Double) -> SignalwindowtukeySlice {
-  let result = signal_window_tukey_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_tukey_slice_min(s : SignalwindowtukeySlice) -> Double { @_common.min(s.data) }

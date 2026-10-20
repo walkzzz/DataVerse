@@ -383,28 +383,20 @@ pub fn bio_seq_assembly_gap_frame_sum(s : BioseqassemblygapFrame) -> Double { @_
 pub fn bio_seq_assembly_gap_frame_mean(s : BioseqassemblygapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_frame_scale(s : BioseqassemblygapFrame, f : Double) -> BioseqassemblygapFrame {
-  let result = bio_seq_assembly_gap_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_frame_add(a : BioseqassemblygapFrame, b : BioseqassemblygapFrame) -> BioseqassemblygapFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_frame_copy(s : BioseqassemblygapFrame) -> BioseqassemblygapFrame {
-  let result = bio_seq_assembly_gap_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_frame_fill(s : BioseqassemblygapFrame, v : Double) -> BioseqassemblygapFrame {
-  let result = bio_seq_assembly_gap_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_frame_min(s : BioseqassemblygapFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_seq_assembly_gap_table_sum(s : BioseqassemblygapTable) -> Double { @_
 pub fn bio_seq_assembly_gap_table_mean(s : BioseqassemblygapTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_table_scale(s : BioseqassemblygapTable, f : Double) -> BioseqassemblygapTable {
-  let result = bio_seq_assembly_gap_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_table_add(a : BioseqassemblygapTable, b : BioseqassemblygapTable) -> BioseqassemblygapTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_table_copy(s : BioseqassemblygapTable) -> BioseqassemblygapTable {
-  let result = bio_seq_assembly_gap_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_table_fill(s : BioseqassemblygapTable, v : Double) -> BioseqassemblygapTable {
-  let result = bio_seq_assembly_gap_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_table_min(s : BioseqassemblygapTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_seq_assembly_gap_graphn_sum(s : BioseqassemblygapGraphN) -> Double { 
 pub fn bio_seq_assembly_gap_graphn_mean(s : BioseqassemblygapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_graphn_scale(s : BioseqassemblygapGraphN, f : Double) -> BioseqassemblygapGraphN {
-  let result = bio_seq_assembly_gap_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_graphn_add(a : BioseqassemblygapGraphN, b : BioseqassemblygapGraphN) -> BioseqassemblygapGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_graphn_copy(s : BioseqassemblygapGraphN) -> BioseqassemblygapGraphN {
-  let result = bio_seq_assembly_gap_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_graphn_fill(s : BioseqassemblygapGraphN, v : Double) -> BioseqassemblygapGraphN {
-  let result = bio_seq_assembly_gap_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_graphn_min(s : BioseqassemblygapGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_seq_assembly_gap_node_sum(s : BioseqassemblygapNode) -> Double { @_co
 pub fn bio_seq_assembly_gap_node_mean(s : BioseqassemblygapNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_node_scale(s : BioseqassemblygapNode, f : Double) -> BioseqassemblygapNode {
-  let result = bio_seq_assembly_gap_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_node_add(a : BioseqassemblygapNode, b : BioseqassemblygapNode) -> BioseqassemblygapNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_node_copy(s : BioseqassemblygapNode) -> BioseqassemblygapNode {
-  let result = bio_seq_assembly_gap_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_node_fill(s : BioseqassemblygapNode, v : Double) -> BioseqassemblygapNode {
-  let result = bio_seq_assembly_gap_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_node_min(s : BioseqassemblygapNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_seq_assembly_gap_edge_sum(s : BioseqassemblygapEdge) -> Double { @_co
 pub fn bio_seq_assembly_gap_edge_mean(s : BioseqassemblygapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_edge_scale(s : BioseqassemblygapEdge, f : Double) -> BioseqassemblygapEdge {
-  let result = bio_seq_assembly_gap_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_edge_add(a : BioseqassemblygapEdge, b : BioseqassemblygapEdge) -> BioseqassemblygapEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_edge_copy(s : BioseqassemblygapEdge) -> BioseqassemblygapEdge {
-  let result = bio_seq_assembly_gap_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_edge_fill(s : BioseqassemblygapEdge, v : Double) -> BioseqassemblygapEdge {
-  let result = bio_seq_assembly_gap_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_edge_min(s : BioseqassemblygapEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_seq_assembly_gap_path_sum(s : BioseqassemblygapPath) -> Double { @_co
 pub fn bio_seq_assembly_gap_path_mean(s : BioseqassemblygapPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_path_scale(s : BioseqassemblygapPath, f : Double) -> BioseqassemblygapPath {
-  let result = bio_seq_assembly_gap_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_path_add(a : BioseqassemblygapPath, b : BioseqassemblygapPath) -> BioseqassemblygapPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_path_copy(s : BioseqassemblygapPath) -> BioseqassemblygapPath {
-  let result = bio_seq_assembly_gap_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_path_fill(s : BioseqassemblygapPath, v : Double) -> BioseqassemblygapPath {
-  let result = bio_seq_assembly_gap_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_path_min(s : BioseqassemblygapPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_seq_assembly_gap_cluster_sum(s : BioseqassemblygapCluster) -> Double 
 pub fn bio_seq_assembly_gap_cluster_mean(s : BioseqassemblygapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_cluster_scale(s : BioseqassemblygapCluster, f : Double) -> BioseqassemblygapCluster {
-  let result = bio_seq_assembly_gap_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_cluster_add(a : BioseqassemblygapCluster, b : BioseqassemblygapCluster) -> BioseqassemblygapCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_cluster_copy(s : BioseqassemblygapCluster) -> BioseqassemblygapCluster {
-  let result = bio_seq_assembly_gap_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_cluster_fill(s : BioseqassemblygapCluster, v : Double) -> BioseqassemblygapCluster {
-  let result = bio_seq_assembly_gap_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_cluster_min(s : BioseqassemblygapCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_seq_assembly_gap_model_sum(s : BioseqassemblygapModel) -> Double { @_
 pub fn bio_seq_assembly_gap_model_mean(s : BioseqassemblygapModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_model_scale(s : BioseqassemblygapModel, f : Double) -> BioseqassemblygapModel {
-  let result = bio_seq_assembly_gap_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_model_add(a : BioseqassemblygapModel, b : BioseqassemblygapModel) -> BioseqassemblygapModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_model_copy(s : BioseqassemblygapModel) -> BioseqassemblygapModel {
-  let result = bio_seq_assembly_gap_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_model_fill(s : BioseqassemblygapModel, v : Double) -> BioseqassemblygapModel {
-  let result = bio_seq_assembly_gap_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_model_min(s : BioseqassemblygapModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_seq_assembly_gap_layer_sum(s : BioseqassemblygapLayer) -> Double { @_
 pub fn bio_seq_assembly_gap_layer_mean(s : BioseqassemblygapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_layer_scale(s : BioseqassemblygapLayer, f : Double) -> BioseqassemblygapLayer {
-  let result = bio_seq_assembly_gap_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_layer_add(a : BioseqassemblygapLayer, b : BioseqassemblygapLayer) -> BioseqassemblygapLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_layer_copy(s : BioseqassemblygapLayer) -> BioseqassemblygapLayer {
-  let result = bio_seq_assembly_gap_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_layer_fill(s : BioseqassemblygapLayer, v : Double) -> BioseqassemblygapLayer {
-  let result = bio_seq_assembly_gap_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_layer_min(s : BioseqassemblygapLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_seq_assembly_gap_buffer_sum(s : BioseqassemblygapBuffer) -> Double { 
 pub fn bio_seq_assembly_gap_buffer_mean(s : BioseqassemblygapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_buffer_scale(s : BioseqassemblygapBuffer, f : Double) -> BioseqassemblygapBuffer {
-  let result = bio_seq_assembly_gap_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_buffer_add(a : BioseqassemblygapBuffer, b : BioseqassemblygapBuffer) -> BioseqassemblygapBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_buffer_copy(s : BioseqassemblygapBuffer) -> BioseqassemblygapBuffer {
-  let result = bio_seq_assembly_gap_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_buffer_fill(s : BioseqassemblygapBuffer, v : Double) -> BioseqassemblygapBuffer {
-  let result = bio_seq_assembly_gap_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_buffer_min(s : BioseqassemblygapBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_seq_assembly_gap_cursor_sum(s : BioseqassemblygapCursor) -> Double { 
 pub fn bio_seq_assembly_gap_cursor_mean(s : BioseqassemblygapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_cursor_scale(s : BioseqassemblygapCursor, f : Double) -> BioseqassemblygapCursor {
-  let result = bio_seq_assembly_gap_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_cursor_add(a : BioseqassemblygapCursor, b : BioseqassemblygapCursor) -> BioseqassemblygapCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_cursor_copy(s : BioseqassemblygapCursor) -> BioseqassemblygapCursor {
-  let result = bio_seq_assembly_gap_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_cursor_fill(s : BioseqassemblygapCursor, v : Double) -> BioseqassemblygapCursor {
-  let result = bio_seq_assembly_gap_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_cursor_min(s : BioseqassemblygapCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_seq_assembly_gap_view_sum(s : BioseqassemblygapView) -> Double { @_co
 pub fn bio_seq_assembly_gap_view_mean(s : BioseqassemblygapView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_view_scale(s : BioseqassemblygapView, f : Double) -> BioseqassemblygapView {
-  let result = bio_seq_assembly_gap_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_view_add(a : BioseqassemblygapView, b : BioseqassemblygapView) -> BioseqassemblygapView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_view_copy(s : BioseqassemblygapView) -> BioseqassemblygapView {
-  let result = bio_seq_assembly_gap_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_view_fill(s : BioseqassemblygapView, v : Double) -> BioseqassemblygapView {
-  let result = bio_seq_assembly_gap_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_view_min(s : BioseqassemblygapView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_seq_assembly_gap_range_sum(s : BioseqassemblygapRange) -> Double { @_
 pub fn bio_seq_assembly_gap_range_mean(s : BioseqassemblygapRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_range_scale(s : BioseqassemblygapRange, f : Double) -> BioseqassemblygapRange {
-  let result = bio_seq_assembly_gap_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_range_add(a : BioseqassemblygapRange, b : BioseqassemblygapRange) -> BioseqassemblygapRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_range_copy(s : BioseqassemblygapRange) -> BioseqassemblygapRange {
-  let result = bio_seq_assembly_gap_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_range_fill(s : BioseqassemblygapRange, v : Double) -> BioseqassemblygapRange {
-  let result = bio_seq_assembly_gap_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_range_min(s : BioseqassemblygapRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_seq_assembly_gap_slice_sum(s : BioseqassemblygapSlice) -> Double { @_
 pub fn bio_seq_assembly_gap_slice_mean(s : BioseqassemblygapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_slice_scale(s : BioseqassemblygapSlice, f : Double) -> BioseqassemblygapSlice {
-  let result = bio_seq_assembly_gap_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_slice_add(a : BioseqassemblygapSlice, b : BioseqassemblygapSlice) -> BioseqassemblygapSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_gap_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_gap_slice_copy(s : BioseqassemblygapSlice) -> BioseqassemblygapSlice {
-  let result = bio_seq_assembly_gap_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_slice_fill(s : BioseqassemblygapSlice, v : Double) -> BioseqassemblygapSlice {
-  let result = bio_seq_assembly_gap_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_gap_slice_min(s : BioseqassemblygapSlice) -> Double { @_common.min(s.data) }

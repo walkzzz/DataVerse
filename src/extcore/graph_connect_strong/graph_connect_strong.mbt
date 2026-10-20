@@ -383,28 +383,20 @@ pub fn graph_connect_strong_frame_sum(s : GraphconnectstrongFrame) -> Double { @
 pub fn graph_connect_strong_frame_mean(s : GraphconnectstrongFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_frame_scale(s : GraphconnectstrongFrame, f : Double) -> GraphconnectstrongFrame {
-  let result = graph_connect_strong_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_frame_add(a : GraphconnectstrongFrame, b : GraphconnectstrongFrame) -> GraphconnectstrongFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_frame_copy(s : GraphconnectstrongFrame) -> GraphconnectstrongFrame {
-  let result = graph_connect_strong_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_frame_fill(s : GraphconnectstrongFrame, v : Double) -> GraphconnectstrongFrame {
-  let result = graph_connect_strong_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_frame_min(s : GraphconnectstrongFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_connect_strong_table_sum(s : GraphconnectstrongTable) -> Double { @
 pub fn graph_connect_strong_table_mean(s : GraphconnectstrongTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_table_scale(s : GraphconnectstrongTable, f : Double) -> GraphconnectstrongTable {
-  let result = graph_connect_strong_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_table_add(a : GraphconnectstrongTable, b : GraphconnectstrongTable) -> GraphconnectstrongTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_table_copy(s : GraphconnectstrongTable) -> GraphconnectstrongTable {
-  let result = graph_connect_strong_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_table_fill(s : GraphconnectstrongTable, v : Double) -> GraphconnectstrongTable {
-  let result = graph_connect_strong_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_table_min(s : GraphconnectstrongTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_connect_strong_graphn_sum(s : GraphconnectstrongGraphN) -> Double {
 pub fn graph_connect_strong_graphn_mean(s : GraphconnectstrongGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_graphn_scale(s : GraphconnectstrongGraphN, f : Double) -> GraphconnectstrongGraphN {
-  let result = graph_connect_strong_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_graphn_add(a : GraphconnectstrongGraphN, b : GraphconnectstrongGraphN) -> GraphconnectstrongGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_graphn_copy(s : GraphconnectstrongGraphN) -> GraphconnectstrongGraphN {
-  let result = graph_connect_strong_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_graphn_fill(s : GraphconnectstrongGraphN, v : Double) -> GraphconnectstrongGraphN {
-  let result = graph_connect_strong_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_graphn_min(s : GraphconnectstrongGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_connect_strong_node_sum(s : GraphconnectstrongNode) -> Double { @_c
 pub fn graph_connect_strong_node_mean(s : GraphconnectstrongNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_node_scale(s : GraphconnectstrongNode, f : Double) -> GraphconnectstrongNode {
-  let result = graph_connect_strong_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_node_add(a : GraphconnectstrongNode, b : GraphconnectstrongNode) -> GraphconnectstrongNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_node_copy(s : GraphconnectstrongNode) -> GraphconnectstrongNode {
-  let result = graph_connect_strong_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_node_fill(s : GraphconnectstrongNode, v : Double) -> GraphconnectstrongNode {
-  let result = graph_connect_strong_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_node_min(s : GraphconnectstrongNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_connect_strong_edge_sum(s : GraphconnectstrongEdge) -> Double { @_c
 pub fn graph_connect_strong_edge_mean(s : GraphconnectstrongEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_edge_scale(s : GraphconnectstrongEdge, f : Double) -> GraphconnectstrongEdge {
-  let result = graph_connect_strong_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_edge_add(a : GraphconnectstrongEdge, b : GraphconnectstrongEdge) -> GraphconnectstrongEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_edge_copy(s : GraphconnectstrongEdge) -> GraphconnectstrongEdge {
-  let result = graph_connect_strong_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_edge_fill(s : GraphconnectstrongEdge, v : Double) -> GraphconnectstrongEdge {
-  let result = graph_connect_strong_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_edge_min(s : GraphconnectstrongEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_connect_strong_path_sum(s : GraphconnectstrongPath) -> Double { @_c
 pub fn graph_connect_strong_path_mean(s : GraphconnectstrongPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_path_scale(s : GraphconnectstrongPath, f : Double) -> GraphconnectstrongPath {
-  let result = graph_connect_strong_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_path_add(a : GraphconnectstrongPath, b : GraphconnectstrongPath) -> GraphconnectstrongPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_path_copy(s : GraphconnectstrongPath) -> GraphconnectstrongPath {
-  let result = graph_connect_strong_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_path_fill(s : GraphconnectstrongPath, v : Double) -> GraphconnectstrongPath {
-  let result = graph_connect_strong_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_path_min(s : GraphconnectstrongPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_connect_strong_cluster_sum(s : GraphconnectstrongCluster) -> Double
 pub fn graph_connect_strong_cluster_mean(s : GraphconnectstrongCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_cluster_scale(s : GraphconnectstrongCluster, f : Double) -> GraphconnectstrongCluster {
-  let result = graph_connect_strong_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_cluster_add(a : GraphconnectstrongCluster, b : GraphconnectstrongCluster) -> GraphconnectstrongCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_cluster_copy(s : GraphconnectstrongCluster) -> GraphconnectstrongCluster {
-  let result = graph_connect_strong_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_cluster_fill(s : GraphconnectstrongCluster, v : Double) -> GraphconnectstrongCluster {
-  let result = graph_connect_strong_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_cluster_min(s : GraphconnectstrongCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_connect_strong_model_sum(s : GraphconnectstrongModel) -> Double { @
 pub fn graph_connect_strong_model_mean(s : GraphconnectstrongModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_model_scale(s : GraphconnectstrongModel, f : Double) -> GraphconnectstrongModel {
-  let result = graph_connect_strong_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_model_add(a : GraphconnectstrongModel, b : GraphconnectstrongModel) -> GraphconnectstrongModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_model_copy(s : GraphconnectstrongModel) -> GraphconnectstrongModel {
-  let result = graph_connect_strong_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_model_fill(s : GraphconnectstrongModel, v : Double) -> GraphconnectstrongModel {
-  let result = graph_connect_strong_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_model_min(s : GraphconnectstrongModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_connect_strong_layer_sum(s : GraphconnectstrongLayer) -> Double { @
 pub fn graph_connect_strong_layer_mean(s : GraphconnectstrongLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_layer_scale(s : GraphconnectstrongLayer, f : Double) -> GraphconnectstrongLayer {
-  let result = graph_connect_strong_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_layer_add(a : GraphconnectstrongLayer, b : GraphconnectstrongLayer) -> GraphconnectstrongLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_layer_copy(s : GraphconnectstrongLayer) -> GraphconnectstrongLayer {
-  let result = graph_connect_strong_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_layer_fill(s : GraphconnectstrongLayer, v : Double) -> GraphconnectstrongLayer {
-  let result = graph_connect_strong_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_layer_min(s : GraphconnectstrongLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_connect_strong_buffer_sum(s : GraphconnectstrongBuffer) -> Double {
 pub fn graph_connect_strong_buffer_mean(s : GraphconnectstrongBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_buffer_scale(s : GraphconnectstrongBuffer, f : Double) -> GraphconnectstrongBuffer {
-  let result = graph_connect_strong_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_buffer_add(a : GraphconnectstrongBuffer, b : GraphconnectstrongBuffer) -> GraphconnectstrongBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_buffer_copy(s : GraphconnectstrongBuffer) -> GraphconnectstrongBuffer {
-  let result = graph_connect_strong_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_buffer_fill(s : GraphconnectstrongBuffer, v : Double) -> GraphconnectstrongBuffer {
-  let result = graph_connect_strong_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_buffer_min(s : GraphconnectstrongBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_connect_strong_cursor_sum(s : GraphconnectstrongCursor) -> Double {
 pub fn graph_connect_strong_cursor_mean(s : GraphconnectstrongCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_cursor_scale(s : GraphconnectstrongCursor, f : Double) -> GraphconnectstrongCursor {
-  let result = graph_connect_strong_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_cursor_add(a : GraphconnectstrongCursor, b : GraphconnectstrongCursor) -> GraphconnectstrongCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_cursor_copy(s : GraphconnectstrongCursor) -> GraphconnectstrongCursor {
-  let result = graph_connect_strong_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_cursor_fill(s : GraphconnectstrongCursor, v : Double) -> GraphconnectstrongCursor {
-  let result = graph_connect_strong_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_cursor_min(s : GraphconnectstrongCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_connect_strong_view_sum(s : GraphconnectstrongView) -> Double { @_c
 pub fn graph_connect_strong_view_mean(s : GraphconnectstrongView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_view_scale(s : GraphconnectstrongView, f : Double) -> GraphconnectstrongView {
-  let result = graph_connect_strong_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_view_add(a : GraphconnectstrongView, b : GraphconnectstrongView) -> GraphconnectstrongView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_view_copy(s : GraphconnectstrongView) -> GraphconnectstrongView {
-  let result = graph_connect_strong_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_view_fill(s : GraphconnectstrongView, v : Double) -> GraphconnectstrongView {
-  let result = graph_connect_strong_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_view_min(s : GraphconnectstrongView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_connect_strong_range_sum(s : GraphconnectstrongRange) -> Double { @
 pub fn graph_connect_strong_range_mean(s : GraphconnectstrongRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_range_scale(s : GraphconnectstrongRange, f : Double) -> GraphconnectstrongRange {
-  let result = graph_connect_strong_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_range_add(a : GraphconnectstrongRange, b : GraphconnectstrongRange) -> GraphconnectstrongRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_range_copy(s : GraphconnectstrongRange) -> GraphconnectstrongRange {
-  let result = graph_connect_strong_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_range_fill(s : GraphconnectstrongRange, v : Double) -> GraphconnectstrongRange {
-  let result = graph_connect_strong_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_range_min(s : GraphconnectstrongRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_connect_strong_slice_sum(s : GraphconnectstrongSlice) -> Double { @
 pub fn graph_connect_strong_slice_mean(s : GraphconnectstrongSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_slice_scale(s : GraphconnectstrongSlice, f : Double) -> GraphconnectstrongSlice {
-  let result = graph_connect_strong_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_slice_add(a : GraphconnectstrongSlice, b : GraphconnectstrongSlice) -> GraphconnectstrongSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_strong_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_strong_slice_copy(s : GraphconnectstrongSlice) -> GraphconnectstrongSlice {
-  let result = graph_connect_strong_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_slice_fill(s : GraphconnectstrongSlice, v : Double) -> GraphconnectstrongSlice {
-  let result = graph_connect_strong_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_strong_slice_min(s : GraphconnectstrongSlice) -> Double { @_common.min(s.data) }

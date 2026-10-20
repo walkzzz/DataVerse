@@ -383,28 +383,20 @@ pub fn crypto_sym_blowfish_frame_sum(s : CryptosymblowfishFrame) -> Double { @_c
 pub fn crypto_sym_blowfish_frame_mean(s : CryptosymblowfishFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_frame_scale(s : CryptosymblowfishFrame, f : Double) -> CryptosymblowfishFrame {
-  let result = crypto_sym_blowfish_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_frame_add(a : CryptosymblowfishFrame, b : CryptosymblowfishFrame) -> CryptosymblowfishFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_frame_copy(s : CryptosymblowfishFrame) -> CryptosymblowfishFrame {
-  let result = crypto_sym_blowfish_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_frame_fill(s : CryptosymblowfishFrame, v : Double) -> CryptosymblowfishFrame {
-  let result = crypto_sym_blowfish_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_frame_min(s : CryptosymblowfishFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sym_blowfish_table_sum(s : CryptosymblowfishTable) -> Double { @_c
 pub fn crypto_sym_blowfish_table_mean(s : CryptosymblowfishTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_table_scale(s : CryptosymblowfishTable, f : Double) -> CryptosymblowfishTable {
-  let result = crypto_sym_blowfish_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_table_add(a : CryptosymblowfishTable, b : CryptosymblowfishTable) -> CryptosymblowfishTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_table_copy(s : CryptosymblowfishTable) -> CryptosymblowfishTable {
-  let result = crypto_sym_blowfish_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_table_fill(s : CryptosymblowfishTable, v : Double) -> CryptosymblowfishTable {
-  let result = crypto_sym_blowfish_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_table_min(s : CryptosymblowfishTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sym_blowfish_graphn_sum(s : CryptosymblowfishGraphN) -> Double { @
 pub fn crypto_sym_blowfish_graphn_mean(s : CryptosymblowfishGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_graphn_scale(s : CryptosymblowfishGraphN, f : Double) -> CryptosymblowfishGraphN {
-  let result = crypto_sym_blowfish_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_graphn_add(a : CryptosymblowfishGraphN, b : CryptosymblowfishGraphN) -> CryptosymblowfishGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_graphn_copy(s : CryptosymblowfishGraphN) -> CryptosymblowfishGraphN {
-  let result = crypto_sym_blowfish_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_graphn_fill(s : CryptosymblowfishGraphN, v : Double) -> CryptosymblowfishGraphN {
-  let result = crypto_sym_blowfish_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_graphn_min(s : CryptosymblowfishGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sym_blowfish_node_sum(s : CryptosymblowfishNode) -> Double { @_com
 pub fn crypto_sym_blowfish_node_mean(s : CryptosymblowfishNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_node_scale(s : CryptosymblowfishNode, f : Double) -> CryptosymblowfishNode {
-  let result = crypto_sym_blowfish_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_node_add(a : CryptosymblowfishNode, b : CryptosymblowfishNode) -> CryptosymblowfishNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_node_copy(s : CryptosymblowfishNode) -> CryptosymblowfishNode {
-  let result = crypto_sym_blowfish_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_node_fill(s : CryptosymblowfishNode, v : Double) -> CryptosymblowfishNode {
-  let result = crypto_sym_blowfish_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_node_min(s : CryptosymblowfishNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sym_blowfish_edge_sum(s : CryptosymblowfishEdge) -> Double { @_com
 pub fn crypto_sym_blowfish_edge_mean(s : CryptosymblowfishEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_edge_scale(s : CryptosymblowfishEdge, f : Double) -> CryptosymblowfishEdge {
-  let result = crypto_sym_blowfish_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_edge_add(a : CryptosymblowfishEdge, b : CryptosymblowfishEdge) -> CryptosymblowfishEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_edge_copy(s : CryptosymblowfishEdge) -> CryptosymblowfishEdge {
-  let result = crypto_sym_blowfish_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_edge_fill(s : CryptosymblowfishEdge, v : Double) -> CryptosymblowfishEdge {
-  let result = crypto_sym_blowfish_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_edge_min(s : CryptosymblowfishEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sym_blowfish_path_sum(s : CryptosymblowfishPath) -> Double { @_com
 pub fn crypto_sym_blowfish_path_mean(s : CryptosymblowfishPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_path_scale(s : CryptosymblowfishPath, f : Double) -> CryptosymblowfishPath {
-  let result = crypto_sym_blowfish_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_path_add(a : CryptosymblowfishPath, b : CryptosymblowfishPath) -> CryptosymblowfishPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_path_copy(s : CryptosymblowfishPath) -> CryptosymblowfishPath {
-  let result = crypto_sym_blowfish_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_path_fill(s : CryptosymblowfishPath, v : Double) -> CryptosymblowfishPath {
-  let result = crypto_sym_blowfish_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_path_min(s : CryptosymblowfishPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sym_blowfish_cluster_sum(s : CryptosymblowfishCluster) -> Double {
 pub fn crypto_sym_blowfish_cluster_mean(s : CryptosymblowfishCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_cluster_scale(s : CryptosymblowfishCluster, f : Double) -> CryptosymblowfishCluster {
-  let result = crypto_sym_blowfish_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_cluster_add(a : CryptosymblowfishCluster, b : CryptosymblowfishCluster) -> CryptosymblowfishCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_cluster_copy(s : CryptosymblowfishCluster) -> CryptosymblowfishCluster {
-  let result = crypto_sym_blowfish_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_cluster_fill(s : CryptosymblowfishCluster, v : Double) -> CryptosymblowfishCluster {
-  let result = crypto_sym_blowfish_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_cluster_min(s : CryptosymblowfishCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sym_blowfish_model_sum(s : CryptosymblowfishModel) -> Double { @_c
 pub fn crypto_sym_blowfish_model_mean(s : CryptosymblowfishModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_model_scale(s : CryptosymblowfishModel, f : Double) -> CryptosymblowfishModel {
-  let result = crypto_sym_blowfish_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_model_add(a : CryptosymblowfishModel, b : CryptosymblowfishModel) -> CryptosymblowfishModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_model_copy(s : CryptosymblowfishModel) -> CryptosymblowfishModel {
-  let result = crypto_sym_blowfish_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_model_fill(s : CryptosymblowfishModel, v : Double) -> CryptosymblowfishModel {
-  let result = crypto_sym_blowfish_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_model_min(s : CryptosymblowfishModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sym_blowfish_layer_sum(s : CryptosymblowfishLayer) -> Double { @_c
 pub fn crypto_sym_blowfish_layer_mean(s : CryptosymblowfishLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_layer_scale(s : CryptosymblowfishLayer, f : Double) -> CryptosymblowfishLayer {
-  let result = crypto_sym_blowfish_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_layer_add(a : CryptosymblowfishLayer, b : CryptosymblowfishLayer) -> CryptosymblowfishLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_layer_copy(s : CryptosymblowfishLayer) -> CryptosymblowfishLayer {
-  let result = crypto_sym_blowfish_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_layer_fill(s : CryptosymblowfishLayer, v : Double) -> CryptosymblowfishLayer {
-  let result = crypto_sym_blowfish_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_layer_min(s : CryptosymblowfishLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sym_blowfish_buffer_sum(s : CryptosymblowfishBuffer) -> Double { @
 pub fn crypto_sym_blowfish_buffer_mean(s : CryptosymblowfishBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_buffer_scale(s : CryptosymblowfishBuffer, f : Double) -> CryptosymblowfishBuffer {
-  let result = crypto_sym_blowfish_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_buffer_add(a : CryptosymblowfishBuffer, b : CryptosymblowfishBuffer) -> CryptosymblowfishBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_buffer_copy(s : CryptosymblowfishBuffer) -> CryptosymblowfishBuffer {
-  let result = crypto_sym_blowfish_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_buffer_fill(s : CryptosymblowfishBuffer, v : Double) -> CryptosymblowfishBuffer {
-  let result = crypto_sym_blowfish_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_buffer_min(s : CryptosymblowfishBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sym_blowfish_cursor_sum(s : CryptosymblowfishCursor) -> Double { @
 pub fn crypto_sym_blowfish_cursor_mean(s : CryptosymblowfishCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_cursor_scale(s : CryptosymblowfishCursor, f : Double) -> CryptosymblowfishCursor {
-  let result = crypto_sym_blowfish_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_cursor_add(a : CryptosymblowfishCursor, b : CryptosymblowfishCursor) -> CryptosymblowfishCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_cursor_copy(s : CryptosymblowfishCursor) -> CryptosymblowfishCursor {
-  let result = crypto_sym_blowfish_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_cursor_fill(s : CryptosymblowfishCursor, v : Double) -> CryptosymblowfishCursor {
-  let result = crypto_sym_blowfish_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_cursor_min(s : CryptosymblowfishCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sym_blowfish_view_sum(s : CryptosymblowfishView) -> Double { @_com
 pub fn crypto_sym_blowfish_view_mean(s : CryptosymblowfishView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_view_scale(s : CryptosymblowfishView, f : Double) -> CryptosymblowfishView {
-  let result = crypto_sym_blowfish_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_view_add(a : CryptosymblowfishView, b : CryptosymblowfishView) -> CryptosymblowfishView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_view_copy(s : CryptosymblowfishView) -> CryptosymblowfishView {
-  let result = crypto_sym_blowfish_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_view_fill(s : CryptosymblowfishView, v : Double) -> CryptosymblowfishView {
-  let result = crypto_sym_blowfish_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_view_min(s : CryptosymblowfishView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sym_blowfish_range_sum(s : CryptosymblowfishRange) -> Double { @_c
 pub fn crypto_sym_blowfish_range_mean(s : CryptosymblowfishRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_range_scale(s : CryptosymblowfishRange, f : Double) -> CryptosymblowfishRange {
-  let result = crypto_sym_blowfish_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_range_add(a : CryptosymblowfishRange, b : CryptosymblowfishRange) -> CryptosymblowfishRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_range_copy(s : CryptosymblowfishRange) -> CryptosymblowfishRange {
-  let result = crypto_sym_blowfish_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_range_fill(s : CryptosymblowfishRange, v : Double) -> CryptosymblowfishRange {
-  let result = crypto_sym_blowfish_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_range_min(s : CryptosymblowfishRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sym_blowfish_slice_sum(s : CryptosymblowfishSlice) -> Double { @_c
 pub fn crypto_sym_blowfish_slice_mean(s : CryptosymblowfishSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_slice_scale(s : CryptosymblowfishSlice, f : Double) -> CryptosymblowfishSlice {
-  let result = crypto_sym_blowfish_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_slice_add(a : CryptosymblowfishSlice, b : CryptosymblowfishSlice) -> CryptosymblowfishSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_blowfish_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_blowfish_slice_copy(s : CryptosymblowfishSlice) -> CryptosymblowfishSlice {
-  let result = crypto_sym_blowfish_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_slice_fill(s : CryptosymblowfishSlice, v : Double) -> CryptosymblowfishSlice {
-  let result = crypto_sym_blowfish_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_blowfish_slice_min(s : CryptosymblowfishSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn math_approx_spline_frame_sum(s : MathapproxsplineFrame) -> Double { @_com
 pub fn math_approx_spline_frame_mean(s : MathapproxsplineFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_frame_scale(s : MathapproxsplineFrame, f : Double) -> MathapproxsplineFrame {
-  let result = math_approx_spline_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_frame_add(a : MathapproxsplineFrame, b : MathapproxsplineFrame) -> MathapproxsplineFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_frame_copy(s : MathapproxsplineFrame) -> MathapproxsplineFrame {
-  let result = math_approx_spline_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_frame_fill(s : MathapproxsplineFrame, v : Double) -> MathapproxsplineFrame {
-  let result = math_approx_spline_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_frame_min(s : MathapproxsplineFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_approx_spline_table_sum(s : MathapproxsplineTable) -> Double { @_com
 pub fn math_approx_spline_table_mean(s : MathapproxsplineTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_table_scale(s : MathapproxsplineTable, f : Double) -> MathapproxsplineTable {
-  let result = math_approx_spline_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_table_add(a : MathapproxsplineTable, b : MathapproxsplineTable) -> MathapproxsplineTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_table_copy(s : MathapproxsplineTable) -> MathapproxsplineTable {
-  let result = math_approx_spline_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_table_fill(s : MathapproxsplineTable, v : Double) -> MathapproxsplineTable {
-  let result = math_approx_spline_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_table_min(s : MathapproxsplineTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_approx_spline_graphn_sum(s : MathapproxsplineGraphN) -> Double { @_c
 pub fn math_approx_spline_graphn_mean(s : MathapproxsplineGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_graphn_scale(s : MathapproxsplineGraphN, f : Double) -> MathapproxsplineGraphN {
-  let result = math_approx_spline_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_graphn_add(a : MathapproxsplineGraphN, b : MathapproxsplineGraphN) -> MathapproxsplineGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_graphn_copy(s : MathapproxsplineGraphN) -> MathapproxsplineGraphN {
-  let result = math_approx_spline_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_graphn_fill(s : MathapproxsplineGraphN, v : Double) -> MathapproxsplineGraphN {
-  let result = math_approx_spline_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_graphn_min(s : MathapproxsplineGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_approx_spline_node_sum(s : MathapproxsplineNode) -> Double { @_commo
 pub fn math_approx_spline_node_mean(s : MathapproxsplineNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_node_scale(s : MathapproxsplineNode, f : Double) -> MathapproxsplineNode {
-  let result = math_approx_spline_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_node_add(a : MathapproxsplineNode, b : MathapproxsplineNode) -> MathapproxsplineNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_node_copy(s : MathapproxsplineNode) -> MathapproxsplineNode {
-  let result = math_approx_spline_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_node_fill(s : MathapproxsplineNode, v : Double) -> MathapproxsplineNode {
-  let result = math_approx_spline_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_node_min(s : MathapproxsplineNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_approx_spline_edge_sum(s : MathapproxsplineEdge) -> Double { @_commo
 pub fn math_approx_spline_edge_mean(s : MathapproxsplineEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_edge_scale(s : MathapproxsplineEdge, f : Double) -> MathapproxsplineEdge {
-  let result = math_approx_spline_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_edge_add(a : MathapproxsplineEdge, b : MathapproxsplineEdge) -> MathapproxsplineEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_edge_copy(s : MathapproxsplineEdge) -> MathapproxsplineEdge {
-  let result = math_approx_spline_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_edge_fill(s : MathapproxsplineEdge, v : Double) -> MathapproxsplineEdge {
-  let result = math_approx_spline_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_edge_min(s : MathapproxsplineEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_approx_spline_path_sum(s : MathapproxsplinePath) -> Double { @_commo
 pub fn math_approx_spline_path_mean(s : MathapproxsplinePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_path_scale(s : MathapproxsplinePath, f : Double) -> MathapproxsplinePath {
-  let result = math_approx_spline_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_path_add(a : MathapproxsplinePath, b : MathapproxsplinePath) -> MathapproxsplinePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_path_copy(s : MathapproxsplinePath) -> MathapproxsplinePath {
-  let result = math_approx_spline_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_path_fill(s : MathapproxsplinePath, v : Double) -> MathapproxsplinePath {
-  let result = math_approx_spline_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_path_min(s : MathapproxsplinePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_approx_spline_cluster_sum(s : MathapproxsplineCluster) -> Double { @
 pub fn math_approx_spline_cluster_mean(s : MathapproxsplineCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_cluster_scale(s : MathapproxsplineCluster, f : Double) -> MathapproxsplineCluster {
-  let result = math_approx_spline_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_cluster_add(a : MathapproxsplineCluster, b : MathapproxsplineCluster) -> MathapproxsplineCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_cluster_copy(s : MathapproxsplineCluster) -> MathapproxsplineCluster {
-  let result = math_approx_spline_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_cluster_fill(s : MathapproxsplineCluster, v : Double) -> MathapproxsplineCluster {
-  let result = math_approx_spline_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_cluster_min(s : MathapproxsplineCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_approx_spline_model_sum(s : MathapproxsplineModel) -> Double { @_com
 pub fn math_approx_spline_model_mean(s : MathapproxsplineModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_model_scale(s : MathapproxsplineModel, f : Double) -> MathapproxsplineModel {
-  let result = math_approx_spline_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_model_add(a : MathapproxsplineModel, b : MathapproxsplineModel) -> MathapproxsplineModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_model_copy(s : MathapproxsplineModel) -> MathapproxsplineModel {
-  let result = math_approx_spline_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_model_fill(s : MathapproxsplineModel, v : Double) -> MathapproxsplineModel {
-  let result = math_approx_spline_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_model_min(s : MathapproxsplineModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_approx_spline_layer_sum(s : MathapproxsplineLayer) -> Double { @_com
 pub fn math_approx_spline_layer_mean(s : MathapproxsplineLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_layer_scale(s : MathapproxsplineLayer, f : Double) -> MathapproxsplineLayer {
-  let result = math_approx_spline_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_layer_add(a : MathapproxsplineLayer, b : MathapproxsplineLayer) -> MathapproxsplineLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_layer_copy(s : MathapproxsplineLayer) -> MathapproxsplineLayer {
-  let result = math_approx_spline_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_layer_fill(s : MathapproxsplineLayer, v : Double) -> MathapproxsplineLayer {
-  let result = math_approx_spline_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_layer_min(s : MathapproxsplineLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_approx_spline_buffer_sum(s : MathapproxsplineBuffer) -> Double { @_c
 pub fn math_approx_spline_buffer_mean(s : MathapproxsplineBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_buffer_scale(s : MathapproxsplineBuffer, f : Double) -> MathapproxsplineBuffer {
-  let result = math_approx_spline_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_buffer_add(a : MathapproxsplineBuffer, b : MathapproxsplineBuffer) -> MathapproxsplineBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_buffer_copy(s : MathapproxsplineBuffer) -> MathapproxsplineBuffer {
-  let result = math_approx_spline_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_buffer_fill(s : MathapproxsplineBuffer, v : Double) -> MathapproxsplineBuffer {
-  let result = math_approx_spline_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_buffer_min(s : MathapproxsplineBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_approx_spline_cursor_sum(s : MathapproxsplineCursor) -> Double { @_c
 pub fn math_approx_spline_cursor_mean(s : MathapproxsplineCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_cursor_scale(s : MathapproxsplineCursor, f : Double) -> MathapproxsplineCursor {
-  let result = math_approx_spline_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_cursor_add(a : MathapproxsplineCursor, b : MathapproxsplineCursor) -> MathapproxsplineCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_cursor_copy(s : MathapproxsplineCursor) -> MathapproxsplineCursor {
-  let result = math_approx_spline_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_cursor_fill(s : MathapproxsplineCursor, v : Double) -> MathapproxsplineCursor {
-  let result = math_approx_spline_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_cursor_min(s : MathapproxsplineCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_approx_spline_view_sum(s : MathapproxsplineView) -> Double { @_commo
 pub fn math_approx_spline_view_mean(s : MathapproxsplineView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_view_scale(s : MathapproxsplineView, f : Double) -> MathapproxsplineView {
-  let result = math_approx_spline_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_view_add(a : MathapproxsplineView, b : MathapproxsplineView) -> MathapproxsplineView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_view_copy(s : MathapproxsplineView) -> MathapproxsplineView {
-  let result = math_approx_spline_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_view_fill(s : MathapproxsplineView, v : Double) -> MathapproxsplineView {
-  let result = math_approx_spline_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_view_min(s : MathapproxsplineView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_approx_spline_range_sum(s : MathapproxsplineRange) -> Double { @_com
 pub fn math_approx_spline_range_mean(s : MathapproxsplineRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_range_scale(s : MathapproxsplineRange, f : Double) -> MathapproxsplineRange {
-  let result = math_approx_spline_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_range_add(a : MathapproxsplineRange, b : MathapproxsplineRange) -> MathapproxsplineRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_range_copy(s : MathapproxsplineRange) -> MathapproxsplineRange {
-  let result = math_approx_spline_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_range_fill(s : MathapproxsplineRange, v : Double) -> MathapproxsplineRange {
-  let result = math_approx_spline_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_range_min(s : MathapproxsplineRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_approx_spline_slice_sum(s : MathapproxsplineSlice) -> Double { @_com
 pub fn math_approx_spline_slice_mean(s : MathapproxsplineSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_slice_scale(s : MathapproxsplineSlice, f : Double) -> MathapproxsplineSlice {
-  let result = math_approx_spline_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_slice_add(a : MathapproxsplineSlice, b : MathapproxsplineSlice) -> MathapproxsplineSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_spline_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_spline_slice_copy(s : MathapproxsplineSlice) -> MathapproxsplineSlice {
-  let result = math_approx_spline_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_slice_fill(s : MathapproxsplineSlice, v : Double) -> MathapproxsplineSlice {
-  let result = math_approx_spline_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_spline_slice_min(s : MathapproxsplineSlice) -> Double { @_common.min(s.data) }

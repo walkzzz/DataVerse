@@ -383,28 +383,20 @@ pub fn math_special_elliptic_frame_sum(s : MathspecialellipticFrame) -> Double {
 pub fn math_special_elliptic_frame_mean(s : MathspecialellipticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_frame_scale(s : MathspecialellipticFrame, f : Double) -> MathspecialellipticFrame {
-  let result = math_special_elliptic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_frame_add(a : MathspecialellipticFrame, b : MathspecialellipticFrame) -> MathspecialellipticFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_frame_copy(s : MathspecialellipticFrame) -> MathspecialellipticFrame {
-  let result = math_special_elliptic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_frame_fill(s : MathspecialellipticFrame, v : Double) -> MathspecialellipticFrame {
-  let result = math_special_elliptic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_frame_min(s : MathspecialellipticFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_special_elliptic_table_sum(s : MathspecialellipticTable) -> Double {
 pub fn math_special_elliptic_table_mean(s : MathspecialellipticTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_table_scale(s : MathspecialellipticTable, f : Double) -> MathspecialellipticTable {
-  let result = math_special_elliptic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_table_add(a : MathspecialellipticTable, b : MathspecialellipticTable) -> MathspecialellipticTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_table_copy(s : MathspecialellipticTable) -> MathspecialellipticTable {
-  let result = math_special_elliptic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_table_fill(s : MathspecialellipticTable, v : Double) -> MathspecialellipticTable {
-  let result = math_special_elliptic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_table_min(s : MathspecialellipticTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_special_elliptic_graphn_sum(s : MathspecialellipticGraphN) -> Double
 pub fn math_special_elliptic_graphn_mean(s : MathspecialellipticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_graphn_scale(s : MathspecialellipticGraphN, f : Double) -> MathspecialellipticGraphN {
-  let result = math_special_elliptic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_graphn_add(a : MathspecialellipticGraphN, b : MathspecialellipticGraphN) -> MathspecialellipticGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_graphn_copy(s : MathspecialellipticGraphN) -> MathspecialellipticGraphN {
-  let result = math_special_elliptic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_graphn_fill(s : MathspecialellipticGraphN, v : Double) -> MathspecialellipticGraphN {
-  let result = math_special_elliptic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_graphn_min(s : MathspecialellipticGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_special_elliptic_node_sum(s : MathspecialellipticNode) -> Double { @
 pub fn math_special_elliptic_node_mean(s : MathspecialellipticNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_node_scale(s : MathspecialellipticNode, f : Double) -> MathspecialellipticNode {
-  let result = math_special_elliptic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_node_add(a : MathspecialellipticNode, b : MathspecialellipticNode) -> MathspecialellipticNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_node_copy(s : MathspecialellipticNode) -> MathspecialellipticNode {
-  let result = math_special_elliptic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_node_fill(s : MathspecialellipticNode, v : Double) -> MathspecialellipticNode {
-  let result = math_special_elliptic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_node_min(s : MathspecialellipticNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_special_elliptic_edge_sum(s : MathspecialellipticEdge) -> Double { @
 pub fn math_special_elliptic_edge_mean(s : MathspecialellipticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_edge_scale(s : MathspecialellipticEdge, f : Double) -> MathspecialellipticEdge {
-  let result = math_special_elliptic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_edge_add(a : MathspecialellipticEdge, b : MathspecialellipticEdge) -> MathspecialellipticEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_edge_copy(s : MathspecialellipticEdge) -> MathspecialellipticEdge {
-  let result = math_special_elliptic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_edge_fill(s : MathspecialellipticEdge, v : Double) -> MathspecialellipticEdge {
-  let result = math_special_elliptic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_edge_min(s : MathspecialellipticEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_special_elliptic_path_sum(s : MathspecialellipticPath) -> Double { @
 pub fn math_special_elliptic_path_mean(s : MathspecialellipticPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_path_scale(s : MathspecialellipticPath, f : Double) -> MathspecialellipticPath {
-  let result = math_special_elliptic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_path_add(a : MathspecialellipticPath, b : MathspecialellipticPath) -> MathspecialellipticPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_path_copy(s : MathspecialellipticPath) -> MathspecialellipticPath {
-  let result = math_special_elliptic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_path_fill(s : MathspecialellipticPath, v : Double) -> MathspecialellipticPath {
-  let result = math_special_elliptic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_path_min(s : MathspecialellipticPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_special_elliptic_cluster_sum(s : MathspecialellipticCluster) -> Doub
 pub fn math_special_elliptic_cluster_mean(s : MathspecialellipticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_cluster_scale(s : MathspecialellipticCluster, f : Double) -> MathspecialellipticCluster {
-  let result = math_special_elliptic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_cluster_add(a : MathspecialellipticCluster, b : MathspecialellipticCluster) -> MathspecialellipticCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_cluster_copy(s : MathspecialellipticCluster) -> MathspecialellipticCluster {
-  let result = math_special_elliptic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_cluster_fill(s : MathspecialellipticCluster, v : Double) -> MathspecialellipticCluster {
-  let result = math_special_elliptic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_cluster_min(s : MathspecialellipticCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_special_elliptic_model_sum(s : MathspecialellipticModel) -> Double {
 pub fn math_special_elliptic_model_mean(s : MathspecialellipticModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_model_scale(s : MathspecialellipticModel, f : Double) -> MathspecialellipticModel {
-  let result = math_special_elliptic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_model_add(a : MathspecialellipticModel, b : MathspecialellipticModel) -> MathspecialellipticModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_model_copy(s : MathspecialellipticModel) -> MathspecialellipticModel {
-  let result = math_special_elliptic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_model_fill(s : MathspecialellipticModel, v : Double) -> MathspecialellipticModel {
-  let result = math_special_elliptic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_model_min(s : MathspecialellipticModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_special_elliptic_layer_sum(s : MathspecialellipticLayer) -> Double {
 pub fn math_special_elliptic_layer_mean(s : MathspecialellipticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_layer_scale(s : MathspecialellipticLayer, f : Double) -> MathspecialellipticLayer {
-  let result = math_special_elliptic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_layer_add(a : MathspecialellipticLayer, b : MathspecialellipticLayer) -> MathspecialellipticLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_layer_copy(s : MathspecialellipticLayer) -> MathspecialellipticLayer {
-  let result = math_special_elliptic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_layer_fill(s : MathspecialellipticLayer, v : Double) -> MathspecialellipticLayer {
-  let result = math_special_elliptic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_layer_min(s : MathspecialellipticLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_special_elliptic_buffer_sum(s : MathspecialellipticBuffer) -> Double
 pub fn math_special_elliptic_buffer_mean(s : MathspecialellipticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_buffer_scale(s : MathspecialellipticBuffer, f : Double) -> MathspecialellipticBuffer {
-  let result = math_special_elliptic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_buffer_add(a : MathspecialellipticBuffer, b : MathspecialellipticBuffer) -> MathspecialellipticBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_buffer_copy(s : MathspecialellipticBuffer) -> MathspecialellipticBuffer {
-  let result = math_special_elliptic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_buffer_fill(s : MathspecialellipticBuffer, v : Double) -> MathspecialellipticBuffer {
-  let result = math_special_elliptic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_buffer_min(s : MathspecialellipticBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_special_elliptic_cursor_sum(s : MathspecialellipticCursor) -> Double
 pub fn math_special_elliptic_cursor_mean(s : MathspecialellipticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_cursor_scale(s : MathspecialellipticCursor, f : Double) -> MathspecialellipticCursor {
-  let result = math_special_elliptic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_cursor_add(a : MathspecialellipticCursor, b : MathspecialellipticCursor) -> MathspecialellipticCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_cursor_copy(s : MathspecialellipticCursor) -> MathspecialellipticCursor {
-  let result = math_special_elliptic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_cursor_fill(s : MathspecialellipticCursor, v : Double) -> MathspecialellipticCursor {
-  let result = math_special_elliptic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_cursor_min(s : MathspecialellipticCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_special_elliptic_view_sum(s : MathspecialellipticView) -> Double { @
 pub fn math_special_elliptic_view_mean(s : MathspecialellipticView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_view_scale(s : MathspecialellipticView, f : Double) -> MathspecialellipticView {
-  let result = math_special_elliptic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_view_add(a : MathspecialellipticView, b : MathspecialellipticView) -> MathspecialellipticView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_view_copy(s : MathspecialellipticView) -> MathspecialellipticView {
-  let result = math_special_elliptic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_view_fill(s : MathspecialellipticView, v : Double) -> MathspecialellipticView {
-  let result = math_special_elliptic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_view_min(s : MathspecialellipticView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_special_elliptic_range_sum(s : MathspecialellipticRange) -> Double {
 pub fn math_special_elliptic_range_mean(s : MathspecialellipticRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_range_scale(s : MathspecialellipticRange, f : Double) -> MathspecialellipticRange {
-  let result = math_special_elliptic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_range_add(a : MathspecialellipticRange, b : MathspecialellipticRange) -> MathspecialellipticRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_range_copy(s : MathspecialellipticRange) -> MathspecialellipticRange {
-  let result = math_special_elliptic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_range_fill(s : MathspecialellipticRange, v : Double) -> MathspecialellipticRange {
-  let result = math_special_elliptic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_range_min(s : MathspecialellipticRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_special_elliptic_slice_sum(s : MathspecialellipticSlice) -> Double {
 pub fn math_special_elliptic_slice_mean(s : MathspecialellipticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_slice_scale(s : MathspecialellipticSlice, f : Double) -> MathspecialellipticSlice {
-  let result = math_special_elliptic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_slice_add(a : MathspecialellipticSlice, b : MathspecialellipticSlice) -> MathspecialellipticSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_elliptic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_elliptic_slice_copy(s : MathspecialellipticSlice) -> MathspecialellipticSlice {
-  let result = math_special_elliptic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_slice_fill(s : MathspecialellipticSlice, v : Double) -> MathspecialellipticSlice {
-  let result = math_special_elliptic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_elliptic_slice_min(s : MathspecialellipticSlice) -> Double { @_common.min(s.data) }

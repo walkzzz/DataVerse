@@ -383,28 +383,20 @@ pub fn bio_phylo_upgma_frame_sum(s : BiophyloupgmaFrame) -> Double { @_common.su
 pub fn bio_phylo_upgma_frame_mean(s : BiophyloupgmaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_frame_scale(s : BiophyloupgmaFrame, f : Double) -> BiophyloupgmaFrame {
-  let result = bio_phylo_upgma_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_frame_add(a : BiophyloupgmaFrame, b : BiophyloupgmaFrame) -> BiophyloupgmaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_frame_copy(s : BiophyloupgmaFrame) -> BiophyloupgmaFrame {
-  let result = bio_phylo_upgma_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_frame_fill(s : BiophyloupgmaFrame, v : Double) -> BiophyloupgmaFrame {
-  let result = bio_phylo_upgma_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_frame_min(s : BiophyloupgmaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_phylo_upgma_table_sum(s : BiophyloupgmaTable) -> Double { @_common.su
 pub fn bio_phylo_upgma_table_mean(s : BiophyloupgmaTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_table_scale(s : BiophyloupgmaTable, f : Double) -> BiophyloupgmaTable {
-  let result = bio_phylo_upgma_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_table_add(a : BiophyloupgmaTable, b : BiophyloupgmaTable) -> BiophyloupgmaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_table_copy(s : BiophyloupgmaTable) -> BiophyloupgmaTable {
-  let result = bio_phylo_upgma_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_table_fill(s : BiophyloupgmaTable, v : Double) -> BiophyloupgmaTable {
-  let result = bio_phylo_upgma_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_table_min(s : BiophyloupgmaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_phylo_upgma_graphn_sum(s : BiophyloupgmaGraphN) -> Double { @_common.
 pub fn bio_phylo_upgma_graphn_mean(s : BiophyloupgmaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_graphn_scale(s : BiophyloupgmaGraphN, f : Double) -> BiophyloupgmaGraphN {
-  let result = bio_phylo_upgma_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_graphn_add(a : BiophyloupgmaGraphN, b : BiophyloupgmaGraphN) -> BiophyloupgmaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_graphn_copy(s : BiophyloupgmaGraphN) -> BiophyloupgmaGraphN {
-  let result = bio_phylo_upgma_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_graphn_fill(s : BiophyloupgmaGraphN, v : Double) -> BiophyloupgmaGraphN {
-  let result = bio_phylo_upgma_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_graphn_min(s : BiophyloupgmaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_phylo_upgma_node_sum(s : BiophyloupgmaNode) -> Double { @_common.sum(
 pub fn bio_phylo_upgma_node_mean(s : BiophyloupgmaNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_node_scale(s : BiophyloupgmaNode, f : Double) -> BiophyloupgmaNode {
-  let result = bio_phylo_upgma_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_node_add(a : BiophyloupgmaNode, b : BiophyloupgmaNode) -> BiophyloupgmaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_node_copy(s : BiophyloupgmaNode) -> BiophyloupgmaNode {
-  let result = bio_phylo_upgma_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_node_fill(s : BiophyloupgmaNode, v : Double) -> BiophyloupgmaNode {
-  let result = bio_phylo_upgma_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_node_min(s : BiophyloupgmaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_phylo_upgma_edge_sum(s : BiophyloupgmaEdge) -> Double { @_common.sum(
 pub fn bio_phylo_upgma_edge_mean(s : BiophyloupgmaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_edge_scale(s : BiophyloupgmaEdge, f : Double) -> BiophyloupgmaEdge {
-  let result = bio_phylo_upgma_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_edge_add(a : BiophyloupgmaEdge, b : BiophyloupgmaEdge) -> BiophyloupgmaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_edge_copy(s : BiophyloupgmaEdge) -> BiophyloupgmaEdge {
-  let result = bio_phylo_upgma_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_edge_fill(s : BiophyloupgmaEdge, v : Double) -> BiophyloupgmaEdge {
-  let result = bio_phylo_upgma_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_edge_min(s : BiophyloupgmaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_phylo_upgma_path_sum(s : BiophyloupgmaPath) -> Double { @_common.sum(
 pub fn bio_phylo_upgma_path_mean(s : BiophyloupgmaPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_path_scale(s : BiophyloupgmaPath, f : Double) -> BiophyloupgmaPath {
-  let result = bio_phylo_upgma_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_path_add(a : BiophyloupgmaPath, b : BiophyloupgmaPath) -> BiophyloupgmaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_path_copy(s : BiophyloupgmaPath) -> BiophyloupgmaPath {
-  let result = bio_phylo_upgma_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_path_fill(s : BiophyloupgmaPath, v : Double) -> BiophyloupgmaPath {
-  let result = bio_phylo_upgma_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_path_min(s : BiophyloupgmaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_phylo_upgma_cluster_sum(s : BiophyloupgmaCluster) -> Double { @_commo
 pub fn bio_phylo_upgma_cluster_mean(s : BiophyloupgmaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_cluster_scale(s : BiophyloupgmaCluster, f : Double) -> BiophyloupgmaCluster {
-  let result = bio_phylo_upgma_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cluster_add(a : BiophyloupgmaCluster, b : BiophyloupgmaCluster) -> BiophyloupgmaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_cluster_copy(s : BiophyloupgmaCluster) -> BiophyloupgmaCluster {
-  let result = bio_phylo_upgma_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cluster_fill(s : BiophyloupgmaCluster, v : Double) -> BiophyloupgmaCluster {
-  let result = bio_phylo_upgma_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cluster_min(s : BiophyloupgmaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_phylo_upgma_model_sum(s : BiophyloupgmaModel) -> Double { @_common.su
 pub fn bio_phylo_upgma_model_mean(s : BiophyloupgmaModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_model_scale(s : BiophyloupgmaModel, f : Double) -> BiophyloupgmaModel {
-  let result = bio_phylo_upgma_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_model_add(a : BiophyloupgmaModel, b : BiophyloupgmaModel) -> BiophyloupgmaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_model_copy(s : BiophyloupgmaModel) -> BiophyloupgmaModel {
-  let result = bio_phylo_upgma_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_model_fill(s : BiophyloupgmaModel, v : Double) -> BiophyloupgmaModel {
-  let result = bio_phylo_upgma_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_model_min(s : BiophyloupgmaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_phylo_upgma_layer_sum(s : BiophyloupgmaLayer) -> Double { @_common.su
 pub fn bio_phylo_upgma_layer_mean(s : BiophyloupgmaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_layer_scale(s : BiophyloupgmaLayer, f : Double) -> BiophyloupgmaLayer {
-  let result = bio_phylo_upgma_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_layer_add(a : BiophyloupgmaLayer, b : BiophyloupgmaLayer) -> BiophyloupgmaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_layer_copy(s : BiophyloupgmaLayer) -> BiophyloupgmaLayer {
-  let result = bio_phylo_upgma_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_layer_fill(s : BiophyloupgmaLayer, v : Double) -> BiophyloupgmaLayer {
-  let result = bio_phylo_upgma_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_layer_min(s : BiophyloupgmaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_phylo_upgma_buffer_sum(s : BiophyloupgmaBuffer) -> Double { @_common.
 pub fn bio_phylo_upgma_buffer_mean(s : BiophyloupgmaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_buffer_scale(s : BiophyloupgmaBuffer, f : Double) -> BiophyloupgmaBuffer {
-  let result = bio_phylo_upgma_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_buffer_add(a : BiophyloupgmaBuffer, b : BiophyloupgmaBuffer) -> BiophyloupgmaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_buffer_copy(s : BiophyloupgmaBuffer) -> BiophyloupgmaBuffer {
-  let result = bio_phylo_upgma_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_buffer_fill(s : BiophyloupgmaBuffer, v : Double) -> BiophyloupgmaBuffer {
-  let result = bio_phylo_upgma_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_buffer_min(s : BiophyloupgmaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_phylo_upgma_cursor_sum(s : BiophyloupgmaCursor) -> Double { @_common.
 pub fn bio_phylo_upgma_cursor_mean(s : BiophyloupgmaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_cursor_scale(s : BiophyloupgmaCursor, f : Double) -> BiophyloupgmaCursor {
-  let result = bio_phylo_upgma_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cursor_add(a : BiophyloupgmaCursor, b : BiophyloupgmaCursor) -> BiophyloupgmaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_cursor_copy(s : BiophyloupgmaCursor) -> BiophyloupgmaCursor {
-  let result = bio_phylo_upgma_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cursor_fill(s : BiophyloupgmaCursor, v : Double) -> BiophyloupgmaCursor {
-  let result = bio_phylo_upgma_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cursor_min(s : BiophyloupgmaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_phylo_upgma_view_sum(s : BiophyloupgmaView) -> Double { @_common.sum(
 pub fn bio_phylo_upgma_view_mean(s : BiophyloupgmaView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_view_scale(s : BiophyloupgmaView, f : Double) -> BiophyloupgmaView {
-  let result = bio_phylo_upgma_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_view_add(a : BiophyloupgmaView, b : BiophyloupgmaView) -> BiophyloupgmaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_view_copy(s : BiophyloupgmaView) -> BiophyloupgmaView {
-  let result = bio_phylo_upgma_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_view_fill(s : BiophyloupgmaView, v : Double) -> BiophyloupgmaView {
-  let result = bio_phylo_upgma_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_view_min(s : BiophyloupgmaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_phylo_upgma_range_sum(s : BiophyloupgmaRange) -> Double { @_common.su
 pub fn bio_phylo_upgma_range_mean(s : BiophyloupgmaRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_range_scale(s : BiophyloupgmaRange, f : Double) -> BiophyloupgmaRange {
-  let result = bio_phylo_upgma_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_range_add(a : BiophyloupgmaRange, b : BiophyloupgmaRange) -> BiophyloupgmaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_range_copy(s : BiophyloupgmaRange) -> BiophyloupgmaRange {
-  let result = bio_phylo_upgma_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_range_fill(s : BiophyloupgmaRange, v : Double) -> BiophyloupgmaRange {
-  let result = bio_phylo_upgma_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_range_min(s : BiophyloupgmaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_phylo_upgma_slice_sum(s : BiophyloupgmaSlice) -> Double { @_common.su
 pub fn bio_phylo_upgma_slice_mean(s : BiophyloupgmaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_slice_scale(s : BiophyloupgmaSlice, f : Double) -> BiophyloupgmaSlice {
-  let result = bio_phylo_upgma_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_slice_add(a : BiophyloupgmaSlice, b : BiophyloupgmaSlice) -> BiophyloupgmaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_phylo_upgma_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_phylo_upgma_slice_copy(s : BiophyloupgmaSlice) -> BiophyloupgmaSlice {
-  let result = bio_phylo_upgma_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_slice_fill(s : BiophyloupgmaSlice, v : Double) -> BiophyloupgmaSlice {
-  let result = bio_phylo_upgma_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_slice_min(s : BiophyloupgmaSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_test_ks_frame_sum(s : StatstestksFrame) -> Double { @_common.sum(s.
 pub fn stats_test_ks_frame_mean(s : StatstestksFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_frame_scale(s : StatstestksFrame, f : Double) -> StatstestksFrame {
-  let result = stats_test_ks_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_frame_add(a : StatstestksFrame, b : StatstestksFrame) -> StatstestksFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_frame_copy(s : StatstestksFrame) -> StatstestksFrame {
-  let result = stats_test_ks_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_frame_fill(s : StatstestksFrame, v : Double) -> StatstestksFrame {
-  let result = stats_test_ks_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_frame_min(s : StatstestksFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_test_ks_table_sum(s : StatstestksTable) -> Double { @_common.sum(s.
 pub fn stats_test_ks_table_mean(s : StatstestksTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_table_scale(s : StatstestksTable, f : Double) -> StatstestksTable {
-  let result = stats_test_ks_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_table_add(a : StatstestksTable, b : StatstestksTable) -> StatstestksTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_table_copy(s : StatstestksTable) -> StatstestksTable {
-  let result = stats_test_ks_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_table_fill(s : StatstestksTable, v : Double) -> StatstestksTable {
-  let result = stats_test_ks_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_table_min(s : StatstestksTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_test_ks_graphn_sum(s : StatstestksGraphN) -> Double { @_common.sum(
 pub fn stats_test_ks_graphn_mean(s : StatstestksGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_graphn_scale(s : StatstestksGraphN, f : Double) -> StatstestksGraphN {
-  let result = stats_test_ks_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_graphn_add(a : StatstestksGraphN, b : StatstestksGraphN) -> StatstestksGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_graphn_copy(s : StatstestksGraphN) -> StatstestksGraphN {
-  let result = stats_test_ks_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_graphn_fill(s : StatstestksGraphN, v : Double) -> StatstestksGraphN {
-  let result = stats_test_ks_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_graphn_min(s : StatstestksGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_test_ks_node_sum(s : StatstestksNode) -> Double { @_common.sum(s.da
 pub fn stats_test_ks_node_mean(s : StatstestksNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_node_scale(s : StatstestksNode, f : Double) -> StatstestksNode {
-  let result = stats_test_ks_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_node_add(a : StatstestksNode, b : StatstestksNode) -> StatstestksNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_node_copy(s : StatstestksNode) -> StatstestksNode {
-  let result = stats_test_ks_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_node_fill(s : StatstestksNode, v : Double) -> StatstestksNode {
-  let result = stats_test_ks_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_node_min(s : StatstestksNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_test_ks_edge_sum(s : StatstestksEdge) -> Double { @_common.sum(s.da
 pub fn stats_test_ks_edge_mean(s : StatstestksEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_edge_scale(s : StatstestksEdge, f : Double) -> StatstestksEdge {
-  let result = stats_test_ks_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_edge_add(a : StatstestksEdge, b : StatstestksEdge) -> StatstestksEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_edge_copy(s : StatstestksEdge) -> StatstestksEdge {
-  let result = stats_test_ks_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_edge_fill(s : StatstestksEdge, v : Double) -> StatstestksEdge {
-  let result = stats_test_ks_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_edge_min(s : StatstestksEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_test_ks_path_sum(s : StatstestksPath) -> Double { @_common.sum(s.da
 pub fn stats_test_ks_path_mean(s : StatstestksPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_path_scale(s : StatstestksPath, f : Double) -> StatstestksPath {
-  let result = stats_test_ks_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_path_add(a : StatstestksPath, b : StatstestksPath) -> StatstestksPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_path_copy(s : StatstestksPath) -> StatstestksPath {
-  let result = stats_test_ks_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_path_fill(s : StatstestksPath, v : Double) -> StatstestksPath {
-  let result = stats_test_ks_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_path_min(s : StatstestksPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_test_ks_cluster_sum(s : StatstestksCluster) -> Double { @_common.su
 pub fn stats_test_ks_cluster_mean(s : StatstestksCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_cluster_scale(s : StatstestksCluster, f : Double) -> StatstestksCluster {
-  let result = stats_test_ks_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_cluster_add(a : StatstestksCluster, b : StatstestksCluster) -> StatstestksCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_cluster_copy(s : StatstestksCluster) -> StatstestksCluster {
-  let result = stats_test_ks_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_cluster_fill(s : StatstestksCluster, v : Double) -> StatstestksCluster {
-  let result = stats_test_ks_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_cluster_min(s : StatstestksCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_test_ks_model_sum(s : StatstestksModel) -> Double { @_common.sum(s.
 pub fn stats_test_ks_model_mean(s : StatstestksModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_model_scale(s : StatstestksModel, f : Double) -> StatstestksModel {
-  let result = stats_test_ks_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_model_add(a : StatstestksModel, b : StatstestksModel) -> StatstestksModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_model_copy(s : StatstestksModel) -> StatstestksModel {
-  let result = stats_test_ks_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_model_fill(s : StatstestksModel, v : Double) -> StatstestksModel {
-  let result = stats_test_ks_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_model_min(s : StatstestksModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_test_ks_layer_sum(s : StatstestksLayer) -> Double { @_common.sum(s.
 pub fn stats_test_ks_layer_mean(s : StatstestksLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_layer_scale(s : StatstestksLayer, f : Double) -> StatstestksLayer {
-  let result = stats_test_ks_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_layer_add(a : StatstestksLayer, b : StatstestksLayer) -> StatstestksLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_layer_copy(s : StatstestksLayer) -> StatstestksLayer {
-  let result = stats_test_ks_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_layer_fill(s : StatstestksLayer, v : Double) -> StatstestksLayer {
-  let result = stats_test_ks_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_layer_min(s : StatstestksLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_test_ks_buffer_sum(s : StatstestksBuffer) -> Double { @_common.sum(
 pub fn stats_test_ks_buffer_mean(s : StatstestksBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_buffer_scale(s : StatstestksBuffer, f : Double) -> StatstestksBuffer {
-  let result = stats_test_ks_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_buffer_add(a : StatstestksBuffer, b : StatstestksBuffer) -> StatstestksBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_buffer_copy(s : StatstestksBuffer) -> StatstestksBuffer {
-  let result = stats_test_ks_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_buffer_fill(s : StatstestksBuffer, v : Double) -> StatstestksBuffer {
-  let result = stats_test_ks_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_buffer_min(s : StatstestksBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_test_ks_cursor_sum(s : StatstestksCursor) -> Double { @_common.sum(
 pub fn stats_test_ks_cursor_mean(s : StatstestksCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_cursor_scale(s : StatstestksCursor, f : Double) -> StatstestksCursor {
-  let result = stats_test_ks_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_cursor_add(a : StatstestksCursor, b : StatstestksCursor) -> StatstestksCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_cursor_copy(s : StatstestksCursor) -> StatstestksCursor {
-  let result = stats_test_ks_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_cursor_fill(s : StatstestksCursor, v : Double) -> StatstestksCursor {
-  let result = stats_test_ks_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_cursor_min(s : StatstestksCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_test_ks_view_sum(s : StatstestksView) -> Double { @_common.sum(s.da
 pub fn stats_test_ks_view_mean(s : StatstestksView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_view_scale(s : StatstestksView, f : Double) -> StatstestksView {
-  let result = stats_test_ks_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_view_add(a : StatstestksView, b : StatstestksView) -> StatstestksView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_view_copy(s : StatstestksView) -> StatstestksView {
-  let result = stats_test_ks_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_view_fill(s : StatstestksView, v : Double) -> StatstestksView {
-  let result = stats_test_ks_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_view_min(s : StatstestksView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_test_ks_range_sum(s : StatstestksRange) -> Double { @_common.sum(s.
 pub fn stats_test_ks_range_mean(s : StatstestksRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_range_scale(s : StatstestksRange, f : Double) -> StatstestksRange {
-  let result = stats_test_ks_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_range_add(a : StatstestksRange, b : StatstestksRange) -> StatstestksRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_range_copy(s : StatstestksRange) -> StatstestksRange {
-  let result = stats_test_ks_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_range_fill(s : StatstestksRange, v : Double) -> StatstestksRange {
-  let result = stats_test_ks_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_range_min(s : StatstestksRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_test_ks_slice_sum(s : StatstestksSlice) -> Double { @_common.sum(s.
 pub fn stats_test_ks_slice_mean(s : StatstestksSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_slice_scale(s : StatstestksSlice, f : Double) -> StatstestksSlice {
-  let result = stats_test_ks_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_slice_add(a : StatstestksSlice, b : StatstestksSlice) -> StatstestksSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_ks_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_ks_slice_copy(s : StatstestksSlice) -> StatstestksSlice {
-  let result = stats_test_ks_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_slice_fill(s : StatstestksSlice, v : Double) -> StatstestksSlice {
-  let result = stats_test_ks_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_ks_slice_min(s : StatstestksSlice) -> Double { @_common.min(s.data) }

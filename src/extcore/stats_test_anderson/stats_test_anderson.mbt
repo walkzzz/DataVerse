@@ -383,28 +383,20 @@ pub fn stats_test_anderson_frame_sum(s : StatstestandersonFrame) -> Double { @_c
 pub fn stats_test_anderson_frame_mean(s : StatstestandersonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_frame_scale(s : StatstestandersonFrame, f : Double) -> StatstestandersonFrame {
-  let result = stats_test_anderson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_frame_add(a : StatstestandersonFrame, b : StatstestandersonFrame) -> StatstestandersonFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_frame_copy(s : StatstestandersonFrame) -> StatstestandersonFrame {
-  let result = stats_test_anderson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_frame_fill(s : StatstestandersonFrame, v : Double) -> StatstestandersonFrame {
-  let result = stats_test_anderson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_frame_min(s : StatstestandersonFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_test_anderson_table_sum(s : StatstestandersonTable) -> Double { @_c
 pub fn stats_test_anderson_table_mean(s : StatstestandersonTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_table_scale(s : StatstestandersonTable, f : Double) -> StatstestandersonTable {
-  let result = stats_test_anderson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_table_add(a : StatstestandersonTable, b : StatstestandersonTable) -> StatstestandersonTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_table_copy(s : StatstestandersonTable) -> StatstestandersonTable {
-  let result = stats_test_anderson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_table_fill(s : StatstestandersonTable, v : Double) -> StatstestandersonTable {
-  let result = stats_test_anderson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_table_min(s : StatstestandersonTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_test_anderson_graphn_sum(s : StatstestandersonGraphN) -> Double { @
 pub fn stats_test_anderson_graphn_mean(s : StatstestandersonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_graphn_scale(s : StatstestandersonGraphN, f : Double) -> StatstestandersonGraphN {
-  let result = stats_test_anderson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_graphn_add(a : StatstestandersonGraphN, b : StatstestandersonGraphN) -> StatstestandersonGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_graphn_copy(s : StatstestandersonGraphN) -> StatstestandersonGraphN {
-  let result = stats_test_anderson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_graphn_fill(s : StatstestandersonGraphN, v : Double) -> StatstestandersonGraphN {
-  let result = stats_test_anderson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_graphn_min(s : StatstestandersonGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_test_anderson_node_sum(s : StatstestandersonNode) -> Double { @_com
 pub fn stats_test_anderson_node_mean(s : StatstestandersonNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_node_scale(s : StatstestandersonNode, f : Double) -> StatstestandersonNode {
-  let result = stats_test_anderson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_node_add(a : StatstestandersonNode, b : StatstestandersonNode) -> StatstestandersonNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_node_copy(s : StatstestandersonNode) -> StatstestandersonNode {
-  let result = stats_test_anderson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_node_fill(s : StatstestandersonNode, v : Double) -> StatstestandersonNode {
-  let result = stats_test_anderson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_node_min(s : StatstestandersonNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_test_anderson_edge_sum(s : StatstestandersonEdge) -> Double { @_com
 pub fn stats_test_anderson_edge_mean(s : StatstestandersonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_edge_scale(s : StatstestandersonEdge, f : Double) -> StatstestandersonEdge {
-  let result = stats_test_anderson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_edge_add(a : StatstestandersonEdge, b : StatstestandersonEdge) -> StatstestandersonEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_edge_copy(s : StatstestandersonEdge) -> StatstestandersonEdge {
-  let result = stats_test_anderson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_edge_fill(s : StatstestandersonEdge, v : Double) -> StatstestandersonEdge {
-  let result = stats_test_anderson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_edge_min(s : StatstestandersonEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_test_anderson_path_sum(s : StatstestandersonPath) -> Double { @_com
 pub fn stats_test_anderson_path_mean(s : StatstestandersonPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_path_scale(s : StatstestandersonPath, f : Double) -> StatstestandersonPath {
-  let result = stats_test_anderson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_path_add(a : StatstestandersonPath, b : StatstestandersonPath) -> StatstestandersonPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_path_copy(s : StatstestandersonPath) -> StatstestandersonPath {
-  let result = stats_test_anderson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_path_fill(s : StatstestandersonPath, v : Double) -> StatstestandersonPath {
-  let result = stats_test_anderson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_path_min(s : StatstestandersonPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_test_anderson_cluster_sum(s : StatstestandersonCluster) -> Double {
 pub fn stats_test_anderson_cluster_mean(s : StatstestandersonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_cluster_scale(s : StatstestandersonCluster, f : Double) -> StatstestandersonCluster {
-  let result = stats_test_anderson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_cluster_add(a : StatstestandersonCluster, b : StatstestandersonCluster) -> StatstestandersonCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_cluster_copy(s : StatstestandersonCluster) -> StatstestandersonCluster {
-  let result = stats_test_anderson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_cluster_fill(s : StatstestandersonCluster, v : Double) -> StatstestandersonCluster {
-  let result = stats_test_anderson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_cluster_min(s : StatstestandersonCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_test_anderson_model_sum(s : StatstestandersonModel) -> Double { @_c
 pub fn stats_test_anderson_model_mean(s : StatstestandersonModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_model_scale(s : StatstestandersonModel, f : Double) -> StatstestandersonModel {
-  let result = stats_test_anderson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_model_add(a : StatstestandersonModel, b : StatstestandersonModel) -> StatstestandersonModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_model_copy(s : StatstestandersonModel) -> StatstestandersonModel {
-  let result = stats_test_anderson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_model_fill(s : StatstestandersonModel, v : Double) -> StatstestandersonModel {
-  let result = stats_test_anderson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_model_min(s : StatstestandersonModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_test_anderson_layer_sum(s : StatstestandersonLayer) -> Double { @_c
 pub fn stats_test_anderson_layer_mean(s : StatstestandersonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_layer_scale(s : StatstestandersonLayer, f : Double) -> StatstestandersonLayer {
-  let result = stats_test_anderson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_layer_add(a : StatstestandersonLayer, b : StatstestandersonLayer) -> StatstestandersonLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_layer_copy(s : StatstestandersonLayer) -> StatstestandersonLayer {
-  let result = stats_test_anderson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_layer_fill(s : StatstestandersonLayer, v : Double) -> StatstestandersonLayer {
-  let result = stats_test_anderson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_layer_min(s : StatstestandersonLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_test_anderson_buffer_sum(s : StatstestandersonBuffer) -> Double { @
 pub fn stats_test_anderson_buffer_mean(s : StatstestandersonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_buffer_scale(s : StatstestandersonBuffer, f : Double) -> StatstestandersonBuffer {
-  let result = stats_test_anderson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_buffer_add(a : StatstestandersonBuffer, b : StatstestandersonBuffer) -> StatstestandersonBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_buffer_copy(s : StatstestandersonBuffer) -> StatstestandersonBuffer {
-  let result = stats_test_anderson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_buffer_fill(s : StatstestandersonBuffer, v : Double) -> StatstestandersonBuffer {
-  let result = stats_test_anderson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_buffer_min(s : StatstestandersonBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_test_anderson_cursor_sum(s : StatstestandersonCursor) -> Double { @
 pub fn stats_test_anderson_cursor_mean(s : StatstestandersonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_cursor_scale(s : StatstestandersonCursor, f : Double) -> StatstestandersonCursor {
-  let result = stats_test_anderson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_cursor_add(a : StatstestandersonCursor, b : StatstestandersonCursor) -> StatstestandersonCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_cursor_copy(s : StatstestandersonCursor) -> StatstestandersonCursor {
-  let result = stats_test_anderson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_cursor_fill(s : StatstestandersonCursor, v : Double) -> StatstestandersonCursor {
-  let result = stats_test_anderson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_cursor_min(s : StatstestandersonCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_test_anderson_view_sum(s : StatstestandersonView) -> Double { @_com
 pub fn stats_test_anderson_view_mean(s : StatstestandersonView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_view_scale(s : StatstestandersonView, f : Double) -> StatstestandersonView {
-  let result = stats_test_anderson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_view_add(a : StatstestandersonView, b : StatstestandersonView) -> StatstestandersonView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_view_copy(s : StatstestandersonView) -> StatstestandersonView {
-  let result = stats_test_anderson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_view_fill(s : StatstestandersonView, v : Double) -> StatstestandersonView {
-  let result = stats_test_anderson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_view_min(s : StatstestandersonView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_test_anderson_range_sum(s : StatstestandersonRange) -> Double { @_c
 pub fn stats_test_anderson_range_mean(s : StatstestandersonRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_range_scale(s : StatstestandersonRange, f : Double) -> StatstestandersonRange {
-  let result = stats_test_anderson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_range_add(a : StatstestandersonRange, b : StatstestandersonRange) -> StatstestandersonRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_range_copy(s : StatstestandersonRange) -> StatstestandersonRange {
-  let result = stats_test_anderson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_range_fill(s : StatstestandersonRange, v : Double) -> StatstestandersonRange {
-  let result = stats_test_anderson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_range_min(s : StatstestandersonRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_test_anderson_slice_sum(s : StatstestandersonSlice) -> Double { @_c
 pub fn stats_test_anderson_slice_mean(s : StatstestandersonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_slice_scale(s : StatstestandersonSlice, f : Double) -> StatstestandersonSlice {
-  let result = stats_test_anderson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_slice_add(a : StatstestandersonSlice, b : StatstestandersonSlice) -> StatstestandersonSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_anderson_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_anderson_slice_copy(s : StatstestandersonSlice) -> StatstestandersonSlice {
-  let result = stats_test_anderson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_slice_fill(s : StatstestandersonSlice, v : Double) -> StatstestandersonSlice {
-  let result = stats_test_anderson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_anderson_slice_min(s : StatstestandersonSlice) -> Double { @_common.min(s.data) }

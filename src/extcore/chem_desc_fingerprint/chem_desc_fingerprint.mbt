@@ -383,28 +383,20 @@ pub fn chem_desc_fingerprint_frame_sum(s : ChemdescfingerprintFrame) -> Double {
 pub fn chem_desc_fingerprint_frame_mean(s : ChemdescfingerprintFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_frame_scale(s : ChemdescfingerprintFrame, f : Double) -> ChemdescfingerprintFrame {
-  let result = chem_desc_fingerprint_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_frame_add(a : ChemdescfingerprintFrame, b : ChemdescfingerprintFrame) -> ChemdescfingerprintFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_frame_copy(s : ChemdescfingerprintFrame) -> ChemdescfingerprintFrame {
-  let result = chem_desc_fingerprint_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_frame_fill(s : ChemdescfingerprintFrame, v : Double) -> ChemdescfingerprintFrame {
-  let result = chem_desc_fingerprint_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_frame_min(s : ChemdescfingerprintFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_desc_fingerprint_table_sum(s : ChemdescfingerprintTable) -> Double {
 pub fn chem_desc_fingerprint_table_mean(s : ChemdescfingerprintTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_table_scale(s : ChemdescfingerprintTable, f : Double) -> ChemdescfingerprintTable {
-  let result = chem_desc_fingerprint_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_table_add(a : ChemdescfingerprintTable, b : ChemdescfingerprintTable) -> ChemdescfingerprintTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_table_copy(s : ChemdescfingerprintTable) -> ChemdescfingerprintTable {
-  let result = chem_desc_fingerprint_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_table_fill(s : ChemdescfingerprintTable, v : Double) -> ChemdescfingerprintTable {
-  let result = chem_desc_fingerprint_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_table_min(s : ChemdescfingerprintTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_desc_fingerprint_graphn_sum(s : ChemdescfingerprintGraphN) -> Double
 pub fn chem_desc_fingerprint_graphn_mean(s : ChemdescfingerprintGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_graphn_scale(s : ChemdescfingerprintGraphN, f : Double) -> ChemdescfingerprintGraphN {
-  let result = chem_desc_fingerprint_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_graphn_add(a : ChemdescfingerprintGraphN, b : ChemdescfingerprintGraphN) -> ChemdescfingerprintGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_graphn_copy(s : ChemdescfingerprintGraphN) -> ChemdescfingerprintGraphN {
-  let result = chem_desc_fingerprint_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_graphn_fill(s : ChemdescfingerprintGraphN, v : Double) -> ChemdescfingerprintGraphN {
-  let result = chem_desc_fingerprint_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_graphn_min(s : ChemdescfingerprintGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_desc_fingerprint_node_sum(s : ChemdescfingerprintNode) -> Double { @
 pub fn chem_desc_fingerprint_node_mean(s : ChemdescfingerprintNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_node_scale(s : ChemdescfingerprintNode, f : Double) -> ChemdescfingerprintNode {
-  let result = chem_desc_fingerprint_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_node_add(a : ChemdescfingerprintNode, b : ChemdescfingerprintNode) -> ChemdescfingerprintNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_node_copy(s : ChemdescfingerprintNode) -> ChemdescfingerprintNode {
-  let result = chem_desc_fingerprint_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_node_fill(s : ChemdescfingerprintNode, v : Double) -> ChemdescfingerprintNode {
-  let result = chem_desc_fingerprint_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_node_min(s : ChemdescfingerprintNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_desc_fingerprint_edge_sum(s : ChemdescfingerprintEdge) -> Double { @
 pub fn chem_desc_fingerprint_edge_mean(s : ChemdescfingerprintEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_edge_scale(s : ChemdescfingerprintEdge, f : Double) -> ChemdescfingerprintEdge {
-  let result = chem_desc_fingerprint_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_edge_add(a : ChemdescfingerprintEdge, b : ChemdescfingerprintEdge) -> ChemdescfingerprintEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_edge_copy(s : ChemdescfingerprintEdge) -> ChemdescfingerprintEdge {
-  let result = chem_desc_fingerprint_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_edge_fill(s : ChemdescfingerprintEdge, v : Double) -> ChemdescfingerprintEdge {
-  let result = chem_desc_fingerprint_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_edge_min(s : ChemdescfingerprintEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_desc_fingerprint_path_sum(s : ChemdescfingerprintPath) -> Double { @
 pub fn chem_desc_fingerprint_path_mean(s : ChemdescfingerprintPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_path_scale(s : ChemdescfingerprintPath, f : Double) -> ChemdescfingerprintPath {
-  let result = chem_desc_fingerprint_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_path_add(a : ChemdescfingerprintPath, b : ChemdescfingerprintPath) -> ChemdescfingerprintPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_path_copy(s : ChemdescfingerprintPath) -> ChemdescfingerprintPath {
-  let result = chem_desc_fingerprint_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_path_fill(s : ChemdescfingerprintPath, v : Double) -> ChemdescfingerprintPath {
-  let result = chem_desc_fingerprint_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_path_min(s : ChemdescfingerprintPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_desc_fingerprint_cluster_sum(s : ChemdescfingerprintCluster) -> Doub
 pub fn chem_desc_fingerprint_cluster_mean(s : ChemdescfingerprintCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_cluster_scale(s : ChemdescfingerprintCluster, f : Double) -> ChemdescfingerprintCluster {
-  let result = chem_desc_fingerprint_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_cluster_add(a : ChemdescfingerprintCluster, b : ChemdescfingerprintCluster) -> ChemdescfingerprintCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_cluster_copy(s : ChemdescfingerprintCluster) -> ChemdescfingerprintCluster {
-  let result = chem_desc_fingerprint_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_cluster_fill(s : ChemdescfingerprintCluster, v : Double) -> ChemdescfingerprintCluster {
-  let result = chem_desc_fingerprint_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_cluster_min(s : ChemdescfingerprintCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_desc_fingerprint_model_sum(s : ChemdescfingerprintModel) -> Double {
 pub fn chem_desc_fingerprint_model_mean(s : ChemdescfingerprintModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_model_scale(s : ChemdescfingerprintModel, f : Double) -> ChemdescfingerprintModel {
-  let result = chem_desc_fingerprint_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_model_add(a : ChemdescfingerprintModel, b : ChemdescfingerprintModel) -> ChemdescfingerprintModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_model_copy(s : ChemdescfingerprintModel) -> ChemdescfingerprintModel {
-  let result = chem_desc_fingerprint_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_model_fill(s : ChemdescfingerprintModel, v : Double) -> ChemdescfingerprintModel {
-  let result = chem_desc_fingerprint_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_model_min(s : ChemdescfingerprintModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_desc_fingerprint_layer_sum(s : ChemdescfingerprintLayer) -> Double {
 pub fn chem_desc_fingerprint_layer_mean(s : ChemdescfingerprintLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_layer_scale(s : ChemdescfingerprintLayer, f : Double) -> ChemdescfingerprintLayer {
-  let result = chem_desc_fingerprint_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_layer_add(a : ChemdescfingerprintLayer, b : ChemdescfingerprintLayer) -> ChemdescfingerprintLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_layer_copy(s : ChemdescfingerprintLayer) -> ChemdescfingerprintLayer {
-  let result = chem_desc_fingerprint_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_layer_fill(s : ChemdescfingerprintLayer, v : Double) -> ChemdescfingerprintLayer {
-  let result = chem_desc_fingerprint_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_layer_min(s : ChemdescfingerprintLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_desc_fingerprint_buffer_sum(s : ChemdescfingerprintBuffer) -> Double
 pub fn chem_desc_fingerprint_buffer_mean(s : ChemdescfingerprintBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_buffer_scale(s : ChemdescfingerprintBuffer, f : Double) -> ChemdescfingerprintBuffer {
-  let result = chem_desc_fingerprint_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_buffer_add(a : ChemdescfingerprintBuffer, b : ChemdescfingerprintBuffer) -> ChemdescfingerprintBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_buffer_copy(s : ChemdescfingerprintBuffer) -> ChemdescfingerprintBuffer {
-  let result = chem_desc_fingerprint_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_buffer_fill(s : ChemdescfingerprintBuffer, v : Double) -> ChemdescfingerprintBuffer {
-  let result = chem_desc_fingerprint_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_buffer_min(s : ChemdescfingerprintBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_desc_fingerprint_cursor_sum(s : ChemdescfingerprintCursor) -> Double
 pub fn chem_desc_fingerprint_cursor_mean(s : ChemdescfingerprintCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_cursor_scale(s : ChemdescfingerprintCursor, f : Double) -> ChemdescfingerprintCursor {
-  let result = chem_desc_fingerprint_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_cursor_add(a : ChemdescfingerprintCursor, b : ChemdescfingerprintCursor) -> ChemdescfingerprintCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_cursor_copy(s : ChemdescfingerprintCursor) -> ChemdescfingerprintCursor {
-  let result = chem_desc_fingerprint_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_cursor_fill(s : ChemdescfingerprintCursor, v : Double) -> ChemdescfingerprintCursor {
-  let result = chem_desc_fingerprint_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_cursor_min(s : ChemdescfingerprintCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_desc_fingerprint_view_sum(s : ChemdescfingerprintView) -> Double { @
 pub fn chem_desc_fingerprint_view_mean(s : ChemdescfingerprintView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_view_scale(s : ChemdescfingerprintView, f : Double) -> ChemdescfingerprintView {
-  let result = chem_desc_fingerprint_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_view_add(a : ChemdescfingerprintView, b : ChemdescfingerprintView) -> ChemdescfingerprintView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_view_copy(s : ChemdescfingerprintView) -> ChemdescfingerprintView {
-  let result = chem_desc_fingerprint_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_view_fill(s : ChemdescfingerprintView, v : Double) -> ChemdescfingerprintView {
-  let result = chem_desc_fingerprint_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_view_min(s : ChemdescfingerprintView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_desc_fingerprint_range_sum(s : ChemdescfingerprintRange) -> Double {
 pub fn chem_desc_fingerprint_range_mean(s : ChemdescfingerprintRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_range_scale(s : ChemdescfingerprintRange, f : Double) -> ChemdescfingerprintRange {
-  let result = chem_desc_fingerprint_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_range_add(a : ChemdescfingerprintRange, b : ChemdescfingerprintRange) -> ChemdescfingerprintRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_range_copy(s : ChemdescfingerprintRange) -> ChemdescfingerprintRange {
-  let result = chem_desc_fingerprint_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_range_fill(s : ChemdescfingerprintRange, v : Double) -> ChemdescfingerprintRange {
-  let result = chem_desc_fingerprint_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_range_min(s : ChemdescfingerprintRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_desc_fingerprint_slice_sum(s : ChemdescfingerprintSlice) -> Double {
 pub fn chem_desc_fingerprint_slice_mean(s : ChemdescfingerprintSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_slice_scale(s : ChemdescfingerprintSlice, f : Double) -> ChemdescfingerprintSlice {
-  let result = chem_desc_fingerprint_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_slice_add(a : ChemdescfingerprintSlice, b : ChemdescfingerprintSlice) -> ChemdescfingerprintSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_fingerprint_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_fingerprint_slice_copy(s : ChemdescfingerprintSlice) -> ChemdescfingerprintSlice {
-  let result = chem_desc_fingerprint_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_slice_fill(s : ChemdescfingerprintSlice, v : Double) -> ChemdescfingerprintSlice {
-  let result = chem_desc_fingerprint_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_fingerprint_slice_min(s : ChemdescfingerprintSlice) -> Double { @_common.min(s.data) }

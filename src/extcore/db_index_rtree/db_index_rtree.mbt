@@ -383,28 +383,20 @@ pub fn db_index_rtree_frame_sum(s : DbindexrtreeFrame) -> Double { @_common.sum(
 pub fn db_index_rtree_frame_mean(s : DbindexrtreeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_frame_scale(s : DbindexrtreeFrame, f : Double) -> DbindexrtreeFrame {
-  let result = db_index_rtree_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_frame_add(a : DbindexrtreeFrame, b : DbindexrtreeFrame) -> DbindexrtreeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_frame_copy(s : DbindexrtreeFrame) -> DbindexrtreeFrame {
-  let result = db_index_rtree_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_frame_fill(s : DbindexrtreeFrame, v : Double) -> DbindexrtreeFrame {
-  let result = db_index_rtree_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_frame_min(s : DbindexrtreeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_index_rtree_table_sum(s : DbindexrtreeTable) -> Double { @_common.sum(
 pub fn db_index_rtree_table_mean(s : DbindexrtreeTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_table_scale(s : DbindexrtreeTable, f : Double) -> DbindexrtreeTable {
-  let result = db_index_rtree_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_table_add(a : DbindexrtreeTable, b : DbindexrtreeTable) -> DbindexrtreeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_table_copy(s : DbindexrtreeTable) -> DbindexrtreeTable {
-  let result = db_index_rtree_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_table_fill(s : DbindexrtreeTable, v : Double) -> DbindexrtreeTable {
-  let result = db_index_rtree_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_table_min(s : DbindexrtreeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_index_rtree_graphn_sum(s : DbindexrtreeGraphN) -> Double { @_common.su
 pub fn db_index_rtree_graphn_mean(s : DbindexrtreeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_graphn_scale(s : DbindexrtreeGraphN, f : Double) -> DbindexrtreeGraphN {
-  let result = db_index_rtree_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_graphn_add(a : DbindexrtreeGraphN, b : DbindexrtreeGraphN) -> DbindexrtreeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_graphn_copy(s : DbindexrtreeGraphN) -> DbindexrtreeGraphN {
-  let result = db_index_rtree_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_graphn_fill(s : DbindexrtreeGraphN, v : Double) -> DbindexrtreeGraphN {
-  let result = db_index_rtree_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_graphn_min(s : DbindexrtreeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_index_rtree_node_sum(s : DbindexrtreeNode) -> Double { @_common.sum(s.
 pub fn db_index_rtree_node_mean(s : DbindexrtreeNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_node_scale(s : DbindexrtreeNode, f : Double) -> DbindexrtreeNode {
-  let result = db_index_rtree_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_node_add(a : DbindexrtreeNode, b : DbindexrtreeNode) -> DbindexrtreeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_node_copy(s : DbindexrtreeNode) -> DbindexrtreeNode {
-  let result = db_index_rtree_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_node_fill(s : DbindexrtreeNode, v : Double) -> DbindexrtreeNode {
-  let result = db_index_rtree_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_node_min(s : DbindexrtreeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_index_rtree_edge_sum(s : DbindexrtreeEdge) -> Double { @_common.sum(s.
 pub fn db_index_rtree_edge_mean(s : DbindexrtreeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_edge_scale(s : DbindexrtreeEdge, f : Double) -> DbindexrtreeEdge {
-  let result = db_index_rtree_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_edge_add(a : DbindexrtreeEdge, b : DbindexrtreeEdge) -> DbindexrtreeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_edge_copy(s : DbindexrtreeEdge) -> DbindexrtreeEdge {
-  let result = db_index_rtree_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_edge_fill(s : DbindexrtreeEdge, v : Double) -> DbindexrtreeEdge {
-  let result = db_index_rtree_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_edge_min(s : DbindexrtreeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_index_rtree_path_sum(s : DbindexrtreePath) -> Double { @_common.sum(s.
 pub fn db_index_rtree_path_mean(s : DbindexrtreePath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_path_scale(s : DbindexrtreePath, f : Double) -> DbindexrtreePath {
-  let result = db_index_rtree_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_path_add(a : DbindexrtreePath, b : DbindexrtreePath) -> DbindexrtreePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_path_copy(s : DbindexrtreePath) -> DbindexrtreePath {
-  let result = db_index_rtree_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_path_fill(s : DbindexrtreePath, v : Double) -> DbindexrtreePath {
-  let result = db_index_rtree_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_path_min(s : DbindexrtreePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_index_rtree_cluster_sum(s : DbindexrtreeCluster) -> Double { @_common.
 pub fn db_index_rtree_cluster_mean(s : DbindexrtreeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_cluster_scale(s : DbindexrtreeCluster, f : Double) -> DbindexrtreeCluster {
-  let result = db_index_rtree_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_cluster_add(a : DbindexrtreeCluster, b : DbindexrtreeCluster) -> DbindexrtreeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_cluster_copy(s : DbindexrtreeCluster) -> DbindexrtreeCluster {
-  let result = db_index_rtree_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_cluster_fill(s : DbindexrtreeCluster, v : Double) -> DbindexrtreeCluster {
-  let result = db_index_rtree_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_cluster_min(s : DbindexrtreeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_index_rtree_model_sum(s : DbindexrtreeModel) -> Double { @_common.sum(
 pub fn db_index_rtree_model_mean(s : DbindexrtreeModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_model_scale(s : DbindexrtreeModel, f : Double) -> DbindexrtreeModel {
-  let result = db_index_rtree_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_model_add(a : DbindexrtreeModel, b : DbindexrtreeModel) -> DbindexrtreeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_model_copy(s : DbindexrtreeModel) -> DbindexrtreeModel {
-  let result = db_index_rtree_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_model_fill(s : DbindexrtreeModel, v : Double) -> DbindexrtreeModel {
-  let result = db_index_rtree_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_model_min(s : DbindexrtreeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_index_rtree_layer_sum(s : DbindexrtreeLayer) -> Double { @_common.sum(
 pub fn db_index_rtree_layer_mean(s : DbindexrtreeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_layer_scale(s : DbindexrtreeLayer, f : Double) -> DbindexrtreeLayer {
-  let result = db_index_rtree_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_layer_add(a : DbindexrtreeLayer, b : DbindexrtreeLayer) -> DbindexrtreeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_layer_copy(s : DbindexrtreeLayer) -> DbindexrtreeLayer {
-  let result = db_index_rtree_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_layer_fill(s : DbindexrtreeLayer, v : Double) -> DbindexrtreeLayer {
-  let result = db_index_rtree_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_layer_min(s : DbindexrtreeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_index_rtree_buffer_sum(s : DbindexrtreeBuffer) -> Double { @_common.su
 pub fn db_index_rtree_buffer_mean(s : DbindexrtreeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_buffer_scale(s : DbindexrtreeBuffer, f : Double) -> DbindexrtreeBuffer {
-  let result = db_index_rtree_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_buffer_add(a : DbindexrtreeBuffer, b : DbindexrtreeBuffer) -> DbindexrtreeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_buffer_copy(s : DbindexrtreeBuffer) -> DbindexrtreeBuffer {
-  let result = db_index_rtree_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_buffer_fill(s : DbindexrtreeBuffer, v : Double) -> DbindexrtreeBuffer {
-  let result = db_index_rtree_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_buffer_min(s : DbindexrtreeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_index_rtree_cursor_sum(s : DbindexrtreeCursor) -> Double { @_common.su
 pub fn db_index_rtree_cursor_mean(s : DbindexrtreeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_cursor_scale(s : DbindexrtreeCursor, f : Double) -> DbindexrtreeCursor {
-  let result = db_index_rtree_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_cursor_add(a : DbindexrtreeCursor, b : DbindexrtreeCursor) -> DbindexrtreeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_cursor_copy(s : DbindexrtreeCursor) -> DbindexrtreeCursor {
-  let result = db_index_rtree_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_cursor_fill(s : DbindexrtreeCursor, v : Double) -> DbindexrtreeCursor {
-  let result = db_index_rtree_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_cursor_min(s : DbindexrtreeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_index_rtree_view_sum(s : DbindexrtreeView) -> Double { @_common.sum(s.
 pub fn db_index_rtree_view_mean(s : DbindexrtreeView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_view_scale(s : DbindexrtreeView, f : Double) -> DbindexrtreeView {
-  let result = db_index_rtree_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_view_add(a : DbindexrtreeView, b : DbindexrtreeView) -> DbindexrtreeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_view_copy(s : DbindexrtreeView) -> DbindexrtreeView {
-  let result = db_index_rtree_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_view_fill(s : DbindexrtreeView, v : Double) -> DbindexrtreeView {
-  let result = db_index_rtree_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_view_min(s : DbindexrtreeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_index_rtree_range_sum(s : DbindexrtreeRange) -> Double { @_common.sum(
 pub fn db_index_rtree_range_mean(s : DbindexrtreeRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_range_scale(s : DbindexrtreeRange, f : Double) -> DbindexrtreeRange {
-  let result = db_index_rtree_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_range_add(a : DbindexrtreeRange, b : DbindexrtreeRange) -> DbindexrtreeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_range_copy(s : DbindexrtreeRange) -> DbindexrtreeRange {
-  let result = db_index_rtree_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_range_fill(s : DbindexrtreeRange, v : Double) -> DbindexrtreeRange {
-  let result = db_index_rtree_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_range_min(s : DbindexrtreeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_index_rtree_slice_sum(s : DbindexrtreeSlice) -> Double { @_common.sum(
 pub fn db_index_rtree_slice_mean(s : DbindexrtreeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_rtree_slice_scale(s : DbindexrtreeSlice, f : Double) -> DbindexrtreeSlice {
-  let result = db_index_rtree_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_slice_add(a : DbindexrtreeSlice, b : DbindexrtreeSlice) -> DbindexrtreeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_rtree_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_rtree_slice_copy(s : DbindexrtreeSlice) -> DbindexrtreeSlice {
-  let result = db_index_rtree_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_slice_fill(s : DbindexrtreeSlice, v : Double) -> DbindexrtreeSlice {
-  let result = db_index_rtree_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_rtree_slice_min(s : DbindexrtreeSlice) -> Double { @_common.min(s.data) }

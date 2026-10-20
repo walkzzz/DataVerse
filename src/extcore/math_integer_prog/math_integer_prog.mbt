@@ -383,28 +383,20 @@ pub fn math_integer_prog_frame_sum(s : MathintegerprogFrame) -> Double { @_commo
 pub fn math_integer_prog_frame_mean(s : MathintegerprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_frame_scale(s : MathintegerprogFrame, f : Double) -> MathintegerprogFrame {
-  let result = math_integer_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_frame_add(a : MathintegerprogFrame, b : MathintegerprogFrame) -> MathintegerprogFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_frame_copy(s : MathintegerprogFrame) -> MathintegerprogFrame {
-  let result = math_integer_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_frame_fill(s : MathintegerprogFrame, v : Double) -> MathintegerprogFrame {
-  let result = math_integer_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_frame_min(s : MathintegerprogFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_integer_prog_table_sum(s : MathintegerprogTable) -> Double { @_commo
 pub fn math_integer_prog_table_mean(s : MathintegerprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_table_scale(s : MathintegerprogTable, f : Double) -> MathintegerprogTable {
-  let result = math_integer_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_table_add(a : MathintegerprogTable, b : MathintegerprogTable) -> MathintegerprogTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_table_copy(s : MathintegerprogTable) -> MathintegerprogTable {
-  let result = math_integer_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_table_fill(s : MathintegerprogTable, v : Double) -> MathintegerprogTable {
-  let result = math_integer_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_table_min(s : MathintegerprogTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_integer_prog_graphn_sum(s : MathintegerprogGraphN) -> Double { @_com
 pub fn math_integer_prog_graphn_mean(s : MathintegerprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_graphn_scale(s : MathintegerprogGraphN, f : Double) -> MathintegerprogGraphN {
-  let result = math_integer_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_graphn_add(a : MathintegerprogGraphN, b : MathintegerprogGraphN) -> MathintegerprogGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_graphn_copy(s : MathintegerprogGraphN) -> MathintegerprogGraphN {
-  let result = math_integer_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_graphn_fill(s : MathintegerprogGraphN, v : Double) -> MathintegerprogGraphN {
-  let result = math_integer_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_graphn_min(s : MathintegerprogGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_integer_prog_node_sum(s : MathintegerprogNode) -> Double { @_common.
 pub fn math_integer_prog_node_mean(s : MathintegerprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_node_scale(s : MathintegerprogNode, f : Double) -> MathintegerprogNode {
-  let result = math_integer_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_node_add(a : MathintegerprogNode, b : MathintegerprogNode) -> MathintegerprogNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_node_copy(s : MathintegerprogNode) -> MathintegerprogNode {
-  let result = math_integer_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_node_fill(s : MathintegerprogNode, v : Double) -> MathintegerprogNode {
-  let result = math_integer_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_node_min(s : MathintegerprogNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_integer_prog_edge_sum(s : MathintegerprogEdge) -> Double { @_common.
 pub fn math_integer_prog_edge_mean(s : MathintegerprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_edge_scale(s : MathintegerprogEdge, f : Double) -> MathintegerprogEdge {
-  let result = math_integer_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_edge_add(a : MathintegerprogEdge, b : MathintegerprogEdge) -> MathintegerprogEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_edge_copy(s : MathintegerprogEdge) -> MathintegerprogEdge {
-  let result = math_integer_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_edge_fill(s : MathintegerprogEdge, v : Double) -> MathintegerprogEdge {
-  let result = math_integer_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_edge_min(s : MathintegerprogEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_integer_prog_path_sum(s : MathintegerprogPath) -> Double { @_common.
 pub fn math_integer_prog_path_mean(s : MathintegerprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_path_scale(s : MathintegerprogPath, f : Double) -> MathintegerprogPath {
-  let result = math_integer_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_path_add(a : MathintegerprogPath, b : MathintegerprogPath) -> MathintegerprogPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_path_copy(s : MathintegerprogPath) -> MathintegerprogPath {
-  let result = math_integer_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_path_fill(s : MathintegerprogPath, v : Double) -> MathintegerprogPath {
-  let result = math_integer_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_path_min(s : MathintegerprogPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_integer_prog_cluster_sum(s : MathintegerprogCluster) -> Double { @_c
 pub fn math_integer_prog_cluster_mean(s : MathintegerprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_cluster_scale(s : MathintegerprogCluster, f : Double) -> MathintegerprogCluster {
-  let result = math_integer_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_cluster_add(a : MathintegerprogCluster, b : MathintegerprogCluster) -> MathintegerprogCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_cluster_copy(s : MathintegerprogCluster) -> MathintegerprogCluster {
-  let result = math_integer_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_cluster_fill(s : MathintegerprogCluster, v : Double) -> MathintegerprogCluster {
-  let result = math_integer_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_cluster_min(s : MathintegerprogCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_integer_prog_model_sum(s : MathintegerprogModel) -> Double { @_commo
 pub fn math_integer_prog_model_mean(s : MathintegerprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_model_scale(s : MathintegerprogModel, f : Double) -> MathintegerprogModel {
-  let result = math_integer_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_model_add(a : MathintegerprogModel, b : MathintegerprogModel) -> MathintegerprogModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_model_copy(s : MathintegerprogModel) -> MathintegerprogModel {
-  let result = math_integer_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_model_fill(s : MathintegerprogModel, v : Double) -> MathintegerprogModel {
-  let result = math_integer_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_model_min(s : MathintegerprogModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_integer_prog_layer_sum(s : MathintegerprogLayer) -> Double { @_commo
 pub fn math_integer_prog_layer_mean(s : MathintegerprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_layer_scale(s : MathintegerprogLayer, f : Double) -> MathintegerprogLayer {
-  let result = math_integer_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_layer_add(a : MathintegerprogLayer, b : MathintegerprogLayer) -> MathintegerprogLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_layer_copy(s : MathintegerprogLayer) -> MathintegerprogLayer {
-  let result = math_integer_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_layer_fill(s : MathintegerprogLayer, v : Double) -> MathintegerprogLayer {
-  let result = math_integer_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_layer_min(s : MathintegerprogLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_integer_prog_buffer_sum(s : MathintegerprogBuffer) -> Double { @_com
 pub fn math_integer_prog_buffer_mean(s : MathintegerprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_buffer_scale(s : MathintegerprogBuffer, f : Double) -> MathintegerprogBuffer {
-  let result = math_integer_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_buffer_add(a : MathintegerprogBuffer, b : MathintegerprogBuffer) -> MathintegerprogBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_buffer_copy(s : MathintegerprogBuffer) -> MathintegerprogBuffer {
-  let result = math_integer_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_buffer_fill(s : MathintegerprogBuffer, v : Double) -> MathintegerprogBuffer {
-  let result = math_integer_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_buffer_min(s : MathintegerprogBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_integer_prog_cursor_sum(s : MathintegerprogCursor) -> Double { @_com
 pub fn math_integer_prog_cursor_mean(s : MathintegerprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_cursor_scale(s : MathintegerprogCursor, f : Double) -> MathintegerprogCursor {
-  let result = math_integer_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_cursor_add(a : MathintegerprogCursor, b : MathintegerprogCursor) -> MathintegerprogCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_cursor_copy(s : MathintegerprogCursor) -> MathintegerprogCursor {
-  let result = math_integer_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_cursor_fill(s : MathintegerprogCursor, v : Double) -> MathintegerprogCursor {
-  let result = math_integer_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_cursor_min(s : MathintegerprogCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_integer_prog_view_sum(s : MathintegerprogView) -> Double { @_common.
 pub fn math_integer_prog_view_mean(s : MathintegerprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_view_scale(s : MathintegerprogView, f : Double) -> MathintegerprogView {
-  let result = math_integer_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_view_add(a : MathintegerprogView, b : MathintegerprogView) -> MathintegerprogView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_view_copy(s : MathintegerprogView) -> MathintegerprogView {
-  let result = math_integer_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_view_fill(s : MathintegerprogView, v : Double) -> MathintegerprogView {
-  let result = math_integer_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_view_min(s : MathintegerprogView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_integer_prog_range_sum(s : MathintegerprogRange) -> Double { @_commo
 pub fn math_integer_prog_range_mean(s : MathintegerprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_range_scale(s : MathintegerprogRange, f : Double) -> MathintegerprogRange {
-  let result = math_integer_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_range_add(a : MathintegerprogRange, b : MathintegerprogRange) -> MathintegerprogRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_range_copy(s : MathintegerprogRange) -> MathintegerprogRange {
-  let result = math_integer_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_range_fill(s : MathintegerprogRange, v : Double) -> MathintegerprogRange {
-  let result = math_integer_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_range_min(s : MathintegerprogRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_integer_prog_slice_sum(s : MathintegerprogSlice) -> Double { @_commo
 pub fn math_integer_prog_slice_mean(s : MathintegerprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_slice_scale(s : MathintegerprogSlice, f : Double) -> MathintegerprogSlice {
-  let result = math_integer_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_slice_add(a : MathintegerprogSlice, b : MathintegerprogSlice) -> MathintegerprogSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_integer_prog_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_integer_prog_slice_copy(s : MathintegerprogSlice) -> MathintegerprogSlice {
-  let result = math_integer_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_slice_fill(s : MathintegerprogSlice, v : Double) -> MathintegerprogSlice {
-  let result = math_integer_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_integer_prog_slice_min(s : MathintegerprogSlice) -> Double { @_common.min(s.data) }

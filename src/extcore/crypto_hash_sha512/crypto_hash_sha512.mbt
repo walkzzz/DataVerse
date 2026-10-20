@@ -383,28 +383,20 @@ pub fn crypto_hash_sha512_frame_sum(s : Cryptohashsha512Frame) -> Double { @_com
 pub fn crypto_hash_sha512_frame_mean(s : Cryptohashsha512Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_frame_scale(s : Cryptohashsha512Frame, f : Double) -> Cryptohashsha512Frame {
-  let result = crypto_hash_sha512_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_frame_add(a : Cryptohashsha512Frame, b : Cryptohashsha512Frame) -> Cryptohashsha512Frame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_frame_copy(s : Cryptohashsha512Frame) -> Cryptohashsha512Frame {
-  let result = crypto_hash_sha512_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_frame_fill(s : Cryptohashsha512Frame, v : Double) -> Cryptohashsha512Frame {
-  let result = crypto_hash_sha512_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_frame_min(s : Cryptohashsha512Frame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_hash_sha512_table_sum(s : Cryptohashsha512Table) -> Double { @_com
 pub fn crypto_hash_sha512_table_mean(s : Cryptohashsha512Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_table_scale(s : Cryptohashsha512Table, f : Double) -> Cryptohashsha512Table {
-  let result = crypto_hash_sha512_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_table_add(a : Cryptohashsha512Table, b : Cryptohashsha512Table) -> Cryptohashsha512Table {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_table_copy(s : Cryptohashsha512Table) -> Cryptohashsha512Table {
-  let result = crypto_hash_sha512_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_table_fill(s : Cryptohashsha512Table, v : Double) -> Cryptohashsha512Table {
-  let result = crypto_hash_sha512_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_table_min(s : Cryptohashsha512Table) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_hash_sha512_graphn_sum(s : Cryptohashsha512GraphN) -> Double { @_c
 pub fn crypto_hash_sha512_graphn_mean(s : Cryptohashsha512GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_graphn_scale(s : Cryptohashsha512GraphN, f : Double) -> Cryptohashsha512GraphN {
-  let result = crypto_hash_sha512_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_graphn_add(a : Cryptohashsha512GraphN, b : Cryptohashsha512GraphN) -> Cryptohashsha512GraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_graphn_copy(s : Cryptohashsha512GraphN) -> Cryptohashsha512GraphN {
-  let result = crypto_hash_sha512_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_graphn_fill(s : Cryptohashsha512GraphN, v : Double) -> Cryptohashsha512GraphN {
-  let result = crypto_hash_sha512_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_graphn_min(s : Cryptohashsha512GraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_hash_sha512_node_sum(s : Cryptohashsha512Node) -> Double { @_commo
 pub fn crypto_hash_sha512_node_mean(s : Cryptohashsha512Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_node_scale(s : Cryptohashsha512Node, f : Double) -> Cryptohashsha512Node {
-  let result = crypto_hash_sha512_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_node_add(a : Cryptohashsha512Node, b : Cryptohashsha512Node) -> Cryptohashsha512Node {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_node_copy(s : Cryptohashsha512Node) -> Cryptohashsha512Node {
-  let result = crypto_hash_sha512_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_node_fill(s : Cryptohashsha512Node, v : Double) -> Cryptohashsha512Node {
-  let result = crypto_hash_sha512_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_node_min(s : Cryptohashsha512Node) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_hash_sha512_edge_sum(s : Cryptohashsha512Edge) -> Double { @_commo
 pub fn crypto_hash_sha512_edge_mean(s : Cryptohashsha512Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_edge_scale(s : Cryptohashsha512Edge, f : Double) -> Cryptohashsha512Edge {
-  let result = crypto_hash_sha512_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_edge_add(a : Cryptohashsha512Edge, b : Cryptohashsha512Edge) -> Cryptohashsha512Edge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_edge_copy(s : Cryptohashsha512Edge) -> Cryptohashsha512Edge {
-  let result = crypto_hash_sha512_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_edge_fill(s : Cryptohashsha512Edge, v : Double) -> Cryptohashsha512Edge {
-  let result = crypto_hash_sha512_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_edge_min(s : Cryptohashsha512Edge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_hash_sha512_path_sum(s : Cryptohashsha512Path) -> Double { @_commo
 pub fn crypto_hash_sha512_path_mean(s : Cryptohashsha512Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_path_scale(s : Cryptohashsha512Path, f : Double) -> Cryptohashsha512Path {
-  let result = crypto_hash_sha512_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_path_add(a : Cryptohashsha512Path, b : Cryptohashsha512Path) -> Cryptohashsha512Path {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_path_copy(s : Cryptohashsha512Path) -> Cryptohashsha512Path {
-  let result = crypto_hash_sha512_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_path_fill(s : Cryptohashsha512Path, v : Double) -> Cryptohashsha512Path {
-  let result = crypto_hash_sha512_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_path_min(s : Cryptohashsha512Path) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_hash_sha512_cluster_sum(s : Cryptohashsha512Cluster) -> Double { @
 pub fn crypto_hash_sha512_cluster_mean(s : Cryptohashsha512Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_cluster_scale(s : Cryptohashsha512Cluster, f : Double) -> Cryptohashsha512Cluster {
-  let result = crypto_hash_sha512_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_cluster_add(a : Cryptohashsha512Cluster, b : Cryptohashsha512Cluster) -> Cryptohashsha512Cluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_cluster_copy(s : Cryptohashsha512Cluster) -> Cryptohashsha512Cluster {
-  let result = crypto_hash_sha512_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_cluster_fill(s : Cryptohashsha512Cluster, v : Double) -> Cryptohashsha512Cluster {
-  let result = crypto_hash_sha512_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_cluster_min(s : Cryptohashsha512Cluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_hash_sha512_model_sum(s : Cryptohashsha512Model) -> Double { @_com
 pub fn crypto_hash_sha512_model_mean(s : Cryptohashsha512Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_model_scale(s : Cryptohashsha512Model, f : Double) -> Cryptohashsha512Model {
-  let result = crypto_hash_sha512_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_model_add(a : Cryptohashsha512Model, b : Cryptohashsha512Model) -> Cryptohashsha512Model {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_model_copy(s : Cryptohashsha512Model) -> Cryptohashsha512Model {
-  let result = crypto_hash_sha512_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_model_fill(s : Cryptohashsha512Model, v : Double) -> Cryptohashsha512Model {
-  let result = crypto_hash_sha512_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_model_min(s : Cryptohashsha512Model) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_hash_sha512_layer_sum(s : Cryptohashsha512Layer) -> Double { @_com
 pub fn crypto_hash_sha512_layer_mean(s : Cryptohashsha512Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_layer_scale(s : Cryptohashsha512Layer, f : Double) -> Cryptohashsha512Layer {
-  let result = crypto_hash_sha512_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_layer_add(a : Cryptohashsha512Layer, b : Cryptohashsha512Layer) -> Cryptohashsha512Layer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_layer_copy(s : Cryptohashsha512Layer) -> Cryptohashsha512Layer {
-  let result = crypto_hash_sha512_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_layer_fill(s : Cryptohashsha512Layer, v : Double) -> Cryptohashsha512Layer {
-  let result = crypto_hash_sha512_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_layer_min(s : Cryptohashsha512Layer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_hash_sha512_buffer_sum(s : Cryptohashsha512Buffer) -> Double { @_c
 pub fn crypto_hash_sha512_buffer_mean(s : Cryptohashsha512Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_buffer_scale(s : Cryptohashsha512Buffer, f : Double) -> Cryptohashsha512Buffer {
-  let result = crypto_hash_sha512_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_buffer_add(a : Cryptohashsha512Buffer, b : Cryptohashsha512Buffer) -> Cryptohashsha512Buffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_buffer_copy(s : Cryptohashsha512Buffer) -> Cryptohashsha512Buffer {
-  let result = crypto_hash_sha512_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_buffer_fill(s : Cryptohashsha512Buffer, v : Double) -> Cryptohashsha512Buffer {
-  let result = crypto_hash_sha512_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_buffer_min(s : Cryptohashsha512Buffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_hash_sha512_cursor_sum(s : Cryptohashsha512Cursor) -> Double { @_c
 pub fn crypto_hash_sha512_cursor_mean(s : Cryptohashsha512Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_cursor_scale(s : Cryptohashsha512Cursor, f : Double) -> Cryptohashsha512Cursor {
-  let result = crypto_hash_sha512_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_cursor_add(a : Cryptohashsha512Cursor, b : Cryptohashsha512Cursor) -> Cryptohashsha512Cursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_cursor_copy(s : Cryptohashsha512Cursor) -> Cryptohashsha512Cursor {
-  let result = crypto_hash_sha512_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_cursor_fill(s : Cryptohashsha512Cursor, v : Double) -> Cryptohashsha512Cursor {
-  let result = crypto_hash_sha512_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_cursor_min(s : Cryptohashsha512Cursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_hash_sha512_view_sum(s : Cryptohashsha512View) -> Double { @_commo
 pub fn crypto_hash_sha512_view_mean(s : Cryptohashsha512View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_view_scale(s : Cryptohashsha512View, f : Double) -> Cryptohashsha512View {
-  let result = crypto_hash_sha512_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_view_add(a : Cryptohashsha512View, b : Cryptohashsha512View) -> Cryptohashsha512View {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_view_copy(s : Cryptohashsha512View) -> Cryptohashsha512View {
-  let result = crypto_hash_sha512_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_view_fill(s : Cryptohashsha512View, v : Double) -> Cryptohashsha512View {
-  let result = crypto_hash_sha512_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_view_min(s : Cryptohashsha512View) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_hash_sha512_range_sum(s : Cryptohashsha512Range) -> Double { @_com
 pub fn crypto_hash_sha512_range_mean(s : Cryptohashsha512Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_range_scale(s : Cryptohashsha512Range, f : Double) -> Cryptohashsha512Range {
-  let result = crypto_hash_sha512_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_range_add(a : Cryptohashsha512Range, b : Cryptohashsha512Range) -> Cryptohashsha512Range {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_range_copy(s : Cryptohashsha512Range) -> Cryptohashsha512Range {
-  let result = crypto_hash_sha512_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_range_fill(s : Cryptohashsha512Range, v : Double) -> Cryptohashsha512Range {
-  let result = crypto_hash_sha512_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_range_min(s : Cryptohashsha512Range) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_hash_sha512_slice_sum(s : Cryptohashsha512Slice) -> Double { @_com
 pub fn crypto_hash_sha512_slice_mean(s : Cryptohashsha512Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha512_slice_scale(s : Cryptohashsha512Slice, f : Double) -> Cryptohashsha512Slice {
-  let result = crypto_hash_sha512_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_slice_add(a : Cryptohashsha512Slice, b : Cryptohashsha512Slice) -> Cryptohashsha512Slice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha512_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha512_slice_copy(s : Cryptohashsha512Slice) -> Cryptohashsha512Slice {
-  let result = crypto_hash_sha512_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_slice_fill(s : Cryptohashsha512Slice, v : Double) -> Cryptohashsha512Slice {
-  let result = crypto_hash_sha512_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha512_slice_min(s : Cryptohashsha512Slice) -> Double { @_common.min(s.data) }

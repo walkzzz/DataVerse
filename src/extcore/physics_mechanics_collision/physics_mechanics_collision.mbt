@@ -383,28 +383,20 @@ pub fn physics_mechanics_collision_frame_sum(s : PhysicsmechanicscollisionFrame)
 pub fn physics_mechanics_collision_frame_mean(s : PhysicsmechanicscollisionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_frame_scale(s : PhysicsmechanicscollisionFrame, f : Double) -> PhysicsmechanicscollisionFrame {
-  let result = physics_mechanics_collision_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_frame_add(a : PhysicsmechanicscollisionFrame, b : PhysicsmechanicscollisionFrame) -> PhysicsmechanicscollisionFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_frame_copy(s : PhysicsmechanicscollisionFrame) -> PhysicsmechanicscollisionFrame {
-  let result = physics_mechanics_collision_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_frame_fill(s : PhysicsmechanicscollisionFrame, v : Double) -> PhysicsmechanicscollisionFrame {
-  let result = physics_mechanics_collision_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_frame_min(s : PhysicsmechanicscollisionFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_mechanics_collision_table_sum(s : PhysicsmechanicscollisionTable)
 pub fn physics_mechanics_collision_table_mean(s : PhysicsmechanicscollisionTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_table_scale(s : PhysicsmechanicscollisionTable, f : Double) -> PhysicsmechanicscollisionTable {
-  let result = physics_mechanics_collision_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_table_add(a : PhysicsmechanicscollisionTable, b : PhysicsmechanicscollisionTable) -> PhysicsmechanicscollisionTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_table_copy(s : PhysicsmechanicscollisionTable) -> PhysicsmechanicscollisionTable {
-  let result = physics_mechanics_collision_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_table_fill(s : PhysicsmechanicscollisionTable, v : Double) -> PhysicsmechanicscollisionTable {
-  let result = physics_mechanics_collision_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_table_min(s : PhysicsmechanicscollisionTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_mechanics_collision_graphn_sum(s : PhysicsmechanicscollisionGraph
 pub fn physics_mechanics_collision_graphn_mean(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_graphn_scale(s : PhysicsmechanicscollisionGraphN, f : Double) -> PhysicsmechanicscollisionGraphN {
-  let result = physics_mechanics_collision_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_graphn_add(a : PhysicsmechanicscollisionGraphN, b : PhysicsmechanicscollisionGraphN) -> PhysicsmechanicscollisionGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_graphn_copy(s : PhysicsmechanicscollisionGraphN) -> PhysicsmechanicscollisionGraphN {
-  let result = physics_mechanics_collision_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_graphn_fill(s : PhysicsmechanicscollisionGraphN, v : Double) -> PhysicsmechanicscollisionGraphN {
-  let result = physics_mechanics_collision_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_graphn_min(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_mechanics_collision_node_sum(s : PhysicsmechanicscollisionNode) -
 pub fn physics_mechanics_collision_node_mean(s : PhysicsmechanicscollisionNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_node_scale(s : PhysicsmechanicscollisionNode, f : Double) -> PhysicsmechanicscollisionNode {
-  let result = physics_mechanics_collision_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_node_add(a : PhysicsmechanicscollisionNode, b : PhysicsmechanicscollisionNode) -> PhysicsmechanicscollisionNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_node_copy(s : PhysicsmechanicscollisionNode) -> PhysicsmechanicscollisionNode {
-  let result = physics_mechanics_collision_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_node_fill(s : PhysicsmechanicscollisionNode, v : Double) -> PhysicsmechanicscollisionNode {
-  let result = physics_mechanics_collision_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_node_min(s : PhysicsmechanicscollisionNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_mechanics_collision_edge_sum(s : PhysicsmechanicscollisionEdge) -
 pub fn physics_mechanics_collision_edge_mean(s : PhysicsmechanicscollisionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_edge_scale(s : PhysicsmechanicscollisionEdge, f : Double) -> PhysicsmechanicscollisionEdge {
-  let result = physics_mechanics_collision_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_edge_add(a : PhysicsmechanicscollisionEdge, b : PhysicsmechanicscollisionEdge) -> PhysicsmechanicscollisionEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_edge_copy(s : PhysicsmechanicscollisionEdge) -> PhysicsmechanicscollisionEdge {
-  let result = physics_mechanics_collision_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_edge_fill(s : PhysicsmechanicscollisionEdge, v : Double) -> PhysicsmechanicscollisionEdge {
-  let result = physics_mechanics_collision_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_edge_min(s : PhysicsmechanicscollisionEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_mechanics_collision_path_sum(s : PhysicsmechanicscollisionPath) -
 pub fn physics_mechanics_collision_path_mean(s : PhysicsmechanicscollisionPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_path_scale(s : PhysicsmechanicscollisionPath, f : Double) -> PhysicsmechanicscollisionPath {
-  let result = physics_mechanics_collision_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_path_add(a : PhysicsmechanicscollisionPath, b : PhysicsmechanicscollisionPath) -> PhysicsmechanicscollisionPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_path_copy(s : PhysicsmechanicscollisionPath) -> PhysicsmechanicscollisionPath {
-  let result = physics_mechanics_collision_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_path_fill(s : PhysicsmechanicscollisionPath, v : Double) -> PhysicsmechanicscollisionPath {
-  let result = physics_mechanics_collision_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_path_min(s : PhysicsmechanicscollisionPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_mechanics_collision_cluster_sum(s : PhysicsmechanicscollisionClus
 pub fn physics_mechanics_collision_cluster_mean(s : PhysicsmechanicscollisionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_cluster_scale(s : PhysicsmechanicscollisionCluster, f : Double) -> PhysicsmechanicscollisionCluster {
-  let result = physics_mechanics_collision_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cluster_add(a : PhysicsmechanicscollisionCluster, b : PhysicsmechanicscollisionCluster) -> PhysicsmechanicscollisionCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_cluster_copy(s : PhysicsmechanicscollisionCluster) -> PhysicsmechanicscollisionCluster {
-  let result = physics_mechanics_collision_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cluster_fill(s : PhysicsmechanicscollisionCluster, v : Double) -> PhysicsmechanicscollisionCluster {
-  let result = physics_mechanics_collision_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cluster_min(s : PhysicsmechanicscollisionCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_mechanics_collision_model_sum(s : PhysicsmechanicscollisionModel)
 pub fn physics_mechanics_collision_model_mean(s : PhysicsmechanicscollisionModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_model_scale(s : PhysicsmechanicscollisionModel, f : Double) -> PhysicsmechanicscollisionModel {
-  let result = physics_mechanics_collision_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_model_add(a : PhysicsmechanicscollisionModel, b : PhysicsmechanicscollisionModel) -> PhysicsmechanicscollisionModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_model_copy(s : PhysicsmechanicscollisionModel) -> PhysicsmechanicscollisionModel {
-  let result = physics_mechanics_collision_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_model_fill(s : PhysicsmechanicscollisionModel, v : Double) -> PhysicsmechanicscollisionModel {
-  let result = physics_mechanics_collision_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_model_min(s : PhysicsmechanicscollisionModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_mechanics_collision_layer_sum(s : PhysicsmechanicscollisionLayer)
 pub fn physics_mechanics_collision_layer_mean(s : PhysicsmechanicscollisionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_layer_scale(s : PhysicsmechanicscollisionLayer, f : Double) -> PhysicsmechanicscollisionLayer {
-  let result = physics_mechanics_collision_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_layer_add(a : PhysicsmechanicscollisionLayer, b : PhysicsmechanicscollisionLayer) -> PhysicsmechanicscollisionLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_layer_copy(s : PhysicsmechanicscollisionLayer) -> PhysicsmechanicscollisionLayer {
-  let result = physics_mechanics_collision_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_layer_fill(s : PhysicsmechanicscollisionLayer, v : Double) -> PhysicsmechanicscollisionLayer {
-  let result = physics_mechanics_collision_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_layer_min(s : PhysicsmechanicscollisionLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_mechanics_collision_buffer_sum(s : PhysicsmechanicscollisionBuffe
 pub fn physics_mechanics_collision_buffer_mean(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_buffer_scale(s : PhysicsmechanicscollisionBuffer, f : Double) -> PhysicsmechanicscollisionBuffer {
-  let result = physics_mechanics_collision_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_buffer_add(a : PhysicsmechanicscollisionBuffer, b : PhysicsmechanicscollisionBuffer) -> PhysicsmechanicscollisionBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_buffer_copy(s : PhysicsmechanicscollisionBuffer) -> PhysicsmechanicscollisionBuffer {
-  let result = physics_mechanics_collision_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_buffer_fill(s : PhysicsmechanicscollisionBuffer, v : Double) -> PhysicsmechanicscollisionBuffer {
-  let result = physics_mechanics_collision_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_buffer_min(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_mechanics_collision_cursor_sum(s : PhysicsmechanicscollisionCurso
 pub fn physics_mechanics_collision_cursor_mean(s : PhysicsmechanicscollisionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_cursor_scale(s : PhysicsmechanicscollisionCursor, f : Double) -> PhysicsmechanicscollisionCursor {
-  let result = physics_mechanics_collision_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cursor_add(a : PhysicsmechanicscollisionCursor, b : PhysicsmechanicscollisionCursor) -> PhysicsmechanicscollisionCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_cursor_copy(s : PhysicsmechanicscollisionCursor) -> PhysicsmechanicscollisionCursor {
-  let result = physics_mechanics_collision_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cursor_fill(s : PhysicsmechanicscollisionCursor, v : Double) -> PhysicsmechanicscollisionCursor {
-  let result = physics_mechanics_collision_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cursor_min(s : PhysicsmechanicscollisionCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_mechanics_collision_view_sum(s : PhysicsmechanicscollisionView) -
 pub fn physics_mechanics_collision_view_mean(s : PhysicsmechanicscollisionView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_view_scale(s : PhysicsmechanicscollisionView, f : Double) -> PhysicsmechanicscollisionView {
-  let result = physics_mechanics_collision_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_view_add(a : PhysicsmechanicscollisionView, b : PhysicsmechanicscollisionView) -> PhysicsmechanicscollisionView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_view_copy(s : PhysicsmechanicscollisionView) -> PhysicsmechanicscollisionView {
-  let result = physics_mechanics_collision_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_view_fill(s : PhysicsmechanicscollisionView, v : Double) -> PhysicsmechanicscollisionView {
-  let result = physics_mechanics_collision_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_view_min(s : PhysicsmechanicscollisionView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_mechanics_collision_range_sum(s : PhysicsmechanicscollisionRange)
 pub fn physics_mechanics_collision_range_mean(s : PhysicsmechanicscollisionRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_range_scale(s : PhysicsmechanicscollisionRange, f : Double) -> PhysicsmechanicscollisionRange {
-  let result = physics_mechanics_collision_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_range_add(a : PhysicsmechanicscollisionRange, b : PhysicsmechanicscollisionRange) -> PhysicsmechanicscollisionRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_range_copy(s : PhysicsmechanicscollisionRange) -> PhysicsmechanicscollisionRange {
-  let result = physics_mechanics_collision_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_range_fill(s : PhysicsmechanicscollisionRange, v : Double) -> PhysicsmechanicscollisionRange {
-  let result = physics_mechanics_collision_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_range_min(s : PhysicsmechanicscollisionRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_mechanics_collision_slice_sum(s : PhysicsmechanicscollisionSlice)
 pub fn physics_mechanics_collision_slice_mean(s : PhysicsmechanicscollisionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_slice_scale(s : PhysicsmechanicscollisionSlice, f : Double) -> PhysicsmechanicscollisionSlice {
-  let result = physics_mechanics_collision_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_slice_add(a : PhysicsmechanicscollisionSlice, b : PhysicsmechanicscollisionSlice) -> PhysicsmechanicscollisionSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_collision_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_collision_slice_copy(s : PhysicsmechanicscollisionSlice) -> PhysicsmechanicscollisionSlice {
-  let result = physics_mechanics_collision_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_slice_fill(s : PhysicsmechanicscollisionSlice, v : Double) -> PhysicsmechanicscollisionSlice {
-  let result = physics_mechanics_collision_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_slice_min(s : PhysicsmechanicscollisionSlice) -> Double { @_common.min(s.data) }

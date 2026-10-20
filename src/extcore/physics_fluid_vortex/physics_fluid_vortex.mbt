@@ -383,28 +383,20 @@ pub fn physics_fluid_vortex_frame_sum(s : PhysicsfluidvortexFrame) -> Double { @
 pub fn physics_fluid_vortex_frame_mean(s : PhysicsfluidvortexFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_frame_scale(s : PhysicsfluidvortexFrame, f : Double) -> PhysicsfluidvortexFrame {
-  let result = physics_fluid_vortex_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_frame_add(a : PhysicsfluidvortexFrame, b : PhysicsfluidvortexFrame) -> PhysicsfluidvortexFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_frame_copy(s : PhysicsfluidvortexFrame) -> PhysicsfluidvortexFrame {
-  let result = physics_fluid_vortex_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_frame_fill(s : PhysicsfluidvortexFrame, v : Double) -> PhysicsfluidvortexFrame {
-  let result = physics_fluid_vortex_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_frame_min(s : PhysicsfluidvortexFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_fluid_vortex_table_sum(s : PhysicsfluidvortexTable) -> Double { @
 pub fn physics_fluid_vortex_table_mean(s : PhysicsfluidvortexTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_table_scale(s : PhysicsfluidvortexTable, f : Double) -> PhysicsfluidvortexTable {
-  let result = physics_fluid_vortex_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_table_add(a : PhysicsfluidvortexTable, b : PhysicsfluidvortexTable) -> PhysicsfluidvortexTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_table_copy(s : PhysicsfluidvortexTable) -> PhysicsfluidvortexTable {
-  let result = physics_fluid_vortex_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_table_fill(s : PhysicsfluidvortexTable, v : Double) -> PhysicsfluidvortexTable {
-  let result = physics_fluid_vortex_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_table_min(s : PhysicsfluidvortexTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_fluid_vortex_graphn_sum(s : PhysicsfluidvortexGraphN) -> Double {
 pub fn physics_fluid_vortex_graphn_mean(s : PhysicsfluidvortexGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_graphn_scale(s : PhysicsfluidvortexGraphN, f : Double) -> PhysicsfluidvortexGraphN {
-  let result = physics_fluid_vortex_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_graphn_add(a : PhysicsfluidvortexGraphN, b : PhysicsfluidvortexGraphN) -> PhysicsfluidvortexGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_graphn_copy(s : PhysicsfluidvortexGraphN) -> PhysicsfluidvortexGraphN {
-  let result = physics_fluid_vortex_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_graphn_fill(s : PhysicsfluidvortexGraphN, v : Double) -> PhysicsfluidvortexGraphN {
-  let result = physics_fluid_vortex_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_graphn_min(s : PhysicsfluidvortexGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_fluid_vortex_node_sum(s : PhysicsfluidvortexNode) -> Double { @_c
 pub fn physics_fluid_vortex_node_mean(s : PhysicsfluidvortexNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_node_scale(s : PhysicsfluidvortexNode, f : Double) -> PhysicsfluidvortexNode {
-  let result = physics_fluid_vortex_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_node_add(a : PhysicsfluidvortexNode, b : PhysicsfluidvortexNode) -> PhysicsfluidvortexNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_node_copy(s : PhysicsfluidvortexNode) -> PhysicsfluidvortexNode {
-  let result = physics_fluid_vortex_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_node_fill(s : PhysicsfluidvortexNode, v : Double) -> PhysicsfluidvortexNode {
-  let result = physics_fluid_vortex_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_node_min(s : PhysicsfluidvortexNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_fluid_vortex_edge_sum(s : PhysicsfluidvortexEdge) -> Double { @_c
 pub fn physics_fluid_vortex_edge_mean(s : PhysicsfluidvortexEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_edge_scale(s : PhysicsfluidvortexEdge, f : Double) -> PhysicsfluidvortexEdge {
-  let result = physics_fluid_vortex_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_edge_add(a : PhysicsfluidvortexEdge, b : PhysicsfluidvortexEdge) -> PhysicsfluidvortexEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_edge_copy(s : PhysicsfluidvortexEdge) -> PhysicsfluidvortexEdge {
-  let result = physics_fluid_vortex_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_edge_fill(s : PhysicsfluidvortexEdge, v : Double) -> PhysicsfluidvortexEdge {
-  let result = physics_fluid_vortex_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_edge_min(s : PhysicsfluidvortexEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_fluid_vortex_path_sum(s : PhysicsfluidvortexPath) -> Double { @_c
 pub fn physics_fluid_vortex_path_mean(s : PhysicsfluidvortexPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_path_scale(s : PhysicsfluidvortexPath, f : Double) -> PhysicsfluidvortexPath {
-  let result = physics_fluid_vortex_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_path_add(a : PhysicsfluidvortexPath, b : PhysicsfluidvortexPath) -> PhysicsfluidvortexPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_path_copy(s : PhysicsfluidvortexPath) -> PhysicsfluidvortexPath {
-  let result = physics_fluid_vortex_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_path_fill(s : PhysicsfluidvortexPath, v : Double) -> PhysicsfluidvortexPath {
-  let result = physics_fluid_vortex_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_path_min(s : PhysicsfluidvortexPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_fluid_vortex_cluster_sum(s : PhysicsfluidvortexCluster) -> Double
 pub fn physics_fluid_vortex_cluster_mean(s : PhysicsfluidvortexCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_cluster_scale(s : PhysicsfluidvortexCluster, f : Double) -> PhysicsfluidvortexCluster {
-  let result = physics_fluid_vortex_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_cluster_add(a : PhysicsfluidvortexCluster, b : PhysicsfluidvortexCluster) -> PhysicsfluidvortexCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_cluster_copy(s : PhysicsfluidvortexCluster) -> PhysicsfluidvortexCluster {
-  let result = physics_fluid_vortex_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_cluster_fill(s : PhysicsfluidvortexCluster, v : Double) -> PhysicsfluidvortexCluster {
-  let result = physics_fluid_vortex_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_cluster_min(s : PhysicsfluidvortexCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_fluid_vortex_model_sum(s : PhysicsfluidvortexModel) -> Double { @
 pub fn physics_fluid_vortex_model_mean(s : PhysicsfluidvortexModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_model_scale(s : PhysicsfluidvortexModel, f : Double) -> PhysicsfluidvortexModel {
-  let result = physics_fluid_vortex_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_model_add(a : PhysicsfluidvortexModel, b : PhysicsfluidvortexModel) -> PhysicsfluidvortexModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_model_copy(s : PhysicsfluidvortexModel) -> PhysicsfluidvortexModel {
-  let result = physics_fluid_vortex_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_model_fill(s : PhysicsfluidvortexModel, v : Double) -> PhysicsfluidvortexModel {
-  let result = physics_fluid_vortex_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_model_min(s : PhysicsfluidvortexModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_fluid_vortex_layer_sum(s : PhysicsfluidvortexLayer) -> Double { @
 pub fn physics_fluid_vortex_layer_mean(s : PhysicsfluidvortexLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_layer_scale(s : PhysicsfluidvortexLayer, f : Double) -> PhysicsfluidvortexLayer {
-  let result = physics_fluid_vortex_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_layer_add(a : PhysicsfluidvortexLayer, b : PhysicsfluidvortexLayer) -> PhysicsfluidvortexLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_layer_copy(s : PhysicsfluidvortexLayer) -> PhysicsfluidvortexLayer {
-  let result = physics_fluid_vortex_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_layer_fill(s : PhysicsfluidvortexLayer, v : Double) -> PhysicsfluidvortexLayer {
-  let result = physics_fluid_vortex_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_layer_min(s : PhysicsfluidvortexLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_fluid_vortex_buffer_sum(s : PhysicsfluidvortexBuffer) -> Double {
 pub fn physics_fluid_vortex_buffer_mean(s : PhysicsfluidvortexBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_buffer_scale(s : PhysicsfluidvortexBuffer, f : Double) -> PhysicsfluidvortexBuffer {
-  let result = physics_fluid_vortex_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_buffer_add(a : PhysicsfluidvortexBuffer, b : PhysicsfluidvortexBuffer) -> PhysicsfluidvortexBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_buffer_copy(s : PhysicsfluidvortexBuffer) -> PhysicsfluidvortexBuffer {
-  let result = physics_fluid_vortex_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_buffer_fill(s : PhysicsfluidvortexBuffer, v : Double) -> PhysicsfluidvortexBuffer {
-  let result = physics_fluid_vortex_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_buffer_min(s : PhysicsfluidvortexBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_fluid_vortex_cursor_sum(s : PhysicsfluidvortexCursor) -> Double {
 pub fn physics_fluid_vortex_cursor_mean(s : PhysicsfluidvortexCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_cursor_scale(s : PhysicsfluidvortexCursor, f : Double) -> PhysicsfluidvortexCursor {
-  let result = physics_fluid_vortex_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_cursor_add(a : PhysicsfluidvortexCursor, b : PhysicsfluidvortexCursor) -> PhysicsfluidvortexCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_cursor_copy(s : PhysicsfluidvortexCursor) -> PhysicsfluidvortexCursor {
-  let result = physics_fluid_vortex_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_cursor_fill(s : PhysicsfluidvortexCursor, v : Double) -> PhysicsfluidvortexCursor {
-  let result = physics_fluid_vortex_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_cursor_min(s : PhysicsfluidvortexCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_fluid_vortex_view_sum(s : PhysicsfluidvortexView) -> Double { @_c
 pub fn physics_fluid_vortex_view_mean(s : PhysicsfluidvortexView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_view_scale(s : PhysicsfluidvortexView, f : Double) -> PhysicsfluidvortexView {
-  let result = physics_fluid_vortex_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_view_add(a : PhysicsfluidvortexView, b : PhysicsfluidvortexView) -> PhysicsfluidvortexView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_view_copy(s : PhysicsfluidvortexView) -> PhysicsfluidvortexView {
-  let result = physics_fluid_vortex_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_view_fill(s : PhysicsfluidvortexView, v : Double) -> PhysicsfluidvortexView {
-  let result = physics_fluid_vortex_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_view_min(s : PhysicsfluidvortexView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_fluid_vortex_range_sum(s : PhysicsfluidvortexRange) -> Double { @
 pub fn physics_fluid_vortex_range_mean(s : PhysicsfluidvortexRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_range_scale(s : PhysicsfluidvortexRange, f : Double) -> PhysicsfluidvortexRange {
-  let result = physics_fluid_vortex_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_range_add(a : PhysicsfluidvortexRange, b : PhysicsfluidvortexRange) -> PhysicsfluidvortexRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_range_copy(s : PhysicsfluidvortexRange) -> PhysicsfluidvortexRange {
-  let result = physics_fluid_vortex_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_range_fill(s : PhysicsfluidvortexRange, v : Double) -> PhysicsfluidvortexRange {
-  let result = physics_fluid_vortex_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_range_min(s : PhysicsfluidvortexRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_fluid_vortex_slice_sum(s : PhysicsfluidvortexSlice) -> Double { @
 pub fn physics_fluid_vortex_slice_mean(s : PhysicsfluidvortexSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_slice_scale(s : PhysicsfluidvortexSlice, f : Double) -> PhysicsfluidvortexSlice {
-  let result = physics_fluid_vortex_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_slice_add(a : PhysicsfluidvortexSlice, b : PhysicsfluidvortexSlice) -> PhysicsfluidvortexSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_vortex_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_vortex_slice_copy(s : PhysicsfluidvortexSlice) -> PhysicsfluidvortexSlice {
-  let result = physics_fluid_vortex_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_slice_fill(s : PhysicsfluidvortexSlice, v : Double) -> PhysicsfluidvortexSlice {
-  let result = physics_fluid_vortex_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_vortex_slice_min(s : PhysicsfluidvortexSlice) -> Double { @_common.min(s.data) }

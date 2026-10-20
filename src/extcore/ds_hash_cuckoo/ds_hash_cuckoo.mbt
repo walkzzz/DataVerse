@@ -383,28 +383,20 @@ pub fn ds_hash_cuckoo_frame_sum(s : DshashcuckooFrame) -> Double { @_common.sum(
 pub fn ds_hash_cuckoo_frame_mean(s : DshashcuckooFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_frame_scale(s : DshashcuckooFrame, f : Double) -> DshashcuckooFrame {
-  let result = ds_hash_cuckoo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_frame_add(a : DshashcuckooFrame, b : DshashcuckooFrame) -> DshashcuckooFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_frame_copy(s : DshashcuckooFrame) -> DshashcuckooFrame {
-  let result = ds_hash_cuckoo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_frame_fill(s : DshashcuckooFrame, v : Double) -> DshashcuckooFrame {
-  let result = ds_hash_cuckoo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_frame_min(s : DshashcuckooFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_hash_cuckoo_table_sum(s : DshashcuckooTable) -> Double { @_common.sum(
 pub fn ds_hash_cuckoo_table_mean(s : DshashcuckooTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_table_scale(s : DshashcuckooTable, f : Double) -> DshashcuckooTable {
-  let result = ds_hash_cuckoo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_table_add(a : DshashcuckooTable, b : DshashcuckooTable) -> DshashcuckooTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_table_copy(s : DshashcuckooTable) -> DshashcuckooTable {
-  let result = ds_hash_cuckoo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_table_fill(s : DshashcuckooTable, v : Double) -> DshashcuckooTable {
-  let result = ds_hash_cuckoo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_table_min(s : DshashcuckooTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_hash_cuckoo_graphn_sum(s : DshashcuckooGraphN) -> Double { @_common.su
 pub fn ds_hash_cuckoo_graphn_mean(s : DshashcuckooGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_graphn_scale(s : DshashcuckooGraphN, f : Double) -> DshashcuckooGraphN {
-  let result = ds_hash_cuckoo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_graphn_add(a : DshashcuckooGraphN, b : DshashcuckooGraphN) -> DshashcuckooGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_graphn_copy(s : DshashcuckooGraphN) -> DshashcuckooGraphN {
-  let result = ds_hash_cuckoo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_graphn_fill(s : DshashcuckooGraphN, v : Double) -> DshashcuckooGraphN {
-  let result = ds_hash_cuckoo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_graphn_min(s : DshashcuckooGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_hash_cuckoo_node_sum(s : DshashcuckooNode) -> Double { @_common.sum(s.
 pub fn ds_hash_cuckoo_node_mean(s : DshashcuckooNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_node_scale(s : DshashcuckooNode, f : Double) -> DshashcuckooNode {
-  let result = ds_hash_cuckoo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_node_add(a : DshashcuckooNode, b : DshashcuckooNode) -> DshashcuckooNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_node_copy(s : DshashcuckooNode) -> DshashcuckooNode {
-  let result = ds_hash_cuckoo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_node_fill(s : DshashcuckooNode, v : Double) -> DshashcuckooNode {
-  let result = ds_hash_cuckoo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_node_min(s : DshashcuckooNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_hash_cuckoo_edge_sum(s : DshashcuckooEdge) -> Double { @_common.sum(s.
 pub fn ds_hash_cuckoo_edge_mean(s : DshashcuckooEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_edge_scale(s : DshashcuckooEdge, f : Double) -> DshashcuckooEdge {
-  let result = ds_hash_cuckoo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_edge_add(a : DshashcuckooEdge, b : DshashcuckooEdge) -> DshashcuckooEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_edge_copy(s : DshashcuckooEdge) -> DshashcuckooEdge {
-  let result = ds_hash_cuckoo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_edge_fill(s : DshashcuckooEdge, v : Double) -> DshashcuckooEdge {
-  let result = ds_hash_cuckoo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_edge_min(s : DshashcuckooEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_hash_cuckoo_path_sum(s : DshashcuckooPath) -> Double { @_common.sum(s.
 pub fn ds_hash_cuckoo_path_mean(s : DshashcuckooPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_path_scale(s : DshashcuckooPath, f : Double) -> DshashcuckooPath {
-  let result = ds_hash_cuckoo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_path_add(a : DshashcuckooPath, b : DshashcuckooPath) -> DshashcuckooPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_path_copy(s : DshashcuckooPath) -> DshashcuckooPath {
-  let result = ds_hash_cuckoo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_path_fill(s : DshashcuckooPath, v : Double) -> DshashcuckooPath {
-  let result = ds_hash_cuckoo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_path_min(s : DshashcuckooPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_hash_cuckoo_cluster_sum(s : DshashcuckooCluster) -> Double { @_common.
 pub fn ds_hash_cuckoo_cluster_mean(s : DshashcuckooCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_cluster_scale(s : DshashcuckooCluster, f : Double) -> DshashcuckooCluster {
-  let result = ds_hash_cuckoo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cluster_add(a : DshashcuckooCluster, b : DshashcuckooCluster) -> DshashcuckooCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_cluster_copy(s : DshashcuckooCluster) -> DshashcuckooCluster {
-  let result = ds_hash_cuckoo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cluster_fill(s : DshashcuckooCluster, v : Double) -> DshashcuckooCluster {
-  let result = ds_hash_cuckoo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cluster_min(s : DshashcuckooCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_hash_cuckoo_model_sum(s : DshashcuckooModel) -> Double { @_common.sum(
 pub fn ds_hash_cuckoo_model_mean(s : DshashcuckooModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_model_scale(s : DshashcuckooModel, f : Double) -> DshashcuckooModel {
-  let result = ds_hash_cuckoo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_model_add(a : DshashcuckooModel, b : DshashcuckooModel) -> DshashcuckooModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_model_copy(s : DshashcuckooModel) -> DshashcuckooModel {
-  let result = ds_hash_cuckoo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_model_fill(s : DshashcuckooModel, v : Double) -> DshashcuckooModel {
-  let result = ds_hash_cuckoo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_model_min(s : DshashcuckooModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_hash_cuckoo_layer_sum(s : DshashcuckooLayer) -> Double { @_common.sum(
 pub fn ds_hash_cuckoo_layer_mean(s : DshashcuckooLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_layer_scale(s : DshashcuckooLayer, f : Double) -> DshashcuckooLayer {
-  let result = ds_hash_cuckoo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_layer_add(a : DshashcuckooLayer, b : DshashcuckooLayer) -> DshashcuckooLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_layer_copy(s : DshashcuckooLayer) -> DshashcuckooLayer {
-  let result = ds_hash_cuckoo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_layer_fill(s : DshashcuckooLayer, v : Double) -> DshashcuckooLayer {
-  let result = ds_hash_cuckoo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_layer_min(s : DshashcuckooLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_hash_cuckoo_buffer_sum(s : DshashcuckooBuffer) -> Double { @_common.su
 pub fn ds_hash_cuckoo_buffer_mean(s : DshashcuckooBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_buffer_scale(s : DshashcuckooBuffer, f : Double) -> DshashcuckooBuffer {
-  let result = ds_hash_cuckoo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_buffer_add(a : DshashcuckooBuffer, b : DshashcuckooBuffer) -> DshashcuckooBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_buffer_copy(s : DshashcuckooBuffer) -> DshashcuckooBuffer {
-  let result = ds_hash_cuckoo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_buffer_fill(s : DshashcuckooBuffer, v : Double) -> DshashcuckooBuffer {
-  let result = ds_hash_cuckoo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_buffer_min(s : DshashcuckooBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_hash_cuckoo_cursor_sum(s : DshashcuckooCursor) -> Double { @_common.su
 pub fn ds_hash_cuckoo_cursor_mean(s : DshashcuckooCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_cursor_scale(s : DshashcuckooCursor, f : Double) -> DshashcuckooCursor {
-  let result = ds_hash_cuckoo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cursor_add(a : DshashcuckooCursor, b : DshashcuckooCursor) -> DshashcuckooCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_cursor_copy(s : DshashcuckooCursor) -> DshashcuckooCursor {
-  let result = ds_hash_cuckoo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cursor_fill(s : DshashcuckooCursor, v : Double) -> DshashcuckooCursor {
-  let result = ds_hash_cuckoo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cursor_min(s : DshashcuckooCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_hash_cuckoo_view_sum(s : DshashcuckooView) -> Double { @_common.sum(s.
 pub fn ds_hash_cuckoo_view_mean(s : DshashcuckooView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_view_scale(s : DshashcuckooView, f : Double) -> DshashcuckooView {
-  let result = ds_hash_cuckoo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_view_add(a : DshashcuckooView, b : DshashcuckooView) -> DshashcuckooView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_view_copy(s : DshashcuckooView) -> DshashcuckooView {
-  let result = ds_hash_cuckoo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_view_fill(s : DshashcuckooView, v : Double) -> DshashcuckooView {
-  let result = ds_hash_cuckoo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_view_min(s : DshashcuckooView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_hash_cuckoo_range_sum(s : DshashcuckooRange) -> Double { @_common.sum(
 pub fn ds_hash_cuckoo_range_mean(s : DshashcuckooRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_range_scale(s : DshashcuckooRange, f : Double) -> DshashcuckooRange {
-  let result = ds_hash_cuckoo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_range_add(a : DshashcuckooRange, b : DshashcuckooRange) -> DshashcuckooRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_range_copy(s : DshashcuckooRange) -> DshashcuckooRange {
-  let result = ds_hash_cuckoo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_range_fill(s : DshashcuckooRange, v : Double) -> DshashcuckooRange {
-  let result = ds_hash_cuckoo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_range_min(s : DshashcuckooRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_hash_cuckoo_slice_sum(s : DshashcuckooSlice) -> Double { @_common.sum(
 pub fn ds_hash_cuckoo_slice_mean(s : DshashcuckooSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_slice_scale(s : DshashcuckooSlice, f : Double) -> DshashcuckooSlice {
-  let result = ds_hash_cuckoo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_slice_add(a : DshashcuckooSlice, b : DshashcuckooSlice) -> DshashcuckooSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_cuckoo_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_cuckoo_slice_copy(s : DshashcuckooSlice) -> DshashcuckooSlice {
-  let result = ds_hash_cuckoo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_slice_fill(s : DshashcuckooSlice, v : Double) -> DshashcuckooSlice {
-  let result = ds_hash_cuckoo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_slice_min(s : DshashcuckooSlice) -> Double { @_common.min(s.data) }

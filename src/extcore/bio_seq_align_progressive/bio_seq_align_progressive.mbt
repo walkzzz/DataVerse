@@ -383,28 +383,20 @@ pub fn bio_seq_align_progressive_frame_sum(s : BioseqalignprogressiveFrame) -> D
 pub fn bio_seq_align_progressive_frame_mean(s : BioseqalignprogressiveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_frame_scale(s : BioseqalignprogressiveFrame, f : Double) -> BioseqalignprogressiveFrame {
-  let result = bio_seq_align_progressive_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_frame_add(a : BioseqalignprogressiveFrame, b : BioseqalignprogressiveFrame) -> BioseqalignprogressiveFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_frame_copy(s : BioseqalignprogressiveFrame) -> BioseqalignprogressiveFrame {
-  let result = bio_seq_align_progressive_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_frame_fill(s : BioseqalignprogressiveFrame, v : Double) -> BioseqalignprogressiveFrame {
-  let result = bio_seq_align_progressive_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_frame_min(s : BioseqalignprogressiveFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_seq_align_progressive_table_sum(s : BioseqalignprogressiveTable) -> D
 pub fn bio_seq_align_progressive_table_mean(s : BioseqalignprogressiveTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_table_scale(s : BioseqalignprogressiveTable, f : Double) -> BioseqalignprogressiveTable {
-  let result = bio_seq_align_progressive_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_table_add(a : BioseqalignprogressiveTable, b : BioseqalignprogressiveTable) -> BioseqalignprogressiveTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_table_copy(s : BioseqalignprogressiveTable) -> BioseqalignprogressiveTable {
-  let result = bio_seq_align_progressive_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_table_fill(s : BioseqalignprogressiveTable, v : Double) -> BioseqalignprogressiveTable {
-  let result = bio_seq_align_progressive_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_table_min(s : BioseqalignprogressiveTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_seq_align_progressive_graphn_sum(s : BioseqalignprogressiveGraphN) ->
 pub fn bio_seq_align_progressive_graphn_mean(s : BioseqalignprogressiveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_graphn_scale(s : BioseqalignprogressiveGraphN, f : Double) -> BioseqalignprogressiveGraphN {
-  let result = bio_seq_align_progressive_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_graphn_add(a : BioseqalignprogressiveGraphN, b : BioseqalignprogressiveGraphN) -> BioseqalignprogressiveGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_graphn_copy(s : BioseqalignprogressiveGraphN) -> BioseqalignprogressiveGraphN {
-  let result = bio_seq_align_progressive_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_graphn_fill(s : BioseqalignprogressiveGraphN, v : Double) -> BioseqalignprogressiveGraphN {
-  let result = bio_seq_align_progressive_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_graphn_min(s : BioseqalignprogressiveGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_seq_align_progressive_node_sum(s : BioseqalignprogressiveNode) -> Dou
 pub fn bio_seq_align_progressive_node_mean(s : BioseqalignprogressiveNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_node_scale(s : BioseqalignprogressiveNode, f : Double) -> BioseqalignprogressiveNode {
-  let result = bio_seq_align_progressive_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_node_add(a : BioseqalignprogressiveNode, b : BioseqalignprogressiveNode) -> BioseqalignprogressiveNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_node_copy(s : BioseqalignprogressiveNode) -> BioseqalignprogressiveNode {
-  let result = bio_seq_align_progressive_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_node_fill(s : BioseqalignprogressiveNode, v : Double) -> BioseqalignprogressiveNode {
-  let result = bio_seq_align_progressive_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_node_min(s : BioseqalignprogressiveNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_seq_align_progressive_edge_sum(s : BioseqalignprogressiveEdge) -> Dou
 pub fn bio_seq_align_progressive_edge_mean(s : BioseqalignprogressiveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_edge_scale(s : BioseqalignprogressiveEdge, f : Double) -> BioseqalignprogressiveEdge {
-  let result = bio_seq_align_progressive_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_edge_add(a : BioseqalignprogressiveEdge, b : BioseqalignprogressiveEdge) -> BioseqalignprogressiveEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_edge_copy(s : BioseqalignprogressiveEdge) -> BioseqalignprogressiveEdge {
-  let result = bio_seq_align_progressive_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_edge_fill(s : BioseqalignprogressiveEdge, v : Double) -> BioseqalignprogressiveEdge {
-  let result = bio_seq_align_progressive_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_edge_min(s : BioseqalignprogressiveEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_seq_align_progressive_path_sum(s : BioseqalignprogressivePath) -> Dou
 pub fn bio_seq_align_progressive_path_mean(s : BioseqalignprogressivePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_path_scale(s : BioseqalignprogressivePath, f : Double) -> BioseqalignprogressivePath {
-  let result = bio_seq_align_progressive_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_path_add(a : BioseqalignprogressivePath, b : BioseqalignprogressivePath) -> BioseqalignprogressivePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_path_copy(s : BioseqalignprogressivePath) -> BioseqalignprogressivePath {
-  let result = bio_seq_align_progressive_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_path_fill(s : BioseqalignprogressivePath, v : Double) -> BioseqalignprogressivePath {
-  let result = bio_seq_align_progressive_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_path_min(s : BioseqalignprogressivePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_seq_align_progressive_cluster_sum(s : BioseqalignprogressiveCluster) 
 pub fn bio_seq_align_progressive_cluster_mean(s : BioseqalignprogressiveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_cluster_scale(s : BioseqalignprogressiveCluster, f : Double) -> BioseqalignprogressiveCluster {
-  let result = bio_seq_align_progressive_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_cluster_add(a : BioseqalignprogressiveCluster, b : BioseqalignprogressiveCluster) -> BioseqalignprogressiveCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_cluster_copy(s : BioseqalignprogressiveCluster) -> BioseqalignprogressiveCluster {
-  let result = bio_seq_align_progressive_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_cluster_fill(s : BioseqalignprogressiveCluster, v : Double) -> BioseqalignprogressiveCluster {
-  let result = bio_seq_align_progressive_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_cluster_min(s : BioseqalignprogressiveCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_seq_align_progressive_model_sum(s : BioseqalignprogressiveModel) -> D
 pub fn bio_seq_align_progressive_model_mean(s : BioseqalignprogressiveModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_model_scale(s : BioseqalignprogressiveModel, f : Double) -> BioseqalignprogressiveModel {
-  let result = bio_seq_align_progressive_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_model_add(a : BioseqalignprogressiveModel, b : BioseqalignprogressiveModel) -> BioseqalignprogressiveModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_model_copy(s : BioseqalignprogressiveModel) -> BioseqalignprogressiveModel {
-  let result = bio_seq_align_progressive_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_model_fill(s : BioseqalignprogressiveModel, v : Double) -> BioseqalignprogressiveModel {
-  let result = bio_seq_align_progressive_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_model_min(s : BioseqalignprogressiveModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_seq_align_progressive_layer_sum(s : BioseqalignprogressiveLayer) -> D
 pub fn bio_seq_align_progressive_layer_mean(s : BioseqalignprogressiveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_layer_scale(s : BioseqalignprogressiveLayer, f : Double) -> BioseqalignprogressiveLayer {
-  let result = bio_seq_align_progressive_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_layer_add(a : BioseqalignprogressiveLayer, b : BioseqalignprogressiveLayer) -> BioseqalignprogressiveLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_layer_copy(s : BioseqalignprogressiveLayer) -> BioseqalignprogressiveLayer {
-  let result = bio_seq_align_progressive_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_layer_fill(s : BioseqalignprogressiveLayer, v : Double) -> BioseqalignprogressiveLayer {
-  let result = bio_seq_align_progressive_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_layer_min(s : BioseqalignprogressiveLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_seq_align_progressive_buffer_sum(s : BioseqalignprogressiveBuffer) ->
 pub fn bio_seq_align_progressive_buffer_mean(s : BioseqalignprogressiveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_buffer_scale(s : BioseqalignprogressiveBuffer, f : Double) -> BioseqalignprogressiveBuffer {
-  let result = bio_seq_align_progressive_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_buffer_add(a : BioseqalignprogressiveBuffer, b : BioseqalignprogressiveBuffer) -> BioseqalignprogressiveBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_buffer_copy(s : BioseqalignprogressiveBuffer) -> BioseqalignprogressiveBuffer {
-  let result = bio_seq_align_progressive_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_buffer_fill(s : BioseqalignprogressiveBuffer, v : Double) -> BioseqalignprogressiveBuffer {
-  let result = bio_seq_align_progressive_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_buffer_min(s : BioseqalignprogressiveBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_seq_align_progressive_cursor_sum(s : BioseqalignprogressiveCursor) ->
 pub fn bio_seq_align_progressive_cursor_mean(s : BioseqalignprogressiveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_cursor_scale(s : BioseqalignprogressiveCursor, f : Double) -> BioseqalignprogressiveCursor {
-  let result = bio_seq_align_progressive_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_cursor_add(a : BioseqalignprogressiveCursor, b : BioseqalignprogressiveCursor) -> BioseqalignprogressiveCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_cursor_copy(s : BioseqalignprogressiveCursor) -> BioseqalignprogressiveCursor {
-  let result = bio_seq_align_progressive_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_cursor_fill(s : BioseqalignprogressiveCursor, v : Double) -> BioseqalignprogressiveCursor {
-  let result = bio_seq_align_progressive_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_cursor_min(s : BioseqalignprogressiveCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_seq_align_progressive_view_sum(s : BioseqalignprogressiveView) -> Dou
 pub fn bio_seq_align_progressive_view_mean(s : BioseqalignprogressiveView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_view_scale(s : BioseqalignprogressiveView, f : Double) -> BioseqalignprogressiveView {
-  let result = bio_seq_align_progressive_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_view_add(a : BioseqalignprogressiveView, b : BioseqalignprogressiveView) -> BioseqalignprogressiveView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_view_copy(s : BioseqalignprogressiveView) -> BioseqalignprogressiveView {
-  let result = bio_seq_align_progressive_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_view_fill(s : BioseqalignprogressiveView, v : Double) -> BioseqalignprogressiveView {
-  let result = bio_seq_align_progressive_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_view_min(s : BioseqalignprogressiveView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_seq_align_progressive_range_sum(s : BioseqalignprogressiveRange) -> D
 pub fn bio_seq_align_progressive_range_mean(s : BioseqalignprogressiveRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_range_scale(s : BioseqalignprogressiveRange, f : Double) -> BioseqalignprogressiveRange {
-  let result = bio_seq_align_progressive_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_range_add(a : BioseqalignprogressiveRange, b : BioseqalignprogressiveRange) -> BioseqalignprogressiveRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_range_copy(s : BioseqalignprogressiveRange) -> BioseqalignprogressiveRange {
-  let result = bio_seq_align_progressive_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_range_fill(s : BioseqalignprogressiveRange, v : Double) -> BioseqalignprogressiveRange {
-  let result = bio_seq_align_progressive_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_range_min(s : BioseqalignprogressiveRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_seq_align_progressive_slice_sum(s : BioseqalignprogressiveSlice) -> D
 pub fn bio_seq_align_progressive_slice_mean(s : BioseqalignprogressiveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_progressive_slice_scale(s : BioseqalignprogressiveSlice, f : Double) -> BioseqalignprogressiveSlice {
-  let result = bio_seq_align_progressive_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_slice_add(a : BioseqalignprogressiveSlice, b : BioseqalignprogressiveSlice) -> BioseqalignprogressiveSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_align_progressive_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_align_progressive_slice_copy(s : BioseqalignprogressiveSlice) -> BioseqalignprogressiveSlice {
-  let result = bio_seq_align_progressive_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_slice_fill(s : BioseqalignprogressiveSlice, v : Double) -> BioseqalignprogressiveSlice {
-  let result = bio_seq_align_progressive_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_progressive_slice_min(s : BioseqalignprogressiveSlice) -> Double { @_common.min(s.data) }

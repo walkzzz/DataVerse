@@ -383,28 +383,20 @@ pub fn finance_pricing_finite_diff_frame_sum(s : FinancepricingfinitediffFrame) 
 pub fn finance_pricing_finite_diff_frame_mean(s : FinancepricingfinitediffFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_frame_scale(s : FinancepricingfinitediffFrame, f : Double) -> FinancepricingfinitediffFrame {
-  let result = finance_pricing_finite_diff_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_frame_add(a : FinancepricingfinitediffFrame, b : FinancepricingfinitediffFrame) -> FinancepricingfinitediffFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_frame_copy(s : FinancepricingfinitediffFrame) -> FinancepricingfinitediffFrame {
-  let result = finance_pricing_finite_diff_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_frame_fill(s : FinancepricingfinitediffFrame, v : Double) -> FinancepricingfinitediffFrame {
-  let result = finance_pricing_finite_diff_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_frame_min(s : FinancepricingfinitediffFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_pricing_finite_diff_table_sum(s : FinancepricingfinitediffTable) 
 pub fn finance_pricing_finite_diff_table_mean(s : FinancepricingfinitediffTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_table_scale(s : FinancepricingfinitediffTable, f : Double) -> FinancepricingfinitediffTable {
-  let result = finance_pricing_finite_diff_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_table_add(a : FinancepricingfinitediffTable, b : FinancepricingfinitediffTable) -> FinancepricingfinitediffTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_table_copy(s : FinancepricingfinitediffTable) -> FinancepricingfinitediffTable {
-  let result = finance_pricing_finite_diff_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_table_fill(s : FinancepricingfinitediffTable, v : Double) -> FinancepricingfinitediffTable {
-  let result = finance_pricing_finite_diff_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_table_min(s : FinancepricingfinitediffTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_pricing_finite_diff_graphn_sum(s : FinancepricingfinitediffGraphN
 pub fn finance_pricing_finite_diff_graphn_mean(s : FinancepricingfinitediffGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_graphn_scale(s : FinancepricingfinitediffGraphN, f : Double) -> FinancepricingfinitediffGraphN {
-  let result = finance_pricing_finite_diff_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_graphn_add(a : FinancepricingfinitediffGraphN, b : FinancepricingfinitediffGraphN) -> FinancepricingfinitediffGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_graphn_copy(s : FinancepricingfinitediffGraphN) -> FinancepricingfinitediffGraphN {
-  let result = finance_pricing_finite_diff_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_graphn_fill(s : FinancepricingfinitediffGraphN, v : Double) -> FinancepricingfinitediffGraphN {
-  let result = finance_pricing_finite_diff_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_graphn_min(s : FinancepricingfinitediffGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_pricing_finite_diff_node_sum(s : FinancepricingfinitediffNode) ->
 pub fn finance_pricing_finite_diff_node_mean(s : FinancepricingfinitediffNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_node_scale(s : FinancepricingfinitediffNode, f : Double) -> FinancepricingfinitediffNode {
-  let result = finance_pricing_finite_diff_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_node_add(a : FinancepricingfinitediffNode, b : FinancepricingfinitediffNode) -> FinancepricingfinitediffNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_node_copy(s : FinancepricingfinitediffNode) -> FinancepricingfinitediffNode {
-  let result = finance_pricing_finite_diff_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_node_fill(s : FinancepricingfinitediffNode, v : Double) -> FinancepricingfinitediffNode {
-  let result = finance_pricing_finite_diff_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_node_min(s : FinancepricingfinitediffNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_pricing_finite_diff_edge_sum(s : FinancepricingfinitediffEdge) ->
 pub fn finance_pricing_finite_diff_edge_mean(s : FinancepricingfinitediffEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_edge_scale(s : FinancepricingfinitediffEdge, f : Double) -> FinancepricingfinitediffEdge {
-  let result = finance_pricing_finite_diff_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_edge_add(a : FinancepricingfinitediffEdge, b : FinancepricingfinitediffEdge) -> FinancepricingfinitediffEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_edge_copy(s : FinancepricingfinitediffEdge) -> FinancepricingfinitediffEdge {
-  let result = finance_pricing_finite_diff_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_edge_fill(s : FinancepricingfinitediffEdge, v : Double) -> FinancepricingfinitediffEdge {
-  let result = finance_pricing_finite_diff_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_edge_min(s : FinancepricingfinitediffEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_pricing_finite_diff_path_sum(s : FinancepricingfinitediffPath) ->
 pub fn finance_pricing_finite_diff_path_mean(s : FinancepricingfinitediffPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_path_scale(s : FinancepricingfinitediffPath, f : Double) -> FinancepricingfinitediffPath {
-  let result = finance_pricing_finite_diff_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_path_add(a : FinancepricingfinitediffPath, b : FinancepricingfinitediffPath) -> FinancepricingfinitediffPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_path_copy(s : FinancepricingfinitediffPath) -> FinancepricingfinitediffPath {
-  let result = finance_pricing_finite_diff_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_path_fill(s : FinancepricingfinitediffPath, v : Double) -> FinancepricingfinitediffPath {
-  let result = finance_pricing_finite_diff_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_path_min(s : FinancepricingfinitediffPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_pricing_finite_diff_cluster_sum(s : FinancepricingfinitediffClust
 pub fn finance_pricing_finite_diff_cluster_mean(s : FinancepricingfinitediffCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_cluster_scale(s : FinancepricingfinitediffCluster, f : Double) -> FinancepricingfinitediffCluster {
-  let result = finance_pricing_finite_diff_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_cluster_add(a : FinancepricingfinitediffCluster, b : FinancepricingfinitediffCluster) -> FinancepricingfinitediffCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_cluster_copy(s : FinancepricingfinitediffCluster) -> FinancepricingfinitediffCluster {
-  let result = finance_pricing_finite_diff_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_cluster_fill(s : FinancepricingfinitediffCluster, v : Double) -> FinancepricingfinitediffCluster {
-  let result = finance_pricing_finite_diff_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_cluster_min(s : FinancepricingfinitediffCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_pricing_finite_diff_model_sum(s : FinancepricingfinitediffModel) 
 pub fn finance_pricing_finite_diff_model_mean(s : FinancepricingfinitediffModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_model_scale(s : FinancepricingfinitediffModel, f : Double) -> FinancepricingfinitediffModel {
-  let result = finance_pricing_finite_diff_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_model_add(a : FinancepricingfinitediffModel, b : FinancepricingfinitediffModel) -> FinancepricingfinitediffModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_model_copy(s : FinancepricingfinitediffModel) -> FinancepricingfinitediffModel {
-  let result = finance_pricing_finite_diff_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_model_fill(s : FinancepricingfinitediffModel, v : Double) -> FinancepricingfinitediffModel {
-  let result = finance_pricing_finite_diff_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_model_min(s : FinancepricingfinitediffModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_pricing_finite_diff_layer_sum(s : FinancepricingfinitediffLayer) 
 pub fn finance_pricing_finite_diff_layer_mean(s : FinancepricingfinitediffLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_layer_scale(s : FinancepricingfinitediffLayer, f : Double) -> FinancepricingfinitediffLayer {
-  let result = finance_pricing_finite_diff_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_layer_add(a : FinancepricingfinitediffLayer, b : FinancepricingfinitediffLayer) -> FinancepricingfinitediffLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_layer_copy(s : FinancepricingfinitediffLayer) -> FinancepricingfinitediffLayer {
-  let result = finance_pricing_finite_diff_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_layer_fill(s : FinancepricingfinitediffLayer, v : Double) -> FinancepricingfinitediffLayer {
-  let result = finance_pricing_finite_diff_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_layer_min(s : FinancepricingfinitediffLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_pricing_finite_diff_buffer_sum(s : FinancepricingfinitediffBuffer
 pub fn finance_pricing_finite_diff_buffer_mean(s : FinancepricingfinitediffBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_buffer_scale(s : FinancepricingfinitediffBuffer, f : Double) -> FinancepricingfinitediffBuffer {
-  let result = finance_pricing_finite_diff_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_buffer_add(a : FinancepricingfinitediffBuffer, b : FinancepricingfinitediffBuffer) -> FinancepricingfinitediffBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_buffer_copy(s : FinancepricingfinitediffBuffer) -> FinancepricingfinitediffBuffer {
-  let result = finance_pricing_finite_diff_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_buffer_fill(s : FinancepricingfinitediffBuffer, v : Double) -> FinancepricingfinitediffBuffer {
-  let result = finance_pricing_finite_diff_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_buffer_min(s : FinancepricingfinitediffBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_pricing_finite_diff_cursor_sum(s : FinancepricingfinitediffCursor
 pub fn finance_pricing_finite_diff_cursor_mean(s : FinancepricingfinitediffCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_cursor_scale(s : FinancepricingfinitediffCursor, f : Double) -> FinancepricingfinitediffCursor {
-  let result = finance_pricing_finite_diff_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_cursor_add(a : FinancepricingfinitediffCursor, b : FinancepricingfinitediffCursor) -> FinancepricingfinitediffCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_cursor_copy(s : FinancepricingfinitediffCursor) -> FinancepricingfinitediffCursor {
-  let result = finance_pricing_finite_diff_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_cursor_fill(s : FinancepricingfinitediffCursor, v : Double) -> FinancepricingfinitediffCursor {
-  let result = finance_pricing_finite_diff_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_cursor_min(s : FinancepricingfinitediffCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_pricing_finite_diff_view_sum(s : FinancepricingfinitediffView) ->
 pub fn finance_pricing_finite_diff_view_mean(s : FinancepricingfinitediffView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_view_scale(s : FinancepricingfinitediffView, f : Double) -> FinancepricingfinitediffView {
-  let result = finance_pricing_finite_diff_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_view_add(a : FinancepricingfinitediffView, b : FinancepricingfinitediffView) -> FinancepricingfinitediffView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_view_copy(s : FinancepricingfinitediffView) -> FinancepricingfinitediffView {
-  let result = finance_pricing_finite_diff_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_view_fill(s : FinancepricingfinitediffView, v : Double) -> FinancepricingfinitediffView {
-  let result = finance_pricing_finite_diff_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_view_min(s : FinancepricingfinitediffView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_pricing_finite_diff_range_sum(s : FinancepricingfinitediffRange) 
 pub fn finance_pricing_finite_diff_range_mean(s : FinancepricingfinitediffRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_range_scale(s : FinancepricingfinitediffRange, f : Double) -> FinancepricingfinitediffRange {
-  let result = finance_pricing_finite_diff_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_range_add(a : FinancepricingfinitediffRange, b : FinancepricingfinitediffRange) -> FinancepricingfinitediffRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_range_copy(s : FinancepricingfinitediffRange) -> FinancepricingfinitediffRange {
-  let result = finance_pricing_finite_diff_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_range_fill(s : FinancepricingfinitediffRange, v : Double) -> FinancepricingfinitediffRange {
-  let result = finance_pricing_finite_diff_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_range_min(s : FinancepricingfinitediffRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_pricing_finite_diff_slice_sum(s : FinancepricingfinitediffSlice) 
 pub fn finance_pricing_finite_diff_slice_mean(s : FinancepricingfinitediffSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_finite_diff_slice_scale(s : FinancepricingfinitediffSlice, f : Double) -> FinancepricingfinitediffSlice {
-  let result = finance_pricing_finite_diff_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_slice_add(a : FinancepricingfinitediffSlice, b : FinancepricingfinitediffSlice) -> FinancepricingfinitediffSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_finite_diff_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_finite_diff_slice_copy(s : FinancepricingfinitediffSlice) -> FinancepricingfinitediffSlice {
-  let result = finance_pricing_finite_diff_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_slice_fill(s : FinancepricingfinitediffSlice, v : Double) -> FinancepricingfinitediffSlice {
-  let result = finance_pricing_finite_diff_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_finite_diff_slice_min(s : FinancepricingfinitediffSlice) -> Double { @_common.min(s.data) }

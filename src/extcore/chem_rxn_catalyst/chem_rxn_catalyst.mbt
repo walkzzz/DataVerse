@@ -383,28 +383,20 @@ pub fn chem_rxn_catalyst_frame_sum(s : ChemrxncatalystFrame) -> Double { @_commo
 pub fn chem_rxn_catalyst_frame_mean(s : ChemrxncatalystFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_frame_scale(s : ChemrxncatalystFrame, f : Double) -> ChemrxncatalystFrame {
-  let result = chem_rxn_catalyst_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_frame_add(a : ChemrxncatalystFrame, b : ChemrxncatalystFrame) -> ChemrxncatalystFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_frame_copy(s : ChemrxncatalystFrame) -> ChemrxncatalystFrame {
-  let result = chem_rxn_catalyst_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_frame_fill(s : ChemrxncatalystFrame, v : Double) -> ChemrxncatalystFrame {
-  let result = chem_rxn_catalyst_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_frame_min(s : ChemrxncatalystFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_rxn_catalyst_table_sum(s : ChemrxncatalystTable) -> Double { @_commo
 pub fn chem_rxn_catalyst_table_mean(s : ChemrxncatalystTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_table_scale(s : ChemrxncatalystTable, f : Double) -> ChemrxncatalystTable {
-  let result = chem_rxn_catalyst_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_table_add(a : ChemrxncatalystTable, b : ChemrxncatalystTable) -> ChemrxncatalystTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_table_copy(s : ChemrxncatalystTable) -> ChemrxncatalystTable {
-  let result = chem_rxn_catalyst_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_table_fill(s : ChemrxncatalystTable, v : Double) -> ChemrxncatalystTable {
-  let result = chem_rxn_catalyst_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_table_min(s : ChemrxncatalystTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_rxn_catalyst_graphn_sum(s : ChemrxncatalystGraphN) -> Double { @_com
 pub fn chem_rxn_catalyst_graphn_mean(s : ChemrxncatalystGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_graphn_scale(s : ChemrxncatalystGraphN, f : Double) -> ChemrxncatalystGraphN {
-  let result = chem_rxn_catalyst_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_graphn_add(a : ChemrxncatalystGraphN, b : ChemrxncatalystGraphN) -> ChemrxncatalystGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_graphn_copy(s : ChemrxncatalystGraphN) -> ChemrxncatalystGraphN {
-  let result = chem_rxn_catalyst_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_graphn_fill(s : ChemrxncatalystGraphN, v : Double) -> ChemrxncatalystGraphN {
-  let result = chem_rxn_catalyst_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_graphn_min(s : ChemrxncatalystGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_rxn_catalyst_node_sum(s : ChemrxncatalystNode) -> Double { @_common.
 pub fn chem_rxn_catalyst_node_mean(s : ChemrxncatalystNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_node_scale(s : ChemrxncatalystNode, f : Double) -> ChemrxncatalystNode {
-  let result = chem_rxn_catalyst_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_node_add(a : ChemrxncatalystNode, b : ChemrxncatalystNode) -> ChemrxncatalystNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_node_copy(s : ChemrxncatalystNode) -> ChemrxncatalystNode {
-  let result = chem_rxn_catalyst_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_node_fill(s : ChemrxncatalystNode, v : Double) -> ChemrxncatalystNode {
-  let result = chem_rxn_catalyst_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_node_min(s : ChemrxncatalystNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_rxn_catalyst_edge_sum(s : ChemrxncatalystEdge) -> Double { @_common.
 pub fn chem_rxn_catalyst_edge_mean(s : ChemrxncatalystEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_edge_scale(s : ChemrxncatalystEdge, f : Double) -> ChemrxncatalystEdge {
-  let result = chem_rxn_catalyst_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_edge_add(a : ChemrxncatalystEdge, b : ChemrxncatalystEdge) -> ChemrxncatalystEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_edge_copy(s : ChemrxncatalystEdge) -> ChemrxncatalystEdge {
-  let result = chem_rxn_catalyst_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_edge_fill(s : ChemrxncatalystEdge, v : Double) -> ChemrxncatalystEdge {
-  let result = chem_rxn_catalyst_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_edge_min(s : ChemrxncatalystEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_rxn_catalyst_path_sum(s : ChemrxncatalystPath) -> Double { @_common.
 pub fn chem_rxn_catalyst_path_mean(s : ChemrxncatalystPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_path_scale(s : ChemrxncatalystPath, f : Double) -> ChemrxncatalystPath {
-  let result = chem_rxn_catalyst_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_path_add(a : ChemrxncatalystPath, b : ChemrxncatalystPath) -> ChemrxncatalystPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_path_copy(s : ChemrxncatalystPath) -> ChemrxncatalystPath {
-  let result = chem_rxn_catalyst_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_path_fill(s : ChemrxncatalystPath, v : Double) -> ChemrxncatalystPath {
-  let result = chem_rxn_catalyst_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_path_min(s : ChemrxncatalystPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_rxn_catalyst_cluster_sum(s : ChemrxncatalystCluster) -> Double { @_c
 pub fn chem_rxn_catalyst_cluster_mean(s : ChemrxncatalystCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_cluster_scale(s : ChemrxncatalystCluster, f : Double) -> ChemrxncatalystCluster {
-  let result = chem_rxn_catalyst_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_cluster_add(a : ChemrxncatalystCluster, b : ChemrxncatalystCluster) -> ChemrxncatalystCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_cluster_copy(s : ChemrxncatalystCluster) -> ChemrxncatalystCluster {
-  let result = chem_rxn_catalyst_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_cluster_fill(s : ChemrxncatalystCluster, v : Double) -> ChemrxncatalystCluster {
-  let result = chem_rxn_catalyst_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_cluster_min(s : ChemrxncatalystCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_rxn_catalyst_model_sum(s : ChemrxncatalystModel) -> Double { @_commo
 pub fn chem_rxn_catalyst_model_mean(s : ChemrxncatalystModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_model_scale(s : ChemrxncatalystModel, f : Double) -> ChemrxncatalystModel {
-  let result = chem_rxn_catalyst_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_model_add(a : ChemrxncatalystModel, b : ChemrxncatalystModel) -> ChemrxncatalystModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_model_copy(s : ChemrxncatalystModel) -> ChemrxncatalystModel {
-  let result = chem_rxn_catalyst_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_model_fill(s : ChemrxncatalystModel, v : Double) -> ChemrxncatalystModel {
-  let result = chem_rxn_catalyst_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_model_min(s : ChemrxncatalystModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_rxn_catalyst_layer_sum(s : ChemrxncatalystLayer) -> Double { @_commo
 pub fn chem_rxn_catalyst_layer_mean(s : ChemrxncatalystLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_layer_scale(s : ChemrxncatalystLayer, f : Double) -> ChemrxncatalystLayer {
-  let result = chem_rxn_catalyst_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_layer_add(a : ChemrxncatalystLayer, b : ChemrxncatalystLayer) -> ChemrxncatalystLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_layer_copy(s : ChemrxncatalystLayer) -> ChemrxncatalystLayer {
-  let result = chem_rxn_catalyst_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_layer_fill(s : ChemrxncatalystLayer, v : Double) -> ChemrxncatalystLayer {
-  let result = chem_rxn_catalyst_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_layer_min(s : ChemrxncatalystLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_rxn_catalyst_buffer_sum(s : ChemrxncatalystBuffer) -> Double { @_com
 pub fn chem_rxn_catalyst_buffer_mean(s : ChemrxncatalystBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_buffer_scale(s : ChemrxncatalystBuffer, f : Double) -> ChemrxncatalystBuffer {
-  let result = chem_rxn_catalyst_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_buffer_add(a : ChemrxncatalystBuffer, b : ChemrxncatalystBuffer) -> ChemrxncatalystBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_buffer_copy(s : ChemrxncatalystBuffer) -> ChemrxncatalystBuffer {
-  let result = chem_rxn_catalyst_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_buffer_fill(s : ChemrxncatalystBuffer, v : Double) -> ChemrxncatalystBuffer {
-  let result = chem_rxn_catalyst_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_buffer_min(s : ChemrxncatalystBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_rxn_catalyst_cursor_sum(s : ChemrxncatalystCursor) -> Double { @_com
 pub fn chem_rxn_catalyst_cursor_mean(s : ChemrxncatalystCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_cursor_scale(s : ChemrxncatalystCursor, f : Double) -> ChemrxncatalystCursor {
-  let result = chem_rxn_catalyst_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_cursor_add(a : ChemrxncatalystCursor, b : ChemrxncatalystCursor) -> ChemrxncatalystCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_cursor_copy(s : ChemrxncatalystCursor) -> ChemrxncatalystCursor {
-  let result = chem_rxn_catalyst_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_cursor_fill(s : ChemrxncatalystCursor, v : Double) -> ChemrxncatalystCursor {
-  let result = chem_rxn_catalyst_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_cursor_min(s : ChemrxncatalystCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_rxn_catalyst_view_sum(s : ChemrxncatalystView) -> Double { @_common.
 pub fn chem_rxn_catalyst_view_mean(s : ChemrxncatalystView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_view_scale(s : ChemrxncatalystView, f : Double) -> ChemrxncatalystView {
-  let result = chem_rxn_catalyst_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_view_add(a : ChemrxncatalystView, b : ChemrxncatalystView) -> ChemrxncatalystView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_view_copy(s : ChemrxncatalystView) -> ChemrxncatalystView {
-  let result = chem_rxn_catalyst_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_view_fill(s : ChemrxncatalystView, v : Double) -> ChemrxncatalystView {
-  let result = chem_rxn_catalyst_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_view_min(s : ChemrxncatalystView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_rxn_catalyst_range_sum(s : ChemrxncatalystRange) -> Double { @_commo
 pub fn chem_rxn_catalyst_range_mean(s : ChemrxncatalystRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_range_scale(s : ChemrxncatalystRange, f : Double) -> ChemrxncatalystRange {
-  let result = chem_rxn_catalyst_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_range_add(a : ChemrxncatalystRange, b : ChemrxncatalystRange) -> ChemrxncatalystRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_range_copy(s : ChemrxncatalystRange) -> ChemrxncatalystRange {
-  let result = chem_rxn_catalyst_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_range_fill(s : ChemrxncatalystRange, v : Double) -> ChemrxncatalystRange {
-  let result = chem_rxn_catalyst_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_range_min(s : ChemrxncatalystRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_rxn_catalyst_slice_sum(s : ChemrxncatalystSlice) -> Double { @_commo
 pub fn chem_rxn_catalyst_slice_mean(s : ChemrxncatalystSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_catalyst_slice_scale(s : ChemrxncatalystSlice, f : Double) -> ChemrxncatalystSlice {
-  let result = chem_rxn_catalyst_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_slice_add(a : ChemrxncatalystSlice, b : ChemrxncatalystSlice) -> ChemrxncatalystSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_catalyst_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_catalyst_slice_copy(s : ChemrxncatalystSlice) -> ChemrxncatalystSlice {
-  let result = chem_rxn_catalyst_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_slice_fill(s : ChemrxncatalystSlice, v : Double) -> ChemrxncatalystSlice {
-  let result = chem_rxn_catalyst_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_catalyst_slice_min(s : ChemrxncatalystSlice) -> Double { @_common.min(s.data) }

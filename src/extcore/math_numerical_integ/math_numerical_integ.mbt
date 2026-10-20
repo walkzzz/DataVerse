@@ -383,28 +383,20 @@ pub fn math_numerical_integ_frame_sum(s : MathnumericalintegFrame) -> Double { @
 pub fn math_numerical_integ_frame_mean(s : MathnumericalintegFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_frame_scale(s : MathnumericalintegFrame, f : Double) -> MathnumericalintegFrame {
-  let result = math_numerical_integ_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_frame_add(a : MathnumericalintegFrame, b : MathnumericalintegFrame) -> MathnumericalintegFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_frame_copy(s : MathnumericalintegFrame) -> MathnumericalintegFrame {
-  let result = math_numerical_integ_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_frame_fill(s : MathnumericalintegFrame, v : Double) -> MathnumericalintegFrame {
-  let result = math_numerical_integ_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_frame_min(s : MathnumericalintegFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_numerical_integ_table_sum(s : MathnumericalintegTable) -> Double { @
 pub fn math_numerical_integ_table_mean(s : MathnumericalintegTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_table_scale(s : MathnumericalintegTable, f : Double) -> MathnumericalintegTable {
-  let result = math_numerical_integ_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_table_add(a : MathnumericalintegTable, b : MathnumericalintegTable) -> MathnumericalintegTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_table_copy(s : MathnumericalintegTable) -> MathnumericalintegTable {
-  let result = math_numerical_integ_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_table_fill(s : MathnumericalintegTable, v : Double) -> MathnumericalintegTable {
-  let result = math_numerical_integ_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_table_min(s : MathnumericalintegTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_numerical_integ_graphn_sum(s : MathnumericalintegGraphN) -> Double {
 pub fn math_numerical_integ_graphn_mean(s : MathnumericalintegGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_graphn_scale(s : MathnumericalintegGraphN, f : Double) -> MathnumericalintegGraphN {
-  let result = math_numerical_integ_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_graphn_add(a : MathnumericalintegGraphN, b : MathnumericalintegGraphN) -> MathnumericalintegGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_graphn_copy(s : MathnumericalintegGraphN) -> MathnumericalintegGraphN {
-  let result = math_numerical_integ_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_graphn_fill(s : MathnumericalintegGraphN, v : Double) -> MathnumericalintegGraphN {
-  let result = math_numerical_integ_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_graphn_min(s : MathnumericalintegGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_numerical_integ_node_sum(s : MathnumericalintegNode) -> Double { @_c
 pub fn math_numerical_integ_node_mean(s : MathnumericalintegNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_node_scale(s : MathnumericalintegNode, f : Double) -> MathnumericalintegNode {
-  let result = math_numerical_integ_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_node_add(a : MathnumericalintegNode, b : MathnumericalintegNode) -> MathnumericalintegNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_node_copy(s : MathnumericalintegNode) -> MathnumericalintegNode {
-  let result = math_numerical_integ_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_node_fill(s : MathnumericalintegNode, v : Double) -> MathnumericalintegNode {
-  let result = math_numerical_integ_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_node_min(s : MathnumericalintegNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_numerical_integ_edge_sum(s : MathnumericalintegEdge) -> Double { @_c
 pub fn math_numerical_integ_edge_mean(s : MathnumericalintegEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_edge_scale(s : MathnumericalintegEdge, f : Double) -> MathnumericalintegEdge {
-  let result = math_numerical_integ_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_edge_add(a : MathnumericalintegEdge, b : MathnumericalintegEdge) -> MathnumericalintegEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_edge_copy(s : MathnumericalintegEdge) -> MathnumericalintegEdge {
-  let result = math_numerical_integ_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_edge_fill(s : MathnumericalintegEdge, v : Double) -> MathnumericalintegEdge {
-  let result = math_numerical_integ_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_edge_min(s : MathnumericalintegEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_numerical_integ_path_sum(s : MathnumericalintegPath) -> Double { @_c
 pub fn math_numerical_integ_path_mean(s : MathnumericalintegPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_path_scale(s : MathnumericalintegPath, f : Double) -> MathnumericalintegPath {
-  let result = math_numerical_integ_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_path_add(a : MathnumericalintegPath, b : MathnumericalintegPath) -> MathnumericalintegPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_path_copy(s : MathnumericalintegPath) -> MathnumericalintegPath {
-  let result = math_numerical_integ_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_path_fill(s : MathnumericalintegPath, v : Double) -> MathnumericalintegPath {
-  let result = math_numerical_integ_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_path_min(s : MathnumericalintegPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_numerical_integ_cluster_sum(s : MathnumericalintegCluster) -> Double
 pub fn math_numerical_integ_cluster_mean(s : MathnumericalintegCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_cluster_scale(s : MathnumericalintegCluster, f : Double) -> MathnumericalintegCluster {
-  let result = math_numerical_integ_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_cluster_add(a : MathnumericalintegCluster, b : MathnumericalintegCluster) -> MathnumericalintegCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_cluster_copy(s : MathnumericalintegCluster) -> MathnumericalintegCluster {
-  let result = math_numerical_integ_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_cluster_fill(s : MathnumericalintegCluster, v : Double) -> MathnumericalintegCluster {
-  let result = math_numerical_integ_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_cluster_min(s : MathnumericalintegCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_numerical_integ_model_sum(s : MathnumericalintegModel) -> Double { @
 pub fn math_numerical_integ_model_mean(s : MathnumericalintegModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_model_scale(s : MathnumericalintegModel, f : Double) -> MathnumericalintegModel {
-  let result = math_numerical_integ_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_model_add(a : MathnumericalintegModel, b : MathnumericalintegModel) -> MathnumericalintegModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_model_copy(s : MathnumericalintegModel) -> MathnumericalintegModel {
-  let result = math_numerical_integ_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_model_fill(s : MathnumericalintegModel, v : Double) -> MathnumericalintegModel {
-  let result = math_numerical_integ_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_model_min(s : MathnumericalintegModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_numerical_integ_layer_sum(s : MathnumericalintegLayer) -> Double { @
 pub fn math_numerical_integ_layer_mean(s : MathnumericalintegLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_layer_scale(s : MathnumericalintegLayer, f : Double) -> MathnumericalintegLayer {
-  let result = math_numerical_integ_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_layer_add(a : MathnumericalintegLayer, b : MathnumericalintegLayer) -> MathnumericalintegLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_layer_copy(s : MathnumericalintegLayer) -> MathnumericalintegLayer {
-  let result = math_numerical_integ_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_layer_fill(s : MathnumericalintegLayer, v : Double) -> MathnumericalintegLayer {
-  let result = math_numerical_integ_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_layer_min(s : MathnumericalintegLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_numerical_integ_buffer_sum(s : MathnumericalintegBuffer) -> Double {
 pub fn math_numerical_integ_buffer_mean(s : MathnumericalintegBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_buffer_scale(s : MathnumericalintegBuffer, f : Double) -> MathnumericalintegBuffer {
-  let result = math_numerical_integ_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_buffer_add(a : MathnumericalintegBuffer, b : MathnumericalintegBuffer) -> MathnumericalintegBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_buffer_copy(s : MathnumericalintegBuffer) -> MathnumericalintegBuffer {
-  let result = math_numerical_integ_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_buffer_fill(s : MathnumericalintegBuffer, v : Double) -> MathnumericalintegBuffer {
-  let result = math_numerical_integ_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_buffer_min(s : MathnumericalintegBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_numerical_integ_cursor_sum(s : MathnumericalintegCursor) -> Double {
 pub fn math_numerical_integ_cursor_mean(s : MathnumericalintegCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_cursor_scale(s : MathnumericalintegCursor, f : Double) -> MathnumericalintegCursor {
-  let result = math_numerical_integ_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_cursor_add(a : MathnumericalintegCursor, b : MathnumericalintegCursor) -> MathnumericalintegCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_cursor_copy(s : MathnumericalintegCursor) -> MathnumericalintegCursor {
-  let result = math_numerical_integ_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_cursor_fill(s : MathnumericalintegCursor, v : Double) -> MathnumericalintegCursor {
-  let result = math_numerical_integ_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_cursor_min(s : MathnumericalintegCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_numerical_integ_view_sum(s : MathnumericalintegView) -> Double { @_c
 pub fn math_numerical_integ_view_mean(s : MathnumericalintegView) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_view_scale(s : MathnumericalintegView, f : Double) -> MathnumericalintegView {
-  let result = math_numerical_integ_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_view_add(a : MathnumericalintegView, b : MathnumericalintegView) -> MathnumericalintegView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_view_copy(s : MathnumericalintegView) -> MathnumericalintegView {
-  let result = math_numerical_integ_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_view_fill(s : MathnumericalintegView, v : Double) -> MathnumericalintegView {
-  let result = math_numerical_integ_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_view_min(s : MathnumericalintegView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_numerical_integ_range_sum(s : MathnumericalintegRange) -> Double { @
 pub fn math_numerical_integ_range_mean(s : MathnumericalintegRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_range_scale(s : MathnumericalintegRange, f : Double) -> MathnumericalintegRange {
-  let result = math_numerical_integ_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_range_add(a : MathnumericalintegRange, b : MathnumericalintegRange) -> MathnumericalintegRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_range_copy(s : MathnumericalintegRange) -> MathnumericalintegRange {
-  let result = math_numerical_integ_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_range_fill(s : MathnumericalintegRange, v : Double) -> MathnumericalintegRange {
-  let result = math_numerical_integ_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_range_min(s : MathnumericalintegRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_numerical_integ_slice_sum(s : MathnumericalintegSlice) -> Double { @
 pub fn math_numerical_integ_slice_mean(s : MathnumericalintegSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_integ_slice_scale(s : MathnumericalintegSlice, f : Double) -> MathnumericalintegSlice {
-  let result = math_numerical_integ_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_slice_add(a : MathnumericalintegSlice, b : MathnumericalintegSlice) -> MathnumericalintegSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_numerical_integ_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_numerical_integ_slice_copy(s : MathnumericalintegSlice) -> MathnumericalintegSlice {
-  let result = math_numerical_integ_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_slice_fill(s : MathnumericalintegSlice, v : Double) -> MathnumericalintegSlice {
-  let result = math_numerical_integ_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_integ_slice_min(s : MathnumericalintegSlice) -> Double { @_common.min(s.data) }

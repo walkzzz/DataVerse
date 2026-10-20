@@ -383,28 +383,20 @@ pub fn physics_fluid_turbulence_frame_sum(s : PhysicsfluidturbulenceFrame) -> Do
 pub fn physics_fluid_turbulence_frame_mean(s : PhysicsfluidturbulenceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_frame_scale(s : PhysicsfluidturbulenceFrame, f : Double) -> PhysicsfluidturbulenceFrame {
-  let result = physics_fluid_turbulence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_frame_add(a : PhysicsfluidturbulenceFrame, b : PhysicsfluidturbulenceFrame) -> PhysicsfluidturbulenceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_frame_copy(s : PhysicsfluidturbulenceFrame) -> PhysicsfluidturbulenceFrame {
-  let result = physics_fluid_turbulence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_frame_fill(s : PhysicsfluidturbulenceFrame, v : Double) -> PhysicsfluidturbulenceFrame {
-  let result = physics_fluid_turbulence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_frame_min(s : PhysicsfluidturbulenceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_fluid_turbulence_table_sum(s : PhysicsfluidturbulenceTable) -> Do
 pub fn physics_fluid_turbulence_table_mean(s : PhysicsfluidturbulenceTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_table_scale(s : PhysicsfluidturbulenceTable, f : Double) -> PhysicsfluidturbulenceTable {
-  let result = physics_fluid_turbulence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_table_add(a : PhysicsfluidturbulenceTable, b : PhysicsfluidturbulenceTable) -> PhysicsfluidturbulenceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_table_copy(s : PhysicsfluidturbulenceTable) -> PhysicsfluidturbulenceTable {
-  let result = physics_fluid_turbulence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_table_fill(s : PhysicsfluidturbulenceTable, v : Double) -> PhysicsfluidturbulenceTable {
-  let result = physics_fluid_turbulence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_table_min(s : PhysicsfluidturbulenceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_fluid_turbulence_graphn_sum(s : PhysicsfluidturbulenceGraphN) -> 
 pub fn physics_fluid_turbulence_graphn_mean(s : PhysicsfluidturbulenceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_graphn_scale(s : PhysicsfluidturbulenceGraphN, f : Double) -> PhysicsfluidturbulenceGraphN {
-  let result = physics_fluid_turbulence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_graphn_add(a : PhysicsfluidturbulenceGraphN, b : PhysicsfluidturbulenceGraphN) -> PhysicsfluidturbulenceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_graphn_copy(s : PhysicsfluidturbulenceGraphN) -> PhysicsfluidturbulenceGraphN {
-  let result = physics_fluid_turbulence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_graphn_fill(s : PhysicsfluidturbulenceGraphN, v : Double) -> PhysicsfluidturbulenceGraphN {
-  let result = physics_fluid_turbulence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_graphn_min(s : PhysicsfluidturbulenceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_fluid_turbulence_node_sum(s : PhysicsfluidturbulenceNode) -> Doub
 pub fn physics_fluid_turbulence_node_mean(s : PhysicsfluidturbulenceNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_node_scale(s : PhysicsfluidturbulenceNode, f : Double) -> PhysicsfluidturbulenceNode {
-  let result = physics_fluid_turbulence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_node_add(a : PhysicsfluidturbulenceNode, b : PhysicsfluidturbulenceNode) -> PhysicsfluidturbulenceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_node_copy(s : PhysicsfluidturbulenceNode) -> PhysicsfluidturbulenceNode {
-  let result = physics_fluid_turbulence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_node_fill(s : PhysicsfluidturbulenceNode, v : Double) -> PhysicsfluidturbulenceNode {
-  let result = physics_fluid_turbulence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_node_min(s : PhysicsfluidturbulenceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_fluid_turbulence_edge_sum(s : PhysicsfluidturbulenceEdge) -> Doub
 pub fn physics_fluid_turbulence_edge_mean(s : PhysicsfluidturbulenceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_edge_scale(s : PhysicsfluidturbulenceEdge, f : Double) -> PhysicsfluidturbulenceEdge {
-  let result = physics_fluid_turbulence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_edge_add(a : PhysicsfluidturbulenceEdge, b : PhysicsfluidturbulenceEdge) -> PhysicsfluidturbulenceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_edge_copy(s : PhysicsfluidturbulenceEdge) -> PhysicsfluidturbulenceEdge {
-  let result = physics_fluid_turbulence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_edge_fill(s : PhysicsfluidturbulenceEdge, v : Double) -> PhysicsfluidturbulenceEdge {
-  let result = physics_fluid_turbulence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_edge_min(s : PhysicsfluidturbulenceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_fluid_turbulence_path_sum(s : PhysicsfluidturbulencePath) -> Doub
 pub fn physics_fluid_turbulence_path_mean(s : PhysicsfluidturbulencePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_path_scale(s : PhysicsfluidturbulencePath, f : Double) -> PhysicsfluidturbulencePath {
-  let result = physics_fluid_turbulence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_path_add(a : PhysicsfluidturbulencePath, b : PhysicsfluidturbulencePath) -> PhysicsfluidturbulencePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_path_copy(s : PhysicsfluidturbulencePath) -> PhysicsfluidturbulencePath {
-  let result = physics_fluid_turbulence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_path_fill(s : PhysicsfluidturbulencePath, v : Double) -> PhysicsfluidturbulencePath {
-  let result = physics_fluid_turbulence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_path_min(s : PhysicsfluidturbulencePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_fluid_turbulence_cluster_sum(s : PhysicsfluidturbulenceCluster) -
 pub fn physics_fluid_turbulence_cluster_mean(s : PhysicsfluidturbulenceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_cluster_scale(s : PhysicsfluidturbulenceCluster, f : Double) -> PhysicsfluidturbulenceCluster {
-  let result = physics_fluid_turbulence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_cluster_add(a : PhysicsfluidturbulenceCluster, b : PhysicsfluidturbulenceCluster) -> PhysicsfluidturbulenceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_cluster_copy(s : PhysicsfluidturbulenceCluster) -> PhysicsfluidturbulenceCluster {
-  let result = physics_fluid_turbulence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_cluster_fill(s : PhysicsfluidturbulenceCluster, v : Double) -> PhysicsfluidturbulenceCluster {
-  let result = physics_fluid_turbulence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_cluster_min(s : PhysicsfluidturbulenceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_fluid_turbulence_model_sum(s : PhysicsfluidturbulenceModel) -> Do
 pub fn physics_fluid_turbulence_model_mean(s : PhysicsfluidturbulenceModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_model_scale(s : PhysicsfluidturbulenceModel, f : Double) -> PhysicsfluidturbulenceModel {
-  let result = physics_fluid_turbulence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_model_add(a : PhysicsfluidturbulenceModel, b : PhysicsfluidturbulenceModel) -> PhysicsfluidturbulenceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_model_copy(s : PhysicsfluidturbulenceModel) -> PhysicsfluidturbulenceModel {
-  let result = physics_fluid_turbulence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_model_fill(s : PhysicsfluidturbulenceModel, v : Double) -> PhysicsfluidturbulenceModel {
-  let result = physics_fluid_turbulence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_model_min(s : PhysicsfluidturbulenceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_fluid_turbulence_layer_sum(s : PhysicsfluidturbulenceLayer) -> Do
 pub fn physics_fluid_turbulence_layer_mean(s : PhysicsfluidturbulenceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_layer_scale(s : PhysicsfluidturbulenceLayer, f : Double) -> PhysicsfluidturbulenceLayer {
-  let result = physics_fluid_turbulence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_layer_add(a : PhysicsfluidturbulenceLayer, b : PhysicsfluidturbulenceLayer) -> PhysicsfluidturbulenceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_layer_copy(s : PhysicsfluidturbulenceLayer) -> PhysicsfluidturbulenceLayer {
-  let result = physics_fluid_turbulence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_layer_fill(s : PhysicsfluidturbulenceLayer, v : Double) -> PhysicsfluidturbulenceLayer {
-  let result = physics_fluid_turbulence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_layer_min(s : PhysicsfluidturbulenceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_fluid_turbulence_buffer_sum(s : PhysicsfluidturbulenceBuffer) -> 
 pub fn physics_fluid_turbulence_buffer_mean(s : PhysicsfluidturbulenceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_buffer_scale(s : PhysicsfluidturbulenceBuffer, f : Double) -> PhysicsfluidturbulenceBuffer {
-  let result = physics_fluid_turbulence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_buffer_add(a : PhysicsfluidturbulenceBuffer, b : PhysicsfluidturbulenceBuffer) -> PhysicsfluidturbulenceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_buffer_copy(s : PhysicsfluidturbulenceBuffer) -> PhysicsfluidturbulenceBuffer {
-  let result = physics_fluid_turbulence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_buffer_fill(s : PhysicsfluidturbulenceBuffer, v : Double) -> PhysicsfluidturbulenceBuffer {
-  let result = physics_fluid_turbulence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_buffer_min(s : PhysicsfluidturbulenceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_fluid_turbulence_cursor_sum(s : PhysicsfluidturbulenceCursor) -> 
 pub fn physics_fluid_turbulence_cursor_mean(s : PhysicsfluidturbulenceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_cursor_scale(s : PhysicsfluidturbulenceCursor, f : Double) -> PhysicsfluidturbulenceCursor {
-  let result = physics_fluid_turbulence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_cursor_add(a : PhysicsfluidturbulenceCursor, b : PhysicsfluidturbulenceCursor) -> PhysicsfluidturbulenceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_cursor_copy(s : PhysicsfluidturbulenceCursor) -> PhysicsfluidturbulenceCursor {
-  let result = physics_fluid_turbulence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_cursor_fill(s : PhysicsfluidturbulenceCursor, v : Double) -> PhysicsfluidturbulenceCursor {
-  let result = physics_fluid_turbulence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_cursor_min(s : PhysicsfluidturbulenceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_fluid_turbulence_view_sum(s : PhysicsfluidturbulenceView) -> Doub
 pub fn physics_fluid_turbulence_view_mean(s : PhysicsfluidturbulenceView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_view_scale(s : PhysicsfluidturbulenceView, f : Double) -> PhysicsfluidturbulenceView {
-  let result = physics_fluid_turbulence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_view_add(a : PhysicsfluidturbulenceView, b : PhysicsfluidturbulenceView) -> PhysicsfluidturbulenceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_view_copy(s : PhysicsfluidturbulenceView) -> PhysicsfluidturbulenceView {
-  let result = physics_fluid_turbulence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_view_fill(s : PhysicsfluidturbulenceView, v : Double) -> PhysicsfluidturbulenceView {
-  let result = physics_fluid_turbulence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_view_min(s : PhysicsfluidturbulenceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_fluid_turbulence_range_sum(s : PhysicsfluidturbulenceRange) -> Do
 pub fn physics_fluid_turbulence_range_mean(s : PhysicsfluidturbulenceRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_range_scale(s : PhysicsfluidturbulenceRange, f : Double) -> PhysicsfluidturbulenceRange {
-  let result = physics_fluid_turbulence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_range_add(a : PhysicsfluidturbulenceRange, b : PhysicsfluidturbulenceRange) -> PhysicsfluidturbulenceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_range_copy(s : PhysicsfluidturbulenceRange) -> PhysicsfluidturbulenceRange {
-  let result = physics_fluid_turbulence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_range_fill(s : PhysicsfluidturbulenceRange, v : Double) -> PhysicsfluidturbulenceRange {
-  let result = physics_fluid_turbulence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_range_min(s : PhysicsfluidturbulenceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_fluid_turbulence_slice_sum(s : PhysicsfluidturbulenceSlice) -> Do
 pub fn physics_fluid_turbulence_slice_mean(s : PhysicsfluidturbulenceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_slice_scale(s : PhysicsfluidturbulenceSlice, f : Double) -> PhysicsfluidturbulenceSlice {
-  let result = physics_fluid_turbulence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_slice_add(a : PhysicsfluidturbulenceSlice, b : PhysicsfluidturbulenceSlice) -> PhysicsfluidturbulenceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_turbulence_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_turbulence_slice_copy(s : PhysicsfluidturbulenceSlice) -> PhysicsfluidturbulenceSlice {
-  let result = physics_fluid_turbulence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_slice_fill(s : PhysicsfluidturbulenceSlice, v : Double) -> PhysicsfluidturbulenceSlice {
-  let result = physics_fluid_turbulence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_turbulence_slice_min(s : PhysicsfluidturbulenceSlice) -> Double { @_common.min(s.data) }

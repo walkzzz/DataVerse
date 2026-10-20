@@ -383,28 +383,20 @@ pub fn sort_hybrid_grailsort_frame_sum(s : SorthybridgrailsortFrame) -> Double {
 pub fn sort_hybrid_grailsort_frame_mean(s : SorthybridgrailsortFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_frame_scale(s : SorthybridgrailsortFrame, f : Double) -> SorthybridgrailsortFrame {
-  let result = sort_hybrid_grailsort_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_frame_add(a : SorthybridgrailsortFrame, b : SorthybridgrailsortFrame) -> SorthybridgrailsortFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_frame_copy(s : SorthybridgrailsortFrame) -> SorthybridgrailsortFrame {
-  let result = sort_hybrid_grailsort_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_frame_fill(s : SorthybridgrailsortFrame, v : Double) -> SorthybridgrailsortFrame {
-  let result = sort_hybrid_grailsort_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_frame_min(s : SorthybridgrailsortFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_hybrid_grailsort_table_sum(s : SorthybridgrailsortTable) -> Double {
 pub fn sort_hybrid_grailsort_table_mean(s : SorthybridgrailsortTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_table_scale(s : SorthybridgrailsortTable, f : Double) -> SorthybridgrailsortTable {
-  let result = sort_hybrid_grailsort_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_table_add(a : SorthybridgrailsortTable, b : SorthybridgrailsortTable) -> SorthybridgrailsortTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_table_copy(s : SorthybridgrailsortTable) -> SorthybridgrailsortTable {
-  let result = sort_hybrid_grailsort_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_table_fill(s : SorthybridgrailsortTable, v : Double) -> SorthybridgrailsortTable {
-  let result = sort_hybrid_grailsort_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_table_min(s : SorthybridgrailsortTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_hybrid_grailsort_graphn_sum(s : SorthybridgrailsortGraphN) -> Double
 pub fn sort_hybrid_grailsort_graphn_mean(s : SorthybridgrailsortGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_graphn_scale(s : SorthybridgrailsortGraphN, f : Double) -> SorthybridgrailsortGraphN {
-  let result = sort_hybrid_grailsort_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_graphn_add(a : SorthybridgrailsortGraphN, b : SorthybridgrailsortGraphN) -> SorthybridgrailsortGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_graphn_copy(s : SorthybridgrailsortGraphN) -> SorthybridgrailsortGraphN {
-  let result = sort_hybrid_grailsort_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_graphn_fill(s : SorthybridgrailsortGraphN, v : Double) -> SorthybridgrailsortGraphN {
-  let result = sort_hybrid_grailsort_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_graphn_min(s : SorthybridgrailsortGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_hybrid_grailsort_node_sum(s : SorthybridgrailsortNode) -> Double { @
 pub fn sort_hybrid_grailsort_node_mean(s : SorthybridgrailsortNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_node_scale(s : SorthybridgrailsortNode, f : Double) -> SorthybridgrailsortNode {
-  let result = sort_hybrid_grailsort_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_node_add(a : SorthybridgrailsortNode, b : SorthybridgrailsortNode) -> SorthybridgrailsortNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_node_copy(s : SorthybridgrailsortNode) -> SorthybridgrailsortNode {
-  let result = sort_hybrid_grailsort_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_node_fill(s : SorthybridgrailsortNode, v : Double) -> SorthybridgrailsortNode {
-  let result = sort_hybrid_grailsort_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_node_min(s : SorthybridgrailsortNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_hybrid_grailsort_edge_sum(s : SorthybridgrailsortEdge) -> Double { @
 pub fn sort_hybrid_grailsort_edge_mean(s : SorthybridgrailsortEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_edge_scale(s : SorthybridgrailsortEdge, f : Double) -> SorthybridgrailsortEdge {
-  let result = sort_hybrid_grailsort_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_edge_add(a : SorthybridgrailsortEdge, b : SorthybridgrailsortEdge) -> SorthybridgrailsortEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_edge_copy(s : SorthybridgrailsortEdge) -> SorthybridgrailsortEdge {
-  let result = sort_hybrid_grailsort_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_edge_fill(s : SorthybridgrailsortEdge, v : Double) -> SorthybridgrailsortEdge {
-  let result = sort_hybrid_grailsort_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_edge_min(s : SorthybridgrailsortEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_hybrid_grailsort_path_sum(s : SorthybridgrailsortPath) -> Double { @
 pub fn sort_hybrid_grailsort_path_mean(s : SorthybridgrailsortPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_path_scale(s : SorthybridgrailsortPath, f : Double) -> SorthybridgrailsortPath {
-  let result = sort_hybrid_grailsort_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_path_add(a : SorthybridgrailsortPath, b : SorthybridgrailsortPath) -> SorthybridgrailsortPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_path_copy(s : SorthybridgrailsortPath) -> SorthybridgrailsortPath {
-  let result = sort_hybrid_grailsort_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_path_fill(s : SorthybridgrailsortPath, v : Double) -> SorthybridgrailsortPath {
-  let result = sort_hybrid_grailsort_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_path_min(s : SorthybridgrailsortPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_hybrid_grailsort_cluster_sum(s : SorthybridgrailsortCluster) -> Doub
 pub fn sort_hybrid_grailsort_cluster_mean(s : SorthybridgrailsortCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_cluster_scale(s : SorthybridgrailsortCluster, f : Double) -> SorthybridgrailsortCluster {
-  let result = sort_hybrid_grailsort_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_cluster_add(a : SorthybridgrailsortCluster, b : SorthybridgrailsortCluster) -> SorthybridgrailsortCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_cluster_copy(s : SorthybridgrailsortCluster) -> SorthybridgrailsortCluster {
-  let result = sort_hybrid_grailsort_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_cluster_fill(s : SorthybridgrailsortCluster, v : Double) -> SorthybridgrailsortCluster {
-  let result = sort_hybrid_grailsort_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_cluster_min(s : SorthybridgrailsortCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_hybrid_grailsort_model_sum(s : SorthybridgrailsortModel) -> Double {
 pub fn sort_hybrid_grailsort_model_mean(s : SorthybridgrailsortModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_model_scale(s : SorthybridgrailsortModel, f : Double) -> SorthybridgrailsortModel {
-  let result = sort_hybrid_grailsort_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_model_add(a : SorthybridgrailsortModel, b : SorthybridgrailsortModel) -> SorthybridgrailsortModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_model_copy(s : SorthybridgrailsortModel) -> SorthybridgrailsortModel {
-  let result = sort_hybrid_grailsort_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_model_fill(s : SorthybridgrailsortModel, v : Double) -> SorthybridgrailsortModel {
-  let result = sort_hybrid_grailsort_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_model_min(s : SorthybridgrailsortModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_hybrid_grailsort_layer_sum(s : SorthybridgrailsortLayer) -> Double {
 pub fn sort_hybrid_grailsort_layer_mean(s : SorthybridgrailsortLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_layer_scale(s : SorthybridgrailsortLayer, f : Double) -> SorthybridgrailsortLayer {
-  let result = sort_hybrid_grailsort_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_layer_add(a : SorthybridgrailsortLayer, b : SorthybridgrailsortLayer) -> SorthybridgrailsortLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_layer_copy(s : SorthybridgrailsortLayer) -> SorthybridgrailsortLayer {
-  let result = sort_hybrid_grailsort_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_layer_fill(s : SorthybridgrailsortLayer, v : Double) -> SorthybridgrailsortLayer {
-  let result = sort_hybrid_grailsort_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_layer_min(s : SorthybridgrailsortLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_hybrid_grailsort_buffer_sum(s : SorthybridgrailsortBuffer) -> Double
 pub fn sort_hybrid_grailsort_buffer_mean(s : SorthybridgrailsortBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_buffer_scale(s : SorthybridgrailsortBuffer, f : Double) -> SorthybridgrailsortBuffer {
-  let result = sort_hybrid_grailsort_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_buffer_add(a : SorthybridgrailsortBuffer, b : SorthybridgrailsortBuffer) -> SorthybridgrailsortBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_buffer_copy(s : SorthybridgrailsortBuffer) -> SorthybridgrailsortBuffer {
-  let result = sort_hybrid_grailsort_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_buffer_fill(s : SorthybridgrailsortBuffer, v : Double) -> SorthybridgrailsortBuffer {
-  let result = sort_hybrid_grailsort_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_buffer_min(s : SorthybridgrailsortBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_hybrid_grailsort_cursor_sum(s : SorthybridgrailsortCursor) -> Double
 pub fn sort_hybrid_grailsort_cursor_mean(s : SorthybridgrailsortCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_cursor_scale(s : SorthybridgrailsortCursor, f : Double) -> SorthybridgrailsortCursor {
-  let result = sort_hybrid_grailsort_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_cursor_add(a : SorthybridgrailsortCursor, b : SorthybridgrailsortCursor) -> SorthybridgrailsortCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_cursor_copy(s : SorthybridgrailsortCursor) -> SorthybridgrailsortCursor {
-  let result = sort_hybrid_grailsort_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_cursor_fill(s : SorthybridgrailsortCursor, v : Double) -> SorthybridgrailsortCursor {
-  let result = sort_hybrid_grailsort_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_cursor_min(s : SorthybridgrailsortCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_hybrid_grailsort_view_sum(s : SorthybridgrailsortView) -> Double { @
 pub fn sort_hybrid_grailsort_view_mean(s : SorthybridgrailsortView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_view_scale(s : SorthybridgrailsortView, f : Double) -> SorthybridgrailsortView {
-  let result = sort_hybrid_grailsort_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_view_add(a : SorthybridgrailsortView, b : SorthybridgrailsortView) -> SorthybridgrailsortView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_view_copy(s : SorthybridgrailsortView) -> SorthybridgrailsortView {
-  let result = sort_hybrid_grailsort_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_view_fill(s : SorthybridgrailsortView, v : Double) -> SorthybridgrailsortView {
-  let result = sort_hybrid_grailsort_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_view_min(s : SorthybridgrailsortView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_hybrid_grailsort_range_sum(s : SorthybridgrailsortRange) -> Double {
 pub fn sort_hybrid_grailsort_range_mean(s : SorthybridgrailsortRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_range_scale(s : SorthybridgrailsortRange, f : Double) -> SorthybridgrailsortRange {
-  let result = sort_hybrid_grailsort_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_range_add(a : SorthybridgrailsortRange, b : SorthybridgrailsortRange) -> SorthybridgrailsortRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_range_copy(s : SorthybridgrailsortRange) -> SorthybridgrailsortRange {
-  let result = sort_hybrid_grailsort_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_range_fill(s : SorthybridgrailsortRange, v : Double) -> SorthybridgrailsortRange {
-  let result = sort_hybrid_grailsort_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_range_min(s : SorthybridgrailsortRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_hybrid_grailsort_slice_sum(s : SorthybridgrailsortSlice) -> Double {
 pub fn sort_hybrid_grailsort_slice_mean(s : SorthybridgrailsortSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_grailsort_slice_scale(s : SorthybridgrailsortSlice, f : Double) -> SorthybridgrailsortSlice {
-  let result = sort_hybrid_grailsort_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_slice_add(a : SorthybridgrailsortSlice, b : SorthybridgrailsortSlice) -> SorthybridgrailsortSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_hybrid_grailsort_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_hybrid_grailsort_slice_copy(s : SorthybridgrailsortSlice) -> SorthybridgrailsortSlice {
-  let result = sort_hybrid_grailsort_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_slice_fill(s : SorthybridgrailsortSlice, v : Double) -> SorthybridgrailsortSlice {
-  let result = sort_hybrid_grailsort_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_grailsort_slice_min(s : SorthybridgrailsortSlice) -> Double { @_common.min(s.data) }

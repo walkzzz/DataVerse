@@ -383,28 +383,20 @@ pub fn ml_metric_pr_frame_sum(s : MlmetricprFrame) -> Double { @_common.sum(s.da
 pub fn ml_metric_pr_frame_mean(s : MlmetricprFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_frame_scale(s : MlmetricprFrame, f : Double) -> MlmetricprFrame {
-  let result = ml_metric_pr_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_frame_add(a : MlmetricprFrame, b : MlmetricprFrame) -> MlmetricprFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_frame_copy(s : MlmetricprFrame) -> MlmetricprFrame {
-  let result = ml_metric_pr_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_frame_fill(s : MlmetricprFrame, v : Double) -> MlmetricprFrame {
-  let result = ml_metric_pr_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_frame_min(s : MlmetricprFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_metric_pr_table_sum(s : MlmetricprTable) -> Double { @_common.sum(s.da
 pub fn ml_metric_pr_table_mean(s : MlmetricprTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_table_scale(s : MlmetricprTable, f : Double) -> MlmetricprTable {
-  let result = ml_metric_pr_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_table_add(a : MlmetricprTable, b : MlmetricprTable) -> MlmetricprTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_table_copy(s : MlmetricprTable) -> MlmetricprTable {
-  let result = ml_metric_pr_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_table_fill(s : MlmetricprTable, v : Double) -> MlmetricprTable {
-  let result = ml_metric_pr_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_table_min(s : MlmetricprTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_metric_pr_graphn_sum(s : MlmetricprGraphN) -> Double { @_common.sum(s.
 pub fn ml_metric_pr_graphn_mean(s : MlmetricprGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_graphn_scale(s : MlmetricprGraphN, f : Double) -> MlmetricprGraphN {
-  let result = ml_metric_pr_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_graphn_add(a : MlmetricprGraphN, b : MlmetricprGraphN) -> MlmetricprGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_graphn_copy(s : MlmetricprGraphN) -> MlmetricprGraphN {
-  let result = ml_metric_pr_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_graphn_fill(s : MlmetricprGraphN, v : Double) -> MlmetricprGraphN {
-  let result = ml_metric_pr_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_graphn_min(s : MlmetricprGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_metric_pr_node_sum(s : MlmetricprNode) -> Double { @_common.sum(s.data
 pub fn ml_metric_pr_node_mean(s : MlmetricprNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_node_scale(s : MlmetricprNode, f : Double) -> MlmetricprNode {
-  let result = ml_metric_pr_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_node_add(a : MlmetricprNode, b : MlmetricprNode) -> MlmetricprNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_node_copy(s : MlmetricprNode) -> MlmetricprNode {
-  let result = ml_metric_pr_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_node_fill(s : MlmetricprNode, v : Double) -> MlmetricprNode {
-  let result = ml_metric_pr_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_node_min(s : MlmetricprNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_metric_pr_edge_sum(s : MlmetricprEdge) -> Double { @_common.sum(s.data
 pub fn ml_metric_pr_edge_mean(s : MlmetricprEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_edge_scale(s : MlmetricprEdge, f : Double) -> MlmetricprEdge {
-  let result = ml_metric_pr_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_edge_add(a : MlmetricprEdge, b : MlmetricprEdge) -> MlmetricprEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_edge_copy(s : MlmetricprEdge) -> MlmetricprEdge {
-  let result = ml_metric_pr_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_edge_fill(s : MlmetricprEdge, v : Double) -> MlmetricprEdge {
-  let result = ml_metric_pr_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_edge_min(s : MlmetricprEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_metric_pr_path_sum(s : MlmetricprPath) -> Double { @_common.sum(s.data
 pub fn ml_metric_pr_path_mean(s : MlmetricprPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_path_scale(s : MlmetricprPath, f : Double) -> MlmetricprPath {
-  let result = ml_metric_pr_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_path_add(a : MlmetricprPath, b : MlmetricprPath) -> MlmetricprPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_path_copy(s : MlmetricprPath) -> MlmetricprPath {
-  let result = ml_metric_pr_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_path_fill(s : MlmetricprPath, v : Double) -> MlmetricprPath {
-  let result = ml_metric_pr_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_path_min(s : MlmetricprPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_metric_pr_cluster_sum(s : MlmetricprCluster) -> Double { @_common.sum(
 pub fn ml_metric_pr_cluster_mean(s : MlmetricprCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_cluster_scale(s : MlmetricprCluster, f : Double) -> MlmetricprCluster {
-  let result = ml_metric_pr_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cluster_add(a : MlmetricprCluster, b : MlmetricprCluster) -> MlmetricprCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_cluster_copy(s : MlmetricprCluster) -> MlmetricprCluster {
-  let result = ml_metric_pr_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cluster_fill(s : MlmetricprCluster, v : Double) -> MlmetricprCluster {
-  let result = ml_metric_pr_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cluster_min(s : MlmetricprCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_metric_pr_model_sum(s : MlmetricprModel) -> Double { @_common.sum(s.da
 pub fn ml_metric_pr_model_mean(s : MlmetricprModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_model_scale(s : MlmetricprModel, f : Double) -> MlmetricprModel {
-  let result = ml_metric_pr_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_model_add(a : MlmetricprModel, b : MlmetricprModel) -> MlmetricprModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_model_copy(s : MlmetricprModel) -> MlmetricprModel {
-  let result = ml_metric_pr_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_model_fill(s : MlmetricprModel, v : Double) -> MlmetricprModel {
-  let result = ml_metric_pr_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_model_min(s : MlmetricprModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_metric_pr_layer_sum(s : MlmetricprLayer) -> Double { @_common.sum(s.da
 pub fn ml_metric_pr_layer_mean(s : MlmetricprLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_layer_scale(s : MlmetricprLayer, f : Double) -> MlmetricprLayer {
-  let result = ml_metric_pr_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_layer_add(a : MlmetricprLayer, b : MlmetricprLayer) -> MlmetricprLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_layer_copy(s : MlmetricprLayer) -> MlmetricprLayer {
-  let result = ml_metric_pr_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_layer_fill(s : MlmetricprLayer, v : Double) -> MlmetricprLayer {
-  let result = ml_metric_pr_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_layer_min(s : MlmetricprLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_metric_pr_buffer_sum(s : MlmetricprBuffer) -> Double { @_common.sum(s.
 pub fn ml_metric_pr_buffer_mean(s : MlmetricprBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_buffer_scale(s : MlmetricprBuffer, f : Double) -> MlmetricprBuffer {
-  let result = ml_metric_pr_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_buffer_add(a : MlmetricprBuffer, b : MlmetricprBuffer) -> MlmetricprBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_buffer_copy(s : MlmetricprBuffer) -> MlmetricprBuffer {
-  let result = ml_metric_pr_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_buffer_fill(s : MlmetricprBuffer, v : Double) -> MlmetricprBuffer {
-  let result = ml_metric_pr_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_buffer_min(s : MlmetricprBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_metric_pr_cursor_sum(s : MlmetricprCursor) -> Double { @_common.sum(s.
 pub fn ml_metric_pr_cursor_mean(s : MlmetricprCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_cursor_scale(s : MlmetricprCursor, f : Double) -> MlmetricprCursor {
-  let result = ml_metric_pr_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cursor_add(a : MlmetricprCursor, b : MlmetricprCursor) -> MlmetricprCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_cursor_copy(s : MlmetricprCursor) -> MlmetricprCursor {
-  let result = ml_metric_pr_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cursor_fill(s : MlmetricprCursor, v : Double) -> MlmetricprCursor {
-  let result = ml_metric_pr_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cursor_min(s : MlmetricprCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_metric_pr_view_sum(s : MlmetricprView) -> Double { @_common.sum(s.data
 pub fn ml_metric_pr_view_mean(s : MlmetricprView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_view_scale(s : MlmetricprView, f : Double) -> MlmetricprView {
-  let result = ml_metric_pr_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_view_add(a : MlmetricprView, b : MlmetricprView) -> MlmetricprView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_view_copy(s : MlmetricprView) -> MlmetricprView {
-  let result = ml_metric_pr_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_view_fill(s : MlmetricprView, v : Double) -> MlmetricprView {
-  let result = ml_metric_pr_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_view_min(s : MlmetricprView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_metric_pr_range_sum(s : MlmetricprRange) -> Double { @_common.sum(s.da
 pub fn ml_metric_pr_range_mean(s : MlmetricprRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_range_scale(s : MlmetricprRange, f : Double) -> MlmetricprRange {
-  let result = ml_metric_pr_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_range_add(a : MlmetricprRange, b : MlmetricprRange) -> MlmetricprRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_range_copy(s : MlmetricprRange) -> MlmetricprRange {
-  let result = ml_metric_pr_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_range_fill(s : MlmetricprRange, v : Double) -> MlmetricprRange {
-  let result = ml_metric_pr_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_range_min(s : MlmetricprRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_metric_pr_slice_sum(s : MlmetricprSlice) -> Double { @_common.sum(s.da
 pub fn ml_metric_pr_slice_mean(s : MlmetricprSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_slice_scale(s : MlmetricprSlice, f : Double) -> MlmetricprSlice {
-  let result = ml_metric_pr_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_slice_add(a : MlmetricprSlice, b : MlmetricprSlice) -> MlmetricprSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_pr_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_pr_slice_copy(s : MlmetricprSlice) -> MlmetricprSlice {
-  let result = ml_metric_pr_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_slice_fill(s : MlmetricprSlice, v : Double) -> MlmetricprSlice {
-  let result = ml_metric_pr_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_slice_min(s : MlmetricprSlice) -> Double { @_common.min(s.data) }

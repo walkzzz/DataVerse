@@ -383,28 +383,20 @@ pub fn finance_pricing_lookback_frame_sum(s : FinancepricinglookbackFrame) -> Do
 pub fn finance_pricing_lookback_frame_mean(s : FinancepricinglookbackFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_frame_scale(s : FinancepricinglookbackFrame, f : Double) -> FinancepricinglookbackFrame {
-  let result = finance_pricing_lookback_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_frame_add(a : FinancepricinglookbackFrame, b : FinancepricinglookbackFrame) -> FinancepricinglookbackFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_frame_copy(s : FinancepricinglookbackFrame) -> FinancepricinglookbackFrame {
-  let result = finance_pricing_lookback_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_frame_fill(s : FinancepricinglookbackFrame, v : Double) -> FinancepricinglookbackFrame {
-  let result = finance_pricing_lookback_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_frame_min(s : FinancepricinglookbackFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_pricing_lookback_table_sum(s : FinancepricinglookbackTable) -> Do
 pub fn finance_pricing_lookback_table_mean(s : FinancepricinglookbackTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_table_scale(s : FinancepricinglookbackTable, f : Double) -> FinancepricinglookbackTable {
-  let result = finance_pricing_lookback_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_table_add(a : FinancepricinglookbackTable, b : FinancepricinglookbackTable) -> FinancepricinglookbackTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_table_copy(s : FinancepricinglookbackTable) -> FinancepricinglookbackTable {
-  let result = finance_pricing_lookback_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_table_fill(s : FinancepricinglookbackTable, v : Double) -> FinancepricinglookbackTable {
-  let result = finance_pricing_lookback_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_table_min(s : FinancepricinglookbackTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_pricing_lookback_graphn_sum(s : FinancepricinglookbackGraphN) -> 
 pub fn finance_pricing_lookback_graphn_mean(s : FinancepricinglookbackGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_graphn_scale(s : FinancepricinglookbackGraphN, f : Double) -> FinancepricinglookbackGraphN {
-  let result = finance_pricing_lookback_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_graphn_add(a : FinancepricinglookbackGraphN, b : FinancepricinglookbackGraphN) -> FinancepricinglookbackGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_graphn_copy(s : FinancepricinglookbackGraphN) -> FinancepricinglookbackGraphN {
-  let result = finance_pricing_lookback_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_graphn_fill(s : FinancepricinglookbackGraphN, v : Double) -> FinancepricinglookbackGraphN {
-  let result = finance_pricing_lookback_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_graphn_min(s : FinancepricinglookbackGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_pricing_lookback_node_sum(s : FinancepricinglookbackNode) -> Doub
 pub fn finance_pricing_lookback_node_mean(s : FinancepricinglookbackNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_node_scale(s : FinancepricinglookbackNode, f : Double) -> FinancepricinglookbackNode {
-  let result = finance_pricing_lookback_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_node_add(a : FinancepricinglookbackNode, b : FinancepricinglookbackNode) -> FinancepricinglookbackNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_node_copy(s : FinancepricinglookbackNode) -> FinancepricinglookbackNode {
-  let result = finance_pricing_lookback_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_node_fill(s : FinancepricinglookbackNode, v : Double) -> FinancepricinglookbackNode {
-  let result = finance_pricing_lookback_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_node_min(s : FinancepricinglookbackNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_pricing_lookback_edge_sum(s : FinancepricinglookbackEdge) -> Doub
 pub fn finance_pricing_lookback_edge_mean(s : FinancepricinglookbackEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_edge_scale(s : FinancepricinglookbackEdge, f : Double) -> FinancepricinglookbackEdge {
-  let result = finance_pricing_lookback_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_edge_add(a : FinancepricinglookbackEdge, b : FinancepricinglookbackEdge) -> FinancepricinglookbackEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_edge_copy(s : FinancepricinglookbackEdge) -> FinancepricinglookbackEdge {
-  let result = finance_pricing_lookback_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_edge_fill(s : FinancepricinglookbackEdge, v : Double) -> FinancepricinglookbackEdge {
-  let result = finance_pricing_lookback_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_edge_min(s : FinancepricinglookbackEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_pricing_lookback_path_sum(s : FinancepricinglookbackPath) -> Doub
 pub fn finance_pricing_lookback_path_mean(s : FinancepricinglookbackPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_path_scale(s : FinancepricinglookbackPath, f : Double) -> FinancepricinglookbackPath {
-  let result = finance_pricing_lookback_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_path_add(a : FinancepricinglookbackPath, b : FinancepricinglookbackPath) -> FinancepricinglookbackPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_path_copy(s : FinancepricinglookbackPath) -> FinancepricinglookbackPath {
-  let result = finance_pricing_lookback_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_path_fill(s : FinancepricinglookbackPath, v : Double) -> FinancepricinglookbackPath {
-  let result = finance_pricing_lookback_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_path_min(s : FinancepricinglookbackPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_pricing_lookback_cluster_sum(s : FinancepricinglookbackCluster) -
 pub fn finance_pricing_lookback_cluster_mean(s : FinancepricinglookbackCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_cluster_scale(s : FinancepricinglookbackCluster, f : Double) -> FinancepricinglookbackCluster {
-  let result = finance_pricing_lookback_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_cluster_add(a : FinancepricinglookbackCluster, b : FinancepricinglookbackCluster) -> FinancepricinglookbackCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_cluster_copy(s : FinancepricinglookbackCluster) -> FinancepricinglookbackCluster {
-  let result = finance_pricing_lookback_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_cluster_fill(s : FinancepricinglookbackCluster, v : Double) -> FinancepricinglookbackCluster {
-  let result = finance_pricing_lookback_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_cluster_min(s : FinancepricinglookbackCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_pricing_lookback_model_sum(s : FinancepricinglookbackModel) -> Do
 pub fn finance_pricing_lookback_model_mean(s : FinancepricinglookbackModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_model_scale(s : FinancepricinglookbackModel, f : Double) -> FinancepricinglookbackModel {
-  let result = finance_pricing_lookback_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_model_add(a : FinancepricinglookbackModel, b : FinancepricinglookbackModel) -> FinancepricinglookbackModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_model_copy(s : FinancepricinglookbackModel) -> FinancepricinglookbackModel {
-  let result = finance_pricing_lookback_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_model_fill(s : FinancepricinglookbackModel, v : Double) -> FinancepricinglookbackModel {
-  let result = finance_pricing_lookback_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_model_min(s : FinancepricinglookbackModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_pricing_lookback_layer_sum(s : FinancepricinglookbackLayer) -> Do
 pub fn finance_pricing_lookback_layer_mean(s : FinancepricinglookbackLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_layer_scale(s : FinancepricinglookbackLayer, f : Double) -> FinancepricinglookbackLayer {
-  let result = finance_pricing_lookback_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_layer_add(a : FinancepricinglookbackLayer, b : FinancepricinglookbackLayer) -> FinancepricinglookbackLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_layer_copy(s : FinancepricinglookbackLayer) -> FinancepricinglookbackLayer {
-  let result = finance_pricing_lookback_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_layer_fill(s : FinancepricinglookbackLayer, v : Double) -> FinancepricinglookbackLayer {
-  let result = finance_pricing_lookback_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_layer_min(s : FinancepricinglookbackLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_pricing_lookback_buffer_sum(s : FinancepricinglookbackBuffer) -> 
 pub fn finance_pricing_lookback_buffer_mean(s : FinancepricinglookbackBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_buffer_scale(s : FinancepricinglookbackBuffer, f : Double) -> FinancepricinglookbackBuffer {
-  let result = finance_pricing_lookback_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_buffer_add(a : FinancepricinglookbackBuffer, b : FinancepricinglookbackBuffer) -> FinancepricinglookbackBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_buffer_copy(s : FinancepricinglookbackBuffer) -> FinancepricinglookbackBuffer {
-  let result = finance_pricing_lookback_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_buffer_fill(s : FinancepricinglookbackBuffer, v : Double) -> FinancepricinglookbackBuffer {
-  let result = finance_pricing_lookback_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_buffer_min(s : FinancepricinglookbackBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_pricing_lookback_cursor_sum(s : FinancepricinglookbackCursor) -> 
 pub fn finance_pricing_lookback_cursor_mean(s : FinancepricinglookbackCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_cursor_scale(s : FinancepricinglookbackCursor, f : Double) -> FinancepricinglookbackCursor {
-  let result = finance_pricing_lookback_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_cursor_add(a : FinancepricinglookbackCursor, b : FinancepricinglookbackCursor) -> FinancepricinglookbackCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_cursor_copy(s : FinancepricinglookbackCursor) -> FinancepricinglookbackCursor {
-  let result = finance_pricing_lookback_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_cursor_fill(s : FinancepricinglookbackCursor, v : Double) -> FinancepricinglookbackCursor {
-  let result = finance_pricing_lookback_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_cursor_min(s : FinancepricinglookbackCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_pricing_lookback_view_sum(s : FinancepricinglookbackView) -> Doub
 pub fn finance_pricing_lookback_view_mean(s : FinancepricinglookbackView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_view_scale(s : FinancepricinglookbackView, f : Double) -> FinancepricinglookbackView {
-  let result = finance_pricing_lookback_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_view_add(a : FinancepricinglookbackView, b : FinancepricinglookbackView) -> FinancepricinglookbackView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_view_copy(s : FinancepricinglookbackView) -> FinancepricinglookbackView {
-  let result = finance_pricing_lookback_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_view_fill(s : FinancepricinglookbackView, v : Double) -> FinancepricinglookbackView {
-  let result = finance_pricing_lookback_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_view_min(s : FinancepricinglookbackView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_pricing_lookback_range_sum(s : FinancepricinglookbackRange) -> Do
 pub fn finance_pricing_lookback_range_mean(s : FinancepricinglookbackRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_range_scale(s : FinancepricinglookbackRange, f : Double) -> FinancepricinglookbackRange {
-  let result = finance_pricing_lookback_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_range_add(a : FinancepricinglookbackRange, b : FinancepricinglookbackRange) -> FinancepricinglookbackRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_range_copy(s : FinancepricinglookbackRange) -> FinancepricinglookbackRange {
-  let result = finance_pricing_lookback_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_range_fill(s : FinancepricinglookbackRange, v : Double) -> FinancepricinglookbackRange {
-  let result = finance_pricing_lookback_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_range_min(s : FinancepricinglookbackRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_pricing_lookback_slice_sum(s : FinancepricinglookbackSlice) -> Do
 pub fn finance_pricing_lookback_slice_mean(s : FinancepricinglookbackSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_slice_scale(s : FinancepricinglookbackSlice, f : Double) -> FinancepricinglookbackSlice {
-  let result = finance_pricing_lookback_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_slice_add(a : FinancepricinglookbackSlice, b : FinancepricinglookbackSlice) -> FinancepricinglookbackSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_lookback_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_lookback_slice_copy(s : FinancepricinglookbackSlice) -> FinancepricinglookbackSlice {
-  let result = finance_pricing_lookback_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_slice_fill(s : FinancepricinglookbackSlice, v : Double) -> FinancepricinglookbackSlice {
-  let result = finance_pricing_lookback_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_lookback_slice_min(s : FinancepricinglookbackSlice) -> Double { @_common.min(s.data) }

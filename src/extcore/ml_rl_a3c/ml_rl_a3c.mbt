@@ -383,28 +383,20 @@ pub fn ml_rl_a3c_frame_sum(s : Mlrla3cFrame) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_frame_mean(s : Mlrla3cFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_frame_scale(s : Mlrla3cFrame, f : Double) -> Mlrla3cFrame {
-  let result = ml_rl_a3c_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_frame_add(a : Mlrla3cFrame, b : Mlrla3cFrame) -> Mlrla3cFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_frame_copy(s : Mlrla3cFrame) -> Mlrla3cFrame {
-  let result = ml_rl_a3c_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_frame_fill(s : Mlrla3cFrame, v : Double) -> Mlrla3cFrame {
-  let result = ml_rl_a3c_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_frame_min(s : Mlrla3cFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_a3c_table_sum(s : Mlrla3cTable) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_table_mean(s : Mlrla3cTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_table_scale(s : Mlrla3cTable, f : Double) -> Mlrla3cTable {
-  let result = ml_rl_a3c_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_table_add(a : Mlrla3cTable, b : Mlrla3cTable) -> Mlrla3cTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_table_copy(s : Mlrla3cTable) -> Mlrla3cTable {
-  let result = ml_rl_a3c_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_table_fill(s : Mlrla3cTable, v : Double) -> Mlrla3cTable {
-  let result = ml_rl_a3c_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_table_min(s : Mlrla3cTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_a3c_graphn_sum(s : Mlrla3cGraphN) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_a3c_graphn_mean(s : Mlrla3cGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_graphn_scale(s : Mlrla3cGraphN, f : Double) -> Mlrla3cGraphN {
-  let result = ml_rl_a3c_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_graphn_add(a : Mlrla3cGraphN, b : Mlrla3cGraphN) -> Mlrla3cGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_graphn_copy(s : Mlrla3cGraphN) -> Mlrla3cGraphN {
-  let result = ml_rl_a3c_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_graphn_fill(s : Mlrla3cGraphN, v : Double) -> Mlrla3cGraphN {
-  let result = ml_rl_a3c_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_graphn_min(s : Mlrla3cGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_a3c_node_sum(s : Mlrla3cNode) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_node_mean(s : Mlrla3cNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_node_scale(s : Mlrla3cNode, f : Double) -> Mlrla3cNode {
-  let result = ml_rl_a3c_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_node_add(a : Mlrla3cNode, b : Mlrla3cNode) -> Mlrla3cNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_node_copy(s : Mlrla3cNode) -> Mlrla3cNode {
-  let result = ml_rl_a3c_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_node_fill(s : Mlrla3cNode, v : Double) -> Mlrla3cNode {
-  let result = ml_rl_a3c_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_node_min(s : Mlrla3cNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_a3c_edge_sum(s : Mlrla3cEdge) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_edge_mean(s : Mlrla3cEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_edge_scale(s : Mlrla3cEdge, f : Double) -> Mlrla3cEdge {
-  let result = ml_rl_a3c_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_edge_add(a : Mlrla3cEdge, b : Mlrla3cEdge) -> Mlrla3cEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_edge_copy(s : Mlrla3cEdge) -> Mlrla3cEdge {
-  let result = ml_rl_a3c_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_edge_fill(s : Mlrla3cEdge, v : Double) -> Mlrla3cEdge {
-  let result = ml_rl_a3c_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_edge_min(s : Mlrla3cEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_a3c_path_sum(s : Mlrla3cPath) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_path_mean(s : Mlrla3cPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_path_scale(s : Mlrla3cPath, f : Double) -> Mlrla3cPath {
-  let result = ml_rl_a3c_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_path_add(a : Mlrla3cPath, b : Mlrla3cPath) -> Mlrla3cPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_path_copy(s : Mlrla3cPath) -> Mlrla3cPath {
-  let result = ml_rl_a3c_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_path_fill(s : Mlrla3cPath, v : Double) -> Mlrla3cPath {
-  let result = ml_rl_a3c_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_path_min(s : Mlrla3cPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_a3c_cluster_sum(s : Mlrla3cCluster) -> Double { @_common.sum(s.data
 pub fn ml_rl_a3c_cluster_mean(s : Mlrla3cCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_cluster_scale(s : Mlrla3cCluster, f : Double) -> Mlrla3cCluster {
-  let result = ml_rl_a3c_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cluster_add(a : Mlrla3cCluster, b : Mlrla3cCluster) -> Mlrla3cCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_cluster_copy(s : Mlrla3cCluster) -> Mlrla3cCluster {
-  let result = ml_rl_a3c_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cluster_fill(s : Mlrla3cCluster, v : Double) -> Mlrla3cCluster {
-  let result = ml_rl_a3c_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cluster_min(s : Mlrla3cCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_a3c_model_sum(s : Mlrla3cModel) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_model_mean(s : Mlrla3cModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_model_scale(s : Mlrla3cModel, f : Double) -> Mlrla3cModel {
-  let result = ml_rl_a3c_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_model_add(a : Mlrla3cModel, b : Mlrla3cModel) -> Mlrla3cModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_model_copy(s : Mlrla3cModel) -> Mlrla3cModel {
-  let result = ml_rl_a3c_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_model_fill(s : Mlrla3cModel, v : Double) -> Mlrla3cModel {
-  let result = ml_rl_a3c_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_model_min(s : Mlrla3cModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_a3c_layer_sum(s : Mlrla3cLayer) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_layer_mean(s : Mlrla3cLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_layer_scale(s : Mlrla3cLayer, f : Double) -> Mlrla3cLayer {
-  let result = ml_rl_a3c_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_layer_add(a : Mlrla3cLayer, b : Mlrla3cLayer) -> Mlrla3cLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_layer_copy(s : Mlrla3cLayer) -> Mlrla3cLayer {
-  let result = ml_rl_a3c_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_layer_fill(s : Mlrla3cLayer, v : Double) -> Mlrla3cLayer {
-  let result = ml_rl_a3c_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_layer_min(s : Mlrla3cLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_a3c_buffer_sum(s : Mlrla3cBuffer) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_a3c_buffer_mean(s : Mlrla3cBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_buffer_scale(s : Mlrla3cBuffer, f : Double) -> Mlrla3cBuffer {
-  let result = ml_rl_a3c_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_buffer_add(a : Mlrla3cBuffer, b : Mlrla3cBuffer) -> Mlrla3cBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_buffer_copy(s : Mlrla3cBuffer) -> Mlrla3cBuffer {
-  let result = ml_rl_a3c_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_buffer_fill(s : Mlrla3cBuffer, v : Double) -> Mlrla3cBuffer {
-  let result = ml_rl_a3c_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_buffer_min(s : Mlrla3cBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_a3c_cursor_sum(s : Mlrla3cCursor) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_a3c_cursor_mean(s : Mlrla3cCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_cursor_scale(s : Mlrla3cCursor, f : Double) -> Mlrla3cCursor {
-  let result = ml_rl_a3c_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cursor_add(a : Mlrla3cCursor, b : Mlrla3cCursor) -> Mlrla3cCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_cursor_copy(s : Mlrla3cCursor) -> Mlrla3cCursor {
-  let result = ml_rl_a3c_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cursor_fill(s : Mlrla3cCursor, v : Double) -> Mlrla3cCursor {
-  let result = ml_rl_a3c_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cursor_min(s : Mlrla3cCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_a3c_view_sum(s : Mlrla3cView) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_view_mean(s : Mlrla3cView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_view_scale(s : Mlrla3cView, f : Double) -> Mlrla3cView {
-  let result = ml_rl_a3c_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_view_add(a : Mlrla3cView, b : Mlrla3cView) -> Mlrla3cView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_view_copy(s : Mlrla3cView) -> Mlrla3cView {
-  let result = ml_rl_a3c_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_view_fill(s : Mlrla3cView, v : Double) -> Mlrla3cView {
-  let result = ml_rl_a3c_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_view_min(s : Mlrla3cView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_a3c_range_sum(s : Mlrla3cRange) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_range_mean(s : Mlrla3cRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_range_scale(s : Mlrla3cRange, f : Double) -> Mlrla3cRange {
-  let result = ml_rl_a3c_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_range_add(a : Mlrla3cRange, b : Mlrla3cRange) -> Mlrla3cRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_range_copy(s : Mlrla3cRange) -> Mlrla3cRange {
-  let result = ml_rl_a3c_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_range_fill(s : Mlrla3cRange, v : Double) -> Mlrla3cRange {
-  let result = ml_rl_a3c_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_range_min(s : Mlrla3cRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_a3c_slice_sum(s : Mlrla3cSlice) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_a3c_slice_mean(s : Mlrla3cSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_a3c_slice_scale(s : Mlrla3cSlice, f : Double) -> Mlrla3cSlice {
-  let result = ml_rl_a3c_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_slice_add(a : Mlrla3cSlice, b : Mlrla3cSlice) -> Mlrla3cSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_a3c_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_a3c_slice_copy(s : Mlrla3cSlice) -> Mlrla3cSlice {
-  let result = ml_rl_a3c_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_slice_fill(s : Mlrla3cSlice, v : Double) -> Mlrla3cSlice {
-  let result = ml_rl_a3c_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_slice_min(s : Mlrla3cSlice) -> Double { @_common.min(s.data) }

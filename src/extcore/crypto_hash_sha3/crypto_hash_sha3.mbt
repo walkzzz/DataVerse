@@ -383,28 +383,20 @@ pub fn crypto_hash_sha3_frame_sum(s : Cryptohashsha3Frame) -> Double { @_common.
 pub fn crypto_hash_sha3_frame_mean(s : Cryptohashsha3Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_frame_scale(s : Cryptohashsha3Frame, f : Double) -> Cryptohashsha3Frame {
-  let result = crypto_hash_sha3_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_frame_add(a : Cryptohashsha3Frame, b : Cryptohashsha3Frame) -> Cryptohashsha3Frame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_frame_copy(s : Cryptohashsha3Frame) -> Cryptohashsha3Frame {
-  let result = crypto_hash_sha3_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_frame_fill(s : Cryptohashsha3Frame, v : Double) -> Cryptohashsha3Frame {
-  let result = crypto_hash_sha3_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_frame_min(s : Cryptohashsha3Frame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_hash_sha3_table_sum(s : Cryptohashsha3Table) -> Double { @_common.
 pub fn crypto_hash_sha3_table_mean(s : Cryptohashsha3Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_table_scale(s : Cryptohashsha3Table, f : Double) -> Cryptohashsha3Table {
-  let result = crypto_hash_sha3_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_table_add(a : Cryptohashsha3Table, b : Cryptohashsha3Table) -> Cryptohashsha3Table {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_table_copy(s : Cryptohashsha3Table) -> Cryptohashsha3Table {
-  let result = crypto_hash_sha3_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_table_fill(s : Cryptohashsha3Table, v : Double) -> Cryptohashsha3Table {
-  let result = crypto_hash_sha3_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_table_min(s : Cryptohashsha3Table) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_hash_sha3_graphn_sum(s : Cryptohashsha3GraphN) -> Double { @_commo
 pub fn crypto_hash_sha3_graphn_mean(s : Cryptohashsha3GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_graphn_scale(s : Cryptohashsha3GraphN, f : Double) -> Cryptohashsha3GraphN {
-  let result = crypto_hash_sha3_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_graphn_add(a : Cryptohashsha3GraphN, b : Cryptohashsha3GraphN) -> Cryptohashsha3GraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_graphn_copy(s : Cryptohashsha3GraphN) -> Cryptohashsha3GraphN {
-  let result = crypto_hash_sha3_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_graphn_fill(s : Cryptohashsha3GraphN, v : Double) -> Cryptohashsha3GraphN {
-  let result = crypto_hash_sha3_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_graphn_min(s : Cryptohashsha3GraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_hash_sha3_node_sum(s : Cryptohashsha3Node) -> Double { @_common.su
 pub fn crypto_hash_sha3_node_mean(s : Cryptohashsha3Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_node_scale(s : Cryptohashsha3Node, f : Double) -> Cryptohashsha3Node {
-  let result = crypto_hash_sha3_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_node_add(a : Cryptohashsha3Node, b : Cryptohashsha3Node) -> Cryptohashsha3Node {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_node_copy(s : Cryptohashsha3Node) -> Cryptohashsha3Node {
-  let result = crypto_hash_sha3_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_node_fill(s : Cryptohashsha3Node, v : Double) -> Cryptohashsha3Node {
-  let result = crypto_hash_sha3_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_node_min(s : Cryptohashsha3Node) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_hash_sha3_edge_sum(s : Cryptohashsha3Edge) -> Double { @_common.su
 pub fn crypto_hash_sha3_edge_mean(s : Cryptohashsha3Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_edge_scale(s : Cryptohashsha3Edge, f : Double) -> Cryptohashsha3Edge {
-  let result = crypto_hash_sha3_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_edge_add(a : Cryptohashsha3Edge, b : Cryptohashsha3Edge) -> Cryptohashsha3Edge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_edge_copy(s : Cryptohashsha3Edge) -> Cryptohashsha3Edge {
-  let result = crypto_hash_sha3_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_edge_fill(s : Cryptohashsha3Edge, v : Double) -> Cryptohashsha3Edge {
-  let result = crypto_hash_sha3_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_edge_min(s : Cryptohashsha3Edge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_hash_sha3_path_sum(s : Cryptohashsha3Path) -> Double { @_common.su
 pub fn crypto_hash_sha3_path_mean(s : Cryptohashsha3Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_path_scale(s : Cryptohashsha3Path, f : Double) -> Cryptohashsha3Path {
-  let result = crypto_hash_sha3_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_path_add(a : Cryptohashsha3Path, b : Cryptohashsha3Path) -> Cryptohashsha3Path {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_path_copy(s : Cryptohashsha3Path) -> Cryptohashsha3Path {
-  let result = crypto_hash_sha3_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_path_fill(s : Cryptohashsha3Path, v : Double) -> Cryptohashsha3Path {
-  let result = crypto_hash_sha3_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_path_min(s : Cryptohashsha3Path) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_hash_sha3_cluster_sum(s : Cryptohashsha3Cluster) -> Double { @_com
 pub fn crypto_hash_sha3_cluster_mean(s : Cryptohashsha3Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_cluster_scale(s : Cryptohashsha3Cluster, f : Double) -> Cryptohashsha3Cluster {
-  let result = crypto_hash_sha3_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_cluster_add(a : Cryptohashsha3Cluster, b : Cryptohashsha3Cluster) -> Cryptohashsha3Cluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_cluster_copy(s : Cryptohashsha3Cluster) -> Cryptohashsha3Cluster {
-  let result = crypto_hash_sha3_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_cluster_fill(s : Cryptohashsha3Cluster, v : Double) -> Cryptohashsha3Cluster {
-  let result = crypto_hash_sha3_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_cluster_min(s : Cryptohashsha3Cluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_hash_sha3_model_sum(s : Cryptohashsha3Model) -> Double { @_common.
 pub fn crypto_hash_sha3_model_mean(s : Cryptohashsha3Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_model_scale(s : Cryptohashsha3Model, f : Double) -> Cryptohashsha3Model {
-  let result = crypto_hash_sha3_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_model_add(a : Cryptohashsha3Model, b : Cryptohashsha3Model) -> Cryptohashsha3Model {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_model_copy(s : Cryptohashsha3Model) -> Cryptohashsha3Model {
-  let result = crypto_hash_sha3_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_model_fill(s : Cryptohashsha3Model, v : Double) -> Cryptohashsha3Model {
-  let result = crypto_hash_sha3_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_model_min(s : Cryptohashsha3Model) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_hash_sha3_layer_sum(s : Cryptohashsha3Layer) -> Double { @_common.
 pub fn crypto_hash_sha3_layer_mean(s : Cryptohashsha3Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_layer_scale(s : Cryptohashsha3Layer, f : Double) -> Cryptohashsha3Layer {
-  let result = crypto_hash_sha3_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_layer_add(a : Cryptohashsha3Layer, b : Cryptohashsha3Layer) -> Cryptohashsha3Layer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_layer_copy(s : Cryptohashsha3Layer) -> Cryptohashsha3Layer {
-  let result = crypto_hash_sha3_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_layer_fill(s : Cryptohashsha3Layer, v : Double) -> Cryptohashsha3Layer {
-  let result = crypto_hash_sha3_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_layer_min(s : Cryptohashsha3Layer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_hash_sha3_buffer_sum(s : Cryptohashsha3Buffer) -> Double { @_commo
 pub fn crypto_hash_sha3_buffer_mean(s : Cryptohashsha3Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_buffer_scale(s : Cryptohashsha3Buffer, f : Double) -> Cryptohashsha3Buffer {
-  let result = crypto_hash_sha3_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_buffer_add(a : Cryptohashsha3Buffer, b : Cryptohashsha3Buffer) -> Cryptohashsha3Buffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_buffer_copy(s : Cryptohashsha3Buffer) -> Cryptohashsha3Buffer {
-  let result = crypto_hash_sha3_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_buffer_fill(s : Cryptohashsha3Buffer, v : Double) -> Cryptohashsha3Buffer {
-  let result = crypto_hash_sha3_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_buffer_min(s : Cryptohashsha3Buffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_hash_sha3_cursor_sum(s : Cryptohashsha3Cursor) -> Double { @_commo
 pub fn crypto_hash_sha3_cursor_mean(s : Cryptohashsha3Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_cursor_scale(s : Cryptohashsha3Cursor, f : Double) -> Cryptohashsha3Cursor {
-  let result = crypto_hash_sha3_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_cursor_add(a : Cryptohashsha3Cursor, b : Cryptohashsha3Cursor) -> Cryptohashsha3Cursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_cursor_copy(s : Cryptohashsha3Cursor) -> Cryptohashsha3Cursor {
-  let result = crypto_hash_sha3_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_cursor_fill(s : Cryptohashsha3Cursor, v : Double) -> Cryptohashsha3Cursor {
-  let result = crypto_hash_sha3_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_cursor_min(s : Cryptohashsha3Cursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_hash_sha3_view_sum(s : Cryptohashsha3View) -> Double { @_common.su
 pub fn crypto_hash_sha3_view_mean(s : Cryptohashsha3View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_view_scale(s : Cryptohashsha3View, f : Double) -> Cryptohashsha3View {
-  let result = crypto_hash_sha3_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_view_add(a : Cryptohashsha3View, b : Cryptohashsha3View) -> Cryptohashsha3View {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_view_copy(s : Cryptohashsha3View) -> Cryptohashsha3View {
-  let result = crypto_hash_sha3_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_view_fill(s : Cryptohashsha3View, v : Double) -> Cryptohashsha3View {
-  let result = crypto_hash_sha3_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_view_min(s : Cryptohashsha3View) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_hash_sha3_range_sum(s : Cryptohashsha3Range) -> Double { @_common.
 pub fn crypto_hash_sha3_range_mean(s : Cryptohashsha3Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_range_scale(s : Cryptohashsha3Range, f : Double) -> Cryptohashsha3Range {
-  let result = crypto_hash_sha3_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_range_add(a : Cryptohashsha3Range, b : Cryptohashsha3Range) -> Cryptohashsha3Range {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_range_copy(s : Cryptohashsha3Range) -> Cryptohashsha3Range {
-  let result = crypto_hash_sha3_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_range_fill(s : Cryptohashsha3Range, v : Double) -> Cryptohashsha3Range {
-  let result = crypto_hash_sha3_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_range_min(s : Cryptohashsha3Range) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_hash_sha3_slice_sum(s : Cryptohashsha3Slice) -> Double { @_common.
 pub fn crypto_hash_sha3_slice_mean(s : Cryptohashsha3Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha3_slice_scale(s : Cryptohashsha3Slice, f : Double) -> Cryptohashsha3Slice {
-  let result = crypto_hash_sha3_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_slice_add(a : Cryptohashsha3Slice, b : Cryptohashsha3Slice) -> Cryptohashsha3Slice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_sha3_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_sha3_slice_copy(s : Cryptohashsha3Slice) -> Cryptohashsha3Slice {
-  let result = crypto_hash_sha3_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_slice_fill(s : Cryptohashsha3Slice, v : Double) -> Cryptohashsha3Slice {
-  let result = crypto_hash_sha3_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha3_slice_min(s : Cryptohashsha3Slice) -> Double { @_common.min(s.data) }

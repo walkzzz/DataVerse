@@ -383,28 +383,20 @@ pub fn sort_dist_msd_frame_sum(s : SortdistmsdFrame) -> Double { @_common.sum(s.
 pub fn sort_dist_msd_frame_mean(s : SortdistmsdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_frame_scale(s : SortdistmsdFrame, f : Double) -> SortdistmsdFrame {
-  let result = sort_dist_msd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_frame_add(a : SortdistmsdFrame, b : SortdistmsdFrame) -> SortdistmsdFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_frame_copy(s : SortdistmsdFrame) -> SortdistmsdFrame {
-  let result = sort_dist_msd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_frame_fill(s : SortdistmsdFrame, v : Double) -> SortdistmsdFrame {
-  let result = sort_dist_msd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_frame_min(s : SortdistmsdFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_dist_msd_table_sum(s : SortdistmsdTable) -> Double { @_common.sum(s.
 pub fn sort_dist_msd_table_mean(s : SortdistmsdTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_table_scale(s : SortdistmsdTable, f : Double) -> SortdistmsdTable {
-  let result = sort_dist_msd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_table_add(a : SortdistmsdTable, b : SortdistmsdTable) -> SortdistmsdTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_table_copy(s : SortdistmsdTable) -> SortdistmsdTable {
-  let result = sort_dist_msd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_table_fill(s : SortdistmsdTable, v : Double) -> SortdistmsdTable {
-  let result = sort_dist_msd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_table_min(s : SortdistmsdTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_dist_msd_graphn_sum(s : SortdistmsdGraphN) -> Double { @_common.sum(
 pub fn sort_dist_msd_graphn_mean(s : SortdistmsdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_graphn_scale(s : SortdistmsdGraphN, f : Double) -> SortdistmsdGraphN {
-  let result = sort_dist_msd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_graphn_add(a : SortdistmsdGraphN, b : SortdistmsdGraphN) -> SortdistmsdGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_graphn_copy(s : SortdistmsdGraphN) -> SortdistmsdGraphN {
-  let result = sort_dist_msd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_graphn_fill(s : SortdistmsdGraphN, v : Double) -> SortdistmsdGraphN {
-  let result = sort_dist_msd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_graphn_min(s : SortdistmsdGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_dist_msd_node_sum(s : SortdistmsdNode) -> Double { @_common.sum(s.da
 pub fn sort_dist_msd_node_mean(s : SortdistmsdNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_node_scale(s : SortdistmsdNode, f : Double) -> SortdistmsdNode {
-  let result = sort_dist_msd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_node_add(a : SortdistmsdNode, b : SortdistmsdNode) -> SortdistmsdNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_node_copy(s : SortdistmsdNode) -> SortdistmsdNode {
-  let result = sort_dist_msd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_node_fill(s : SortdistmsdNode, v : Double) -> SortdistmsdNode {
-  let result = sort_dist_msd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_node_min(s : SortdistmsdNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_dist_msd_edge_sum(s : SortdistmsdEdge) -> Double { @_common.sum(s.da
 pub fn sort_dist_msd_edge_mean(s : SortdistmsdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_edge_scale(s : SortdistmsdEdge, f : Double) -> SortdistmsdEdge {
-  let result = sort_dist_msd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_edge_add(a : SortdistmsdEdge, b : SortdistmsdEdge) -> SortdistmsdEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_edge_copy(s : SortdistmsdEdge) -> SortdistmsdEdge {
-  let result = sort_dist_msd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_edge_fill(s : SortdistmsdEdge, v : Double) -> SortdistmsdEdge {
-  let result = sort_dist_msd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_edge_min(s : SortdistmsdEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_dist_msd_path_sum(s : SortdistmsdPath) -> Double { @_common.sum(s.da
 pub fn sort_dist_msd_path_mean(s : SortdistmsdPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_path_scale(s : SortdistmsdPath, f : Double) -> SortdistmsdPath {
-  let result = sort_dist_msd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_path_add(a : SortdistmsdPath, b : SortdistmsdPath) -> SortdistmsdPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_path_copy(s : SortdistmsdPath) -> SortdistmsdPath {
-  let result = sort_dist_msd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_path_fill(s : SortdistmsdPath, v : Double) -> SortdistmsdPath {
-  let result = sort_dist_msd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_path_min(s : SortdistmsdPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_dist_msd_cluster_sum(s : SortdistmsdCluster) -> Double { @_common.su
 pub fn sort_dist_msd_cluster_mean(s : SortdistmsdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_cluster_scale(s : SortdistmsdCluster, f : Double) -> SortdistmsdCluster {
-  let result = sort_dist_msd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_cluster_add(a : SortdistmsdCluster, b : SortdistmsdCluster) -> SortdistmsdCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_cluster_copy(s : SortdistmsdCluster) -> SortdistmsdCluster {
-  let result = sort_dist_msd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_cluster_fill(s : SortdistmsdCluster, v : Double) -> SortdistmsdCluster {
-  let result = sort_dist_msd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_cluster_min(s : SortdistmsdCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_dist_msd_model_sum(s : SortdistmsdModel) -> Double { @_common.sum(s.
 pub fn sort_dist_msd_model_mean(s : SortdistmsdModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_model_scale(s : SortdistmsdModel, f : Double) -> SortdistmsdModel {
-  let result = sort_dist_msd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_model_add(a : SortdistmsdModel, b : SortdistmsdModel) -> SortdistmsdModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_model_copy(s : SortdistmsdModel) -> SortdistmsdModel {
-  let result = sort_dist_msd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_model_fill(s : SortdistmsdModel, v : Double) -> SortdistmsdModel {
-  let result = sort_dist_msd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_model_min(s : SortdistmsdModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_dist_msd_layer_sum(s : SortdistmsdLayer) -> Double { @_common.sum(s.
 pub fn sort_dist_msd_layer_mean(s : SortdistmsdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_layer_scale(s : SortdistmsdLayer, f : Double) -> SortdistmsdLayer {
-  let result = sort_dist_msd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_layer_add(a : SortdistmsdLayer, b : SortdistmsdLayer) -> SortdistmsdLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_layer_copy(s : SortdistmsdLayer) -> SortdistmsdLayer {
-  let result = sort_dist_msd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_layer_fill(s : SortdistmsdLayer, v : Double) -> SortdistmsdLayer {
-  let result = sort_dist_msd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_layer_min(s : SortdistmsdLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_dist_msd_buffer_sum(s : SortdistmsdBuffer) -> Double { @_common.sum(
 pub fn sort_dist_msd_buffer_mean(s : SortdistmsdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_buffer_scale(s : SortdistmsdBuffer, f : Double) -> SortdistmsdBuffer {
-  let result = sort_dist_msd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_buffer_add(a : SortdistmsdBuffer, b : SortdistmsdBuffer) -> SortdistmsdBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_buffer_copy(s : SortdistmsdBuffer) -> SortdistmsdBuffer {
-  let result = sort_dist_msd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_buffer_fill(s : SortdistmsdBuffer, v : Double) -> SortdistmsdBuffer {
-  let result = sort_dist_msd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_buffer_min(s : SortdistmsdBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_dist_msd_cursor_sum(s : SortdistmsdCursor) -> Double { @_common.sum(
 pub fn sort_dist_msd_cursor_mean(s : SortdistmsdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_cursor_scale(s : SortdistmsdCursor, f : Double) -> SortdistmsdCursor {
-  let result = sort_dist_msd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_cursor_add(a : SortdistmsdCursor, b : SortdistmsdCursor) -> SortdistmsdCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_cursor_copy(s : SortdistmsdCursor) -> SortdistmsdCursor {
-  let result = sort_dist_msd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_cursor_fill(s : SortdistmsdCursor, v : Double) -> SortdistmsdCursor {
-  let result = sort_dist_msd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_cursor_min(s : SortdistmsdCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_dist_msd_view_sum(s : SortdistmsdView) -> Double { @_common.sum(s.da
 pub fn sort_dist_msd_view_mean(s : SortdistmsdView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_view_scale(s : SortdistmsdView, f : Double) -> SortdistmsdView {
-  let result = sort_dist_msd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_view_add(a : SortdistmsdView, b : SortdistmsdView) -> SortdistmsdView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_view_copy(s : SortdistmsdView) -> SortdistmsdView {
-  let result = sort_dist_msd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_view_fill(s : SortdistmsdView, v : Double) -> SortdistmsdView {
-  let result = sort_dist_msd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_view_min(s : SortdistmsdView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_dist_msd_range_sum(s : SortdistmsdRange) -> Double { @_common.sum(s.
 pub fn sort_dist_msd_range_mean(s : SortdistmsdRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_range_scale(s : SortdistmsdRange, f : Double) -> SortdistmsdRange {
-  let result = sort_dist_msd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_range_add(a : SortdistmsdRange, b : SortdistmsdRange) -> SortdistmsdRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_range_copy(s : SortdistmsdRange) -> SortdistmsdRange {
-  let result = sort_dist_msd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_range_fill(s : SortdistmsdRange, v : Double) -> SortdistmsdRange {
-  let result = sort_dist_msd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_range_min(s : SortdistmsdRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_dist_msd_slice_sum(s : SortdistmsdSlice) -> Double { @_common.sum(s.
 pub fn sort_dist_msd_slice_mean(s : SortdistmsdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_msd_slice_scale(s : SortdistmsdSlice, f : Double) -> SortdistmsdSlice {
-  let result = sort_dist_msd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_slice_add(a : SortdistmsdSlice, b : SortdistmsdSlice) -> SortdistmsdSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_dist_msd_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_dist_msd_slice_copy(s : SortdistmsdSlice) -> SortdistmsdSlice {
-  let result = sort_dist_msd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_slice_fill(s : SortdistmsdSlice, v : Double) -> SortdistmsdSlice {
-  let result = sort_dist_msd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_msd_slice_min(s : SortdistmsdSlice) -> Double { @_common.min(s.data) }

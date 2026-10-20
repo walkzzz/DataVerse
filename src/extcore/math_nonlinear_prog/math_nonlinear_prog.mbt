@@ -383,28 +383,20 @@ pub fn math_nonlinear_prog_frame_sum(s : MathnonlinearprogFrame) -> Double { @_c
 pub fn math_nonlinear_prog_frame_mean(s : MathnonlinearprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_frame_scale(s : MathnonlinearprogFrame, f : Double) -> MathnonlinearprogFrame {
-  let result = math_nonlinear_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_frame_add(a : MathnonlinearprogFrame, b : MathnonlinearprogFrame) -> MathnonlinearprogFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_frame_copy(s : MathnonlinearprogFrame) -> MathnonlinearprogFrame {
-  let result = math_nonlinear_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_frame_fill(s : MathnonlinearprogFrame, v : Double) -> MathnonlinearprogFrame {
-  let result = math_nonlinear_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_frame_min(s : MathnonlinearprogFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_nonlinear_prog_table_sum(s : MathnonlinearprogTable) -> Double { @_c
 pub fn math_nonlinear_prog_table_mean(s : MathnonlinearprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_table_scale(s : MathnonlinearprogTable, f : Double) -> MathnonlinearprogTable {
-  let result = math_nonlinear_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_table_add(a : MathnonlinearprogTable, b : MathnonlinearprogTable) -> MathnonlinearprogTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_table_copy(s : MathnonlinearprogTable) -> MathnonlinearprogTable {
-  let result = math_nonlinear_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_table_fill(s : MathnonlinearprogTable, v : Double) -> MathnonlinearprogTable {
-  let result = math_nonlinear_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_table_min(s : MathnonlinearprogTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_nonlinear_prog_graphn_sum(s : MathnonlinearprogGraphN) -> Double { @
 pub fn math_nonlinear_prog_graphn_mean(s : MathnonlinearprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_graphn_scale(s : MathnonlinearprogGraphN, f : Double) -> MathnonlinearprogGraphN {
-  let result = math_nonlinear_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_graphn_add(a : MathnonlinearprogGraphN, b : MathnonlinearprogGraphN) -> MathnonlinearprogGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_graphn_copy(s : MathnonlinearprogGraphN) -> MathnonlinearprogGraphN {
-  let result = math_nonlinear_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_graphn_fill(s : MathnonlinearprogGraphN, v : Double) -> MathnonlinearprogGraphN {
-  let result = math_nonlinear_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_graphn_min(s : MathnonlinearprogGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_nonlinear_prog_node_sum(s : MathnonlinearprogNode) -> Double { @_com
 pub fn math_nonlinear_prog_node_mean(s : MathnonlinearprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_node_scale(s : MathnonlinearprogNode, f : Double) -> MathnonlinearprogNode {
-  let result = math_nonlinear_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_node_add(a : MathnonlinearprogNode, b : MathnonlinearprogNode) -> MathnonlinearprogNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_node_copy(s : MathnonlinearprogNode) -> MathnonlinearprogNode {
-  let result = math_nonlinear_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_node_fill(s : MathnonlinearprogNode, v : Double) -> MathnonlinearprogNode {
-  let result = math_nonlinear_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_node_min(s : MathnonlinearprogNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_nonlinear_prog_edge_sum(s : MathnonlinearprogEdge) -> Double { @_com
 pub fn math_nonlinear_prog_edge_mean(s : MathnonlinearprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_edge_scale(s : MathnonlinearprogEdge, f : Double) -> MathnonlinearprogEdge {
-  let result = math_nonlinear_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_edge_add(a : MathnonlinearprogEdge, b : MathnonlinearprogEdge) -> MathnonlinearprogEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_edge_copy(s : MathnonlinearprogEdge) -> MathnonlinearprogEdge {
-  let result = math_nonlinear_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_edge_fill(s : MathnonlinearprogEdge, v : Double) -> MathnonlinearprogEdge {
-  let result = math_nonlinear_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_edge_min(s : MathnonlinearprogEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_nonlinear_prog_path_sum(s : MathnonlinearprogPath) -> Double { @_com
 pub fn math_nonlinear_prog_path_mean(s : MathnonlinearprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_path_scale(s : MathnonlinearprogPath, f : Double) -> MathnonlinearprogPath {
-  let result = math_nonlinear_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_path_add(a : MathnonlinearprogPath, b : MathnonlinearprogPath) -> MathnonlinearprogPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_path_copy(s : MathnonlinearprogPath) -> MathnonlinearprogPath {
-  let result = math_nonlinear_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_path_fill(s : MathnonlinearprogPath, v : Double) -> MathnonlinearprogPath {
-  let result = math_nonlinear_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_path_min(s : MathnonlinearprogPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_nonlinear_prog_cluster_sum(s : MathnonlinearprogCluster) -> Double {
 pub fn math_nonlinear_prog_cluster_mean(s : MathnonlinearprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_cluster_scale(s : MathnonlinearprogCluster, f : Double) -> MathnonlinearprogCluster {
-  let result = math_nonlinear_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cluster_add(a : MathnonlinearprogCluster, b : MathnonlinearprogCluster) -> MathnonlinearprogCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_cluster_copy(s : MathnonlinearprogCluster) -> MathnonlinearprogCluster {
-  let result = math_nonlinear_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cluster_fill(s : MathnonlinearprogCluster, v : Double) -> MathnonlinearprogCluster {
-  let result = math_nonlinear_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cluster_min(s : MathnonlinearprogCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_nonlinear_prog_model_sum(s : MathnonlinearprogModel) -> Double { @_c
 pub fn math_nonlinear_prog_model_mean(s : MathnonlinearprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_model_scale(s : MathnonlinearprogModel, f : Double) -> MathnonlinearprogModel {
-  let result = math_nonlinear_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_model_add(a : MathnonlinearprogModel, b : MathnonlinearprogModel) -> MathnonlinearprogModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_model_copy(s : MathnonlinearprogModel) -> MathnonlinearprogModel {
-  let result = math_nonlinear_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_model_fill(s : MathnonlinearprogModel, v : Double) -> MathnonlinearprogModel {
-  let result = math_nonlinear_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_model_min(s : MathnonlinearprogModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_nonlinear_prog_layer_sum(s : MathnonlinearprogLayer) -> Double { @_c
 pub fn math_nonlinear_prog_layer_mean(s : MathnonlinearprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_layer_scale(s : MathnonlinearprogLayer, f : Double) -> MathnonlinearprogLayer {
-  let result = math_nonlinear_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_layer_add(a : MathnonlinearprogLayer, b : MathnonlinearprogLayer) -> MathnonlinearprogLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_layer_copy(s : MathnonlinearprogLayer) -> MathnonlinearprogLayer {
-  let result = math_nonlinear_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_layer_fill(s : MathnonlinearprogLayer, v : Double) -> MathnonlinearprogLayer {
-  let result = math_nonlinear_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_layer_min(s : MathnonlinearprogLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_nonlinear_prog_buffer_sum(s : MathnonlinearprogBuffer) -> Double { @
 pub fn math_nonlinear_prog_buffer_mean(s : MathnonlinearprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_buffer_scale(s : MathnonlinearprogBuffer, f : Double) -> MathnonlinearprogBuffer {
-  let result = math_nonlinear_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_buffer_add(a : MathnonlinearprogBuffer, b : MathnonlinearprogBuffer) -> MathnonlinearprogBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_buffer_copy(s : MathnonlinearprogBuffer) -> MathnonlinearprogBuffer {
-  let result = math_nonlinear_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_buffer_fill(s : MathnonlinearprogBuffer, v : Double) -> MathnonlinearprogBuffer {
-  let result = math_nonlinear_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_buffer_min(s : MathnonlinearprogBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_nonlinear_prog_cursor_sum(s : MathnonlinearprogCursor) -> Double { @
 pub fn math_nonlinear_prog_cursor_mean(s : MathnonlinearprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_cursor_scale(s : MathnonlinearprogCursor, f : Double) -> MathnonlinearprogCursor {
-  let result = math_nonlinear_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cursor_add(a : MathnonlinearprogCursor, b : MathnonlinearprogCursor) -> MathnonlinearprogCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_cursor_copy(s : MathnonlinearprogCursor) -> MathnonlinearprogCursor {
-  let result = math_nonlinear_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cursor_fill(s : MathnonlinearprogCursor, v : Double) -> MathnonlinearprogCursor {
-  let result = math_nonlinear_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cursor_min(s : MathnonlinearprogCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_nonlinear_prog_view_sum(s : MathnonlinearprogView) -> Double { @_com
 pub fn math_nonlinear_prog_view_mean(s : MathnonlinearprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_view_scale(s : MathnonlinearprogView, f : Double) -> MathnonlinearprogView {
-  let result = math_nonlinear_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_view_add(a : MathnonlinearprogView, b : MathnonlinearprogView) -> MathnonlinearprogView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_view_copy(s : MathnonlinearprogView) -> MathnonlinearprogView {
-  let result = math_nonlinear_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_view_fill(s : MathnonlinearprogView, v : Double) -> MathnonlinearprogView {
-  let result = math_nonlinear_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_view_min(s : MathnonlinearprogView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_nonlinear_prog_range_sum(s : MathnonlinearprogRange) -> Double { @_c
 pub fn math_nonlinear_prog_range_mean(s : MathnonlinearprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_range_scale(s : MathnonlinearprogRange, f : Double) -> MathnonlinearprogRange {
-  let result = math_nonlinear_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_range_add(a : MathnonlinearprogRange, b : MathnonlinearprogRange) -> MathnonlinearprogRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_range_copy(s : MathnonlinearprogRange) -> MathnonlinearprogRange {
-  let result = math_nonlinear_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_range_fill(s : MathnonlinearprogRange, v : Double) -> MathnonlinearprogRange {
-  let result = math_nonlinear_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_range_min(s : MathnonlinearprogRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_nonlinear_prog_slice_sum(s : MathnonlinearprogSlice) -> Double { @_c
 pub fn math_nonlinear_prog_slice_mean(s : MathnonlinearprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_nonlinear_prog_slice_scale(s : MathnonlinearprogSlice, f : Double) -> MathnonlinearprogSlice {
-  let result = math_nonlinear_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_slice_add(a : MathnonlinearprogSlice, b : MathnonlinearprogSlice) -> MathnonlinearprogSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_nonlinear_prog_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_nonlinear_prog_slice_copy(s : MathnonlinearprogSlice) -> MathnonlinearprogSlice {
-  let result = math_nonlinear_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_slice_fill(s : MathnonlinearprogSlice, v : Double) -> MathnonlinearprogSlice {
-  let result = math_nonlinear_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_slice_min(s : MathnonlinearprogSlice) -> Double { @_common.min(s.data) }

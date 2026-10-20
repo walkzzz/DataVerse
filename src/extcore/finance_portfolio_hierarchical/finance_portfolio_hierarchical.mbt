@@ -383,28 +383,20 @@ pub fn finance_portfolio_hierarchical_frame_sum(s : Financeportfoliohierarchical
 pub fn finance_portfolio_hierarchical_frame_mean(s : FinanceportfoliohierarchicalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_frame_scale(s : FinanceportfoliohierarchicalFrame, f : Double) -> FinanceportfoliohierarchicalFrame {
-  let result = finance_portfolio_hierarchical_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_frame_add(a : FinanceportfoliohierarchicalFrame, b : FinanceportfoliohierarchicalFrame) -> FinanceportfoliohierarchicalFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_frame_copy(s : FinanceportfoliohierarchicalFrame) -> FinanceportfoliohierarchicalFrame {
-  let result = finance_portfolio_hierarchical_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_frame_fill(s : FinanceportfoliohierarchicalFrame, v : Double) -> FinanceportfoliohierarchicalFrame {
-  let result = finance_portfolio_hierarchical_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_frame_min(s : FinanceportfoliohierarchicalFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_portfolio_hierarchical_table_sum(s : Financeportfoliohierarchical
 pub fn finance_portfolio_hierarchical_table_mean(s : FinanceportfoliohierarchicalTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_table_scale(s : FinanceportfoliohierarchicalTable, f : Double) -> FinanceportfoliohierarchicalTable {
-  let result = finance_portfolio_hierarchical_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_table_add(a : FinanceportfoliohierarchicalTable, b : FinanceportfoliohierarchicalTable) -> FinanceportfoliohierarchicalTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_table_copy(s : FinanceportfoliohierarchicalTable) -> FinanceportfoliohierarchicalTable {
-  let result = finance_portfolio_hierarchical_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_table_fill(s : FinanceportfoliohierarchicalTable, v : Double) -> FinanceportfoliohierarchicalTable {
-  let result = finance_portfolio_hierarchical_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_table_min(s : FinanceportfoliohierarchicalTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_portfolio_hierarchical_graphn_sum(s : Financeportfoliohierarchica
 pub fn finance_portfolio_hierarchical_graphn_mean(s : FinanceportfoliohierarchicalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_graphn_scale(s : FinanceportfoliohierarchicalGraphN, f : Double) -> FinanceportfoliohierarchicalGraphN {
-  let result = finance_portfolio_hierarchical_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_graphn_add(a : FinanceportfoliohierarchicalGraphN, b : FinanceportfoliohierarchicalGraphN) -> FinanceportfoliohierarchicalGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_graphn_copy(s : FinanceportfoliohierarchicalGraphN) -> FinanceportfoliohierarchicalGraphN {
-  let result = finance_portfolio_hierarchical_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_graphn_fill(s : FinanceportfoliohierarchicalGraphN, v : Double) -> FinanceportfoliohierarchicalGraphN {
-  let result = finance_portfolio_hierarchical_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_graphn_min(s : FinanceportfoliohierarchicalGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_portfolio_hierarchical_node_sum(s : FinanceportfoliohierarchicalN
 pub fn finance_portfolio_hierarchical_node_mean(s : FinanceportfoliohierarchicalNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_node_scale(s : FinanceportfoliohierarchicalNode, f : Double) -> FinanceportfoliohierarchicalNode {
-  let result = finance_portfolio_hierarchical_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_node_add(a : FinanceportfoliohierarchicalNode, b : FinanceportfoliohierarchicalNode) -> FinanceportfoliohierarchicalNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_node_copy(s : FinanceportfoliohierarchicalNode) -> FinanceportfoliohierarchicalNode {
-  let result = finance_portfolio_hierarchical_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_node_fill(s : FinanceportfoliohierarchicalNode, v : Double) -> FinanceportfoliohierarchicalNode {
-  let result = finance_portfolio_hierarchical_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_node_min(s : FinanceportfoliohierarchicalNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_portfolio_hierarchical_edge_sum(s : FinanceportfoliohierarchicalE
 pub fn finance_portfolio_hierarchical_edge_mean(s : FinanceportfoliohierarchicalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_edge_scale(s : FinanceportfoliohierarchicalEdge, f : Double) -> FinanceportfoliohierarchicalEdge {
-  let result = finance_portfolio_hierarchical_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_edge_add(a : FinanceportfoliohierarchicalEdge, b : FinanceportfoliohierarchicalEdge) -> FinanceportfoliohierarchicalEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_edge_copy(s : FinanceportfoliohierarchicalEdge) -> FinanceportfoliohierarchicalEdge {
-  let result = finance_portfolio_hierarchical_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_edge_fill(s : FinanceportfoliohierarchicalEdge, v : Double) -> FinanceportfoliohierarchicalEdge {
-  let result = finance_portfolio_hierarchical_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_edge_min(s : FinanceportfoliohierarchicalEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_portfolio_hierarchical_path_sum(s : FinanceportfoliohierarchicalP
 pub fn finance_portfolio_hierarchical_path_mean(s : FinanceportfoliohierarchicalPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_path_scale(s : FinanceportfoliohierarchicalPath, f : Double) -> FinanceportfoliohierarchicalPath {
-  let result = finance_portfolio_hierarchical_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_path_add(a : FinanceportfoliohierarchicalPath, b : FinanceportfoliohierarchicalPath) -> FinanceportfoliohierarchicalPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_path_copy(s : FinanceportfoliohierarchicalPath) -> FinanceportfoliohierarchicalPath {
-  let result = finance_portfolio_hierarchical_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_path_fill(s : FinanceportfoliohierarchicalPath, v : Double) -> FinanceportfoliohierarchicalPath {
-  let result = finance_portfolio_hierarchical_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_path_min(s : FinanceportfoliohierarchicalPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_portfolio_hierarchical_cluster_sum(s : Financeportfoliohierarchic
 pub fn finance_portfolio_hierarchical_cluster_mean(s : FinanceportfoliohierarchicalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_cluster_scale(s : FinanceportfoliohierarchicalCluster, f : Double) -> FinanceportfoliohierarchicalCluster {
-  let result = finance_portfolio_hierarchical_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cluster_add(a : FinanceportfoliohierarchicalCluster, b : FinanceportfoliohierarchicalCluster) -> FinanceportfoliohierarchicalCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cluster_copy(s : FinanceportfoliohierarchicalCluster) -> FinanceportfoliohierarchicalCluster {
-  let result = finance_portfolio_hierarchical_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cluster_fill(s : FinanceportfoliohierarchicalCluster, v : Double) -> FinanceportfoliohierarchicalCluster {
-  let result = finance_portfolio_hierarchical_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cluster_min(s : FinanceportfoliohierarchicalCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_portfolio_hierarchical_model_sum(s : Financeportfoliohierarchical
 pub fn finance_portfolio_hierarchical_model_mean(s : FinanceportfoliohierarchicalModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_model_scale(s : FinanceportfoliohierarchicalModel, f : Double) -> FinanceportfoliohierarchicalModel {
-  let result = finance_portfolio_hierarchical_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_model_add(a : FinanceportfoliohierarchicalModel, b : FinanceportfoliohierarchicalModel) -> FinanceportfoliohierarchicalModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_model_copy(s : FinanceportfoliohierarchicalModel) -> FinanceportfoliohierarchicalModel {
-  let result = finance_portfolio_hierarchical_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_model_fill(s : FinanceportfoliohierarchicalModel, v : Double) -> FinanceportfoliohierarchicalModel {
-  let result = finance_portfolio_hierarchical_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_model_min(s : FinanceportfoliohierarchicalModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_portfolio_hierarchical_layer_sum(s : Financeportfoliohierarchical
 pub fn finance_portfolio_hierarchical_layer_mean(s : FinanceportfoliohierarchicalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_layer_scale(s : FinanceportfoliohierarchicalLayer, f : Double) -> FinanceportfoliohierarchicalLayer {
-  let result = finance_portfolio_hierarchical_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_layer_add(a : FinanceportfoliohierarchicalLayer, b : FinanceportfoliohierarchicalLayer) -> FinanceportfoliohierarchicalLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_layer_copy(s : FinanceportfoliohierarchicalLayer) -> FinanceportfoliohierarchicalLayer {
-  let result = finance_portfolio_hierarchical_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_layer_fill(s : FinanceportfoliohierarchicalLayer, v : Double) -> FinanceportfoliohierarchicalLayer {
-  let result = finance_portfolio_hierarchical_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_layer_min(s : FinanceportfoliohierarchicalLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_portfolio_hierarchical_buffer_sum(s : Financeportfoliohierarchica
 pub fn finance_portfolio_hierarchical_buffer_mean(s : FinanceportfoliohierarchicalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_buffer_scale(s : FinanceportfoliohierarchicalBuffer, f : Double) -> FinanceportfoliohierarchicalBuffer {
-  let result = finance_portfolio_hierarchical_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_buffer_add(a : FinanceportfoliohierarchicalBuffer, b : FinanceportfoliohierarchicalBuffer) -> FinanceportfoliohierarchicalBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_buffer_copy(s : FinanceportfoliohierarchicalBuffer) -> FinanceportfoliohierarchicalBuffer {
-  let result = finance_portfolio_hierarchical_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_buffer_fill(s : FinanceportfoliohierarchicalBuffer, v : Double) -> FinanceportfoliohierarchicalBuffer {
-  let result = finance_portfolio_hierarchical_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_buffer_min(s : FinanceportfoliohierarchicalBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_portfolio_hierarchical_cursor_sum(s : Financeportfoliohierarchica
 pub fn finance_portfolio_hierarchical_cursor_mean(s : FinanceportfoliohierarchicalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_cursor_scale(s : FinanceportfoliohierarchicalCursor, f : Double) -> FinanceportfoliohierarchicalCursor {
-  let result = finance_portfolio_hierarchical_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cursor_add(a : FinanceportfoliohierarchicalCursor, b : FinanceportfoliohierarchicalCursor) -> FinanceportfoliohierarchicalCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cursor_copy(s : FinanceportfoliohierarchicalCursor) -> FinanceportfoliohierarchicalCursor {
-  let result = finance_portfolio_hierarchical_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cursor_fill(s : FinanceportfoliohierarchicalCursor, v : Double) -> FinanceportfoliohierarchicalCursor {
-  let result = finance_portfolio_hierarchical_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_cursor_min(s : FinanceportfoliohierarchicalCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_portfolio_hierarchical_view_sum(s : FinanceportfoliohierarchicalV
 pub fn finance_portfolio_hierarchical_view_mean(s : FinanceportfoliohierarchicalView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_view_scale(s : FinanceportfoliohierarchicalView, f : Double) -> FinanceportfoliohierarchicalView {
-  let result = finance_portfolio_hierarchical_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_view_add(a : FinanceportfoliohierarchicalView, b : FinanceportfoliohierarchicalView) -> FinanceportfoliohierarchicalView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_view_copy(s : FinanceportfoliohierarchicalView) -> FinanceportfoliohierarchicalView {
-  let result = finance_portfolio_hierarchical_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_view_fill(s : FinanceportfoliohierarchicalView, v : Double) -> FinanceportfoliohierarchicalView {
-  let result = finance_portfolio_hierarchical_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_view_min(s : FinanceportfoliohierarchicalView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_portfolio_hierarchical_range_sum(s : Financeportfoliohierarchical
 pub fn finance_portfolio_hierarchical_range_mean(s : FinanceportfoliohierarchicalRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_range_scale(s : FinanceportfoliohierarchicalRange, f : Double) -> FinanceportfoliohierarchicalRange {
-  let result = finance_portfolio_hierarchical_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_range_add(a : FinanceportfoliohierarchicalRange, b : FinanceportfoliohierarchicalRange) -> FinanceportfoliohierarchicalRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_range_copy(s : FinanceportfoliohierarchicalRange) -> FinanceportfoliohierarchicalRange {
-  let result = finance_portfolio_hierarchical_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_range_fill(s : FinanceportfoliohierarchicalRange, v : Double) -> FinanceportfoliohierarchicalRange {
-  let result = finance_portfolio_hierarchical_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_range_min(s : FinanceportfoliohierarchicalRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_portfolio_hierarchical_slice_sum(s : Financeportfoliohierarchical
 pub fn finance_portfolio_hierarchical_slice_mean(s : FinanceportfoliohierarchicalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_hierarchical_slice_scale(s : FinanceportfoliohierarchicalSlice, f : Double) -> FinanceportfoliohierarchicalSlice {
-  let result = finance_portfolio_hierarchical_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_slice_add(a : FinanceportfoliohierarchicalSlice, b : FinanceportfoliohierarchicalSlice) -> FinanceportfoliohierarchicalSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_hierarchical_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_hierarchical_slice_copy(s : FinanceportfoliohierarchicalSlice) -> FinanceportfoliohierarchicalSlice {
-  let result = finance_portfolio_hierarchical_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_slice_fill(s : FinanceportfoliohierarchicalSlice, v : Double) -> FinanceportfoliohierarchicalSlice {
-  let result = finance_portfolio_hierarchical_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_hierarchical_slice_min(s : FinanceportfoliohierarchicalSlice) -> Double { @_common.min(s.data) }

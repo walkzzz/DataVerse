@@ -383,28 +383,20 @@ pub fn ml_feature_pca_frame_sum(s : MlfeaturepcaFrame) -> Double { @_common.sum(
 pub fn ml_feature_pca_frame_mean(s : MlfeaturepcaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_frame_scale(s : MlfeaturepcaFrame, f : Double) -> MlfeaturepcaFrame {
-  let result = ml_feature_pca_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_frame_add(a : MlfeaturepcaFrame, b : MlfeaturepcaFrame) -> MlfeaturepcaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_frame_copy(s : MlfeaturepcaFrame) -> MlfeaturepcaFrame {
-  let result = ml_feature_pca_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_frame_fill(s : MlfeaturepcaFrame, v : Double) -> MlfeaturepcaFrame {
-  let result = ml_feature_pca_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_frame_min(s : MlfeaturepcaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_feature_pca_table_sum(s : MlfeaturepcaTable) -> Double { @_common.sum(
 pub fn ml_feature_pca_table_mean(s : MlfeaturepcaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_table_scale(s : MlfeaturepcaTable, f : Double) -> MlfeaturepcaTable {
-  let result = ml_feature_pca_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_table_add(a : MlfeaturepcaTable, b : MlfeaturepcaTable) -> MlfeaturepcaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_table_copy(s : MlfeaturepcaTable) -> MlfeaturepcaTable {
-  let result = ml_feature_pca_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_table_fill(s : MlfeaturepcaTable, v : Double) -> MlfeaturepcaTable {
-  let result = ml_feature_pca_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_table_min(s : MlfeaturepcaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_feature_pca_graphn_sum(s : MlfeaturepcaGraphN) -> Double { @_common.su
 pub fn ml_feature_pca_graphn_mean(s : MlfeaturepcaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_graphn_scale(s : MlfeaturepcaGraphN, f : Double) -> MlfeaturepcaGraphN {
-  let result = ml_feature_pca_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_graphn_add(a : MlfeaturepcaGraphN, b : MlfeaturepcaGraphN) -> MlfeaturepcaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_graphn_copy(s : MlfeaturepcaGraphN) -> MlfeaturepcaGraphN {
-  let result = ml_feature_pca_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_graphn_fill(s : MlfeaturepcaGraphN, v : Double) -> MlfeaturepcaGraphN {
-  let result = ml_feature_pca_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_graphn_min(s : MlfeaturepcaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_feature_pca_node_sum(s : MlfeaturepcaNode) -> Double { @_common.sum(s.
 pub fn ml_feature_pca_node_mean(s : MlfeaturepcaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_node_scale(s : MlfeaturepcaNode, f : Double) -> MlfeaturepcaNode {
-  let result = ml_feature_pca_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_node_add(a : MlfeaturepcaNode, b : MlfeaturepcaNode) -> MlfeaturepcaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_node_copy(s : MlfeaturepcaNode) -> MlfeaturepcaNode {
-  let result = ml_feature_pca_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_node_fill(s : MlfeaturepcaNode, v : Double) -> MlfeaturepcaNode {
-  let result = ml_feature_pca_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_node_min(s : MlfeaturepcaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_feature_pca_edge_sum(s : MlfeaturepcaEdge) -> Double { @_common.sum(s.
 pub fn ml_feature_pca_edge_mean(s : MlfeaturepcaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_edge_scale(s : MlfeaturepcaEdge, f : Double) -> MlfeaturepcaEdge {
-  let result = ml_feature_pca_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_edge_add(a : MlfeaturepcaEdge, b : MlfeaturepcaEdge) -> MlfeaturepcaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_edge_copy(s : MlfeaturepcaEdge) -> MlfeaturepcaEdge {
-  let result = ml_feature_pca_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_edge_fill(s : MlfeaturepcaEdge, v : Double) -> MlfeaturepcaEdge {
-  let result = ml_feature_pca_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_edge_min(s : MlfeaturepcaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_feature_pca_path_sum(s : MlfeaturepcaPath) -> Double { @_common.sum(s.
 pub fn ml_feature_pca_path_mean(s : MlfeaturepcaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_path_scale(s : MlfeaturepcaPath, f : Double) -> MlfeaturepcaPath {
-  let result = ml_feature_pca_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_path_add(a : MlfeaturepcaPath, b : MlfeaturepcaPath) -> MlfeaturepcaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_path_copy(s : MlfeaturepcaPath) -> MlfeaturepcaPath {
-  let result = ml_feature_pca_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_path_fill(s : MlfeaturepcaPath, v : Double) -> MlfeaturepcaPath {
-  let result = ml_feature_pca_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_path_min(s : MlfeaturepcaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_feature_pca_cluster_sum(s : MlfeaturepcaCluster) -> Double { @_common.
 pub fn ml_feature_pca_cluster_mean(s : MlfeaturepcaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_cluster_scale(s : MlfeaturepcaCluster, f : Double) -> MlfeaturepcaCluster {
-  let result = ml_feature_pca_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_cluster_add(a : MlfeaturepcaCluster, b : MlfeaturepcaCluster) -> MlfeaturepcaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_cluster_copy(s : MlfeaturepcaCluster) -> MlfeaturepcaCluster {
-  let result = ml_feature_pca_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_cluster_fill(s : MlfeaturepcaCluster, v : Double) -> MlfeaturepcaCluster {
-  let result = ml_feature_pca_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_cluster_min(s : MlfeaturepcaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_feature_pca_model_sum(s : MlfeaturepcaModel) -> Double { @_common.sum(
 pub fn ml_feature_pca_model_mean(s : MlfeaturepcaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_model_scale(s : MlfeaturepcaModel, f : Double) -> MlfeaturepcaModel {
-  let result = ml_feature_pca_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_model_add(a : MlfeaturepcaModel, b : MlfeaturepcaModel) -> MlfeaturepcaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_model_copy(s : MlfeaturepcaModel) -> MlfeaturepcaModel {
-  let result = ml_feature_pca_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_model_fill(s : MlfeaturepcaModel, v : Double) -> MlfeaturepcaModel {
-  let result = ml_feature_pca_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_model_min(s : MlfeaturepcaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_feature_pca_layer_sum(s : MlfeaturepcaLayer) -> Double { @_common.sum(
 pub fn ml_feature_pca_layer_mean(s : MlfeaturepcaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_layer_scale(s : MlfeaturepcaLayer, f : Double) -> MlfeaturepcaLayer {
-  let result = ml_feature_pca_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_layer_add(a : MlfeaturepcaLayer, b : MlfeaturepcaLayer) -> MlfeaturepcaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_layer_copy(s : MlfeaturepcaLayer) -> MlfeaturepcaLayer {
-  let result = ml_feature_pca_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_layer_fill(s : MlfeaturepcaLayer, v : Double) -> MlfeaturepcaLayer {
-  let result = ml_feature_pca_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_layer_min(s : MlfeaturepcaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_feature_pca_buffer_sum(s : MlfeaturepcaBuffer) -> Double { @_common.su
 pub fn ml_feature_pca_buffer_mean(s : MlfeaturepcaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_buffer_scale(s : MlfeaturepcaBuffer, f : Double) -> MlfeaturepcaBuffer {
-  let result = ml_feature_pca_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_buffer_add(a : MlfeaturepcaBuffer, b : MlfeaturepcaBuffer) -> MlfeaturepcaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_buffer_copy(s : MlfeaturepcaBuffer) -> MlfeaturepcaBuffer {
-  let result = ml_feature_pca_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_buffer_fill(s : MlfeaturepcaBuffer, v : Double) -> MlfeaturepcaBuffer {
-  let result = ml_feature_pca_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_buffer_min(s : MlfeaturepcaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_feature_pca_cursor_sum(s : MlfeaturepcaCursor) -> Double { @_common.su
 pub fn ml_feature_pca_cursor_mean(s : MlfeaturepcaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_cursor_scale(s : MlfeaturepcaCursor, f : Double) -> MlfeaturepcaCursor {
-  let result = ml_feature_pca_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_cursor_add(a : MlfeaturepcaCursor, b : MlfeaturepcaCursor) -> MlfeaturepcaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_cursor_copy(s : MlfeaturepcaCursor) -> MlfeaturepcaCursor {
-  let result = ml_feature_pca_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_cursor_fill(s : MlfeaturepcaCursor, v : Double) -> MlfeaturepcaCursor {
-  let result = ml_feature_pca_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_cursor_min(s : MlfeaturepcaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_feature_pca_view_sum(s : MlfeaturepcaView) -> Double { @_common.sum(s.
 pub fn ml_feature_pca_view_mean(s : MlfeaturepcaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_view_scale(s : MlfeaturepcaView, f : Double) -> MlfeaturepcaView {
-  let result = ml_feature_pca_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_view_add(a : MlfeaturepcaView, b : MlfeaturepcaView) -> MlfeaturepcaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_view_copy(s : MlfeaturepcaView) -> MlfeaturepcaView {
-  let result = ml_feature_pca_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_view_fill(s : MlfeaturepcaView, v : Double) -> MlfeaturepcaView {
-  let result = ml_feature_pca_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_view_min(s : MlfeaturepcaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_feature_pca_range_sum(s : MlfeaturepcaRange) -> Double { @_common.sum(
 pub fn ml_feature_pca_range_mean(s : MlfeaturepcaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_range_scale(s : MlfeaturepcaRange, f : Double) -> MlfeaturepcaRange {
-  let result = ml_feature_pca_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_range_add(a : MlfeaturepcaRange, b : MlfeaturepcaRange) -> MlfeaturepcaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_range_copy(s : MlfeaturepcaRange) -> MlfeaturepcaRange {
-  let result = ml_feature_pca_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_range_fill(s : MlfeaturepcaRange, v : Double) -> MlfeaturepcaRange {
-  let result = ml_feature_pca_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_range_min(s : MlfeaturepcaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_feature_pca_slice_sum(s : MlfeaturepcaSlice) -> Double { @_common.sum(
 pub fn ml_feature_pca_slice_mean(s : MlfeaturepcaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_slice_scale(s : MlfeaturepcaSlice, f : Double) -> MlfeaturepcaSlice {
-  let result = ml_feature_pca_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_slice_add(a : MlfeaturepcaSlice, b : MlfeaturepcaSlice) -> MlfeaturepcaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_feature_pca_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_feature_pca_slice_copy(s : MlfeaturepcaSlice) -> MlfeaturepcaSlice {
-  let result = ml_feature_pca_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_slice_fill(s : MlfeaturepcaSlice, v : Double) -> MlfeaturepcaSlice {
-  let result = ml_feature_pca_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pca_slice_min(s : MlfeaturepcaSlice) -> Double { @_common.min(s.data) }

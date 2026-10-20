@@ -383,28 +383,20 @@ pub fn signal_window_blackman_frame_sum(s : SignalwindowblackmanFrame) -> Double
 pub fn signal_window_blackman_frame_mean(s : SignalwindowblackmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_frame_scale(s : SignalwindowblackmanFrame, f : Double) -> SignalwindowblackmanFrame {
-  let result = signal_window_blackman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_frame_add(a : SignalwindowblackmanFrame, b : SignalwindowblackmanFrame) -> SignalwindowblackmanFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_frame_copy(s : SignalwindowblackmanFrame) -> SignalwindowblackmanFrame {
-  let result = signal_window_blackman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_frame_fill(s : SignalwindowblackmanFrame, v : Double) -> SignalwindowblackmanFrame {
-  let result = signal_window_blackman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_frame_min(s : SignalwindowblackmanFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_window_blackman_table_sum(s : SignalwindowblackmanTable) -> Double
 pub fn signal_window_blackman_table_mean(s : SignalwindowblackmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_table_scale(s : SignalwindowblackmanTable, f : Double) -> SignalwindowblackmanTable {
-  let result = signal_window_blackman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_table_add(a : SignalwindowblackmanTable, b : SignalwindowblackmanTable) -> SignalwindowblackmanTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_table_copy(s : SignalwindowblackmanTable) -> SignalwindowblackmanTable {
-  let result = signal_window_blackman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_table_fill(s : SignalwindowblackmanTable, v : Double) -> SignalwindowblackmanTable {
-  let result = signal_window_blackman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_table_min(s : SignalwindowblackmanTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_window_blackman_graphn_sum(s : SignalwindowblackmanGraphN) -> Doub
 pub fn signal_window_blackman_graphn_mean(s : SignalwindowblackmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_graphn_scale(s : SignalwindowblackmanGraphN, f : Double) -> SignalwindowblackmanGraphN {
-  let result = signal_window_blackman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_graphn_add(a : SignalwindowblackmanGraphN, b : SignalwindowblackmanGraphN) -> SignalwindowblackmanGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_graphn_copy(s : SignalwindowblackmanGraphN) -> SignalwindowblackmanGraphN {
-  let result = signal_window_blackman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_graphn_fill(s : SignalwindowblackmanGraphN, v : Double) -> SignalwindowblackmanGraphN {
-  let result = signal_window_blackman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_graphn_min(s : SignalwindowblackmanGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_window_blackman_node_sum(s : SignalwindowblackmanNode) -> Double {
 pub fn signal_window_blackman_node_mean(s : SignalwindowblackmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_node_scale(s : SignalwindowblackmanNode, f : Double) -> SignalwindowblackmanNode {
-  let result = signal_window_blackman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_node_add(a : SignalwindowblackmanNode, b : SignalwindowblackmanNode) -> SignalwindowblackmanNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_node_copy(s : SignalwindowblackmanNode) -> SignalwindowblackmanNode {
-  let result = signal_window_blackman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_node_fill(s : SignalwindowblackmanNode, v : Double) -> SignalwindowblackmanNode {
-  let result = signal_window_blackman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_node_min(s : SignalwindowblackmanNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_window_blackman_edge_sum(s : SignalwindowblackmanEdge) -> Double {
 pub fn signal_window_blackman_edge_mean(s : SignalwindowblackmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_edge_scale(s : SignalwindowblackmanEdge, f : Double) -> SignalwindowblackmanEdge {
-  let result = signal_window_blackman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_edge_add(a : SignalwindowblackmanEdge, b : SignalwindowblackmanEdge) -> SignalwindowblackmanEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_edge_copy(s : SignalwindowblackmanEdge) -> SignalwindowblackmanEdge {
-  let result = signal_window_blackman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_edge_fill(s : SignalwindowblackmanEdge, v : Double) -> SignalwindowblackmanEdge {
-  let result = signal_window_blackman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_edge_min(s : SignalwindowblackmanEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_window_blackman_path_sum(s : SignalwindowblackmanPath) -> Double {
 pub fn signal_window_blackman_path_mean(s : SignalwindowblackmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_path_scale(s : SignalwindowblackmanPath, f : Double) -> SignalwindowblackmanPath {
-  let result = signal_window_blackman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_path_add(a : SignalwindowblackmanPath, b : SignalwindowblackmanPath) -> SignalwindowblackmanPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_path_copy(s : SignalwindowblackmanPath) -> SignalwindowblackmanPath {
-  let result = signal_window_blackman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_path_fill(s : SignalwindowblackmanPath, v : Double) -> SignalwindowblackmanPath {
-  let result = signal_window_blackman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_path_min(s : SignalwindowblackmanPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_window_blackman_cluster_sum(s : SignalwindowblackmanCluster) -> Do
 pub fn signal_window_blackman_cluster_mean(s : SignalwindowblackmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_cluster_scale(s : SignalwindowblackmanCluster, f : Double) -> SignalwindowblackmanCluster {
-  let result = signal_window_blackman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cluster_add(a : SignalwindowblackmanCluster, b : SignalwindowblackmanCluster) -> SignalwindowblackmanCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_cluster_copy(s : SignalwindowblackmanCluster) -> SignalwindowblackmanCluster {
-  let result = signal_window_blackman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cluster_fill(s : SignalwindowblackmanCluster, v : Double) -> SignalwindowblackmanCluster {
-  let result = signal_window_blackman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cluster_min(s : SignalwindowblackmanCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_window_blackman_model_sum(s : SignalwindowblackmanModel) -> Double
 pub fn signal_window_blackman_model_mean(s : SignalwindowblackmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_model_scale(s : SignalwindowblackmanModel, f : Double) -> SignalwindowblackmanModel {
-  let result = signal_window_blackman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_model_add(a : SignalwindowblackmanModel, b : SignalwindowblackmanModel) -> SignalwindowblackmanModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_model_copy(s : SignalwindowblackmanModel) -> SignalwindowblackmanModel {
-  let result = signal_window_blackman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_model_fill(s : SignalwindowblackmanModel, v : Double) -> SignalwindowblackmanModel {
-  let result = signal_window_blackman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_model_min(s : SignalwindowblackmanModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_window_blackman_layer_sum(s : SignalwindowblackmanLayer) -> Double
 pub fn signal_window_blackman_layer_mean(s : SignalwindowblackmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_layer_scale(s : SignalwindowblackmanLayer, f : Double) -> SignalwindowblackmanLayer {
-  let result = signal_window_blackman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_layer_add(a : SignalwindowblackmanLayer, b : SignalwindowblackmanLayer) -> SignalwindowblackmanLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_layer_copy(s : SignalwindowblackmanLayer) -> SignalwindowblackmanLayer {
-  let result = signal_window_blackman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_layer_fill(s : SignalwindowblackmanLayer, v : Double) -> SignalwindowblackmanLayer {
-  let result = signal_window_blackman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_layer_min(s : SignalwindowblackmanLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_window_blackman_buffer_sum(s : SignalwindowblackmanBuffer) -> Doub
 pub fn signal_window_blackman_buffer_mean(s : SignalwindowblackmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_buffer_scale(s : SignalwindowblackmanBuffer, f : Double) -> SignalwindowblackmanBuffer {
-  let result = signal_window_blackman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_buffer_add(a : SignalwindowblackmanBuffer, b : SignalwindowblackmanBuffer) -> SignalwindowblackmanBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_buffer_copy(s : SignalwindowblackmanBuffer) -> SignalwindowblackmanBuffer {
-  let result = signal_window_blackman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_buffer_fill(s : SignalwindowblackmanBuffer, v : Double) -> SignalwindowblackmanBuffer {
-  let result = signal_window_blackman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_buffer_min(s : SignalwindowblackmanBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_window_blackman_cursor_sum(s : SignalwindowblackmanCursor) -> Doub
 pub fn signal_window_blackman_cursor_mean(s : SignalwindowblackmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_cursor_scale(s : SignalwindowblackmanCursor, f : Double) -> SignalwindowblackmanCursor {
-  let result = signal_window_blackman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cursor_add(a : SignalwindowblackmanCursor, b : SignalwindowblackmanCursor) -> SignalwindowblackmanCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_cursor_copy(s : SignalwindowblackmanCursor) -> SignalwindowblackmanCursor {
-  let result = signal_window_blackman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cursor_fill(s : SignalwindowblackmanCursor, v : Double) -> SignalwindowblackmanCursor {
-  let result = signal_window_blackman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cursor_min(s : SignalwindowblackmanCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_window_blackman_view_sum(s : SignalwindowblackmanView) -> Double {
 pub fn signal_window_blackman_view_mean(s : SignalwindowblackmanView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_view_scale(s : SignalwindowblackmanView, f : Double) -> SignalwindowblackmanView {
-  let result = signal_window_blackman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_view_add(a : SignalwindowblackmanView, b : SignalwindowblackmanView) -> SignalwindowblackmanView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_view_copy(s : SignalwindowblackmanView) -> SignalwindowblackmanView {
-  let result = signal_window_blackman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_view_fill(s : SignalwindowblackmanView, v : Double) -> SignalwindowblackmanView {
-  let result = signal_window_blackman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_view_min(s : SignalwindowblackmanView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_window_blackman_range_sum(s : SignalwindowblackmanRange) -> Double
 pub fn signal_window_blackman_range_mean(s : SignalwindowblackmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_range_scale(s : SignalwindowblackmanRange, f : Double) -> SignalwindowblackmanRange {
-  let result = signal_window_blackman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_range_add(a : SignalwindowblackmanRange, b : SignalwindowblackmanRange) -> SignalwindowblackmanRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_range_copy(s : SignalwindowblackmanRange) -> SignalwindowblackmanRange {
-  let result = signal_window_blackman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_range_fill(s : SignalwindowblackmanRange, v : Double) -> SignalwindowblackmanRange {
-  let result = signal_window_blackman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_range_min(s : SignalwindowblackmanRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_window_blackman_slice_sum(s : SignalwindowblackmanSlice) -> Double
 pub fn signal_window_blackman_slice_mean(s : SignalwindowblackmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_slice_scale(s : SignalwindowblackmanSlice, f : Double) -> SignalwindowblackmanSlice {
-  let result = signal_window_blackman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_slice_add(a : SignalwindowblackmanSlice, b : SignalwindowblackmanSlice) -> SignalwindowblackmanSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_blackman_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_blackman_slice_copy(s : SignalwindowblackmanSlice) -> SignalwindowblackmanSlice {
-  let result = signal_window_blackman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_slice_fill(s : SignalwindowblackmanSlice, v : Double) -> SignalwindowblackmanSlice {
-  let result = signal_window_blackman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_slice_min(s : SignalwindowblackmanSlice) -> Double { @_common.min(s.data) }

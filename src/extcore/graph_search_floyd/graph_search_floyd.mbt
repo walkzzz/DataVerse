@@ -383,28 +383,20 @@ pub fn graph_search_floyd_frame_sum(s : GraphsearchfloydFrame) -> Double { @_com
 pub fn graph_search_floyd_frame_mean(s : GraphsearchfloydFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_frame_scale(s : GraphsearchfloydFrame, f : Double) -> GraphsearchfloydFrame {
-  let result = graph_search_floyd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_frame_add(a : GraphsearchfloydFrame, b : GraphsearchfloydFrame) -> GraphsearchfloydFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_frame_copy(s : GraphsearchfloydFrame) -> GraphsearchfloydFrame {
-  let result = graph_search_floyd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_frame_fill(s : GraphsearchfloydFrame, v : Double) -> GraphsearchfloydFrame {
-  let result = graph_search_floyd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_frame_min(s : GraphsearchfloydFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_search_floyd_table_sum(s : GraphsearchfloydTable) -> Double { @_com
 pub fn graph_search_floyd_table_mean(s : GraphsearchfloydTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_table_scale(s : GraphsearchfloydTable, f : Double) -> GraphsearchfloydTable {
-  let result = graph_search_floyd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_table_add(a : GraphsearchfloydTable, b : GraphsearchfloydTable) -> GraphsearchfloydTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_table_copy(s : GraphsearchfloydTable) -> GraphsearchfloydTable {
-  let result = graph_search_floyd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_table_fill(s : GraphsearchfloydTable, v : Double) -> GraphsearchfloydTable {
-  let result = graph_search_floyd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_table_min(s : GraphsearchfloydTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_search_floyd_graphn_sum(s : GraphsearchfloydGraphN) -> Double { @_c
 pub fn graph_search_floyd_graphn_mean(s : GraphsearchfloydGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_graphn_scale(s : GraphsearchfloydGraphN, f : Double) -> GraphsearchfloydGraphN {
-  let result = graph_search_floyd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_graphn_add(a : GraphsearchfloydGraphN, b : GraphsearchfloydGraphN) -> GraphsearchfloydGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_graphn_copy(s : GraphsearchfloydGraphN) -> GraphsearchfloydGraphN {
-  let result = graph_search_floyd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_graphn_fill(s : GraphsearchfloydGraphN, v : Double) -> GraphsearchfloydGraphN {
-  let result = graph_search_floyd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_graphn_min(s : GraphsearchfloydGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_search_floyd_node_sum(s : GraphsearchfloydNode) -> Double { @_commo
 pub fn graph_search_floyd_node_mean(s : GraphsearchfloydNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_node_scale(s : GraphsearchfloydNode, f : Double) -> GraphsearchfloydNode {
-  let result = graph_search_floyd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_node_add(a : GraphsearchfloydNode, b : GraphsearchfloydNode) -> GraphsearchfloydNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_node_copy(s : GraphsearchfloydNode) -> GraphsearchfloydNode {
-  let result = graph_search_floyd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_node_fill(s : GraphsearchfloydNode, v : Double) -> GraphsearchfloydNode {
-  let result = graph_search_floyd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_node_min(s : GraphsearchfloydNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_search_floyd_edge_sum(s : GraphsearchfloydEdge) -> Double { @_commo
 pub fn graph_search_floyd_edge_mean(s : GraphsearchfloydEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_edge_scale(s : GraphsearchfloydEdge, f : Double) -> GraphsearchfloydEdge {
-  let result = graph_search_floyd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_edge_add(a : GraphsearchfloydEdge, b : GraphsearchfloydEdge) -> GraphsearchfloydEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_edge_copy(s : GraphsearchfloydEdge) -> GraphsearchfloydEdge {
-  let result = graph_search_floyd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_edge_fill(s : GraphsearchfloydEdge, v : Double) -> GraphsearchfloydEdge {
-  let result = graph_search_floyd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_edge_min(s : GraphsearchfloydEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_search_floyd_path_sum(s : GraphsearchfloydPath) -> Double { @_commo
 pub fn graph_search_floyd_path_mean(s : GraphsearchfloydPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_path_scale(s : GraphsearchfloydPath, f : Double) -> GraphsearchfloydPath {
-  let result = graph_search_floyd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_path_add(a : GraphsearchfloydPath, b : GraphsearchfloydPath) -> GraphsearchfloydPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_path_copy(s : GraphsearchfloydPath) -> GraphsearchfloydPath {
-  let result = graph_search_floyd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_path_fill(s : GraphsearchfloydPath, v : Double) -> GraphsearchfloydPath {
-  let result = graph_search_floyd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_path_min(s : GraphsearchfloydPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_search_floyd_cluster_sum(s : GraphsearchfloydCluster) -> Double { @
 pub fn graph_search_floyd_cluster_mean(s : GraphsearchfloydCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_cluster_scale(s : GraphsearchfloydCluster, f : Double) -> GraphsearchfloydCluster {
-  let result = graph_search_floyd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_cluster_add(a : GraphsearchfloydCluster, b : GraphsearchfloydCluster) -> GraphsearchfloydCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_cluster_copy(s : GraphsearchfloydCluster) -> GraphsearchfloydCluster {
-  let result = graph_search_floyd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_cluster_fill(s : GraphsearchfloydCluster, v : Double) -> GraphsearchfloydCluster {
-  let result = graph_search_floyd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_cluster_min(s : GraphsearchfloydCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_search_floyd_model_sum(s : GraphsearchfloydModel) -> Double { @_com
 pub fn graph_search_floyd_model_mean(s : GraphsearchfloydModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_model_scale(s : GraphsearchfloydModel, f : Double) -> GraphsearchfloydModel {
-  let result = graph_search_floyd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_model_add(a : GraphsearchfloydModel, b : GraphsearchfloydModel) -> GraphsearchfloydModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_model_copy(s : GraphsearchfloydModel) -> GraphsearchfloydModel {
-  let result = graph_search_floyd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_model_fill(s : GraphsearchfloydModel, v : Double) -> GraphsearchfloydModel {
-  let result = graph_search_floyd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_model_min(s : GraphsearchfloydModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_search_floyd_layer_sum(s : GraphsearchfloydLayer) -> Double { @_com
 pub fn graph_search_floyd_layer_mean(s : GraphsearchfloydLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_layer_scale(s : GraphsearchfloydLayer, f : Double) -> GraphsearchfloydLayer {
-  let result = graph_search_floyd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_layer_add(a : GraphsearchfloydLayer, b : GraphsearchfloydLayer) -> GraphsearchfloydLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_layer_copy(s : GraphsearchfloydLayer) -> GraphsearchfloydLayer {
-  let result = graph_search_floyd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_layer_fill(s : GraphsearchfloydLayer, v : Double) -> GraphsearchfloydLayer {
-  let result = graph_search_floyd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_layer_min(s : GraphsearchfloydLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_search_floyd_buffer_sum(s : GraphsearchfloydBuffer) -> Double { @_c
 pub fn graph_search_floyd_buffer_mean(s : GraphsearchfloydBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_buffer_scale(s : GraphsearchfloydBuffer, f : Double) -> GraphsearchfloydBuffer {
-  let result = graph_search_floyd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_buffer_add(a : GraphsearchfloydBuffer, b : GraphsearchfloydBuffer) -> GraphsearchfloydBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_buffer_copy(s : GraphsearchfloydBuffer) -> GraphsearchfloydBuffer {
-  let result = graph_search_floyd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_buffer_fill(s : GraphsearchfloydBuffer, v : Double) -> GraphsearchfloydBuffer {
-  let result = graph_search_floyd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_buffer_min(s : GraphsearchfloydBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_search_floyd_cursor_sum(s : GraphsearchfloydCursor) -> Double { @_c
 pub fn graph_search_floyd_cursor_mean(s : GraphsearchfloydCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_cursor_scale(s : GraphsearchfloydCursor, f : Double) -> GraphsearchfloydCursor {
-  let result = graph_search_floyd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_cursor_add(a : GraphsearchfloydCursor, b : GraphsearchfloydCursor) -> GraphsearchfloydCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_cursor_copy(s : GraphsearchfloydCursor) -> GraphsearchfloydCursor {
-  let result = graph_search_floyd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_cursor_fill(s : GraphsearchfloydCursor, v : Double) -> GraphsearchfloydCursor {
-  let result = graph_search_floyd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_cursor_min(s : GraphsearchfloydCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_search_floyd_view_sum(s : GraphsearchfloydView) -> Double { @_commo
 pub fn graph_search_floyd_view_mean(s : GraphsearchfloydView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_view_scale(s : GraphsearchfloydView, f : Double) -> GraphsearchfloydView {
-  let result = graph_search_floyd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_view_add(a : GraphsearchfloydView, b : GraphsearchfloydView) -> GraphsearchfloydView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_view_copy(s : GraphsearchfloydView) -> GraphsearchfloydView {
-  let result = graph_search_floyd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_view_fill(s : GraphsearchfloydView, v : Double) -> GraphsearchfloydView {
-  let result = graph_search_floyd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_view_min(s : GraphsearchfloydView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_search_floyd_range_sum(s : GraphsearchfloydRange) -> Double { @_com
 pub fn graph_search_floyd_range_mean(s : GraphsearchfloydRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_range_scale(s : GraphsearchfloydRange, f : Double) -> GraphsearchfloydRange {
-  let result = graph_search_floyd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_range_add(a : GraphsearchfloydRange, b : GraphsearchfloydRange) -> GraphsearchfloydRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_range_copy(s : GraphsearchfloydRange) -> GraphsearchfloydRange {
-  let result = graph_search_floyd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_range_fill(s : GraphsearchfloydRange, v : Double) -> GraphsearchfloydRange {
-  let result = graph_search_floyd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_range_min(s : GraphsearchfloydRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_search_floyd_slice_sum(s : GraphsearchfloydSlice) -> Double { @_com
 pub fn graph_search_floyd_slice_mean(s : GraphsearchfloydSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_slice_scale(s : GraphsearchfloydSlice, f : Double) -> GraphsearchfloydSlice {
-  let result = graph_search_floyd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_slice_add(a : GraphsearchfloydSlice, b : GraphsearchfloydSlice) -> GraphsearchfloydSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_floyd_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_floyd_slice_copy(s : GraphsearchfloydSlice) -> GraphsearchfloydSlice {
-  let result = graph_search_floyd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_slice_fill(s : GraphsearchfloydSlice, v : Double) -> GraphsearchfloydSlice {
-  let result = graph_search_floyd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_floyd_slice_min(s : GraphsearchfloydSlice) -> Double { @_common.min(s.data) }

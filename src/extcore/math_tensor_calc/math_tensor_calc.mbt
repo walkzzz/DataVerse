@@ -383,28 +383,20 @@ pub fn math_tensor_calc_frame_sum(s : MathtensorcalcFrame) -> Double { @_common.
 pub fn math_tensor_calc_frame_mean(s : MathtensorcalcFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_frame_scale(s : MathtensorcalcFrame, f : Double) -> MathtensorcalcFrame {
-  let result = math_tensor_calc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_frame_add(a : MathtensorcalcFrame, b : MathtensorcalcFrame) -> MathtensorcalcFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_frame_copy(s : MathtensorcalcFrame) -> MathtensorcalcFrame {
-  let result = math_tensor_calc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_frame_fill(s : MathtensorcalcFrame, v : Double) -> MathtensorcalcFrame {
-  let result = math_tensor_calc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_frame_min(s : MathtensorcalcFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_tensor_calc_table_sum(s : MathtensorcalcTable) -> Double { @_common.
 pub fn math_tensor_calc_table_mean(s : MathtensorcalcTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_table_scale(s : MathtensorcalcTable, f : Double) -> MathtensorcalcTable {
-  let result = math_tensor_calc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_table_add(a : MathtensorcalcTable, b : MathtensorcalcTable) -> MathtensorcalcTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_table_copy(s : MathtensorcalcTable) -> MathtensorcalcTable {
-  let result = math_tensor_calc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_table_fill(s : MathtensorcalcTable, v : Double) -> MathtensorcalcTable {
-  let result = math_tensor_calc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_table_min(s : MathtensorcalcTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_tensor_calc_graphn_sum(s : MathtensorcalcGraphN) -> Double { @_commo
 pub fn math_tensor_calc_graphn_mean(s : MathtensorcalcGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_graphn_scale(s : MathtensorcalcGraphN, f : Double) -> MathtensorcalcGraphN {
-  let result = math_tensor_calc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_graphn_add(a : MathtensorcalcGraphN, b : MathtensorcalcGraphN) -> MathtensorcalcGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_graphn_copy(s : MathtensorcalcGraphN) -> MathtensorcalcGraphN {
-  let result = math_tensor_calc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_graphn_fill(s : MathtensorcalcGraphN, v : Double) -> MathtensorcalcGraphN {
-  let result = math_tensor_calc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_graphn_min(s : MathtensorcalcGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_tensor_calc_node_sum(s : MathtensorcalcNode) -> Double { @_common.su
 pub fn math_tensor_calc_node_mean(s : MathtensorcalcNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_node_scale(s : MathtensorcalcNode, f : Double) -> MathtensorcalcNode {
-  let result = math_tensor_calc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_node_add(a : MathtensorcalcNode, b : MathtensorcalcNode) -> MathtensorcalcNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_node_copy(s : MathtensorcalcNode) -> MathtensorcalcNode {
-  let result = math_tensor_calc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_node_fill(s : MathtensorcalcNode, v : Double) -> MathtensorcalcNode {
-  let result = math_tensor_calc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_node_min(s : MathtensorcalcNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_tensor_calc_edge_sum(s : MathtensorcalcEdge) -> Double { @_common.su
 pub fn math_tensor_calc_edge_mean(s : MathtensorcalcEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_edge_scale(s : MathtensorcalcEdge, f : Double) -> MathtensorcalcEdge {
-  let result = math_tensor_calc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_edge_add(a : MathtensorcalcEdge, b : MathtensorcalcEdge) -> MathtensorcalcEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_edge_copy(s : MathtensorcalcEdge) -> MathtensorcalcEdge {
-  let result = math_tensor_calc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_edge_fill(s : MathtensorcalcEdge, v : Double) -> MathtensorcalcEdge {
-  let result = math_tensor_calc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_edge_min(s : MathtensorcalcEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_tensor_calc_path_sum(s : MathtensorcalcPath) -> Double { @_common.su
 pub fn math_tensor_calc_path_mean(s : MathtensorcalcPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_path_scale(s : MathtensorcalcPath, f : Double) -> MathtensorcalcPath {
-  let result = math_tensor_calc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_path_add(a : MathtensorcalcPath, b : MathtensorcalcPath) -> MathtensorcalcPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_path_copy(s : MathtensorcalcPath) -> MathtensorcalcPath {
-  let result = math_tensor_calc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_path_fill(s : MathtensorcalcPath, v : Double) -> MathtensorcalcPath {
-  let result = math_tensor_calc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_path_min(s : MathtensorcalcPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_tensor_calc_cluster_sum(s : MathtensorcalcCluster) -> Double { @_com
 pub fn math_tensor_calc_cluster_mean(s : MathtensorcalcCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_cluster_scale(s : MathtensorcalcCluster, f : Double) -> MathtensorcalcCluster {
-  let result = math_tensor_calc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cluster_add(a : MathtensorcalcCluster, b : MathtensorcalcCluster) -> MathtensorcalcCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_cluster_copy(s : MathtensorcalcCluster) -> MathtensorcalcCluster {
-  let result = math_tensor_calc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cluster_fill(s : MathtensorcalcCluster, v : Double) -> MathtensorcalcCluster {
-  let result = math_tensor_calc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cluster_min(s : MathtensorcalcCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_tensor_calc_model_sum(s : MathtensorcalcModel) -> Double { @_common.
 pub fn math_tensor_calc_model_mean(s : MathtensorcalcModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_model_scale(s : MathtensorcalcModel, f : Double) -> MathtensorcalcModel {
-  let result = math_tensor_calc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_model_add(a : MathtensorcalcModel, b : MathtensorcalcModel) -> MathtensorcalcModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_model_copy(s : MathtensorcalcModel) -> MathtensorcalcModel {
-  let result = math_tensor_calc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_model_fill(s : MathtensorcalcModel, v : Double) -> MathtensorcalcModel {
-  let result = math_tensor_calc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_model_min(s : MathtensorcalcModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_tensor_calc_layer_sum(s : MathtensorcalcLayer) -> Double { @_common.
 pub fn math_tensor_calc_layer_mean(s : MathtensorcalcLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_layer_scale(s : MathtensorcalcLayer, f : Double) -> MathtensorcalcLayer {
-  let result = math_tensor_calc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_layer_add(a : MathtensorcalcLayer, b : MathtensorcalcLayer) -> MathtensorcalcLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_layer_copy(s : MathtensorcalcLayer) -> MathtensorcalcLayer {
-  let result = math_tensor_calc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_layer_fill(s : MathtensorcalcLayer, v : Double) -> MathtensorcalcLayer {
-  let result = math_tensor_calc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_layer_min(s : MathtensorcalcLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_tensor_calc_buffer_sum(s : MathtensorcalcBuffer) -> Double { @_commo
 pub fn math_tensor_calc_buffer_mean(s : MathtensorcalcBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_buffer_scale(s : MathtensorcalcBuffer, f : Double) -> MathtensorcalcBuffer {
-  let result = math_tensor_calc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_buffer_add(a : MathtensorcalcBuffer, b : MathtensorcalcBuffer) -> MathtensorcalcBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_buffer_copy(s : MathtensorcalcBuffer) -> MathtensorcalcBuffer {
-  let result = math_tensor_calc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_buffer_fill(s : MathtensorcalcBuffer, v : Double) -> MathtensorcalcBuffer {
-  let result = math_tensor_calc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_buffer_min(s : MathtensorcalcBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_tensor_calc_cursor_sum(s : MathtensorcalcCursor) -> Double { @_commo
 pub fn math_tensor_calc_cursor_mean(s : MathtensorcalcCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_cursor_scale(s : MathtensorcalcCursor, f : Double) -> MathtensorcalcCursor {
-  let result = math_tensor_calc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cursor_add(a : MathtensorcalcCursor, b : MathtensorcalcCursor) -> MathtensorcalcCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_cursor_copy(s : MathtensorcalcCursor) -> MathtensorcalcCursor {
-  let result = math_tensor_calc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cursor_fill(s : MathtensorcalcCursor, v : Double) -> MathtensorcalcCursor {
-  let result = math_tensor_calc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cursor_min(s : MathtensorcalcCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_tensor_calc_view_sum(s : MathtensorcalcView) -> Double { @_common.su
 pub fn math_tensor_calc_view_mean(s : MathtensorcalcView) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_view_scale(s : MathtensorcalcView, f : Double) -> MathtensorcalcView {
-  let result = math_tensor_calc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_view_add(a : MathtensorcalcView, b : MathtensorcalcView) -> MathtensorcalcView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_view_copy(s : MathtensorcalcView) -> MathtensorcalcView {
-  let result = math_tensor_calc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_view_fill(s : MathtensorcalcView, v : Double) -> MathtensorcalcView {
-  let result = math_tensor_calc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_view_min(s : MathtensorcalcView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_tensor_calc_range_sum(s : MathtensorcalcRange) -> Double { @_common.
 pub fn math_tensor_calc_range_mean(s : MathtensorcalcRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_range_scale(s : MathtensorcalcRange, f : Double) -> MathtensorcalcRange {
-  let result = math_tensor_calc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_range_add(a : MathtensorcalcRange, b : MathtensorcalcRange) -> MathtensorcalcRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_range_copy(s : MathtensorcalcRange) -> MathtensorcalcRange {
-  let result = math_tensor_calc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_range_fill(s : MathtensorcalcRange, v : Double) -> MathtensorcalcRange {
-  let result = math_tensor_calc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_range_min(s : MathtensorcalcRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_tensor_calc_slice_sum(s : MathtensorcalcSlice) -> Double { @_common.
 pub fn math_tensor_calc_slice_mean(s : MathtensorcalcSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_tensor_calc_slice_scale(s : MathtensorcalcSlice, f : Double) -> MathtensorcalcSlice {
-  let result = math_tensor_calc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_slice_add(a : MathtensorcalcSlice, b : MathtensorcalcSlice) -> MathtensorcalcSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_tensor_calc_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_tensor_calc_slice_copy(s : MathtensorcalcSlice) -> MathtensorcalcSlice {
-  let result = math_tensor_calc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_slice_fill(s : MathtensorcalcSlice, v : Double) -> MathtensorcalcSlice {
-  let result = math_tensor_calc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_slice_min(s : MathtensorcalcSlice) -> Double { @_common.min(s.data) }

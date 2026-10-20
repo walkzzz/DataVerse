@@ -383,28 +383,20 @@ pub fn nlp_tokenize_syllable_frame_sum(s : NlptokenizesyllableFrame) -> Double {
 pub fn nlp_tokenize_syllable_frame_mean(s : NlptokenizesyllableFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_frame_scale(s : NlptokenizesyllableFrame, f : Double) -> NlptokenizesyllableFrame {
-  let result = nlp_tokenize_syllable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_frame_add(a : NlptokenizesyllableFrame, b : NlptokenizesyllableFrame) -> NlptokenizesyllableFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_frame_copy(s : NlptokenizesyllableFrame) -> NlptokenizesyllableFrame {
-  let result = nlp_tokenize_syllable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_frame_fill(s : NlptokenizesyllableFrame, v : Double) -> NlptokenizesyllableFrame {
-  let result = nlp_tokenize_syllable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_frame_min(s : NlptokenizesyllableFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_tokenize_syllable_table_sum(s : NlptokenizesyllableTable) -> Double {
 pub fn nlp_tokenize_syllable_table_mean(s : NlptokenizesyllableTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_table_scale(s : NlptokenizesyllableTable, f : Double) -> NlptokenizesyllableTable {
-  let result = nlp_tokenize_syllable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_table_add(a : NlptokenizesyllableTable, b : NlptokenizesyllableTable) -> NlptokenizesyllableTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_table_copy(s : NlptokenizesyllableTable) -> NlptokenizesyllableTable {
-  let result = nlp_tokenize_syllable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_table_fill(s : NlptokenizesyllableTable, v : Double) -> NlptokenizesyllableTable {
-  let result = nlp_tokenize_syllable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_table_min(s : NlptokenizesyllableTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_tokenize_syllable_graphn_sum(s : NlptokenizesyllableGraphN) -> Double
 pub fn nlp_tokenize_syllable_graphn_mean(s : NlptokenizesyllableGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_graphn_scale(s : NlptokenizesyllableGraphN, f : Double) -> NlptokenizesyllableGraphN {
-  let result = nlp_tokenize_syllable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_graphn_add(a : NlptokenizesyllableGraphN, b : NlptokenizesyllableGraphN) -> NlptokenizesyllableGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_graphn_copy(s : NlptokenizesyllableGraphN) -> NlptokenizesyllableGraphN {
-  let result = nlp_tokenize_syllable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_graphn_fill(s : NlptokenizesyllableGraphN, v : Double) -> NlptokenizesyllableGraphN {
-  let result = nlp_tokenize_syllable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_graphn_min(s : NlptokenizesyllableGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_tokenize_syllable_node_sum(s : NlptokenizesyllableNode) -> Double { @
 pub fn nlp_tokenize_syllable_node_mean(s : NlptokenizesyllableNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_node_scale(s : NlptokenizesyllableNode, f : Double) -> NlptokenizesyllableNode {
-  let result = nlp_tokenize_syllable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_node_add(a : NlptokenizesyllableNode, b : NlptokenizesyllableNode) -> NlptokenizesyllableNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_node_copy(s : NlptokenizesyllableNode) -> NlptokenizesyllableNode {
-  let result = nlp_tokenize_syllable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_node_fill(s : NlptokenizesyllableNode, v : Double) -> NlptokenizesyllableNode {
-  let result = nlp_tokenize_syllable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_node_min(s : NlptokenizesyllableNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_tokenize_syllable_edge_sum(s : NlptokenizesyllableEdge) -> Double { @
 pub fn nlp_tokenize_syllable_edge_mean(s : NlptokenizesyllableEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_edge_scale(s : NlptokenizesyllableEdge, f : Double) -> NlptokenizesyllableEdge {
-  let result = nlp_tokenize_syllable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_edge_add(a : NlptokenizesyllableEdge, b : NlptokenizesyllableEdge) -> NlptokenizesyllableEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_edge_copy(s : NlptokenizesyllableEdge) -> NlptokenizesyllableEdge {
-  let result = nlp_tokenize_syllable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_edge_fill(s : NlptokenizesyllableEdge, v : Double) -> NlptokenizesyllableEdge {
-  let result = nlp_tokenize_syllable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_edge_min(s : NlptokenizesyllableEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_tokenize_syllable_path_sum(s : NlptokenizesyllablePath) -> Double { @
 pub fn nlp_tokenize_syllable_path_mean(s : NlptokenizesyllablePath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_path_scale(s : NlptokenizesyllablePath, f : Double) -> NlptokenizesyllablePath {
-  let result = nlp_tokenize_syllable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_path_add(a : NlptokenizesyllablePath, b : NlptokenizesyllablePath) -> NlptokenizesyllablePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_path_copy(s : NlptokenizesyllablePath) -> NlptokenizesyllablePath {
-  let result = nlp_tokenize_syllable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_path_fill(s : NlptokenizesyllablePath, v : Double) -> NlptokenizesyllablePath {
-  let result = nlp_tokenize_syllable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_path_min(s : NlptokenizesyllablePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_tokenize_syllable_cluster_sum(s : NlptokenizesyllableCluster) -> Doub
 pub fn nlp_tokenize_syllable_cluster_mean(s : NlptokenizesyllableCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_cluster_scale(s : NlptokenizesyllableCluster, f : Double) -> NlptokenizesyllableCluster {
-  let result = nlp_tokenize_syllable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cluster_add(a : NlptokenizesyllableCluster, b : NlptokenizesyllableCluster) -> NlptokenizesyllableCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_cluster_copy(s : NlptokenizesyllableCluster) -> NlptokenizesyllableCluster {
-  let result = nlp_tokenize_syllable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cluster_fill(s : NlptokenizesyllableCluster, v : Double) -> NlptokenizesyllableCluster {
-  let result = nlp_tokenize_syllable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cluster_min(s : NlptokenizesyllableCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_tokenize_syllable_model_sum(s : NlptokenizesyllableModel) -> Double {
 pub fn nlp_tokenize_syllable_model_mean(s : NlptokenizesyllableModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_model_scale(s : NlptokenizesyllableModel, f : Double) -> NlptokenizesyllableModel {
-  let result = nlp_tokenize_syllable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_model_add(a : NlptokenizesyllableModel, b : NlptokenizesyllableModel) -> NlptokenizesyllableModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_model_copy(s : NlptokenizesyllableModel) -> NlptokenizesyllableModel {
-  let result = nlp_tokenize_syllable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_model_fill(s : NlptokenizesyllableModel, v : Double) -> NlptokenizesyllableModel {
-  let result = nlp_tokenize_syllable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_model_min(s : NlptokenizesyllableModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_tokenize_syllable_layer_sum(s : NlptokenizesyllableLayer) -> Double {
 pub fn nlp_tokenize_syllable_layer_mean(s : NlptokenizesyllableLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_layer_scale(s : NlptokenizesyllableLayer, f : Double) -> NlptokenizesyllableLayer {
-  let result = nlp_tokenize_syllable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_layer_add(a : NlptokenizesyllableLayer, b : NlptokenizesyllableLayer) -> NlptokenizesyllableLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_layer_copy(s : NlptokenizesyllableLayer) -> NlptokenizesyllableLayer {
-  let result = nlp_tokenize_syllable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_layer_fill(s : NlptokenizesyllableLayer, v : Double) -> NlptokenizesyllableLayer {
-  let result = nlp_tokenize_syllable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_layer_min(s : NlptokenizesyllableLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_tokenize_syllable_buffer_sum(s : NlptokenizesyllableBuffer) -> Double
 pub fn nlp_tokenize_syllable_buffer_mean(s : NlptokenizesyllableBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_buffer_scale(s : NlptokenizesyllableBuffer, f : Double) -> NlptokenizesyllableBuffer {
-  let result = nlp_tokenize_syllable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_buffer_add(a : NlptokenizesyllableBuffer, b : NlptokenizesyllableBuffer) -> NlptokenizesyllableBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_buffer_copy(s : NlptokenizesyllableBuffer) -> NlptokenizesyllableBuffer {
-  let result = nlp_tokenize_syllable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_buffer_fill(s : NlptokenizesyllableBuffer, v : Double) -> NlptokenizesyllableBuffer {
-  let result = nlp_tokenize_syllable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_buffer_min(s : NlptokenizesyllableBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_tokenize_syllable_cursor_sum(s : NlptokenizesyllableCursor) -> Double
 pub fn nlp_tokenize_syllable_cursor_mean(s : NlptokenizesyllableCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_cursor_scale(s : NlptokenizesyllableCursor, f : Double) -> NlptokenizesyllableCursor {
-  let result = nlp_tokenize_syllable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cursor_add(a : NlptokenizesyllableCursor, b : NlptokenizesyllableCursor) -> NlptokenizesyllableCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_cursor_copy(s : NlptokenizesyllableCursor) -> NlptokenizesyllableCursor {
-  let result = nlp_tokenize_syllable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cursor_fill(s : NlptokenizesyllableCursor, v : Double) -> NlptokenizesyllableCursor {
-  let result = nlp_tokenize_syllable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cursor_min(s : NlptokenizesyllableCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_tokenize_syllable_view_sum(s : NlptokenizesyllableView) -> Double { @
 pub fn nlp_tokenize_syllable_view_mean(s : NlptokenizesyllableView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_view_scale(s : NlptokenizesyllableView, f : Double) -> NlptokenizesyllableView {
-  let result = nlp_tokenize_syllable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_view_add(a : NlptokenizesyllableView, b : NlptokenizesyllableView) -> NlptokenizesyllableView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_view_copy(s : NlptokenizesyllableView) -> NlptokenizesyllableView {
-  let result = nlp_tokenize_syllable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_view_fill(s : NlptokenizesyllableView, v : Double) -> NlptokenizesyllableView {
-  let result = nlp_tokenize_syllable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_view_min(s : NlptokenizesyllableView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_tokenize_syllable_range_sum(s : NlptokenizesyllableRange) -> Double {
 pub fn nlp_tokenize_syllable_range_mean(s : NlptokenizesyllableRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_range_scale(s : NlptokenizesyllableRange, f : Double) -> NlptokenizesyllableRange {
-  let result = nlp_tokenize_syllable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_range_add(a : NlptokenizesyllableRange, b : NlptokenizesyllableRange) -> NlptokenizesyllableRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_range_copy(s : NlptokenizesyllableRange) -> NlptokenizesyllableRange {
-  let result = nlp_tokenize_syllable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_range_fill(s : NlptokenizesyllableRange, v : Double) -> NlptokenizesyllableRange {
-  let result = nlp_tokenize_syllable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_range_min(s : NlptokenizesyllableRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_tokenize_syllable_slice_sum(s : NlptokenizesyllableSlice) -> Double {
 pub fn nlp_tokenize_syllable_slice_mean(s : NlptokenizesyllableSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_syllable_slice_scale(s : NlptokenizesyllableSlice, f : Double) -> NlptokenizesyllableSlice {
-  let result = nlp_tokenize_syllable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_slice_add(a : NlptokenizesyllableSlice, b : NlptokenizesyllableSlice) -> NlptokenizesyllableSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_syllable_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_syllable_slice_copy(s : NlptokenizesyllableSlice) -> NlptokenizesyllableSlice {
-  let result = nlp_tokenize_syllable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_slice_fill(s : NlptokenizesyllableSlice, v : Double) -> NlptokenizesyllableSlice {
-  let result = nlp_tokenize_syllable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_slice_min(s : NlptokenizesyllableSlice) -> Double { @_common.min(s.data) }

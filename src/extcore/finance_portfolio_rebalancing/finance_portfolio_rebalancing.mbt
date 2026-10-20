@@ -383,28 +383,20 @@ pub fn finance_portfolio_rebalancing_frame_sum(s : FinanceportfoliorebalancingFr
 pub fn finance_portfolio_rebalancing_frame_mean(s : FinanceportfoliorebalancingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_frame_scale(s : FinanceportfoliorebalancingFrame, f : Double) -> FinanceportfoliorebalancingFrame {
-  let result = finance_portfolio_rebalancing_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_frame_add(a : FinanceportfoliorebalancingFrame, b : FinanceportfoliorebalancingFrame) -> FinanceportfoliorebalancingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_frame_copy(s : FinanceportfoliorebalancingFrame) -> FinanceportfoliorebalancingFrame {
-  let result = finance_portfolio_rebalancing_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_frame_fill(s : FinanceportfoliorebalancingFrame, v : Double) -> FinanceportfoliorebalancingFrame {
-  let result = finance_portfolio_rebalancing_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_frame_min(s : FinanceportfoliorebalancingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_portfolio_rebalancing_table_sum(s : FinanceportfoliorebalancingTa
 pub fn finance_portfolio_rebalancing_table_mean(s : FinanceportfoliorebalancingTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_table_scale(s : FinanceportfoliorebalancingTable, f : Double) -> FinanceportfoliorebalancingTable {
-  let result = finance_portfolio_rebalancing_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_table_add(a : FinanceportfoliorebalancingTable, b : FinanceportfoliorebalancingTable) -> FinanceportfoliorebalancingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_table_copy(s : FinanceportfoliorebalancingTable) -> FinanceportfoliorebalancingTable {
-  let result = finance_portfolio_rebalancing_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_table_fill(s : FinanceportfoliorebalancingTable, v : Double) -> FinanceportfoliorebalancingTable {
-  let result = finance_portfolio_rebalancing_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_table_min(s : FinanceportfoliorebalancingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_portfolio_rebalancing_graphn_sum(s : FinanceportfoliorebalancingG
 pub fn finance_portfolio_rebalancing_graphn_mean(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_graphn_scale(s : FinanceportfoliorebalancingGraphN, f : Double) -> FinanceportfoliorebalancingGraphN {
-  let result = finance_portfolio_rebalancing_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_graphn_add(a : FinanceportfoliorebalancingGraphN, b : FinanceportfoliorebalancingGraphN) -> FinanceportfoliorebalancingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_graphn_copy(s : FinanceportfoliorebalancingGraphN) -> FinanceportfoliorebalancingGraphN {
-  let result = finance_portfolio_rebalancing_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_graphn_fill(s : FinanceportfoliorebalancingGraphN, v : Double) -> FinanceportfoliorebalancingGraphN {
-  let result = finance_portfolio_rebalancing_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_graphn_min(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_portfolio_rebalancing_node_sum(s : FinanceportfoliorebalancingNod
 pub fn finance_portfolio_rebalancing_node_mean(s : FinanceportfoliorebalancingNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_node_scale(s : FinanceportfoliorebalancingNode, f : Double) -> FinanceportfoliorebalancingNode {
-  let result = finance_portfolio_rebalancing_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_node_add(a : FinanceportfoliorebalancingNode, b : FinanceportfoliorebalancingNode) -> FinanceportfoliorebalancingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_node_copy(s : FinanceportfoliorebalancingNode) -> FinanceportfoliorebalancingNode {
-  let result = finance_portfolio_rebalancing_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_node_fill(s : FinanceportfoliorebalancingNode, v : Double) -> FinanceportfoliorebalancingNode {
-  let result = finance_portfolio_rebalancing_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_node_min(s : FinanceportfoliorebalancingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_portfolio_rebalancing_edge_sum(s : FinanceportfoliorebalancingEdg
 pub fn finance_portfolio_rebalancing_edge_mean(s : FinanceportfoliorebalancingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_edge_scale(s : FinanceportfoliorebalancingEdge, f : Double) -> FinanceportfoliorebalancingEdge {
-  let result = finance_portfolio_rebalancing_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_edge_add(a : FinanceportfoliorebalancingEdge, b : FinanceportfoliorebalancingEdge) -> FinanceportfoliorebalancingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_edge_copy(s : FinanceportfoliorebalancingEdge) -> FinanceportfoliorebalancingEdge {
-  let result = finance_portfolio_rebalancing_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_edge_fill(s : FinanceportfoliorebalancingEdge, v : Double) -> FinanceportfoliorebalancingEdge {
-  let result = finance_portfolio_rebalancing_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_edge_min(s : FinanceportfoliorebalancingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_portfolio_rebalancing_path_sum(s : FinanceportfoliorebalancingPat
 pub fn finance_portfolio_rebalancing_path_mean(s : FinanceportfoliorebalancingPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_path_scale(s : FinanceportfoliorebalancingPath, f : Double) -> FinanceportfoliorebalancingPath {
-  let result = finance_portfolio_rebalancing_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_path_add(a : FinanceportfoliorebalancingPath, b : FinanceportfoliorebalancingPath) -> FinanceportfoliorebalancingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_path_copy(s : FinanceportfoliorebalancingPath) -> FinanceportfoliorebalancingPath {
-  let result = finance_portfolio_rebalancing_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_path_fill(s : FinanceportfoliorebalancingPath, v : Double) -> FinanceportfoliorebalancingPath {
-  let result = finance_portfolio_rebalancing_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_path_min(s : FinanceportfoliorebalancingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_portfolio_rebalancing_cluster_sum(s : Financeportfoliorebalancing
 pub fn finance_portfolio_rebalancing_cluster_mean(s : FinanceportfoliorebalancingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_cluster_scale(s : FinanceportfoliorebalancingCluster, f : Double) -> FinanceportfoliorebalancingCluster {
-  let result = finance_portfolio_rebalancing_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cluster_add(a : FinanceportfoliorebalancingCluster, b : FinanceportfoliorebalancingCluster) -> FinanceportfoliorebalancingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cluster_copy(s : FinanceportfoliorebalancingCluster) -> FinanceportfoliorebalancingCluster {
-  let result = finance_portfolio_rebalancing_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cluster_fill(s : FinanceportfoliorebalancingCluster, v : Double) -> FinanceportfoliorebalancingCluster {
-  let result = finance_portfolio_rebalancing_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cluster_min(s : FinanceportfoliorebalancingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_portfolio_rebalancing_model_sum(s : FinanceportfoliorebalancingMo
 pub fn finance_portfolio_rebalancing_model_mean(s : FinanceportfoliorebalancingModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_model_scale(s : FinanceportfoliorebalancingModel, f : Double) -> FinanceportfoliorebalancingModel {
-  let result = finance_portfolio_rebalancing_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_model_add(a : FinanceportfoliorebalancingModel, b : FinanceportfoliorebalancingModel) -> FinanceportfoliorebalancingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_model_copy(s : FinanceportfoliorebalancingModel) -> FinanceportfoliorebalancingModel {
-  let result = finance_portfolio_rebalancing_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_model_fill(s : FinanceportfoliorebalancingModel, v : Double) -> FinanceportfoliorebalancingModel {
-  let result = finance_portfolio_rebalancing_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_model_min(s : FinanceportfoliorebalancingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_portfolio_rebalancing_layer_sum(s : FinanceportfoliorebalancingLa
 pub fn finance_portfolio_rebalancing_layer_mean(s : FinanceportfoliorebalancingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_layer_scale(s : FinanceportfoliorebalancingLayer, f : Double) -> FinanceportfoliorebalancingLayer {
-  let result = finance_portfolio_rebalancing_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_layer_add(a : FinanceportfoliorebalancingLayer, b : FinanceportfoliorebalancingLayer) -> FinanceportfoliorebalancingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_layer_copy(s : FinanceportfoliorebalancingLayer) -> FinanceportfoliorebalancingLayer {
-  let result = finance_portfolio_rebalancing_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_layer_fill(s : FinanceportfoliorebalancingLayer, v : Double) -> FinanceportfoliorebalancingLayer {
-  let result = finance_portfolio_rebalancing_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_layer_min(s : FinanceportfoliorebalancingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_portfolio_rebalancing_buffer_sum(s : FinanceportfoliorebalancingB
 pub fn finance_portfolio_rebalancing_buffer_mean(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_buffer_scale(s : FinanceportfoliorebalancingBuffer, f : Double) -> FinanceportfoliorebalancingBuffer {
-  let result = finance_portfolio_rebalancing_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_buffer_add(a : FinanceportfoliorebalancingBuffer, b : FinanceportfoliorebalancingBuffer) -> FinanceportfoliorebalancingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_buffer_copy(s : FinanceportfoliorebalancingBuffer) -> FinanceportfoliorebalancingBuffer {
-  let result = finance_portfolio_rebalancing_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_buffer_fill(s : FinanceportfoliorebalancingBuffer, v : Double) -> FinanceportfoliorebalancingBuffer {
-  let result = finance_portfolio_rebalancing_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_buffer_min(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_portfolio_rebalancing_cursor_sum(s : FinanceportfoliorebalancingC
 pub fn finance_portfolio_rebalancing_cursor_mean(s : FinanceportfoliorebalancingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_cursor_scale(s : FinanceportfoliorebalancingCursor, f : Double) -> FinanceportfoliorebalancingCursor {
-  let result = finance_portfolio_rebalancing_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cursor_add(a : FinanceportfoliorebalancingCursor, b : FinanceportfoliorebalancingCursor) -> FinanceportfoliorebalancingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cursor_copy(s : FinanceportfoliorebalancingCursor) -> FinanceportfoliorebalancingCursor {
-  let result = finance_portfolio_rebalancing_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cursor_fill(s : FinanceportfoliorebalancingCursor, v : Double) -> FinanceportfoliorebalancingCursor {
-  let result = finance_portfolio_rebalancing_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cursor_min(s : FinanceportfoliorebalancingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_portfolio_rebalancing_view_sum(s : FinanceportfoliorebalancingVie
 pub fn finance_portfolio_rebalancing_view_mean(s : FinanceportfoliorebalancingView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_view_scale(s : FinanceportfoliorebalancingView, f : Double) -> FinanceportfoliorebalancingView {
-  let result = finance_portfolio_rebalancing_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_view_add(a : FinanceportfoliorebalancingView, b : FinanceportfoliorebalancingView) -> FinanceportfoliorebalancingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_view_copy(s : FinanceportfoliorebalancingView) -> FinanceportfoliorebalancingView {
-  let result = finance_portfolio_rebalancing_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_view_fill(s : FinanceportfoliorebalancingView, v : Double) -> FinanceportfoliorebalancingView {
-  let result = finance_portfolio_rebalancing_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_view_min(s : FinanceportfoliorebalancingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_portfolio_rebalancing_range_sum(s : FinanceportfoliorebalancingRa
 pub fn finance_portfolio_rebalancing_range_mean(s : FinanceportfoliorebalancingRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_range_scale(s : FinanceportfoliorebalancingRange, f : Double) -> FinanceportfoliorebalancingRange {
-  let result = finance_portfolio_rebalancing_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_range_add(a : FinanceportfoliorebalancingRange, b : FinanceportfoliorebalancingRange) -> FinanceportfoliorebalancingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_range_copy(s : FinanceportfoliorebalancingRange) -> FinanceportfoliorebalancingRange {
-  let result = finance_portfolio_rebalancing_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_range_fill(s : FinanceportfoliorebalancingRange, v : Double) -> FinanceportfoliorebalancingRange {
-  let result = finance_portfolio_rebalancing_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_range_min(s : FinanceportfoliorebalancingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_portfolio_rebalancing_slice_sum(s : FinanceportfoliorebalancingSl
 pub fn finance_portfolio_rebalancing_slice_mean(s : FinanceportfoliorebalancingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_slice_scale(s : FinanceportfoliorebalancingSlice, f : Double) -> FinanceportfoliorebalancingSlice {
-  let result = finance_portfolio_rebalancing_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_slice_add(a : FinanceportfoliorebalancingSlice, b : FinanceportfoliorebalancingSlice) -> FinanceportfoliorebalancingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_rebalancing_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_rebalancing_slice_copy(s : FinanceportfoliorebalancingSlice) -> FinanceportfoliorebalancingSlice {
-  let result = finance_portfolio_rebalancing_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_slice_fill(s : FinanceportfoliorebalancingSlice, v : Double) -> FinanceportfoliorebalancingSlice {
-  let result = finance_portfolio_rebalancing_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_slice_min(s : FinanceportfoliorebalancingSlice) -> Double { @_common.min(s.data) }

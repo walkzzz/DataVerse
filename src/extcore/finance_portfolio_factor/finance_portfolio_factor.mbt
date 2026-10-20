@@ -383,28 +383,20 @@ pub fn finance_portfolio_factor_frame_sum(s : FinanceportfoliofactorFrame) -> Do
 pub fn finance_portfolio_factor_frame_mean(s : FinanceportfoliofactorFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_frame_scale(s : FinanceportfoliofactorFrame, f : Double) -> FinanceportfoliofactorFrame {
-  let result = finance_portfolio_factor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_frame_add(a : FinanceportfoliofactorFrame, b : FinanceportfoliofactorFrame) -> FinanceportfoliofactorFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_frame_copy(s : FinanceportfoliofactorFrame) -> FinanceportfoliofactorFrame {
-  let result = finance_portfolio_factor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_frame_fill(s : FinanceportfoliofactorFrame, v : Double) -> FinanceportfoliofactorFrame {
-  let result = finance_portfolio_factor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_frame_min(s : FinanceportfoliofactorFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_portfolio_factor_table_sum(s : FinanceportfoliofactorTable) -> Do
 pub fn finance_portfolio_factor_table_mean(s : FinanceportfoliofactorTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_table_scale(s : FinanceportfoliofactorTable, f : Double) -> FinanceportfoliofactorTable {
-  let result = finance_portfolio_factor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_table_add(a : FinanceportfoliofactorTable, b : FinanceportfoliofactorTable) -> FinanceportfoliofactorTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_table_copy(s : FinanceportfoliofactorTable) -> FinanceportfoliofactorTable {
-  let result = finance_portfolio_factor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_table_fill(s : FinanceportfoliofactorTable, v : Double) -> FinanceportfoliofactorTable {
-  let result = finance_portfolio_factor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_table_min(s : FinanceportfoliofactorTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_portfolio_factor_graphn_sum(s : FinanceportfoliofactorGraphN) -> 
 pub fn finance_portfolio_factor_graphn_mean(s : FinanceportfoliofactorGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_graphn_scale(s : FinanceportfoliofactorGraphN, f : Double) -> FinanceportfoliofactorGraphN {
-  let result = finance_portfolio_factor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_graphn_add(a : FinanceportfoliofactorGraphN, b : FinanceportfoliofactorGraphN) -> FinanceportfoliofactorGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_graphn_copy(s : FinanceportfoliofactorGraphN) -> FinanceportfoliofactorGraphN {
-  let result = finance_portfolio_factor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_graphn_fill(s : FinanceportfoliofactorGraphN, v : Double) -> FinanceportfoliofactorGraphN {
-  let result = finance_portfolio_factor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_graphn_min(s : FinanceportfoliofactorGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_portfolio_factor_node_sum(s : FinanceportfoliofactorNode) -> Doub
 pub fn finance_portfolio_factor_node_mean(s : FinanceportfoliofactorNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_node_scale(s : FinanceportfoliofactorNode, f : Double) -> FinanceportfoliofactorNode {
-  let result = finance_portfolio_factor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_node_add(a : FinanceportfoliofactorNode, b : FinanceportfoliofactorNode) -> FinanceportfoliofactorNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_node_copy(s : FinanceportfoliofactorNode) -> FinanceportfoliofactorNode {
-  let result = finance_portfolio_factor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_node_fill(s : FinanceportfoliofactorNode, v : Double) -> FinanceportfoliofactorNode {
-  let result = finance_portfolio_factor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_node_min(s : FinanceportfoliofactorNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_portfolio_factor_edge_sum(s : FinanceportfoliofactorEdge) -> Doub
 pub fn finance_portfolio_factor_edge_mean(s : FinanceportfoliofactorEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_edge_scale(s : FinanceportfoliofactorEdge, f : Double) -> FinanceportfoliofactorEdge {
-  let result = finance_portfolio_factor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_edge_add(a : FinanceportfoliofactorEdge, b : FinanceportfoliofactorEdge) -> FinanceportfoliofactorEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_edge_copy(s : FinanceportfoliofactorEdge) -> FinanceportfoliofactorEdge {
-  let result = finance_portfolio_factor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_edge_fill(s : FinanceportfoliofactorEdge, v : Double) -> FinanceportfoliofactorEdge {
-  let result = finance_portfolio_factor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_edge_min(s : FinanceportfoliofactorEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_portfolio_factor_path_sum(s : FinanceportfoliofactorPath) -> Doub
 pub fn finance_portfolio_factor_path_mean(s : FinanceportfoliofactorPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_path_scale(s : FinanceportfoliofactorPath, f : Double) -> FinanceportfoliofactorPath {
-  let result = finance_portfolio_factor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_path_add(a : FinanceportfoliofactorPath, b : FinanceportfoliofactorPath) -> FinanceportfoliofactorPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_path_copy(s : FinanceportfoliofactorPath) -> FinanceportfoliofactorPath {
-  let result = finance_portfolio_factor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_path_fill(s : FinanceportfoliofactorPath, v : Double) -> FinanceportfoliofactorPath {
-  let result = finance_portfolio_factor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_path_min(s : FinanceportfoliofactorPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_portfolio_factor_cluster_sum(s : FinanceportfoliofactorCluster) -
 pub fn finance_portfolio_factor_cluster_mean(s : FinanceportfoliofactorCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_cluster_scale(s : FinanceportfoliofactorCluster, f : Double) -> FinanceportfoliofactorCluster {
-  let result = finance_portfolio_factor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_cluster_add(a : FinanceportfoliofactorCluster, b : FinanceportfoliofactorCluster) -> FinanceportfoliofactorCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_cluster_copy(s : FinanceportfoliofactorCluster) -> FinanceportfoliofactorCluster {
-  let result = finance_portfolio_factor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_cluster_fill(s : FinanceportfoliofactorCluster, v : Double) -> FinanceportfoliofactorCluster {
-  let result = finance_portfolio_factor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_cluster_min(s : FinanceportfoliofactorCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_portfolio_factor_model_sum(s : FinanceportfoliofactorModel) -> Do
 pub fn finance_portfolio_factor_model_mean(s : FinanceportfoliofactorModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_model_scale(s : FinanceportfoliofactorModel, f : Double) -> FinanceportfoliofactorModel {
-  let result = finance_portfolio_factor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_model_add(a : FinanceportfoliofactorModel, b : FinanceportfoliofactorModel) -> FinanceportfoliofactorModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_model_copy(s : FinanceportfoliofactorModel) -> FinanceportfoliofactorModel {
-  let result = finance_portfolio_factor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_model_fill(s : FinanceportfoliofactorModel, v : Double) -> FinanceportfoliofactorModel {
-  let result = finance_portfolio_factor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_model_min(s : FinanceportfoliofactorModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_portfolio_factor_layer_sum(s : FinanceportfoliofactorLayer) -> Do
 pub fn finance_portfolio_factor_layer_mean(s : FinanceportfoliofactorLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_layer_scale(s : FinanceportfoliofactorLayer, f : Double) -> FinanceportfoliofactorLayer {
-  let result = finance_portfolio_factor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_layer_add(a : FinanceportfoliofactorLayer, b : FinanceportfoliofactorLayer) -> FinanceportfoliofactorLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_layer_copy(s : FinanceportfoliofactorLayer) -> FinanceportfoliofactorLayer {
-  let result = finance_portfolio_factor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_layer_fill(s : FinanceportfoliofactorLayer, v : Double) -> FinanceportfoliofactorLayer {
-  let result = finance_portfolio_factor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_layer_min(s : FinanceportfoliofactorLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_portfolio_factor_buffer_sum(s : FinanceportfoliofactorBuffer) -> 
 pub fn finance_portfolio_factor_buffer_mean(s : FinanceportfoliofactorBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_buffer_scale(s : FinanceportfoliofactorBuffer, f : Double) -> FinanceportfoliofactorBuffer {
-  let result = finance_portfolio_factor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_buffer_add(a : FinanceportfoliofactorBuffer, b : FinanceportfoliofactorBuffer) -> FinanceportfoliofactorBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_buffer_copy(s : FinanceportfoliofactorBuffer) -> FinanceportfoliofactorBuffer {
-  let result = finance_portfolio_factor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_buffer_fill(s : FinanceportfoliofactorBuffer, v : Double) -> FinanceportfoliofactorBuffer {
-  let result = finance_portfolio_factor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_buffer_min(s : FinanceportfoliofactorBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_portfolio_factor_cursor_sum(s : FinanceportfoliofactorCursor) -> 
 pub fn finance_portfolio_factor_cursor_mean(s : FinanceportfoliofactorCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_cursor_scale(s : FinanceportfoliofactorCursor, f : Double) -> FinanceportfoliofactorCursor {
-  let result = finance_portfolio_factor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_cursor_add(a : FinanceportfoliofactorCursor, b : FinanceportfoliofactorCursor) -> FinanceportfoliofactorCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_cursor_copy(s : FinanceportfoliofactorCursor) -> FinanceportfoliofactorCursor {
-  let result = finance_portfolio_factor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_cursor_fill(s : FinanceportfoliofactorCursor, v : Double) -> FinanceportfoliofactorCursor {
-  let result = finance_portfolio_factor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_cursor_min(s : FinanceportfoliofactorCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_portfolio_factor_view_sum(s : FinanceportfoliofactorView) -> Doub
 pub fn finance_portfolio_factor_view_mean(s : FinanceportfoliofactorView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_view_scale(s : FinanceportfoliofactorView, f : Double) -> FinanceportfoliofactorView {
-  let result = finance_portfolio_factor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_view_add(a : FinanceportfoliofactorView, b : FinanceportfoliofactorView) -> FinanceportfoliofactorView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_view_copy(s : FinanceportfoliofactorView) -> FinanceportfoliofactorView {
-  let result = finance_portfolio_factor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_view_fill(s : FinanceportfoliofactorView, v : Double) -> FinanceportfoliofactorView {
-  let result = finance_portfolio_factor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_view_min(s : FinanceportfoliofactorView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_portfolio_factor_range_sum(s : FinanceportfoliofactorRange) -> Do
 pub fn finance_portfolio_factor_range_mean(s : FinanceportfoliofactorRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_range_scale(s : FinanceportfoliofactorRange, f : Double) -> FinanceportfoliofactorRange {
-  let result = finance_portfolio_factor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_range_add(a : FinanceportfoliofactorRange, b : FinanceportfoliofactorRange) -> FinanceportfoliofactorRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_range_copy(s : FinanceportfoliofactorRange) -> FinanceportfoliofactorRange {
-  let result = finance_portfolio_factor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_range_fill(s : FinanceportfoliofactorRange, v : Double) -> FinanceportfoliofactorRange {
-  let result = finance_portfolio_factor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_range_min(s : FinanceportfoliofactorRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_portfolio_factor_slice_sum(s : FinanceportfoliofactorSlice) -> Do
 pub fn finance_portfolio_factor_slice_mean(s : FinanceportfoliofactorSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_slice_scale(s : FinanceportfoliofactorSlice, f : Double) -> FinanceportfoliofactorSlice {
-  let result = finance_portfolio_factor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_slice_add(a : FinanceportfoliofactorSlice, b : FinanceportfoliofactorSlice) -> FinanceportfoliofactorSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_factor_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_factor_slice_copy(s : FinanceportfoliofactorSlice) -> FinanceportfoliofactorSlice {
-  let result = finance_portfolio_factor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_slice_fill(s : FinanceportfoliofactorSlice, v : Double) -> FinanceportfoliofactorSlice {
-  let result = finance_portfolio_factor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_factor_slice_min(s : FinanceportfoliofactorSlice) -> Double { @_common.min(s.data) }

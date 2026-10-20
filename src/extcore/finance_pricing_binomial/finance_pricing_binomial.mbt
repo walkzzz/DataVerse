@@ -383,28 +383,20 @@ pub fn finance_pricing_binomial_frame_sum(s : FinancepricingbinomialFrame) -> Do
 pub fn finance_pricing_binomial_frame_mean(s : FinancepricingbinomialFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_frame_scale(s : FinancepricingbinomialFrame, f : Double) -> FinancepricingbinomialFrame {
-  let result = finance_pricing_binomial_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_frame_add(a : FinancepricingbinomialFrame, b : FinancepricingbinomialFrame) -> FinancepricingbinomialFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_frame_copy(s : FinancepricingbinomialFrame) -> FinancepricingbinomialFrame {
-  let result = finance_pricing_binomial_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_frame_fill(s : FinancepricingbinomialFrame, v : Double) -> FinancepricingbinomialFrame {
-  let result = finance_pricing_binomial_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_frame_min(s : FinancepricingbinomialFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_pricing_binomial_table_sum(s : FinancepricingbinomialTable) -> Do
 pub fn finance_pricing_binomial_table_mean(s : FinancepricingbinomialTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_table_scale(s : FinancepricingbinomialTable, f : Double) -> FinancepricingbinomialTable {
-  let result = finance_pricing_binomial_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_table_add(a : FinancepricingbinomialTable, b : FinancepricingbinomialTable) -> FinancepricingbinomialTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_table_copy(s : FinancepricingbinomialTable) -> FinancepricingbinomialTable {
-  let result = finance_pricing_binomial_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_table_fill(s : FinancepricingbinomialTable, v : Double) -> FinancepricingbinomialTable {
-  let result = finance_pricing_binomial_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_table_min(s : FinancepricingbinomialTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_pricing_binomial_graphn_sum(s : FinancepricingbinomialGraphN) -> 
 pub fn finance_pricing_binomial_graphn_mean(s : FinancepricingbinomialGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_graphn_scale(s : FinancepricingbinomialGraphN, f : Double) -> FinancepricingbinomialGraphN {
-  let result = finance_pricing_binomial_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_graphn_add(a : FinancepricingbinomialGraphN, b : FinancepricingbinomialGraphN) -> FinancepricingbinomialGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_graphn_copy(s : FinancepricingbinomialGraphN) -> FinancepricingbinomialGraphN {
-  let result = finance_pricing_binomial_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_graphn_fill(s : FinancepricingbinomialGraphN, v : Double) -> FinancepricingbinomialGraphN {
-  let result = finance_pricing_binomial_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_graphn_min(s : FinancepricingbinomialGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_pricing_binomial_node_sum(s : FinancepricingbinomialNode) -> Doub
 pub fn finance_pricing_binomial_node_mean(s : FinancepricingbinomialNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_node_scale(s : FinancepricingbinomialNode, f : Double) -> FinancepricingbinomialNode {
-  let result = finance_pricing_binomial_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_node_add(a : FinancepricingbinomialNode, b : FinancepricingbinomialNode) -> FinancepricingbinomialNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_node_copy(s : FinancepricingbinomialNode) -> FinancepricingbinomialNode {
-  let result = finance_pricing_binomial_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_node_fill(s : FinancepricingbinomialNode, v : Double) -> FinancepricingbinomialNode {
-  let result = finance_pricing_binomial_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_node_min(s : FinancepricingbinomialNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_pricing_binomial_edge_sum(s : FinancepricingbinomialEdge) -> Doub
 pub fn finance_pricing_binomial_edge_mean(s : FinancepricingbinomialEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_edge_scale(s : FinancepricingbinomialEdge, f : Double) -> FinancepricingbinomialEdge {
-  let result = finance_pricing_binomial_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_edge_add(a : FinancepricingbinomialEdge, b : FinancepricingbinomialEdge) -> FinancepricingbinomialEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_edge_copy(s : FinancepricingbinomialEdge) -> FinancepricingbinomialEdge {
-  let result = finance_pricing_binomial_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_edge_fill(s : FinancepricingbinomialEdge, v : Double) -> FinancepricingbinomialEdge {
-  let result = finance_pricing_binomial_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_edge_min(s : FinancepricingbinomialEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_pricing_binomial_path_sum(s : FinancepricingbinomialPath) -> Doub
 pub fn finance_pricing_binomial_path_mean(s : FinancepricingbinomialPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_path_scale(s : FinancepricingbinomialPath, f : Double) -> FinancepricingbinomialPath {
-  let result = finance_pricing_binomial_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_path_add(a : FinancepricingbinomialPath, b : FinancepricingbinomialPath) -> FinancepricingbinomialPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_path_copy(s : FinancepricingbinomialPath) -> FinancepricingbinomialPath {
-  let result = finance_pricing_binomial_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_path_fill(s : FinancepricingbinomialPath, v : Double) -> FinancepricingbinomialPath {
-  let result = finance_pricing_binomial_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_path_min(s : FinancepricingbinomialPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_pricing_binomial_cluster_sum(s : FinancepricingbinomialCluster) -
 pub fn finance_pricing_binomial_cluster_mean(s : FinancepricingbinomialCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_cluster_scale(s : FinancepricingbinomialCluster, f : Double) -> FinancepricingbinomialCluster {
-  let result = finance_pricing_binomial_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_cluster_add(a : FinancepricingbinomialCluster, b : FinancepricingbinomialCluster) -> FinancepricingbinomialCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_cluster_copy(s : FinancepricingbinomialCluster) -> FinancepricingbinomialCluster {
-  let result = finance_pricing_binomial_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_cluster_fill(s : FinancepricingbinomialCluster, v : Double) -> FinancepricingbinomialCluster {
-  let result = finance_pricing_binomial_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_cluster_min(s : FinancepricingbinomialCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_pricing_binomial_model_sum(s : FinancepricingbinomialModel) -> Do
 pub fn finance_pricing_binomial_model_mean(s : FinancepricingbinomialModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_model_scale(s : FinancepricingbinomialModel, f : Double) -> FinancepricingbinomialModel {
-  let result = finance_pricing_binomial_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_model_add(a : FinancepricingbinomialModel, b : FinancepricingbinomialModel) -> FinancepricingbinomialModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_model_copy(s : FinancepricingbinomialModel) -> FinancepricingbinomialModel {
-  let result = finance_pricing_binomial_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_model_fill(s : FinancepricingbinomialModel, v : Double) -> FinancepricingbinomialModel {
-  let result = finance_pricing_binomial_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_model_min(s : FinancepricingbinomialModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_pricing_binomial_layer_sum(s : FinancepricingbinomialLayer) -> Do
 pub fn finance_pricing_binomial_layer_mean(s : FinancepricingbinomialLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_layer_scale(s : FinancepricingbinomialLayer, f : Double) -> FinancepricingbinomialLayer {
-  let result = finance_pricing_binomial_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_layer_add(a : FinancepricingbinomialLayer, b : FinancepricingbinomialLayer) -> FinancepricingbinomialLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_layer_copy(s : FinancepricingbinomialLayer) -> FinancepricingbinomialLayer {
-  let result = finance_pricing_binomial_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_layer_fill(s : FinancepricingbinomialLayer, v : Double) -> FinancepricingbinomialLayer {
-  let result = finance_pricing_binomial_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_layer_min(s : FinancepricingbinomialLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_pricing_binomial_buffer_sum(s : FinancepricingbinomialBuffer) -> 
 pub fn finance_pricing_binomial_buffer_mean(s : FinancepricingbinomialBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_buffer_scale(s : FinancepricingbinomialBuffer, f : Double) -> FinancepricingbinomialBuffer {
-  let result = finance_pricing_binomial_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_buffer_add(a : FinancepricingbinomialBuffer, b : FinancepricingbinomialBuffer) -> FinancepricingbinomialBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_buffer_copy(s : FinancepricingbinomialBuffer) -> FinancepricingbinomialBuffer {
-  let result = finance_pricing_binomial_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_buffer_fill(s : FinancepricingbinomialBuffer, v : Double) -> FinancepricingbinomialBuffer {
-  let result = finance_pricing_binomial_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_buffer_min(s : FinancepricingbinomialBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_pricing_binomial_cursor_sum(s : FinancepricingbinomialCursor) -> 
 pub fn finance_pricing_binomial_cursor_mean(s : FinancepricingbinomialCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_cursor_scale(s : FinancepricingbinomialCursor, f : Double) -> FinancepricingbinomialCursor {
-  let result = finance_pricing_binomial_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_cursor_add(a : FinancepricingbinomialCursor, b : FinancepricingbinomialCursor) -> FinancepricingbinomialCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_cursor_copy(s : FinancepricingbinomialCursor) -> FinancepricingbinomialCursor {
-  let result = finance_pricing_binomial_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_cursor_fill(s : FinancepricingbinomialCursor, v : Double) -> FinancepricingbinomialCursor {
-  let result = finance_pricing_binomial_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_cursor_min(s : FinancepricingbinomialCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_pricing_binomial_view_sum(s : FinancepricingbinomialView) -> Doub
 pub fn finance_pricing_binomial_view_mean(s : FinancepricingbinomialView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_view_scale(s : FinancepricingbinomialView, f : Double) -> FinancepricingbinomialView {
-  let result = finance_pricing_binomial_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_view_add(a : FinancepricingbinomialView, b : FinancepricingbinomialView) -> FinancepricingbinomialView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_view_copy(s : FinancepricingbinomialView) -> FinancepricingbinomialView {
-  let result = finance_pricing_binomial_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_view_fill(s : FinancepricingbinomialView, v : Double) -> FinancepricingbinomialView {
-  let result = finance_pricing_binomial_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_view_min(s : FinancepricingbinomialView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_pricing_binomial_range_sum(s : FinancepricingbinomialRange) -> Do
 pub fn finance_pricing_binomial_range_mean(s : FinancepricingbinomialRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_range_scale(s : FinancepricingbinomialRange, f : Double) -> FinancepricingbinomialRange {
-  let result = finance_pricing_binomial_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_range_add(a : FinancepricingbinomialRange, b : FinancepricingbinomialRange) -> FinancepricingbinomialRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_range_copy(s : FinancepricingbinomialRange) -> FinancepricingbinomialRange {
-  let result = finance_pricing_binomial_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_range_fill(s : FinancepricingbinomialRange, v : Double) -> FinancepricingbinomialRange {
-  let result = finance_pricing_binomial_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_range_min(s : FinancepricingbinomialRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_pricing_binomial_slice_sum(s : FinancepricingbinomialSlice) -> Do
 pub fn finance_pricing_binomial_slice_mean(s : FinancepricingbinomialSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_slice_scale(s : FinancepricingbinomialSlice, f : Double) -> FinancepricingbinomialSlice {
-  let result = finance_pricing_binomial_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_slice_add(a : FinancepricingbinomialSlice, b : FinancepricingbinomialSlice) -> FinancepricingbinomialSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_pricing_binomial_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_pricing_binomial_slice_copy(s : FinancepricingbinomialSlice) -> FinancepricingbinomialSlice {
-  let result = finance_pricing_binomial_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_slice_fill(s : FinancepricingbinomialSlice, v : Double) -> FinancepricingbinomialSlice {
-  let result = finance_pricing_binomial_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_binomial_slice_min(s : FinancepricingbinomialSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ml_rl_dqn_frame_sum(s : MlrldqnFrame) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_frame_mean(s : MlrldqnFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_frame_scale(s : MlrldqnFrame, f : Double) -> MlrldqnFrame {
-  let result = ml_rl_dqn_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_frame_add(a : MlrldqnFrame, b : MlrldqnFrame) -> MlrldqnFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_frame_copy(s : MlrldqnFrame) -> MlrldqnFrame {
-  let result = ml_rl_dqn_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_frame_fill(s : MlrldqnFrame, v : Double) -> MlrldqnFrame {
-  let result = ml_rl_dqn_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_frame_min(s : MlrldqnFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_dqn_table_sum(s : MlrldqnTable) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_table_mean(s : MlrldqnTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_table_scale(s : MlrldqnTable, f : Double) -> MlrldqnTable {
-  let result = ml_rl_dqn_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_table_add(a : MlrldqnTable, b : MlrldqnTable) -> MlrldqnTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_table_copy(s : MlrldqnTable) -> MlrldqnTable {
-  let result = ml_rl_dqn_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_table_fill(s : MlrldqnTable, v : Double) -> MlrldqnTable {
-  let result = ml_rl_dqn_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_table_min(s : MlrldqnTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_dqn_graphn_sum(s : MlrldqnGraphN) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_dqn_graphn_mean(s : MlrldqnGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_graphn_scale(s : MlrldqnGraphN, f : Double) -> MlrldqnGraphN {
-  let result = ml_rl_dqn_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_graphn_add(a : MlrldqnGraphN, b : MlrldqnGraphN) -> MlrldqnGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_graphn_copy(s : MlrldqnGraphN) -> MlrldqnGraphN {
-  let result = ml_rl_dqn_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_graphn_fill(s : MlrldqnGraphN, v : Double) -> MlrldqnGraphN {
-  let result = ml_rl_dqn_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_graphn_min(s : MlrldqnGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_dqn_node_sum(s : MlrldqnNode) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_node_mean(s : MlrldqnNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_node_scale(s : MlrldqnNode, f : Double) -> MlrldqnNode {
-  let result = ml_rl_dqn_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_node_add(a : MlrldqnNode, b : MlrldqnNode) -> MlrldqnNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_node_copy(s : MlrldqnNode) -> MlrldqnNode {
-  let result = ml_rl_dqn_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_node_fill(s : MlrldqnNode, v : Double) -> MlrldqnNode {
-  let result = ml_rl_dqn_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_node_min(s : MlrldqnNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_dqn_edge_sum(s : MlrldqnEdge) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_edge_mean(s : MlrldqnEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_edge_scale(s : MlrldqnEdge, f : Double) -> MlrldqnEdge {
-  let result = ml_rl_dqn_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_edge_add(a : MlrldqnEdge, b : MlrldqnEdge) -> MlrldqnEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_edge_copy(s : MlrldqnEdge) -> MlrldqnEdge {
-  let result = ml_rl_dqn_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_edge_fill(s : MlrldqnEdge, v : Double) -> MlrldqnEdge {
-  let result = ml_rl_dqn_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_edge_min(s : MlrldqnEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_dqn_path_sum(s : MlrldqnPath) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_path_mean(s : MlrldqnPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_path_scale(s : MlrldqnPath, f : Double) -> MlrldqnPath {
-  let result = ml_rl_dqn_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_path_add(a : MlrldqnPath, b : MlrldqnPath) -> MlrldqnPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_path_copy(s : MlrldqnPath) -> MlrldqnPath {
-  let result = ml_rl_dqn_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_path_fill(s : MlrldqnPath, v : Double) -> MlrldqnPath {
-  let result = ml_rl_dqn_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_path_min(s : MlrldqnPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_dqn_cluster_sum(s : MlrldqnCluster) -> Double { @_common.sum(s.data
 pub fn ml_rl_dqn_cluster_mean(s : MlrldqnCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_cluster_scale(s : MlrldqnCluster, f : Double) -> MlrldqnCluster {
-  let result = ml_rl_dqn_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cluster_add(a : MlrldqnCluster, b : MlrldqnCluster) -> MlrldqnCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_cluster_copy(s : MlrldqnCluster) -> MlrldqnCluster {
-  let result = ml_rl_dqn_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cluster_fill(s : MlrldqnCluster, v : Double) -> MlrldqnCluster {
-  let result = ml_rl_dqn_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cluster_min(s : MlrldqnCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_dqn_model_sum(s : MlrldqnModel) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_model_mean(s : MlrldqnModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_model_scale(s : MlrldqnModel, f : Double) -> MlrldqnModel {
-  let result = ml_rl_dqn_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_model_add(a : MlrldqnModel, b : MlrldqnModel) -> MlrldqnModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_model_copy(s : MlrldqnModel) -> MlrldqnModel {
-  let result = ml_rl_dqn_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_model_fill(s : MlrldqnModel, v : Double) -> MlrldqnModel {
-  let result = ml_rl_dqn_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_model_min(s : MlrldqnModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_dqn_layer_sum(s : MlrldqnLayer) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_layer_mean(s : MlrldqnLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_layer_scale(s : MlrldqnLayer, f : Double) -> MlrldqnLayer {
-  let result = ml_rl_dqn_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_layer_add(a : MlrldqnLayer, b : MlrldqnLayer) -> MlrldqnLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_layer_copy(s : MlrldqnLayer) -> MlrldqnLayer {
-  let result = ml_rl_dqn_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_layer_fill(s : MlrldqnLayer, v : Double) -> MlrldqnLayer {
-  let result = ml_rl_dqn_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_layer_min(s : MlrldqnLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_dqn_buffer_sum(s : MlrldqnBuffer) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_dqn_buffer_mean(s : MlrldqnBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_buffer_scale(s : MlrldqnBuffer, f : Double) -> MlrldqnBuffer {
-  let result = ml_rl_dqn_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_buffer_add(a : MlrldqnBuffer, b : MlrldqnBuffer) -> MlrldqnBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_buffer_copy(s : MlrldqnBuffer) -> MlrldqnBuffer {
-  let result = ml_rl_dqn_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_buffer_fill(s : MlrldqnBuffer, v : Double) -> MlrldqnBuffer {
-  let result = ml_rl_dqn_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_buffer_min(s : MlrldqnBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_dqn_cursor_sum(s : MlrldqnCursor) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_dqn_cursor_mean(s : MlrldqnCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_cursor_scale(s : MlrldqnCursor, f : Double) -> MlrldqnCursor {
-  let result = ml_rl_dqn_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cursor_add(a : MlrldqnCursor, b : MlrldqnCursor) -> MlrldqnCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_cursor_copy(s : MlrldqnCursor) -> MlrldqnCursor {
-  let result = ml_rl_dqn_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cursor_fill(s : MlrldqnCursor, v : Double) -> MlrldqnCursor {
-  let result = ml_rl_dqn_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cursor_min(s : MlrldqnCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_dqn_view_sum(s : MlrldqnView) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_view_mean(s : MlrldqnView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_view_scale(s : MlrldqnView, f : Double) -> MlrldqnView {
-  let result = ml_rl_dqn_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_view_add(a : MlrldqnView, b : MlrldqnView) -> MlrldqnView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_view_copy(s : MlrldqnView) -> MlrldqnView {
-  let result = ml_rl_dqn_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_view_fill(s : MlrldqnView, v : Double) -> MlrldqnView {
-  let result = ml_rl_dqn_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_view_min(s : MlrldqnView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_dqn_range_sum(s : MlrldqnRange) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_range_mean(s : MlrldqnRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_range_scale(s : MlrldqnRange, f : Double) -> MlrldqnRange {
-  let result = ml_rl_dqn_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_range_add(a : MlrldqnRange, b : MlrldqnRange) -> MlrldqnRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_range_copy(s : MlrldqnRange) -> MlrldqnRange {
-  let result = ml_rl_dqn_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_range_fill(s : MlrldqnRange, v : Double) -> MlrldqnRange {
-  let result = ml_rl_dqn_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_range_min(s : MlrldqnRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_dqn_slice_sum(s : MlrldqnSlice) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_dqn_slice_mean(s : MlrldqnSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_dqn_slice_scale(s : MlrldqnSlice, f : Double) -> MlrldqnSlice {
-  let result = ml_rl_dqn_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_slice_add(a : MlrldqnSlice, b : MlrldqnSlice) -> MlrldqnSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_dqn_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_dqn_slice_copy(s : MlrldqnSlice) -> MlrldqnSlice {
-  let result = ml_rl_dqn_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_slice_fill(s : MlrldqnSlice, v : Double) -> MlrldqnSlice {
-  let result = ml_rl_dqn_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_slice_min(s : MlrldqnSlice) -> Double { @_common.min(s.data) }

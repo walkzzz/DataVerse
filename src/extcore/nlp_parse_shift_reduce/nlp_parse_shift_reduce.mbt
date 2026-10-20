@@ -383,28 +383,20 @@ pub fn nlp_parse_shift_reduce_frame_sum(s : NlpparseshiftreduceFrame) -> Double 
 pub fn nlp_parse_shift_reduce_frame_mean(s : NlpparseshiftreduceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_frame_scale(s : NlpparseshiftreduceFrame, f : Double) -> NlpparseshiftreduceFrame {
-  let result = nlp_parse_shift_reduce_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_frame_add(a : NlpparseshiftreduceFrame, b : NlpparseshiftreduceFrame) -> NlpparseshiftreduceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_frame_copy(s : NlpparseshiftreduceFrame) -> NlpparseshiftreduceFrame {
-  let result = nlp_parse_shift_reduce_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_frame_fill(s : NlpparseshiftreduceFrame, v : Double) -> NlpparseshiftreduceFrame {
-  let result = nlp_parse_shift_reduce_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_frame_min(s : NlpparseshiftreduceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_parse_shift_reduce_table_sum(s : NlpparseshiftreduceTable) -> Double 
 pub fn nlp_parse_shift_reduce_table_mean(s : NlpparseshiftreduceTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_table_scale(s : NlpparseshiftreduceTable, f : Double) -> NlpparseshiftreduceTable {
-  let result = nlp_parse_shift_reduce_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_table_add(a : NlpparseshiftreduceTable, b : NlpparseshiftreduceTable) -> NlpparseshiftreduceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_table_copy(s : NlpparseshiftreduceTable) -> NlpparseshiftreduceTable {
-  let result = nlp_parse_shift_reduce_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_table_fill(s : NlpparseshiftreduceTable, v : Double) -> NlpparseshiftreduceTable {
-  let result = nlp_parse_shift_reduce_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_table_min(s : NlpparseshiftreduceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_parse_shift_reduce_graphn_sum(s : NlpparseshiftreduceGraphN) -> Doubl
 pub fn nlp_parse_shift_reduce_graphn_mean(s : NlpparseshiftreduceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_graphn_scale(s : NlpparseshiftreduceGraphN, f : Double) -> NlpparseshiftreduceGraphN {
-  let result = nlp_parse_shift_reduce_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_graphn_add(a : NlpparseshiftreduceGraphN, b : NlpparseshiftreduceGraphN) -> NlpparseshiftreduceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_graphn_copy(s : NlpparseshiftreduceGraphN) -> NlpparseshiftreduceGraphN {
-  let result = nlp_parse_shift_reduce_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_graphn_fill(s : NlpparseshiftreduceGraphN, v : Double) -> NlpparseshiftreduceGraphN {
-  let result = nlp_parse_shift_reduce_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_graphn_min(s : NlpparseshiftreduceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_parse_shift_reduce_node_sum(s : NlpparseshiftreduceNode) -> Double { 
 pub fn nlp_parse_shift_reduce_node_mean(s : NlpparseshiftreduceNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_node_scale(s : NlpparseshiftreduceNode, f : Double) -> NlpparseshiftreduceNode {
-  let result = nlp_parse_shift_reduce_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_node_add(a : NlpparseshiftreduceNode, b : NlpparseshiftreduceNode) -> NlpparseshiftreduceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_node_copy(s : NlpparseshiftreduceNode) -> NlpparseshiftreduceNode {
-  let result = nlp_parse_shift_reduce_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_node_fill(s : NlpparseshiftreduceNode, v : Double) -> NlpparseshiftreduceNode {
-  let result = nlp_parse_shift_reduce_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_node_min(s : NlpparseshiftreduceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_parse_shift_reduce_edge_sum(s : NlpparseshiftreduceEdge) -> Double { 
 pub fn nlp_parse_shift_reduce_edge_mean(s : NlpparseshiftreduceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_edge_scale(s : NlpparseshiftreduceEdge, f : Double) -> NlpparseshiftreduceEdge {
-  let result = nlp_parse_shift_reduce_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_edge_add(a : NlpparseshiftreduceEdge, b : NlpparseshiftreduceEdge) -> NlpparseshiftreduceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_edge_copy(s : NlpparseshiftreduceEdge) -> NlpparseshiftreduceEdge {
-  let result = nlp_parse_shift_reduce_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_edge_fill(s : NlpparseshiftreduceEdge, v : Double) -> NlpparseshiftreduceEdge {
-  let result = nlp_parse_shift_reduce_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_edge_min(s : NlpparseshiftreduceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_parse_shift_reduce_path_sum(s : NlpparseshiftreducePath) -> Double { 
 pub fn nlp_parse_shift_reduce_path_mean(s : NlpparseshiftreducePath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_path_scale(s : NlpparseshiftreducePath, f : Double) -> NlpparseshiftreducePath {
-  let result = nlp_parse_shift_reduce_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_path_add(a : NlpparseshiftreducePath, b : NlpparseshiftreducePath) -> NlpparseshiftreducePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_path_copy(s : NlpparseshiftreducePath) -> NlpparseshiftreducePath {
-  let result = nlp_parse_shift_reduce_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_path_fill(s : NlpparseshiftreducePath, v : Double) -> NlpparseshiftreducePath {
-  let result = nlp_parse_shift_reduce_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_path_min(s : NlpparseshiftreducePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_parse_shift_reduce_cluster_sum(s : NlpparseshiftreduceCluster) -> Dou
 pub fn nlp_parse_shift_reduce_cluster_mean(s : NlpparseshiftreduceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_cluster_scale(s : NlpparseshiftreduceCluster, f : Double) -> NlpparseshiftreduceCluster {
-  let result = nlp_parse_shift_reduce_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cluster_add(a : NlpparseshiftreduceCluster, b : NlpparseshiftreduceCluster) -> NlpparseshiftreduceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cluster_copy(s : NlpparseshiftreduceCluster) -> NlpparseshiftreduceCluster {
-  let result = nlp_parse_shift_reduce_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cluster_fill(s : NlpparseshiftreduceCluster, v : Double) -> NlpparseshiftreduceCluster {
-  let result = nlp_parse_shift_reduce_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cluster_min(s : NlpparseshiftreduceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_parse_shift_reduce_model_sum(s : NlpparseshiftreduceModel) -> Double 
 pub fn nlp_parse_shift_reduce_model_mean(s : NlpparseshiftreduceModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_model_scale(s : NlpparseshiftreduceModel, f : Double) -> NlpparseshiftreduceModel {
-  let result = nlp_parse_shift_reduce_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_model_add(a : NlpparseshiftreduceModel, b : NlpparseshiftreduceModel) -> NlpparseshiftreduceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_model_copy(s : NlpparseshiftreduceModel) -> NlpparseshiftreduceModel {
-  let result = nlp_parse_shift_reduce_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_model_fill(s : NlpparseshiftreduceModel, v : Double) -> NlpparseshiftreduceModel {
-  let result = nlp_parse_shift_reduce_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_model_min(s : NlpparseshiftreduceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_parse_shift_reduce_layer_sum(s : NlpparseshiftreduceLayer) -> Double 
 pub fn nlp_parse_shift_reduce_layer_mean(s : NlpparseshiftreduceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_layer_scale(s : NlpparseshiftreduceLayer, f : Double) -> NlpparseshiftreduceLayer {
-  let result = nlp_parse_shift_reduce_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_layer_add(a : NlpparseshiftreduceLayer, b : NlpparseshiftreduceLayer) -> NlpparseshiftreduceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_layer_copy(s : NlpparseshiftreduceLayer) -> NlpparseshiftreduceLayer {
-  let result = nlp_parse_shift_reduce_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_layer_fill(s : NlpparseshiftreduceLayer, v : Double) -> NlpparseshiftreduceLayer {
-  let result = nlp_parse_shift_reduce_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_layer_min(s : NlpparseshiftreduceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_parse_shift_reduce_buffer_sum(s : NlpparseshiftreduceBuffer) -> Doubl
 pub fn nlp_parse_shift_reduce_buffer_mean(s : NlpparseshiftreduceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_buffer_scale(s : NlpparseshiftreduceBuffer, f : Double) -> NlpparseshiftreduceBuffer {
-  let result = nlp_parse_shift_reduce_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_buffer_add(a : NlpparseshiftreduceBuffer, b : NlpparseshiftreduceBuffer) -> NlpparseshiftreduceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_buffer_copy(s : NlpparseshiftreduceBuffer) -> NlpparseshiftreduceBuffer {
-  let result = nlp_parse_shift_reduce_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_buffer_fill(s : NlpparseshiftreduceBuffer, v : Double) -> NlpparseshiftreduceBuffer {
-  let result = nlp_parse_shift_reduce_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_buffer_min(s : NlpparseshiftreduceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_parse_shift_reduce_cursor_sum(s : NlpparseshiftreduceCursor) -> Doubl
 pub fn nlp_parse_shift_reduce_cursor_mean(s : NlpparseshiftreduceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_cursor_scale(s : NlpparseshiftreduceCursor, f : Double) -> NlpparseshiftreduceCursor {
-  let result = nlp_parse_shift_reduce_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cursor_add(a : NlpparseshiftreduceCursor, b : NlpparseshiftreduceCursor) -> NlpparseshiftreduceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cursor_copy(s : NlpparseshiftreduceCursor) -> NlpparseshiftreduceCursor {
-  let result = nlp_parse_shift_reduce_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cursor_fill(s : NlpparseshiftreduceCursor, v : Double) -> NlpparseshiftreduceCursor {
-  let result = nlp_parse_shift_reduce_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cursor_min(s : NlpparseshiftreduceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_parse_shift_reduce_view_sum(s : NlpparseshiftreduceView) -> Double { 
 pub fn nlp_parse_shift_reduce_view_mean(s : NlpparseshiftreduceView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_view_scale(s : NlpparseshiftreduceView, f : Double) -> NlpparseshiftreduceView {
-  let result = nlp_parse_shift_reduce_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_view_add(a : NlpparseshiftreduceView, b : NlpparseshiftreduceView) -> NlpparseshiftreduceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_view_copy(s : NlpparseshiftreduceView) -> NlpparseshiftreduceView {
-  let result = nlp_parse_shift_reduce_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_view_fill(s : NlpparseshiftreduceView, v : Double) -> NlpparseshiftreduceView {
-  let result = nlp_parse_shift_reduce_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_view_min(s : NlpparseshiftreduceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_parse_shift_reduce_range_sum(s : NlpparseshiftreduceRange) -> Double 
 pub fn nlp_parse_shift_reduce_range_mean(s : NlpparseshiftreduceRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_range_scale(s : NlpparseshiftreduceRange, f : Double) -> NlpparseshiftreduceRange {
-  let result = nlp_parse_shift_reduce_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_range_add(a : NlpparseshiftreduceRange, b : NlpparseshiftreduceRange) -> NlpparseshiftreduceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_range_copy(s : NlpparseshiftreduceRange) -> NlpparseshiftreduceRange {
-  let result = nlp_parse_shift_reduce_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_range_fill(s : NlpparseshiftreduceRange, v : Double) -> NlpparseshiftreduceRange {
-  let result = nlp_parse_shift_reduce_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_range_min(s : NlpparseshiftreduceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_parse_shift_reduce_slice_sum(s : NlpparseshiftreduceSlice) -> Double 
 pub fn nlp_parse_shift_reduce_slice_mean(s : NlpparseshiftreduceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_slice_scale(s : NlpparseshiftreduceSlice, f : Double) -> NlpparseshiftreduceSlice {
-  let result = nlp_parse_shift_reduce_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_slice_add(a : NlpparseshiftreduceSlice, b : NlpparseshiftreduceSlice) -> NlpparseshiftreduceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_shift_reduce_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_shift_reduce_slice_copy(s : NlpparseshiftreduceSlice) -> NlpparseshiftreduceSlice {
-  let result = nlp_parse_shift_reduce_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_slice_fill(s : NlpparseshiftreduceSlice, v : Double) -> NlpparseshiftreduceSlice {
-  let result = nlp_parse_shift_reduce_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_slice_min(s : NlpparseshiftreduceSlice) -> Double { @_common.min(s.data) }

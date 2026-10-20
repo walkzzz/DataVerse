@@ -383,28 +383,20 @@ pub fn image_filter_laplacian_frame_sum(s : ImagefilterlaplacianFrame) -> Double
 pub fn image_filter_laplacian_frame_mean(s : ImagefilterlaplacianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_frame_scale(s : ImagefilterlaplacianFrame, f : Double) -> ImagefilterlaplacianFrame {
-  let result = image_filter_laplacian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_frame_add(a : ImagefilterlaplacianFrame, b : ImagefilterlaplacianFrame) -> ImagefilterlaplacianFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_frame_copy(s : ImagefilterlaplacianFrame) -> ImagefilterlaplacianFrame {
-  let result = image_filter_laplacian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_frame_fill(s : ImagefilterlaplacianFrame, v : Double) -> ImagefilterlaplacianFrame {
-  let result = image_filter_laplacian_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_frame_min(s : ImagefilterlaplacianFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_filter_laplacian_table_sum(s : ImagefilterlaplacianTable) -> Double
 pub fn image_filter_laplacian_table_mean(s : ImagefilterlaplacianTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_table_scale(s : ImagefilterlaplacianTable, f : Double) -> ImagefilterlaplacianTable {
-  let result = image_filter_laplacian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_table_add(a : ImagefilterlaplacianTable, b : ImagefilterlaplacianTable) -> ImagefilterlaplacianTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_table_copy(s : ImagefilterlaplacianTable) -> ImagefilterlaplacianTable {
-  let result = image_filter_laplacian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_table_fill(s : ImagefilterlaplacianTable, v : Double) -> ImagefilterlaplacianTable {
-  let result = image_filter_laplacian_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_table_min(s : ImagefilterlaplacianTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_filter_laplacian_graphn_sum(s : ImagefilterlaplacianGraphN) -> Doub
 pub fn image_filter_laplacian_graphn_mean(s : ImagefilterlaplacianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_graphn_scale(s : ImagefilterlaplacianGraphN, f : Double) -> ImagefilterlaplacianGraphN {
-  let result = image_filter_laplacian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_graphn_add(a : ImagefilterlaplacianGraphN, b : ImagefilterlaplacianGraphN) -> ImagefilterlaplacianGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_graphn_copy(s : ImagefilterlaplacianGraphN) -> ImagefilterlaplacianGraphN {
-  let result = image_filter_laplacian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_graphn_fill(s : ImagefilterlaplacianGraphN, v : Double) -> ImagefilterlaplacianGraphN {
-  let result = image_filter_laplacian_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_graphn_min(s : ImagefilterlaplacianGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_filter_laplacian_node_sum(s : ImagefilterlaplacianNode) -> Double {
 pub fn image_filter_laplacian_node_mean(s : ImagefilterlaplacianNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_node_scale(s : ImagefilterlaplacianNode, f : Double) -> ImagefilterlaplacianNode {
-  let result = image_filter_laplacian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_node_add(a : ImagefilterlaplacianNode, b : ImagefilterlaplacianNode) -> ImagefilterlaplacianNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_node_copy(s : ImagefilterlaplacianNode) -> ImagefilterlaplacianNode {
-  let result = image_filter_laplacian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_node_fill(s : ImagefilterlaplacianNode, v : Double) -> ImagefilterlaplacianNode {
-  let result = image_filter_laplacian_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_node_min(s : ImagefilterlaplacianNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_filter_laplacian_edge_sum(s : ImagefilterlaplacianEdge) -> Double {
 pub fn image_filter_laplacian_edge_mean(s : ImagefilterlaplacianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_edge_scale(s : ImagefilterlaplacianEdge, f : Double) -> ImagefilterlaplacianEdge {
-  let result = image_filter_laplacian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_edge_add(a : ImagefilterlaplacianEdge, b : ImagefilterlaplacianEdge) -> ImagefilterlaplacianEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_edge_copy(s : ImagefilterlaplacianEdge) -> ImagefilterlaplacianEdge {
-  let result = image_filter_laplacian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_edge_fill(s : ImagefilterlaplacianEdge, v : Double) -> ImagefilterlaplacianEdge {
-  let result = image_filter_laplacian_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_edge_min(s : ImagefilterlaplacianEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_filter_laplacian_path_sum(s : ImagefilterlaplacianPath) -> Double {
 pub fn image_filter_laplacian_path_mean(s : ImagefilterlaplacianPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_path_scale(s : ImagefilterlaplacianPath, f : Double) -> ImagefilterlaplacianPath {
-  let result = image_filter_laplacian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_path_add(a : ImagefilterlaplacianPath, b : ImagefilterlaplacianPath) -> ImagefilterlaplacianPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_path_copy(s : ImagefilterlaplacianPath) -> ImagefilterlaplacianPath {
-  let result = image_filter_laplacian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_path_fill(s : ImagefilterlaplacianPath, v : Double) -> ImagefilterlaplacianPath {
-  let result = image_filter_laplacian_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_path_min(s : ImagefilterlaplacianPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_filter_laplacian_cluster_sum(s : ImagefilterlaplacianCluster) -> Do
 pub fn image_filter_laplacian_cluster_mean(s : ImagefilterlaplacianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_cluster_scale(s : ImagefilterlaplacianCluster, f : Double) -> ImagefilterlaplacianCluster {
-  let result = image_filter_laplacian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cluster_add(a : ImagefilterlaplacianCluster, b : ImagefilterlaplacianCluster) -> ImagefilterlaplacianCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_cluster_copy(s : ImagefilterlaplacianCluster) -> ImagefilterlaplacianCluster {
-  let result = image_filter_laplacian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cluster_fill(s : ImagefilterlaplacianCluster, v : Double) -> ImagefilterlaplacianCluster {
-  let result = image_filter_laplacian_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cluster_min(s : ImagefilterlaplacianCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_filter_laplacian_model_sum(s : ImagefilterlaplacianModel) -> Double
 pub fn image_filter_laplacian_model_mean(s : ImagefilterlaplacianModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_model_scale(s : ImagefilterlaplacianModel, f : Double) -> ImagefilterlaplacianModel {
-  let result = image_filter_laplacian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_model_add(a : ImagefilterlaplacianModel, b : ImagefilterlaplacianModel) -> ImagefilterlaplacianModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_model_copy(s : ImagefilterlaplacianModel) -> ImagefilterlaplacianModel {
-  let result = image_filter_laplacian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_model_fill(s : ImagefilterlaplacianModel, v : Double) -> ImagefilterlaplacianModel {
-  let result = image_filter_laplacian_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_model_min(s : ImagefilterlaplacianModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_filter_laplacian_layer_sum(s : ImagefilterlaplacianLayer) -> Double
 pub fn image_filter_laplacian_layer_mean(s : ImagefilterlaplacianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_layer_scale(s : ImagefilterlaplacianLayer, f : Double) -> ImagefilterlaplacianLayer {
-  let result = image_filter_laplacian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_layer_add(a : ImagefilterlaplacianLayer, b : ImagefilterlaplacianLayer) -> ImagefilterlaplacianLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_layer_copy(s : ImagefilterlaplacianLayer) -> ImagefilterlaplacianLayer {
-  let result = image_filter_laplacian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_layer_fill(s : ImagefilterlaplacianLayer, v : Double) -> ImagefilterlaplacianLayer {
-  let result = image_filter_laplacian_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_layer_min(s : ImagefilterlaplacianLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_filter_laplacian_buffer_sum(s : ImagefilterlaplacianBuffer) -> Doub
 pub fn image_filter_laplacian_buffer_mean(s : ImagefilterlaplacianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_buffer_scale(s : ImagefilterlaplacianBuffer, f : Double) -> ImagefilterlaplacianBuffer {
-  let result = image_filter_laplacian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_buffer_add(a : ImagefilterlaplacianBuffer, b : ImagefilterlaplacianBuffer) -> ImagefilterlaplacianBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_buffer_copy(s : ImagefilterlaplacianBuffer) -> ImagefilterlaplacianBuffer {
-  let result = image_filter_laplacian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_buffer_fill(s : ImagefilterlaplacianBuffer, v : Double) -> ImagefilterlaplacianBuffer {
-  let result = image_filter_laplacian_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_buffer_min(s : ImagefilterlaplacianBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_filter_laplacian_cursor_sum(s : ImagefilterlaplacianCursor) -> Doub
 pub fn image_filter_laplacian_cursor_mean(s : ImagefilterlaplacianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_cursor_scale(s : ImagefilterlaplacianCursor, f : Double) -> ImagefilterlaplacianCursor {
-  let result = image_filter_laplacian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cursor_add(a : ImagefilterlaplacianCursor, b : ImagefilterlaplacianCursor) -> ImagefilterlaplacianCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_cursor_copy(s : ImagefilterlaplacianCursor) -> ImagefilterlaplacianCursor {
-  let result = image_filter_laplacian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cursor_fill(s : ImagefilterlaplacianCursor, v : Double) -> ImagefilterlaplacianCursor {
-  let result = image_filter_laplacian_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cursor_min(s : ImagefilterlaplacianCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_filter_laplacian_view_sum(s : ImagefilterlaplacianView) -> Double {
 pub fn image_filter_laplacian_view_mean(s : ImagefilterlaplacianView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_view_scale(s : ImagefilterlaplacianView, f : Double) -> ImagefilterlaplacianView {
-  let result = image_filter_laplacian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_view_add(a : ImagefilterlaplacianView, b : ImagefilterlaplacianView) -> ImagefilterlaplacianView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_view_copy(s : ImagefilterlaplacianView) -> ImagefilterlaplacianView {
-  let result = image_filter_laplacian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_view_fill(s : ImagefilterlaplacianView, v : Double) -> ImagefilterlaplacianView {
-  let result = image_filter_laplacian_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_view_min(s : ImagefilterlaplacianView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_filter_laplacian_range_sum(s : ImagefilterlaplacianRange) -> Double
 pub fn image_filter_laplacian_range_mean(s : ImagefilterlaplacianRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_range_scale(s : ImagefilterlaplacianRange, f : Double) -> ImagefilterlaplacianRange {
-  let result = image_filter_laplacian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_range_add(a : ImagefilterlaplacianRange, b : ImagefilterlaplacianRange) -> ImagefilterlaplacianRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_range_copy(s : ImagefilterlaplacianRange) -> ImagefilterlaplacianRange {
-  let result = image_filter_laplacian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_range_fill(s : ImagefilterlaplacianRange, v : Double) -> ImagefilterlaplacianRange {
-  let result = image_filter_laplacian_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_range_min(s : ImagefilterlaplacianRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_filter_laplacian_slice_sum(s : ImagefilterlaplacianSlice) -> Double
 pub fn image_filter_laplacian_slice_mean(s : ImagefilterlaplacianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_slice_scale(s : ImagefilterlaplacianSlice, f : Double) -> ImagefilterlaplacianSlice {
-  let result = image_filter_laplacian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_slice_add(a : ImagefilterlaplacianSlice, b : ImagefilterlaplacianSlice) -> ImagefilterlaplacianSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_laplacian_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_laplacian_slice_copy(s : ImagefilterlaplacianSlice) -> ImagefilterlaplacianSlice {
-  let result = image_filter_laplacian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_slice_fill(s : ImagefilterlaplacianSlice, v : Double) -> ImagefilterlaplacianSlice {
-  let result = image_filter_laplacian_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_slice_min(s : ImagefilterlaplacianSlice) -> Double { @_common.min(s.data) }

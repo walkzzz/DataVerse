@@ -383,28 +383,20 @@ pub fn nlp_pos_averaged_frame_sum(s : NlpposaveragedFrame) -> Double { @_common.
 pub fn nlp_pos_averaged_frame_mean(s : NlpposaveragedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_frame_scale(s : NlpposaveragedFrame, f : Double) -> NlpposaveragedFrame {
-  let result = nlp_pos_averaged_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_frame_add(a : NlpposaveragedFrame, b : NlpposaveragedFrame) -> NlpposaveragedFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_frame_copy(s : NlpposaveragedFrame) -> NlpposaveragedFrame {
-  let result = nlp_pos_averaged_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_frame_fill(s : NlpposaveragedFrame, v : Double) -> NlpposaveragedFrame {
-  let result = nlp_pos_averaged_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_frame_min(s : NlpposaveragedFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_pos_averaged_table_sum(s : NlpposaveragedTable) -> Double { @_common.
 pub fn nlp_pos_averaged_table_mean(s : NlpposaveragedTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_table_scale(s : NlpposaveragedTable, f : Double) -> NlpposaveragedTable {
-  let result = nlp_pos_averaged_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_table_add(a : NlpposaveragedTable, b : NlpposaveragedTable) -> NlpposaveragedTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_table_copy(s : NlpposaveragedTable) -> NlpposaveragedTable {
-  let result = nlp_pos_averaged_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_table_fill(s : NlpposaveragedTable, v : Double) -> NlpposaveragedTable {
-  let result = nlp_pos_averaged_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_table_min(s : NlpposaveragedTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_pos_averaged_graphn_sum(s : NlpposaveragedGraphN) -> Double { @_commo
 pub fn nlp_pos_averaged_graphn_mean(s : NlpposaveragedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_graphn_scale(s : NlpposaveragedGraphN, f : Double) -> NlpposaveragedGraphN {
-  let result = nlp_pos_averaged_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_graphn_add(a : NlpposaveragedGraphN, b : NlpposaveragedGraphN) -> NlpposaveragedGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_graphn_copy(s : NlpposaveragedGraphN) -> NlpposaveragedGraphN {
-  let result = nlp_pos_averaged_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_graphn_fill(s : NlpposaveragedGraphN, v : Double) -> NlpposaveragedGraphN {
-  let result = nlp_pos_averaged_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_graphn_min(s : NlpposaveragedGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_pos_averaged_node_sum(s : NlpposaveragedNode) -> Double { @_common.su
 pub fn nlp_pos_averaged_node_mean(s : NlpposaveragedNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_node_scale(s : NlpposaveragedNode, f : Double) -> NlpposaveragedNode {
-  let result = nlp_pos_averaged_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_node_add(a : NlpposaveragedNode, b : NlpposaveragedNode) -> NlpposaveragedNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_node_copy(s : NlpposaveragedNode) -> NlpposaveragedNode {
-  let result = nlp_pos_averaged_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_node_fill(s : NlpposaveragedNode, v : Double) -> NlpposaveragedNode {
-  let result = nlp_pos_averaged_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_node_min(s : NlpposaveragedNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_pos_averaged_edge_sum(s : NlpposaveragedEdge) -> Double { @_common.su
 pub fn nlp_pos_averaged_edge_mean(s : NlpposaveragedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_edge_scale(s : NlpposaveragedEdge, f : Double) -> NlpposaveragedEdge {
-  let result = nlp_pos_averaged_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_edge_add(a : NlpposaveragedEdge, b : NlpposaveragedEdge) -> NlpposaveragedEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_edge_copy(s : NlpposaveragedEdge) -> NlpposaveragedEdge {
-  let result = nlp_pos_averaged_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_edge_fill(s : NlpposaveragedEdge, v : Double) -> NlpposaveragedEdge {
-  let result = nlp_pos_averaged_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_edge_min(s : NlpposaveragedEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_pos_averaged_path_sum(s : NlpposaveragedPath) -> Double { @_common.su
 pub fn nlp_pos_averaged_path_mean(s : NlpposaveragedPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_path_scale(s : NlpposaveragedPath, f : Double) -> NlpposaveragedPath {
-  let result = nlp_pos_averaged_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_path_add(a : NlpposaveragedPath, b : NlpposaveragedPath) -> NlpposaveragedPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_path_copy(s : NlpposaveragedPath) -> NlpposaveragedPath {
-  let result = nlp_pos_averaged_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_path_fill(s : NlpposaveragedPath, v : Double) -> NlpposaveragedPath {
-  let result = nlp_pos_averaged_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_path_min(s : NlpposaveragedPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_pos_averaged_cluster_sum(s : NlpposaveragedCluster) -> Double { @_com
 pub fn nlp_pos_averaged_cluster_mean(s : NlpposaveragedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_cluster_scale(s : NlpposaveragedCluster, f : Double) -> NlpposaveragedCluster {
-  let result = nlp_pos_averaged_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_cluster_add(a : NlpposaveragedCluster, b : NlpposaveragedCluster) -> NlpposaveragedCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_cluster_copy(s : NlpposaveragedCluster) -> NlpposaveragedCluster {
-  let result = nlp_pos_averaged_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_cluster_fill(s : NlpposaveragedCluster, v : Double) -> NlpposaveragedCluster {
-  let result = nlp_pos_averaged_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_cluster_min(s : NlpposaveragedCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_pos_averaged_model_sum(s : NlpposaveragedModel) -> Double { @_common.
 pub fn nlp_pos_averaged_model_mean(s : NlpposaveragedModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_model_scale(s : NlpposaveragedModel, f : Double) -> NlpposaveragedModel {
-  let result = nlp_pos_averaged_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_model_add(a : NlpposaveragedModel, b : NlpposaveragedModel) -> NlpposaveragedModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_model_copy(s : NlpposaveragedModel) -> NlpposaveragedModel {
-  let result = nlp_pos_averaged_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_model_fill(s : NlpposaveragedModel, v : Double) -> NlpposaveragedModel {
-  let result = nlp_pos_averaged_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_model_min(s : NlpposaveragedModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_pos_averaged_layer_sum(s : NlpposaveragedLayer) -> Double { @_common.
 pub fn nlp_pos_averaged_layer_mean(s : NlpposaveragedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_layer_scale(s : NlpposaveragedLayer, f : Double) -> NlpposaveragedLayer {
-  let result = nlp_pos_averaged_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_layer_add(a : NlpposaveragedLayer, b : NlpposaveragedLayer) -> NlpposaveragedLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_layer_copy(s : NlpposaveragedLayer) -> NlpposaveragedLayer {
-  let result = nlp_pos_averaged_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_layer_fill(s : NlpposaveragedLayer, v : Double) -> NlpposaveragedLayer {
-  let result = nlp_pos_averaged_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_layer_min(s : NlpposaveragedLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_pos_averaged_buffer_sum(s : NlpposaveragedBuffer) -> Double { @_commo
 pub fn nlp_pos_averaged_buffer_mean(s : NlpposaveragedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_buffer_scale(s : NlpposaveragedBuffer, f : Double) -> NlpposaveragedBuffer {
-  let result = nlp_pos_averaged_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_buffer_add(a : NlpposaveragedBuffer, b : NlpposaveragedBuffer) -> NlpposaveragedBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_buffer_copy(s : NlpposaveragedBuffer) -> NlpposaveragedBuffer {
-  let result = nlp_pos_averaged_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_buffer_fill(s : NlpposaveragedBuffer, v : Double) -> NlpposaveragedBuffer {
-  let result = nlp_pos_averaged_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_buffer_min(s : NlpposaveragedBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_pos_averaged_cursor_sum(s : NlpposaveragedCursor) -> Double { @_commo
 pub fn nlp_pos_averaged_cursor_mean(s : NlpposaveragedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_cursor_scale(s : NlpposaveragedCursor, f : Double) -> NlpposaveragedCursor {
-  let result = nlp_pos_averaged_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_cursor_add(a : NlpposaveragedCursor, b : NlpposaveragedCursor) -> NlpposaveragedCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_cursor_copy(s : NlpposaveragedCursor) -> NlpposaveragedCursor {
-  let result = nlp_pos_averaged_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_cursor_fill(s : NlpposaveragedCursor, v : Double) -> NlpposaveragedCursor {
-  let result = nlp_pos_averaged_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_cursor_min(s : NlpposaveragedCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_pos_averaged_view_sum(s : NlpposaveragedView) -> Double { @_common.su
 pub fn nlp_pos_averaged_view_mean(s : NlpposaveragedView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_view_scale(s : NlpposaveragedView, f : Double) -> NlpposaveragedView {
-  let result = nlp_pos_averaged_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_view_add(a : NlpposaveragedView, b : NlpposaveragedView) -> NlpposaveragedView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_view_copy(s : NlpposaveragedView) -> NlpposaveragedView {
-  let result = nlp_pos_averaged_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_view_fill(s : NlpposaveragedView, v : Double) -> NlpposaveragedView {
-  let result = nlp_pos_averaged_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_view_min(s : NlpposaveragedView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_pos_averaged_range_sum(s : NlpposaveragedRange) -> Double { @_common.
 pub fn nlp_pos_averaged_range_mean(s : NlpposaveragedRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_range_scale(s : NlpposaveragedRange, f : Double) -> NlpposaveragedRange {
-  let result = nlp_pos_averaged_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_range_add(a : NlpposaveragedRange, b : NlpposaveragedRange) -> NlpposaveragedRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_range_copy(s : NlpposaveragedRange) -> NlpposaveragedRange {
-  let result = nlp_pos_averaged_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_range_fill(s : NlpposaveragedRange, v : Double) -> NlpposaveragedRange {
-  let result = nlp_pos_averaged_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_range_min(s : NlpposaveragedRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_pos_averaged_slice_sum(s : NlpposaveragedSlice) -> Double { @_common.
 pub fn nlp_pos_averaged_slice_mean(s : NlpposaveragedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_averaged_slice_scale(s : NlpposaveragedSlice, f : Double) -> NlpposaveragedSlice {
-  let result = nlp_pos_averaged_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_slice_add(a : NlpposaveragedSlice, b : NlpposaveragedSlice) -> NlpposaveragedSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_averaged_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_averaged_slice_copy(s : NlpposaveragedSlice) -> NlpposaveragedSlice {
-  let result = nlp_pos_averaged_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_slice_fill(s : NlpposaveragedSlice, v : Double) -> NlpposaveragedSlice {
-  let result = nlp_pos_averaged_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_averaged_slice_min(s : NlpposaveragedSlice) -> Double { @_common.min(s.data) }

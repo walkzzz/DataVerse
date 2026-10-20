@@ -383,28 +383,20 @@ pub fn ml_ensemble_bagging_frame_sum(s : MlensemblebaggingFrame) -> Double { @_c
 pub fn ml_ensemble_bagging_frame_mean(s : MlensemblebaggingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_frame_scale(s : MlensemblebaggingFrame, f : Double) -> MlensemblebaggingFrame {
-  let result = ml_ensemble_bagging_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_frame_add(a : MlensemblebaggingFrame, b : MlensemblebaggingFrame) -> MlensemblebaggingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_frame_copy(s : MlensemblebaggingFrame) -> MlensemblebaggingFrame {
-  let result = ml_ensemble_bagging_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_frame_fill(s : MlensemblebaggingFrame, v : Double) -> MlensemblebaggingFrame {
-  let result = ml_ensemble_bagging_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_frame_min(s : MlensemblebaggingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_ensemble_bagging_table_sum(s : MlensemblebaggingTable) -> Double { @_c
 pub fn ml_ensemble_bagging_table_mean(s : MlensemblebaggingTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_table_scale(s : MlensemblebaggingTable, f : Double) -> MlensemblebaggingTable {
-  let result = ml_ensemble_bagging_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_table_add(a : MlensemblebaggingTable, b : MlensemblebaggingTable) -> MlensemblebaggingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_table_copy(s : MlensemblebaggingTable) -> MlensemblebaggingTable {
-  let result = ml_ensemble_bagging_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_table_fill(s : MlensemblebaggingTable, v : Double) -> MlensemblebaggingTable {
-  let result = ml_ensemble_bagging_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_table_min(s : MlensemblebaggingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_ensemble_bagging_graphn_sum(s : MlensemblebaggingGraphN) -> Double { @
 pub fn ml_ensemble_bagging_graphn_mean(s : MlensemblebaggingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_graphn_scale(s : MlensemblebaggingGraphN, f : Double) -> MlensemblebaggingGraphN {
-  let result = ml_ensemble_bagging_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_graphn_add(a : MlensemblebaggingGraphN, b : MlensemblebaggingGraphN) -> MlensemblebaggingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_graphn_copy(s : MlensemblebaggingGraphN) -> MlensemblebaggingGraphN {
-  let result = ml_ensemble_bagging_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_graphn_fill(s : MlensemblebaggingGraphN, v : Double) -> MlensemblebaggingGraphN {
-  let result = ml_ensemble_bagging_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_graphn_min(s : MlensemblebaggingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_ensemble_bagging_node_sum(s : MlensemblebaggingNode) -> Double { @_com
 pub fn ml_ensemble_bagging_node_mean(s : MlensemblebaggingNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_node_scale(s : MlensemblebaggingNode, f : Double) -> MlensemblebaggingNode {
-  let result = ml_ensemble_bagging_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_node_add(a : MlensemblebaggingNode, b : MlensemblebaggingNode) -> MlensemblebaggingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_node_copy(s : MlensemblebaggingNode) -> MlensemblebaggingNode {
-  let result = ml_ensemble_bagging_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_node_fill(s : MlensemblebaggingNode, v : Double) -> MlensemblebaggingNode {
-  let result = ml_ensemble_bagging_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_node_min(s : MlensemblebaggingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_ensemble_bagging_edge_sum(s : MlensemblebaggingEdge) -> Double { @_com
 pub fn ml_ensemble_bagging_edge_mean(s : MlensemblebaggingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_edge_scale(s : MlensemblebaggingEdge, f : Double) -> MlensemblebaggingEdge {
-  let result = ml_ensemble_bagging_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_edge_add(a : MlensemblebaggingEdge, b : MlensemblebaggingEdge) -> MlensemblebaggingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_edge_copy(s : MlensemblebaggingEdge) -> MlensemblebaggingEdge {
-  let result = ml_ensemble_bagging_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_edge_fill(s : MlensemblebaggingEdge, v : Double) -> MlensemblebaggingEdge {
-  let result = ml_ensemble_bagging_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_edge_min(s : MlensemblebaggingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_ensemble_bagging_path_sum(s : MlensemblebaggingPath) -> Double { @_com
 pub fn ml_ensemble_bagging_path_mean(s : MlensemblebaggingPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_path_scale(s : MlensemblebaggingPath, f : Double) -> MlensemblebaggingPath {
-  let result = ml_ensemble_bagging_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_path_add(a : MlensemblebaggingPath, b : MlensemblebaggingPath) -> MlensemblebaggingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_path_copy(s : MlensemblebaggingPath) -> MlensemblebaggingPath {
-  let result = ml_ensemble_bagging_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_path_fill(s : MlensemblebaggingPath, v : Double) -> MlensemblebaggingPath {
-  let result = ml_ensemble_bagging_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_path_min(s : MlensemblebaggingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_ensemble_bagging_cluster_sum(s : MlensemblebaggingCluster) -> Double {
 pub fn ml_ensemble_bagging_cluster_mean(s : MlensemblebaggingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_cluster_scale(s : MlensemblebaggingCluster, f : Double) -> MlensemblebaggingCluster {
-  let result = ml_ensemble_bagging_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cluster_add(a : MlensemblebaggingCluster, b : MlensemblebaggingCluster) -> MlensemblebaggingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_cluster_copy(s : MlensemblebaggingCluster) -> MlensemblebaggingCluster {
-  let result = ml_ensemble_bagging_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cluster_fill(s : MlensemblebaggingCluster, v : Double) -> MlensemblebaggingCluster {
-  let result = ml_ensemble_bagging_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cluster_min(s : MlensemblebaggingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_ensemble_bagging_model_sum(s : MlensemblebaggingModel) -> Double { @_c
 pub fn ml_ensemble_bagging_model_mean(s : MlensemblebaggingModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_model_scale(s : MlensemblebaggingModel, f : Double) -> MlensemblebaggingModel {
-  let result = ml_ensemble_bagging_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_model_add(a : MlensemblebaggingModel, b : MlensemblebaggingModel) -> MlensemblebaggingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_model_copy(s : MlensemblebaggingModel) -> MlensemblebaggingModel {
-  let result = ml_ensemble_bagging_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_model_fill(s : MlensemblebaggingModel, v : Double) -> MlensemblebaggingModel {
-  let result = ml_ensemble_bagging_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_model_min(s : MlensemblebaggingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_ensemble_bagging_layer_sum(s : MlensemblebaggingLayer) -> Double { @_c
 pub fn ml_ensemble_bagging_layer_mean(s : MlensemblebaggingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_layer_scale(s : MlensemblebaggingLayer, f : Double) -> MlensemblebaggingLayer {
-  let result = ml_ensemble_bagging_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_layer_add(a : MlensemblebaggingLayer, b : MlensemblebaggingLayer) -> MlensemblebaggingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_layer_copy(s : MlensemblebaggingLayer) -> MlensemblebaggingLayer {
-  let result = ml_ensemble_bagging_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_layer_fill(s : MlensemblebaggingLayer, v : Double) -> MlensemblebaggingLayer {
-  let result = ml_ensemble_bagging_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_layer_min(s : MlensemblebaggingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_ensemble_bagging_buffer_sum(s : MlensemblebaggingBuffer) -> Double { @
 pub fn ml_ensemble_bagging_buffer_mean(s : MlensemblebaggingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_buffer_scale(s : MlensemblebaggingBuffer, f : Double) -> MlensemblebaggingBuffer {
-  let result = ml_ensemble_bagging_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_buffer_add(a : MlensemblebaggingBuffer, b : MlensemblebaggingBuffer) -> MlensemblebaggingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_buffer_copy(s : MlensemblebaggingBuffer) -> MlensemblebaggingBuffer {
-  let result = ml_ensemble_bagging_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_buffer_fill(s : MlensemblebaggingBuffer, v : Double) -> MlensemblebaggingBuffer {
-  let result = ml_ensemble_bagging_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_buffer_min(s : MlensemblebaggingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_ensemble_bagging_cursor_sum(s : MlensemblebaggingCursor) -> Double { @
 pub fn ml_ensemble_bagging_cursor_mean(s : MlensemblebaggingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_cursor_scale(s : MlensemblebaggingCursor, f : Double) -> MlensemblebaggingCursor {
-  let result = ml_ensemble_bagging_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cursor_add(a : MlensemblebaggingCursor, b : MlensemblebaggingCursor) -> MlensemblebaggingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_cursor_copy(s : MlensemblebaggingCursor) -> MlensemblebaggingCursor {
-  let result = ml_ensemble_bagging_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cursor_fill(s : MlensemblebaggingCursor, v : Double) -> MlensemblebaggingCursor {
-  let result = ml_ensemble_bagging_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cursor_min(s : MlensemblebaggingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_ensemble_bagging_view_sum(s : MlensemblebaggingView) -> Double { @_com
 pub fn ml_ensemble_bagging_view_mean(s : MlensemblebaggingView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_view_scale(s : MlensemblebaggingView, f : Double) -> MlensemblebaggingView {
-  let result = ml_ensemble_bagging_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_view_add(a : MlensemblebaggingView, b : MlensemblebaggingView) -> MlensemblebaggingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_view_copy(s : MlensemblebaggingView) -> MlensemblebaggingView {
-  let result = ml_ensemble_bagging_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_view_fill(s : MlensemblebaggingView, v : Double) -> MlensemblebaggingView {
-  let result = ml_ensemble_bagging_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_view_min(s : MlensemblebaggingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_ensemble_bagging_range_sum(s : MlensemblebaggingRange) -> Double { @_c
 pub fn ml_ensemble_bagging_range_mean(s : MlensemblebaggingRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_range_scale(s : MlensemblebaggingRange, f : Double) -> MlensemblebaggingRange {
-  let result = ml_ensemble_bagging_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_range_add(a : MlensemblebaggingRange, b : MlensemblebaggingRange) -> MlensemblebaggingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_range_copy(s : MlensemblebaggingRange) -> MlensemblebaggingRange {
-  let result = ml_ensemble_bagging_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_range_fill(s : MlensemblebaggingRange, v : Double) -> MlensemblebaggingRange {
-  let result = ml_ensemble_bagging_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_range_min(s : MlensemblebaggingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_ensemble_bagging_slice_sum(s : MlensemblebaggingSlice) -> Double { @_c
 pub fn ml_ensemble_bagging_slice_mean(s : MlensemblebaggingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_bagging_slice_scale(s : MlensemblebaggingSlice, f : Double) -> MlensemblebaggingSlice {
-  let result = ml_ensemble_bagging_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_slice_add(a : MlensemblebaggingSlice, b : MlensemblebaggingSlice) -> MlensemblebaggingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_bagging_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_bagging_slice_copy(s : MlensemblebaggingSlice) -> MlensemblebaggingSlice {
-  let result = ml_ensemble_bagging_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_slice_fill(s : MlensemblebaggingSlice, v : Double) -> MlensemblebaggingSlice {
-  let result = ml_ensemble_bagging_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_slice_min(s : MlensemblebaggingSlice) -> Double { @_common.min(s.data) }

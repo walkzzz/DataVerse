@@ -383,28 +383,20 @@ pub fn math_stochastic_prog_frame_sum(s : MathstochasticprogFrame) -> Double { @
 pub fn math_stochastic_prog_frame_mean(s : MathstochasticprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_frame_scale(s : MathstochasticprogFrame, f : Double) -> MathstochasticprogFrame {
-  let result = math_stochastic_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_frame_add(a : MathstochasticprogFrame, b : MathstochasticprogFrame) -> MathstochasticprogFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_frame_copy(s : MathstochasticprogFrame) -> MathstochasticprogFrame {
-  let result = math_stochastic_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_frame_fill(s : MathstochasticprogFrame, v : Double) -> MathstochasticprogFrame {
-  let result = math_stochastic_prog_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_frame_min(s : MathstochasticprogFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_stochastic_prog_table_sum(s : MathstochasticprogTable) -> Double { @
 pub fn math_stochastic_prog_table_mean(s : MathstochasticprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_table_scale(s : MathstochasticprogTable, f : Double) -> MathstochasticprogTable {
-  let result = math_stochastic_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_table_add(a : MathstochasticprogTable, b : MathstochasticprogTable) -> MathstochasticprogTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_table_copy(s : MathstochasticprogTable) -> MathstochasticprogTable {
-  let result = math_stochastic_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_table_fill(s : MathstochasticprogTable, v : Double) -> MathstochasticprogTable {
-  let result = math_stochastic_prog_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_table_min(s : MathstochasticprogTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_stochastic_prog_graphn_sum(s : MathstochasticprogGraphN) -> Double {
 pub fn math_stochastic_prog_graphn_mean(s : MathstochasticprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_graphn_scale(s : MathstochasticprogGraphN, f : Double) -> MathstochasticprogGraphN {
-  let result = math_stochastic_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_graphn_add(a : MathstochasticprogGraphN, b : MathstochasticprogGraphN) -> MathstochasticprogGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_graphn_copy(s : MathstochasticprogGraphN) -> MathstochasticprogGraphN {
-  let result = math_stochastic_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_graphn_fill(s : MathstochasticprogGraphN, v : Double) -> MathstochasticprogGraphN {
-  let result = math_stochastic_prog_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_graphn_min(s : MathstochasticprogGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_stochastic_prog_node_sum(s : MathstochasticprogNode) -> Double { @_c
 pub fn math_stochastic_prog_node_mean(s : MathstochasticprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_node_scale(s : MathstochasticprogNode, f : Double) -> MathstochasticprogNode {
-  let result = math_stochastic_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_node_add(a : MathstochasticprogNode, b : MathstochasticprogNode) -> MathstochasticprogNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_node_copy(s : MathstochasticprogNode) -> MathstochasticprogNode {
-  let result = math_stochastic_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_node_fill(s : MathstochasticprogNode, v : Double) -> MathstochasticprogNode {
-  let result = math_stochastic_prog_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_node_min(s : MathstochasticprogNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_stochastic_prog_edge_sum(s : MathstochasticprogEdge) -> Double { @_c
 pub fn math_stochastic_prog_edge_mean(s : MathstochasticprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_edge_scale(s : MathstochasticprogEdge, f : Double) -> MathstochasticprogEdge {
-  let result = math_stochastic_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_edge_add(a : MathstochasticprogEdge, b : MathstochasticprogEdge) -> MathstochasticprogEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_edge_copy(s : MathstochasticprogEdge) -> MathstochasticprogEdge {
-  let result = math_stochastic_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_edge_fill(s : MathstochasticprogEdge, v : Double) -> MathstochasticprogEdge {
-  let result = math_stochastic_prog_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_edge_min(s : MathstochasticprogEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_stochastic_prog_path_sum(s : MathstochasticprogPath) -> Double { @_c
 pub fn math_stochastic_prog_path_mean(s : MathstochasticprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_path_scale(s : MathstochasticprogPath, f : Double) -> MathstochasticprogPath {
-  let result = math_stochastic_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_path_add(a : MathstochasticprogPath, b : MathstochasticprogPath) -> MathstochasticprogPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_path_copy(s : MathstochasticprogPath) -> MathstochasticprogPath {
-  let result = math_stochastic_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_path_fill(s : MathstochasticprogPath, v : Double) -> MathstochasticprogPath {
-  let result = math_stochastic_prog_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_path_min(s : MathstochasticprogPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_stochastic_prog_cluster_sum(s : MathstochasticprogCluster) -> Double
 pub fn math_stochastic_prog_cluster_mean(s : MathstochasticprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_cluster_scale(s : MathstochasticprogCluster, f : Double) -> MathstochasticprogCluster {
-  let result = math_stochastic_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cluster_add(a : MathstochasticprogCluster, b : MathstochasticprogCluster) -> MathstochasticprogCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_cluster_copy(s : MathstochasticprogCluster) -> MathstochasticprogCluster {
-  let result = math_stochastic_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cluster_fill(s : MathstochasticprogCluster, v : Double) -> MathstochasticprogCluster {
-  let result = math_stochastic_prog_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cluster_min(s : MathstochasticprogCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_stochastic_prog_model_sum(s : MathstochasticprogModel) -> Double { @
 pub fn math_stochastic_prog_model_mean(s : MathstochasticprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_model_scale(s : MathstochasticprogModel, f : Double) -> MathstochasticprogModel {
-  let result = math_stochastic_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_model_add(a : MathstochasticprogModel, b : MathstochasticprogModel) -> MathstochasticprogModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_model_copy(s : MathstochasticprogModel) -> MathstochasticprogModel {
-  let result = math_stochastic_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_model_fill(s : MathstochasticprogModel, v : Double) -> MathstochasticprogModel {
-  let result = math_stochastic_prog_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_model_min(s : MathstochasticprogModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_stochastic_prog_layer_sum(s : MathstochasticprogLayer) -> Double { @
 pub fn math_stochastic_prog_layer_mean(s : MathstochasticprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_layer_scale(s : MathstochasticprogLayer, f : Double) -> MathstochasticprogLayer {
-  let result = math_stochastic_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_layer_add(a : MathstochasticprogLayer, b : MathstochasticprogLayer) -> MathstochasticprogLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_layer_copy(s : MathstochasticprogLayer) -> MathstochasticprogLayer {
-  let result = math_stochastic_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_layer_fill(s : MathstochasticprogLayer, v : Double) -> MathstochasticprogLayer {
-  let result = math_stochastic_prog_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_layer_min(s : MathstochasticprogLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_stochastic_prog_buffer_sum(s : MathstochasticprogBuffer) -> Double {
 pub fn math_stochastic_prog_buffer_mean(s : MathstochasticprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_buffer_scale(s : MathstochasticprogBuffer, f : Double) -> MathstochasticprogBuffer {
-  let result = math_stochastic_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_buffer_add(a : MathstochasticprogBuffer, b : MathstochasticprogBuffer) -> MathstochasticprogBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_buffer_copy(s : MathstochasticprogBuffer) -> MathstochasticprogBuffer {
-  let result = math_stochastic_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_buffer_fill(s : MathstochasticprogBuffer, v : Double) -> MathstochasticprogBuffer {
-  let result = math_stochastic_prog_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_buffer_min(s : MathstochasticprogBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_stochastic_prog_cursor_sum(s : MathstochasticprogCursor) -> Double {
 pub fn math_stochastic_prog_cursor_mean(s : MathstochasticprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_cursor_scale(s : MathstochasticprogCursor, f : Double) -> MathstochasticprogCursor {
-  let result = math_stochastic_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cursor_add(a : MathstochasticprogCursor, b : MathstochasticprogCursor) -> MathstochasticprogCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_cursor_copy(s : MathstochasticprogCursor) -> MathstochasticprogCursor {
-  let result = math_stochastic_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cursor_fill(s : MathstochasticprogCursor, v : Double) -> MathstochasticprogCursor {
-  let result = math_stochastic_prog_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cursor_min(s : MathstochasticprogCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_stochastic_prog_view_sum(s : MathstochasticprogView) -> Double { @_c
 pub fn math_stochastic_prog_view_mean(s : MathstochasticprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_view_scale(s : MathstochasticprogView, f : Double) -> MathstochasticprogView {
-  let result = math_stochastic_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_view_add(a : MathstochasticprogView, b : MathstochasticprogView) -> MathstochasticprogView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_view_copy(s : MathstochasticprogView) -> MathstochasticprogView {
-  let result = math_stochastic_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_view_fill(s : MathstochasticprogView, v : Double) -> MathstochasticprogView {
-  let result = math_stochastic_prog_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_view_min(s : MathstochasticprogView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_stochastic_prog_range_sum(s : MathstochasticprogRange) -> Double { @
 pub fn math_stochastic_prog_range_mean(s : MathstochasticprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_range_scale(s : MathstochasticprogRange, f : Double) -> MathstochasticprogRange {
-  let result = math_stochastic_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_range_add(a : MathstochasticprogRange, b : MathstochasticprogRange) -> MathstochasticprogRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_range_copy(s : MathstochasticprogRange) -> MathstochasticprogRange {
-  let result = math_stochastic_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_range_fill(s : MathstochasticprogRange, v : Double) -> MathstochasticprogRange {
-  let result = math_stochastic_prog_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_range_min(s : MathstochasticprogRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_stochastic_prog_slice_sum(s : MathstochasticprogSlice) -> Double { @
 pub fn math_stochastic_prog_slice_mean(s : MathstochasticprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_slice_scale(s : MathstochasticprogSlice, f : Double) -> MathstochasticprogSlice {
-  let result = math_stochastic_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_slice_add(a : MathstochasticprogSlice, b : MathstochasticprogSlice) -> MathstochasticprogSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_stochastic_prog_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_stochastic_prog_slice_copy(s : MathstochasticprogSlice) -> MathstochasticprogSlice {
-  let result = math_stochastic_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_slice_fill(s : MathstochasticprogSlice, v : Double) -> MathstochasticprogSlice {
-  let result = math_stochastic_prog_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_slice_min(s : MathstochasticprogSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ml_metric_interpret_frame_sum(s : MlmetricinterpretFrame) -> Double { @_c
 pub fn ml_metric_interpret_frame_mean(s : MlmetricinterpretFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_frame_scale(s : MlmetricinterpretFrame, f : Double) -> MlmetricinterpretFrame {
-  let result = ml_metric_interpret_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_frame_add(a : MlmetricinterpretFrame, b : MlmetricinterpretFrame) -> MlmetricinterpretFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_frame_copy(s : MlmetricinterpretFrame) -> MlmetricinterpretFrame {
-  let result = ml_metric_interpret_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_frame_fill(s : MlmetricinterpretFrame, v : Double) -> MlmetricinterpretFrame {
-  let result = ml_metric_interpret_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_frame_min(s : MlmetricinterpretFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_metric_interpret_table_sum(s : MlmetricinterpretTable) -> Double { @_c
 pub fn ml_metric_interpret_table_mean(s : MlmetricinterpretTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_table_scale(s : MlmetricinterpretTable, f : Double) -> MlmetricinterpretTable {
-  let result = ml_metric_interpret_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_table_add(a : MlmetricinterpretTable, b : MlmetricinterpretTable) -> MlmetricinterpretTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_table_copy(s : MlmetricinterpretTable) -> MlmetricinterpretTable {
-  let result = ml_metric_interpret_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_table_fill(s : MlmetricinterpretTable, v : Double) -> MlmetricinterpretTable {
-  let result = ml_metric_interpret_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_table_min(s : MlmetricinterpretTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_metric_interpret_graphn_sum(s : MlmetricinterpretGraphN) -> Double { @
 pub fn ml_metric_interpret_graphn_mean(s : MlmetricinterpretGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_graphn_scale(s : MlmetricinterpretGraphN, f : Double) -> MlmetricinterpretGraphN {
-  let result = ml_metric_interpret_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_graphn_add(a : MlmetricinterpretGraphN, b : MlmetricinterpretGraphN) -> MlmetricinterpretGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_graphn_copy(s : MlmetricinterpretGraphN) -> MlmetricinterpretGraphN {
-  let result = ml_metric_interpret_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_graphn_fill(s : MlmetricinterpretGraphN, v : Double) -> MlmetricinterpretGraphN {
-  let result = ml_metric_interpret_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_graphn_min(s : MlmetricinterpretGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_metric_interpret_node_sum(s : MlmetricinterpretNode) -> Double { @_com
 pub fn ml_metric_interpret_node_mean(s : MlmetricinterpretNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_node_scale(s : MlmetricinterpretNode, f : Double) -> MlmetricinterpretNode {
-  let result = ml_metric_interpret_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_node_add(a : MlmetricinterpretNode, b : MlmetricinterpretNode) -> MlmetricinterpretNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_node_copy(s : MlmetricinterpretNode) -> MlmetricinterpretNode {
-  let result = ml_metric_interpret_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_node_fill(s : MlmetricinterpretNode, v : Double) -> MlmetricinterpretNode {
-  let result = ml_metric_interpret_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_node_min(s : MlmetricinterpretNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_metric_interpret_edge_sum(s : MlmetricinterpretEdge) -> Double { @_com
 pub fn ml_metric_interpret_edge_mean(s : MlmetricinterpretEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_edge_scale(s : MlmetricinterpretEdge, f : Double) -> MlmetricinterpretEdge {
-  let result = ml_metric_interpret_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_edge_add(a : MlmetricinterpretEdge, b : MlmetricinterpretEdge) -> MlmetricinterpretEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_edge_copy(s : MlmetricinterpretEdge) -> MlmetricinterpretEdge {
-  let result = ml_metric_interpret_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_edge_fill(s : MlmetricinterpretEdge, v : Double) -> MlmetricinterpretEdge {
-  let result = ml_metric_interpret_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_edge_min(s : MlmetricinterpretEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_metric_interpret_path_sum(s : MlmetricinterpretPath) -> Double { @_com
 pub fn ml_metric_interpret_path_mean(s : MlmetricinterpretPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_path_scale(s : MlmetricinterpretPath, f : Double) -> MlmetricinterpretPath {
-  let result = ml_metric_interpret_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_path_add(a : MlmetricinterpretPath, b : MlmetricinterpretPath) -> MlmetricinterpretPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_path_copy(s : MlmetricinterpretPath) -> MlmetricinterpretPath {
-  let result = ml_metric_interpret_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_path_fill(s : MlmetricinterpretPath, v : Double) -> MlmetricinterpretPath {
-  let result = ml_metric_interpret_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_path_min(s : MlmetricinterpretPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_metric_interpret_cluster_sum(s : MlmetricinterpretCluster) -> Double {
 pub fn ml_metric_interpret_cluster_mean(s : MlmetricinterpretCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_cluster_scale(s : MlmetricinterpretCluster, f : Double) -> MlmetricinterpretCluster {
-  let result = ml_metric_interpret_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_cluster_add(a : MlmetricinterpretCluster, b : MlmetricinterpretCluster) -> MlmetricinterpretCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_cluster_copy(s : MlmetricinterpretCluster) -> MlmetricinterpretCluster {
-  let result = ml_metric_interpret_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_cluster_fill(s : MlmetricinterpretCluster, v : Double) -> MlmetricinterpretCluster {
-  let result = ml_metric_interpret_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_cluster_min(s : MlmetricinterpretCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_metric_interpret_model_sum(s : MlmetricinterpretModel) -> Double { @_c
 pub fn ml_metric_interpret_model_mean(s : MlmetricinterpretModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_model_scale(s : MlmetricinterpretModel, f : Double) -> MlmetricinterpretModel {
-  let result = ml_metric_interpret_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_model_add(a : MlmetricinterpretModel, b : MlmetricinterpretModel) -> MlmetricinterpretModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_model_copy(s : MlmetricinterpretModel) -> MlmetricinterpretModel {
-  let result = ml_metric_interpret_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_model_fill(s : MlmetricinterpretModel, v : Double) -> MlmetricinterpretModel {
-  let result = ml_metric_interpret_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_model_min(s : MlmetricinterpretModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_metric_interpret_layer_sum(s : MlmetricinterpretLayer) -> Double { @_c
 pub fn ml_metric_interpret_layer_mean(s : MlmetricinterpretLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_layer_scale(s : MlmetricinterpretLayer, f : Double) -> MlmetricinterpretLayer {
-  let result = ml_metric_interpret_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_layer_add(a : MlmetricinterpretLayer, b : MlmetricinterpretLayer) -> MlmetricinterpretLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_layer_copy(s : MlmetricinterpretLayer) -> MlmetricinterpretLayer {
-  let result = ml_metric_interpret_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_layer_fill(s : MlmetricinterpretLayer, v : Double) -> MlmetricinterpretLayer {
-  let result = ml_metric_interpret_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_layer_min(s : MlmetricinterpretLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_metric_interpret_buffer_sum(s : MlmetricinterpretBuffer) -> Double { @
 pub fn ml_metric_interpret_buffer_mean(s : MlmetricinterpretBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_buffer_scale(s : MlmetricinterpretBuffer, f : Double) -> MlmetricinterpretBuffer {
-  let result = ml_metric_interpret_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_buffer_add(a : MlmetricinterpretBuffer, b : MlmetricinterpretBuffer) -> MlmetricinterpretBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_buffer_copy(s : MlmetricinterpretBuffer) -> MlmetricinterpretBuffer {
-  let result = ml_metric_interpret_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_buffer_fill(s : MlmetricinterpretBuffer, v : Double) -> MlmetricinterpretBuffer {
-  let result = ml_metric_interpret_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_buffer_min(s : MlmetricinterpretBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_metric_interpret_cursor_sum(s : MlmetricinterpretCursor) -> Double { @
 pub fn ml_metric_interpret_cursor_mean(s : MlmetricinterpretCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_cursor_scale(s : MlmetricinterpretCursor, f : Double) -> MlmetricinterpretCursor {
-  let result = ml_metric_interpret_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_cursor_add(a : MlmetricinterpretCursor, b : MlmetricinterpretCursor) -> MlmetricinterpretCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_cursor_copy(s : MlmetricinterpretCursor) -> MlmetricinterpretCursor {
-  let result = ml_metric_interpret_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_cursor_fill(s : MlmetricinterpretCursor, v : Double) -> MlmetricinterpretCursor {
-  let result = ml_metric_interpret_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_cursor_min(s : MlmetricinterpretCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_metric_interpret_view_sum(s : MlmetricinterpretView) -> Double { @_com
 pub fn ml_metric_interpret_view_mean(s : MlmetricinterpretView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_view_scale(s : MlmetricinterpretView, f : Double) -> MlmetricinterpretView {
-  let result = ml_metric_interpret_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_view_add(a : MlmetricinterpretView, b : MlmetricinterpretView) -> MlmetricinterpretView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_view_copy(s : MlmetricinterpretView) -> MlmetricinterpretView {
-  let result = ml_metric_interpret_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_view_fill(s : MlmetricinterpretView, v : Double) -> MlmetricinterpretView {
-  let result = ml_metric_interpret_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_view_min(s : MlmetricinterpretView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_metric_interpret_range_sum(s : MlmetricinterpretRange) -> Double { @_c
 pub fn ml_metric_interpret_range_mean(s : MlmetricinterpretRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_range_scale(s : MlmetricinterpretRange, f : Double) -> MlmetricinterpretRange {
-  let result = ml_metric_interpret_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_range_add(a : MlmetricinterpretRange, b : MlmetricinterpretRange) -> MlmetricinterpretRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_range_copy(s : MlmetricinterpretRange) -> MlmetricinterpretRange {
-  let result = ml_metric_interpret_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_range_fill(s : MlmetricinterpretRange, v : Double) -> MlmetricinterpretRange {
-  let result = ml_metric_interpret_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_range_min(s : MlmetricinterpretRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_metric_interpret_slice_sum(s : MlmetricinterpretSlice) -> Double { @_c
 pub fn ml_metric_interpret_slice_mean(s : MlmetricinterpretSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_slice_scale(s : MlmetricinterpretSlice, f : Double) -> MlmetricinterpretSlice {
-  let result = ml_metric_interpret_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_slice_add(a : MlmetricinterpretSlice, b : MlmetricinterpretSlice) -> MlmetricinterpretSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_interpret_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_interpret_slice_copy(s : MlmetricinterpretSlice) -> MlmetricinterpretSlice {
-  let result = ml_metric_interpret_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_slice_fill(s : MlmetricinterpretSlice, v : Double) -> MlmetricinterpretSlice {
-  let result = ml_metric_interpret_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_interpret_slice_min(s : MlmetricinterpretSlice) -> Double { @_common.min(s.data) }

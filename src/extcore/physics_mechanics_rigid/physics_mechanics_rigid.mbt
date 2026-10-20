@@ -383,28 +383,20 @@ pub fn physics_mechanics_rigid_frame_sum(s : PhysicsmechanicsrigidFrame) -> Doub
 pub fn physics_mechanics_rigid_frame_mean(s : PhysicsmechanicsrigidFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_frame_scale(s : PhysicsmechanicsrigidFrame, f : Double) -> PhysicsmechanicsrigidFrame {
-  let result = physics_mechanics_rigid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_frame_add(a : PhysicsmechanicsrigidFrame, b : PhysicsmechanicsrigidFrame) -> PhysicsmechanicsrigidFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_frame_copy(s : PhysicsmechanicsrigidFrame) -> PhysicsmechanicsrigidFrame {
-  let result = physics_mechanics_rigid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_frame_fill(s : PhysicsmechanicsrigidFrame, v : Double) -> PhysicsmechanicsrigidFrame {
-  let result = physics_mechanics_rigid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_frame_min(s : PhysicsmechanicsrigidFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_mechanics_rigid_table_sum(s : PhysicsmechanicsrigidTable) -> Doub
 pub fn physics_mechanics_rigid_table_mean(s : PhysicsmechanicsrigidTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_table_scale(s : PhysicsmechanicsrigidTable, f : Double) -> PhysicsmechanicsrigidTable {
-  let result = physics_mechanics_rigid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_table_add(a : PhysicsmechanicsrigidTable, b : PhysicsmechanicsrigidTable) -> PhysicsmechanicsrigidTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_table_copy(s : PhysicsmechanicsrigidTable) -> PhysicsmechanicsrigidTable {
-  let result = physics_mechanics_rigid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_table_fill(s : PhysicsmechanicsrigidTable, v : Double) -> PhysicsmechanicsrigidTable {
-  let result = physics_mechanics_rigid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_table_min(s : PhysicsmechanicsrigidTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_mechanics_rigid_graphn_sum(s : PhysicsmechanicsrigidGraphN) -> Do
 pub fn physics_mechanics_rigid_graphn_mean(s : PhysicsmechanicsrigidGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_graphn_scale(s : PhysicsmechanicsrigidGraphN, f : Double) -> PhysicsmechanicsrigidGraphN {
-  let result = physics_mechanics_rigid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_graphn_add(a : PhysicsmechanicsrigidGraphN, b : PhysicsmechanicsrigidGraphN) -> PhysicsmechanicsrigidGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_graphn_copy(s : PhysicsmechanicsrigidGraphN) -> PhysicsmechanicsrigidGraphN {
-  let result = physics_mechanics_rigid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_graphn_fill(s : PhysicsmechanicsrigidGraphN, v : Double) -> PhysicsmechanicsrigidGraphN {
-  let result = physics_mechanics_rigid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_graphn_min(s : PhysicsmechanicsrigidGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_mechanics_rigid_node_sum(s : PhysicsmechanicsrigidNode) -> Double
 pub fn physics_mechanics_rigid_node_mean(s : PhysicsmechanicsrigidNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_node_scale(s : PhysicsmechanicsrigidNode, f : Double) -> PhysicsmechanicsrigidNode {
-  let result = physics_mechanics_rigid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_node_add(a : PhysicsmechanicsrigidNode, b : PhysicsmechanicsrigidNode) -> PhysicsmechanicsrigidNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_node_copy(s : PhysicsmechanicsrigidNode) -> PhysicsmechanicsrigidNode {
-  let result = physics_mechanics_rigid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_node_fill(s : PhysicsmechanicsrigidNode, v : Double) -> PhysicsmechanicsrigidNode {
-  let result = physics_mechanics_rigid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_node_min(s : PhysicsmechanicsrigidNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_mechanics_rigid_edge_sum(s : PhysicsmechanicsrigidEdge) -> Double
 pub fn physics_mechanics_rigid_edge_mean(s : PhysicsmechanicsrigidEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_edge_scale(s : PhysicsmechanicsrigidEdge, f : Double) -> PhysicsmechanicsrigidEdge {
-  let result = physics_mechanics_rigid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_edge_add(a : PhysicsmechanicsrigidEdge, b : PhysicsmechanicsrigidEdge) -> PhysicsmechanicsrigidEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_edge_copy(s : PhysicsmechanicsrigidEdge) -> PhysicsmechanicsrigidEdge {
-  let result = physics_mechanics_rigid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_edge_fill(s : PhysicsmechanicsrigidEdge, v : Double) -> PhysicsmechanicsrigidEdge {
-  let result = physics_mechanics_rigid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_edge_min(s : PhysicsmechanicsrigidEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_mechanics_rigid_path_sum(s : PhysicsmechanicsrigidPath) -> Double
 pub fn physics_mechanics_rigid_path_mean(s : PhysicsmechanicsrigidPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_path_scale(s : PhysicsmechanicsrigidPath, f : Double) -> PhysicsmechanicsrigidPath {
-  let result = physics_mechanics_rigid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_path_add(a : PhysicsmechanicsrigidPath, b : PhysicsmechanicsrigidPath) -> PhysicsmechanicsrigidPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_path_copy(s : PhysicsmechanicsrigidPath) -> PhysicsmechanicsrigidPath {
-  let result = physics_mechanics_rigid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_path_fill(s : PhysicsmechanicsrigidPath, v : Double) -> PhysicsmechanicsrigidPath {
-  let result = physics_mechanics_rigid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_path_min(s : PhysicsmechanicsrigidPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_mechanics_rigid_cluster_sum(s : PhysicsmechanicsrigidCluster) -> 
 pub fn physics_mechanics_rigid_cluster_mean(s : PhysicsmechanicsrigidCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_cluster_scale(s : PhysicsmechanicsrigidCluster, f : Double) -> PhysicsmechanicsrigidCluster {
-  let result = physics_mechanics_rigid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cluster_add(a : PhysicsmechanicsrigidCluster, b : PhysicsmechanicsrigidCluster) -> PhysicsmechanicsrigidCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_cluster_copy(s : PhysicsmechanicsrigidCluster) -> PhysicsmechanicsrigidCluster {
-  let result = physics_mechanics_rigid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cluster_fill(s : PhysicsmechanicsrigidCluster, v : Double) -> PhysicsmechanicsrigidCluster {
-  let result = physics_mechanics_rigid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cluster_min(s : PhysicsmechanicsrigidCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_mechanics_rigid_model_sum(s : PhysicsmechanicsrigidModel) -> Doub
 pub fn physics_mechanics_rigid_model_mean(s : PhysicsmechanicsrigidModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_model_scale(s : PhysicsmechanicsrigidModel, f : Double) -> PhysicsmechanicsrigidModel {
-  let result = physics_mechanics_rigid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_model_add(a : PhysicsmechanicsrigidModel, b : PhysicsmechanicsrigidModel) -> PhysicsmechanicsrigidModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_model_copy(s : PhysicsmechanicsrigidModel) -> PhysicsmechanicsrigidModel {
-  let result = physics_mechanics_rigid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_model_fill(s : PhysicsmechanicsrigidModel, v : Double) -> PhysicsmechanicsrigidModel {
-  let result = physics_mechanics_rigid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_model_min(s : PhysicsmechanicsrigidModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_mechanics_rigid_layer_sum(s : PhysicsmechanicsrigidLayer) -> Doub
 pub fn physics_mechanics_rigid_layer_mean(s : PhysicsmechanicsrigidLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_layer_scale(s : PhysicsmechanicsrigidLayer, f : Double) -> PhysicsmechanicsrigidLayer {
-  let result = physics_mechanics_rigid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_layer_add(a : PhysicsmechanicsrigidLayer, b : PhysicsmechanicsrigidLayer) -> PhysicsmechanicsrigidLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_layer_copy(s : PhysicsmechanicsrigidLayer) -> PhysicsmechanicsrigidLayer {
-  let result = physics_mechanics_rigid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_layer_fill(s : PhysicsmechanicsrigidLayer, v : Double) -> PhysicsmechanicsrigidLayer {
-  let result = physics_mechanics_rigid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_layer_min(s : PhysicsmechanicsrigidLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_mechanics_rigid_buffer_sum(s : PhysicsmechanicsrigidBuffer) -> Do
 pub fn physics_mechanics_rigid_buffer_mean(s : PhysicsmechanicsrigidBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_buffer_scale(s : PhysicsmechanicsrigidBuffer, f : Double) -> PhysicsmechanicsrigidBuffer {
-  let result = physics_mechanics_rigid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_buffer_add(a : PhysicsmechanicsrigidBuffer, b : PhysicsmechanicsrigidBuffer) -> PhysicsmechanicsrigidBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_buffer_copy(s : PhysicsmechanicsrigidBuffer) -> PhysicsmechanicsrigidBuffer {
-  let result = physics_mechanics_rigid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_buffer_fill(s : PhysicsmechanicsrigidBuffer, v : Double) -> PhysicsmechanicsrigidBuffer {
-  let result = physics_mechanics_rigid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_buffer_min(s : PhysicsmechanicsrigidBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_mechanics_rigid_cursor_sum(s : PhysicsmechanicsrigidCursor) -> Do
 pub fn physics_mechanics_rigid_cursor_mean(s : PhysicsmechanicsrigidCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_cursor_scale(s : PhysicsmechanicsrigidCursor, f : Double) -> PhysicsmechanicsrigidCursor {
-  let result = physics_mechanics_rigid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cursor_add(a : PhysicsmechanicsrigidCursor, b : PhysicsmechanicsrigidCursor) -> PhysicsmechanicsrigidCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_cursor_copy(s : PhysicsmechanicsrigidCursor) -> PhysicsmechanicsrigidCursor {
-  let result = physics_mechanics_rigid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cursor_fill(s : PhysicsmechanicsrigidCursor, v : Double) -> PhysicsmechanicsrigidCursor {
-  let result = physics_mechanics_rigid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cursor_min(s : PhysicsmechanicsrigidCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_mechanics_rigid_view_sum(s : PhysicsmechanicsrigidView) -> Double
 pub fn physics_mechanics_rigid_view_mean(s : PhysicsmechanicsrigidView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_view_scale(s : PhysicsmechanicsrigidView, f : Double) -> PhysicsmechanicsrigidView {
-  let result = physics_mechanics_rigid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_view_add(a : PhysicsmechanicsrigidView, b : PhysicsmechanicsrigidView) -> PhysicsmechanicsrigidView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_view_copy(s : PhysicsmechanicsrigidView) -> PhysicsmechanicsrigidView {
-  let result = physics_mechanics_rigid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_view_fill(s : PhysicsmechanicsrigidView, v : Double) -> PhysicsmechanicsrigidView {
-  let result = physics_mechanics_rigid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_view_min(s : PhysicsmechanicsrigidView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_mechanics_rigid_range_sum(s : PhysicsmechanicsrigidRange) -> Doub
 pub fn physics_mechanics_rigid_range_mean(s : PhysicsmechanicsrigidRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_range_scale(s : PhysicsmechanicsrigidRange, f : Double) -> PhysicsmechanicsrigidRange {
-  let result = physics_mechanics_rigid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_range_add(a : PhysicsmechanicsrigidRange, b : PhysicsmechanicsrigidRange) -> PhysicsmechanicsrigidRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_range_copy(s : PhysicsmechanicsrigidRange) -> PhysicsmechanicsrigidRange {
-  let result = physics_mechanics_rigid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_range_fill(s : PhysicsmechanicsrigidRange, v : Double) -> PhysicsmechanicsrigidRange {
-  let result = physics_mechanics_rigid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_range_min(s : PhysicsmechanicsrigidRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_mechanics_rigid_slice_sum(s : PhysicsmechanicsrigidSlice) -> Doub
 pub fn physics_mechanics_rigid_slice_mean(s : PhysicsmechanicsrigidSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_rigid_slice_scale(s : PhysicsmechanicsrigidSlice, f : Double) -> PhysicsmechanicsrigidSlice {
-  let result = physics_mechanics_rigid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_slice_add(a : PhysicsmechanicsrigidSlice, b : PhysicsmechanicsrigidSlice) -> PhysicsmechanicsrigidSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_rigid_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_rigid_slice_copy(s : PhysicsmechanicsrigidSlice) -> PhysicsmechanicsrigidSlice {
-  let result = physics_mechanics_rigid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_slice_fill(s : PhysicsmechanicsrigidSlice, v : Double) -> PhysicsmechanicsrigidSlice {
-  let result = physics_mechanics_rigid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_slice_min(s : PhysicsmechanicsrigidSlice) -> Double { @_common.min(s.data) }

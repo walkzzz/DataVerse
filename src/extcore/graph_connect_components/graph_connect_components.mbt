@@ -383,28 +383,20 @@ pub fn graph_connect_components_frame_sum(s : GraphconnectcomponentsFrame) -> Do
 pub fn graph_connect_components_frame_mean(s : GraphconnectcomponentsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_frame_scale(s : GraphconnectcomponentsFrame, f : Double) -> GraphconnectcomponentsFrame {
-  let result = graph_connect_components_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_frame_add(a : GraphconnectcomponentsFrame, b : GraphconnectcomponentsFrame) -> GraphconnectcomponentsFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_frame_copy(s : GraphconnectcomponentsFrame) -> GraphconnectcomponentsFrame {
-  let result = graph_connect_components_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_frame_fill(s : GraphconnectcomponentsFrame, v : Double) -> GraphconnectcomponentsFrame {
-  let result = graph_connect_components_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_frame_min(s : GraphconnectcomponentsFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_connect_components_table_sum(s : GraphconnectcomponentsTable) -> Do
 pub fn graph_connect_components_table_mean(s : GraphconnectcomponentsTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_table_scale(s : GraphconnectcomponentsTable, f : Double) -> GraphconnectcomponentsTable {
-  let result = graph_connect_components_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_table_add(a : GraphconnectcomponentsTable, b : GraphconnectcomponentsTable) -> GraphconnectcomponentsTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_table_copy(s : GraphconnectcomponentsTable) -> GraphconnectcomponentsTable {
-  let result = graph_connect_components_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_table_fill(s : GraphconnectcomponentsTable, v : Double) -> GraphconnectcomponentsTable {
-  let result = graph_connect_components_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_table_min(s : GraphconnectcomponentsTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_connect_components_graphn_sum(s : GraphconnectcomponentsGraphN) -> 
 pub fn graph_connect_components_graphn_mean(s : GraphconnectcomponentsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_graphn_scale(s : GraphconnectcomponentsGraphN, f : Double) -> GraphconnectcomponentsGraphN {
-  let result = graph_connect_components_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_graphn_add(a : GraphconnectcomponentsGraphN, b : GraphconnectcomponentsGraphN) -> GraphconnectcomponentsGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_graphn_copy(s : GraphconnectcomponentsGraphN) -> GraphconnectcomponentsGraphN {
-  let result = graph_connect_components_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_graphn_fill(s : GraphconnectcomponentsGraphN, v : Double) -> GraphconnectcomponentsGraphN {
-  let result = graph_connect_components_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_graphn_min(s : GraphconnectcomponentsGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_connect_components_node_sum(s : GraphconnectcomponentsNode) -> Doub
 pub fn graph_connect_components_node_mean(s : GraphconnectcomponentsNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_node_scale(s : GraphconnectcomponentsNode, f : Double) -> GraphconnectcomponentsNode {
-  let result = graph_connect_components_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_node_add(a : GraphconnectcomponentsNode, b : GraphconnectcomponentsNode) -> GraphconnectcomponentsNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_node_copy(s : GraphconnectcomponentsNode) -> GraphconnectcomponentsNode {
-  let result = graph_connect_components_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_node_fill(s : GraphconnectcomponentsNode, v : Double) -> GraphconnectcomponentsNode {
-  let result = graph_connect_components_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_node_min(s : GraphconnectcomponentsNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_connect_components_edge_sum(s : GraphconnectcomponentsEdge) -> Doub
 pub fn graph_connect_components_edge_mean(s : GraphconnectcomponentsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_edge_scale(s : GraphconnectcomponentsEdge, f : Double) -> GraphconnectcomponentsEdge {
-  let result = graph_connect_components_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_edge_add(a : GraphconnectcomponentsEdge, b : GraphconnectcomponentsEdge) -> GraphconnectcomponentsEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_edge_copy(s : GraphconnectcomponentsEdge) -> GraphconnectcomponentsEdge {
-  let result = graph_connect_components_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_edge_fill(s : GraphconnectcomponentsEdge, v : Double) -> GraphconnectcomponentsEdge {
-  let result = graph_connect_components_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_edge_min(s : GraphconnectcomponentsEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_connect_components_path_sum(s : GraphconnectcomponentsPath) -> Doub
 pub fn graph_connect_components_path_mean(s : GraphconnectcomponentsPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_path_scale(s : GraphconnectcomponentsPath, f : Double) -> GraphconnectcomponentsPath {
-  let result = graph_connect_components_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_path_add(a : GraphconnectcomponentsPath, b : GraphconnectcomponentsPath) -> GraphconnectcomponentsPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_path_copy(s : GraphconnectcomponentsPath) -> GraphconnectcomponentsPath {
-  let result = graph_connect_components_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_path_fill(s : GraphconnectcomponentsPath, v : Double) -> GraphconnectcomponentsPath {
-  let result = graph_connect_components_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_path_min(s : GraphconnectcomponentsPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_connect_components_cluster_sum(s : GraphconnectcomponentsCluster) -
 pub fn graph_connect_components_cluster_mean(s : GraphconnectcomponentsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_cluster_scale(s : GraphconnectcomponentsCluster, f : Double) -> GraphconnectcomponentsCluster {
-  let result = graph_connect_components_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_cluster_add(a : GraphconnectcomponentsCluster, b : GraphconnectcomponentsCluster) -> GraphconnectcomponentsCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_cluster_copy(s : GraphconnectcomponentsCluster) -> GraphconnectcomponentsCluster {
-  let result = graph_connect_components_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_cluster_fill(s : GraphconnectcomponentsCluster, v : Double) -> GraphconnectcomponentsCluster {
-  let result = graph_connect_components_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_cluster_min(s : GraphconnectcomponentsCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_connect_components_model_sum(s : GraphconnectcomponentsModel) -> Do
 pub fn graph_connect_components_model_mean(s : GraphconnectcomponentsModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_model_scale(s : GraphconnectcomponentsModel, f : Double) -> GraphconnectcomponentsModel {
-  let result = graph_connect_components_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_model_add(a : GraphconnectcomponentsModel, b : GraphconnectcomponentsModel) -> GraphconnectcomponentsModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_model_copy(s : GraphconnectcomponentsModel) -> GraphconnectcomponentsModel {
-  let result = graph_connect_components_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_model_fill(s : GraphconnectcomponentsModel, v : Double) -> GraphconnectcomponentsModel {
-  let result = graph_connect_components_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_model_min(s : GraphconnectcomponentsModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_connect_components_layer_sum(s : GraphconnectcomponentsLayer) -> Do
 pub fn graph_connect_components_layer_mean(s : GraphconnectcomponentsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_layer_scale(s : GraphconnectcomponentsLayer, f : Double) -> GraphconnectcomponentsLayer {
-  let result = graph_connect_components_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_layer_add(a : GraphconnectcomponentsLayer, b : GraphconnectcomponentsLayer) -> GraphconnectcomponentsLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_layer_copy(s : GraphconnectcomponentsLayer) -> GraphconnectcomponentsLayer {
-  let result = graph_connect_components_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_layer_fill(s : GraphconnectcomponentsLayer, v : Double) -> GraphconnectcomponentsLayer {
-  let result = graph_connect_components_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_layer_min(s : GraphconnectcomponentsLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_connect_components_buffer_sum(s : GraphconnectcomponentsBuffer) -> 
 pub fn graph_connect_components_buffer_mean(s : GraphconnectcomponentsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_buffer_scale(s : GraphconnectcomponentsBuffer, f : Double) -> GraphconnectcomponentsBuffer {
-  let result = graph_connect_components_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_buffer_add(a : GraphconnectcomponentsBuffer, b : GraphconnectcomponentsBuffer) -> GraphconnectcomponentsBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_buffer_copy(s : GraphconnectcomponentsBuffer) -> GraphconnectcomponentsBuffer {
-  let result = graph_connect_components_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_buffer_fill(s : GraphconnectcomponentsBuffer, v : Double) -> GraphconnectcomponentsBuffer {
-  let result = graph_connect_components_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_buffer_min(s : GraphconnectcomponentsBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_connect_components_cursor_sum(s : GraphconnectcomponentsCursor) -> 
 pub fn graph_connect_components_cursor_mean(s : GraphconnectcomponentsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_cursor_scale(s : GraphconnectcomponentsCursor, f : Double) -> GraphconnectcomponentsCursor {
-  let result = graph_connect_components_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_cursor_add(a : GraphconnectcomponentsCursor, b : GraphconnectcomponentsCursor) -> GraphconnectcomponentsCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_cursor_copy(s : GraphconnectcomponentsCursor) -> GraphconnectcomponentsCursor {
-  let result = graph_connect_components_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_cursor_fill(s : GraphconnectcomponentsCursor, v : Double) -> GraphconnectcomponentsCursor {
-  let result = graph_connect_components_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_cursor_min(s : GraphconnectcomponentsCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_connect_components_view_sum(s : GraphconnectcomponentsView) -> Doub
 pub fn graph_connect_components_view_mean(s : GraphconnectcomponentsView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_view_scale(s : GraphconnectcomponentsView, f : Double) -> GraphconnectcomponentsView {
-  let result = graph_connect_components_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_view_add(a : GraphconnectcomponentsView, b : GraphconnectcomponentsView) -> GraphconnectcomponentsView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_view_copy(s : GraphconnectcomponentsView) -> GraphconnectcomponentsView {
-  let result = graph_connect_components_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_view_fill(s : GraphconnectcomponentsView, v : Double) -> GraphconnectcomponentsView {
-  let result = graph_connect_components_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_view_min(s : GraphconnectcomponentsView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_connect_components_range_sum(s : GraphconnectcomponentsRange) -> Do
 pub fn graph_connect_components_range_mean(s : GraphconnectcomponentsRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_range_scale(s : GraphconnectcomponentsRange, f : Double) -> GraphconnectcomponentsRange {
-  let result = graph_connect_components_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_range_add(a : GraphconnectcomponentsRange, b : GraphconnectcomponentsRange) -> GraphconnectcomponentsRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_range_copy(s : GraphconnectcomponentsRange) -> GraphconnectcomponentsRange {
-  let result = graph_connect_components_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_range_fill(s : GraphconnectcomponentsRange, v : Double) -> GraphconnectcomponentsRange {
-  let result = graph_connect_components_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_range_min(s : GraphconnectcomponentsRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_connect_components_slice_sum(s : GraphconnectcomponentsSlice) -> Do
 pub fn graph_connect_components_slice_mean(s : GraphconnectcomponentsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_components_slice_scale(s : GraphconnectcomponentsSlice, f : Double) -> GraphconnectcomponentsSlice {
-  let result = graph_connect_components_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_slice_add(a : GraphconnectcomponentsSlice, b : GraphconnectcomponentsSlice) -> GraphconnectcomponentsSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_connect_components_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_connect_components_slice_copy(s : GraphconnectcomponentsSlice) -> GraphconnectcomponentsSlice {
-  let result = graph_connect_components_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_slice_fill(s : GraphconnectcomponentsSlice, v : Double) -> GraphconnectcomponentsSlice {
-  let result = graph_connect_components_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_components_slice_min(s : GraphconnectcomponentsSlice) -> Double { @_common.min(s.data) }

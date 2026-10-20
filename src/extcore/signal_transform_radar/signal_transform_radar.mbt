@@ -383,28 +383,20 @@ pub fn signal_transform_radar_frame_sum(s : SignaltransformradarFrame) -> Double
 pub fn signal_transform_radar_frame_mean(s : SignaltransformradarFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_frame_scale(s : SignaltransformradarFrame, f : Double) -> SignaltransformradarFrame {
-  let result = signal_transform_radar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_frame_add(a : SignaltransformradarFrame, b : SignaltransformradarFrame) -> SignaltransformradarFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_frame_copy(s : SignaltransformradarFrame) -> SignaltransformradarFrame {
-  let result = signal_transform_radar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_frame_fill(s : SignaltransformradarFrame, v : Double) -> SignaltransformradarFrame {
-  let result = signal_transform_radar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_frame_min(s : SignaltransformradarFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_transform_radar_table_sum(s : SignaltransformradarTable) -> Double
 pub fn signal_transform_radar_table_mean(s : SignaltransformradarTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_table_scale(s : SignaltransformradarTable, f : Double) -> SignaltransformradarTable {
-  let result = signal_transform_radar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_table_add(a : SignaltransformradarTable, b : SignaltransformradarTable) -> SignaltransformradarTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_table_copy(s : SignaltransformradarTable) -> SignaltransformradarTable {
-  let result = signal_transform_radar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_table_fill(s : SignaltransformradarTable, v : Double) -> SignaltransformradarTable {
-  let result = signal_transform_radar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_table_min(s : SignaltransformradarTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_transform_radar_graphn_sum(s : SignaltransformradarGraphN) -> Doub
 pub fn signal_transform_radar_graphn_mean(s : SignaltransformradarGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_graphn_scale(s : SignaltransformradarGraphN, f : Double) -> SignaltransformradarGraphN {
-  let result = signal_transform_radar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_graphn_add(a : SignaltransformradarGraphN, b : SignaltransformradarGraphN) -> SignaltransformradarGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_graphn_copy(s : SignaltransformradarGraphN) -> SignaltransformradarGraphN {
-  let result = signal_transform_radar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_graphn_fill(s : SignaltransformradarGraphN, v : Double) -> SignaltransformradarGraphN {
-  let result = signal_transform_radar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_graphn_min(s : SignaltransformradarGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_transform_radar_node_sum(s : SignaltransformradarNode) -> Double {
 pub fn signal_transform_radar_node_mean(s : SignaltransformradarNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_node_scale(s : SignaltransformradarNode, f : Double) -> SignaltransformradarNode {
-  let result = signal_transform_radar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_node_add(a : SignaltransformradarNode, b : SignaltransformradarNode) -> SignaltransformradarNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_node_copy(s : SignaltransformradarNode) -> SignaltransformradarNode {
-  let result = signal_transform_radar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_node_fill(s : SignaltransformradarNode, v : Double) -> SignaltransformradarNode {
-  let result = signal_transform_radar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_node_min(s : SignaltransformradarNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_transform_radar_edge_sum(s : SignaltransformradarEdge) -> Double {
 pub fn signal_transform_radar_edge_mean(s : SignaltransformradarEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_edge_scale(s : SignaltransformradarEdge, f : Double) -> SignaltransformradarEdge {
-  let result = signal_transform_radar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_edge_add(a : SignaltransformradarEdge, b : SignaltransformradarEdge) -> SignaltransformradarEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_edge_copy(s : SignaltransformradarEdge) -> SignaltransformradarEdge {
-  let result = signal_transform_radar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_edge_fill(s : SignaltransformradarEdge, v : Double) -> SignaltransformradarEdge {
-  let result = signal_transform_radar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_edge_min(s : SignaltransformradarEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_transform_radar_path_sum(s : SignaltransformradarPath) -> Double {
 pub fn signal_transform_radar_path_mean(s : SignaltransformradarPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_path_scale(s : SignaltransformradarPath, f : Double) -> SignaltransformradarPath {
-  let result = signal_transform_radar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_path_add(a : SignaltransformradarPath, b : SignaltransformradarPath) -> SignaltransformradarPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_path_copy(s : SignaltransformradarPath) -> SignaltransformradarPath {
-  let result = signal_transform_radar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_path_fill(s : SignaltransformradarPath, v : Double) -> SignaltransformradarPath {
-  let result = signal_transform_radar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_path_min(s : SignaltransformradarPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_transform_radar_cluster_sum(s : SignaltransformradarCluster) -> Do
 pub fn signal_transform_radar_cluster_mean(s : SignaltransformradarCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_cluster_scale(s : SignaltransformradarCluster, f : Double) -> SignaltransformradarCluster {
-  let result = signal_transform_radar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cluster_add(a : SignaltransformradarCluster, b : SignaltransformradarCluster) -> SignaltransformradarCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_cluster_copy(s : SignaltransformradarCluster) -> SignaltransformradarCluster {
-  let result = signal_transform_radar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cluster_fill(s : SignaltransformradarCluster, v : Double) -> SignaltransformradarCluster {
-  let result = signal_transform_radar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cluster_min(s : SignaltransformradarCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_transform_radar_model_sum(s : SignaltransformradarModel) -> Double
 pub fn signal_transform_radar_model_mean(s : SignaltransformradarModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_model_scale(s : SignaltransformradarModel, f : Double) -> SignaltransformradarModel {
-  let result = signal_transform_radar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_model_add(a : SignaltransformradarModel, b : SignaltransformradarModel) -> SignaltransformradarModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_model_copy(s : SignaltransformradarModel) -> SignaltransformradarModel {
-  let result = signal_transform_radar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_model_fill(s : SignaltransformradarModel, v : Double) -> SignaltransformradarModel {
-  let result = signal_transform_radar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_model_min(s : SignaltransformradarModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_transform_radar_layer_sum(s : SignaltransformradarLayer) -> Double
 pub fn signal_transform_radar_layer_mean(s : SignaltransformradarLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_layer_scale(s : SignaltransformradarLayer, f : Double) -> SignaltransformradarLayer {
-  let result = signal_transform_radar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_layer_add(a : SignaltransformradarLayer, b : SignaltransformradarLayer) -> SignaltransformradarLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_layer_copy(s : SignaltransformradarLayer) -> SignaltransformradarLayer {
-  let result = signal_transform_radar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_layer_fill(s : SignaltransformradarLayer, v : Double) -> SignaltransformradarLayer {
-  let result = signal_transform_radar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_layer_min(s : SignaltransformradarLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_transform_radar_buffer_sum(s : SignaltransformradarBuffer) -> Doub
 pub fn signal_transform_radar_buffer_mean(s : SignaltransformradarBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_buffer_scale(s : SignaltransformradarBuffer, f : Double) -> SignaltransformradarBuffer {
-  let result = signal_transform_radar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_buffer_add(a : SignaltransformradarBuffer, b : SignaltransformradarBuffer) -> SignaltransformradarBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_buffer_copy(s : SignaltransformradarBuffer) -> SignaltransformradarBuffer {
-  let result = signal_transform_radar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_buffer_fill(s : SignaltransformradarBuffer, v : Double) -> SignaltransformradarBuffer {
-  let result = signal_transform_radar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_buffer_min(s : SignaltransformradarBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_transform_radar_cursor_sum(s : SignaltransformradarCursor) -> Doub
 pub fn signal_transform_radar_cursor_mean(s : SignaltransformradarCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_cursor_scale(s : SignaltransformradarCursor, f : Double) -> SignaltransformradarCursor {
-  let result = signal_transform_radar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cursor_add(a : SignaltransformradarCursor, b : SignaltransformradarCursor) -> SignaltransformradarCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_cursor_copy(s : SignaltransformradarCursor) -> SignaltransformradarCursor {
-  let result = signal_transform_radar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cursor_fill(s : SignaltransformradarCursor, v : Double) -> SignaltransformradarCursor {
-  let result = signal_transform_radar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cursor_min(s : SignaltransformradarCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_transform_radar_view_sum(s : SignaltransformradarView) -> Double {
 pub fn signal_transform_radar_view_mean(s : SignaltransformradarView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_view_scale(s : SignaltransformradarView, f : Double) -> SignaltransformradarView {
-  let result = signal_transform_radar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_view_add(a : SignaltransformradarView, b : SignaltransformradarView) -> SignaltransformradarView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_view_copy(s : SignaltransformradarView) -> SignaltransformradarView {
-  let result = signal_transform_radar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_view_fill(s : SignaltransformradarView, v : Double) -> SignaltransformradarView {
-  let result = signal_transform_radar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_view_min(s : SignaltransformradarView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_transform_radar_range_sum(s : SignaltransformradarRange) -> Double
 pub fn signal_transform_radar_range_mean(s : SignaltransformradarRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_range_scale(s : SignaltransformradarRange, f : Double) -> SignaltransformradarRange {
-  let result = signal_transform_radar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_range_add(a : SignaltransformradarRange, b : SignaltransformradarRange) -> SignaltransformradarRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_range_copy(s : SignaltransformradarRange) -> SignaltransformradarRange {
-  let result = signal_transform_radar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_range_fill(s : SignaltransformradarRange, v : Double) -> SignaltransformradarRange {
-  let result = signal_transform_radar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_range_min(s : SignaltransformradarRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_transform_radar_slice_sum(s : SignaltransformradarSlice) -> Double
 pub fn signal_transform_radar_slice_mean(s : SignaltransformradarSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_slice_scale(s : SignaltransformradarSlice, f : Double) -> SignaltransformradarSlice {
-  let result = signal_transform_radar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_slice_add(a : SignaltransformradarSlice, b : SignaltransformradarSlice) -> SignaltransformradarSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_radar_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_radar_slice_copy(s : SignaltransformradarSlice) -> SignaltransformradarSlice {
-  let result = signal_transform_radar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_slice_fill(s : SignaltransformradarSlice, v : Double) -> SignaltransformradarSlice {
-  let result = signal_transform_radar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_slice_min(s : SignaltransformradarSlice) -> Double { @_common.min(s.data) }

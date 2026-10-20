@@ -383,28 +383,20 @@ pub fn math_pde_solver_frame_sum(s : MathpdesolverFrame) -> Double { @_common.su
 pub fn math_pde_solver_frame_mean(s : MathpdesolverFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_frame_scale(s : MathpdesolverFrame, f : Double) -> MathpdesolverFrame {
-  let result = math_pde_solver_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_frame_add(a : MathpdesolverFrame, b : MathpdesolverFrame) -> MathpdesolverFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_frame_copy(s : MathpdesolverFrame) -> MathpdesolverFrame {
-  let result = math_pde_solver_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_frame_fill(s : MathpdesolverFrame, v : Double) -> MathpdesolverFrame {
-  let result = math_pde_solver_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_frame_min(s : MathpdesolverFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_pde_solver_table_sum(s : MathpdesolverTable) -> Double { @_common.su
 pub fn math_pde_solver_table_mean(s : MathpdesolverTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_table_scale(s : MathpdesolverTable, f : Double) -> MathpdesolverTable {
-  let result = math_pde_solver_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_table_add(a : MathpdesolverTable, b : MathpdesolverTable) -> MathpdesolverTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_table_copy(s : MathpdesolverTable) -> MathpdesolverTable {
-  let result = math_pde_solver_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_table_fill(s : MathpdesolverTable, v : Double) -> MathpdesolverTable {
-  let result = math_pde_solver_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_table_min(s : MathpdesolverTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_pde_solver_graphn_sum(s : MathpdesolverGraphN) -> Double { @_common.
 pub fn math_pde_solver_graphn_mean(s : MathpdesolverGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_graphn_scale(s : MathpdesolverGraphN, f : Double) -> MathpdesolverGraphN {
-  let result = math_pde_solver_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_graphn_add(a : MathpdesolverGraphN, b : MathpdesolverGraphN) -> MathpdesolverGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_graphn_copy(s : MathpdesolverGraphN) -> MathpdesolverGraphN {
-  let result = math_pde_solver_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_graphn_fill(s : MathpdesolverGraphN, v : Double) -> MathpdesolverGraphN {
-  let result = math_pde_solver_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_graphn_min(s : MathpdesolverGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_pde_solver_node_sum(s : MathpdesolverNode) -> Double { @_common.sum(
 pub fn math_pde_solver_node_mean(s : MathpdesolverNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_node_scale(s : MathpdesolverNode, f : Double) -> MathpdesolverNode {
-  let result = math_pde_solver_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_node_add(a : MathpdesolverNode, b : MathpdesolverNode) -> MathpdesolverNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_node_copy(s : MathpdesolverNode) -> MathpdesolverNode {
-  let result = math_pde_solver_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_node_fill(s : MathpdesolverNode, v : Double) -> MathpdesolverNode {
-  let result = math_pde_solver_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_node_min(s : MathpdesolverNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_pde_solver_edge_sum(s : MathpdesolverEdge) -> Double { @_common.sum(
 pub fn math_pde_solver_edge_mean(s : MathpdesolverEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_edge_scale(s : MathpdesolverEdge, f : Double) -> MathpdesolverEdge {
-  let result = math_pde_solver_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_edge_add(a : MathpdesolverEdge, b : MathpdesolverEdge) -> MathpdesolverEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_edge_copy(s : MathpdesolverEdge) -> MathpdesolverEdge {
-  let result = math_pde_solver_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_edge_fill(s : MathpdesolverEdge, v : Double) -> MathpdesolverEdge {
-  let result = math_pde_solver_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_edge_min(s : MathpdesolverEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_pde_solver_path_sum(s : MathpdesolverPath) -> Double { @_common.sum(
 pub fn math_pde_solver_path_mean(s : MathpdesolverPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_path_scale(s : MathpdesolverPath, f : Double) -> MathpdesolverPath {
-  let result = math_pde_solver_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_path_add(a : MathpdesolverPath, b : MathpdesolverPath) -> MathpdesolverPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_path_copy(s : MathpdesolverPath) -> MathpdesolverPath {
-  let result = math_pde_solver_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_path_fill(s : MathpdesolverPath, v : Double) -> MathpdesolverPath {
-  let result = math_pde_solver_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_path_min(s : MathpdesolverPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_pde_solver_cluster_sum(s : MathpdesolverCluster) -> Double { @_commo
 pub fn math_pde_solver_cluster_mean(s : MathpdesolverCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_cluster_scale(s : MathpdesolverCluster, f : Double) -> MathpdesolverCluster {
-  let result = math_pde_solver_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cluster_add(a : MathpdesolverCluster, b : MathpdesolverCluster) -> MathpdesolverCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_cluster_copy(s : MathpdesolverCluster) -> MathpdesolverCluster {
-  let result = math_pde_solver_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cluster_fill(s : MathpdesolverCluster, v : Double) -> MathpdesolverCluster {
-  let result = math_pde_solver_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cluster_min(s : MathpdesolverCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_pde_solver_model_sum(s : MathpdesolverModel) -> Double { @_common.su
 pub fn math_pde_solver_model_mean(s : MathpdesolverModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_model_scale(s : MathpdesolverModel, f : Double) -> MathpdesolverModel {
-  let result = math_pde_solver_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_model_add(a : MathpdesolverModel, b : MathpdesolverModel) -> MathpdesolverModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_model_copy(s : MathpdesolverModel) -> MathpdesolverModel {
-  let result = math_pde_solver_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_model_fill(s : MathpdesolverModel, v : Double) -> MathpdesolverModel {
-  let result = math_pde_solver_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_model_min(s : MathpdesolverModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_pde_solver_layer_sum(s : MathpdesolverLayer) -> Double { @_common.su
 pub fn math_pde_solver_layer_mean(s : MathpdesolverLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_layer_scale(s : MathpdesolverLayer, f : Double) -> MathpdesolverLayer {
-  let result = math_pde_solver_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_layer_add(a : MathpdesolverLayer, b : MathpdesolverLayer) -> MathpdesolverLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_layer_copy(s : MathpdesolverLayer) -> MathpdesolverLayer {
-  let result = math_pde_solver_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_layer_fill(s : MathpdesolverLayer, v : Double) -> MathpdesolverLayer {
-  let result = math_pde_solver_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_layer_min(s : MathpdesolverLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_pde_solver_buffer_sum(s : MathpdesolverBuffer) -> Double { @_common.
 pub fn math_pde_solver_buffer_mean(s : MathpdesolverBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_buffer_scale(s : MathpdesolverBuffer, f : Double) -> MathpdesolverBuffer {
-  let result = math_pde_solver_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_buffer_add(a : MathpdesolverBuffer, b : MathpdesolverBuffer) -> MathpdesolverBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_buffer_copy(s : MathpdesolverBuffer) -> MathpdesolverBuffer {
-  let result = math_pde_solver_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_buffer_fill(s : MathpdesolverBuffer, v : Double) -> MathpdesolverBuffer {
-  let result = math_pde_solver_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_buffer_min(s : MathpdesolverBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_pde_solver_cursor_sum(s : MathpdesolverCursor) -> Double { @_common.
 pub fn math_pde_solver_cursor_mean(s : MathpdesolverCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_cursor_scale(s : MathpdesolverCursor, f : Double) -> MathpdesolverCursor {
-  let result = math_pde_solver_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cursor_add(a : MathpdesolverCursor, b : MathpdesolverCursor) -> MathpdesolverCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_cursor_copy(s : MathpdesolverCursor) -> MathpdesolverCursor {
-  let result = math_pde_solver_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cursor_fill(s : MathpdesolverCursor, v : Double) -> MathpdesolverCursor {
-  let result = math_pde_solver_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cursor_min(s : MathpdesolverCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_pde_solver_view_sum(s : MathpdesolverView) -> Double { @_common.sum(
 pub fn math_pde_solver_view_mean(s : MathpdesolverView) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_view_scale(s : MathpdesolverView, f : Double) -> MathpdesolverView {
-  let result = math_pde_solver_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_view_add(a : MathpdesolverView, b : MathpdesolverView) -> MathpdesolverView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_view_copy(s : MathpdesolverView) -> MathpdesolverView {
-  let result = math_pde_solver_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_view_fill(s : MathpdesolverView, v : Double) -> MathpdesolverView {
-  let result = math_pde_solver_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_view_min(s : MathpdesolverView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_pde_solver_range_sum(s : MathpdesolverRange) -> Double { @_common.su
 pub fn math_pde_solver_range_mean(s : MathpdesolverRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_range_scale(s : MathpdesolverRange, f : Double) -> MathpdesolverRange {
-  let result = math_pde_solver_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_range_add(a : MathpdesolverRange, b : MathpdesolverRange) -> MathpdesolverRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_range_copy(s : MathpdesolverRange) -> MathpdesolverRange {
-  let result = math_pde_solver_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_range_fill(s : MathpdesolverRange, v : Double) -> MathpdesolverRange {
-  let result = math_pde_solver_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_range_min(s : MathpdesolverRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_pde_solver_slice_sum(s : MathpdesolverSlice) -> Double { @_common.su
 pub fn math_pde_solver_slice_mean(s : MathpdesolverSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_pde_solver_slice_scale(s : MathpdesolverSlice, f : Double) -> MathpdesolverSlice {
-  let result = math_pde_solver_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_slice_add(a : MathpdesolverSlice, b : MathpdesolverSlice) -> MathpdesolverSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_pde_solver_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_pde_solver_slice_copy(s : MathpdesolverSlice) -> MathpdesolverSlice {
-  let result = math_pde_solver_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_slice_fill(s : MathpdesolverSlice, v : Double) -> MathpdesolverSlice {
-  let result = math_pde_solver_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_slice_min(s : MathpdesolverSlice) -> Double { @_common.min(s.data) }

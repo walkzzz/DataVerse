@@ -383,28 +383,20 @@ pub fn image_filter_box_frame_sum(s : ImagefilterboxFrame) -> Double { @_common.
 pub fn image_filter_box_frame_mean(s : ImagefilterboxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_frame_scale(s : ImagefilterboxFrame, f : Double) -> ImagefilterboxFrame {
-  let result = image_filter_box_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_frame_add(a : ImagefilterboxFrame, b : ImagefilterboxFrame) -> ImagefilterboxFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_frame_copy(s : ImagefilterboxFrame) -> ImagefilterboxFrame {
-  let result = image_filter_box_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_frame_fill(s : ImagefilterboxFrame, v : Double) -> ImagefilterboxFrame {
-  let result = image_filter_box_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_frame_min(s : ImagefilterboxFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_filter_box_table_sum(s : ImagefilterboxTable) -> Double { @_common.
 pub fn image_filter_box_table_mean(s : ImagefilterboxTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_table_scale(s : ImagefilterboxTable, f : Double) -> ImagefilterboxTable {
-  let result = image_filter_box_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_table_add(a : ImagefilterboxTable, b : ImagefilterboxTable) -> ImagefilterboxTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_table_copy(s : ImagefilterboxTable) -> ImagefilterboxTable {
-  let result = image_filter_box_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_table_fill(s : ImagefilterboxTable, v : Double) -> ImagefilterboxTable {
-  let result = image_filter_box_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_table_min(s : ImagefilterboxTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_filter_box_graphn_sum(s : ImagefilterboxGraphN) -> Double { @_commo
 pub fn image_filter_box_graphn_mean(s : ImagefilterboxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_graphn_scale(s : ImagefilterboxGraphN, f : Double) -> ImagefilterboxGraphN {
-  let result = image_filter_box_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_graphn_add(a : ImagefilterboxGraphN, b : ImagefilterboxGraphN) -> ImagefilterboxGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_graphn_copy(s : ImagefilterboxGraphN) -> ImagefilterboxGraphN {
-  let result = image_filter_box_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_graphn_fill(s : ImagefilterboxGraphN, v : Double) -> ImagefilterboxGraphN {
-  let result = image_filter_box_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_graphn_min(s : ImagefilterboxGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_filter_box_node_sum(s : ImagefilterboxNode) -> Double { @_common.su
 pub fn image_filter_box_node_mean(s : ImagefilterboxNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_node_scale(s : ImagefilterboxNode, f : Double) -> ImagefilterboxNode {
-  let result = image_filter_box_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_node_add(a : ImagefilterboxNode, b : ImagefilterboxNode) -> ImagefilterboxNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_node_copy(s : ImagefilterboxNode) -> ImagefilterboxNode {
-  let result = image_filter_box_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_node_fill(s : ImagefilterboxNode, v : Double) -> ImagefilterboxNode {
-  let result = image_filter_box_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_node_min(s : ImagefilterboxNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_filter_box_edge_sum(s : ImagefilterboxEdge) -> Double { @_common.su
 pub fn image_filter_box_edge_mean(s : ImagefilterboxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_edge_scale(s : ImagefilterboxEdge, f : Double) -> ImagefilterboxEdge {
-  let result = image_filter_box_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_edge_add(a : ImagefilterboxEdge, b : ImagefilterboxEdge) -> ImagefilterboxEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_edge_copy(s : ImagefilterboxEdge) -> ImagefilterboxEdge {
-  let result = image_filter_box_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_edge_fill(s : ImagefilterboxEdge, v : Double) -> ImagefilterboxEdge {
-  let result = image_filter_box_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_edge_min(s : ImagefilterboxEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_filter_box_path_sum(s : ImagefilterboxPath) -> Double { @_common.su
 pub fn image_filter_box_path_mean(s : ImagefilterboxPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_path_scale(s : ImagefilterboxPath, f : Double) -> ImagefilterboxPath {
-  let result = image_filter_box_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_path_add(a : ImagefilterboxPath, b : ImagefilterboxPath) -> ImagefilterboxPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_path_copy(s : ImagefilterboxPath) -> ImagefilterboxPath {
-  let result = image_filter_box_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_path_fill(s : ImagefilterboxPath, v : Double) -> ImagefilterboxPath {
-  let result = image_filter_box_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_path_min(s : ImagefilterboxPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_filter_box_cluster_sum(s : ImagefilterboxCluster) -> Double { @_com
 pub fn image_filter_box_cluster_mean(s : ImagefilterboxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_cluster_scale(s : ImagefilterboxCluster, f : Double) -> ImagefilterboxCluster {
-  let result = image_filter_box_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cluster_add(a : ImagefilterboxCluster, b : ImagefilterboxCluster) -> ImagefilterboxCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_cluster_copy(s : ImagefilterboxCluster) -> ImagefilterboxCluster {
-  let result = image_filter_box_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cluster_fill(s : ImagefilterboxCluster, v : Double) -> ImagefilterboxCluster {
-  let result = image_filter_box_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cluster_min(s : ImagefilterboxCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_filter_box_model_sum(s : ImagefilterboxModel) -> Double { @_common.
 pub fn image_filter_box_model_mean(s : ImagefilterboxModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_model_scale(s : ImagefilterboxModel, f : Double) -> ImagefilterboxModel {
-  let result = image_filter_box_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_model_add(a : ImagefilterboxModel, b : ImagefilterboxModel) -> ImagefilterboxModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_model_copy(s : ImagefilterboxModel) -> ImagefilterboxModel {
-  let result = image_filter_box_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_model_fill(s : ImagefilterboxModel, v : Double) -> ImagefilterboxModel {
-  let result = image_filter_box_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_model_min(s : ImagefilterboxModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_filter_box_layer_sum(s : ImagefilterboxLayer) -> Double { @_common.
 pub fn image_filter_box_layer_mean(s : ImagefilterboxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_layer_scale(s : ImagefilterboxLayer, f : Double) -> ImagefilterboxLayer {
-  let result = image_filter_box_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_layer_add(a : ImagefilterboxLayer, b : ImagefilterboxLayer) -> ImagefilterboxLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_layer_copy(s : ImagefilterboxLayer) -> ImagefilterboxLayer {
-  let result = image_filter_box_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_layer_fill(s : ImagefilterboxLayer, v : Double) -> ImagefilterboxLayer {
-  let result = image_filter_box_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_layer_min(s : ImagefilterboxLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_filter_box_buffer_sum(s : ImagefilterboxBuffer) -> Double { @_commo
 pub fn image_filter_box_buffer_mean(s : ImagefilterboxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_buffer_scale(s : ImagefilterboxBuffer, f : Double) -> ImagefilterboxBuffer {
-  let result = image_filter_box_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_buffer_add(a : ImagefilterboxBuffer, b : ImagefilterboxBuffer) -> ImagefilterboxBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_buffer_copy(s : ImagefilterboxBuffer) -> ImagefilterboxBuffer {
-  let result = image_filter_box_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_buffer_fill(s : ImagefilterboxBuffer, v : Double) -> ImagefilterboxBuffer {
-  let result = image_filter_box_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_buffer_min(s : ImagefilterboxBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_filter_box_cursor_sum(s : ImagefilterboxCursor) -> Double { @_commo
 pub fn image_filter_box_cursor_mean(s : ImagefilterboxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_cursor_scale(s : ImagefilterboxCursor, f : Double) -> ImagefilterboxCursor {
-  let result = image_filter_box_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cursor_add(a : ImagefilterboxCursor, b : ImagefilterboxCursor) -> ImagefilterboxCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_cursor_copy(s : ImagefilterboxCursor) -> ImagefilterboxCursor {
-  let result = image_filter_box_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cursor_fill(s : ImagefilterboxCursor, v : Double) -> ImagefilterboxCursor {
-  let result = image_filter_box_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cursor_min(s : ImagefilterboxCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_filter_box_view_sum(s : ImagefilterboxView) -> Double { @_common.su
 pub fn image_filter_box_view_mean(s : ImagefilterboxView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_view_scale(s : ImagefilterboxView, f : Double) -> ImagefilterboxView {
-  let result = image_filter_box_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_view_add(a : ImagefilterboxView, b : ImagefilterboxView) -> ImagefilterboxView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_view_copy(s : ImagefilterboxView) -> ImagefilterboxView {
-  let result = image_filter_box_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_view_fill(s : ImagefilterboxView, v : Double) -> ImagefilterboxView {
-  let result = image_filter_box_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_view_min(s : ImagefilterboxView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_filter_box_range_sum(s : ImagefilterboxRange) -> Double { @_common.
 pub fn image_filter_box_range_mean(s : ImagefilterboxRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_range_scale(s : ImagefilterboxRange, f : Double) -> ImagefilterboxRange {
-  let result = image_filter_box_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_range_add(a : ImagefilterboxRange, b : ImagefilterboxRange) -> ImagefilterboxRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_range_copy(s : ImagefilterboxRange) -> ImagefilterboxRange {
-  let result = image_filter_box_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_range_fill(s : ImagefilterboxRange, v : Double) -> ImagefilterboxRange {
-  let result = image_filter_box_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_range_min(s : ImagefilterboxRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_filter_box_slice_sum(s : ImagefilterboxSlice) -> Double { @_common.
 pub fn image_filter_box_slice_mean(s : ImagefilterboxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_slice_scale(s : ImagefilterboxSlice, f : Double) -> ImagefilterboxSlice {
-  let result = image_filter_box_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_slice_add(a : ImagefilterboxSlice, b : ImagefilterboxSlice) -> ImagefilterboxSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_box_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_box_slice_copy(s : ImagefilterboxSlice) -> ImagefilterboxSlice {
-  let result = image_filter_box_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_slice_fill(s : ImagefilterboxSlice, v : Double) -> ImagefilterboxSlice {
-  let result = image_filter_box_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_slice_min(s : ImagefilterboxSlice) -> Double { @_common.min(s.data) }

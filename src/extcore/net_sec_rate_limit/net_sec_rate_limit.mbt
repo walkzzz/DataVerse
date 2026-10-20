@@ -383,28 +383,20 @@ pub fn net_sec_rate_limit_frame_sum(s : NetsecratelimitFrame) -> Double { @_comm
 pub fn net_sec_rate_limit_frame_mean(s : NetsecratelimitFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_frame_scale(s : NetsecratelimitFrame, f : Double) -> NetsecratelimitFrame {
-  let result = net_sec_rate_limit_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_frame_add(a : NetsecratelimitFrame, b : NetsecratelimitFrame) -> NetsecratelimitFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_frame_copy(s : NetsecratelimitFrame) -> NetsecratelimitFrame {
-  let result = net_sec_rate_limit_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_frame_fill(s : NetsecratelimitFrame, v : Double) -> NetsecratelimitFrame {
-  let result = net_sec_rate_limit_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_frame_min(s : NetsecratelimitFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_sec_rate_limit_table_sum(s : NetsecratelimitTable) -> Double { @_comm
 pub fn net_sec_rate_limit_table_mean(s : NetsecratelimitTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_table_scale(s : NetsecratelimitTable, f : Double) -> NetsecratelimitTable {
-  let result = net_sec_rate_limit_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_table_add(a : NetsecratelimitTable, b : NetsecratelimitTable) -> NetsecratelimitTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_table_copy(s : NetsecratelimitTable) -> NetsecratelimitTable {
-  let result = net_sec_rate_limit_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_table_fill(s : NetsecratelimitTable, v : Double) -> NetsecratelimitTable {
-  let result = net_sec_rate_limit_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_table_min(s : NetsecratelimitTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_sec_rate_limit_graphn_sum(s : NetsecratelimitGraphN) -> Double { @_co
 pub fn net_sec_rate_limit_graphn_mean(s : NetsecratelimitGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_graphn_scale(s : NetsecratelimitGraphN, f : Double) -> NetsecratelimitGraphN {
-  let result = net_sec_rate_limit_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_graphn_add(a : NetsecratelimitGraphN, b : NetsecratelimitGraphN) -> NetsecratelimitGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_graphn_copy(s : NetsecratelimitGraphN) -> NetsecratelimitGraphN {
-  let result = net_sec_rate_limit_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_graphn_fill(s : NetsecratelimitGraphN, v : Double) -> NetsecratelimitGraphN {
-  let result = net_sec_rate_limit_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_graphn_min(s : NetsecratelimitGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_sec_rate_limit_node_sum(s : NetsecratelimitNode) -> Double { @_common
 pub fn net_sec_rate_limit_node_mean(s : NetsecratelimitNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_node_scale(s : NetsecratelimitNode, f : Double) -> NetsecratelimitNode {
-  let result = net_sec_rate_limit_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_node_add(a : NetsecratelimitNode, b : NetsecratelimitNode) -> NetsecratelimitNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_node_copy(s : NetsecratelimitNode) -> NetsecratelimitNode {
-  let result = net_sec_rate_limit_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_node_fill(s : NetsecratelimitNode, v : Double) -> NetsecratelimitNode {
-  let result = net_sec_rate_limit_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_node_min(s : NetsecratelimitNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_sec_rate_limit_edge_sum(s : NetsecratelimitEdge) -> Double { @_common
 pub fn net_sec_rate_limit_edge_mean(s : NetsecratelimitEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_edge_scale(s : NetsecratelimitEdge, f : Double) -> NetsecratelimitEdge {
-  let result = net_sec_rate_limit_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_edge_add(a : NetsecratelimitEdge, b : NetsecratelimitEdge) -> NetsecratelimitEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_edge_copy(s : NetsecratelimitEdge) -> NetsecratelimitEdge {
-  let result = net_sec_rate_limit_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_edge_fill(s : NetsecratelimitEdge, v : Double) -> NetsecratelimitEdge {
-  let result = net_sec_rate_limit_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_edge_min(s : NetsecratelimitEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_sec_rate_limit_path_sum(s : NetsecratelimitPath) -> Double { @_common
 pub fn net_sec_rate_limit_path_mean(s : NetsecratelimitPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_path_scale(s : NetsecratelimitPath, f : Double) -> NetsecratelimitPath {
-  let result = net_sec_rate_limit_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_path_add(a : NetsecratelimitPath, b : NetsecratelimitPath) -> NetsecratelimitPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_path_copy(s : NetsecratelimitPath) -> NetsecratelimitPath {
-  let result = net_sec_rate_limit_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_path_fill(s : NetsecratelimitPath, v : Double) -> NetsecratelimitPath {
-  let result = net_sec_rate_limit_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_path_min(s : NetsecratelimitPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_sec_rate_limit_cluster_sum(s : NetsecratelimitCluster) -> Double { @_
 pub fn net_sec_rate_limit_cluster_mean(s : NetsecratelimitCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_cluster_scale(s : NetsecratelimitCluster, f : Double) -> NetsecratelimitCluster {
-  let result = net_sec_rate_limit_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_cluster_add(a : NetsecratelimitCluster, b : NetsecratelimitCluster) -> NetsecratelimitCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_cluster_copy(s : NetsecratelimitCluster) -> NetsecratelimitCluster {
-  let result = net_sec_rate_limit_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_cluster_fill(s : NetsecratelimitCluster, v : Double) -> NetsecratelimitCluster {
-  let result = net_sec_rate_limit_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_cluster_min(s : NetsecratelimitCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_sec_rate_limit_model_sum(s : NetsecratelimitModel) -> Double { @_comm
 pub fn net_sec_rate_limit_model_mean(s : NetsecratelimitModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_model_scale(s : NetsecratelimitModel, f : Double) -> NetsecratelimitModel {
-  let result = net_sec_rate_limit_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_model_add(a : NetsecratelimitModel, b : NetsecratelimitModel) -> NetsecratelimitModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_model_copy(s : NetsecratelimitModel) -> NetsecratelimitModel {
-  let result = net_sec_rate_limit_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_model_fill(s : NetsecratelimitModel, v : Double) -> NetsecratelimitModel {
-  let result = net_sec_rate_limit_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_model_min(s : NetsecratelimitModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_sec_rate_limit_layer_sum(s : NetsecratelimitLayer) -> Double { @_comm
 pub fn net_sec_rate_limit_layer_mean(s : NetsecratelimitLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_layer_scale(s : NetsecratelimitLayer, f : Double) -> NetsecratelimitLayer {
-  let result = net_sec_rate_limit_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_layer_add(a : NetsecratelimitLayer, b : NetsecratelimitLayer) -> NetsecratelimitLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_layer_copy(s : NetsecratelimitLayer) -> NetsecratelimitLayer {
-  let result = net_sec_rate_limit_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_layer_fill(s : NetsecratelimitLayer, v : Double) -> NetsecratelimitLayer {
-  let result = net_sec_rate_limit_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_layer_min(s : NetsecratelimitLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_sec_rate_limit_buffer_sum(s : NetsecratelimitBuffer) -> Double { @_co
 pub fn net_sec_rate_limit_buffer_mean(s : NetsecratelimitBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_buffer_scale(s : NetsecratelimitBuffer, f : Double) -> NetsecratelimitBuffer {
-  let result = net_sec_rate_limit_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_buffer_add(a : NetsecratelimitBuffer, b : NetsecratelimitBuffer) -> NetsecratelimitBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_buffer_copy(s : NetsecratelimitBuffer) -> NetsecratelimitBuffer {
-  let result = net_sec_rate_limit_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_buffer_fill(s : NetsecratelimitBuffer, v : Double) -> NetsecratelimitBuffer {
-  let result = net_sec_rate_limit_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_buffer_min(s : NetsecratelimitBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_sec_rate_limit_cursor_sum(s : NetsecratelimitCursor) -> Double { @_co
 pub fn net_sec_rate_limit_cursor_mean(s : NetsecratelimitCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_cursor_scale(s : NetsecratelimitCursor, f : Double) -> NetsecratelimitCursor {
-  let result = net_sec_rate_limit_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_cursor_add(a : NetsecratelimitCursor, b : NetsecratelimitCursor) -> NetsecratelimitCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_cursor_copy(s : NetsecratelimitCursor) -> NetsecratelimitCursor {
-  let result = net_sec_rate_limit_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_cursor_fill(s : NetsecratelimitCursor, v : Double) -> NetsecratelimitCursor {
-  let result = net_sec_rate_limit_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_cursor_min(s : NetsecratelimitCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_sec_rate_limit_view_sum(s : NetsecratelimitView) -> Double { @_common
 pub fn net_sec_rate_limit_view_mean(s : NetsecratelimitView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_view_scale(s : NetsecratelimitView, f : Double) -> NetsecratelimitView {
-  let result = net_sec_rate_limit_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_view_add(a : NetsecratelimitView, b : NetsecratelimitView) -> NetsecratelimitView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_view_copy(s : NetsecratelimitView) -> NetsecratelimitView {
-  let result = net_sec_rate_limit_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_view_fill(s : NetsecratelimitView, v : Double) -> NetsecratelimitView {
-  let result = net_sec_rate_limit_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_view_min(s : NetsecratelimitView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_sec_rate_limit_range_sum(s : NetsecratelimitRange) -> Double { @_comm
 pub fn net_sec_rate_limit_range_mean(s : NetsecratelimitRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_range_scale(s : NetsecratelimitRange, f : Double) -> NetsecratelimitRange {
-  let result = net_sec_rate_limit_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_range_add(a : NetsecratelimitRange, b : NetsecratelimitRange) -> NetsecratelimitRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_range_copy(s : NetsecratelimitRange) -> NetsecratelimitRange {
-  let result = net_sec_rate_limit_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_range_fill(s : NetsecratelimitRange, v : Double) -> NetsecratelimitRange {
-  let result = net_sec_rate_limit_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_range_min(s : NetsecratelimitRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_sec_rate_limit_slice_sum(s : NetsecratelimitSlice) -> Double { @_comm
 pub fn net_sec_rate_limit_slice_mean(s : NetsecratelimitSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_rate_limit_slice_scale(s : NetsecratelimitSlice, f : Double) -> NetsecratelimitSlice {
-  let result = net_sec_rate_limit_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_slice_add(a : NetsecratelimitSlice, b : NetsecratelimitSlice) -> NetsecratelimitSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_rate_limit_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_rate_limit_slice_copy(s : NetsecratelimitSlice) -> NetsecratelimitSlice {
-  let result = net_sec_rate_limit_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_slice_fill(s : NetsecratelimitSlice, v : Double) -> NetsecratelimitSlice {
-  let result = net_sec_rate_limit_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_rate_limit_slice_min(s : NetsecratelimitSlice) -> Double { @_common.min(s.data) }

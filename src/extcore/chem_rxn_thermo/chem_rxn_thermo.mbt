@@ -383,28 +383,20 @@ pub fn chem_rxn_thermo_frame_sum(s : ChemrxnthermoFrame) -> Double { @_common.su
 pub fn chem_rxn_thermo_frame_mean(s : ChemrxnthermoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_frame_scale(s : ChemrxnthermoFrame, f : Double) -> ChemrxnthermoFrame {
-  let result = chem_rxn_thermo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_frame_add(a : ChemrxnthermoFrame, b : ChemrxnthermoFrame) -> ChemrxnthermoFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_frame_copy(s : ChemrxnthermoFrame) -> ChemrxnthermoFrame {
-  let result = chem_rxn_thermo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_frame_fill(s : ChemrxnthermoFrame, v : Double) -> ChemrxnthermoFrame {
-  let result = chem_rxn_thermo_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_frame_min(s : ChemrxnthermoFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_rxn_thermo_table_sum(s : ChemrxnthermoTable) -> Double { @_common.su
 pub fn chem_rxn_thermo_table_mean(s : ChemrxnthermoTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_table_scale(s : ChemrxnthermoTable, f : Double) -> ChemrxnthermoTable {
-  let result = chem_rxn_thermo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_table_add(a : ChemrxnthermoTable, b : ChemrxnthermoTable) -> ChemrxnthermoTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_table_copy(s : ChemrxnthermoTable) -> ChemrxnthermoTable {
-  let result = chem_rxn_thermo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_table_fill(s : ChemrxnthermoTable, v : Double) -> ChemrxnthermoTable {
-  let result = chem_rxn_thermo_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_table_min(s : ChemrxnthermoTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_rxn_thermo_graphn_sum(s : ChemrxnthermoGraphN) -> Double { @_common.
 pub fn chem_rxn_thermo_graphn_mean(s : ChemrxnthermoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_graphn_scale(s : ChemrxnthermoGraphN, f : Double) -> ChemrxnthermoGraphN {
-  let result = chem_rxn_thermo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_graphn_add(a : ChemrxnthermoGraphN, b : ChemrxnthermoGraphN) -> ChemrxnthermoGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_graphn_copy(s : ChemrxnthermoGraphN) -> ChemrxnthermoGraphN {
-  let result = chem_rxn_thermo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_graphn_fill(s : ChemrxnthermoGraphN, v : Double) -> ChemrxnthermoGraphN {
-  let result = chem_rxn_thermo_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_graphn_min(s : ChemrxnthermoGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_rxn_thermo_node_sum(s : ChemrxnthermoNode) -> Double { @_common.sum(
 pub fn chem_rxn_thermo_node_mean(s : ChemrxnthermoNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_node_scale(s : ChemrxnthermoNode, f : Double) -> ChemrxnthermoNode {
-  let result = chem_rxn_thermo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_node_add(a : ChemrxnthermoNode, b : ChemrxnthermoNode) -> ChemrxnthermoNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_node_copy(s : ChemrxnthermoNode) -> ChemrxnthermoNode {
-  let result = chem_rxn_thermo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_node_fill(s : ChemrxnthermoNode, v : Double) -> ChemrxnthermoNode {
-  let result = chem_rxn_thermo_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_node_min(s : ChemrxnthermoNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_rxn_thermo_edge_sum(s : ChemrxnthermoEdge) -> Double { @_common.sum(
 pub fn chem_rxn_thermo_edge_mean(s : ChemrxnthermoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_edge_scale(s : ChemrxnthermoEdge, f : Double) -> ChemrxnthermoEdge {
-  let result = chem_rxn_thermo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_edge_add(a : ChemrxnthermoEdge, b : ChemrxnthermoEdge) -> ChemrxnthermoEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_edge_copy(s : ChemrxnthermoEdge) -> ChemrxnthermoEdge {
-  let result = chem_rxn_thermo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_edge_fill(s : ChemrxnthermoEdge, v : Double) -> ChemrxnthermoEdge {
-  let result = chem_rxn_thermo_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_edge_min(s : ChemrxnthermoEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_rxn_thermo_path_sum(s : ChemrxnthermoPath) -> Double { @_common.sum(
 pub fn chem_rxn_thermo_path_mean(s : ChemrxnthermoPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_path_scale(s : ChemrxnthermoPath, f : Double) -> ChemrxnthermoPath {
-  let result = chem_rxn_thermo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_path_add(a : ChemrxnthermoPath, b : ChemrxnthermoPath) -> ChemrxnthermoPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_path_copy(s : ChemrxnthermoPath) -> ChemrxnthermoPath {
-  let result = chem_rxn_thermo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_path_fill(s : ChemrxnthermoPath, v : Double) -> ChemrxnthermoPath {
-  let result = chem_rxn_thermo_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_path_min(s : ChemrxnthermoPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_rxn_thermo_cluster_sum(s : ChemrxnthermoCluster) -> Double { @_commo
 pub fn chem_rxn_thermo_cluster_mean(s : ChemrxnthermoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_cluster_scale(s : ChemrxnthermoCluster, f : Double) -> ChemrxnthermoCluster {
-  let result = chem_rxn_thermo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cluster_add(a : ChemrxnthermoCluster, b : ChemrxnthermoCluster) -> ChemrxnthermoCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_cluster_copy(s : ChemrxnthermoCluster) -> ChemrxnthermoCluster {
-  let result = chem_rxn_thermo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cluster_fill(s : ChemrxnthermoCluster, v : Double) -> ChemrxnthermoCluster {
-  let result = chem_rxn_thermo_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cluster_min(s : ChemrxnthermoCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_rxn_thermo_model_sum(s : ChemrxnthermoModel) -> Double { @_common.su
 pub fn chem_rxn_thermo_model_mean(s : ChemrxnthermoModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_model_scale(s : ChemrxnthermoModel, f : Double) -> ChemrxnthermoModel {
-  let result = chem_rxn_thermo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_model_add(a : ChemrxnthermoModel, b : ChemrxnthermoModel) -> ChemrxnthermoModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_model_copy(s : ChemrxnthermoModel) -> ChemrxnthermoModel {
-  let result = chem_rxn_thermo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_model_fill(s : ChemrxnthermoModel, v : Double) -> ChemrxnthermoModel {
-  let result = chem_rxn_thermo_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_model_min(s : ChemrxnthermoModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_rxn_thermo_layer_sum(s : ChemrxnthermoLayer) -> Double { @_common.su
 pub fn chem_rxn_thermo_layer_mean(s : ChemrxnthermoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_layer_scale(s : ChemrxnthermoLayer, f : Double) -> ChemrxnthermoLayer {
-  let result = chem_rxn_thermo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_layer_add(a : ChemrxnthermoLayer, b : ChemrxnthermoLayer) -> ChemrxnthermoLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_layer_copy(s : ChemrxnthermoLayer) -> ChemrxnthermoLayer {
-  let result = chem_rxn_thermo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_layer_fill(s : ChemrxnthermoLayer, v : Double) -> ChemrxnthermoLayer {
-  let result = chem_rxn_thermo_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_layer_min(s : ChemrxnthermoLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_rxn_thermo_buffer_sum(s : ChemrxnthermoBuffer) -> Double { @_common.
 pub fn chem_rxn_thermo_buffer_mean(s : ChemrxnthermoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_buffer_scale(s : ChemrxnthermoBuffer, f : Double) -> ChemrxnthermoBuffer {
-  let result = chem_rxn_thermo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_buffer_add(a : ChemrxnthermoBuffer, b : ChemrxnthermoBuffer) -> ChemrxnthermoBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_buffer_copy(s : ChemrxnthermoBuffer) -> ChemrxnthermoBuffer {
-  let result = chem_rxn_thermo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_buffer_fill(s : ChemrxnthermoBuffer, v : Double) -> ChemrxnthermoBuffer {
-  let result = chem_rxn_thermo_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_buffer_min(s : ChemrxnthermoBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_rxn_thermo_cursor_sum(s : ChemrxnthermoCursor) -> Double { @_common.
 pub fn chem_rxn_thermo_cursor_mean(s : ChemrxnthermoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_cursor_scale(s : ChemrxnthermoCursor, f : Double) -> ChemrxnthermoCursor {
-  let result = chem_rxn_thermo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cursor_add(a : ChemrxnthermoCursor, b : ChemrxnthermoCursor) -> ChemrxnthermoCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_cursor_copy(s : ChemrxnthermoCursor) -> ChemrxnthermoCursor {
-  let result = chem_rxn_thermo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cursor_fill(s : ChemrxnthermoCursor, v : Double) -> ChemrxnthermoCursor {
-  let result = chem_rxn_thermo_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cursor_min(s : ChemrxnthermoCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_rxn_thermo_view_sum(s : ChemrxnthermoView) -> Double { @_common.sum(
 pub fn chem_rxn_thermo_view_mean(s : ChemrxnthermoView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_view_scale(s : ChemrxnthermoView, f : Double) -> ChemrxnthermoView {
-  let result = chem_rxn_thermo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_view_add(a : ChemrxnthermoView, b : ChemrxnthermoView) -> ChemrxnthermoView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_view_copy(s : ChemrxnthermoView) -> ChemrxnthermoView {
-  let result = chem_rxn_thermo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_view_fill(s : ChemrxnthermoView, v : Double) -> ChemrxnthermoView {
-  let result = chem_rxn_thermo_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_view_min(s : ChemrxnthermoView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_rxn_thermo_range_sum(s : ChemrxnthermoRange) -> Double { @_common.su
 pub fn chem_rxn_thermo_range_mean(s : ChemrxnthermoRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_range_scale(s : ChemrxnthermoRange, f : Double) -> ChemrxnthermoRange {
-  let result = chem_rxn_thermo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_range_add(a : ChemrxnthermoRange, b : ChemrxnthermoRange) -> ChemrxnthermoRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_range_copy(s : ChemrxnthermoRange) -> ChemrxnthermoRange {
-  let result = chem_rxn_thermo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_range_fill(s : ChemrxnthermoRange, v : Double) -> ChemrxnthermoRange {
-  let result = chem_rxn_thermo_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_range_min(s : ChemrxnthermoRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_rxn_thermo_slice_sum(s : ChemrxnthermoSlice) -> Double { @_common.su
 pub fn chem_rxn_thermo_slice_mean(s : ChemrxnthermoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_thermo_slice_scale(s : ChemrxnthermoSlice, f : Double) -> ChemrxnthermoSlice {
-  let result = chem_rxn_thermo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_slice_add(a : ChemrxnthermoSlice, b : ChemrxnthermoSlice) -> ChemrxnthermoSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_rxn_thermo_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_rxn_thermo_slice_copy(s : ChemrxnthermoSlice) -> ChemrxnthermoSlice {
-  let result = chem_rxn_thermo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_slice_fill(s : ChemrxnthermoSlice, v : Double) -> ChemrxnthermoSlice {
-  let result = chem_rxn_thermo_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_slice_min(s : ChemrxnthermoSlice) -> Double { @_common.min(s.data) }

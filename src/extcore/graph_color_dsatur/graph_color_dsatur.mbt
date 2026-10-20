@@ -383,28 +383,20 @@ pub fn graph_color_dsatur_frame_sum(s : GraphcolordsaturFrame) -> Double { @_com
 pub fn graph_color_dsatur_frame_mean(s : GraphcolordsaturFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_frame_scale(s : GraphcolordsaturFrame, f : Double) -> GraphcolordsaturFrame {
-  let result = graph_color_dsatur_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_frame_add(a : GraphcolordsaturFrame, b : GraphcolordsaturFrame) -> GraphcolordsaturFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_frame_copy(s : GraphcolordsaturFrame) -> GraphcolordsaturFrame {
-  let result = graph_color_dsatur_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_frame_fill(s : GraphcolordsaturFrame, v : Double) -> GraphcolordsaturFrame {
-  let result = graph_color_dsatur_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_frame_min(s : GraphcolordsaturFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_dsatur_table_sum(s : GraphcolordsaturTable) -> Double { @_com
 pub fn graph_color_dsatur_table_mean(s : GraphcolordsaturTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_table_scale(s : GraphcolordsaturTable, f : Double) -> GraphcolordsaturTable {
-  let result = graph_color_dsatur_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_table_add(a : GraphcolordsaturTable, b : GraphcolordsaturTable) -> GraphcolordsaturTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_table_copy(s : GraphcolordsaturTable) -> GraphcolordsaturTable {
-  let result = graph_color_dsatur_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_table_fill(s : GraphcolordsaturTable, v : Double) -> GraphcolordsaturTable {
-  let result = graph_color_dsatur_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_table_min(s : GraphcolordsaturTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_dsatur_graphn_sum(s : GraphcolordsaturGraphN) -> Double { @_c
 pub fn graph_color_dsatur_graphn_mean(s : GraphcolordsaturGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_graphn_scale(s : GraphcolordsaturGraphN, f : Double) -> GraphcolordsaturGraphN {
-  let result = graph_color_dsatur_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_graphn_add(a : GraphcolordsaturGraphN, b : GraphcolordsaturGraphN) -> GraphcolordsaturGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_graphn_copy(s : GraphcolordsaturGraphN) -> GraphcolordsaturGraphN {
-  let result = graph_color_dsatur_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_graphn_fill(s : GraphcolordsaturGraphN, v : Double) -> GraphcolordsaturGraphN {
-  let result = graph_color_dsatur_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_graphn_min(s : GraphcolordsaturGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_dsatur_node_sum(s : GraphcolordsaturNode) -> Double { @_commo
 pub fn graph_color_dsatur_node_mean(s : GraphcolordsaturNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_node_scale(s : GraphcolordsaturNode, f : Double) -> GraphcolordsaturNode {
-  let result = graph_color_dsatur_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_node_add(a : GraphcolordsaturNode, b : GraphcolordsaturNode) -> GraphcolordsaturNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_node_copy(s : GraphcolordsaturNode) -> GraphcolordsaturNode {
-  let result = graph_color_dsatur_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_node_fill(s : GraphcolordsaturNode, v : Double) -> GraphcolordsaturNode {
-  let result = graph_color_dsatur_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_node_min(s : GraphcolordsaturNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_dsatur_edge_sum(s : GraphcolordsaturEdge) -> Double { @_commo
 pub fn graph_color_dsatur_edge_mean(s : GraphcolordsaturEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_edge_scale(s : GraphcolordsaturEdge, f : Double) -> GraphcolordsaturEdge {
-  let result = graph_color_dsatur_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_edge_add(a : GraphcolordsaturEdge, b : GraphcolordsaturEdge) -> GraphcolordsaturEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_edge_copy(s : GraphcolordsaturEdge) -> GraphcolordsaturEdge {
-  let result = graph_color_dsatur_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_edge_fill(s : GraphcolordsaturEdge, v : Double) -> GraphcolordsaturEdge {
-  let result = graph_color_dsatur_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_edge_min(s : GraphcolordsaturEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_dsatur_path_sum(s : GraphcolordsaturPath) -> Double { @_commo
 pub fn graph_color_dsatur_path_mean(s : GraphcolordsaturPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_path_scale(s : GraphcolordsaturPath, f : Double) -> GraphcolordsaturPath {
-  let result = graph_color_dsatur_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_path_add(a : GraphcolordsaturPath, b : GraphcolordsaturPath) -> GraphcolordsaturPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_path_copy(s : GraphcolordsaturPath) -> GraphcolordsaturPath {
-  let result = graph_color_dsatur_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_path_fill(s : GraphcolordsaturPath, v : Double) -> GraphcolordsaturPath {
-  let result = graph_color_dsatur_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_path_min(s : GraphcolordsaturPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_dsatur_cluster_sum(s : GraphcolordsaturCluster) -> Double { @
 pub fn graph_color_dsatur_cluster_mean(s : GraphcolordsaturCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_cluster_scale(s : GraphcolordsaturCluster, f : Double) -> GraphcolordsaturCluster {
-  let result = graph_color_dsatur_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_cluster_add(a : GraphcolordsaturCluster, b : GraphcolordsaturCluster) -> GraphcolordsaturCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_cluster_copy(s : GraphcolordsaturCluster) -> GraphcolordsaturCluster {
-  let result = graph_color_dsatur_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_cluster_fill(s : GraphcolordsaturCluster, v : Double) -> GraphcolordsaturCluster {
-  let result = graph_color_dsatur_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_cluster_min(s : GraphcolordsaturCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_dsatur_model_sum(s : GraphcolordsaturModel) -> Double { @_com
 pub fn graph_color_dsatur_model_mean(s : GraphcolordsaturModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_model_scale(s : GraphcolordsaturModel, f : Double) -> GraphcolordsaturModel {
-  let result = graph_color_dsatur_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_model_add(a : GraphcolordsaturModel, b : GraphcolordsaturModel) -> GraphcolordsaturModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_model_copy(s : GraphcolordsaturModel) -> GraphcolordsaturModel {
-  let result = graph_color_dsatur_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_model_fill(s : GraphcolordsaturModel, v : Double) -> GraphcolordsaturModel {
-  let result = graph_color_dsatur_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_model_min(s : GraphcolordsaturModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_dsatur_layer_sum(s : GraphcolordsaturLayer) -> Double { @_com
 pub fn graph_color_dsatur_layer_mean(s : GraphcolordsaturLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_layer_scale(s : GraphcolordsaturLayer, f : Double) -> GraphcolordsaturLayer {
-  let result = graph_color_dsatur_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_layer_add(a : GraphcolordsaturLayer, b : GraphcolordsaturLayer) -> GraphcolordsaturLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_layer_copy(s : GraphcolordsaturLayer) -> GraphcolordsaturLayer {
-  let result = graph_color_dsatur_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_layer_fill(s : GraphcolordsaturLayer, v : Double) -> GraphcolordsaturLayer {
-  let result = graph_color_dsatur_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_layer_min(s : GraphcolordsaturLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_dsatur_buffer_sum(s : GraphcolordsaturBuffer) -> Double { @_c
 pub fn graph_color_dsatur_buffer_mean(s : GraphcolordsaturBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_buffer_scale(s : GraphcolordsaturBuffer, f : Double) -> GraphcolordsaturBuffer {
-  let result = graph_color_dsatur_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_buffer_add(a : GraphcolordsaturBuffer, b : GraphcolordsaturBuffer) -> GraphcolordsaturBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_buffer_copy(s : GraphcolordsaturBuffer) -> GraphcolordsaturBuffer {
-  let result = graph_color_dsatur_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_buffer_fill(s : GraphcolordsaturBuffer, v : Double) -> GraphcolordsaturBuffer {
-  let result = graph_color_dsatur_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_buffer_min(s : GraphcolordsaturBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_dsatur_cursor_sum(s : GraphcolordsaturCursor) -> Double { @_c
 pub fn graph_color_dsatur_cursor_mean(s : GraphcolordsaturCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_cursor_scale(s : GraphcolordsaturCursor, f : Double) -> GraphcolordsaturCursor {
-  let result = graph_color_dsatur_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_cursor_add(a : GraphcolordsaturCursor, b : GraphcolordsaturCursor) -> GraphcolordsaturCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_cursor_copy(s : GraphcolordsaturCursor) -> GraphcolordsaturCursor {
-  let result = graph_color_dsatur_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_cursor_fill(s : GraphcolordsaturCursor, v : Double) -> GraphcolordsaturCursor {
-  let result = graph_color_dsatur_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_cursor_min(s : GraphcolordsaturCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_dsatur_view_sum(s : GraphcolordsaturView) -> Double { @_commo
 pub fn graph_color_dsatur_view_mean(s : GraphcolordsaturView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_view_scale(s : GraphcolordsaturView, f : Double) -> GraphcolordsaturView {
-  let result = graph_color_dsatur_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_view_add(a : GraphcolordsaturView, b : GraphcolordsaturView) -> GraphcolordsaturView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_view_copy(s : GraphcolordsaturView) -> GraphcolordsaturView {
-  let result = graph_color_dsatur_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_view_fill(s : GraphcolordsaturView, v : Double) -> GraphcolordsaturView {
-  let result = graph_color_dsatur_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_view_min(s : GraphcolordsaturView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_dsatur_range_sum(s : GraphcolordsaturRange) -> Double { @_com
 pub fn graph_color_dsatur_range_mean(s : GraphcolordsaturRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_range_scale(s : GraphcolordsaturRange, f : Double) -> GraphcolordsaturRange {
-  let result = graph_color_dsatur_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_range_add(a : GraphcolordsaturRange, b : GraphcolordsaturRange) -> GraphcolordsaturRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_range_copy(s : GraphcolordsaturRange) -> GraphcolordsaturRange {
-  let result = graph_color_dsatur_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_range_fill(s : GraphcolordsaturRange, v : Double) -> GraphcolordsaturRange {
-  let result = graph_color_dsatur_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_range_min(s : GraphcolordsaturRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_dsatur_slice_sum(s : GraphcolordsaturSlice) -> Double { @_com
 pub fn graph_color_dsatur_slice_mean(s : GraphcolordsaturSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_slice_scale(s : GraphcolordsaturSlice, f : Double) -> GraphcolordsaturSlice {
-  let result = graph_color_dsatur_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_slice_add(a : GraphcolordsaturSlice, b : GraphcolordsaturSlice) -> GraphcolordsaturSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_dsatur_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_dsatur_slice_copy(s : GraphcolordsaturSlice) -> GraphcolordsaturSlice {
-  let result = graph_color_dsatur_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_slice_fill(s : GraphcolordsaturSlice, v : Double) -> GraphcolordsaturSlice {
-  let result = graph_color_dsatur_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_dsatur_slice_min(s : GraphcolordsaturSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn math_spectral_method_frame_sum(s : MathspectralmethodFrame) -> Double { @
 pub fn math_spectral_method_frame_mean(s : MathspectralmethodFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_frame_scale(s : MathspectralmethodFrame, f : Double) -> MathspectralmethodFrame {
-  let result = math_spectral_method_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_frame_add(a : MathspectralmethodFrame, b : MathspectralmethodFrame) -> MathspectralmethodFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_frame_copy(s : MathspectralmethodFrame) -> MathspectralmethodFrame {
-  let result = math_spectral_method_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_frame_fill(s : MathspectralmethodFrame, v : Double) -> MathspectralmethodFrame {
-  let result = math_spectral_method_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_frame_min(s : MathspectralmethodFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_spectral_method_table_sum(s : MathspectralmethodTable) -> Double { @
 pub fn math_spectral_method_table_mean(s : MathspectralmethodTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_table_scale(s : MathspectralmethodTable, f : Double) -> MathspectralmethodTable {
-  let result = math_spectral_method_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_table_add(a : MathspectralmethodTable, b : MathspectralmethodTable) -> MathspectralmethodTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_table_copy(s : MathspectralmethodTable) -> MathspectralmethodTable {
-  let result = math_spectral_method_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_table_fill(s : MathspectralmethodTable, v : Double) -> MathspectralmethodTable {
-  let result = math_spectral_method_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_table_min(s : MathspectralmethodTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_spectral_method_graphn_sum(s : MathspectralmethodGraphN) -> Double {
 pub fn math_spectral_method_graphn_mean(s : MathspectralmethodGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_graphn_scale(s : MathspectralmethodGraphN, f : Double) -> MathspectralmethodGraphN {
-  let result = math_spectral_method_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_graphn_add(a : MathspectralmethodGraphN, b : MathspectralmethodGraphN) -> MathspectralmethodGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_graphn_copy(s : MathspectralmethodGraphN) -> MathspectralmethodGraphN {
-  let result = math_spectral_method_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_graphn_fill(s : MathspectralmethodGraphN, v : Double) -> MathspectralmethodGraphN {
-  let result = math_spectral_method_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_graphn_min(s : MathspectralmethodGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_spectral_method_node_sum(s : MathspectralmethodNode) -> Double { @_c
 pub fn math_spectral_method_node_mean(s : MathspectralmethodNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_node_scale(s : MathspectralmethodNode, f : Double) -> MathspectralmethodNode {
-  let result = math_spectral_method_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_node_add(a : MathspectralmethodNode, b : MathspectralmethodNode) -> MathspectralmethodNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_node_copy(s : MathspectralmethodNode) -> MathspectralmethodNode {
-  let result = math_spectral_method_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_node_fill(s : MathspectralmethodNode, v : Double) -> MathspectralmethodNode {
-  let result = math_spectral_method_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_node_min(s : MathspectralmethodNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_spectral_method_edge_sum(s : MathspectralmethodEdge) -> Double { @_c
 pub fn math_spectral_method_edge_mean(s : MathspectralmethodEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_edge_scale(s : MathspectralmethodEdge, f : Double) -> MathspectralmethodEdge {
-  let result = math_spectral_method_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_edge_add(a : MathspectralmethodEdge, b : MathspectralmethodEdge) -> MathspectralmethodEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_edge_copy(s : MathspectralmethodEdge) -> MathspectralmethodEdge {
-  let result = math_spectral_method_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_edge_fill(s : MathspectralmethodEdge, v : Double) -> MathspectralmethodEdge {
-  let result = math_spectral_method_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_edge_min(s : MathspectralmethodEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_spectral_method_path_sum(s : MathspectralmethodPath) -> Double { @_c
 pub fn math_spectral_method_path_mean(s : MathspectralmethodPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_path_scale(s : MathspectralmethodPath, f : Double) -> MathspectralmethodPath {
-  let result = math_spectral_method_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_path_add(a : MathspectralmethodPath, b : MathspectralmethodPath) -> MathspectralmethodPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_path_copy(s : MathspectralmethodPath) -> MathspectralmethodPath {
-  let result = math_spectral_method_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_path_fill(s : MathspectralmethodPath, v : Double) -> MathspectralmethodPath {
-  let result = math_spectral_method_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_path_min(s : MathspectralmethodPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_spectral_method_cluster_sum(s : MathspectralmethodCluster) -> Double
 pub fn math_spectral_method_cluster_mean(s : MathspectralmethodCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_cluster_scale(s : MathspectralmethodCluster, f : Double) -> MathspectralmethodCluster {
-  let result = math_spectral_method_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_cluster_add(a : MathspectralmethodCluster, b : MathspectralmethodCluster) -> MathspectralmethodCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_cluster_copy(s : MathspectralmethodCluster) -> MathspectralmethodCluster {
-  let result = math_spectral_method_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_cluster_fill(s : MathspectralmethodCluster, v : Double) -> MathspectralmethodCluster {
-  let result = math_spectral_method_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_cluster_min(s : MathspectralmethodCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_spectral_method_model_sum(s : MathspectralmethodModel) -> Double { @
 pub fn math_spectral_method_model_mean(s : MathspectralmethodModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_model_scale(s : MathspectralmethodModel, f : Double) -> MathspectralmethodModel {
-  let result = math_spectral_method_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_model_add(a : MathspectralmethodModel, b : MathspectralmethodModel) -> MathspectralmethodModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_model_copy(s : MathspectralmethodModel) -> MathspectralmethodModel {
-  let result = math_spectral_method_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_model_fill(s : MathspectralmethodModel, v : Double) -> MathspectralmethodModel {
-  let result = math_spectral_method_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_model_min(s : MathspectralmethodModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_spectral_method_layer_sum(s : MathspectralmethodLayer) -> Double { @
 pub fn math_spectral_method_layer_mean(s : MathspectralmethodLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_layer_scale(s : MathspectralmethodLayer, f : Double) -> MathspectralmethodLayer {
-  let result = math_spectral_method_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_layer_add(a : MathspectralmethodLayer, b : MathspectralmethodLayer) -> MathspectralmethodLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_layer_copy(s : MathspectralmethodLayer) -> MathspectralmethodLayer {
-  let result = math_spectral_method_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_layer_fill(s : MathspectralmethodLayer, v : Double) -> MathspectralmethodLayer {
-  let result = math_spectral_method_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_layer_min(s : MathspectralmethodLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_spectral_method_buffer_sum(s : MathspectralmethodBuffer) -> Double {
 pub fn math_spectral_method_buffer_mean(s : MathspectralmethodBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_buffer_scale(s : MathspectralmethodBuffer, f : Double) -> MathspectralmethodBuffer {
-  let result = math_spectral_method_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_buffer_add(a : MathspectralmethodBuffer, b : MathspectralmethodBuffer) -> MathspectralmethodBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_buffer_copy(s : MathspectralmethodBuffer) -> MathspectralmethodBuffer {
-  let result = math_spectral_method_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_buffer_fill(s : MathspectralmethodBuffer, v : Double) -> MathspectralmethodBuffer {
-  let result = math_spectral_method_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_buffer_min(s : MathspectralmethodBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_spectral_method_cursor_sum(s : MathspectralmethodCursor) -> Double {
 pub fn math_spectral_method_cursor_mean(s : MathspectralmethodCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_cursor_scale(s : MathspectralmethodCursor, f : Double) -> MathspectralmethodCursor {
-  let result = math_spectral_method_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_cursor_add(a : MathspectralmethodCursor, b : MathspectralmethodCursor) -> MathspectralmethodCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_cursor_copy(s : MathspectralmethodCursor) -> MathspectralmethodCursor {
-  let result = math_spectral_method_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_cursor_fill(s : MathspectralmethodCursor, v : Double) -> MathspectralmethodCursor {
-  let result = math_spectral_method_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_cursor_min(s : MathspectralmethodCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_spectral_method_view_sum(s : MathspectralmethodView) -> Double { @_c
 pub fn math_spectral_method_view_mean(s : MathspectralmethodView) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_view_scale(s : MathspectralmethodView, f : Double) -> MathspectralmethodView {
-  let result = math_spectral_method_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_view_add(a : MathspectralmethodView, b : MathspectralmethodView) -> MathspectralmethodView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_view_copy(s : MathspectralmethodView) -> MathspectralmethodView {
-  let result = math_spectral_method_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_view_fill(s : MathspectralmethodView, v : Double) -> MathspectralmethodView {
-  let result = math_spectral_method_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_view_min(s : MathspectralmethodView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_spectral_method_range_sum(s : MathspectralmethodRange) -> Double { @
 pub fn math_spectral_method_range_mean(s : MathspectralmethodRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_range_scale(s : MathspectralmethodRange, f : Double) -> MathspectralmethodRange {
-  let result = math_spectral_method_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_range_add(a : MathspectralmethodRange, b : MathspectralmethodRange) -> MathspectralmethodRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_range_copy(s : MathspectralmethodRange) -> MathspectralmethodRange {
-  let result = math_spectral_method_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_range_fill(s : MathspectralmethodRange, v : Double) -> MathspectralmethodRange {
-  let result = math_spectral_method_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_range_min(s : MathspectralmethodRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_spectral_method_slice_sum(s : MathspectralmethodSlice) -> Double { @
 pub fn math_spectral_method_slice_mean(s : MathspectralmethodSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_spectral_method_slice_scale(s : MathspectralmethodSlice, f : Double) -> MathspectralmethodSlice {
-  let result = math_spectral_method_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_slice_add(a : MathspectralmethodSlice, b : MathspectralmethodSlice) -> MathspectralmethodSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_spectral_method_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_spectral_method_slice_copy(s : MathspectralmethodSlice) -> MathspectralmethodSlice {
-  let result = math_spectral_method_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_slice_fill(s : MathspectralmethodSlice, v : Double) -> MathspectralmethodSlice {
-  let result = math_spectral_method_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_spectral_method_slice_min(s : MathspectralmethodSlice) -> Double { @_common.min(s.data) }

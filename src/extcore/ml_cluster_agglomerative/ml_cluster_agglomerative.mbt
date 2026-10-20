@@ -383,28 +383,20 @@ pub fn ml_cluster_agglomerative_frame_sum(s : MlclusteragglomerativeFrame) -> Do
 pub fn ml_cluster_agglomerative_frame_mean(s : MlclusteragglomerativeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_frame_scale(s : MlclusteragglomerativeFrame, f : Double) -> MlclusteragglomerativeFrame {
-  let result = ml_cluster_agglomerative_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_frame_add(a : MlclusteragglomerativeFrame, b : MlclusteragglomerativeFrame) -> MlclusteragglomerativeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_frame_copy(s : MlclusteragglomerativeFrame) -> MlclusteragglomerativeFrame {
-  let result = ml_cluster_agglomerative_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_frame_fill(s : MlclusteragglomerativeFrame, v : Double) -> MlclusteragglomerativeFrame {
-  let result = ml_cluster_agglomerative_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_frame_min(s : MlclusteragglomerativeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_cluster_agglomerative_table_sum(s : MlclusteragglomerativeTable) -> Do
 pub fn ml_cluster_agglomerative_table_mean(s : MlclusteragglomerativeTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_table_scale(s : MlclusteragglomerativeTable, f : Double) -> MlclusteragglomerativeTable {
-  let result = ml_cluster_agglomerative_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_table_add(a : MlclusteragglomerativeTable, b : MlclusteragglomerativeTable) -> MlclusteragglomerativeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_table_copy(s : MlclusteragglomerativeTable) -> MlclusteragglomerativeTable {
-  let result = ml_cluster_agglomerative_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_table_fill(s : MlclusteragglomerativeTable, v : Double) -> MlclusteragglomerativeTable {
-  let result = ml_cluster_agglomerative_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_table_min(s : MlclusteragglomerativeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_cluster_agglomerative_graphn_sum(s : MlclusteragglomerativeGraphN) -> 
 pub fn ml_cluster_agglomerative_graphn_mean(s : MlclusteragglomerativeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_graphn_scale(s : MlclusteragglomerativeGraphN, f : Double) -> MlclusteragglomerativeGraphN {
-  let result = ml_cluster_agglomerative_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_graphn_add(a : MlclusteragglomerativeGraphN, b : MlclusteragglomerativeGraphN) -> MlclusteragglomerativeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_graphn_copy(s : MlclusteragglomerativeGraphN) -> MlclusteragglomerativeGraphN {
-  let result = ml_cluster_agglomerative_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_graphn_fill(s : MlclusteragglomerativeGraphN, v : Double) -> MlclusteragglomerativeGraphN {
-  let result = ml_cluster_agglomerative_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_graphn_min(s : MlclusteragglomerativeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_cluster_agglomerative_node_sum(s : MlclusteragglomerativeNode) -> Doub
 pub fn ml_cluster_agglomerative_node_mean(s : MlclusteragglomerativeNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_node_scale(s : MlclusteragglomerativeNode, f : Double) -> MlclusteragglomerativeNode {
-  let result = ml_cluster_agglomerative_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_node_add(a : MlclusteragglomerativeNode, b : MlclusteragglomerativeNode) -> MlclusteragglomerativeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_node_copy(s : MlclusteragglomerativeNode) -> MlclusteragglomerativeNode {
-  let result = ml_cluster_agglomerative_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_node_fill(s : MlclusteragglomerativeNode, v : Double) -> MlclusteragglomerativeNode {
-  let result = ml_cluster_agglomerative_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_node_min(s : MlclusteragglomerativeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_cluster_agglomerative_edge_sum(s : MlclusteragglomerativeEdge) -> Doub
 pub fn ml_cluster_agglomerative_edge_mean(s : MlclusteragglomerativeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_edge_scale(s : MlclusteragglomerativeEdge, f : Double) -> MlclusteragglomerativeEdge {
-  let result = ml_cluster_agglomerative_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_edge_add(a : MlclusteragglomerativeEdge, b : MlclusteragglomerativeEdge) -> MlclusteragglomerativeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_edge_copy(s : MlclusteragglomerativeEdge) -> MlclusteragglomerativeEdge {
-  let result = ml_cluster_agglomerative_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_edge_fill(s : MlclusteragglomerativeEdge, v : Double) -> MlclusteragglomerativeEdge {
-  let result = ml_cluster_agglomerative_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_edge_min(s : MlclusteragglomerativeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_cluster_agglomerative_path_sum(s : MlclusteragglomerativePath) -> Doub
 pub fn ml_cluster_agglomerative_path_mean(s : MlclusteragglomerativePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_path_scale(s : MlclusteragglomerativePath, f : Double) -> MlclusteragglomerativePath {
-  let result = ml_cluster_agglomerative_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_path_add(a : MlclusteragglomerativePath, b : MlclusteragglomerativePath) -> MlclusteragglomerativePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_path_copy(s : MlclusteragglomerativePath) -> MlclusteragglomerativePath {
-  let result = ml_cluster_agglomerative_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_path_fill(s : MlclusteragglomerativePath, v : Double) -> MlclusteragglomerativePath {
-  let result = ml_cluster_agglomerative_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_path_min(s : MlclusteragglomerativePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_cluster_agglomerative_cluster_sum(s : MlclusteragglomerativeCluster) -
 pub fn ml_cluster_agglomerative_cluster_mean(s : MlclusteragglomerativeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_cluster_scale(s : MlclusteragglomerativeCluster, f : Double) -> MlclusteragglomerativeCluster {
-  let result = ml_cluster_agglomerative_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cluster_add(a : MlclusteragglomerativeCluster, b : MlclusteragglomerativeCluster) -> MlclusteragglomerativeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_cluster_copy(s : MlclusteragglomerativeCluster) -> MlclusteragglomerativeCluster {
-  let result = ml_cluster_agglomerative_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cluster_fill(s : MlclusteragglomerativeCluster, v : Double) -> MlclusteragglomerativeCluster {
-  let result = ml_cluster_agglomerative_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cluster_min(s : MlclusteragglomerativeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_cluster_agglomerative_model_sum(s : MlclusteragglomerativeModel) -> Do
 pub fn ml_cluster_agglomerative_model_mean(s : MlclusteragglomerativeModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_model_scale(s : MlclusteragglomerativeModel, f : Double) -> MlclusteragglomerativeModel {
-  let result = ml_cluster_agglomerative_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_model_add(a : MlclusteragglomerativeModel, b : MlclusteragglomerativeModel) -> MlclusteragglomerativeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_model_copy(s : MlclusteragglomerativeModel) -> MlclusteragglomerativeModel {
-  let result = ml_cluster_agglomerative_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_model_fill(s : MlclusteragglomerativeModel, v : Double) -> MlclusteragglomerativeModel {
-  let result = ml_cluster_agglomerative_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_model_min(s : MlclusteragglomerativeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_cluster_agglomerative_layer_sum(s : MlclusteragglomerativeLayer) -> Do
 pub fn ml_cluster_agglomerative_layer_mean(s : MlclusteragglomerativeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_layer_scale(s : MlclusteragglomerativeLayer, f : Double) -> MlclusteragglomerativeLayer {
-  let result = ml_cluster_agglomerative_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_layer_add(a : MlclusteragglomerativeLayer, b : MlclusteragglomerativeLayer) -> MlclusteragglomerativeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_layer_copy(s : MlclusteragglomerativeLayer) -> MlclusteragglomerativeLayer {
-  let result = ml_cluster_agglomerative_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_layer_fill(s : MlclusteragglomerativeLayer, v : Double) -> MlclusteragglomerativeLayer {
-  let result = ml_cluster_agglomerative_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_layer_min(s : MlclusteragglomerativeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_cluster_agglomerative_buffer_sum(s : MlclusteragglomerativeBuffer) -> 
 pub fn ml_cluster_agglomerative_buffer_mean(s : MlclusteragglomerativeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_buffer_scale(s : MlclusteragglomerativeBuffer, f : Double) -> MlclusteragglomerativeBuffer {
-  let result = ml_cluster_agglomerative_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_buffer_add(a : MlclusteragglomerativeBuffer, b : MlclusteragglomerativeBuffer) -> MlclusteragglomerativeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_buffer_copy(s : MlclusteragglomerativeBuffer) -> MlclusteragglomerativeBuffer {
-  let result = ml_cluster_agglomerative_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_buffer_fill(s : MlclusteragglomerativeBuffer, v : Double) -> MlclusteragglomerativeBuffer {
-  let result = ml_cluster_agglomerative_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_buffer_min(s : MlclusteragglomerativeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_cluster_agglomerative_cursor_sum(s : MlclusteragglomerativeCursor) -> 
 pub fn ml_cluster_agglomerative_cursor_mean(s : MlclusteragglomerativeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_cursor_scale(s : MlclusteragglomerativeCursor, f : Double) -> MlclusteragglomerativeCursor {
-  let result = ml_cluster_agglomerative_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cursor_add(a : MlclusteragglomerativeCursor, b : MlclusteragglomerativeCursor) -> MlclusteragglomerativeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_cursor_copy(s : MlclusteragglomerativeCursor) -> MlclusteragglomerativeCursor {
-  let result = ml_cluster_agglomerative_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cursor_fill(s : MlclusteragglomerativeCursor, v : Double) -> MlclusteragglomerativeCursor {
-  let result = ml_cluster_agglomerative_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cursor_min(s : MlclusteragglomerativeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_cluster_agglomerative_view_sum(s : MlclusteragglomerativeView) -> Doub
 pub fn ml_cluster_agglomerative_view_mean(s : MlclusteragglomerativeView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_view_scale(s : MlclusteragglomerativeView, f : Double) -> MlclusteragglomerativeView {
-  let result = ml_cluster_agglomerative_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_view_add(a : MlclusteragglomerativeView, b : MlclusteragglomerativeView) -> MlclusteragglomerativeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_view_copy(s : MlclusteragglomerativeView) -> MlclusteragglomerativeView {
-  let result = ml_cluster_agglomerative_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_view_fill(s : MlclusteragglomerativeView, v : Double) -> MlclusteragglomerativeView {
-  let result = ml_cluster_agglomerative_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_view_min(s : MlclusteragglomerativeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_cluster_agglomerative_range_sum(s : MlclusteragglomerativeRange) -> Do
 pub fn ml_cluster_agglomerative_range_mean(s : MlclusteragglomerativeRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_range_scale(s : MlclusteragglomerativeRange, f : Double) -> MlclusteragglomerativeRange {
-  let result = ml_cluster_agglomerative_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_range_add(a : MlclusteragglomerativeRange, b : MlclusteragglomerativeRange) -> MlclusteragglomerativeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_range_copy(s : MlclusteragglomerativeRange) -> MlclusteragglomerativeRange {
-  let result = ml_cluster_agglomerative_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_range_fill(s : MlclusteragglomerativeRange, v : Double) -> MlclusteragglomerativeRange {
-  let result = ml_cluster_agglomerative_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_range_min(s : MlclusteragglomerativeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_cluster_agglomerative_slice_sum(s : MlclusteragglomerativeSlice) -> Do
 pub fn ml_cluster_agglomerative_slice_mean(s : MlclusteragglomerativeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_agglomerative_slice_scale(s : MlclusteragglomerativeSlice, f : Double) -> MlclusteragglomerativeSlice {
-  let result = ml_cluster_agglomerative_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_slice_add(a : MlclusteragglomerativeSlice, b : MlclusteragglomerativeSlice) -> MlclusteragglomerativeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_cluster_agglomerative_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_cluster_agglomerative_slice_copy(s : MlclusteragglomerativeSlice) -> MlclusteragglomerativeSlice {
-  let result = ml_cluster_agglomerative_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_slice_fill(s : MlclusteragglomerativeSlice, v : Double) -> MlclusteragglomerativeSlice {
-  let result = ml_cluster_agglomerative_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_slice_min(s : MlclusteragglomerativeSlice) -> Double { @_common.min(s.data) }

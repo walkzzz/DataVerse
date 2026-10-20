@@ -383,28 +383,20 @@ pub fn timeseries_prophet_frame_sum(s : TimeseriesprophetFrame) -> Double { @_co
 pub fn timeseries_prophet_frame_mean(s : TimeseriesprophetFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_frame_scale(s : TimeseriesprophetFrame, f : Double) -> TimeseriesprophetFrame {
-  let result = timeseries_prophet_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_frame_add(a : TimeseriesprophetFrame, b : TimeseriesprophetFrame) -> TimeseriesprophetFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_frame_copy(s : TimeseriesprophetFrame) -> TimeseriesprophetFrame {
-  let result = timeseries_prophet_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_frame_fill(s : TimeseriesprophetFrame, v : Double) -> TimeseriesprophetFrame {
-  let result = timeseries_prophet_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_frame_min(s : TimeseriesprophetFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_prophet_table_sum(s : TimeseriesprophetTable) -> Double { @_co
 pub fn timeseries_prophet_table_mean(s : TimeseriesprophetTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_table_scale(s : TimeseriesprophetTable, f : Double) -> TimeseriesprophetTable {
-  let result = timeseries_prophet_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_table_add(a : TimeseriesprophetTable, b : TimeseriesprophetTable) -> TimeseriesprophetTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_table_copy(s : TimeseriesprophetTable) -> TimeseriesprophetTable {
-  let result = timeseries_prophet_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_table_fill(s : TimeseriesprophetTable, v : Double) -> TimeseriesprophetTable {
-  let result = timeseries_prophet_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_table_min(s : TimeseriesprophetTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_prophet_graphn_sum(s : TimeseriesprophetGraphN) -> Double { @_
 pub fn timeseries_prophet_graphn_mean(s : TimeseriesprophetGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_graphn_scale(s : TimeseriesprophetGraphN, f : Double) -> TimeseriesprophetGraphN {
-  let result = timeseries_prophet_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_graphn_add(a : TimeseriesprophetGraphN, b : TimeseriesprophetGraphN) -> TimeseriesprophetGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_graphn_copy(s : TimeseriesprophetGraphN) -> TimeseriesprophetGraphN {
-  let result = timeseries_prophet_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_graphn_fill(s : TimeseriesprophetGraphN, v : Double) -> TimeseriesprophetGraphN {
-  let result = timeseries_prophet_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_graphn_min(s : TimeseriesprophetGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_prophet_node_sum(s : TimeseriesprophetNode) -> Double { @_comm
 pub fn timeseries_prophet_node_mean(s : TimeseriesprophetNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_node_scale(s : TimeseriesprophetNode, f : Double) -> TimeseriesprophetNode {
-  let result = timeseries_prophet_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_node_add(a : TimeseriesprophetNode, b : TimeseriesprophetNode) -> TimeseriesprophetNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_node_copy(s : TimeseriesprophetNode) -> TimeseriesprophetNode {
-  let result = timeseries_prophet_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_node_fill(s : TimeseriesprophetNode, v : Double) -> TimeseriesprophetNode {
-  let result = timeseries_prophet_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_node_min(s : TimeseriesprophetNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_prophet_edge_sum(s : TimeseriesprophetEdge) -> Double { @_comm
 pub fn timeseries_prophet_edge_mean(s : TimeseriesprophetEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_edge_scale(s : TimeseriesprophetEdge, f : Double) -> TimeseriesprophetEdge {
-  let result = timeseries_prophet_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_edge_add(a : TimeseriesprophetEdge, b : TimeseriesprophetEdge) -> TimeseriesprophetEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_edge_copy(s : TimeseriesprophetEdge) -> TimeseriesprophetEdge {
-  let result = timeseries_prophet_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_edge_fill(s : TimeseriesprophetEdge, v : Double) -> TimeseriesprophetEdge {
-  let result = timeseries_prophet_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_edge_min(s : TimeseriesprophetEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_prophet_path_sum(s : TimeseriesprophetPath) -> Double { @_comm
 pub fn timeseries_prophet_path_mean(s : TimeseriesprophetPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_path_scale(s : TimeseriesprophetPath, f : Double) -> TimeseriesprophetPath {
-  let result = timeseries_prophet_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_path_add(a : TimeseriesprophetPath, b : TimeseriesprophetPath) -> TimeseriesprophetPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_path_copy(s : TimeseriesprophetPath) -> TimeseriesprophetPath {
-  let result = timeseries_prophet_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_path_fill(s : TimeseriesprophetPath, v : Double) -> TimeseriesprophetPath {
-  let result = timeseries_prophet_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_path_min(s : TimeseriesprophetPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_prophet_cluster_sum(s : TimeseriesprophetCluster) -> Double { 
 pub fn timeseries_prophet_cluster_mean(s : TimeseriesprophetCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_cluster_scale(s : TimeseriesprophetCluster, f : Double) -> TimeseriesprophetCluster {
-  let result = timeseries_prophet_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cluster_add(a : TimeseriesprophetCluster, b : TimeseriesprophetCluster) -> TimeseriesprophetCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_cluster_copy(s : TimeseriesprophetCluster) -> TimeseriesprophetCluster {
-  let result = timeseries_prophet_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cluster_fill(s : TimeseriesprophetCluster, v : Double) -> TimeseriesprophetCluster {
-  let result = timeseries_prophet_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cluster_min(s : TimeseriesprophetCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_prophet_model_sum(s : TimeseriesprophetModel) -> Double { @_co
 pub fn timeseries_prophet_model_mean(s : TimeseriesprophetModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_model_scale(s : TimeseriesprophetModel, f : Double) -> TimeseriesprophetModel {
-  let result = timeseries_prophet_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_model_add(a : TimeseriesprophetModel, b : TimeseriesprophetModel) -> TimeseriesprophetModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_model_copy(s : TimeseriesprophetModel) -> TimeseriesprophetModel {
-  let result = timeseries_prophet_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_model_fill(s : TimeseriesprophetModel, v : Double) -> TimeseriesprophetModel {
-  let result = timeseries_prophet_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_model_min(s : TimeseriesprophetModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_prophet_layer_sum(s : TimeseriesprophetLayer) -> Double { @_co
 pub fn timeseries_prophet_layer_mean(s : TimeseriesprophetLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_layer_scale(s : TimeseriesprophetLayer, f : Double) -> TimeseriesprophetLayer {
-  let result = timeseries_prophet_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_layer_add(a : TimeseriesprophetLayer, b : TimeseriesprophetLayer) -> TimeseriesprophetLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_layer_copy(s : TimeseriesprophetLayer) -> TimeseriesprophetLayer {
-  let result = timeseries_prophet_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_layer_fill(s : TimeseriesprophetLayer, v : Double) -> TimeseriesprophetLayer {
-  let result = timeseries_prophet_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_layer_min(s : TimeseriesprophetLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_prophet_buffer_sum(s : TimeseriesprophetBuffer) -> Double { @_
 pub fn timeseries_prophet_buffer_mean(s : TimeseriesprophetBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_buffer_scale(s : TimeseriesprophetBuffer, f : Double) -> TimeseriesprophetBuffer {
-  let result = timeseries_prophet_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_buffer_add(a : TimeseriesprophetBuffer, b : TimeseriesprophetBuffer) -> TimeseriesprophetBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_buffer_copy(s : TimeseriesprophetBuffer) -> TimeseriesprophetBuffer {
-  let result = timeseries_prophet_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_buffer_fill(s : TimeseriesprophetBuffer, v : Double) -> TimeseriesprophetBuffer {
-  let result = timeseries_prophet_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_buffer_min(s : TimeseriesprophetBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_prophet_cursor_sum(s : TimeseriesprophetCursor) -> Double { @_
 pub fn timeseries_prophet_cursor_mean(s : TimeseriesprophetCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_cursor_scale(s : TimeseriesprophetCursor, f : Double) -> TimeseriesprophetCursor {
-  let result = timeseries_prophet_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cursor_add(a : TimeseriesprophetCursor, b : TimeseriesprophetCursor) -> TimeseriesprophetCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_cursor_copy(s : TimeseriesprophetCursor) -> TimeseriesprophetCursor {
-  let result = timeseries_prophet_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cursor_fill(s : TimeseriesprophetCursor, v : Double) -> TimeseriesprophetCursor {
-  let result = timeseries_prophet_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cursor_min(s : TimeseriesprophetCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_prophet_view_sum(s : TimeseriesprophetView) -> Double { @_comm
 pub fn timeseries_prophet_view_mean(s : TimeseriesprophetView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_view_scale(s : TimeseriesprophetView, f : Double) -> TimeseriesprophetView {
-  let result = timeseries_prophet_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_view_add(a : TimeseriesprophetView, b : TimeseriesprophetView) -> TimeseriesprophetView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_view_copy(s : TimeseriesprophetView) -> TimeseriesprophetView {
-  let result = timeseries_prophet_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_view_fill(s : TimeseriesprophetView, v : Double) -> TimeseriesprophetView {
-  let result = timeseries_prophet_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_view_min(s : TimeseriesprophetView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_prophet_range_sum(s : TimeseriesprophetRange) -> Double { @_co
 pub fn timeseries_prophet_range_mean(s : TimeseriesprophetRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_range_scale(s : TimeseriesprophetRange, f : Double) -> TimeseriesprophetRange {
-  let result = timeseries_prophet_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_range_add(a : TimeseriesprophetRange, b : TimeseriesprophetRange) -> TimeseriesprophetRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_range_copy(s : TimeseriesprophetRange) -> TimeseriesprophetRange {
-  let result = timeseries_prophet_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_range_fill(s : TimeseriesprophetRange, v : Double) -> TimeseriesprophetRange {
-  let result = timeseries_prophet_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_range_min(s : TimeseriesprophetRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_prophet_slice_sum(s : TimeseriesprophetSlice) -> Double { @_co
 pub fn timeseries_prophet_slice_mean(s : TimeseriesprophetSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_prophet_slice_scale(s : TimeseriesprophetSlice, f : Double) -> TimeseriesprophetSlice {
-  let result = timeseries_prophet_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_slice_add(a : TimeseriesprophetSlice, b : TimeseriesprophetSlice) -> TimeseriesprophetSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_prophet_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_prophet_slice_copy(s : TimeseriesprophetSlice) -> TimeseriesprophetSlice {
-  let result = timeseries_prophet_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_slice_fill(s : TimeseriesprophetSlice, v : Double) -> TimeseriesprophetSlice {
-  let result = timeseries_prophet_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_slice_min(s : TimeseriesprophetSlice) -> Double { @_common.min(s.data) }

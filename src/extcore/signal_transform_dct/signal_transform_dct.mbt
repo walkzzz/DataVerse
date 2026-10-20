@@ -383,28 +383,20 @@ pub fn signal_transform_dct_frame_sum(s : SignaltransformdctFrame) -> Double { @
 pub fn signal_transform_dct_frame_mean(s : SignaltransformdctFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_frame_scale(s : SignaltransformdctFrame, f : Double) -> SignaltransformdctFrame {
-  let result = signal_transform_dct_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_frame_add(a : SignaltransformdctFrame, b : SignaltransformdctFrame) -> SignaltransformdctFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_frame_copy(s : SignaltransformdctFrame) -> SignaltransformdctFrame {
-  let result = signal_transform_dct_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_frame_fill(s : SignaltransformdctFrame, v : Double) -> SignaltransformdctFrame {
-  let result = signal_transform_dct_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_frame_min(s : SignaltransformdctFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_transform_dct_table_sum(s : SignaltransformdctTable) -> Double { @
 pub fn signal_transform_dct_table_mean(s : SignaltransformdctTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_table_scale(s : SignaltransformdctTable, f : Double) -> SignaltransformdctTable {
-  let result = signal_transform_dct_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_table_add(a : SignaltransformdctTable, b : SignaltransformdctTable) -> SignaltransformdctTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_table_copy(s : SignaltransformdctTable) -> SignaltransformdctTable {
-  let result = signal_transform_dct_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_table_fill(s : SignaltransformdctTable, v : Double) -> SignaltransformdctTable {
-  let result = signal_transform_dct_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_table_min(s : SignaltransformdctTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_transform_dct_graphn_sum(s : SignaltransformdctGraphN) -> Double {
 pub fn signal_transform_dct_graphn_mean(s : SignaltransformdctGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_graphn_scale(s : SignaltransformdctGraphN, f : Double) -> SignaltransformdctGraphN {
-  let result = signal_transform_dct_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_graphn_add(a : SignaltransformdctGraphN, b : SignaltransformdctGraphN) -> SignaltransformdctGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_graphn_copy(s : SignaltransformdctGraphN) -> SignaltransformdctGraphN {
-  let result = signal_transform_dct_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_graphn_fill(s : SignaltransformdctGraphN, v : Double) -> SignaltransformdctGraphN {
-  let result = signal_transform_dct_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_graphn_min(s : SignaltransformdctGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_transform_dct_node_sum(s : SignaltransformdctNode) -> Double { @_c
 pub fn signal_transform_dct_node_mean(s : SignaltransformdctNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_node_scale(s : SignaltransformdctNode, f : Double) -> SignaltransformdctNode {
-  let result = signal_transform_dct_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_node_add(a : SignaltransformdctNode, b : SignaltransformdctNode) -> SignaltransformdctNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_node_copy(s : SignaltransformdctNode) -> SignaltransformdctNode {
-  let result = signal_transform_dct_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_node_fill(s : SignaltransformdctNode, v : Double) -> SignaltransformdctNode {
-  let result = signal_transform_dct_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_node_min(s : SignaltransformdctNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_transform_dct_edge_sum(s : SignaltransformdctEdge) -> Double { @_c
 pub fn signal_transform_dct_edge_mean(s : SignaltransformdctEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_edge_scale(s : SignaltransformdctEdge, f : Double) -> SignaltransformdctEdge {
-  let result = signal_transform_dct_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_edge_add(a : SignaltransformdctEdge, b : SignaltransformdctEdge) -> SignaltransformdctEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_edge_copy(s : SignaltransformdctEdge) -> SignaltransformdctEdge {
-  let result = signal_transform_dct_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_edge_fill(s : SignaltransformdctEdge, v : Double) -> SignaltransformdctEdge {
-  let result = signal_transform_dct_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_edge_min(s : SignaltransformdctEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_transform_dct_path_sum(s : SignaltransformdctPath) -> Double { @_c
 pub fn signal_transform_dct_path_mean(s : SignaltransformdctPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_path_scale(s : SignaltransformdctPath, f : Double) -> SignaltransformdctPath {
-  let result = signal_transform_dct_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_path_add(a : SignaltransformdctPath, b : SignaltransformdctPath) -> SignaltransformdctPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_path_copy(s : SignaltransformdctPath) -> SignaltransformdctPath {
-  let result = signal_transform_dct_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_path_fill(s : SignaltransformdctPath, v : Double) -> SignaltransformdctPath {
-  let result = signal_transform_dct_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_path_min(s : SignaltransformdctPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_transform_dct_cluster_sum(s : SignaltransformdctCluster) -> Double
 pub fn signal_transform_dct_cluster_mean(s : SignaltransformdctCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_cluster_scale(s : SignaltransformdctCluster, f : Double) -> SignaltransformdctCluster {
-  let result = signal_transform_dct_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cluster_add(a : SignaltransformdctCluster, b : SignaltransformdctCluster) -> SignaltransformdctCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_cluster_copy(s : SignaltransformdctCluster) -> SignaltransformdctCluster {
-  let result = signal_transform_dct_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cluster_fill(s : SignaltransformdctCluster, v : Double) -> SignaltransformdctCluster {
-  let result = signal_transform_dct_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cluster_min(s : SignaltransformdctCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_transform_dct_model_sum(s : SignaltransformdctModel) -> Double { @
 pub fn signal_transform_dct_model_mean(s : SignaltransformdctModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_model_scale(s : SignaltransformdctModel, f : Double) -> SignaltransformdctModel {
-  let result = signal_transform_dct_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_model_add(a : SignaltransformdctModel, b : SignaltransformdctModel) -> SignaltransformdctModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_model_copy(s : SignaltransformdctModel) -> SignaltransformdctModel {
-  let result = signal_transform_dct_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_model_fill(s : SignaltransformdctModel, v : Double) -> SignaltransformdctModel {
-  let result = signal_transform_dct_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_model_min(s : SignaltransformdctModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_transform_dct_layer_sum(s : SignaltransformdctLayer) -> Double { @
 pub fn signal_transform_dct_layer_mean(s : SignaltransformdctLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_layer_scale(s : SignaltransformdctLayer, f : Double) -> SignaltransformdctLayer {
-  let result = signal_transform_dct_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_layer_add(a : SignaltransformdctLayer, b : SignaltransformdctLayer) -> SignaltransformdctLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_layer_copy(s : SignaltransformdctLayer) -> SignaltransformdctLayer {
-  let result = signal_transform_dct_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_layer_fill(s : SignaltransformdctLayer, v : Double) -> SignaltransformdctLayer {
-  let result = signal_transform_dct_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_layer_min(s : SignaltransformdctLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_transform_dct_buffer_sum(s : SignaltransformdctBuffer) -> Double {
 pub fn signal_transform_dct_buffer_mean(s : SignaltransformdctBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_buffer_scale(s : SignaltransformdctBuffer, f : Double) -> SignaltransformdctBuffer {
-  let result = signal_transform_dct_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_buffer_add(a : SignaltransformdctBuffer, b : SignaltransformdctBuffer) -> SignaltransformdctBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_buffer_copy(s : SignaltransformdctBuffer) -> SignaltransformdctBuffer {
-  let result = signal_transform_dct_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_buffer_fill(s : SignaltransformdctBuffer, v : Double) -> SignaltransformdctBuffer {
-  let result = signal_transform_dct_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_buffer_min(s : SignaltransformdctBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_transform_dct_cursor_sum(s : SignaltransformdctCursor) -> Double {
 pub fn signal_transform_dct_cursor_mean(s : SignaltransformdctCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_cursor_scale(s : SignaltransformdctCursor, f : Double) -> SignaltransformdctCursor {
-  let result = signal_transform_dct_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cursor_add(a : SignaltransformdctCursor, b : SignaltransformdctCursor) -> SignaltransformdctCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_cursor_copy(s : SignaltransformdctCursor) -> SignaltransformdctCursor {
-  let result = signal_transform_dct_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cursor_fill(s : SignaltransformdctCursor, v : Double) -> SignaltransformdctCursor {
-  let result = signal_transform_dct_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cursor_min(s : SignaltransformdctCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_transform_dct_view_sum(s : SignaltransformdctView) -> Double { @_c
 pub fn signal_transform_dct_view_mean(s : SignaltransformdctView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_view_scale(s : SignaltransformdctView, f : Double) -> SignaltransformdctView {
-  let result = signal_transform_dct_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_view_add(a : SignaltransformdctView, b : SignaltransformdctView) -> SignaltransformdctView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_view_copy(s : SignaltransformdctView) -> SignaltransformdctView {
-  let result = signal_transform_dct_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_view_fill(s : SignaltransformdctView, v : Double) -> SignaltransformdctView {
-  let result = signal_transform_dct_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_view_min(s : SignaltransformdctView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_transform_dct_range_sum(s : SignaltransformdctRange) -> Double { @
 pub fn signal_transform_dct_range_mean(s : SignaltransformdctRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_range_scale(s : SignaltransformdctRange, f : Double) -> SignaltransformdctRange {
-  let result = signal_transform_dct_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_range_add(a : SignaltransformdctRange, b : SignaltransformdctRange) -> SignaltransformdctRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_range_copy(s : SignaltransformdctRange) -> SignaltransformdctRange {
-  let result = signal_transform_dct_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_range_fill(s : SignaltransformdctRange, v : Double) -> SignaltransformdctRange {
-  let result = signal_transform_dct_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_range_min(s : SignaltransformdctRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_transform_dct_slice_sum(s : SignaltransformdctSlice) -> Double { @
 pub fn signal_transform_dct_slice_mean(s : SignaltransformdctSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_slice_scale(s : SignaltransformdctSlice, f : Double) -> SignaltransformdctSlice {
-  let result = signal_transform_dct_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_slice_add(a : SignaltransformdctSlice, b : SignaltransformdctSlice) -> SignaltransformdctSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_dct_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_dct_slice_copy(s : SignaltransformdctSlice) -> SignaltransformdctSlice {
-  let result = signal_transform_dct_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_slice_fill(s : SignaltransformdctSlice, v : Double) -> SignaltransformdctSlice {
-  let result = signal_transform_dct_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_slice_min(s : SignaltransformdctSlice) -> Double { @_common.min(s.data) }

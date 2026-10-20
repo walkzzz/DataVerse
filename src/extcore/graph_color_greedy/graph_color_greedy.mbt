@@ -383,28 +383,20 @@ pub fn graph_color_greedy_frame_sum(s : GraphcolorgreedyFrame) -> Double { @_com
 pub fn graph_color_greedy_frame_mean(s : GraphcolorgreedyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_frame_scale(s : GraphcolorgreedyFrame, f : Double) -> GraphcolorgreedyFrame {
-  let result = graph_color_greedy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_frame_add(a : GraphcolorgreedyFrame, b : GraphcolorgreedyFrame) -> GraphcolorgreedyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_frame_copy(s : GraphcolorgreedyFrame) -> GraphcolorgreedyFrame {
-  let result = graph_color_greedy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_frame_fill(s : GraphcolorgreedyFrame, v : Double) -> GraphcolorgreedyFrame {
-  let result = graph_color_greedy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_frame_min(s : GraphcolorgreedyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_greedy_table_sum(s : GraphcolorgreedyTable) -> Double { @_com
 pub fn graph_color_greedy_table_mean(s : GraphcolorgreedyTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_table_scale(s : GraphcolorgreedyTable, f : Double) -> GraphcolorgreedyTable {
-  let result = graph_color_greedy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_table_add(a : GraphcolorgreedyTable, b : GraphcolorgreedyTable) -> GraphcolorgreedyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_table_copy(s : GraphcolorgreedyTable) -> GraphcolorgreedyTable {
-  let result = graph_color_greedy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_table_fill(s : GraphcolorgreedyTable, v : Double) -> GraphcolorgreedyTable {
-  let result = graph_color_greedy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_table_min(s : GraphcolorgreedyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_greedy_graphn_sum(s : GraphcolorgreedyGraphN) -> Double { @_c
 pub fn graph_color_greedy_graphn_mean(s : GraphcolorgreedyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_graphn_scale(s : GraphcolorgreedyGraphN, f : Double) -> GraphcolorgreedyGraphN {
-  let result = graph_color_greedy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_graphn_add(a : GraphcolorgreedyGraphN, b : GraphcolorgreedyGraphN) -> GraphcolorgreedyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_graphn_copy(s : GraphcolorgreedyGraphN) -> GraphcolorgreedyGraphN {
-  let result = graph_color_greedy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_graphn_fill(s : GraphcolorgreedyGraphN, v : Double) -> GraphcolorgreedyGraphN {
-  let result = graph_color_greedy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_graphn_min(s : GraphcolorgreedyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_greedy_node_sum(s : GraphcolorgreedyNode) -> Double { @_commo
 pub fn graph_color_greedy_node_mean(s : GraphcolorgreedyNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_node_scale(s : GraphcolorgreedyNode, f : Double) -> GraphcolorgreedyNode {
-  let result = graph_color_greedy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_node_add(a : GraphcolorgreedyNode, b : GraphcolorgreedyNode) -> GraphcolorgreedyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_node_copy(s : GraphcolorgreedyNode) -> GraphcolorgreedyNode {
-  let result = graph_color_greedy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_node_fill(s : GraphcolorgreedyNode, v : Double) -> GraphcolorgreedyNode {
-  let result = graph_color_greedy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_node_min(s : GraphcolorgreedyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_greedy_edge_sum(s : GraphcolorgreedyEdge) -> Double { @_commo
 pub fn graph_color_greedy_edge_mean(s : GraphcolorgreedyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_edge_scale(s : GraphcolorgreedyEdge, f : Double) -> GraphcolorgreedyEdge {
-  let result = graph_color_greedy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_edge_add(a : GraphcolorgreedyEdge, b : GraphcolorgreedyEdge) -> GraphcolorgreedyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_edge_copy(s : GraphcolorgreedyEdge) -> GraphcolorgreedyEdge {
-  let result = graph_color_greedy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_edge_fill(s : GraphcolorgreedyEdge, v : Double) -> GraphcolorgreedyEdge {
-  let result = graph_color_greedy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_edge_min(s : GraphcolorgreedyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_greedy_path_sum(s : GraphcolorgreedyPath) -> Double { @_commo
 pub fn graph_color_greedy_path_mean(s : GraphcolorgreedyPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_path_scale(s : GraphcolorgreedyPath, f : Double) -> GraphcolorgreedyPath {
-  let result = graph_color_greedy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_path_add(a : GraphcolorgreedyPath, b : GraphcolorgreedyPath) -> GraphcolorgreedyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_path_copy(s : GraphcolorgreedyPath) -> GraphcolorgreedyPath {
-  let result = graph_color_greedy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_path_fill(s : GraphcolorgreedyPath, v : Double) -> GraphcolorgreedyPath {
-  let result = graph_color_greedy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_path_min(s : GraphcolorgreedyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_greedy_cluster_sum(s : GraphcolorgreedyCluster) -> Double { @
 pub fn graph_color_greedy_cluster_mean(s : GraphcolorgreedyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_cluster_scale(s : GraphcolorgreedyCluster, f : Double) -> GraphcolorgreedyCluster {
-  let result = graph_color_greedy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cluster_add(a : GraphcolorgreedyCluster, b : GraphcolorgreedyCluster) -> GraphcolorgreedyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_cluster_copy(s : GraphcolorgreedyCluster) -> GraphcolorgreedyCluster {
-  let result = graph_color_greedy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cluster_fill(s : GraphcolorgreedyCluster, v : Double) -> GraphcolorgreedyCluster {
-  let result = graph_color_greedy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cluster_min(s : GraphcolorgreedyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_greedy_model_sum(s : GraphcolorgreedyModel) -> Double { @_com
 pub fn graph_color_greedy_model_mean(s : GraphcolorgreedyModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_model_scale(s : GraphcolorgreedyModel, f : Double) -> GraphcolorgreedyModel {
-  let result = graph_color_greedy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_model_add(a : GraphcolorgreedyModel, b : GraphcolorgreedyModel) -> GraphcolorgreedyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_model_copy(s : GraphcolorgreedyModel) -> GraphcolorgreedyModel {
-  let result = graph_color_greedy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_model_fill(s : GraphcolorgreedyModel, v : Double) -> GraphcolorgreedyModel {
-  let result = graph_color_greedy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_model_min(s : GraphcolorgreedyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_greedy_layer_sum(s : GraphcolorgreedyLayer) -> Double { @_com
 pub fn graph_color_greedy_layer_mean(s : GraphcolorgreedyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_layer_scale(s : GraphcolorgreedyLayer, f : Double) -> GraphcolorgreedyLayer {
-  let result = graph_color_greedy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_layer_add(a : GraphcolorgreedyLayer, b : GraphcolorgreedyLayer) -> GraphcolorgreedyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_layer_copy(s : GraphcolorgreedyLayer) -> GraphcolorgreedyLayer {
-  let result = graph_color_greedy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_layer_fill(s : GraphcolorgreedyLayer, v : Double) -> GraphcolorgreedyLayer {
-  let result = graph_color_greedy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_layer_min(s : GraphcolorgreedyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_greedy_buffer_sum(s : GraphcolorgreedyBuffer) -> Double { @_c
 pub fn graph_color_greedy_buffer_mean(s : GraphcolorgreedyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_buffer_scale(s : GraphcolorgreedyBuffer, f : Double) -> GraphcolorgreedyBuffer {
-  let result = graph_color_greedy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_buffer_add(a : GraphcolorgreedyBuffer, b : GraphcolorgreedyBuffer) -> GraphcolorgreedyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_buffer_copy(s : GraphcolorgreedyBuffer) -> GraphcolorgreedyBuffer {
-  let result = graph_color_greedy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_buffer_fill(s : GraphcolorgreedyBuffer, v : Double) -> GraphcolorgreedyBuffer {
-  let result = graph_color_greedy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_buffer_min(s : GraphcolorgreedyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_greedy_cursor_sum(s : GraphcolorgreedyCursor) -> Double { @_c
 pub fn graph_color_greedy_cursor_mean(s : GraphcolorgreedyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_cursor_scale(s : GraphcolorgreedyCursor, f : Double) -> GraphcolorgreedyCursor {
-  let result = graph_color_greedy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cursor_add(a : GraphcolorgreedyCursor, b : GraphcolorgreedyCursor) -> GraphcolorgreedyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_cursor_copy(s : GraphcolorgreedyCursor) -> GraphcolorgreedyCursor {
-  let result = graph_color_greedy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cursor_fill(s : GraphcolorgreedyCursor, v : Double) -> GraphcolorgreedyCursor {
-  let result = graph_color_greedy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cursor_min(s : GraphcolorgreedyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_greedy_view_sum(s : GraphcolorgreedyView) -> Double { @_commo
 pub fn graph_color_greedy_view_mean(s : GraphcolorgreedyView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_view_scale(s : GraphcolorgreedyView, f : Double) -> GraphcolorgreedyView {
-  let result = graph_color_greedy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_view_add(a : GraphcolorgreedyView, b : GraphcolorgreedyView) -> GraphcolorgreedyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_view_copy(s : GraphcolorgreedyView) -> GraphcolorgreedyView {
-  let result = graph_color_greedy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_view_fill(s : GraphcolorgreedyView, v : Double) -> GraphcolorgreedyView {
-  let result = graph_color_greedy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_view_min(s : GraphcolorgreedyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_greedy_range_sum(s : GraphcolorgreedyRange) -> Double { @_com
 pub fn graph_color_greedy_range_mean(s : GraphcolorgreedyRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_range_scale(s : GraphcolorgreedyRange, f : Double) -> GraphcolorgreedyRange {
-  let result = graph_color_greedy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_range_add(a : GraphcolorgreedyRange, b : GraphcolorgreedyRange) -> GraphcolorgreedyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_range_copy(s : GraphcolorgreedyRange) -> GraphcolorgreedyRange {
-  let result = graph_color_greedy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_range_fill(s : GraphcolorgreedyRange, v : Double) -> GraphcolorgreedyRange {
-  let result = graph_color_greedy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_range_min(s : GraphcolorgreedyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_greedy_slice_sum(s : GraphcolorgreedySlice) -> Double { @_com
 pub fn graph_color_greedy_slice_mean(s : GraphcolorgreedySlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_greedy_slice_scale(s : GraphcolorgreedySlice, f : Double) -> GraphcolorgreedySlice {
-  let result = graph_color_greedy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_slice_add(a : GraphcolorgreedySlice, b : GraphcolorgreedySlice) -> GraphcolorgreedySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_greedy_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_greedy_slice_copy(s : GraphcolorgreedySlice) -> GraphcolorgreedySlice {
-  let result = graph_color_greedy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_slice_fill(s : GraphcolorgreedySlice, v : Double) -> GraphcolorgreedySlice {
-  let result = graph_color_greedy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_slice_min(s : GraphcolorgreedySlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn signal_filter_wiener_frame_sum(s : SignalfilterwienerFrame) -> Double { @
 pub fn signal_filter_wiener_frame_mean(s : SignalfilterwienerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_frame_scale(s : SignalfilterwienerFrame, f : Double) -> SignalfilterwienerFrame {
-  let result = signal_filter_wiener_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_frame_add(a : SignalfilterwienerFrame, b : SignalfilterwienerFrame) -> SignalfilterwienerFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_frame_copy(s : SignalfilterwienerFrame) -> SignalfilterwienerFrame {
-  let result = signal_filter_wiener_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_frame_fill(s : SignalfilterwienerFrame, v : Double) -> SignalfilterwienerFrame {
-  let result = signal_filter_wiener_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_frame_min(s : SignalfilterwienerFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_filter_wiener_table_sum(s : SignalfilterwienerTable) -> Double { @
 pub fn signal_filter_wiener_table_mean(s : SignalfilterwienerTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_table_scale(s : SignalfilterwienerTable, f : Double) -> SignalfilterwienerTable {
-  let result = signal_filter_wiener_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_table_add(a : SignalfilterwienerTable, b : SignalfilterwienerTable) -> SignalfilterwienerTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_table_copy(s : SignalfilterwienerTable) -> SignalfilterwienerTable {
-  let result = signal_filter_wiener_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_table_fill(s : SignalfilterwienerTable, v : Double) -> SignalfilterwienerTable {
-  let result = signal_filter_wiener_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_table_min(s : SignalfilterwienerTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_filter_wiener_graphn_sum(s : SignalfilterwienerGraphN) -> Double {
 pub fn signal_filter_wiener_graphn_mean(s : SignalfilterwienerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_graphn_scale(s : SignalfilterwienerGraphN, f : Double) -> SignalfilterwienerGraphN {
-  let result = signal_filter_wiener_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_graphn_add(a : SignalfilterwienerGraphN, b : SignalfilterwienerGraphN) -> SignalfilterwienerGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_graphn_copy(s : SignalfilterwienerGraphN) -> SignalfilterwienerGraphN {
-  let result = signal_filter_wiener_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_graphn_fill(s : SignalfilterwienerGraphN, v : Double) -> SignalfilterwienerGraphN {
-  let result = signal_filter_wiener_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_graphn_min(s : SignalfilterwienerGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_filter_wiener_node_sum(s : SignalfilterwienerNode) -> Double { @_c
 pub fn signal_filter_wiener_node_mean(s : SignalfilterwienerNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_node_scale(s : SignalfilterwienerNode, f : Double) -> SignalfilterwienerNode {
-  let result = signal_filter_wiener_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_node_add(a : SignalfilterwienerNode, b : SignalfilterwienerNode) -> SignalfilterwienerNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_node_copy(s : SignalfilterwienerNode) -> SignalfilterwienerNode {
-  let result = signal_filter_wiener_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_node_fill(s : SignalfilterwienerNode, v : Double) -> SignalfilterwienerNode {
-  let result = signal_filter_wiener_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_node_min(s : SignalfilterwienerNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_filter_wiener_edge_sum(s : SignalfilterwienerEdge) -> Double { @_c
 pub fn signal_filter_wiener_edge_mean(s : SignalfilterwienerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_edge_scale(s : SignalfilterwienerEdge, f : Double) -> SignalfilterwienerEdge {
-  let result = signal_filter_wiener_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_edge_add(a : SignalfilterwienerEdge, b : SignalfilterwienerEdge) -> SignalfilterwienerEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_edge_copy(s : SignalfilterwienerEdge) -> SignalfilterwienerEdge {
-  let result = signal_filter_wiener_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_edge_fill(s : SignalfilterwienerEdge, v : Double) -> SignalfilterwienerEdge {
-  let result = signal_filter_wiener_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_edge_min(s : SignalfilterwienerEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_filter_wiener_path_sum(s : SignalfilterwienerPath) -> Double { @_c
 pub fn signal_filter_wiener_path_mean(s : SignalfilterwienerPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_path_scale(s : SignalfilterwienerPath, f : Double) -> SignalfilterwienerPath {
-  let result = signal_filter_wiener_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_path_add(a : SignalfilterwienerPath, b : SignalfilterwienerPath) -> SignalfilterwienerPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_path_copy(s : SignalfilterwienerPath) -> SignalfilterwienerPath {
-  let result = signal_filter_wiener_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_path_fill(s : SignalfilterwienerPath, v : Double) -> SignalfilterwienerPath {
-  let result = signal_filter_wiener_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_path_min(s : SignalfilterwienerPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_filter_wiener_cluster_sum(s : SignalfilterwienerCluster) -> Double
 pub fn signal_filter_wiener_cluster_mean(s : SignalfilterwienerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_cluster_scale(s : SignalfilterwienerCluster, f : Double) -> SignalfilterwienerCluster {
-  let result = signal_filter_wiener_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cluster_add(a : SignalfilterwienerCluster, b : SignalfilterwienerCluster) -> SignalfilterwienerCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_cluster_copy(s : SignalfilterwienerCluster) -> SignalfilterwienerCluster {
-  let result = signal_filter_wiener_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cluster_fill(s : SignalfilterwienerCluster, v : Double) -> SignalfilterwienerCluster {
-  let result = signal_filter_wiener_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cluster_min(s : SignalfilterwienerCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_filter_wiener_model_sum(s : SignalfilterwienerModel) -> Double { @
 pub fn signal_filter_wiener_model_mean(s : SignalfilterwienerModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_model_scale(s : SignalfilterwienerModel, f : Double) -> SignalfilterwienerModel {
-  let result = signal_filter_wiener_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_model_add(a : SignalfilterwienerModel, b : SignalfilterwienerModel) -> SignalfilterwienerModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_model_copy(s : SignalfilterwienerModel) -> SignalfilterwienerModel {
-  let result = signal_filter_wiener_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_model_fill(s : SignalfilterwienerModel, v : Double) -> SignalfilterwienerModel {
-  let result = signal_filter_wiener_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_model_min(s : SignalfilterwienerModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_filter_wiener_layer_sum(s : SignalfilterwienerLayer) -> Double { @
 pub fn signal_filter_wiener_layer_mean(s : SignalfilterwienerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_layer_scale(s : SignalfilterwienerLayer, f : Double) -> SignalfilterwienerLayer {
-  let result = signal_filter_wiener_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_layer_add(a : SignalfilterwienerLayer, b : SignalfilterwienerLayer) -> SignalfilterwienerLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_layer_copy(s : SignalfilterwienerLayer) -> SignalfilterwienerLayer {
-  let result = signal_filter_wiener_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_layer_fill(s : SignalfilterwienerLayer, v : Double) -> SignalfilterwienerLayer {
-  let result = signal_filter_wiener_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_layer_min(s : SignalfilterwienerLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_filter_wiener_buffer_sum(s : SignalfilterwienerBuffer) -> Double {
 pub fn signal_filter_wiener_buffer_mean(s : SignalfilterwienerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_buffer_scale(s : SignalfilterwienerBuffer, f : Double) -> SignalfilterwienerBuffer {
-  let result = signal_filter_wiener_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_buffer_add(a : SignalfilterwienerBuffer, b : SignalfilterwienerBuffer) -> SignalfilterwienerBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_buffer_copy(s : SignalfilterwienerBuffer) -> SignalfilterwienerBuffer {
-  let result = signal_filter_wiener_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_buffer_fill(s : SignalfilterwienerBuffer, v : Double) -> SignalfilterwienerBuffer {
-  let result = signal_filter_wiener_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_buffer_min(s : SignalfilterwienerBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_filter_wiener_cursor_sum(s : SignalfilterwienerCursor) -> Double {
 pub fn signal_filter_wiener_cursor_mean(s : SignalfilterwienerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_cursor_scale(s : SignalfilterwienerCursor, f : Double) -> SignalfilterwienerCursor {
-  let result = signal_filter_wiener_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cursor_add(a : SignalfilterwienerCursor, b : SignalfilterwienerCursor) -> SignalfilterwienerCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_cursor_copy(s : SignalfilterwienerCursor) -> SignalfilterwienerCursor {
-  let result = signal_filter_wiener_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cursor_fill(s : SignalfilterwienerCursor, v : Double) -> SignalfilterwienerCursor {
-  let result = signal_filter_wiener_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cursor_min(s : SignalfilterwienerCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_filter_wiener_view_sum(s : SignalfilterwienerView) -> Double { @_c
 pub fn signal_filter_wiener_view_mean(s : SignalfilterwienerView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_view_scale(s : SignalfilterwienerView, f : Double) -> SignalfilterwienerView {
-  let result = signal_filter_wiener_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_view_add(a : SignalfilterwienerView, b : SignalfilterwienerView) -> SignalfilterwienerView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_view_copy(s : SignalfilterwienerView) -> SignalfilterwienerView {
-  let result = signal_filter_wiener_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_view_fill(s : SignalfilterwienerView, v : Double) -> SignalfilterwienerView {
-  let result = signal_filter_wiener_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_view_min(s : SignalfilterwienerView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_filter_wiener_range_sum(s : SignalfilterwienerRange) -> Double { @
 pub fn signal_filter_wiener_range_mean(s : SignalfilterwienerRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_range_scale(s : SignalfilterwienerRange, f : Double) -> SignalfilterwienerRange {
-  let result = signal_filter_wiener_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_range_add(a : SignalfilterwienerRange, b : SignalfilterwienerRange) -> SignalfilterwienerRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_range_copy(s : SignalfilterwienerRange) -> SignalfilterwienerRange {
-  let result = signal_filter_wiener_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_range_fill(s : SignalfilterwienerRange, v : Double) -> SignalfilterwienerRange {
-  let result = signal_filter_wiener_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_range_min(s : SignalfilterwienerRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_filter_wiener_slice_sum(s : SignalfilterwienerSlice) -> Double { @
 pub fn signal_filter_wiener_slice_mean(s : SignalfilterwienerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_slice_scale(s : SignalfilterwienerSlice, f : Double) -> SignalfilterwienerSlice {
-  let result = signal_filter_wiener_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_slice_add(a : SignalfilterwienerSlice, b : SignalfilterwienerSlice) -> SignalfilterwienerSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_wiener_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_wiener_slice_copy(s : SignalfilterwienerSlice) -> SignalfilterwienerSlice {
-  let result = signal_filter_wiener_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_slice_fill(s : SignalfilterwienerSlice, v : Double) -> SignalfilterwienerSlice {
-  let result = signal_filter_wiener_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_slice_min(s : SignalfilterwienerSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ds_hash_open_frame_sum(s : DshashopenFrame) -> Double { @_common.sum(s.da
 pub fn ds_hash_open_frame_mean(s : DshashopenFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_frame_scale(s : DshashopenFrame, f : Double) -> DshashopenFrame {
-  let result = ds_hash_open_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_frame_add(a : DshashopenFrame, b : DshashopenFrame) -> DshashopenFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_frame_copy(s : DshashopenFrame) -> DshashopenFrame {
-  let result = ds_hash_open_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_frame_fill(s : DshashopenFrame, v : Double) -> DshashopenFrame {
-  let result = ds_hash_open_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_frame_min(s : DshashopenFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_hash_open_table_sum(s : DshashopenTable) -> Double { @_common.sum(s.da
 pub fn ds_hash_open_table_mean(s : DshashopenTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_table_scale(s : DshashopenTable, f : Double) -> DshashopenTable {
-  let result = ds_hash_open_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_table_add(a : DshashopenTable, b : DshashopenTable) -> DshashopenTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_table_copy(s : DshashopenTable) -> DshashopenTable {
-  let result = ds_hash_open_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_table_fill(s : DshashopenTable, v : Double) -> DshashopenTable {
-  let result = ds_hash_open_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_table_min(s : DshashopenTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_hash_open_graphn_sum(s : DshashopenGraphN) -> Double { @_common.sum(s.
 pub fn ds_hash_open_graphn_mean(s : DshashopenGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_graphn_scale(s : DshashopenGraphN, f : Double) -> DshashopenGraphN {
-  let result = ds_hash_open_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_graphn_add(a : DshashopenGraphN, b : DshashopenGraphN) -> DshashopenGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_graphn_copy(s : DshashopenGraphN) -> DshashopenGraphN {
-  let result = ds_hash_open_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_graphn_fill(s : DshashopenGraphN, v : Double) -> DshashopenGraphN {
-  let result = ds_hash_open_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_graphn_min(s : DshashopenGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_hash_open_node_sum(s : DshashopenNode) -> Double { @_common.sum(s.data
 pub fn ds_hash_open_node_mean(s : DshashopenNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_node_scale(s : DshashopenNode, f : Double) -> DshashopenNode {
-  let result = ds_hash_open_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_node_add(a : DshashopenNode, b : DshashopenNode) -> DshashopenNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_node_copy(s : DshashopenNode) -> DshashopenNode {
-  let result = ds_hash_open_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_node_fill(s : DshashopenNode, v : Double) -> DshashopenNode {
-  let result = ds_hash_open_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_node_min(s : DshashopenNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_hash_open_edge_sum(s : DshashopenEdge) -> Double { @_common.sum(s.data
 pub fn ds_hash_open_edge_mean(s : DshashopenEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_edge_scale(s : DshashopenEdge, f : Double) -> DshashopenEdge {
-  let result = ds_hash_open_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_edge_add(a : DshashopenEdge, b : DshashopenEdge) -> DshashopenEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_edge_copy(s : DshashopenEdge) -> DshashopenEdge {
-  let result = ds_hash_open_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_edge_fill(s : DshashopenEdge, v : Double) -> DshashopenEdge {
-  let result = ds_hash_open_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_edge_min(s : DshashopenEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_hash_open_path_sum(s : DshashopenPath) -> Double { @_common.sum(s.data
 pub fn ds_hash_open_path_mean(s : DshashopenPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_path_scale(s : DshashopenPath, f : Double) -> DshashopenPath {
-  let result = ds_hash_open_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_path_add(a : DshashopenPath, b : DshashopenPath) -> DshashopenPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_path_copy(s : DshashopenPath) -> DshashopenPath {
-  let result = ds_hash_open_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_path_fill(s : DshashopenPath, v : Double) -> DshashopenPath {
-  let result = ds_hash_open_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_path_min(s : DshashopenPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_hash_open_cluster_sum(s : DshashopenCluster) -> Double { @_common.sum(
 pub fn ds_hash_open_cluster_mean(s : DshashopenCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_cluster_scale(s : DshashopenCluster, f : Double) -> DshashopenCluster {
-  let result = ds_hash_open_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cluster_add(a : DshashopenCluster, b : DshashopenCluster) -> DshashopenCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_cluster_copy(s : DshashopenCluster) -> DshashopenCluster {
-  let result = ds_hash_open_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cluster_fill(s : DshashopenCluster, v : Double) -> DshashopenCluster {
-  let result = ds_hash_open_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cluster_min(s : DshashopenCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_hash_open_model_sum(s : DshashopenModel) -> Double { @_common.sum(s.da
 pub fn ds_hash_open_model_mean(s : DshashopenModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_model_scale(s : DshashopenModel, f : Double) -> DshashopenModel {
-  let result = ds_hash_open_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_model_add(a : DshashopenModel, b : DshashopenModel) -> DshashopenModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_model_copy(s : DshashopenModel) -> DshashopenModel {
-  let result = ds_hash_open_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_model_fill(s : DshashopenModel, v : Double) -> DshashopenModel {
-  let result = ds_hash_open_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_model_min(s : DshashopenModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_hash_open_layer_sum(s : DshashopenLayer) -> Double { @_common.sum(s.da
 pub fn ds_hash_open_layer_mean(s : DshashopenLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_layer_scale(s : DshashopenLayer, f : Double) -> DshashopenLayer {
-  let result = ds_hash_open_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_layer_add(a : DshashopenLayer, b : DshashopenLayer) -> DshashopenLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_layer_copy(s : DshashopenLayer) -> DshashopenLayer {
-  let result = ds_hash_open_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_layer_fill(s : DshashopenLayer, v : Double) -> DshashopenLayer {
-  let result = ds_hash_open_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_layer_min(s : DshashopenLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_hash_open_buffer_sum(s : DshashopenBuffer) -> Double { @_common.sum(s.
 pub fn ds_hash_open_buffer_mean(s : DshashopenBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_buffer_scale(s : DshashopenBuffer, f : Double) -> DshashopenBuffer {
-  let result = ds_hash_open_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_buffer_add(a : DshashopenBuffer, b : DshashopenBuffer) -> DshashopenBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_buffer_copy(s : DshashopenBuffer) -> DshashopenBuffer {
-  let result = ds_hash_open_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_buffer_fill(s : DshashopenBuffer, v : Double) -> DshashopenBuffer {
-  let result = ds_hash_open_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_buffer_min(s : DshashopenBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_hash_open_cursor_sum(s : DshashopenCursor) -> Double { @_common.sum(s.
 pub fn ds_hash_open_cursor_mean(s : DshashopenCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_cursor_scale(s : DshashopenCursor, f : Double) -> DshashopenCursor {
-  let result = ds_hash_open_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cursor_add(a : DshashopenCursor, b : DshashopenCursor) -> DshashopenCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_cursor_copy(s : DshashopenCursor) -> DshashopenCursor {
-  let result = ds_hash_open_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cursor_fill(s : DshashopenCursor, v : Double) -> DshashopenCursor {
-  let result = ds_hash_open_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cursor_min(s : DshashopenCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_hash_open_view_sum(s : DshashopenView) -> Double { @_common.sum(s.data
 pub fn ds_hash_open_view_mean(s : DshashopenView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_view_scale(s : DshashopenView, f : Double) -> DshashopenView {
-  let result = ds_hash_open_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_view_add(a : DshashopenView, b : DshashopenView) -> DshashopenView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_view_copy(s : DshashopenView) -> DshashopenView {
-  let result = ds_hash_open_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_view_fill(s : DshashopenView, v : Double) -> DshashopenView {
-  let result = ds_hash_open_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_view_min(s : DshashopenView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_hash_open_range_sum(s : DshashopenRange) -> Double { @_common.sum(s.da
 pub fn ds_hash_open_range_mean(s : DshashopenRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_range_scale(s : DshashopenRange, f : Double) -> DshashopenRange {
-  let result = ds_hash_open_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_range_add(a : DshashopenRange, b : DshashopenRange) -> DshashopenRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_range_copy(s : DshashopenRange) -> DshashopenRange {
-  let result = ds_hash_open_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_range_fill(s : DshashopenRange, v : Double) -> DshashopenRange {
-  let result = ds_hash_open_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_range_min(s : DshashopenRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_hash_open_slice_sum(s : DshashopenSlice) -> Double { @_common.sum(s.da
 pub fn ds_hash_open_slice_mean(s : DshashopenSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_open_slice_scale(s : DshashopenSlice, f : Double) -> DshashopenSlice {
-  let result = ds_hash_open_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_slice_add(a : DshashopenSlice, b : DshashopenSlice) -> DshashopenSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_open_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_open_slice_copy(s : DshashopenSlice) -> DshashopenSlice {
-  let result = ds_hash_open_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_slice_fill(s : DshashopenSlice, v : Double) -> DshashopenSlice {
-  let result = ds_hash_open_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_slice_min(s : DshashopenSlice) -> Double { @_common.min(s.data) }

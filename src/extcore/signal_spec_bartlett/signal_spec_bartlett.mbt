@@ -383,28 +383,20 @@ pub fn signal_spec_bartlett_frame_sum(s : SignalspecbartlettFrame) -> Double { @
 pub fn signal_spec_bartlett_frame_mean(s : SignalspecbartlettFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_frame_scale(s : SignalspecbartlettFrame, f : Double) -> SignalspecbartlettFrame {
-  let result = signal_spec_bartlett_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_frame_add(a : SignalspecbartlettFrame, b : SignalspecbartlettFrame) -> SignalspecbartlettFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_frame_copy(s : SignalspecbartlettFrame) -> SignalspecbartlettFrame {
-  let result = signal_spec_bartlett_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_frame_fill(s : SignalspecbartlettFrame, v : Double) -> SignalspecbartlettFrame {
-  let result = signal_spec_bartlett_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_frame_min(s : SignalspecbartlettFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_spec_bartlett_table_sum(s : SignalspecbartlettTable) -> Double { @
 pub fn signal_spec_bartlett_table_mean(s : SignalspecbartlettTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_table_scale(s : SignalspecbartlettTable, f : Double) -> SignalspecbartlettTable {
-  let result = signal_spec_bartlett_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_table_add(a : SignalspecbartlettTable, b : SignalspecbartlettTable) -> SignalspecbartlettTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_table_copy(s : SignalspecbartlettTable) -> SignalspecbartlettTable {
-  let result = signal_spec_bartlett_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_table_fill(s : SignalspecbartlettTable, v : Double) -> SignalspecbartlettTable {
-  let result = signal_spec_bartlett_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_table_min(s : SignalspecbartlettTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_spec_bartlett_graphn_sum(s : SignalspecbartlettGraphN) -> Double {
 pub fn signal_spec_bartlett_graphn_mean(s : SignalspecbartlettGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_graphn_scale(s : SignalspecbartlettGraphN, f : Double) -> SignalspecbartlettGraphN {
-  let result = signal_spec_bartlett_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_graphn_add(a : SignalspecbartlettGraphN, b : SignalspecbartlettGraphN) -> SignalspecbartlettGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_graphn_copy(s : SignalspecbartlettGraphN) -> SignalspecbartlettGraphN {
-  let result = signal_spec_bartlett_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_graphn_fill(s : SignalspecbartlettGraphN, v : Double) -> SignalspecbartlettGraphN {
-  let result = signal_spec_bartlett_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_graphn_min(s : SignalspecbartlettGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_spec_bartlett_node_sum(s : SignalspecbartlettNode) -> Double { @_c
 pub fn signal_spec_bartlett_node_mean(s : SignalspecbartlettNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_node_scale(s : SignalspecbartlettNode, f : Double) -> SignalspecbartlettNode {
-  let result = signal_spec_bartlett_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_node_add(a : SignalspecbartlettNode, b : SignalspecbartlettNode) -> SignalspecbartlettNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_node_copy(s : SignalspecbartlettNode) -> SignalspecbartlettNode {
-  let result = signal_spec_bartlett_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_node_fill(s : SignalspecbartlettNode, v : Double) -> SignalspecbartlettNode {
-  let result = signal_spec_bartlett_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_node_min(s : SignalspecbartlettNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_spec_bartlett_edge_sum(s : SignalspecbartlettEdge) -> Double { @_c
 pub fn signal_spec_bartlett_edge_mean(s : SignalspecbartlettEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_edge_scale(s : SignalspecbartlettEdge, f : Double) -> SignalspecbartlettEdge {
-  let result = signal_spec_bartlett_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_edge_add(a : SignalspecbartlettEdge, b : SignalspecbartlettEdge) -> SignalspecbartlettEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_edge_copy(s : SignalspecbartlettEdge) -> SignalspecbartlettEdge {
-  let result = signal_spec_bartlett_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_edge_fill(s : SignalspecbartlettEdge, v : Double) -> SignalspecbartlettEdge {
-  let result = signal_spec_bartlett_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_edge_min(s : SignalspecbartlettEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_spec_bartlett_path_sum(s : SignalspecbartlettPath) -> Double { @_c
 pub fn signal_spec_bartlett_path_mean(s : SignalspecbartlettPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_path_scale(s : SignalspecbartlettPath, f : Double) -> SignalspecbartlettPath {
-  let result = signal_spec_bartlett_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_path_add(a : SignalspecbartlettPath, b : SignalspecbartlettPath) -> SignalspecbartlettPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_path_copy(s : SignalspecbartlettPath) -> SignalspecbartlettPath {
-  let result = signal_spec_bartlett_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_path_fill(s : SignalspecbartlettPath, v : Double) -> SignalspecbartlettPath {
-  let result = signal_spec_bartlett_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_path_min(s : SignalspecbartlettPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_spec_bartlett_cluster_sum(s : SignalspecbartlettCluster) -> Double
 pub fn signal_spec_bartlett_cluster_mean(s : SignalspecbartlettCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_cluster_scale(s : SignalspecbartlettCluster, f : Double) -> SignalspecbartlettCluster {
-  let result = signal_spec_bartlett_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cluster_add(a : SignalspecbartlettCluster, b : SignalspecbartlettCluster) -> SignalspecbartlettCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_cluster_copy(s : SignalspecbartlettCluster) -> SignalspecbartlettCluster {
-  let result = signal_spec_bartlett_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cluster_fill(s : SignalspecbartlettCluster, v : Double) -> SignalspecbartlettCluster {
-  let result = signal_spec_bartlett_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cluster_min(s : SignalspecbartlettCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_spec_bartlett_model_sum(s : SignalspecbartlettModel) -> Double { @
 pub fn signal_spec_bartlett_model_mean(s : SignalspecbartlettModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_model_scale(s : SignalspecbartlettModel, f : Double) -> SignalspecbartlettModel {
-  let result = signal_spec_bartlett_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_model_add(a : SignalspecbartlettModel, b : SignalspecbartlettModel) -> SignalspecbartlettModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_model_copy(s : SignalspecbartlettModel) -> SignalspecbartlettModel {
-  let result = signal_spec_bartlett_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_model_fill(s : SignalspecbartlettModel, v : Double) -> SignalspecbartlettModel {
-  let result = signal_spec_bartlett_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_model_min(s : SignalspecbartlettModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_spec_bartlett_layer_sum(s : SignalspecbartlettLayer) -> Double { @
 pub fn signal_spec_bartlett_layer_mean(s : SignalspecbartlettLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_layer_scale(s : SignalspecbartlettLayer, f : Double) -> SignalspecbartlettLayer {
-  let result = signal_spec_bartlett_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_layer_add(a : SignalspecbartlettLayer, b : SignalspecbartlettLayer) -> SignalspecbartlettLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_layer_copy(s : SignalspecbartlettLayer) -> SignalspecbartlettLayer {
-  let result = signal_spec_bartlett_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_layer_fill(s : SignalspecbartlettLayer, v : Double) -> SignalspecbartlettLayer {
-  let result = signal_spec_bartlett_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_layer_min(s : SignalspecbartlettLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_spec_bartlett_buffer_sum(s : SignalspecbartlettBuffer) -> Double {
 pub fn signal_spec_bartlett_buffer_mean(s : SignalspecbartlettBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_buffer_scale(s : SignalspecbartlettBuffer, f : Double) -> SignalspecbartlettBuffer {
-  let result = signal_spec_bartlett_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_buffer_add(a : SignalspecbartlettBuffer, b : SignalspecbartlettBuffer) -> SignalspecbartlettBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_buffer_copy(s : SignalspecbartlettBuffer) -> SignalspecbartlettBuffer {
-  let result = signal_spec_bartlett_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_buffer_fill(s : SignalspecbartlettBuffer, v : Double) -> SignalspecbartlettBuffer {
-  let result = signal_spec_bartlett_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_buffer_min(s : SignalspecbartlettBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_spec_bartlett_cursor_sum(s : SignalspecbartlettCursor) -> Double {
 pub fn signal_spec_bartlett_cursor_mean(s : SignalspecbartlettCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_cursor_scale(s : SignalspecbartlettCursor, f : Double) -> SignalspecbartlettCursor {
-  let result = signal_spec_bartlett_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cursor_add(a : SignalspecbartlettCursor, b : SignalspecbartlettCursor) -> SignalspecbartlettCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_cursor_copy(s : SignalspecbartlettCursor) -> SignalspecbartlettCursor {
-  let result = signal_spec_bartlett_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cursor_fill(s : SignalspecbartlettCursor, v : Double) -> SignalspecbartlettCursor {
-  let result = signal_spec_bartlett_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cursor_min(s : SignalspecbartlettCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_spec_bartlett_view_sum(s : SignalspecbartlettView) -> Double { @_c
 pub fn signal_spec_bartlett_view_mean(s : SignalspecbartlettView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_view_scale(s : SignalspecbartlettView, f : Double) -> SignalspecbartlettView {
-  let result = signal_spec_bartlett_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_view_add(a : SignalspecbartlettView, b : SignalspecbartlettView) -> SignalspecbartlettView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_view_copy(s : SignalspecbartlettView) -> SignalspecbartlettView {
-  let result = signal_spec_bartlett_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_view_fill(s : SignalspecbartlettView, v : Double) -> SignalspecbartlettView {
-  let result = signal_spec_bartlett_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_view_min(s : SignalspecbartlettView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_spec_bartlett_range_sum(s : SignalspecbartlettRange) -> Double { @
 pub fn signal_spec_bartlett_range_mean(s : SignalspecbartlettRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_range_scale(s : SignalspecbartlettRange, f : Double) -> SignalspecbartlettRange {
-  let result = signal_spec_bartlett_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_range_add(a : SignalspecbartlettRange, b : SignalspecbartlettRange) -> SignalspecbartlettRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_range_copy(s : SignalspecbartlettRange) -> SignalspecbartlettRange {
-  let result = signal_spec_bartlett_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_range_fill(s : SignalspecbartlettRange, v : Double) -> SignalspecbartlettRange {
-  let result = signal_spec_bartlett_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_range_min(s : SignalspecbartlettRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_spec_bartlett_slice_sum(s : SignalspecbartlettSlice) -> Double { @
 pub fn signal_spec_bartlett_slice_mean(s : SignalspecbartlettSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_bartlett_slice_scale(s : SignalspecbartlettSlice, f : Double) -> SignalspecbartlettSlice {
-  let result = signal_spec_bartlett_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_slice_add(a : SignalspecbartlettSlice, b : SignalspecbartlettSlice) -> SignalspecbartlettSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_bartlett_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_bartlett_slice_copy(s : SignalspecbartlettSlice) -> SignalspecbartlettSlice {
-  let result = signal_spec_bartlett_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_slice_fill(s : SignalspecbartlettSlice, v : Double) -> SignalspecbartlettSlice {
-  let result = signal_spec_bartlett_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_slice_min(s : SignalspecbartlettSlice) -> Double { @_common.min(s.data) }

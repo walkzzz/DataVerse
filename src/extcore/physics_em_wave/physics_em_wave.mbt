@@ -383,28 +383,20 @@ pub fn physics_em_wave_frame_sum(s : PhysicsemwaveFrame) -> Double { @_common.su
 pub fn physics_em_wave_frame_mean(s : PhysicsemwaveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_frame_scale(s : PhysicsemwaveFrame, f : Double) -> PhysicsemwaveFrame {
-  let result = physics_em_wave_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_frame_add(a : PhysicsemwaveFrame, b : PhysicsemwaveFrame) -> PhysicsemwaveFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_frame_copy(s : PhysicsemwaveFrame) -> PhysicsemwaveFrame {
-  let result = physics_em_wave_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_frame_fill(s : PhysicsemwaveFrame, v : Double) -> PhysicsemwaveFrame {
-  let result = physics_em_wave_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_frame_min(s : PhysicsemwaveFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_em_wave_table_sum(s : PhysicsemwaveTable) -> Double { @_common.su
 pub fn physics_em_wave_table_mean(s : PhysicsemwaveTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_table_scale(s : PhysicsemwaveTable, f : Double) -> PhysicsemwaveTable {
-  let result = physics_em_wave_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_table_add(a : PhysicsemwaveTable, b : PhysicsemwaveTable) -> PhysicsemwaveTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_table_copy(s : PhysicsemwaveTable) -> PhysicsemwaveTable {
-  let result = physics_em_wave_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_table_fill(s : PhysicsemwaveTable, v : Double) -> PhysicsemwaveTable {
-  let result = physics_em_wave_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_table_min(s : PhysicsemwaveTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_em_wave_graphn_sum(s : PhysicsemwaveGraphN) -> Double { @_common.
 pub fn physics_em_wave_graphn_mean(s : PhysicsemwaveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_graphn_scale(s : PhysicsemwaveGraphN, f : Double) -> PhysicsemwaveGraphN {
-  let result = physics_em_wave_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_graphn_add(a : PhysicsemwaveGraphN, b : PhysicsemwaveGraphN) -> PhysicsemwaveGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_graphn_copy(s : PhysicsemwaveGraphN) -> PhysicsemwaveGraphN {
-  let result = physics_em_wave_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_graphn_fill(s : PhysicsemwaveGraphN, v : Double) -> PhysicsemwaveGraphN {
-  let result = physics_em_wave_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_graphn_min(s : PhysicsemwaveGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_em_wave_node_sum(s : PhysicsemwaveNode) -> Double { @_common.sum(
 pub fn physics_em_wave_node_mean(s : PhysicsemwaveNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_node_scale(s : PhysicsemwaveNode, f : Double) -> PhysicsemwaveNode {
-  let result = physics_em_wave_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_node_add(a : PhysicsemwaveNode, b : PhysicsemwaveNode) -> PhysicsemwaveNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_node_copy(s : PhysicsemwaveNode) -> PhysicsemwaveNode {
-  let result = physics_em_wave_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_node_fill(s : PhysicsemwaveNode, v : Double) -> PhysicsemwaveNode {
-  let result = physics_em_wave_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_node_min(s : PhysicsemwaveNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_em_wave_edge_sum(s : PhysicsemwaveEdge) -> Double { @_common.sum(
 pub fn physics_em_wave_edge_mean(s : PhysicsemwaveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_edge_scale(s : PhysicsemwaveEdge, f : Double) -> PhysicsemwaveEdge {
-  let result = physics_em_wave_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_edge_add(a : PhysicsemwaveEdge, b : PhysicsemwaveEdge) -> PhysicsemwaveEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_edge_copy(s : PhysicsemwaveEdge) -> PhysicsemwaveEdge {
-  let result = physics_em_wave_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_edge_fill(s : PhysicsemwaveEdge, v : Double) -> PhysicsemwaveEdge {
-  let result = physics_em_wave_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_edge_min(s : PhysicsemwaveEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_em_wave_path_sum(s : PhysicsemwavePath) -> Double { @_common.sum(
 pub fn physics_em_wave_path_mean(s : PhysicsemwavePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_path_scale(s : PhysicsemwavePath, f : Double) -> PhysicsemwavePath {
-  let result = physics_em_wave_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_path_add(a : PhysicsemwavePath, b : PhysicsemwavePath) -> PhysicsemwavePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_path_copy(s : PhysicsemwavePath) -> PhysicsemwavePath {
-  let result = physics_em_wave_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_path_fill(s : PhysicsemwavePath, v : Double) -> PhysicsemwavePath {
-  let result = physics_em_wave_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_path_min(s : PhysicsemwavePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_em_wave_cluster_sum(s : PhysicsemwaveCluster) -> Double { @_commo
 pub fn physics_em_wave_cluster_mean(s : PhysicsemwaveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_cluster_scale(s : PhysicsemwaveCluster, f : Double) -> PhysicsemwaveCluster {
-  let result = physics_em_wave_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cluster_add(a : PhysicsemwaveCluster, b : PhysicsemwaveCluster) -> PhysicsemwaveCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_cluster_copy(s : PhysicsemwaveCluster) -> PhysicsemwaveCluster {
-  let result = physics_em_wave_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cluster_fill(s : PhysicsemwaveCluster, v : Double) -> PhysicsemwaveCluster {
-  let result = physics_em_wave_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cluster_min(s : PhysicsemwaveCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_em_wave_model_sum(s : PhysicsemwaveModel) -> Double { @_common.su
 pub fn physics_em_wave_model_mean(s : PhysicsemwaveModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_model_scale(s : PhysicsemwaveModel, f : Double) -> PhysicsemwaveModel {
-  let result = physics_em_wave_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_model_add(a : PhysicsemwaveModel, b : PhysicsemwaveModel) -> PhysicsemwaveModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_model_copy(s : PhysicsemwaveModel) -> PhysicsemwaveModel {
-  let result = physics_em_wave_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_model_fill(s : PhysicsemwaveModel, v : Double) -> PhysicsemwaveModel {
-  let result = physics_em_wave_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_model_min(s : PhysicsemwaveModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_em_wave_layer_sum(s : PhysicsemwaveLayer) -> Double { @_common.su
 pub fn physics_em_wave_layer_mean(s : PhysicsemwaveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_layer_scale(s : PhysicsemwaveLayer, f : Double) -> PhysicsemwaveLayer {
-  let result = physics_em_wave_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_layer_add(a : PhysicsemwaveLayer, b : PhysicsemwaveLayer) -> PhysicsemwaveLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_layer_copy(s : PhysicsemwaveLayer) -> PhysicsemwaveLayer {
-  let result = physics_em_wave_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_layer_fill(s : PhysicsemwaveLayer, v : Double) -> PhysicsemwaveLayer {
-  let result = physics_em_wave_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_layer_min(s : PhysicsemwaveLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_em_wave_buffer_sum(s : PhysicsemwaveBuffer) -> Double { @_common.
 pub fn physics_em_wave_buffer_mean(s : PhysicsemwaveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_buffer_scale(s : PhysicsemwaveBuffer, f : Double) -> PhysicsemwaveBuffer {
-  let result = physics_em_wave_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_buffer_add(a : PhysicsemwaveBuffer, b : PhysicsemwaveBuffer) -> PhysicsemwaveBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_buffer_copy(s : PhysicsemwaveBuffer) -> PhysicsemwaveBuffer {
-  let result = physics_em_wave_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_buffer_fill(s : PhysicsemwaveBuffer, v : Double) -> PhysicsemwaveBuffer {
-  let result = physics_em_wave_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_buffer_min(s : PhysicsemwaveBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_em_wave_cursor_sum(s : PhysicsemwaveCursor) -> Double { @_common.
 pub fn physics_em_wave_cursor_mean(s : PhysicsemwaveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_cursor_scale(s : PhysicsemwaveCursor, f : Double) -> PhysicsemwaveCursor {
-  let result = physics_em_wave_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cursor_add(a : PhysicsemwaveCursor, b : PhysicsemwaveCursor) -> PhysicsemwaveCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_cursor_copy(s : PhysicsemwaveCursor) -> PhysicsemwaveCursor {
-  let result = physics_em_wave_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cursor_fill(s : PhysicsemwaveCursor, v : Double) -> PhysicsemwaveCursor {
-  let result = physics_em_wave_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cursor_min(s : PhysicsemwaveCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_em_wave_view_sum(s : PhysicsemwaveView) -> Double { @_common.sum(
 pub fn physics_em_wave_view_mean(s : PhysicsemwaveView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_view_scale(s : PhysicsemwaveView, f : Double) -> PhysicsemwaveView {
-  let result = physics_em_wave_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_view_add(a : PhysicsemwaveView, b : PhysicsemwaveView) -> PhysicsemwaveView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_view_copy(s : PhysicsemwaveView) -> PhysicsemwaveView {
-  let result = physics_em_wave_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_view_fill(s : PhysicsemwaveView, v : Double) -> PhysicsemwaveView {
-  let result = physics_em_wave_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_view_min(s : PhysicsemwaveView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_em_wave_range_sum(s : PhysicsemwaveRange) -> Double { @_common.su
 pub fn physics_em_wave_range_mean(s : PhysicsemwaveRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_range_scale(s : PhysicsemwaveRange, f : Double) -> PhysicsemwaveRange {
-  let result = physics_em_wave_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_range_add(a : PhysicsemwaveRange, b : PhysicsemwaveRange) -> PhysicsemwaveRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_range_copy(s : PhysicsemwaveRange) -> PhysicsemwaveRange {
-  let result = physics_em_wave_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_range_fill(s : PhysicsemwaveRange, v : Double) -> PhysicsemwaveRange {
-  let result = physics_em_wave_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_range_min(s : PhysicsemwaveRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_em_wave_slice_sum(s : PhysicsemwaveSlice) -> Double { @_common.su
 pub fn physics_em_wave_slice_mean(s : PhysicsemwaveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_slice_scale(s : PhysicsemwaveSlice, f : Double) -> PhysicsemwaveSlice {
-  let result = physics_em_wave_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_slice_add(a : PhysicsemwaveSlice, b : PhysicsemwaveSlice) -> PhysicsemwaveSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_wave_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_wave_slice_copy(s : PhysicsemwaveSlice) -> PhysicsemwaveSlice {
-  let result = physics_em_wave_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_slice_fill(s : PhysicsemwaveSlice, v : Double) -> PhysicsemwaveSlice {
-  let result = physics_em_wave_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_slice_min(s : PhysicsemwaveSlice) -> Double { @_common.min(s.data) }

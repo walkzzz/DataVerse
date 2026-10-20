@@ -383,28 +383,20 @@ pub fn opt_meta_sa_frame_sum(s : OptmetasaFrame) -> Double { @_common.sum(s.data
 pub fn opt_meta_sa_frame_mean(s : OptmetasaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_frame_scale(s : OptmetasaFrame, f : Double) -> OptmetasaFrame {
-  let result = opt_meta_sa_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_frame_add(a : OptmetasaFrame, b : OptmetasaFrame) -> OptmetasaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_frame_copy(s : OptmetasaFrame) -> OptmetasaFrame {
-  let result = opt_meta_sa_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_frame_fill(s : OptmetasaFrame, v : Double) -> OptmetasaFrame {
-  let result = opt_meta_sa_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_frame_min(s : OptmetasaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn opt_meta_sa_table_sum(s : OptmetasaTable) -> Double { @_common.sum(s.data
 pub fn opt_meta_sa_table_mean(s : OptmetasaTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_table_scale(s : OptmetasaTable, f : Double) -> OptmetasaTable {
-  let result = opt_meta_sa_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_table_add(a : OptmetasaTable, b : OptmetasaTable) -> OptmetasaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_table_copy(s : OptmetasaTable) -> OptmetasaTable {
-  let result = opt_meta_sa_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_table_fill(s : OptmetasaTable, v : Double) -> OptmetasaTable {
-  let result = opt_meta_sa_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_table_min(s : OptmetasaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn opt_meta_sa_graphn_sum(s : OptmetasaGraphN) -> Double { @_common.sum(s.da
 pub fn opt_meta_sa_graphn_mean(s : OptmetasaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_graphn_scale(s : OptmetasaGraphN, f : Double) -> OptmetasaGraphN {
-  let result = opt_meta_sa_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_graphn_add(a : OptmetasaGraphN, b : OptmetasaGraphN) -> OptmetasaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_graphn_copy(s : OptmetasaGraphN) -> OptmetasaGraphN {
-  let result = opt_meta_sa_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_graphn_fill(s : OptmetasaGraphN, v : Double) -> OptmetasaGraphN {
-  let result = opt_meta_sa_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_graphn_min(s : OptmetasaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn opt_meta_sa_node_sum(s : OptmetasaNode) -> Double { @_common.sum(s.data) 
 pub fn opt_meta_sa_node_mean(s : OptmetasaNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_node_scale(s : OptmetasaNode, f : Double) -> OptmetasaNode {
-  let result = opt_meta_sa_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_node_add(a : OptmetasaNode, b : OptmetasaNode) -> OptmetasaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_node_copy(s : OptmetasaNode) -> OptmetasaNode {
-  let result = opt_meta_sa_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_node_fill(s : OptmetasaNode, v : Double) -> OptmetasaNode {
-  let result = opt_meta_sa_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_node_min(s : OptmetasaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn opt_meta_sa_edge_sum(s : OptmetasaEdge) -> Double { @_common.sum(s.data) 
 pub fn opt_meta_sa_edge_mean(s : OptmetasaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_edge_scale(s : OptmetasaEdge, f : Double) -> OptmetasaEdge {
-  let result = opt_meta_sa_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_edge_add(a : OptmetasaEdge, b : OptmetasaEdge) -> OptmetasaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_edge_copy(s : OptmetasaEdge) -> OptmetasaEdge {
-  let result = opt_meta_sa_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_edge_fill(s : OptmetasaEdge, v : Double) -> OptmetasaEdge {
-  let result = opt_meta_sa_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_edge_min(s : OptmetasaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn opt_meta_sa_path_sum(s : OptmetasaPath) -> Double { @_common.sum(s.data) 
 pub fn opt_meta_sa_path_mean(s : OptmetasaPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_path_scale(s : OptmetasaPath, f : Double) -> OptmetasaPath {
-  let result = opt_meta_sa_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_path_add(a : OptmetasaPath, b : OptmetasaPath) -> OptmetasaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_path_copy(s : OptmetasaPath) -> OptmetasaPath {
-  let result = opt_meta_sa_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_path_fill(s : OptmetasaPath, v : Double) -> OptmetasaPath {
-  let result = opt_meta_sa_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_path_min(s : OptmetasaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn opt_meta_sa_cluster_sum(s : OptmetasaCluster) -> Double { @_common.sum(s.
 pub fn opt_meta_sa_cluster_mean(s : OptmetasaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_cluster_scale(s : OptmetasaCluster, f : Double) -> OptmetasaCluster {
-  let result = opt_meta_sa_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cluster_add(a : OptmetasaCluster, b : OptmetasaCluster) -> OptmetasaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_cluster_copy(s : OptmetasaCluster) -> OptmetasaCluster {
-  let result = opt_meta_sa_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cluster_fill(s : OptmetasaCluster, v : Double) -> OptmetasaCluster {
-  let result = opt_meta_sa_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cluster_min(s : OptmetasaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn opt_meta_sa_model_sum(s : OptmetasaModel) -> Double { @_common.sum(s.data
 pub fn opt_meta_sa_model_mean(s : OptmetasaModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_model_scale(s : OptmetasaModel, f : Double) -> OptmetasaModel {
-  let result = opt_meta_sa_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_model_add(a : OptmetasaModel, b : OptmetasaModel) -> OptmetasaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_model_copy(s : OptmetasaModel) -> OptmetasaModel {
-  let result = opt_meta_sa_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_model_fill(s : OptmetasaModel, v : Double) -> OptmetasaModel {
-  let result = opt_meta_sa_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_model_min(s : OptmetasaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn opt_meta_sa_layer_sum(s : OptmetasaLayer) -> Double { @_common.sum(s.data
 pub fn opt_meta_sa_layer_mean(s : OptmetasaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_layer_scale(s : OptmetasaLayer, f : Double) -> OptmetasaLayer {
-  let result = opt_meta_sa_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_layer_add(a : OptmetasaLayer, b : OptmetasaLayer) -> OptmetasaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_layer_copy(s : OptmetasaLayer) -> OptmetasaLayer {
-  let result = opt_meta_sa_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_layer_fill(s : OptmetasaLayer, v : Double) -> OptmetasaLayer {
-  let result = opt_meta_sa_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_layer_min(s : OptmetasaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn opt_meta_sa_buffer_sum(s : OptmetasaBuffer) -> Double { @_common.sum(s.da
 pub fn opt_meta_sa_buffer_mean(s : OptmetasaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_buffer_scale(s : OptmetasaBuffer, f : Double) -> OptmetasaBuffer {
-  let result = opt_meta_sa_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_buffer_add(a : OptmetasaBuffer, b : OptmetasaBuffer) -> OptmetasaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_buffer_copy(s : OptmetasaBuffer) -> OptmetasaBuffer {
-  let result = opt_meta_sa_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_buffer_fill(s : OptmetasaBuffer, v : Double) -> OptmetasaBuffer {
-  let result = opt_meta_sa_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_buffer_min(s : OptmetasaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn opt_meta_sa_cursor_sum(s : OptmetasaCursor) -> Double { @_common.sum(s.da
 pub fn opt_meta_sa_cursor_mean(s : OptmetasaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_cursor_scale(s : OptmetasaCursor, f : Double) -> OptmetasaCursor {
-  let result = opt_meta_sa_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cursor_add(a : OptmetasaCursor, b : OptmetasaCursor) -> OptmetasaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_cursor_copy(s : OptmetasaCursor) -> OptmetasaCursor {
-  let result = opt_meta_sa_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cursor_fill(s : OptmetasaCursor, v : Double) -> OptmetasaCursor {
-  let result = opt_meta_sa_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cursor_min(s : OptmetasaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn opt_meta_sa_view_sum(s : OptmetasaView) -> Double { @_common.sum(s.data) 
 pub fn opt_meta_sa_view_mean(s : OptmetasaView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_view_scale(s : OptmetasaView, f : Double) -> OptmetasaView {
-  let result = opt_meta_sa_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_view_add(a : OptmetasaView, b : OptmetasaView) -> OptmetasaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_view_copy(s : OptmetasaView) -> OptmetasaView {
-  let result = opt_meta_sa_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_view_fill(s : OptmetasaView, v : Double) -> OptmetasaView {
-  let result = opt_meta_sa_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_view_min(s : OptmetasaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn opt_meta_sa_range_sum(s : OptmetasaRange) -> Double { @_common.sum(s.data
 pub fn opt_meta_sa_range_mean(s : OptmetasaRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_range_scale(s : OptmetasaRange, f : Double) -> OptmetasaRange {
-  let result = opt_meta_sa_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_range_add(a : OptmetasaRange, b : OptmetasaRange) -> OptmetasaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_range_copy(s : OptmetasaRange) -> OptmetasaRange {
-  let result = opt_meta_sa_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_range_fill(s : OptmetasaRange, v : Double) -> OptmetasaRange {
-  let result = opt_meta_sa_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_range_min(s : OptmetasaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn opt_meta_sa_slice_sum(s : OptmetasaSlice) -> Double { @_common.sum(s.data
 pub fn opt_meta_sa_slice_mean(s : OptmetasaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_sa_slice_scale(s : OptmetasaSlice, f : Double) -> OptmetasaSlice {
-  let result = opt_meta_sa_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_slice_add(a : OptmetasaSlice, b : OptmetasaSlice) -> OptmetasaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_sa_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_sa_slice_copy(s : OptmetasaSlice) -> OptmetasaSlice {
-  let result = opt_meta_sa_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_slice_fill(s : OptmetasaSlice, v : Double) -> OptmetasaSlice {
-  let result = opt_meta_sa_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_slice_min(s : OptmetasaSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn nlp_tokenize_sentence_frame_sum(s : NlptokenizesentenceFrame) -> Double {
 pub fn nlp_tokenize_sentence_frame_mean(s : NlptokenizesentenceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_frame_scale(s : NlptokenizesentenceFrame, f : Double) -> NlptokenizesentenceFrame {
-  let result = nlp_tokenize_sentence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_frame_add(a : NlptokenizesentenceFrame, b : NlptokenizesentenceFrame) -> NlptokenizesentenceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_frame_copy(s : NlptokenizesentenceFrame) -> NlptokenizesentenceFrame {
-  let result = nlp_tokenize_sentence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_frame_fill(s : NlptokenizesentenceFrame, v : Double) -> NlptokenizesentenceFrame {
-  let result = nlp_tokenize_sentence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_frame_min(s : NlptokenizesentenceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_tokenize_sentence_table_sum(s : NlptokenizesentenceTable) -> Double {
 pub fn nlp_tokenize_sentence_table_mean(s : NlptokenizesentenceTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_table_scale(s : NlptokenizesentenceTable, f : Double) -> NlptokenizesentenceTable {
-  let result = nlp_tokenize_sentence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_table_add(a : NlptokenizesentenceTable, b : NlptokenizesentenceTable) -> NlptokenizesentenceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_table_copy(s : NlptokenizesentenceTable) -> NlptokenizesentenceTable {
-  let result = nlp_tokenize_sentence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_table_fill(s : NlptokenizesentenceTable, v : Double) -> NlptokenizesentenceTable {
-  let result = nlp_tokenize_sentence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_table_min(s : NlptokenizesentenceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_tokenize_sentence_graphn_sum(s : NlptokenizesentenceGraphN) -> Double
 pub fn nlp_tokenize_sentence_graphn_mean(s : NlptokenizesentenceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_graphn_scale(s : NlptokenizesentenceGraphN, f : Double) -> NlptokenizesentenceGraphN {
-  let result = nlp_tokenize_sentence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_graphn_add(a : NlptokenizesentenceGraphN, b : NlptokenizesentenceGraphN) -> NlptokenizesentenceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_graphn_copy(s : NlptokenizesentenceGraphN) -> NlptokenizesentenceGraphN {
-  let result = nlp_tokenize_sentence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_graphn_fill(s : NlptokenizesentenceGraphN, v : Double) -> NlptokenizesentenceGraphN {
-  let result = nlp_tokenize_sentence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_graphn_min(s : NlptokenizesentenceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_tokenize_sentence_node_sum(s : NlptokenizesentenceNode) -> Double { @
 pub fn nlp_tokenize_sentence_node_mean(s : NlptokenizesentenceNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_node_scale(s : NlptokenizesentenceNode, f : Double) -> NlptokenizesentenceNode {
-  let result = nlp_tokenize_sentence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_node_add(a : NlptokenizesentenceNode, b : NlptokenizesentenceNode) -> NlptokenizesentenceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_node_copy(s : NlptokenizesentenceNode) -> NlptokenizesentenceNode {
-  let result = nlp_tokenize_sentence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_node_fill(s : NlptokenizesentenceNode, v : Double) -> NlptokenizesentenceNode {
-  let result = nlp_tokenize_sentence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_node_min(s : NlptokenizesentenceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_tokenize_sentence_edge_sum(s : NlptokenizesentenceEdge) -> Double { @
 pub fn nlp_tokenize_sentence_edge_mean(s : NlptokenizesentenceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_edge_scale(s : NlptokenizesentenceEdge, f : Double) -> NlptokenizesentenceEdge {
-  let result = nlp_tokenize_sentence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_edge_add(a : NlptokenizesentenceEdge, b : NlptokenizesentenceEdge) -> NlptokenizesentenceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_edge_copy(s : NlptokenizesentenceEdge) -> NlptokenizesentenceEdge {
-  let result = nlp_tokenize_sentence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_edge_fill(s : NlptokenizesentenceEdge, v : Double) -> NlptokenizesentenceEdge {
-  let result = nlp_tokenize_sentence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_edge_min(s : NlptokenizesentenceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_tokenize_sentence_path_sum(s : NlptokenizesentencePath) -> Double { @
 pub fn nlp_tokenize_sentence_path_mean(s : NlptokenizesentencePath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_path_scale(s : NlptokenizesentencePath, f : Double) -> NlptokenizesentencePath {
-  let result = nlp_tokenize_sentence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_path_add(a : NlptokenizesentencePath, b : NlptokenizesentencePath) -> NlptokenizesentencePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_path_copy(s : NlptokenizesentencePath) -> NlptokenizesentencePath {
-  let result = nlp_tokenize_sentence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_path_fill(s : NlptokenizesentencePath, v : Double) -> NlptokenizesentencePath {
-  let result = nlp_tokenize_sentence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_path_min(s : NlptokenizesentencePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_tokenize_sentence_cluster_sum(s : NlptokenizesentenceCluster) -> Doub
 pub fn nlp_tokenize_sentence_cluster_mean(s : NlptokenizesentenceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_cluster_scale(s : NlptokenizesentenceCluster, f : Double) -> NlptokenizesentenceCluster {
-  let result = nlp_tokenize_sentence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_cluster_add(a : NlptokenizesentenceCluster, b : NlptokenizesentenceCluster) -> NlptokenizesentenceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_cluster_copy(s : NlptokenizesentenceCluster) -> NlptokenizesentenceCluster {
-  let result = nlp_tokenize_sentence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_cluster_fill(s : NlptokenizesentenceCluster, v : Double) -> NlptokenizesentenceCluster {
-  let result = nlp_tokenize_sentence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_cluster_min(s : NlptokenizesentenceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_tokenize_sentence_model_sum(s : NlptokenizesentenceModel) -> Double {
 pub fn nlp_tokenize_sentence_model_mean(s : NlptokenizesentenceModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_model_scale(s : NlptokenizesentenceModel, f : Double) -> NlptokenizesentenceModel {
-  let result = nlp_tokenize_sentence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_model_add(a : NlptokenizesentenceModel, b : NlptokenizesentenceModel) -> NlptokenizesentenceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_model_copy(s : NlptokenizesentenceModel) -> NlptokenizesentenceModel {
-  let result = nlp_tokenize_sentence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_model_fill(s : NlptokenizesentenceModel, v : Double) -> NlptokenizesentenceModel {
-  let result = nlp_tokenize_sentence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_model_min(s : NlptokenizesentenceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_tokenize_sentence_layer_sum(s : NlptokenizesentenceLayer) -> Double {
 pub fn nlp_tokenize_sentence_layer_mean(s : NlptokenizesentenceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_layer_scale(s : NlptokenizesentenceLayer, f : Double) -> NlptokenizesentenceLayer {
-  let result = nlp_tokenize_sentence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_layer_add(a : NlptokenizesentenceLayer, b : NlptokenizesentenceLayer) -> NlptokenizesentenceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_layer_copy(s : NlptokenizesentenceLayer) -> NlptokenizesentenceLayer {
-  let result = nlp_tokenize_sentence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_layer_fill(s : NlptokenizesentenceLayer, v : Double) -> NlptokenizesentenceLayer {
-  let result = nlp_tokenize_sentence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_layer_min(s : NlptokenizesentenceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_tokenize_sentence_buffer_sum(s : NlptokenizesentenceBuffer) -> Double
 pub fn nlp_tokenize_sentence_buffer_mean(s : NlptokenizesentenceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_buffer_scale(s : NlptokenizesentenceBuffer, f : Double) -> NlptokenizesentenceBuffer {
-  let result = nlp_tokenize_sentence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_buffer_add(a : NlptokenizesentenceBuffer, b : NlptokenizesentenceBuffer) -> NlptokenizesentenceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_buffer_copy(s : NlptokenizesentenceBuffer) -> NlptokenizesentenceBuffer {
-  let result = nlp_tokenize_sentence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_buffer_fill(s : NlptokenizesentenceBuffer, v : Double) -> NlptokenizesentenceBuffer {
-  let result = nlp_tokenize_sentence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_buffer_min(s : NlptokenizesentenceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_tokenize_sentence_cursor_sum(s : NlptokenizesentenceCursor) -> Double
 pub fn nlp_tokenize_sentence_cursor_mean(s : NlptokenizesentenceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_cursor_scale(s : NlptokenizesentenceCursor, f : Double) -> NlptokenizesentenceCursor {
-  let result = nlp_tokenize_sentence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_cursor_add(a : NlptokenizesentenceCursor, b : NlptokenizesentenceCursor) -> NlptokenizesentenceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_cursor_copy(s : NlptokenizesentenceCursor) -> NlptokenizesentenceCursor {
-  let result = nlp_tokenize_sentence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_cursor_fill(s : NlptokenizesentenceCursor, v : Double) -> NlptokenizesentenceCursor {
-  let result = nlp_tokenize_sentence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_cursor_min(s : NlptokenizesentenceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_tokenize_sentence_view_sum(s : NlptokenizesentenceView) -> Double { @
 pub fn nlp_tokenize_sentence_view_mean(s : NlptokenizesentenceView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_view_scale(s : NlptokenizesentenceView, f : Double) -> NlptokenizesentenceView {
-  let result = nlp_tokenize_sentence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_view_add(a : NlptokenizesentenceView, b : NlptokenizesentenceView) -> NlptokenizesentenceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_view_copy(s : NlptokenizesentenceView) -> NlptokenizesentenceView {
-  let result = nlp_tokenize_sentence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_view_fill(s : NlptokenizesentenceView, v : Double) -> NlptokenizesentenceView {
-  let result = nlp_tokenize_sentence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_view_min(s : NlptokenizesentenceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_tokenize_sentence_range_sum(s : NlptokenizesentenceRange) -> Double {
 pub fn nlp_tokenize_sentence_range_mean(s : NlptokenizesentenceRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_range_scale(s : NlptokenizesentenceRange, f : Double) -> NlptokenizesentenceRange {
-  let result = nlp_tokenize_sentence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_range_add(a : NlptokenizesentenceRange, b : NlptokenizesentenceRange) -> NlptokenizesentenceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_range_copy(s : NlptokenizesentenceRange) -> NlptokenizesentenceRange {
-  let result = nlp_tokenize_sentence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_range_fill(s : NlptokenizesentenceRange, v : Double) -> NlptokenizesentenceRange {
-  let result = nlp_tokenize_sentence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_range_min(s : NlptokenizesentenceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_tokenize_sentence_slice_sum(s : NlptokenizesentenceSlice) -> Double {
 pub fn nlp_tokenize_sentence_slice_mean(s : NlptokenizesentenceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_sentence_slice_scale(s : NlptokenizesentenceSlice, f : Double) -> NlptokenizesentenceSlice {
-  let result = nlp_tokenize_sentence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_slice_add(a : NlptokenizesentenceSlice, b : NlptokenizesentenceSlice) -> NlptokenizesentenceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_sentence_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_sentence_slice_copy(s : NlptokenizesentenceSlice) -> NlptokenizesentenceSlice {
-  let result = nlp_tokenize_sentence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_slice_fill(s : NlptokenizesentenceSlice, v : Double) -> NlptokenizesentenceSlice {
-  let result = nlp_tokenize_sentence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_sentence_slice_min(s : NlptokenizesentenceSlice) -> Double { @_common.min(s.data) }

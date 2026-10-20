@@ -383,28 +383,20 @@ pub fn chem_mol_repr_inchi_frame_sum(s : ChemmolreprinchiFrame) -> Double { @_co
 pub fn chem_mol_repr_inchi_frame_mean(s : ChemmolreprinchiFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_frame_scale(s : ChemmolreprinchiFrame, f : Double) -> ChemmolreprinchiFrame {
-  let result = chem_mol_repr_inchi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_frame_add(a : ChemmolreprinchiFrame, b : ChemmolreprinchiFrame) -> ChemmolreprinchiFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_frame_copy(s : ChemmolreprinchiFrame) -> ChemmolreprinchiFrame {
-  let result = chem_mol_repr_inchi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_frame_fill(s : ChemmolreprinchiFrame, v : Double) -> ChemmolreprinchiFrame {
-  let result = chem_mol_repr_inchi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_frame_min(s : ChemmolreprinchiFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_mol_repr_inchi_table_sum(s : ChemmolreprinchiTable) -> Double { @_co
 pub fn chem_mol_repr_inchi_table_mean(s : ChemmolreprinchiTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_table_scale(s : ChemmolreprinchiTable, f : Double) -> ChemmolreprinchiTable {
-  let result = chem_mol_repr_inchi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_table_add(a : ChemmolreprinchiTable, b : ChemmolreprinchiTable) -> ChemmolreprinchiTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_table_copy(s : ChemmolreprinchiTable) -> ChemmolreprinchiTable {
-  let result = chem_mol_repr_inchi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_table_fill(s : ChemmolreprinchiTable, v : Double) -> ChemmolreprinchiTable {
-  let result = chem_mol_repr_inchi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_table_min(s : ChemmolreprinchiTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_mol_repr_inchi_graphn_sum(s : ChemmolreprinchiGraphN) -> Double { @_
 pub fn chem_mol_repr_inchi_graphn_mean(s : ChemmolreprinchiGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_graphn_scale(s : ChemmolreprinchiGraphN, f : Double) -> ChemmolreprinchiGraphN {
-  let result = chem_mol_repr_inchi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_graphn_add(a : ChemmolreprinchiGraphN, b : ChemmolreprinchiGraphN) -> ChemmolreprinchiGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_graphn_copy(s : ChemmolreprinchiGraphN) -> ChemmolreprinchiGraphN {
-  let result = chem_mol_repr_inchi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_graphn_fill(s : ChemmolreprinchiGraphN, v : Double) -> ChemmolreprinchiGraphN {
-  let result = chem_mol_repr_inchi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_graphn_min(s : ChemmolreprinchiGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_mol_repr_inchi_node_sum(s : ChemmolreprinchiNode) -> Double { @_comm
 pub fn chem_mol_repr_inchi_node_mean(s : ChemmolreprinchiNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_node_scale(s : ChemmolreprinchiNode, f : Double) -> ChemmolreprinchiNode {
-  let result = chem_mol_repr_inchi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_node_add(a : ChemmolreprinchiNode, b : ChemmolreprinchiNode) -> ChemmolreprinchiNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_node_copy(s : ChemmolreprinchiNode) -> ChemmolreprinchiNode {
-  let result = chem_mol_repr_inchi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_node_fill(s : ChemmolreprinchiNode, v : Double) -> ChemmolreprinchiNode {
-  let result = chem_mol_repr_inchi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_node_min(s : ChemmolreprinchiNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_mol_repr_inchi_edge_sum(s : ChemmolreprinchiEdge) -> Double { @_comm
 pub fn chem_mol_repr_inchi_edge_mean(s : ChemmolreprinchiEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_edge_scale(s : ChemmolreprinchiEdge, f : Double) -> ChemmolreprinchiEdge {
-  let result = chem_mol_repr_inchi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_edge_add(a : ChemmolreprinchiEdge, b : ChemmolreprinchiEdge) -> ChemmolreprinchiEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_edge_copy(s : ChemmolreprinchiEdge) -> ChemmolreprinchiEdge {
-  let result = chem_mol_repr_inchi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_edge_fill(s : ChemmolreprinchiEdge, v : Double) -> ChemmolreprinchiEdge {
-  let result = chem_mol_repr_inchi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_edge_min(s : ChemmolreprinchiEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_mol_repr_inchi_path_sum(s : ChemmolreprinchiPath) -> Double { @_comm
 pub fn chem_mol_repr_inchi_path_mean(s : ChemmolreprinchiPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_path_scale(s : ChemmolreprinchiPath, f : Double) -> ChemmolreprinchiPath {
-  let result = chem_mol_repr_inchi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_path_add(a : ChemmolreprinchiPath, b : ChemmolreprinchiPath) -> ChemmolreprinchiPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_path_copy(s : ChemmolreprinchiPath) -> ChemmolreprinchiPath {
-  let result = chem_mol_repr_inchi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_path_fill(s : ChemmolreprinchiPath, v : Double) -> ChemmolreprinchiPath {
-  let result = chem_mol_repr_inchi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_path_min(s : ChemmolreprinchiPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_mol_repr_inchi_cluster_sum(s : ChemmolreprinchiCluster) -> Double { 
 pub fn chem_mol_repr_inchi_cluster_mean(s : ChemmolreprinchiCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_cluster_scale(s : ChemmolreprinchiCluster, f : Double) -> ChemmolreprinchiCluster {
-  let result = chem_mol_repr_inchi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_cluster_add(a : ChemmolreprinchiCluster, b : ChemmolreprinchiCluster) -> ChemmolreprinchiCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_cluster_copy(s : ChemmolreprinchiCluster) -> ChemmolreprinchiCluster {
-  let result = chem_mol_repr_inchi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_cluster_fill(s : ChemmolreprinchiCluster, v : Double) -> ChemmolreprinchiCluster {
-  let result = chem_mol_repr_inchi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_cluster_min(s : ChemmolreprinchiCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_mol_repr_inchi_model_sum(s : ChemmolreprinchiModel) -> Double { @_co
 pub fn chem_mol_repr_inchi_model_mean(s : ChemmolreprinchiModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_model_scale(s : ChemmolreprinchiModel, f : Double) -> ChemmolreprinchiModel {
-  let result = chem_mol_repr_inchi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_model_add(a : ChemmolreprinchiModel, b : ChemmolreprinchiModel) -> ChemmolreprinchiModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_model_copy(s : ChemmolreprinchiModel) -> ChemmolreprinchiModel {
-  let result = chem_mol_repr_inchi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_model_fill(s : ChemmolreprinchiModel, v : Double) -> ChemmolreprinchiModel {
-  let result = chem_mol_repr_inchi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_model_min(s : ChemmolreprinchiModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_mol_repr_inchi_layer_sum(s : ChemmolreprinchiLayer) -> Double { @_co
 pub fn chem_mol_repr_inchi_layer_mean(s : ChemmolreprinchiLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_layer_scale(s : ChemmolreprinchiLayer, f : Double) -> ChemmolreprinchiLayer {
-  let result = chem_mol_repr_inchi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_layer_add(a : ChemmolreprinchiLayer, b : ChemmolreprinchiLayer) -> ChemmolreprinchiLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_layer_copy(s : ChemmolreprinchiLayer) -> ChemmolreprinchiLayer {
-  let result = chem_mol_repr_inchi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_layer_fill(s : ChemmolreprinchiLayer, v : Double) -> ChemmolreprinchiLayer {
-  let result = chem_mol_repr_inchi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_layer_min(s : ChemmolreprinchiLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_mol_repr_inchi_buffer_sum(s : ChemmolreprinchiBuffer) -> Double { @_
 pub fn chem_mol_repr_inchi_buffer_mean(s : ChemmolreprinchiBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_buffer_scale(s : ChemmolreprinchiBuffer, f : Double) -> ChemmolreprinchiBuffer {
-  let result = chem_mol_repr_inchi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_buffer_add(a : ChemmolreprinchiBuffer, b : ChemmolreprinchiBuffer) -> ChemmolreprinchiBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_buffer_copy(s : ChemmolreprinchiBuffer) -> ChemmolreprinchiBuffer {
-  let result = chem_mol_repr_inchi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_buffer_fill(s : ChemmolreprinchiBuffer, v : Double) -> ChemmolreprinchiBuffer {
-  let result = chem_mol_repr_inchi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_buffer_min(s : ChemmolreprinchiBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_mol_repr_inchi_cursor_sum(s : ChemmolreprinchiCursor) -> Double { @_
 pub fn chem_mol_repr_inchi_cursor_mean(s : ChemmolreprinchiCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_cursor_scale(s : ChemmolreprinchiCursor, f : Double) -> ChemmolreprinchiCursor {
-  let result = chem_mol_repr_inchi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_cursor_add(a : ChemmolreprinchiCursor, b : ChemmolreprinchiCursor) -> ChemmolreprinchiCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_cursor_copy(s : ChemmolreprinchiCursor) -> ChemmolreprinchiCursor {
-  let result = chem_mol_repr_inchi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_cursor_fill(s : ChemmolreprinchiCursor, v : Double) -> ChemmolreprinchiCursor {
-  let result = chem_mol_repr_inchi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_cursor_min(s : ChemmolreprinchiCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_mol_repr_inchi_view_sum(s : ChemmolreprinchiView) -> Double { @_comm
 pub fn chem_mol_repr_inchi_view_mean(s : ChemmolreprinchiView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_view_scale(s : ChemmolreprinchiView, f : Double) -> ChemmolreprinchiView {
-  let result = chem_mol_repr_inchi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_view_add(a : ChemmolreprinchiView, b : ChemmolreprinchiView) -> ChemmolreprinchiView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_view_copy(s : ChemmolreprinchiView) -> ChemmolreprinchiView {
-  let result = chem_mol_repr_inchi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_view_fill(s : ChemmolreprinchiView, v : Double) -> ChemmolreprinchiView {
-  let result = chem_mol_repr_inchi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_view_min(s : ChemmolreprinchiView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_mol_repr_inchi_range_sum(s : ChemmolreprinchiRange) -> Double { @_co
 pub fn chem_mol_repr_inchi_range_mean(s : ChemmolreprinchiRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_range_scale(s : ChemmolreprinchiRange, f : Double) -> ChemmolreprinchiRange {
-  let result = chem_mol_repr_inchi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_range_add(a : ChemmolreprinchiRange, b : ChemmolreprinchiRange) -> ChemmolreprinchiRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_range_copy(s : ChemmolreprinchiRange) -> ChemmolreprinchiRange {
-  let result = chem_mol_repr_inchi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_range_fill(s : ChemmolreprinchiRange, v : Double) -> ChemmolreprinchiRange {
-  let result = chem_mol_repr_inchi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_range_min(s : ChemmolreprinchiRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_mol_repr_inchi_slice_sum(s : ChemmolreprinchiSlice) -> Double { @_co
 pub fn chem_mol_repr_inchi_slice_mean(s : ChemmolreprinchiSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_inchi_slice_scale(s : ChemmolreprinchiSlice, f : Double) -> ChemmolreprinchiSlice {
-  let result = chem_mol_repr_inchi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_slice_add(a : ChemmolreprinchiSlice, b : ChemmolreprinchiSlice) -> ChemmolreprinchiSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_inchi_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_inchi_slice_copy(s : ChemmolreprinchiSlice) -> ChemmolreprinchiSlice {
-  let result = chem_mol_repr_inchi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_slice_fill(s : ChemmolreprinchiSlice, v : Double) -> ChemmolreprinchiSlice {
-  let result = chem_mol_repr_inchi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_inchi_slice_min(s : ChemmolreprinchiSlice) -> Double { @_common.min(s.data) }

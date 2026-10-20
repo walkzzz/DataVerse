@@ -383,28 +383,20 @@ pub fn math_lu_decomp_frame_sum(s : MathludecompFrame) -> Double { @_common.sum(
 pub fn math_lu_decomp_frame_mean(s : MathludecompFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_frame_scale(s : MathludecompFrame, f : Double) -> MathludecompFrame {
-  let result = math_lu_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_frame_add(a : MathludecompFrame, b : MathludecompFrame) -> MathludecompFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_frame_copy(s : MathludecompFrame) -> MathludecompFrame {
-  let result = math_lu_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_frame_fill(s : MathludecompFrame, v : Double) -> MathludecompFrame {
-  let result = math_lu_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_frame_min(s : MathludecompFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_lu_decomp_table_sum(s : MathludecompTable) -> Double { @_common.sum(
 pub fn math_lu_decomp_table_mean(s : MathludecompTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_table_scale(s : MathludecompTable, f : Double) -> MathludecompTable {
-  let result = math_lu_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_table_add(a : MathludecompTable, b : MathludecompTable) -> MathludecompTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_table_copy(s : MathludecompTable) -> MathludecompTable {
-  let result = math_lu_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_table_fill(s : MathludecompTable, v : Double) -> MathludecompTable {
-  let result = math_lu_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_table_min(s : MathludecompTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_lu_decomp_graphn_sum(s : MathludecompGraphN) -> Double { @_common.su
 pub fn math_lu_decomp_graphn_mean(s : MathludecompGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_graphn_scale(s : MathludecompGraphN, f : Double) -> MathludecompGraphN {
-  let result = math_lu_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_graphn_add(a : MathludecompGraphN, b : MathludecompGraphN) -> MathludecompGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_graphn_copy(s : MathludecompGraphN) -> MathludecompGraphN {
-  let result = math_lu_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_graphn_fill(s : MathludecompGraphN, v : Double) -> MathludecompGraphN {
-  let result = math_lu_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_graphn_min(s : MathludecompGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_lu_decomp_node_sum(s : MathludecompNode) -> Double { @_common.sum(s.
 pub fn math_lu_decomp_node_mean(s : MathludecompNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_node_scale(s : MathludecompNode, f : Double) -> MathludecompNode {
-  let result = math_lu_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_node_add(a : MathludecompNode, b : MathludecompNode) -> MathludecompNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_node_copy(s : MathludecompNode) -> MathludecompNode {
-  let result = math_lu_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_node_fill(s : MathludecompNode, v : Double) -> MathludecompNode {
-  let result = math_lu_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_node_min(s : MathludecompNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_lu_decomp_edge_sum(s : MathludecompEdge) -> Double { @_common.sum(s.
 pub fn math_lu_decomp_edge_mean(s : MathludecompEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_edge_scale(s : MathludecompEdge, f : Double) -> MathludecompEdge {
-  let result = math_lu_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_edge_add(a : MathludecompEdge, b : MathludecompEdge) -> MathludecompEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_edge_copy(s : MathludecompEdge) -> MathludecompEdge {
-  let result = math_lu_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_edge_fill(s : MathludecompEdge, v : Double) -> MathludecompEdge {
-  let result = math_lu_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_edge_min(s : MathludecompEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_lu_decomp_path_sum(s : MathludecompPath) -> Double { @_common.sum(s.
 pub fn math_lu_decomp_path_mean(s : MathludecompPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_path_scale(s : MathludecompPath, f : Double) -> MathludecompPath {
-  let result = math_lu_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_path_add(a : MathludecompPath, b : MathludecompPath) -> MathludecompPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_path_copy(s : MathludecompPath) -> MathludecompPath {
-  let result = math_lu_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_path_fill(s : MathludecompPath, v : Double) -> MathludecompPath {
-  let result = math_lu_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_path_min(s : MathludecompPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_lu_decomp_cluster_sum(s : MathludecompCluster) -> Double { @_common.
 pub fn math_lu_decomp_cluster_mean(s : MathludecompCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_cluster_scale(s : MathludecompCluster, f : Double) -> MathludecompCluster {
-  let result = math_lu_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_cluster_add(a : MathludecompCluster, b : MathludecompCluster) -> MathludecompCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_cluster_copy(s : MathludecompCluster) -> MathludecompCluster {
-  let result = math_lu_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_cluster_fill(s : MathludecompCluster, v : Double) -> MathludecompCluster {
-  let result = math_lu_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_cluster_min(s : MathludecompCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_lu_decomp_model_sum(s : MathludecompModel) -> Double { @_common.sum(
 pub fn math_lu_decomp_model_mean(s : MathludecompModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_model_scale(s : MathludecompModel, f : Double) -> MathludecompModel {
-  let result = math_lu_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_model_add(a : MathludecompModel, b : MathludecompModel) -> MathludecompModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_model_copy(s : MathludecompModel) -> MathludecompModel {
-  let result = math_lu_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_model_fill(s : MathludecompModel, v : Double) -> MathludecompModel {
-  let result = math_lu_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_model_min(s : MathludecompModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_lu_decomp_layer_sum(s : MathludecompLayer) -> Double { @_common.sum(
 pub fn math_lu_decomp_layer_mean(s : MathludecompLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_layer_scale(s : MathludecompLayer, f : Double) -> MathludecompLayer {
-  let result = math_lu_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_layer_add(a : MathludecompLayer, b : MathludecompLayer) -> MathludecompLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_layer_copy(s : MathludecompLayer) -> MathludecompLayer {
-  let result = math_lu_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_layer_fill(s : MathludecompLayer, v : Double) -> MathludecompLayer {
-  let result = math_lu_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_layer_min(s : MathludecompLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_lu_decomp_buffer_sum(s : MathludecompBuffer) -> Double { @_common.su
 pub fn math_lu_decomp_buffer_mean(s : MathludecompBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_buffer_scale(s : MathludecompBuffer, f : Double) -> MathludecompBuffer {
-  let result = math_lu_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_buffer_add(a : MathludecompBuffer, b : MathludecompBuffer) -> MathludecompBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_buffer_copy(s : MathludecompBuffer) -> MathludecompBuffer {
-  let result = math_lu_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_buffer_fill(s : MathludecompBuffer, v : Double) -> MathludecompBuffer {
-  let result = math_lu_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_buffer_min(s : MathludecompBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_lu_decomp_cursor_sum(s : MathludecompCursor) -> Double { @_common.su
 pub fn math_lu_decomp_cursor_mean(s : MathludecompCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_cursor_scale(s : MathludecompCursor, f : Double) -> MathludecompCursor {
-  let result = math_lu_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_cursor_add(a : MathludecompCursor, b : MathludecompCursor) -> MathludecompCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_cursor_copy(s : MathludecompCursor) -> MathludecompCursor {
-  let result = math_lu_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_cursor_fill(s : MathludecompCursor, v : Double) -> MathludecompCursor {
-  let result = math_lu_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_cursor_min(s : MathludecompCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_lu_decomp_view_sum(s : MathludecompView) -> Double { @_common.sum(s.
 pub fn math_lu_decomp_view_mean(s : MathludecompView) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_view_scale(s : MathludecompView, f : Double) -> MathludecompView {
-  let result = math_lu_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_view_add(a : MathludecompView, b : MathludecompView) -> MathludecompView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_view_copy(s : MathludecompView) -> MathludecompView {
-  let result = math_lu_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_view_fill(s : MathludecompView, v : Double) -> MathludecompView {
-  let result = math_lu_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_view_min(s : MathludecompView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_lu_decomp_range_sum(s : MathludecompRange) -> Double { @_common.sum(
 pub fn math_lu_decomp_range_mean(s : MathludecompRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_range_scale(s : MathludecompRange, f : Double) -> MathludecompRange {
-  let result = math_lu_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_range_add(a : MathludecompRange, b : MathludecompRange) -> MathludecompRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_range_copy(s : MathludecompRange) -> MathludecompRange {
-  let result = math_lu_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_range_fill(s : MathludecompRange, v : Double) -> MathludecompRange {
-  let result = math_lu_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_range_min(s : MathludecompRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_lu_decomp_slice_sum(s : MathludecompSlice) -> Double { @_common.sum(
 pub fn math_lu_decomp_slice_mean(s : MathludecompSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_slice_scale(s : MathludecompSlice, f : Double) -> MathludecompSlice {
-  let result = math_lu_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_slice_add(a : MathludecompSlice, b : MathludecompSlice) -> MathludecompSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_lu_decomp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_lu_decomp_slice_copy(s : MathludecompSlice) -> MathludecompSlice {
-  let result = math_lu_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_slice_fill(s : MathludecompSlice, v : Double) -> MathludecompSlice {
-  let result = math_lu_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_lu_decomp_slice_min(s : MathludecompSlice) -> Double { @_common.min(s.data) }

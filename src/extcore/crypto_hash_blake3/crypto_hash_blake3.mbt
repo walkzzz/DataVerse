@@ -383,28 +383,20 @@ pub fn crypto_hash_blake3_frame_sum(s : Cryptohashblake3Frame) -> Double { @_com
 pub fn crypto_hash_blake3_frame_mean(s : Cryptohashblake3Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_frame_scale(s : Cryptohashblake3Frame, f : Double) -> Cryptohashblake3Frame {
-  let result = crypto_hash_blake3_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_frame_add(a : Cryptohashblake3Frame, b : Cryptohashblake3Frame) -> Cryptohashblake3Frame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_frame_copy(s : Cryptohashblake3Frame) -> Cryptohashblake3Frame {
-  let result = crypto_hash_blake3_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_frame_fill(s : Cryptohashblake3Frame, v : Double) -> Cryptohashblake3Frame {
-  let result = crypto_hash_blake3_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_frame_min(s : Cryptohashblake3Frame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_hash_blake3_table_sum(s : Cryptohashblake3Table) -> Double { @_com
 pub fn crypto_hash_blake3_table_mean(s : Cryptohashblake3Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_table_scale(s : Cryptohashblake3Table, f : Double) -> Cryptohashblake3Table {
-  let result = crypto_hash_blake3_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_table_add(a : Cryptohashblake3Table, b : Cryptohashblake3Table) -> Cryptohashblake3Table {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_table_copy(s : Cryptohashblake3Table) -> Cryptohashblake3Table {
-  let result = crypto_hash_blake3_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_table_fill(s : Cryptohashblake3Table, v : Double) -> Cryptohashblake3Table {
-  let result = crypto_hash_blake3_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_table_min(s : Cryptohashblake3Table) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_hash_blake3_graphn_sum(s : Cryptohashblake3GraphN) -> Double { @_c
 pub fn crypto_hash_blake3_graphn_mean(s : Cryptohashblake3GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_graphn_scale(s : Cryptohashblake3GraphN, f : Double) -> Cryptohashblake3GraphN {
-  let result = crypto_hash_blake3_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_graphn_add(a : Cryptohashblake3GraphN, b : Cryptohashblake3GraphN) -> Cryptohashblake3GraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_graphn_copy(s : Cryptohashblake3GraphN) -> Cryptohashblake3GraphN {
-  let result = crypto_hash_blake3_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_graphn_fill(s : Cryptohashblake3GraphN, v : Double) -> Cryptohashblake3GraphN {
-  let result = crypto_hash_blake3_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_graphn_min(s : Cryptohashblake3GraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_hash_blake3_node_sum(s : Cryptohashblake3Node) -> Double { @_commo
 pub fn crypto_hash_blake3_node_mean(s : Cryptohashblake3Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_node_scale(s : Cryptohashblake3Node, f : Double) -> Cryptohashblake3Node {
-  let result = crypto_hash_blake3_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_node_add(a : Cryptohashblake3Node, b : Cryptohashblake3Node) -> Cryptohashblake3Node {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_node_copy(s : Cryptohashblake3Node) -> Cryptohashblake3Node {
-  let result = crypto_hash_blake3_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_node_fill(s : Cryptohashblake3Node, v : Double) -> Cryptohashblake3Node {
-  let result = crypto_hash_blake3_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_node_min(s : Cryptohashblake3Node) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_hash_blake3_edge_sum(s : Cryptohashblake3Edge) -> Double { @_commo
 pub fn crypto_hash_blake3_edge_mean(s : Cryptohashblake3Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_edge_scale(s : Cryptohashblake3Edge, f : Double) -> Cryptohashblake3Edge {
-  let result = crypto_hash_blake3_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_edge_add(a : Cryptohashblake3Edge, b : Cryptohashblake3Edge) -> Cryptohashblake3Edge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_edge_copy(s : Cryptohashblake3Edge) -> Cryptohashblake3Edge {
-  let result = crypto_hash_blake3_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_edge_fill(s : Cryptohashblake3Edge, v : Double) -> Cryptohashblake3Edge {
-  let result = crypto_hash_blake3_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_edge_min(s : Cryptohashblake3Edge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_hash_blake3_path_sum(s : Cryptohashblake3Path) -> Double { @_commo
 pub fn crypto_hash_blake3_path_mean(s : Cryptohashblake3Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_path_scale(s : Cryptohashblake3Path, f : Double) -> Cryptohashblake3Path {
-  let result = crypto_hash_blake3_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_path_add(a : Cryptohashblake3Path, b : Cryptohashblake3Path) -> Cryptohashblake3Path {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_path_copy(s : Cryptohashblake3Path) -> Cryptohashblake3Path {
-  let result = crypto_hash_blake3_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_path_fill(s : Cryptohashblake3Path, v : Double) -> Cryptohashblake3Path {
-  let result = crypto_hash_blake3_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_path_min(s : Cryptohashblake3Path) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_hash_blake3_cluster_sum(s : Cryptohashblake3Cluster) -> Double { @
 pub fn crypto_hash_blake3_cluster_mean(s : Cryptohashblake3Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_cluster_scale(s : Cryptohashblake3Cluster, f : Double) -> Cryptohashblake3Cluster {
-  let result = crypto_hash_blake3_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_cluster_add(a : Cryptohashblake3Cluster, b : Cryptohashblake3Cluster) -> Cryptohashblake3Cluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_cluster_copy(s : Cryptohashblake3Cluster) -> Cryptohashblake3Cluster {
-  let result = crypto_hash_blake3_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_cluster_fill(s : Cryptohashblake3Cluster, v : Double) -> Cryptohashblake3Cluster {
-  let result = crypto_hash_blake3_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_cluster_min(s : Cryptohashblake3Cluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_hash_blake3_model_sum(s : Cryptohashblake3Model) -> Double { @_com
 pub fn crypto_hash_blake3_model_mean(s : Cryptohashblake3Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_model_scale(s : Cryptohashblake3Model, f : Double) -> Cryptohashblake3Model {
-  let result = crypto_hash_blake3_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_model_add(a : Cryptohashblake3Model, b : Cryptohashblake3Model) -> Cryptohashblake3Model {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_model_copy(s : Cryptohashblake3Model) -> Cryptohashblake3Model {
-  let result = crypto_hash_blake3_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_model_fill(s : Cryptohashblake3Model, v : Double) -> Cryptohashblake3Model {
-  let result = crypto_hash_blake3_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_model_min(s : Cryptohashblake3Model) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_hash_blake3_layer_sum(s : Cryptohashblake3Layer) -> Double { @_com
 pub fn crypto_hash_blake3_layer_mean(s : Cryptohashblake3Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_layer_scale(s : Cryptohashblake3Layer, f : Double) -> Cryptohashblake3Layer {
-  let result = crypto_hash_blake3_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_layer_add(a : Cryptohashblake3Layer, b : Cryptohashblake3Layer) -> Cryptohashblake3Layer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_layer_copy(s : Cryptohashblake3Layer) -> Cryptohashblake3Layer {
-  let result = crypto_hash_blake3_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_layer_fill(s : Cryptohashblake3Layer, v : Double) -> Cryptohashblake3Layer {
-  let result = crypto_hash_blake3_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_layer_min(s : Cryptohashblake3Layer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_hash_blake3_buffer_sum(s : Cryptohashblake3Buffer) -> Double { @_c
 pub fn crypto_hash_blake3_buffer_mean(s : Cryptohashblake3Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_buffer_scale(s : Cryptohashblake3Buffer, f : Double) -> Cryptohashblake3Buffer {
-  let result = crypto_hash_blake3_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_buffer_add(a : Cryptohashblake3Buffer, b : Cryptohashblake3Buffer) -> Cryptohashblake3Buffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_buffer_copy(s : Cryptohashblake3Buffer) -> Cryptohashblake3Buffer {
-  let result = crypto_hash_blake3_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_buffer_fill(s : Cryptohashblake3Buffer, v : Double) -> Cryptohashblake3Buffer {
-  let result = crypto_hash_blake3_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_buffer_min(s : Cryptohashblake3Buffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_hash_blake3_cursor_sum(s : Cryptohashblake3Cursor) -> Double { @_c
 pub fn crypto_hash_blake3_cursor_mean(s : Cryptohashblake3Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_cursor_scale(s : Cryptohashblake3Cursor, f : Double) -> Cryptohashblake3Cursor {
-  let result = crypto_hash_blake3_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_cursor_add(a : Cryptohashblake3Cursor, b : Cryptohashblake3Cursor) -> Cryptohashblake3Cursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_cursor_copy(s : Cryptohashblake3Cursor) -> Cryptohashblake3Cursor {
-  let result = crypto_hash_blake3_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_cursor_fill(s : Cryptohashblake3Cursor, v : Double) -> Cryptohashblake3Cursor {
-  let result = crypto_hash_blake3_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_cursor_min(s : Cryptohashblake3Cursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_hash_blake3_view_sum(s : Cryptohashblake3View) -> Double { @_commo
 pub fn crypto_hash_blake3_view_mean(s : Cryptohashblake3View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_view_scale(s : Cryptohashblake3View, f : Double) -> Cryptohashblake3View {
-  let result = crypto_hash_blake3_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_view_add(a : Cryptohashblake3View, b : Cryptohashblake3View) -> Cryptohashblake3View {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_view_copy(s : Cryptohashblake3View) -> Cryptohashblake3View {
-  let result = crypto_hash_blake3_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_view_fill(s : Cryptohashblake3View, v : Double) -> Cryptohashblake3View {
-  let result = crypto_hash_blake3_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_view_min(s : Cryptohashblake3View) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_hash_blake3_range_sum(s : Cryptohashblake3Range) -> Double { @_com
 pub fn crypto_hash_blake3_range_mean(s : Cryptohashblake3Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_range_scale(s : Cryptohashblake3Range, f : Double) -> Cryptohashblake3Range {
-  let result = crypto_hash_blake3_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_range_add(a : Cryptohashblake3Range, b : Cryptohashblake3Range) -> Cryptohashblake3Range {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_range_copy(s : Cryptohashblake3Range) -> Cryptohashblake3Range {
-  let result = crypto_hash_blake3_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_range_fill(s : Cryptohashblake3Range, v : Double) -> Cryptohashblake3Range {
-  let result = crypto_hash_blake3_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_range_min(s : Cryptohashblake3Range) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_hash_blake3_slice_sum(s : Cryptohashblake3Slice) -> Double { @_com
 pub fn crypto_hash_blake3_slice_mean(s : Cryptohashblake3Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_blake3_slice_scale(s : Cryptohashblake3Slice, f : Double) -> Cryptohashblake3Slice {
-  let result = crypto_hash_blake3_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_slice_add(a : Cryptohashblake3Slice, b : Cryptohashblake3Slice) -> Cryptohashblake3Slice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_hash_blake3_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_hash_blake3_slice_copy(s : Cryptohashblake3Slice) -> Cryptohashblake3Slice {
-  let result = crypto_hash_blake3_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_slice_fill(s : Cryptohashblake3Slice, v : Double) -> Cryptohashblake3Slice {
-  let result = crypto_hash_blake3_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_blake3_slice_min(s : Cryptohashblake3Slice) -> Double { @_common.min(s.data) }

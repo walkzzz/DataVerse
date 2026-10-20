@@ -383,28 +383,20 @@ pub fn graph_color_exact_frame_sum(s : GraphcolorexactFrame) -> Double { @_commo
 pub fn graph_color_exact_frame_mean(s : GraphcolorexactFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_frame_scale(s : GraphcolorexactFrame, f : Double) -> GraphcolorexactFrame {
-  let result = graph_color_exact_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_frame_add(a : GraphcolorexactFrame, b : GraphcolorexactFrame) -> GraphcolorexactFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_frame_copy(s : GraphcolorexactFrame) -> GraphcolorexactFrame {
-  let result = graph_color_exact_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_frame_fill(s : GraphcolorexactFrame, v : Double) -> GraphcolorexactFrame {
-  let result = graph_color_exact_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_frame_min(s : GraphcolorexactFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_exact_table_sum(s : GraphcolorexactTable) -> Double { @_commo
 pub fn graph_color_exact_table_mean(s : GraphcolorexactTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_table_scale(s : GraphcolorexactTable, f : Double) -> GraphcolorexactTable {
-  let result = graph_color_exact_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_table_add(a : GraphcolorexactTable, b : GraphcolorexactTable) -> GraphcolorexactTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_table_copy(s : GraphcolorexactTable) -> GraphcolorexactTable {
-  let result = graph_color_exact_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_table_fill(s : GraphcolorexactTable, v : Double) -> GraphcolorexactTable {
-  let result = graph_color_exact_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_table_min(s : GraphcolorexactTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_exact_graphn_sum(s : GraphcolorexactGraphN) -> Double { @_com
 pub fn graph_color_exact_graphn_mean(s : GraphcolorexactGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_graphn_scale(s : GraphcolorexactGraphN, f : Double) -> GraphcolorexactGraphN {
-  let result = graph_color_exact_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_graphn_add(a : GraphcolorexactGraphN, b : GraphcolorexactGraphN) -> GraphcolorexactGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_graphn_copy(s : GraphcolorexactGraphN) -> GraphcolorexactGraphN {
-  let result = graph_color_exact_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_graphn_fill(s : GraphcolorexactGraphN, v : Double) -> GraphcolorexactGraphN {
-  let result = graph_color_exact_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_graphn_min(s : GraphcolorexactGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_exact_node_sum(s : GraphcolorexactNode) -> Double { @_common.
 pub fn graph_color_exact_node_mean(s : GraphcolorexactNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_node_scale(s : GraphcolorexactNode, f : Double) -> GraphcolorexactNode {
-  let result = graph_color_exact_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_node_add(a : GraphcolorexactNode, b : GraphcolorexactNode) -> GraphcolorexactNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_node_copy(s : GraphcolorexactNode) -> GraphcolorexactNode {
-  let result = graph_color_exact_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_node_fill(s : GraphcolorexactNode, v : Double) -> GraphcolorexactNode {
-  let result = graph_color_exact_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_node_min(s : GraphcolorexactNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_exact_edge_sum(s : GraphcolorexactEdge) -> Double { @_common.
 pub fn graph_color_exact_edge_mean(s : GraphcolorexactEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_edge_scale(s : GraphcolorexactEdge, f : Double) -> GraphcolorexactEdge {
-  let result = graph_color_exact_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_edge_add(a : GraphcolorexactEdge, b : GraphcolorexactEdge) -> GraphcolorexactEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_edge_copy(s : GraphcolorexactEdge) -> GraphcolorexactEdge {
-  let result = graph_color_exact_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_edge_fill(s : GraphcolorexactEdge, v : Double) -> GraphcolorexactEdge {
-  let result = graph_color_exact_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_edge_min(s : GraphcolorexactEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_exact_path_sum(s : GraphcolorexactPath) -> Double { @_common.
 pub fn graph_color_exact_path_mean(s : GraphcolorexactPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_path_scale(s : GraphcolorexactPath, f : Double) -> GraphcolorexactPath {
-  let result = graph_color_exact_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_path_add(a : GraphcolorexactPath, b : GraphcolorexactPath) -> GraphcolorexactPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_path_copy(s : GraphcolorexactPath) -> GraphcolorexactPath {
-  let result = graph_color_exact_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_path_fill(s : GraphcolorexactPath, v : Double) -> GraphcolorexactPath {
-  let result = graph_color_exact_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_path_min(s : GraphcolorexactPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_exact_cluster_sum(s : GraphcolorexactCluster) -> Double { @_c
 pub fn graph_color_exact_cluster_mean(s : GraphcolorexactCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_cluster_scale(s : GraphcolorexactCluster, f : Double) -> GraphcolorexactCluster {
-  let result = graph_color_exact_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cluster_add(a : GraphcolorexactCluster, b : GraphcolorexactCluster) -> GraphcolorexactCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_cluster_copy(s : GraphcolorexactCluster) -> GraphcolorexactCluster {
-  let result = graph_color_exact_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cluster_fill(s : GraphcolorexactCluster, v : Double) -> GraphcolorexactCluster {
-  let result = graph_color_exact_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cluster_min(s : GraphcolorexactCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_exact_model_sum(s : GraphcolorexactModel) -> Double { @_commo
 pub fn graph_color_exact_model_mean(s : GraphcolorexactModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_model_scale(s : GraphcolorexactModel, f : Double) -> GraphcolorexactModel {
-  let result = graph_color_exact_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_model_add(a : GraphcolorexactModel, b : GraphcolorexactModel) -> GraphcolorexactModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_model_copy(s : GraphcolorexactModel) -> GraphcolorexactModel {
-  let result = graph_color_exact_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_model_fill(s : GraphcolorexactModel, v : Double) -> GraphcolorexactModel {
-  let result = graph_color_exact_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_model_min(s : GraphcolorexactModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_exact_layer_sum(s : GraphcolorexactLayer) -> Double { @_commo
 pub fn graph_color_exact_layer_mean(s : GraphcolorexactLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_layer_scale(s : GraphcolorexactLayer, f : Double) -> GraphcolorexactLayer {
-  let result = graph_color_exact_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_layer_add(a : GraphcolorexactLayer, b : GraphcolorexactLayer) -> GraphcolorexactLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_layer_copy(s : GraphcolorexactLayer) -> GraphcolorexactLayer {
-  let result = graph_color_exact_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_layer_fill(s : GraphcolorexactLayer, v : Double) -> GraphcolorexactLayer {
-  let result = graph_color_exact_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_layer_min(s : GraphcolorexactLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_exact_buffer_sum(s : GraphcolorexactBuffer) -> Double { @_com
 pub fn graph_color_exact_buffer_mean(s : GraphcolorexactBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_buffer_scale(s : GraphcolorexactBuffer, f : Double) -> GraphcolorexactBuffer {
-  let result = graph_color_exact_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_buffer_add(a : GraphcolorexactBuffer, b : GraphcolorexactBuffer) -> GraphcolorexactBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_buffer_copy(s : GraphcolorexactBuffer) -> GraphcolorexactBuffer {
-  let result = graph_color_exact_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_buffer_fill(s : GraphcolorexactBuffer, v : Double) -> GraphcolorexactBuffer {
-  let result = graph_color_exact_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_buffer_min(s : GraphcolorexactBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_exact_cursor_sum(s : GraphcolorexactCursor) -> Double { @_com
 pub fn graph_color_exact_cursor_mean(s : GraphcolorexactCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_cursor_scale(s : GraphcolorexactCursor, f : Double) -> GraphcolorexactCursor {
-  let result = graph_color_exact_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cursor_add(a : GraphcolorexactCursor, b : GraphcolorexactCursor) -> GraphcolorexactCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_cursor_copy(s : GraphcolorexactCursor) -> GraphcolorexactCursor {
-  let result = graph_color_exact_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cursor_fill(s : GraphcolorexactCursor, v : Double) -> GraphcolorexactCursor {
-  let result = graph_color_exact_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cursor_min(s : GraphcolorexactCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_exact_view_sum(s : GraphcolorexactView) -> Double { @_common.
 pub fn graph_color_exact_view_mean(s : GraphcolorexactView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_view_scale(s : GraphcolorexactView, f : Double) -> GraphcolorexactView {
-  let result = graph_color_exact_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_view_add(a : GraphcolorexactView, b : GraphcolorexactView) -> GraphcolorexactView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_view_copy(s : GraphcolorexactView) -> GraphcolorexactView {
-  let result = graph_color_exact_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_view_fill(s : GraphcolorexactView, v : Double) -> GraphcolorexactView {
-  let result = graph_color_exact_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_view_min(s : GraphcolorexactView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_exact_range_sum(s : GraphcolorexactRange) -> Double { @_commo
 pub fn graph_color_exact_range_mean(s : GraphcolorexactRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_range_scale(s : GraphcolorexactRange, f : Double) -> GraphcolorexactRange {
-  let result = graph_color_exact_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_range_add(a : GraphcolorexactRange, b : GraphcolorexactRange) -> GraphcolorexactRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_range_copy(s : GraphcolorexactRange) -> GraphcolorexactRange {
-  let result = graph_color_exact_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_range_fill(s : GraphcolorexactRange, v : Double) -> GraphcolorexactRange {
-  let result = graph_color_exact_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_range_min(s : GraphcolorexactRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_exact_slice_sum(s : GraphcolorexactSlice) -> Double { @_commo
 pub fn graph_color_exact_slice_mean(s : GraphcolorexactSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_slice_scale(s : GraphcolorexactSlice, f : Double) -> GraphcolorexactSlice {
-  let result = graph_color_exact_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_slice_add(a : GraphcolorexactSlice, b : GraphcolorexactSlice) -> GraphcolorexactSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_exact_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_exact_slice_copy(s : GraphcolorexactSlice) -> GraphcolorexactSlice {
-  let result = graph_color_exact_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_slice_fill(s : GraphcolorexactSlice, v : Double) -> GraphcolorexactSlice {
-  let result = graph_color_exact_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_slice_min(s : GraphcolorexactSlice) -> Double { @_common.min(s.data) }

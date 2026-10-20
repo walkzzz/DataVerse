@@ -383,28 +383,20 @@ pub fn physics_heat_transient_frame_sum(s : PhysicsheattransientFrame) -> Double
 pub fn physics_heat_transient_frame_mean(s : PhysicsheattransientFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_frame_scale(s : PhysicsheattransientFrame, f : Double) -> PhysicsheattransientFrame {
-  let result = physics_heat_transient_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_frame_add(a : PhysicsheattransientFrame, b : PhysicsheattransientFrame) -> PhysicsheattransientFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_frame_copy(s : PhysicsheattransientFrame) -> PhysicsheattransientFrame {
-  let result = physics_heat_transient_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_frame_fill(s : PhysicsheattransientFrame, v : Double) -> PhysicsheattransientFrame {
-  let result = physics_heat_transient_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_frame_min(s : PhysicsheattransientFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_heat_transient_table_sum(s : PhysicsheattransientTable) -> Double
 pub fn physics_heat_transient_table_mean(s : PhysicsheattransientTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_table_scale(s : PhysicsheattransientTable, f : Double) -> PhysicsheattransientTable {
-  let result = physics_heat_transient_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_table_add(a : PhysicsheattransientTable, b : PhysicsheattransientTable) -> PhysicsheattransientTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_table_copy(s : PhysicsheattransientTable) -> PhysicsheattransientTable {
-  let result = physics_heat_transient_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_table_fill(s : PhysicsheattransientTable, v : Double) -> PhysicsheattransientTable {
-  let result = physics_heat_transient_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_table_min(s : PhysicsheattransientTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_heat_transient_graphn_sum(s : PhysicsheattransientGraphN) -> Doub
 pub fn physics_heat_transient_graphn_mean(s : PhysicsheattransientGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_graphn_scale(s : PhysicsheattransientGraphN, f : Double) -> PhysicsheattransientGraphN {
-  let result = physics_heat_transient_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_graphn_add(a : PhysicsheattransientGraphN, b : PhysicsheattransientGraphN) -> PhysicsheattransientGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_graphn_copy(s : PhysicsheattransientGraphN) -> PhysicsheattransientGraphN {
-  let result = physics_heat_transient_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_graphn_fill(s : PhysicsheattransientGraphN, v : Double) -> PhysicsheattransientGraphN {
-  let result = physics_heat_transient_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_graphn_min(s : PhysicsheattransientGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_heat_transient_node_sum(s : PhysicsheattransientNode) -> Double {
 pub fn physics_heat_transient_node_mean(s : PhysicsheattransientNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_node_scale(s : PhysicsheattransientNode, f : Double) -> PhysicsheattransientNode {
-  let result = physics_heat_transient_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_node_add(a : PhysicsheattransientNode, b : PhysicsheattransientNode) -> PhysicsheattransientNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_node_copy(s : PhysicsheattransientNode) -> PhysicsheattransientNode {
-  let result = physics_heat_transient_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_node_fill(s : PhysicsheattransientNode, v : Double) -> PhysicsheattransientNode {
-  let result = physics_heat_transient_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_node_min(s : PhysicsheattransientNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_heat_transient_edge_sum(s : PhysicsheattransientEdge) -> Double {
 pub fn physics_heat_transient_edge_mean(s : PhysicsheattransientEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_edge_scale(s : PhysicsheattransientEdge, f : Double) -> PhysicsheattransientEdge {
-  let result = physics_heat_transient_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_edge_add(a : PhysicsheattransientEdge, b : PhysicsheattransientEdge) -> PhysicsheattransientEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_edge_copy(s : PhysicsheattransientEdge) -> PhysicsheattransientEdge {
-  let result = physics_heat_transient_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_edge_fill(s : PhysicsheattransientEdge, v : Double) -> PhysicsheattransientEdge {
-  let result = physics_heat_transient_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_edge_min(s : PhysicsheattransientEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_heat_transient_path_sum(s : PhysicsheattransientPath) -> Double {
 pub fn physics_heat_transient_path_mean(s : PhysicsheattransientPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_path_scale(s : PhysicsheattransientPath, f : Double) -> PhysicsheattransientPath {
-  let result = physics_heat_transient_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_path_add(a : PhysicsheattransientPath, b : PhysicsheattransientPath) -> PhysicsheattransientPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_path_copy(s : PhysicsheattransientPath) -> PhysicsheattransientPath {
-  let result = physics_heat_transient_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_path_fill(s : PhysicsheattransientPath, v : Double) -> PhysicsheattransientPath {
-  let result = physics_heat_transient_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_path_min(s : PhysicsheattransientPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_heat_transient_cluster_sum(s : PhysicsheattransientCluster) -> Do
 pub fn physics_heat_transient_cluster_mean(s : PhysicsheattransientCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_cluster_scale(s : PhysicsheattransientCluster, f : Double) -> PhysicsheattransientCluster {
-  let result = physics_heat_transient_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_cluster_add(a : PhysicsheattransientCluster, b : PhysicsheattransientCluster) -> PhysicsheattransientCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_cluster_copy(s : PhysicsheattransientCluster) -> PhysicsheattransientCluster {
-  let result = physics_heat_transient_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_cluster_fill(s : PhysicsheattransientCluster, v : Double) -> PhysicsheattransientCluster {
-  let result = physics_heat_transient_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_cluster_min(s : PhysicsheattransientCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_heat_transient_model_sum(s : PhysicsheattransientModel) -> Double
 pub fn physics_heat_transient_model_mean(s : PhysicsheattransientModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_model_scale(s : PhysicsheattransientModel, f : Double) -> PhysicsheattransientModel {
-  let result = physics_heat_transient_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_model_add(a : PhysicsheattransientModel, b : PhysicsheattransientModel) -> PhysicsheattransientModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_model_copy(s : PhysicsheattransientModel) -> PhysicsheattransientModel {
-  let result = physics_heat_transient_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_model_fill(s : PhysicsheattransientModel, v : Double) -> PhysicsheattransientModel {
-  let result = physics_heat_transient_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_model_min(s : PhysicsheattransientModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_heat_transient_layer_sum(s : PhysicsheattransientLayer) -> Double
 pub fn physics_heat_transient_layer_mean(s : PhysicsheattransientLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_layer_scale(s : PhysicsheattransientLayer, f : Double) -> PhysicsheattransientLayer {
-  let result = physics_heat_transient_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_layer_add(a : PhysicsheattransientLayer, b : PhysicsheattransientLayer) -> PhysicsheattransientLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_layer_copy(s : PhysicsheattransientLayer) -> PhysicsheattransientLayer {
-  let result = physics_heat_transient_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_layer_fill(s : PhysicsheattransientLayer, v : Double) -> PhysicsheattransientLayer {
-  let result = physics_heat_transient_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_layer_min(s : PhysicsheattransientLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_heat_transient_buffer_sum(s : PhysicsheattransientBuffer) -> Doub
 pub fn physics_heat_transient_buffer_mean(s : PhysicsheattransientBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_buffer_scale(s : PhysicsheattransientBuffer, f : Double) -> PhysicsheattransientBuffer {
-  let result = physics_heat_transient_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_buffer_add(a : PhysicsheattransientBuffer, b : PhysicsheattransientBuffer) -> PhysicsheattransientBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_buffer_copy(s : PhysicsheattransientBuffer) -> PhysicsheattransientBuffer {
-  let result = physics_heat_transient_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_buffer_fill(s : PhysicsheattransientBuffer, v : Double) -> PhysicsheattransientBuffer {
-  let result = physics_heat_transient_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_buffer_min(s : PhysicsheattransientBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_heat_transient_cursor_sum(s : PhysicsheattransientCursor) -> Doub
 pub fn physics_heat_transient_cursor_mean(s : PhysicsheattransientCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_cursor_scale(s : PhysicsheattransientCursor, f : Double) -> PhysicsheattransientCursor {
-  let result = physics_heat_transient_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_cursor_add(a : PhysicsheattransientCursor, b : PhysicsheattransientCursor) -> PhysicsheattransientCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_cursor_copy(s : PhysicsheattransientCursor) -> PhysicsheattransientCursor {
-  let result = physics_heat_transient_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_cursor_fill(s : PhysicsheattransientCursor, v : Double) -> PhysicsheattransientCursor {
-  let result = physics_heat_transient_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_cursor_min(s : PhysicsheattransientCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_heat_transient_view_sum(s : PhysicsheattransientView) -> Double {
 pub fn physics_heat_transient_view_mean(s : PhysicsheattransientView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_view_scale(s : PhysicsheattransientView, f : Double) -> PhysicsheattransientView {
-  let result = physics_heat_transient_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_view_add(a : PhysicsheattransientView, b : PhysicsheattransientView) -> PhysicsheattransientView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_view_copy(s : PhysicsheattransientView) -> PhysicsheattransientView {
-  let result = physics_heat_transient_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_view_fill(s : PhysicsheattransientView, v : Double) -> PhysicsheattransientView {
-  let result = physics_heat_transient_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_view_min(s : PhysicsheattransientView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_heat_transient_range_sum(s : PhysicsheattransientRange) -> Double
 pub fn physics_heat_transient_range_mean(s : PhysicsheattransientRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_range_scale(s : PhysicsheattransientRange, f : Double) -> PhysicsheattransientRange {
-  let result = physics_heat_transient_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_range_add(a : PhysicsheattransientRange, b : PhysicsheattransientRange) -> PhysicsheattransientRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_range_copy(s : PhysicsheattransientRange) -> PhysicsheattransientRange {
-  let result = physics_heat_transient_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_range_fill(s : PhysicsheattransientRange, v : Double) -> PhysicsheattransientRange {
-  let result = physics_heat_transient_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_range_min(s : PhysicsheattransientRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_heat_transient_slice_sum(s : PhysicsheattransientSlice) -> Double
 pub fn physics_heat_transient_slice_mean(s : PhysicsheattransientSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_transient_slice_scale(s : PhysicsheattransientSlice, f : Double) -> PhysicsheattransientSlice {
-  let result = physics_heat_transient_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_slice_add(a : PhysicsheattransientSlice, b : PhysicsheattransientSlice) -> PhysicsheattransientSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_transient_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_transient_slice_copy(s : PhysicsheattransientSlice) -> PhysicsheattransientSlice {
-  let result = physics_heat_transient_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_slice_fill(s : PhysicsheattransientSlice, v : Double) -> PhysicsheattransientSlice {
-  let result = physics_heat_transient_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_transient_slice_min(s : PhysicsheattransientSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_dist_beta_frame_sum(s : StatsdistbetaFrame) -> Double { @_common.su
 pub fn stats_dist_beta_frame_mean(s : StatsdistbetaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_frame_scale(s : StatsdistbetaFrame, f : Double) -> StatsdistbetaFrame {
-  let result = stats_dist_beta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_frame_add(a : StatsdistbetaFrame, b : StatsdistbetaFrame) -> StatsdistbetaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_frame_copy(s : StatsdistbetaFrame) -> StatsdistbetaFrame {
-  let result = stats_dist_beta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_frame_fill(s : StatsdistbetaFrame, v : Double) -> StatsdistbetaFrame {
-  let result = stats_dist_beta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_frame_min(s : StatsdistbetaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_beta_table_sum(s : StatsdistbetaTable) -> Double { @_common.su
 pub fn stats_dist_beta_table_mean(s : StatsdistbetaTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_table_scale(s : StatsdistbetaTable, f : Double) -> StatsdistbetaTable {
-  let result = stats_dist_beta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_table_add(a : StatsdistbetaTable, b : StatsdistbetaTable) -> StatsdistbetaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_table_copy(s : StatsdistbetaTable) -> StatsdistbetaTable {
-  let result = stats_dist_beta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_table_fill(s : StatsdistbetaTable, v : Double) -> StatsdistbetaTable {
-  let result = stats_dist_beta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_table_min(s : StatsdistbetaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_beta_graphn_sum(s : StatsdistbetaGraphN) -> Double { @_common.
 pub fn stats_dist_beta_graphn_mean(s : StatsdistbetaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_graphn_scale(s : StatsdistbetaGraphN, f : Double) -> StatsdistbetaGraphN {
-  let result = stats_dist_beta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_graphn_add(a : StatsdistbetaGraphN, b : StatsdistbetaGraphN) -> StatsdistbetaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_graphn_copy(s : StatsdistbetaGraphN) -> StatsdistbetaGraphN {
-  let result = stats_dist_beta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_graphn_fill(s : StatsdistbetaGraphN, v : Double) -> StatsdistbetaGraphN {
-  let result = stats_dist_beta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_graphn_min(s : StatsdistbetaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_beta_node_sum(s : StatsdistbetaNode) -> Double { @_common.sum(
 pub fn stats_dist_beta_node_mean(s : StatsdistbetaNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_node_scale(s : StatsdistbetaNode, f : Double) -> StatsdistbetaNode {
-  let result = stats_dist_beta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_node_add(a : StatsdistbetaNode, b : StatsdistbetaNode) -> StatsdistbetaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_node_copy(s : StatsdistbetaNode) -> StatsdistbetaNode {
-  let result = stats_dist_beta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_node_fill(s : StatsdistbetaNode, v : Double) -> StatsdistbetaNode {
-  let result = stats_dist_beta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_node_min(s : StatsdistbetaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_beta_edge_sum(s : StatsdistbetaEdge) -> Double { @_common.sum(
 pub fn stats_dist_beta_edge_mean(s : StatsdistbetaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_edge_scale(s : StatsdistbetaEdge, f : Double) -> StatsdistbetaEdge {
-  let result = stats_dist_beta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_edge_add(a : StatsdistbetaEdge, b : StatsdistbetaEdge) -> StatsdistbetaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_edge_copy(s : StatsdistbetaEdge) -> StatsdistbetaEdge {
-  let result = stats_dist_beta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_edge_fill(s : StatsdistbetaEdge, v : Double) -> StatsdistbetaEdge {
-  let result = stats_dist_beta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_edge_min(s : StatsdistbetaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_beta_path_sum(s : StatsdistbetaPath) -> Double { @_common.sum(
 pub fn stats_dist_beta_path_mean(s : StatsdistbetaPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_path_scale(s : StatsdistbetaPath, f : Double) -> StatsdistbetaPath {
-  let result = stats_dist_beta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_path_add(a : StatsdistbetaPath, b : StatsdistbetaPath) -> StatsdistbetaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_path_copy(s : StatsdistbetaPath) -> StatsdistbetaPath {
-  let result = stats_dist_beta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_path_fill(s : StatsdistbetaPath, v : Double) -> StatsdistbetaPath {
-  let result = stats_dist_beta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_path_min(s : StatsdistbetaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_beta_cluster_sum(s : StatsdistbetaCluster) -> Double { @_commo
 pub fn stats_dist_beta_cluster_mean(s : StatsdistbetaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_cluster_scale(s : StatsdistbetaCluster, f : Double) -> StatsdistbetaCluster {
-  let result = stats_dist_beta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_cluster_add(a : StatsdistbetaCluster, b : StatsdistbetaCluster) -> StatsdistbetaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_cluster_copy(s : StatsdistbetaCluster) -> StatsdistbetaCluster {
-  let result = stats_dist_beta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_cluster_fill(s : StatsdistbetaCluster, v : Double) -> StatsdistbetaCluster {
-  let result = stats_dist_beta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_cluster_min(s : StatsdistbetaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_beta_model_sum(s : StatsdistbetaModel) -> Double { @_common.su
 pub fn stats_dist_beta_model_mean(s : StatsdistbetaModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_model_scale(s : StatsdistbetaModel, f : Double) -> StatsdistbetaModel {
-  let result = stats_dist_beta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_model_add(a : StatsdistbetaModel, b : StatsdistbetaModel) -> StatsdistbetaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_model_copy(s : StatsdistbetaModel) -> StatsdistbetaModel {
-  let result = stats_dist_beta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_model_fill(s : StatsdistbetaModel, v : Double) -> StatsdistbetaModel {
-  let result = stats_dist_beta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_model_min(s : StatsdistbetaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_beta_layer_sum(s : StatsdistbetaLayer) -> Double { @_common.su
 pub fn stats_dist_beta_layer_mean(s : StatsdistbetaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_layer_scale(s : StatsdistbetaLayer, f : Double) -> StatsdistbetaLayer {
-  let result = stats_dist_beta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_layer_add(a : StatsdistbetaLayer, b : StatsdistbetaLayer) -> StatsdistbetaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_layer_copy(s : StatsdistbetaLayer) -> StatsdistbetaLayer {
-  let result = stats_dist_beta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_layer_fill(s : StatsdistbetaLayer, v : Double) -> StatsdistbetaLayer {
-  let result = stats_dist_beta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_layer_min(s : StatsdistbetaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_beta_buffer_sum(s : StatsdistbetaBuffer) -> Double { @_common.
 pub fn stats_dist_beta_buffer_mean(s : StatsdistbetaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_buffer_scale(s : StatsdistbetaBuffer, f : Double) -> StatsdistbetaBuffer {
-  let result = stats_dist_beta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_buffer_add(a : StatsdistbetaBuffer, b : StatsdistbetaBuffer) -> StatsdistbetaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_buffer_copy(s : StatsdistbetaBuffer) -> StatsdistbetaBuffer {
-  let result = stats_dist_beta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_buffer_fill(s : StatsdistbetaBuffer, v : Double) -> StatsdistbetaBuffer {
-  let result = stats_dist_beta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_buffer_min(s : StatsdistbetaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_beta_cursor_sum(s : StatsdistbetaCursor) -> Double { @_common.
 pub fn stats_dist_beta_cursor_mean(s : StatsdistbetaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_cursor_scale(s : StatsdistbetaCursor, f : Double) -> StatsdistbetaCursor {
-  let result = stats_dist_beta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_cursor_add(a : StatsdistbetaCursor, b : StatsdistbetaCursor) -> StatsdistbetaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_cursor_copy(s : StatsdistbetaCursor) -> StatsdistbetaCursor {
-  let result = stats_dist_beta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_cursor_fill(s : StatsdistbetaCursor, v : Double) -> StatsdistbetaCursor {
-  let result = stats_dist_beta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_cursor_min(s : StatsdistbetaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_beta_view_sum(s : StatsdistbetaView) -> Double { @_common.sum(
 pub fn stats_dist_beta_view_mean(s : StatsdistbetaView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_view_scale(s : StatsdistbetaView, f : Double) -> StatsdistbetaView {
-  let result = stats_dist_beta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_view_add(a : StatsdistbetaView, b : StatsdistbetaView) -> StatsdistbetaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_view_copy(s : StatsdistbetaView) -> StatsdistbetaView {
-  let result = stats_dist_beta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_view_fill(s : StatsdistbetaView, v : Double) -> StatsdistbetaView {
-  let result = stats_dist_beta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_view_min(s : StatsdistbetaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_beta_range_sum(s : StatsdistbetaRange) -> Double { @_common.su
 pub fn stats_dist_beta_range_mean(s : StatsdistbetaRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_range_scale(s : StatsdistbetaRange, f : Double) -> StatsdistbetaRange {
-  let result = stats_dist_beta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_range_add(a : StatsdistbetaRange, b : StatsdistbetaRange) -> StatsdistbetaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_range_copy(s : StatsdistbetaRange) -> StatsdistbetaRange {
-  let result = stats_dist_beta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_range_fill(s : StatsdistbetaRange, v : Double) -> StatsdistbetaRange {
-  let result = stats_dist_beta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_range_min(s : StatsdistbetaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_beta_slice_sum(s : StatsdistbetaSlice) -> Double { @_common.su
 pub fn stats_dist_beta_slice_mean(s : StatsdistbetaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_slice_scale(s : StatsdistbetaSlice, f : Double) -> StatsdistbetaSlice {
-  let result = stats_dist_beta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_slice_add(a : StatsdistbetaSlice, b : StatsdistbetaSlice) -> StatsdistbetaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_beta_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_beta_slice_copy(s : StatsdistbetaSlice) -> StatsdistbetaSlice {
-  let result = stats_dist_beta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_slice_fill(s : StatsdistbetaSlice, v : Double) -> StatsdistbetaSlice {
-  let result = stats_dist_beta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_beta_slice_min(s : StatsdistbetaSlice) -> Double { @_common.min(s.data) }

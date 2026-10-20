@@ -383,28 +383,20 @@ pub fn sort_compare_selection_frame_sum(s : SortcompareselectionFrame) -> Double
 pub fn sort_compare_selection_frame_mean(s : SortcompareselectionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_frame_scale(s : SortcompareselectionFrame, f : Double) -> SortcompareselectionFrame {
-  let result = sort_compare_selection_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_frame_add(a : SortcompareselectionFrame, b : SortcompareselectionFrame) -> SortcompareselectionFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_frame_copy(s : SortcompareselectionFrame) -> SortcompareselectionFrame {
-  let result = sort_compare_selection_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_frame_fill(s : SortcompareselectionFrame, v : Double) -> SortcompareselectionFrame {
-  let result = sort_compare_selection_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_frame_min(s : SortcompareselectionFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_compare_selection_table_sum(s : SortcompareselectionTable) -> Double
 pub fn sort_compare_selection_table_mean(s : SortcompareselectionTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_table_scale(s : SortcompareselectionTable, f : Double) -> SortcompareselectionTable {
-  let result = sort_compare_selection_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_table_add(a : SortcompareselectionTable, b : SortcompareselectionTable) -> SortcompareselectionTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_table_copy(s : SortcompareselectionTable) -> SortcompareselectionTable {
-  let result = sort_compare_selection_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_table_fill(s : SortcompareselectionTable, v : Double) -> SortcompareselectionTable {
-  let result = sort_compare_selection_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_table_min(s : SortcompareselectionTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_compare_selection_graphn_sum(s : SortcompareselectionGraphN) -> Doub
 pub fn sort_compare_selection_graphn_mean(s : SortcompareselectionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_graphn_scale(s : SortcompareselectionGraphN, f : Double) -> SortcompareselectionGraphN {
-  let result = sort_compare_selection_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_graphn_add(a : SortcompareselectionGraphN, b : SortcompareselectionGraphN) -> SortcompareselectionGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_graphn_copy(s : SortcompareselectionGraphN) -> SortcompareselectionGraphN {
-  let result = sort_compare_selection_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_graphn_fill(s : SortcompareselectionGraphN, v : Double) -> SortcompareselectionGraphN {
-  let result = sort_compare_selection_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_graphn_min(s : SortcompareselectionGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_compare_selection_node_sum(s : SortcompareselectionNode) -> Double {
 pub fn sort_compare_selection_node_mean(s : SortcompareselectionNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_node_scale(s : SortcompareselectionNode, f : Double) -> SortcompareselectionNode {
-  let result = sort_compare_selection_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_node_add(a : SortcompareselectionNode, b : SortcompareselectionNode) -> SortcompareselectionNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_node_copy(s : SortcompareselectionNode) -> SortcompareselectionNode {
-  let result = sort_compare_selection_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_node_fill(s : SortcompareselectionNode, v : Double) -> SortcompareselectionNode {
-  let result = sort_compare_selection_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_node_min(s : SortcompareselectionNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_compare_selection_edge_sum(s : SortcompareselectionEdge) -> Double {
 pub fn sort_compare_selection_edge_mean(s : SortcompareselectionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_edge_scale(s : SortcompareselectionEdge, f : Double) -> SortcompareselectionEdge {
-  let result = sort_compare_selection_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_edge_add(a : SortcompareselectionEdge, b : SortcompareselectionEdge) -> SortcompareselectionEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_edge_copy(s : SortcompareselectionEdge) -> SortcompareselectionEdge {
-  let result = sort_compare_selection_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_edge_fill(s : SortcompareselectionEdge, v : Double) -> SortcompareselectionEdge {
-  let result = sort_compare_selection_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_edge_min(s : SortcompareselectionEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_compare_selection_path_sum(s : SortcompareselectionPath) -> Double {
 pub fn sort_compare_selection_path_mean(s : SortcompareselectionPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_path_scale(s : SortcompareselectionPath, f : Double) -> SortcompareselectionPath {
-  let result = sort_compare_selection_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_path_add(a : SortcompareselectionPath, b : SortcompareselectionPath) -> SortcompareselectionPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_path_copy(s : SortcompareselectionPath) -> SortcompareselectionPath {
-  let result = sort_compare_selection_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_path_fill(s : SortcompareselectionPath, v : Double) -> SortcompareselectionPath {
-  let result = sort_compare_selection_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_path_min(s : SortcompareselectionPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_compare_selection_cluster_sum(s : SortcompareselectionCluster) -> Do
 pub fn sort_compare_selection_cluster_mean(s : SortcompareselectionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_cluster_scale(s : SortcompareselectionCluster, f : Double) -> SortcompareselectionCluster {
-  let result = sort_compare_selection_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cluster_add(a : SortcompareselectionCluster, b : SortcompareselectionCluster) -> SortcompareselectionCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_cluster_copy(s : SortcompareselectionCluster) -> SortcompareselectionCluster {
-  let result = sort_compare_selection_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cluster_fill(s : SortcompareselectionCluster, v : Double) -> SortcompareselectionCluster {
-  let result = sort_compare_selection_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cluster_min(s : SortcompareselectionCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_compare_selection_model_sum(s : SortcompareselectionModel) -> Double
 pub fn sort_compare_selection_model_mean(s : SortcompareselectionModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_model_scale(s : SortcompareselectionModel, f : Double) -> SortcompareselectionModel {
-  let result = sort_compare_selection_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_model_add(a : SortcompareselectionModel, b : SortcompareselectionModel) -> SortcompareselectionModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_model_copy(s : SortcompareselectionModel) -> SortcompareselectionModel {
-  let result = sort_compare_selection_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_model_fill(s : SortcompareselectionModel, v : Double) -> SortcompareselectionModel {
-  let result = sort_compare_selection_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_model_min(s : SortcompareselectionModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_compare_selection_layer_sum(s : SortcompareselectionLayer) -> Double
 pub fn sort_compare_selection_layer_mean(s : SortcompareselectionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_layer_scale(s : SortcompareselectionLayer, f : Double) -> SortcompareselectionLayer {
-  let result = sort_compare_selection_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_layer_add(a : SortcompareselectionLayer, b : SortcompareselectionLayer) -> SortcompareselectionLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_layer_copy(s : SortcompareselectionLayer) -> SortcompareselectionLayer {
-  let result = sort_compare_selection_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_layer_fill(s : SortcompareselectionLayer, v : Double) -> SortcompareselectionLayer {
-  let result = sort_compare_selection_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_layer_min(s : SortcompareselectionLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_compare_selection_buffer_sum(s : SortcompareselectionBuffer) -> Doub
 pub fn sort_compare_selection_buffer_mean(s : SortcompareselectionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_buffer_scale(s : SortcompareselectionBuffer, f : Double) -> SortcompareselectionBuffer {
-  let result = sort_compare_selection_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_buffer_add(a : SortcompareselectionBuffer, b : SortcompareselectionBuffer) -> SortcompareselectionBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_buffer_copy(s : SortcompareselectionBuffer) -> SortcompareselectionBuffer {
-  let result = sort_compare_selection_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_buffer_fill(s : SortcompareselectionBuffer, v : Double) -> SortcompareselectionBuffer {
-  let result = sort_compare_selection_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_buffer_min(s : SortcompareselectionBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_compare_selection_cursor_sum(s : SortcompareselectionCursor) -> Doub
 pub fn sort_compare_selection_cursor_mean(s : SortcompareselectionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_cursor_scale(s : SortcompareselectionCursor, f : Double) -> SortcompareselectionCursor {
-  let result = sort_compare_selection_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cursor_add(a : SortcompareselectionCursor, b : SortcompareselectionCursor) -> SortcompareselectionCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_cursor_copy(s : SortcompareselectionCursor) -> SortcompareselectionCursor {
-  let result = sort_compare_selection_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cursor_fill(s : SortcompareselectionCursor, v : Double) -> SortcompareselectionCursor {
-  let result = sort_compare_selection_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cursor_min(s : SortcompareselectionCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_compare_selection_view_sum(s : SortcompareselectionView) -> Double {
 pub fn sort_compare_selection_view_mean(s : SortcompareselectionView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_view_scale(s : SortcompareselectionView, f : Double) -> SortcompareselectionView {
-  let result = sort_compare_selection_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_view_add(a : SortcompareselectionView, b : SortcompareselectionView) -> SortcompareselectionView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_view_copy(s : SortcompareselectionView) -> SortcompareselectionView {
-  let result = sort_compare_selection_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_view_fill(s : SortcompareselectionView, v : Double) -> SortcompareselectionView {
-  let result = sort_compare_selection_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_view_min(s : SortcompareselectionView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_compare_selection_range_sum(s : SortcompareselectionRange) -> Double
 pub fn sort_compare_selection_range_mean(s : SortcompareselectionRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_range_scale(s : SortcompareselectionRange, f : Double) -> SortcompareselectionRange {
-  let result = sort_compare_selection_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_range_add(a : SortcompareselectionRange, b : SortcompareselectionRange) -> SortcompareselectionRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_range_copy(s : SortcompareselectionRange) -> SortcompareselectionRange {
-  let result = sort_compare_selection_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_range_fill(s : SortcompareselectionRange, v : Double) -> SortcompareselectionRange {
-  let result = sort_compare_selection_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_range_min(s : SortcompareselectionRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_compare_selection_slice_sum(s : SortcompareselectionSlice) -> Double
 pub fn sort_compare_selection_slice_mean(s : SortcompareselectionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_slice_scale(s : SortcompareselectionSlice, f : Double) -> SortcompareselectionSlice {
-  let result = sort_compare_selection_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_slice_add(a : SortcompareselectionSlice, b : SortcompareselectionSlice) -> SortcompareselectionSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_selection_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_selection_slice_copy(s : SortcompareselectionSlice) -> SortcompareselectionSlice {
-  let result = sort_compare_selection_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_slice_fill(s : SortcompareselectionSlice, v : Double) -> SortcompareselectionSlice {
-  let result = sort_compare_selection_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_slice_min(s : SortcompareselectionSlice) -> Double { @_common.min(s.data) }

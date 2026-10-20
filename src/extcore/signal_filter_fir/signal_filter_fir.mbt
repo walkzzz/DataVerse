@@ -383,28 +383,20 @@ pub fn signal_filter_fir_frame_sum(s : SignalfilterfirFrame) -> Double { @_commo
 pub fn signal_filter_fir_frame_mean(s : SignalfilterfirFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_frame_scale(s : SignalfilterfirFrame, f : Double) -> SignalfilterfirFrame {
-  let result = signal_filter_fir_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_frame_add(a : SignalfilterfirFrame, b : SignalfilterfirFrame) -> SignalfilterfirFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_frame_copy(s : SignalfilterfirFrame) -> SignalfilterfirFrame {
-  let result = signal_filter_fir_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_frame_fill(s : SignalfilterfirFrame, v : Double) -> SignalfilterfirFrame {
-  let result = signal_filter_fir_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_frame_min(s : SignalfilterfirFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_filter_fir_table_sum(s : SignalfilterfirTable) -> Double { @_commo
 pub fn signal_filter_fir_table_mean(s : SignalfilterfirTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_table_scale(s : SignalfilterfirTable, f : Double) -> SignalfilterfirTable {
-  let result = signal_filter_fir_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_table_add(a : SignalfilterfirTable, b : SignalfilterfirTable) -> SignalfilterfirTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_table_copy(s : SignalfilterfirTable) -> SignalfilterfirTable {
-  let result = signal_filter_fir_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_table_fill(s : SignalfilterfirTable, v : Double) -> SignalfilterfirTable {
-  let result = signal_filter_fir_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_table_min(s : SignalfilterfirTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_filter_fir_graphn_sum(s : SignalfilterfirGraphN) -> Double { @_com
 pub fn signal_filter_fir_graphn_mean(s : SignalfilterfirGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_graphn_scale(s : SignalfilterfirGraphN, f : Double) -> SignalfilterfirGraphN {
-  let result = signal_filter_fir_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_graphn_add(a : SignalfilterfirGraphN, b : SignalfilterfirGraphN) -> SignalfilterfirGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_graphn_copy(s : SignalfilterfirGraphN) -> SignalfilterfirGraphN {
-  let result = signal_filter_fir_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_graphn_fill(s : SignalfilterfirGraphN, v : Double) -> SignalfilterfirGraphN {
-  let result = signal_filter_fir_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_graphn_min(s : SignalfilterfirGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_filter_fir_node_sum(s : SignalfilterfirNode) -> Double { @_common.
 pub fn signal_filter_fir_node_mean(s : SignalfilterfirNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_node_scale(s : SignalfilterfirNode, f : Double) -> SignalfilterfirNode {
-  let result = signal_filter_fir_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_node_add(a : SignalfilterfirNode, b : SignalfilterfirNode) -> SignalfilterfirNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_node_copy(s : SignalfilterfirNode) -> SignalfilterfirNode {
-  let result = signal_filter_fir_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_node_fill(s : SignalfilterfirNode, v : Double) -> SignalfilterfirNode {
-  let result = signal_filter_fir_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_node_min(s : SignalfilterfirNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_filter_fir_edge_sum(s : SignalfilterfirEdge) -> Double { @_common.
 pub fn signal_filter_fir_edge_mean(s : SignalfilterfirEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_edge_scale(s : SignalfilterfirEdge, f : Double) -> SignalfilterfirEdge {
-  let result = signal_filter_fir_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_edge_add(a : SignalfilterfirEdge, b : SignalfilterfirEdge) -> SignalfilterfirEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_edge_copy(s : SignalfilterfirEdge) -> SignalfilterfirEdge {
-  let result = signal_filter_fir_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_edge_fill(s : SignalfilterfirEdge, v : Double) -> SignalfilterfirEdge {
-  let result = signal_filter_fir_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_edge_min(s : SignalfilterfirEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_filter_fir_path_sum(s : SignalfilterfirPath) -> Double { @_common.
 pub fn signal_filter_fir_path_mean(s : SignalfilterfirPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_path_scale(s : SignalfilterfirPath, f : Double) -> SignalfilterfirPath {
-  let result = signal_filter_fir_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_path_add(a : SignalfilterfirPath, b : SignalfilterfirPath) -> SignalfilterfirPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_path_copy(s : SignalfilterfirPath) -> SignalfilterfirPath {
-  let result = signal_filter_fir_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_path_fill(s : SignalfilterfirPath, v : Double) -> SignalfilterfirPath {
-  let result = signal_filter_fir_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_path_min(s : SignalfilterfirPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_filter_fir_cluster_sum(s : SignalfilterfirCluster) -> Double { @_c
 pub fn signal_filter_fir_cluster_mean(s : SignalfilterfirCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_cluster_scale(s : SignalfilterfirCluster, f : Double) -> SignalfilterfirCluster {
-  let result = signal_filter_fir_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_cluster_add(a : SignalfilterfirCluster, b : SignalfilterfirCluster) -> SignalfilterfirCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_cluster_copy(s : SignalfilterfirCluster) -> SignalfilterfirCluster {
-  let result = signal_filter_fir_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_cluster_fill(s : SignalfilterfirCluster, v : Double) -> SignalfilterfirCluster {
-  let result = signal_filter_fir_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_cluster_min(s : SignalfilterfirCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_filter_fir_model_sum(s : SignalfilterfirModel) -> Double { @_commo
 pub fn signal_filter_fir_model_mean(s : SignalfilterfirModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_model_scale(s : SignalfilterfirModel, f : Double) -> SignalfilterfirModel {
-  let result = signal_filter_fir_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_model_add(a : SignalfilterfirModel, b : SignalfilterfirModel) -> SignalfilterfirModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_model_copy(s : SignalfilterfirModel) -> SignalfilterfirModel {
-  let result = signal_filter_fir_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_model_fill(s : SignalfilterfirModel, v : Double) -> SignalfilterfirModel {
-  let result = signal_filter_fir_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_model_min(s : SignalfilterfirModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_filter_fir_layer_sum(s : SignalfilterfirLayer) -> Double { @_commo
 pub fn signal_filter_fir_layer_mean(s : SignalfilterfirLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_layer_scale(s : SignalfilterfirLayer, f : Double) -> SignalfilterfirLayer {
-  let result = signal_filter_fir_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_layer_add(a : SignalfilterfirLayer, b : SignalfilterfirLayer) -> SignalfilterfirLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_layer_copy(s : SignalfilterfirLayer) -> SignalfilterfirLayer {
-  let result = signal_filter_fir_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_layer_fill(s : SignalfilterfirLayer, v : Double) -> SignalfilterfirLayer {
-  let result = signal_filter_fir_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_layer_min(s : SignalfilterfirLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_filter_fir_buffer_sum(s : SignalfilterfirBuffer) -> Double { @_com
 pub fn signal_filter_fir_buffer_mean(s : SignalfilterfirBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_buffer_scale(s : SignalfilterfirBuffer, f : Double) -> SignalfilterfirBuffer {
-  let result = signal_filter_fir_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_buffer_add(a : SignalfilterfirBuffer, b : SignalfilterfirBuffer) -> SignalfilterfirBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_buffer_copy(s : SignalfilterfirBuffer) -> SignalfilterfirBuffer {
-  let result = signal_filter_fir_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_buffer_fill(s : SignalfilterfirBuffer, v : Double) -> SignalfilterfirBuffer {
-  let result = signal_filter_fir_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_buffer_min(s : SignalfilterfirBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_filter_fir_cursor_sum(s : SignalfilterfirCursor) -> Double { @_com
 pub fn signal_filter_fir_cursor_mean(s : SignalfilterfirCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_cursor_scale(s : SignalfilterfirCursor, f : Double) -> SignalfilterfirCursor {
-  let result = signal_filter_fir_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_cursor_add(a : SignalfilterfirCursor, b : SignalfilterfirCursor) -> SignalfilterfirCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_cursor_copy(s : SignalfilterfirCursor) -> SignalfilterfirCursor {
-  let result = signal_filter_fir_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_cursor_fill(s : SignalfilterfirCursor, v : Double) -> SignalfilterfirCursor {
-  let result = signal_filter_fir_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_cursor_min(s : SignalfilterfirCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_filter_fir_view_sum(s : SignalfilterfirView) -> Double { @_common.
 pub fn signal_filter_fir_view_mean(s : SignalfilterfirView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_view_scale(s : SignalfilterfirView, f : Double) -> SignalfilterfirView {
-  let result = signal_filter_fir_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_view_add(a : SignalfilterfirView, b : SignalfilterfirView) -> SignalfilterfirView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_view_copy(s : SignalfilterfirView) -> SignalfilterfirView {
-  let result = signal_filter_fir_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_view_fill(s : SignalfilterfirView, v : Double) -> SignalfilterfirView {
-  let result = signal_filter_fir_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_view_min(s : SignalfilterfirView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_filter_fir_range_sum(s : SignalfilterfirRange) -> Double { @_commo
 pub fn signal_filter_fir_range_mean(s : SignalfilterfirRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_range_scale(s : SignalfilterfirRange, f : Double) -> SignalfilterfirRange {
-  let result = signal_filter_fir_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_range_add(a : SignalfilterfirRange, b : SignalfilterfirRange) -> SignalfilterfirRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_range_copy(s : SignalfilterfirRange) -> SignalfilterfirRange {
-  let result = signal_filter_fir_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_range_fill(s : SignalfilterfirRange, v : Double) -> SignalfilterfirRange {
-  let result = signal_filter_fir_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_range_min(s : SignalfilterfirRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_filter_fir_slice_sum(s : SignalfilterfirSlice) -> Double { @_commo
 pub fn signal_filter_fir_slice_mean(s : SignalfilterfirSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_slice_scale(s : SignalfilterfirSlice, f : Double) -> SignalfilterfirSlice {
-  let result = signal_filter_fir_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_slice_add(a : SignalfilterfirSlice, b : SignalfilterfirSlice) -> SignalfilterfirSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_fir_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_fir_slice_copy(s : SignalfilterfirSlice) -> SignalfilterfirSlice {
-  let result = signal_filter_fir_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_slice_fill(s : SignalfilterfirSlice, v : Double) -> SignalfilterfirSlice {
-  let result = signal_filter_fir_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_fir_slice_min(s : SignalfilterfirSlice) -> Double { @_common.min(s.data) }

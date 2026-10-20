@@ -383,28 +383,20 @@ pub fn math_finite_element_frame_sum(s : MathfiniteelementFrame) -> Double { @_c
 pub fn math_finite_element_frame_mean(s : MathfiniteelementFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_frame_scale(s : MathfiniteelementFrame, f : Double) -> MathfiniteelementFrame {
-  let result = math_finite_element_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_frame_add(a : MathfiniteelementFrame, b : MathfiniteelementFrame) -> MathfiniteelementFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_frame_copy(s : MathfiniteelementFrame) -> MathfiniteelementFrame {
-  let result = math_finite_element_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_frame_fill(s : MathfiniteelementFrame, v : Double) -> MathfiniteelementFrame {
-  let result = math_finite_element_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_frame_min(s : MathfiniteelementFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_finite_element_table_sum(s : MathfiniteelementTable) -> Double { @_c
 pub fn math_finite_element_table_mean(s : MathfiniteelementTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_table_scale(s : MathfiniteelementTable, f : Double) -> MathfiniteelementTable {
-  let result = math_finite_element_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_table_add(a : MathfiniteelementTable, b : MathfiniteelementTable) -> MathfiniteelementTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_table_copy(s : MathfiniteelementTable) -> MathfiniteelementTable {
-  let result = math_finite_element_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_table_fill(s : MathfiniteelementTable, v : Double) -> MathfiniteelementTable {
-  let result = math_finite_element_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_table_min(s : MathfiniteelementTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_finite_element_graphn_sum(s : MathfiniteelementGraphN) -> Double { @
 pub fn math_finite_element_graphn_mean(s : MathfiniteelementGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_graphn_scale(s : MathfiniteelementGraphN, f : Double) -> MathfiniteelementGraphN {
-  let result = math_finite_element_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_graphn_add(a : MathfiniteelementGraphN, b : MathfiniteelementGraphN) -> MathfiniteelementGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_graphn_copy(s : MathfiniteelementGraphN) -> MathfiniteelementGraphN {
-  let result = math_finite_element_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_graphn_fill(s : MathfiniteelementGraphN, v : Double) -> MathfiniteelementGraphN {
-  let result = math_finite_element_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_graphn_min(s : MathfiniteelementGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_finite_element_node_sum(s : MathfiniteelementNode) -> Double { @_com
 pub fn math_finite_element_node_mean(s : MathfiniteelementNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_node_scale(s : MathfiniteelementNode, f : Double) -> MathfiniteelementNode {
-  let result = math_finite_element_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_node_add(a : MathfiniteelementNode, b : MathfiniteelementNode) -> MathfiniteelementNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_node_copy(s : MathfiniteelementNode) -> MathfiniteelementNode {
-  let result = math_finite_element_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_node_fill(s : MathfiniteelementNode, v : Double) -> MathfiniteelementNode {
-  let result = math_finite_element_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_node_min(s : MathfiniteelementNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_finite_element_edge_sum(s : MathfiniteelementEdge) -> Double { @_com
 pub fn math_finite_element_edge_mean(s : MathfiniteelementEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_edge_scale(s : MathfiniteelementEdge, f : Double) -> MathfiniteelementEdge {
-  let result = math_finite_element_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_edge_add(a : MathfiniteelementEdge, b : MathfiniteelementEdge) -> MathfiniteelementEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_edge_copy(s : MathfiniteelementEdge) -> MathfiniteelementEdge {
-  let result = math_finite_element_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_edge_fill(s : MathfiniteelementEdge, v : Double) -> MathfiniteelementEdge {
-  let result = math_finite_element_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_edge_min(s : MathfiniteelementEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_finite_element_path_sum(s : MathfiniteelementPath) -> Double { @_com
 pub fn math_finite_element_path_mean(s : MathfiniteelementPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_path_scale(s : MathfiniteelementPath, f : Double) -> MathfiniteelementPath {
-  let result = math_finite_element_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_path_add(a : MathfiniteelementPath, b : MathfiniteelementPath) -> MathfiniteelementPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_path_copy(s : MathfiniteelementPath) -> MathfiniteelementPath {
-  let result = math_finite_element_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_path_fill(s : MathfiniteelementPath, v : Double) -> MathfiniteelementPath {
-  let result = math_finite_element_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_path_min(s : MathfiniteelementPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_finite_element_cluster_sum(s : MathfiniteelementCluster) -> Double {
 pub fn math_finite_element_cluster_mean(s : MathfiniteelementCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_cluster_scale(s : MathfiniteelementCluster, f : Double) -> MathfiniteelementCluster {
-  let result = math_finite_element_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_cluster_add(a : MathfiniteelementCluster, b : MathfiniteelementCluster) -> MathfiniteelementCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_cluster_copy(s : MathfiniteelementCluster) -> MathfiniteelementCluster {
-  let result = math_finite_element_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_cluster_fill(s : MathfiniteelementCluster, v : Double) -> MathfiniteelementCluster {
-  let result = math_finite_element_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_cluster_min(s : MathfiniteelementCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_finite_element_model_sum(s : MathfiniteelementModel) -> Double { @_c
 pub fn math_finite_element_model_mean(s : MathfiniteelementModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_model_scale(s : MathfiniteelementModel, f : Double) -> MathfiniteelementModel {
-  let result = math_finite_element_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_model_add(a : MathfiniteelementModel, b : MathfiniteelementModel) -> MathfiniteelementModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_model_copy(s : MathfiniteelementModel) -> MathfiniteelementModel {
-  let result = math_finite_element_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_model_fill(s : MathfiniteelementModel, v : Double) -> MathfiniteelementModel {
-  let result = math_finite_element_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_model_min(s : MathfiniteelementModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_finite_element_layer_sum(s : MathfiniteelementLayer) -> Double { @_c
 pub fn math_finite_element_layer_mean(s : MathfiniteelementLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_layer_scale(s : MathfiniteelementLayer, f : Double) -> MathfiniteelementLayer {
-  let result = math_finite_element_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_layer_add(a : MathfiniteelementLayer, b : MathfiniteelementLayer) -> MathfiniteelementLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_layer_copy(s : MathfiniteelementLayer) -> MathfiniteelementLayer {
-  let result = math_finite_element_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_layer_fill(s : MathfiniteelementLayer, v : Double) -> MathfiniteelementLayer {
-  let result = math_finite_element_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_layer_min(s : MathfiniteelementLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_finite_element_buffer_sum(s : MathfiniteelementBuffer) -> Double { @
 pub fn math_finite_element_buffer_mean(s : MathfiniteelementBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_buffer_scale(s : MathfiniteelementBuffer, f : Double) -> MathfiniteelementBuffer {
-  let result = math_finite_element_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_buffer_add(a : MathfiniteelementBuffer, b : MathfiniteelementBuffer) -> MathfiniteelementBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_buffer_copy(s : MathfiniteelementBuffer) -> MathfiniteelementBuffer {
-  let result = math_finite_element_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_buffer_fill(s : MathfiniteelementBuffer, v : Double) -> MathfiniteelementBuffer {
-  let result = math_finite_element_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_buffer_min(s : MathfiniteelementBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_finite_element_cursor_sum(s : MathfiniteelementCursor) -> Double { @
 pub fn math_finite_element_cursor_mean(s : MathfiniteelementCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_cursor_scale(s : MathfiniteelementCursor, f : Double) -> MathfiniteelementCursor {
-  let result = math_finite_element_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_cursor_add(a : MathfiniteelementCursor, b : MathfiniteelementCursor) -> MathfiniteelementCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_cursor_copy(s : MathfiniteelementCursor) -> MathfiniteelementCursor {
-  let result = math_finite_element_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_cursor_fill(s : MathfiniteelementCursor, v : Double) -> MathfiniteelementCursor {
-  let result = math_finite_element_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_cursor_min(s : MathfiniteelementCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_finite_element_view_sum(s : MathfiniteelementView) -> Double { @_com
 pub fn math_finite_element_view_mean(s : MathfiniteelementView) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_view_scale(s : MathfiniteelementView, f : Double) -> MathfiniteelementView {
-  let result = math_finite_element_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_view_add(a : MathfiniteelementView, b : MathfiniteelementView) -> MathfiniteelementView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_view_copy(s : MathfiniteelementView) -> MathfiniteelementView {
-  let result = math_finite_element_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_view_fill(s : MathfiniteelementView, v : Double) -> MathfiniteelementView {
-  let result = math_finite_element_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_view_min(s : MathfiniteelementView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_finite_element_range_sum(s : MathfiniteelementRange) -> Double { @_c
 pub fn math_finite_element_range_mean(s : MathfiniteelementRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_range_scale(s : MathfiniteelementRange, f : Double) -> MathfiniteelementRange {
-  let result = math_finite_element_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_range_add(a : MathfiniteelementRange, b : MathfiniteelementRange) -> MathfiniteelementRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_range_copy(s : MathfiniteelementRange) -> MathfiniteelementRange {
-  let result = math_finite_element_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_range_fill(s : MathfiniteelementRange, v : Double) -> MathfiniteelementRange {
-  let result = math_finite_element_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_range_min(s : MathfiniteelementRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_finite_element_slice_sum(s : MathfiniteelementSlice) -> Double { @_c
 pub fn math_finite_element_slice_mean(s : MathfiniteelementSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_slice_scale(s : MathfiniteelementSlice, f : Double) -> MathfiniteelementSlice {
-  let result = math_finite_element_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_slice_add(a : MathfiniteelementSlice, b : MathfiniteelementSlice) -> MathfiniteelementSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_element_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_element_slice_copy(s : MathfiniteelementSlice) -> MathfiniteelementSlice {
-  let result = math_finite_element_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_slice_fill(s : MathfiniteelementSlice, v : Double) -> MathfiniteelementSlice {
-  let result = math_finite_element_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_element_slice_min(s : MathfiniteelementSlice) -> Double { @_common.min(s.data) }

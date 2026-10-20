@@ -383,28 +383,20 @@ pub fn nlp_parse_malt_frame_sum(s : NlpparsemaltFrame) -> Double { @_common.sum(
 pub fn nlp_parse_malt_frame_mean(s : NlpparsemaltFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_frame_scale(s : NlpparsemaltFrame, f : Double) -> NlpparsemaltFrame {
-  let result = nlp_parse_malt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_frame_add(a : NlpparsemaltFrame, b : NlpparsemaltFrame) -> NlpparsemaltFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_frame_copy(s : NlpparsemaltFrame) -> NlpparsemaltFrame {
-  let result = nlp_parse_malt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_frame_fill(s : NlpparsemaltFrame, v : Double) -> NlpparsemaltFrame {
-  let result = nlp_parse_malt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_frame_min(s : NlpparsemaltFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_parse_malt_table_sum(s : NlpparsemaltTable) -> Double { @_common.sum(
 pub fn nlp_parse_malt_table_mean(s : NlpparsemaltTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_table_scale(s : NlpparsemaltTable, f : Double) -> NlpparsemaltTable {
-  let result = nlp_parse_malt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_table_add(a : NlpparsemaltTable, b : NlpparsemaltTable) -> NlpparsemaltTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_table_copy(s : NlpparsemaltTable) -> NlpparsemaltTable {
-  let result = nlp_parse_malt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_table_fill(s : NlpparsemaltTable, v : Double) -> NlpparsemaltTable {
-  let result = nlp_parse_malt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_table_min(s : NlpparsemaltTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_parse_malt_graphn_sum(s : NlpparsemaltGraphN) -> Double { @_common.su
 pub fn nlp_parse_malt_graphn_mean(s : NlpparsemaltGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_graphn_scale(s : NlpparsemaltGraphN, f : Double) -> NlpparsemaltGraphN {
-  let result = nlp_parse_malt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_graphn_add(a : NlpparsemaltGraphN, b : NlpparsemaltGraphN) -> NlpparsemaltGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_graphn_copy(s : NlpparsemaltGraphN) -> NlpparsemaltGraphN {
-  let result = nlp_parse_malt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_graphn_fill(s : NlpparsemaltGraphN, v : Double) -> NlpparsemaltGraphN {
-  let result = nlp_parse_malt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_graphn_min(s : NlpparsemaltGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_parse_malt_node_sum(s : NlpparsemaltNode) -> Double { @_common.sum(s.
 pub fn nlp_parse_malt_node_mean(s : NlpparsemaltNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_node_scale(s : NlpparsemaltNode, f : Double) -> NlpparsemaltNode {
-  let result = nlp_parse_malt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_node_add(a : NlpparsemaltNode, b : NlpparsemaltNode) -> NlpparsemaltNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_node_copy(s : NlpparsemaltNode) -> NlpparsemaltNode {
-  let result = nlp_parse_malt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_node_fill(s : NlpparsemaltNode, v : Double) -> NlpparsemaltNode {
-  let result = nlp_parse_malt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_node_min(s : NlpparsemaltNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_parse_malt_edge_sum(s : NlpparsemaltEdge) -> Double { @_common.sum(s.
 pub fn nlp_parse_malt_edge_mean(s : NlpparsemaltEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_edge_scale(s : NlpparsemaltEdge, f : Double) -> NlpparsemaltEdge {
-  let result = nlp_parse_malt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_edge_add(a : NlpparsemaltEdge, b : NlpparsemaltEdge) -> NlpparsemaltEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_edge_copy(s : NlpparsemaltEdge) -> NlpparsemaltEdge {
-  let result = nlp_parse_malt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_edge_fill(s : NlpparsemaltEdge, v : Double) -> NlpparsemaltEdge {
-  let result = nlp_parse_malt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_edge_min(s : NlpparsemaltEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_parse_malt_path_sum(s : NlpparsemaltPath) -> Double { @_common.sum(s.
 pub fn nlp_parse_malt_path_mean(s : NlpparsemaltPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_path_scale(s : NlpparsemaltPath, f : Double) -> NlpparsemaltPath {
-  let result = nlp_parse_malt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_path_add(a : NlpparsemaltPath, b : NlpparsemaltPath) -> NlpparsemaltPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_path_copy(s : NlpparsemaltPath) -> NlpparsemaltPath {
-  let result = nlp_parse_malt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_path_fill(s : NlpparsemaltPath, v : Double) -> NlpparsemaltPath {
-  let result = nlp_parse_malt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_path_min(s : NlpparsemaltPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_parse_malt_cluster_sum(s : NlpparsemaltCluster) -> Double { @_common.
 pub fn nlp_parse_malt_cluster_mean(s : NlpparsemaltCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_cluster_scale(s : NlpparsemaltCluster, f : Double) -> NlpparsemaltCluster {
-  let result = nlp_parse_malt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cluster_add(a : NlpparsemaltCluster, b : NlpparsemaltCluster) -> NlpparsemaltCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_cluster_copy(s : NlpparsemaltCluster) -> NlpparsemaltCluster {
-  let result = nlp_parse_malt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cluster_fill(s : NlpparsemaltCluster, v : Double) -> NlpparsemaltCluster {
-  let result = nlp_parse_malt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cluster_min(s : NlpparsemaltCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_parse_malt_model_sum(s : NlpparsemaltModel) -> Double { @_common.sum(
 pub fn nlp_parse_malt_model_mean(s : NlpparsemaltModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_model_scale(s : NlpparsemaltModel, f : Double) -> NlpparsemaltModel {
-  let result = nlp_parse_malt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_model_add(a : NlpparsemaltModel, b : NlpparsemaltModel) -> NlpparsemaltModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_model_copy(s : NlpparsemaltModel) -> NlpparsemaltModel {
-  let result = nlp_parse_malt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_model_fill(s : NlpparsemaltModel, v : Double) -> NlpparsemaltModel {
-  let result = nlp_parse_malt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_model_min(s : NlpparsemaltModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_parse_malt_layer_sum(s : NlpparsemaltLayer) -> Double { @_common.sum(
 pub fn nlp_parse_malt_layer_mean(s : NlpparsemaltLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_layer_scale(s : NlpparsemaltLayer, f : Double) -> NlpparsemaltLayer {
-  let result = nlp_parse_malt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_layer_add(a : NlpparsemaltLayer, b : NlpparsemaltLayer) -> NlpparsemaltLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_layer_copy(s : NlpparsemaltLayer) -> NlpparsemaltLayer {
-  let result = nlp_parse_malt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_layer_fill(s : NlpparsemaltLayer, v : Double) -> NlpparsemaltLayer {
-  let result = nlp_parse_malt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_layer_min(s : NlpparsemaltLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_parse_malt_buffer_sum(s : NlpparsemaltBuffer) -> Double { @_common.su
 pub fn nlp_parse_malt_buffer_mean(s : NlpparsemaltBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_buffer_scale(s : NlpparsemaltBuffer, f : Double) -> NlpparsemaltBuffer {
-  let result = nlp_parse_malt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_buffer_add(a : NlpparsemaltBuffer, b : NlpparsemaltBuffer) -> NlpparsemaltBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_buffer_copy(s : NlpparsemaltBuffer) -> NlpparsemaltBuffer {
-  let result = nlp_parse_malt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_buffer_fill(s : NlpparsemaltBuffer, v : Double) -> NlpparsemaltBuffer {
-  let result = nlp_parse_malt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_buffer_min(s : NlpparsemaltBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_parse_malt_cursor_sum(s : NlpparsemaltCursor) -> Double { @_common.su
 pub fn nlp_parse_malt_cursor_mean(s : NlpparsemaltCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_cursor_scale(s : NlpparsemaltCursor, f : Double) -> NlpparsemaltCursor {
-  let result = nlp_parse_malt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cursor_add(a : NlpparsemaltCursor, b : NlpparsemaltCursor) -> NlpparsemaltCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_cursor_copy(s : NlpparsemaltCursor) -> NlpparsemaltCursor {
-  let result = nlp_parse_malt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cursor_fill(s : NlpparsemaltCursor, v : Double) -> NlpparsemaltCursor {
-  let result = nlp_parse_malt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cursor_min(s : NlpparsemaltCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_parse_malt_view_sum(s : NlpparsemaltView) -> Double { @_common.sum(s.
 pub fn nlp_parse_malt_view_mean(s : NlpparsemaltView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_view_scale(s : NlpparsemaltView, f : Double) -> NlpparsemaltView {
-  let result = nlp_parse_malt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_view_add(a : NlpparsemaltView, b : NlpparsemaltView) -> NlpparsemaltView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_view_copy(s : NlpparsemaltView) -> NlpparsemaltView {
-  let result = nlp_parse_malt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_view_fill(s : NlpparsemaltView, v : Double) -> NlpparsemaltView {
-  let result = nlp_parse_malt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_view_min(s : NlpparsemaltView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_parse_malt_range_sum(s : NlpparsemaltRange) -> Double { @_common.sum(
 pub fn nlp_parse_malt_range_mean(s : NlpparsemaltRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_range_scale(s : NlpparsemaltRange, f : Double) -> NlpparsemaltRange {
-  let result = nlp_parse_malt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_range_add(a : NlpparsemaltRange, b : NlpparsemaltRange) -> NlpparsemaltRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_range_copy(s : NlpparsemaltRange) -> NlpparsemaltRange {
-  let result = nlp_parse_malt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_range_fill(s : NlpparsemaltRange, v : Double) -> NlpparsemaltRange {
-  let result = nlp_parse_malt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_range_min(s : NlpparsemaltRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_parse_malt_slice_sum(s : NlpparsemaltSlice) -> Double { @_common.sum(
 pub fn nlp_parse_malt_slice_mean(s : NlpparsemaltSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_slice_scale(s : NlpparsemaltSlice, f : Double) -> NlpparsemaltSlice {
-  let result = nlp_parse_malt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_slice_add(a : NlpparsemaltSlice, b : NlpparsemaltSlice) -> NlpparsemaltSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_malt_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_malt_slice_copy(s : NlpparsemaltSlice) -> NlpparsemaltSlice {
-  let result = nlp_parse_malt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_slice_fill(s : NlpparsemaltSlice, v : Double) -> NlpparsemaltSlice {
-  let result = nlp_parse_malt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_slice_min(s : NlpparsemaltSlice) -> Double { @_common.min(s.data) }

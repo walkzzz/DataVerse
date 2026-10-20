@@ -383,28 +383,20 @@ pub fn nlp_embed_gpt_frame_sum(s : NlpembedgptFrame) -> Double { @_common.sum(s.
 pub fn nlp_embed_gpt_frame_mean(s : NlpembedgptFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_frame_scale(s : NlpembedgptFrame, f : Double) -> NlpembedgptFrame {
-  let result = nlp_embed_gpt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_frame_add(a : NlpembedgptFrame, b : NlpembedgptFrame) -> NlpembedgptFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_frame_copy(s : NlpembedgptFrame) -> NlpembedgptFrame {
-  let result = nlp_embed_gpt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_frame_fill(s : NlpembedgptFrame, v : Double) -> NlpembedgptFrame {
-  let result = nlp_embed_gpt_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_frame_min(s : NlpembedgptFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_embed_gpt_table_sum(s : NlpembedgptTable) -> Double { @_common.sum(s.
 pub fn nlp_embed_gpt_table_mean(s : NlpembedgptTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_table_scale(s : NlpembedgptTable, f : Double) -> NlpembedgptTable {
-  let result = nlp_embed_gpt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_table_add(a : NlpembedgptTable, b : NlpembedgptTable) -> NlpembedgptTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_table_copy(s : NlpembedgptTable) -> NlpembedgptTable {
-  let result = nlp_embed_gpt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_table_fill(s : NlpembedgptTable, v : Double) -> NlpembedgptTable {
-  let result = nlp_embed_gpt_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_table_min(s : NlpembedgptTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_embed_gpt_graphn_sum(s : NlpembedgptGraphN) -> Double { @_common.sum(
 pub fn nlp_embed_gpt_graphn_mean(s : NlpembedgptGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_graphn_scale(s : NlpembedgptGraphN, f : Double) -> NlpembedgptGraphN {
-  let result = nlp_embed_gpt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_graphn_add(a : NlpembedgptGraphN, b : NlpembedgptGraphN) -> NlpembedgptGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_graphn_copy(s : NlpembedgptGraphN) -> NlpembedgptGraphN {
-  let result = nlp_embed_gpt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_graphn_fill(s : NlpembedgptGraphN, v : Double) -> NlpembedgptGraphN {
-  let result = nlp_embed_gpt_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_graphn_min(s : NlpembedgptGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_embed_gpt_node_sum(s : NlpembedgptNode) -> Double { @_common.sum(s.da
 pub fn nlp_embed_gpt_node_mean(s : NlpembedgptNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_node_scale(s : NlpembedgptNode, f : Double) -> NlpembedgptNode {
-  let result = nlp_embed_gpt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_node_add(a : NlpembedgptNode, b : NlpembedgptNode) -> NlpembedgptNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_node_copy(s : NlpembedgptNode) -> NlpembedgptNode {
-  let result = nlp_embed_gpt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_node_fill(s : NlpembedgptNode, v : Double) -> NlpembedgptNode {
-  let result = nlp_embed_gpt_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_node_min(s : NlpembedgptNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_embed_gpt_edge_sum(s : NlpembedgptEdge) -> Double { @_common.sum(s.da
 pub fn nlp_embed_gpt_edge_mean(s : NlpembedgptEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_edge_scale(s : NlpembedgptEdge, f : Double) -> NlpembedgptEdge {
-  let result = nlp_embed_gpt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_edge_add(a : NlpembedgptEdge, b : NlpembedgptEdge) -> NlpembedgptEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_edge_copy(s : NlpembedgptEdge) -> NlpembedgptEdge {
-  let result = nlp_embed_gpt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_edge_fill(s : NlpembedgptEdge, v : Double) -> NlpembedgptEdge {
-  let result = nlp_embed_gpt_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_edge_min(s : NlpembedgptEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_embed_gpt_path_sum(s : NlpembedgptPath) -> Double { @_common.sum(s.da
 pub fn nlp_embed_gpt_path_mean(s : NlpembedgptPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_path_scale(s : NlpembedgptPath, f : Double) -> NlpembedgptPath {
-  let result = nlp_embed_gpt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_path_add(a : NlpembedgptPath, b : NlpembedgptPath) -> NlpembedgptPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_path_copy(s : NlpembedgptPath) -> NlpembedgptPath {
-  let result = nlp_embed_gpt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_path_fill(s : NlpembedgptPath, v : Double) -> NlpembedgptPath {
-  let result = nlp_embed_gpt_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_path_min(s : NlpembedgptPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_embed_gpt_cluster_sum(s : NlpembedgptCluster) -> Double { @_common.su
 pub fn nlp_embed_gpt_cluster_mean(s : NlpembedgptCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_cluster_scale(s : NlpembedgptCluster, f : Double) -> NlpembedgptCluster {
-  let result = nlp_embed_gpt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_cluster_add(a : NlpembedgptCluster, b : NlpembedgptCluster) -> NlpembedgptCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_cluster_copy(s : NlpembedgptCluster) -> NlpembedgptCluster {
-  let result = nlp_embed_gpt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_cluster_fill(s : NlpembedgptCluster, v : Double) -> NlpembedgptCluster {
-  let result = nlp_embed_gpt_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_cluster_min(s : NlpembedgptCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_embed_gpt_model_sum(s : NlpembedgptModel) -> Double { @_common.sum(s.
 pub fn nlp_embed_gpt_model_mean(s : NlpembedgptModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_model_scale(s : NlpembedgptModel, f : Double) -> NlpembedgptModel {
-  let result = nlp_embed_gpt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_model_add(a : NlpembedgptModel, b : NlpembedgptModel) -> NlpembedgptModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_model_copy(s : NlpembedgptModel) -> NlpembedgptModel {
-  let result = nlp_embed_gpt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_model_fill(s : NlpembedgptModel, v : Double) -> NlpembedgptModel {
-  let result = nlp_embed_gpt_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_model_min(s : NlpembedgptModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_embed_gpt_layer_sum(s : NlpembedgptLayer) -> Double { @_common.sum(s.
 pub fn nlp_embed_gpt_layer_mean(s : NlpembedgptLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_layer_scale(s : NlpembedgptLayer, f : Double) -> NlpembedgptLayer {
-  let result = nlp_embed_gpt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_layer_add(a : NlpembedgptLayer, b : NlpembedgptLayer) -> NlpembedgptLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_layer_copy(s : NlpembedgptLayer) -> NlpembedgptLayer {
-  let result = nlp_embed_gpt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_layer_fill(s : NlpembedgptLayer, v : Double) -> NlpembedgptLayer {
-  let result = nlp_embed_gpt_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_layer_min(s : NlpembedgptLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_embed_gpt_buffer_sum(s : NlpembedgptBuffer) -> Double { @_common.sum(
 pub fn nlp_embed_gpt_buffer_mean(s : NlpembedgptBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_buffer_scale(s : NlpembedgptBuffer, f : Double) -> NlpembedgptBuffer {
-  let result = nlp_embed_gpt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_buffer_add(a : NlpembedgptBuffer, b : NlpembedgptBuffer) -> NlpembedgptBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_buffer_copy(s : NlpembedgptBuffer) -> NlpembedgptBuffer {
-  let result = nlp_embed_gpt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_buffer_fill(s : NlpembedgptBuffer, v : Double) -> NlpembedgptBuffer {
-  let result = nlp_embed_gpt_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_buffer_min(s : NlpembedgptBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_embed_gpt_cursor_sum(s : NlpembedgptCursor) -> Double { @_common.sum(
 pub fn nlp_embed_gpt_cursor_mean(s : NlpembedgptCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_cursor_scale(s : NlpembedgptCursor, f : Double) -> NlpembedgptCursor {
-  let result = nlp_embed_gpt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_cursor_add(a : NlpembedgptCursor, b : NlpembedgptCursor) -> NlpembedgptCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_cursor_copy(s : NlpembedgptCursor) -> NlpembedgptCursor {
-  let result = nlp_embed_gpt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_cursor_fill(s : NlpembedgptCursor, v : Double) -> NlpembedgptCursor {
-  let result = nlp_embed_gpt_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_cursor_min(s : NlpembedgptCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_embed_gpt_view_sum(s : NlpembedgptView) -> Double { @_common.sum(s.da
 pub fn nlp_embed_gpt_view_mean(s : NlpembedgptView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_view_scale(s : NlpembedgptView, f : Double) -> NlpembedgptView {
-  let result = nlp_embed_gpt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_view_add(a : NlpembedgptView, b : NlpembedgptView) -> NlpembedgptView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_view_copy(s : NlpembedgptView) -> NlpembedgptView {
-  let result = nlp_embed_gpt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_view_fill(s : NlpembedgptView, v : Double) -> NlpembedgptView {
-  let result = nlp_embed_gpt_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_view_min(s : NlpembedgptView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_embed_gpt_range_sum(s : NlpembedgptRange) -> Double { @_common.sum(s.
 pub fn nlp_embed_gpt_range_mean(s : NlpembedgptRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_range_scale(s : NlpembedgptRange, f : Double) -> NlpembedgptRange {
-  let result = nlp_embed_gpt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_range_add(a : NlpembedgptRange, b : NlpembedgptRange) -> NlpembedgptRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_range_copy(s : NlpembedgptRange) -> NlpembedgptRange {
-  let result = nlp_embed_gpt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_range_fill(s : NlpembedgptRange, v : Double) -> NlpembedgptRange {
-  let result = nlp_embed_gpt_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_range_min(s : NlpembedgptRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_embed_gpt_slice_sum(s : NlpembedgptSlice) -> Double { @_common.sum(s.
 pub fn nlp_embed_gpt_slice_mean(s : NlpembedgptSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_slice_scale(s : NlpembedgptSlice, f : Double) -> NlpembedgptSlice {
-  let result = nlp_embed_gpt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_slice_add(a : NlpembedgptSlice, b : NlpembedgptSlice) -> NlpembedgptSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_gpt_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_gpt_slice_copy(s : NlpembedgptSlice) -> NlpembedgptSlice {
-  let result = nlp_embed_gpt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_slice_fill(s : NlpembedgptSlice, v : Double) -> NlpembedgptSlice {
-  let result = nlp_embed_gpt_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_gpt_slice_min(s : NlpembedgptSlice) -> Double { @_common.min(s.data) }

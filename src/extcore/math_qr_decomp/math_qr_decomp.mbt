@@ -383,28 +383,20 @@ pub fn math_qr_decomp_frame_sum(s : MathqrdecompFrame) -> Double { @_common.sum(
 pub fn math_qr_decomp_frame_mean(s : MathqrdecompFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_frame_scale(s : MathqrdecompFrame, f : Double) -> MathqrdecompFrame {
-  let result = math_qr_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_frame_add(a : MathqrdecompFrame, b : MathqrdecompFrame) -> MathqrdecompFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_frame_copy(s : MathqrdecompFrame) -> MathqrdecompFrame {
-  let result = math_qr_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_frame_fill(s : MathqrdecompFrame, v : Double) -> MathqrdecompFrame {
-  let result = math_qr_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_frame_min(s : MathqrdecompFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_qr_decomp_table_sum(s : MathqrdecompTable) -> Double { @_common.sum(
 pub fn math_qr_decomp_table_mean(s : MathqrdecompTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_table_scale(s : MathqrdecompTable, f : Double) -> MathqrdecompTable {
-  let result = math_qr_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_table_add(a : MathqrdecompTable, b : MathqrdecompTable) -> MathqrdecompTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_table_copy(s : MathqrdecompTable) -> MathqrdecompTable {
-  let result = math_qr_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_table_fill(s : MathqrdecompTable, v : Double) -> MathqrdecompTable {
-  let result = math_qr_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_table_min(s : MathqrdecompTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_qr_decomp_graphn_sum(s : MathqrdecompGraphN) -> Double { @_common.su
 pub fn math_qr_decomp_graphn_mean(s : MathqrdecompGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_graphn_scale(s : MathqrdecompGraphN, f : Double) -> MathqrdecompGraphN {
-  let result = math_qr_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_graphn_add(a : MathqrdecompGraphN, b : MathqrdecompGraphN) -> MathqrdecompGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_graphn_copy(s : MathqrdecompGraphN) -> MathqrdecompGraphN {
-  let result = math_qr_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_graphn_fill(s : MathqrdecompGraphN, v : Double) -> MathqrdecompGraphN {
-  let result = math_qr_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_graphn_min(s : MathqrdecompGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_qr_decomp_node_sum(s : MathqrdecompNode) -> Double { @_common.sum(s.
 pub fn math_qr_decomp_node_mean(s : MathqrdecompNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_node_scale(s : MathqrdecompNode, f : Double) -> MathqrdecompNode {
-  let result = math_qr_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_node_add(a : MathqrdecompNode, b : MathqrdecompNode) -> MathqrdecompNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_node_copy(s : MathqrdecompNode) -> MathqrdecompNode {
-  let result = math_qr_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_node_fill(s : MathqrdecompNode, v : Double) -> MathqrdecompNode {
-  let result = math_qr_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_node_min(s : MathqrdecompNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_qr_decomp_edge_sum(s : MathqrdecompEdge) -> Double { @_common.sum(s.
 pub fn math_qr_decomp_edge_mean(s : MathqrdecompEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_edge_scale(s : MathqrdecompEdge, f : Double) -> MathqrdecompEdge {
-  let result = math_qr_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_edge_add(a : MathqrdecompEdge, b : MathqrdecompEdge) -> MathqrdecompEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_edge_copy(s : MathqrdecompEdge) -> MathqrdecompEdge {
-  let result = math_qr_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_edge_fill(s : MathqrdecompEdge, v : Double) -> MathqrdecompEdge {
-  let result = math_qr_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_edge_min(s : MathqrdecompEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_qr_decomp_path_sum(s : MathqrdecompPath) -> Double { @_common.sum(s.
 pub fn math_qr_decomp_path_mean(s : MathqrdecompPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_path_scale(s : MathqrdecompPath, f : Double) -> MathqrdecompPath {
-  let result = math_qr_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_path_add(a : MathqrdecompPath, b : MathqrdecompPath) -> MathqrdecompPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_path_copy(s : MathqrdecompPath) -> MathqrdecompPath {
-  let result = math_qr_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_path_fill(s : MathqrdecompPath, v : Double) -> MathqrdecompPath {
-  let result = math_qr_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_path_min(s : MathqrdecompPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_qr_decomp_cluster_sum(s : MathqrdecompCluster) -> Double { @_common.
 pub fn math_qr_decomp_cluster_mean(s : MathqrdecompCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_cluster_scale(s : MathqrdecompCluster, f : Double) -> MathqrdecompCluster {
-  let result = math_qr_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cluster_add(a : MathqrdecompCluster, b : MathqrdecompCluster) -> MathqrdecompCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_cluster_copy(s : MathqrdecompCluster) -> MathqrdecompCluster {
-  let result = math_qr_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cluster_fill(s : MathqrdecompCluster, v : Double) -> MathqrdecompCluster {
-  let result = math_qr_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cluster_min(s : MathqrdecompCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_qr_decomp_model_sum(s : MathqrdecompModel) -> Double { @_common.sum(
 pub fn math_qr_decomp_model_mean(s : MathqrdecompModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_model_scale(s : MathqrdecompModel, f : Double) -> MathqrdecompModel {
-  let result = math_qr_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_model_add(a : MathqrdecompModel, b : MathqrdecompModel) -> MathqrdecompModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_model_copy(s : MathqrdecompModel) -> MathqrdecompModel {
-  let result = math_qr_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_model_fill(s : MathqrdecompModel, v : Double) -> MathqrdecompModel {
-  let result = math_qr_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_model_min(s : MathqrdecompModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_qr_decomp_layer_sum(s : MathqrdecompLayer) -> Double { @_common.sum(
 pub fn math_qr_decomp_layer_mean(s : MathqrdecompLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_layer_scale(s : MathqrdecompLayer, f : Double) -> MathqrdecompLayer {
-  let result = math_qr_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_layer_add(a : MathqrdecompLayer, b : MathqrdecompLayer) -> MathqrdecompLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_layer_copy(s : MathqrdecompLayer) -> MathqrdecompLayer {
-  let result = math_qr_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_layer_fill(s : MathqrdecompLayer, v : Double) -> MathqrdecompLayer {
-  let result = math_qr_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_layer_min(s : MathqrdecompLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_qr_decomp_buffer_sum(s : MathqrdecompBuffer) -> Double { @_common.su
 pub fn math_qr_decomp_buffer_mean(s : MathqrdecompBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_buffer_scale(s : MathqrdecompBuffer, f : Double) -> MathqrdecompBuffer {
-  let result = math_qr_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_buffer_add(a : MathqrdecompBuffer, b : MathqrdecompBuffer) -> MathqrdecompBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_buffer_copy(s : MathqrdecompBuffer) -> MathqrdecompBuffer {
-  let result = math_qr_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_buffer_fill(s : MathqrdecompBuffer, v : Double) -> MathqrdecompBuffer {
-  let result = math_qr_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_buffer_min(s : MathqrdecompBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_qr_decomp_cursor_sum(s : MathqrdecompCursor) -> Double { @_common.su
 pub fn math_qr_decomp_cursor_mean(s : MathqrdecompCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_cursor_scale(s : MathqrdecompCursor, f : Double) -> MathqrdecompCursor {
-  let result = math_qr_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cursor_add(a : MathqrdecompCursor, b : MathqrdecompCursor) -> MathqrdecompCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_cursor_copy(s : MathqrdecompCursor) -> MathqrdecompCursor {
-  let result = math_qr_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cursor_fill(s : MathqrdecompCursor, v : Double) -> MathqrdecompCursor {
-  let result = math_qr_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cursor_min(s : MathqrdecompCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_qr_decomp_view_sum(s : MathqrdecompView) -> Double { @_common.sum(s.
 pub fn math_qr_decomp_view_mean(s : MathqrdecompView) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_view_scale(s : MathqrdecompView, f : Double) -> MathqrdecompView {
-  let result = math_qr_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_view_add(a : MathqrdecompView, b : MathqrdecompView) -> MathqrdecompView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_view_copy(s : MathqrdecompView) -> MathqrdecompView {
-  let result = math_qr_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_view_fill(s : MathqrdecompView, v : Double) -> MathqrdecompView {
-  let result = math_qr_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_view_min(s : MathqrdecompView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_qr_decomp_range_sum(s : MathqrdecompRange) -> Double { @_common.sum(
 pub fn math_qr_decomp_range_mean(s : MathqrdecompRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_range_scale(s : MathqrdecompRange, f : Double) -> MathqrdecompRange {
-  let result = math_qr_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_range_add(a : MathqrdecompRange, b : MathqrdecompRange) -> MathqrdecompRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_range_copy(s : MathqrdecompRange) -> MathqrdecompRange {
-  let result = math_qr_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_range_fill(s : MathqrdecompRange, v : Double) -> MathqrdecompRange {
-  let result = math_qr_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_range_min(s : MathqrdecompRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_qr_decomp_slice_sum(s : MathqrdecompSlice) -> Double { @_common.sum(
 pub fn math_qr_decomp_slice_mean(s : MathqrdecompSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_slice_scale(s : MathqrdecompSlice, f : Double) -> MathqrdecompSlice {
-  let result = math_qr_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_slice_add(a : MathqrdecompSlice, b : MathqrdecompSlice) -> MathqrdecompSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_qr_decomp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_qr_decomp_slice_copy(s : MathqrdecompSlice) -> MathqrdecompSlice {
-  let result = math_qr_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_slice_fill(s : MathqrdecompSlice, v : Double) -> MathqrdecompSlice {
-  let result = math_qr_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_slice_min(s : MathqrdecompSlice) -> Double { @_common.min(s.data) }

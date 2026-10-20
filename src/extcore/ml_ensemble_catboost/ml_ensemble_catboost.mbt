@@ -383,28 +383,20 @@ pub fn ml_ensemble_catboost_frame_sum(s : MlensemblecatboostFrame) -> Double { @
 pub fn ml_ensemble_catboost_frame_mean(s : MlensemblecatboostFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_frame_scale(s : MlensemblecatboostFrame, f : Double) -> MlensemblecatboostFrame {
-  let result = ml_ensemble_catboost_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_frame_add(a : MlensemblecatboostFrame, b : MlensemblecatboostFrame) -> MlensemblecatboostFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_frame_copy(s : MlensemblecatboostFrame) -> MlensemblecatboostFrame {
-  let result = ml_ensemble_catboost_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_frame_fill(s : MlensemblecatboostFrame, v : Double) -> MlensemblecatboostFrame {
-  let result = ml_ensemble_catboost_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_frame_min(s : MlensemblecatboostFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_ensemble_catboost_table_sum(s : MlensemblecatboostTable) -> Double { @
 pub fn ml_ensemble_catboost_table_mean(s : MlensemblecatboostTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_table_scale(s : MlensemblecatboostTable, f : Double) -> MlensemblecatboostTable {
-  let result = ml_ensemble_catboost_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_table_add(a : MlensemblecatboostTable, b : MlensemblecatboostTable) -> MlensemblecatboostTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_table_copy(s : MlensemblecatboostTable) -> MlensemblecatboostTable {
-  let result = ml_ensemble_catboost_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_table_fill(s : MlensemblecatboostTable, v : Double) -> MlensemblecatboostTable {
-  let result = ml_ensemble_catboost_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_table_min(s : MlensemblecatboostTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_ensemble_catboost_graphn_sum(s : MlensemblecatboostGraphN) -> Double {
 pub fn ml_ensemble_catboost_graphn_mean(s : MlensemblecatboostGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_graphn_scale(s : MlensemblecatboostGraphN, f : Double) -> MlensemblecatboostGraphN {
-  let result = ml_ensemble_catboost_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_graphn_add(a : MlensemblecatboostGraphN, b : MlensemblecatboostGraphN) -> MlensemblecatboostGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_graphn_copy(s : MlensemblecatboostGraphN) -> MlensemblecatboostGraphN {
-  let result = ml_ensemble_catboost_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_graphn_fill(s : MlensemblecatboostGraphN, v : Double) -> MlensemblecatboostGraphN {
-  let result = ml_ensemble_catboost_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_graphn_min(s : MlensemblecatboostGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_ensemble_catboost_node_sum(s : MlensemblecatboostNode) -> Double { @_c
 pub fn ml_ensemble_catboost_node_mean(s : MlensemblecatboostNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_node_scale(s : MlensemblecatboostNode, f : Double) -> MlensemblecatboostNode {
-  let result = ml_ensemble_catboost_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_node_add(a : MlensemblecatboostNode, b : MlensemblecatboostNode) -> MlensemblecatboostNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_node_copy(s : MlensemblecatboostNode) -> MlensemblecatboostNode {
-  let result = ml_ensemble_catboost_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_node_fill(s : MlensemblecatboostNode, v : Double) -> MlensemblecatboostNode {
-  let result = ml_ensemble_catboost_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_node_min(s : MlensemblecatboostNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_ensemble_catboost_edge_sum(s : MlensemblecatboostEdge) -> Double { @_c
 pub fn ml_ensemble_catboost_edge_mean(s : MlensemblecatboostEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_edge_scale(s : MlensemblecatboostEdge, f : Double) -> MlensemblecatboostEdge {
-  let result = ml_ensemble_catboost_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_edge_add(a : MlensemblecatboostEdge, b : MlensemblecatboostEdge) -> MlensemblecatboostEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_edge_copy(s : MlensemblecatboostEdge) -> MlensemblecatboostEdge {
-  let result = ml_ensemble_catboost_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_edge_fill(s : MlensemblecatboostEdge, v : Double) -> MlensemblecatboostEdge {
-  let result = ml_ensemble_catboost_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_edge_min(s : MlensemblecatboostEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_ensemble_catboost_path_sum(s : MlensemblecatboostPath) -> Double { @_c
 pub fn ml_ensemble_catboost_path_mean(s : MlensemblecatboostPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_path_scale(s : MlensemblecatboostPath, f : Double) -> MlensemblecatboostPath {
-  let result = ml_ensemble_catboost_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_path_add(a : MlensemblecatboostPath, b : MlensemblecatboostPath) -> MlensemblecatboostPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_path_copy(s : MlensemblecatboostPath) -> MlensemblecatboostPath {
-  let result = ml_ensemble_catboost_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_path_fill(s : MlensemblecatboostPath, v : Double) -> MlensemblecatboostPath {
-  let result = ml_ensemble_catboost_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_path_min(s : MlensemblecatboostPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_ensemble_catboost_cluster_sum(s : MlensemblecatboostCluster) -> Double
 pub fn ml_ensemble_catboost_cluster_mean(s : MlensemblecatboostCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_cluster_scale(s : MlensemblecatboostCluster, f : Double) -> MlensemblecatboostCluster {
-  let result = ml_ensemble_catboost_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_cluster_add(a : MlensemblecatboostCluster, b : MlensemblecatboostCluster) -> MlensemblecatboostCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_cluster_copy(s : MlensemblecatboostCluster) -> MlensemblecatboostCluster {
-  let result = ml_ensemble_catboost_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_cluster_fill(s : MlensemblecatboostCluster, v : Double) -> MlensemblecatboostCluster {
-  let result = ml_ensemble_catboost_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_cluster_min(s : MlensemblecatboostCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_ensemble_catboost_model_sum(s : MlensemblecatboostModel) -> Double { @
 pub fn ml_ensemble_catboost_model_mean(s : MlensemblecatboostModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_model_scale(s : MlensemblecatboostModel, f : Double) -> MlensemblecatboostModel {
-  let result = ml_ensemble_catboost_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_model_add(a : MlensemblecatboostModel, b : MlensemblecatboostModel) -> MlensemblecatboostModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_model_copy(s : MlensemblecatboostModel) -> MlensemblecatboostModel {
-  let result = ml_ensemble_catboost_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_model_fill(s : MlensemblecatboostModel, v : Double) -> MlensemblecatboostModel {
-  let result = ml_ensemble_catboost_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_model_min(s : MlensemblecatboostModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_ensemble_catboost_layer_sum(s : MlensemblecatboostLayer) -> Double { @
 pub fn ml_ensemble_catboost_layer_mean(s : MlensemblecatboostLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_layer_scale(s : MlensemblecatboostLayer, f : Double) -> MlensemblecatboostLayer {
-  let result = ml_ensemble_catboost_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_layer_add(a : MlensemblecatboostLayer, b : MlensemblecatboostLayer) -> MlensemblecatboostLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_layer_copy(s : MlensemblecatboostLayer) -> MlensemblecatboostLayer {
-  let result = ml_ensemble_catboost_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_layer_fill(s : MlensemblecatboostLayer, v : Double) -> MlensemblecatboostLayer {
-  let result = ml_ensemble_catboost_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_layer_min(s : MlensemblecatboostLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_ensemble_catboost_buffer_sum(s : MlensemblecatboostBuffer) -> Double {
 pub fn ml_ensemble_catboost_buffer_mean(s : MlensemblecatboostBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_buffer_scale(s : MlensemblecatboostBuffer, f : Double) -> MlensemblecatboostBuffer {
-  let result = ml_ensemble_catboost_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_buffer_add(a : MlensemblecatboostBuffer, b : MlensemblecatboostBuffer) -> MlensemblecatboostBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_buffer_copy(s : MlensemblecatboostBuffer) -> MlensemblecatboostBuffer {
-  let result = ml_ensemble_catboost_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_buffer_fill(s : MlensemblecatboostBuffer, v : Double) -> MlensemblecatboostBuffer {
-  let result = ml_ensemble_catboost_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_buffer_min(s : MlensemblecatboostBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_ensemble_catboost_cursor_sum(s : MlensemblecatboostCursor) -> Double {
 pub fn ml_ensemble_catboost_cursor_mean(s : MlensemblecatboostCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_cursor_scale(s : MlensemblecatboostCursor, f : Double) -> MlensemblecatboostCursor {
-  let result = ml_ensemble_catboost_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_cursor_add(a : MlensemblecatboostCursor, b : MlensemblecatboostCursor) -> MlensemblecatboostCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_cursor_copy(s : MlensemblecatboostCursor) -> MlensemblecatboostCursor {
-  let result = ml_ensemble_catboost_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_cursor_fill(s : MlensemblecatboostCursor, v : Double) -> MlensemblecatboostCursor {
-  let result = ml_ensemble_catboost_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_cursor_min(s : MlensemblecatboostCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_ensemble_catboost_view_sum(s : MlensemblecatboostView) -> Double { @_c
 pub fn ml_ensemble_catboost_view_mean(s : MlensemblecatboostView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_view_scale(s : MlensemblecatboostView, f : Double) -> MlensemblecatboostView {
-  let result = ml_ensemble_catboost_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_view_add(a : MlensemblecatboostView, b : MlensemblecatboostView) -> MlensemblecatboostView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_view_copy(s : MlensemblecatboostView) -> MlensemblecatboostView {
-  let result = ml_ensemble_catboost_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_view_fill(s : MlensemblecatboostView, v : Double) -> MlensemblecatboostView {
-  let result = ml_ensemble_catboost_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_view_min(s : MlensemblecatboostView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_ensemble_catboost_range_sum(s : MlensemblecatboostRange) -> Double { @
 pub fn ml_ensemble_catboost_range_mean(s : MlensemblecatboostRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_range_scale(s : MlensemblecatboostRange, f : Double) -> MlensemblecatboostRange {
-  let result = ml_ensemble_catboost_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_range_add(a : MlensemblecatboostRange, b : MlensemblecatboostRange) -> MlensemblecatboostRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_range_copy(s : MlensemblecatboostRange) -> MlensemblecatboostRange {
-  let result = ml_ensemble_catboost_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_range_fill(s : MlensemblecatboostRange, v : Double) -> MlensemblecatboostRange {
-  let result = ml_ensemble_catboost_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_range_min(s : MlensemblecatboostRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_ensemble_catboost_slice_sum(s : MlensemblecatboostSlice) -> Double { @
 pub fn ml_ensemble_catboost_slice_mean(s : MlensemblecatboostSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_catboost_slice_scale(s : MlensemblecatboostSlice, f : Double) -> MlensemblecatboostSlice {
-  let result = ml_ensemble_catboost_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_slice_add(a : MlensemblecatboostSlice, b : MlensemblecatboostSlice) -> MlensemblecatboostSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_ensemble_catboost_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_ensemble_catboost_slice_copy(s : MlensemblecatboostSlice) -> MlensemblecatboostSlice {
-  let result = ml_ensemble_catboost_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_slice_fill(s : MlensemblecatboostSlice, v : Double) -> MlensemblecatboostSlice {
-  let result = ml_ensemble_catboost_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_catboost_slice_min(s : MlensemblecatboostSlice) -> Double { @_common.min(s.data) }

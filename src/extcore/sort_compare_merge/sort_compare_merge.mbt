@@ -383,28 +383,20 @@ pub fn sort_compare_merge_frame_sum(s : SortcomparemergeFrame) -> Double { @_com
 pub fn sort_compare_merge_frame_mean(s : SortcomparemergeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_frame_scale(s : SortcomparemergeFrame, f : Double) -> SortcomparemergeFrame {
-  let result = sort_compare_merge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_frame_add(a : SortcomparemergeFrame, b : SortcomparemergeFrame) -> SortcomparemergeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_frame_copy(s : SortcomparemergeFrame) -> SortcomparemergeFrame {
-  let result = sort_compare_merge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_frame_fill(s : SortcomparemergeFrame, v : Double) -> SortcomparemergeFrame {
-  let result = sort_compare_merge_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_frame_min(s : SortcomparemergeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_compare_merge_table_sum(s : SortcomparemergeTable) -> Double { @_com
 pub fn sort_compare_merge_table_mean(s : SortcomparemergeTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_table_scale(s : SortcomparemergeTable, f : Double) -> SortcomparemergeTable {
-  let result = sort_compare_merge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_table_add(a : SortcomparemergeTable, b : SortcomparemergeTable) -> SortcomparemergeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_table_copy(s : SortcomparemergeTable) -> SortcomparemergeTable {
-  let result = sort_compare_merge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_table_fill(s : SortcomparemergeTable, v : Double) -> SortcomparemergeTable {
-  let result = sort_compare_merge_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_table_min(s : SortcomparemergeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_compare_merge_graphn_sum(s : SortcomparemergeGraphN) -> Double { @_c
 pub fn sort_compare_merge_graphn_mean(s : SortcomparemergeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_graphn_scale(s : SortcomparemergeGraphN, f : Double) -> SortcomparemergeGraphN {
-  let result = sort_compare_merge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_graphn_add(a : SortcomparemergeGraphN, b : SortcomparemergeGraphN) -> SortcomparemergeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_graphn_copy(s : SortcomparemergeGraphN) -> SortcomparemergeGraphN {
-  let result = sort_compare_merge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_graphn_fill(s : SortcomparemergeGraphN, v : Double) -> SortcomparemergeGraphN {
-  let result = sort_compare_merge_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_graphn_min(s : SortcomparemergeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_compare_merge_node_sum(s : SortcomparemergeNode) -> Double { @_commo
 pub fn sort_compare_merge_node_mean(s : SortcomparemergeNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_node_scale(s : SortcomparemergeNode, f : Double) -> SortcomparemergeNode {
-  let result = sort_compare_merge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_node_add(a : SortcomparemergeNode, b : SortcomparemergeNode) -> SortcomparemergeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_node_copy(s : SortcomparemergeNode) -> SortcomparemergeNode {
-  let result = sort_compare_merge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_node_fill(s : SortcomparemergeNode, v : Double) -> SortcomparemergeNode {
-  let result = sort_compare_merge_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_node_min(s : SortcomparemergeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_compare_merge_edge_sum(s : SortcomparemergeEdge) -> Double { @_commo
 pub fn sort_compare_merge_edge_mean(s : SortcomparemergeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_edge_scale(s : SortcomparemergeEdge, f : Double) -> SortcomparemergeEdge {
-  let result = sort_compare_merge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_edge_add(a : SortcomparemergeEdge, b : SortcomparemergeEdge) -> SortcomparemergeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_edge_copy(s : SortcomparemergeEdge) -> SortcomparemergeEdge {
-  let result = sort_compare_merge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_edge_fill(s : SortcomparemergeEdge, v : Double) -> SortcomparemergeEdge {
-  let result = sort_compare_merge_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_edge_min(s : SortcomparemergeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_compare_merge_path_sum(s : SortcomparemergePath) -> Double { @_commo
 pub fn sort_compare_merge_path_mean(s : SortcomparemergePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_path_scale(s : SortcomparemergePath, f : Double) -> SortcomparemergePath {
-  let result = sort_compare_merge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_path_add(a : SortcomparemergePath, b : SortcomparemergePath) -> SortcomparemergePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_path_copy(s : SortcomparemergePath) -> SortcomparemergePath {
-  let result = sort_compare_merge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_path_fill(s : SortcomparemergePath, v : Double) -> SortcomparemergePath {
-  let result = sort_compare_merge_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_path_min(s : SortcomparemergePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_compare_merge_cluster_sum(s : SortcomparemergeCluster) -> Double { @
 pub fn sort_compare_merge_cluster_mean(s : SortcomparemergeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_cluster_scale(s : SortcomparemergeCluster, f : Double) -> SortcomparemergeCluster {
-  let result = sort_compare_merge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_cluster_add(a : SortcomparemergeCluster, b : SortcomparemergeCluster) -> SortcomparemergeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_cluster_copy(s : SortcomparemergeCluster) -> SortcomparemergeCluster {
-  let result = sort_compare_merge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_cluster_fill(s : SortcomparemergeCluster, v : Double) -> SortcomparemergeCluster {
-  let result = sort_compare_merge_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_cluster_min(s : SortcomparemergeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_compare_merge_model_sum(s : SortcomparemergeModel) -> Double { @_com
 pub fn sort_compare_merge_model_mean(s : SortcomparemergeModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_model_scale(s : SortcomparemergeModel, f : Double) -> SortcomparemergeModel {
-  let result = sort_compare_merge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_model_add(a : SortcomparemergeModel, b : SortcomparemergeModel) -> SortcomparemergeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_model_copy(s : SortcomparemergeModel) -> SortcomparemergeModel {
-  let result = sort_compare_merge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_model_fill(s : SortcomparemergeModel, v : Double) -> SortcomparemergeModel {
-  let result = sort_compare_merge_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_model_min(s : SortcomparemergeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_compare_merge_layer_sum(s : SortcomparemergeLayer) -> Double { @_com
 pub fn sort_compare_merge_layer_mean(s : SortcomparemergeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_layer_scale(s : SortcomparemergeLayer, f : Double) -> SortcomparemergeLayer {
-  let result = sort_compare_merge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_layer_add(a : SortcomparemergeLayer, b : SortcomparemergeLayer) -> SortcomparemergeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_layer_copy(s : SortcomparemergeLayer) -> SortcomparemergeLayer {
-  let result = sort_compare_merge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_layer_fill(s : SortcomparemergeLayer, v : Double) -> SortcomparemergeLayer {
-  let result = sort_compare_merge_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_layer_min(s : SortcomparemergeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_compare_merge_buffer_sum(s : SortcomparemergeBuffer) -> Double { @_c
 pub fn sort_compare_merge_buffer_mean(s : SortcomparemergeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_buffer_scale(s : SortcomparemergeBuffer, f : Double) -> SortcomparemergeBuffer {
-  let result = sort_compare_merge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_buffer_add(a : SortcomparemergeBuffer, b : SortcomparemergeBuffer) -> SortcomparemergeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_buffer_copy(s : SortcomparemergeBuffer) -> SortcomparemergeBuffer {
-  let result = sort_compare_merge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_buffer_fill(s : SortcomparemergeBuffer, v : Double) -> SortcomparemergeBuffer {
-  let result = sort_compare_merge_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_buffer_min(s : SortcomparemergeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_compare_merge_cursor_sum(s : SortcomparemergeCursor) -> Double { @_c
 pub fn sort_compare_merge_cursor_mean(s : SortcomparemergeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_cursor_scale(s : SortcomparemergeCursor, f : Double) -> SortcomparemergeCursor {
-  let result = sort_compare_merge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_cursor_add(a : SortcomparemergeCursor, b : SortcomparemergeCursor) -> SortcomparemergeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_cursor_copy(s : SortcomparemergeCursor) -> SortcomparemergeCursor {
-  let result = sort_compare_merge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_cursor_fill(s : SortcomparemergeCursor, v : Double) -> SortcomparemergeCursor {
-  let result = sort_compare_merge_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_cursor_min(s : SortcomparemergeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_compare_merge_view_sum(s : SortcomparemergeView) -> Double { @_commo
 pub fn sort_compare_merge_view_mean(s : SortcomparemergeView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_view_scale(s : SortcomparemergeView, f : Double) -> SortcomparemergeView {
-  let result = sort_compare_merge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_view_add(a : SortcomparemergeView, b : SortcomparemergeView) -> SortcomparemergeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_view_copy(s : SortcomparemergeView) -> SortcomparemergeView {
-  let result = sort_compare_merge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_view_fill(s : SortcomparemergeView, v : Double) -> SortcomparemergeView {
-  let result = sort_compare_merge_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_view_min(s : SortcomparemergeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_compare_merge_range_sum(s : SortcomparemergeRange) -> Double { @_com
 pub fn sort_compare_merge_range_mean(s : SortcomparemergeRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_range_scale(s : SortcomparemergeRange, f : Double) -> SortcomparemergeRange {
-  let result = sort_compare_merge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_range_add(a : SortcomparemergeRange, b : SortcomparemergeRange) -> SortcomparemergeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_range_copy(s : SortcomparemergeRange) -> SortcomparemergeRange {
-  let result = sort_compare_merge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_range_fill(s : SortcomparemergeRange, v : Double) -> SortcomparemergeRange {
-  let result = sort_compare_merge_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_range_min(s : SortcomparemergeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_compare_merge_slice_sum(s : SortcomparemergeSlice) -> Double { @_com
 pub fn sort_compare_merge_slice_mean(s : SortcomparemergeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_slice_scale(s : SortcomparemergeSlice, f : Double) -> SortcomparemergeSlice {
-  let result = sort_compare_merge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_slice_add(a : SortcomparemergeSlice, b : SortcomparemergeSlice) -> SortcomparemergeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_merge_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_merge_slice_copy(s : SortcomparemergeSlice) -> SortcomparemergeSlice {
-  let result = sort_compare_merge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_slice_fill(s : SortcomparemergeSlice, v : Double) -> SortcomparemergeSlice {
-  let result = sort_compare_merge_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_merge_slice_min(s : SortcomparemergeSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn image_filter_gabor_frame_sum(s : ImagefiltergaborFrame) -> Double { @_com
 pub fn image_filter_gabor_frame_mean(s : ImagefiltergaborFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_frame_scale(s : ImagefiltergaborFrame, f : Double) -> ImagefiltergaborFrame {
-  let result = image_filter_gabor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_frame_add(a : ImagefiltergaborFrame, b : ImagefiltergaborFrame) -> ImagefiltergaborFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_frame_copy(s : ImagefiltergaborFrame) -> ImagefiltergaborFrame {
-  let result = image_filter_gabor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_frame_fill(s : ImagefiltergaborFrame, v : Double) -> ImagefiltergaborFrame {
-  let result = image_filter_gabor_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_frame_min(s : ImagefiltergaborFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_filter_gabor_table_sum(s : ImagefiltergaborTable) -> Double { @_com
 pub fn image_filter_gabor_table_mean(s : ImagefiltergaborTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_table_scale(s : ImagefiltergaborTable, f : Double) -> ImagefiltergaborTable {
-  let result = image_filter_gabor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_table_add(a : ImagefiltergaborTable, b : ImagefiltergaborTable) -> ImagefiltergaborTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_table_copy(s : ImagefiltergaborTable) -> ImagefiltergaborTable {
-  let result = image_filter_gabor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_table_fill(s : ImagefiltergaborTable, v : Double) -> ImagefiltergaborTable {
-  let result = image_filter_gabor_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_table_min(s : ImagefiltergaborTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_filter_gabor_graphn_sum(s : ImagefiltergaborGraphN) -> Double { @_c
 pub fn image_filter_gabor_graphn_mean(s : ImagefiltergaborGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_graphn_scale(s : ImagefiltergaborGraphN, f : Double) -> ImagefiltergaborGraphN {
-  let result = image_filter_gabor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_graphn_add(a : ImagefiltergaborGraphN, b : ImagefiltergaborGraphN) -> ImagefiltergaborGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_graphn_copy(s : ImagefiltergaborGraphN) -> ImagefiltergaborGraphN {
-  let result = image_filter_gabor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_graphn_fill(s : ImagefiltergaborGraphN, v : Double) -> ImagefiltergaborGraphN {
-  let result = image_filter_gabor_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_graphn_min(s : ImagefiltergaborGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_filter_gabor_node_sum(s : ImagefiltergaborNode) -> Double { @_commo
 pub fn image_filter_gabor_node_mean(s : ImagefiltergaborNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_node_scale(s : ImagefiltergaborNode, f : Double) -> ImagefiltergaborNode {
-  let result = image_filter_gabor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_node_add(a : ImagefiltergaborNode, b : ImagefiltergaborNode) -> ImagefiltergaborNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_node_copy(s : ImagefiltergaborNode) -> ImagefiltergaborNode {
-  let result = image_filter_gabor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_node_fill(s : ImagefiltergaborNode, v : Double) -> ImagefiltergaborNode {
-  let result = image_filter_gabor_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_node_min(s : ImagefiltergaborNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_filter_gabor_edge_sum(s : ImagefiltergaborEdge) -> Double { @_commo
 pub fn image_filter_gabor_edge_mean(s : ImagefiltergaborEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_edge_scale(s : ImagefiltergaborEdge, f : Double) -> ImagefiltergaborEdge {
-  let result = image_filter_gabor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_edge_add(a : ImagefiltergaborEdge, b : ImagefiltergaborEdge) -> ImagefiltergaborEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_edge_copy(s : ImagefiltergaborEdge) -> ImagefiltergaborEdge {
-  let result = image_filter_gabor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_edge_fill(s : ImagefiltergaborEdge, v : Double) -> ImagefiltergaborEdge {
-  let result = image_filter_gabor_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_edge_min(s : ImagefiltergaborEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_filter_gabor_path_sum(s : ImagefiltergaborPath) -> Double { @_commo
 pub fn image_filter_gabor_path_mean(s : ImagefiltergaborPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_path_scale(s : ImagefiltergaborPath, f : Double) -> ImagefiltergaborPath {
-  let result = image_filter_gabor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_path_add(a : ImagefiltergaborPath, b : ImagefiltergaborPath) -> ImagefiltergaborPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_path_copy(s : ImagefiltergaborPath) -> ImagefiltergaborPath {
-  let result = image_filter_gabor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_path_fill(s : ImagefiltergaborPath, v : Double) -> ImagefiltergaborPath {
-  let result = image_filter_gabor_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_path_min(s : ImagefiltergaborPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_filter_gabor_cluster_sum(s : ImagefiltergaborCluster) -> Double { @
 pub fn image_filter_gabor_cluster_mean(s : ImagefiltergaborCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_cluster_scale(s : ImagefiltergaborCluster, f : Double) -> ImagefiltergaborCluster {
-  let result = image_filter_gabor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_cluster_add(a : ImagefiltergaborCluster, b : ImagefiltergaborCluster) -> ImagefiltergaborCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_cluster_copy(s : ImagefiltergaborCluster) -> ImagefiltergaborCluster {
-  let result = image_filter_gabor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_cluster_fill(s : ImagefiltergaborCluster, v : Double) -> ImagefiltergaborCluster {
-  let result = image_filter_gabor_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_cluster_min(s : ImagefiltergaborCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_filter_gabor_model_sum(s : ImagefiltergaborModel) -> Double { @_com
 pub fn image_filter_gabor_model_mean(s : ImagefiltergaborModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_model_scale(s : ImagefiltergaborModel, f : Double) -> ImagefiltergaborModel {
-  let result = image_filter_gabor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_model_add(a : ImagefiltergaborModel, b : ImagefiltergaborModel) -> ImagefiltergaborModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_model_copy(s : ImagefiltergaborModel) -> ImagefiltergaborModel {
-  let result = image_filter_gabor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_model_fill(s : ImagefiltergaborModel, v : Double) -> ImagefiltergaborModel {
-  let result = image_filter_gabor_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_model_min(s : ImagefiltergaborModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_filter_gabor_layer_sum(s : ImagefiltergaborLayer) -> Double { @_com
 pub fn image_filter_gabor_layer_mean(s : ImagefiltergaborLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_layer_scale(s : ImagefiltergaborLayer, f : Double) -> ImagefiltergaborLayer {
-  let result = image_filter_gabor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_layer_add(a : ImagefiltergaborLayer, b : ImagefiltergaborLayer) -> ImagefiltergaborLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_layer_copy(s : ImagefiltergaborLayer) -> ImagefiltergaborLayer {
-  let result = image_filter_gabor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_layer_fill(s : ImagefiltergaborLayer, v : Double) -> ImagefiltergaborLayer {
-  let result = image_filter_gabor_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_layer_min(s : ImagefiltergaborLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_filter_gabor_buffer_sum(s : ImagefiltergaborBuffer) -> Double { @_c
 pub fn image_filter_gabor_buffer_mean(s : ImagefiltergaborBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_buffer_scale(s : ImagefiltergaborBuffer, f : Double) -> ImagefiltergaborBuffer {
-  let result = image_filter_gabor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_buffer_add(a : ImagefiltergaborBuffer, b : ImagefiltergaborBuffer) -> ImagefiltergaborBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_buffer_copy(s : ImagefiltergaborBuffer) -> ImagefiltergaborBuffer {
-  let result = image_filter_gabor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_buffer_fill(s : ImagefiltergaborBuffer, v : Double) -> ImagefiltergaborBuffer {
-  let result = image_filter_gabor_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_buffer_min(s : ImagefiltergaborBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_filter_gabor_cursor_sum(s : ImagefiltergaborCursor) -> Double { @_c
 pub fn image_filter_gabor_cursor_mean(s : ImagefiltergaborCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_cursor_scale(s : ImagefiltergaborCursor, f : Double) -> ImagefiltergaborCursor {
-  let result = image_filter_gabor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_cursor_add(a : ImagefiltergaborCursor, b : ImagefiltergaborCursor) -> ImagefiltergaborCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_cursor_copy(s : ImagefiltergaborCursor) -> ImagefiltergaborCursor {
-  let result = image_filter_gabor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_cursor_fill(s : ImagefiltergaborCursor, v : Double) -> ImagefiltergaborCursor {
-  let result = image_filter_gabor_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_cursor_min(s : ImagefiltergaborCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_filter_gabor_view_sum(s : ImagefiltergaborView) -> Double { @_commo
 pub fn image_filter_gabor_view_mean(s : ImagefiltergaborView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_view_scale(s : ImagefiltergaborView, f : Double) -> ImagefiltergaborView {
-  let result = image_filter_gabor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_view_add(a : ImagefiltergaborView, b : ImagefiltergaborView) -> ImagefiltergaborView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_view_copy(s : ImagefiltergaborView) -> ImagefiltergaborView {
-  let result = image_filter_gabor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_view_fill(s : ImagefiltergaborView, v : Double) -> ImagefiltergaborView {
-  let result = image_filter_gabor_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_view_min(s : ImagefiltergaborView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_filter_gabor_range_sum(s : ImagefiltergaborRange) -> Double { @_com
 pub fn image_filter_gabor_range_mean(s : ImagefiltergaborRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_range_scale(s : ImagefiltergaborRange, f : Double) -> ImagefiltergaborRange {
-  let result = image_filter_gabor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_range_add(a : ImagefiltergaborRange, b : ImagefiltergaborRange) -> ImagefiltergaborRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_range_copy(s : ImagefiltergaborRange) -> ImagefiltergaborRange {
-  let result = image_filter_gabor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_range_fill(s : ImagefiltergaborRange, v : Double) -> ImagefiltergaborRange {
-  let result = image_filter_gabor_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_range_min(s : ImagefiltergaborRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_filter_gabor_slice_sum(s : ImagefiltergaborSlice) -> Double { @_com
 pub fn image_filter_gabor_slice_mean(s : ImagefiltergaborSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gabor_slice_scale(s : ImagefiltergaborSlice, f : Double) -> ImagefiltergaborSlice {
-  let result = image_filter_gabor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_slice_add(a : ImagefiltergaborSlice, b : ImagefiltergaborSlice) -> ImagefiltergaborSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_filter_gabor_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_filter_gabor_slice_copy(s : ImagefiltergaborSlice) -> ImagefiltergaborSlice {
-  let result = image_filter_gabor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_slice_fill(s : ImagefiltergaborSlice, v : Double) -> ImagefiltergaborSlice {
-  let result = image_filter_gabor_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_gabor_slice_min(s : ImagefiltergaborSlice) -> Double { @_common.min(s.data) }

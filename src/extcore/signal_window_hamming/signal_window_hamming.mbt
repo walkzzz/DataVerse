@@ -383,28 +383,20 @@ pub fn signal_window_hamming_frame_sum(s : SignalwindowhammingFrame) -> Double {
 pub fn signal_window_hamming_frame_mean(s : SignalwindowhammingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_frame_scale(s : SignalwindowhammingFrame, f : Double) -> SignalwindowhammingFrame {
-  let result = signal_window_hamming_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_frame_add(a : SignalwindowhammingFrame, b : SignalwindowhammingFrame) -> SignalwindowhammingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_frame_copy(s : SignalwindowhammingFrame) -> SignalwindowhammingFrame {
-  let result = signal_window_hamming_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_frame_fill(s : SignalwindowhammingFrame, v : Double) -> SignalwindowhammingFrame {
-  let result = signal_window_hamming_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_frame_min(s : SignalwindowhammingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_window_hamming_table_sum(s : SignalwindowhammingTable) -> Double {
 pub fn signal_window_hamming_table_mean(s : SignalwindowhammingTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_table_scale(s : SignalwindowhammingTable, f : Double) -> SignalwindowhammingTable {
-  let result = signal_window_hamming_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_table_add(a : SignalwindowhammingTable, b : SignalwindowhammingTable) -> SignalwindowhammingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_table_copy(s : SignalwindowhammingTable) -> SignalwindowhammingTable {
-  let result = signal_window_hamming_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_table_fill(s : SignalwindowhammingTable, v : Double) -> SignalwindowhammingTable {
-  let result = signal_window_hamming_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_table_min(s : SignalwindowhammingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_window_hamming_graphn_sum(s : SignalwindowhammingGraphN) -> Double
 pub fn signal_window_hamming_graphn_mean(s : SignalwindowhammingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_graphn_scale(s : SignalwindowhammingGraphN, f : Double) -> SignalwindowhammingGraphN {
-  let result = signal_window_hamming_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_graphn_add(a : SignalwindowhammingGraphN, b : SignalwindowhammingGraphN) -> SignalwindowhammingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_graphn_copy(s : SignalwindowhammingGraphN) -> SignalwindowhammingGraphN {
-  let result = signal_window_hamming_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_graphn_fill(s : SignalwindowhammingGraphN, v : Double) -> SignalwindowhammingGraphN {
-  let result = signal_window_hamming_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_graphn_min(s : SignalwindowhammingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_window_hamming_node_sum(s : SignalwindowhammingNode) -> Double { @
 pub fn signal_window_hamming_node_mean(s : SignalwindowhammingNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_node_scale(s : SignalwindowhammingNode, f : Double) -> SignalwindowhammingNode {
-  let result = signal_window_hamming_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_node_add(a : SignalwindowhammingNode, b : SignalwindowhammingNode) -> SignalwindowhammingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_node_copy(s : SignalwindowhammingNode) -> SignalwindowhammingNode {
-  let result = signal_window_hamming_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_node_fill(s : SignalwindowhammingNode, v : Double) -> SignalwindowhammingNode {
-  let result = signal_window_hamming_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_node_min(s : SignalwindowhammingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_window_hamming_edge_sum(s : SignalwindowhammingEdge) -> Double { @
 pub fn signal_window_hamming_edge_mean(s : SignalwindowhammingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_edge_scale(s : SignalwindowhammingEdge, f : Double) -> SignalwindowhammingEdge {
-  let result = signal_window_hamming_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_edge_add(a : SignalwindowhammingEdge, b : SignalwindowhammingEdge) -> SignalwindowhammingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_edge_copy(s : SignalwindowhammingEdge) -> SignalwindowhammingEdge {
-  let result = signal_window_hamming_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_edge_fill(s : SignalwindowhammingEdge, v : Double) -> SignalwindowhammingEdge {
-  let result = signal_window_hamming_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_edge_min(s : SignalwindowhammingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_window_hamming_path_sum(s : SignalwindowhammingPath) -> Double { @
 pub fn signal_window_hamming_path_mean(s : SignalwindowhammingPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_path_scale(s : SignalwindowhammingPath, f : Double) -> SignalwindowhammingPath {
-  let result = signal_window_hamming_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_path_add(a : SignalwindowhammingPath, b : SignalwindowhammingPath) -> SignalwindowhammingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_path_copy(s : SignalwindowhammingPath) -> SignalwindowhammingPath {
-  let result = signal_window_hamming_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_path_fill(s : SignalwindowhammingPath, v : Double) -> SignalwindowhammingPath {
-  let result = signal_window_hamming_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_path_min(s : SignalwindowhammingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_window_hamming_cluster_sum(s : SignalwindowhammingCluster) -> Doub
 pub fn signal_window_hamming_cluster_mean(s : SignalwindowhammingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_cluster_scale(s : SignalwindowhammingCluster, f : Double) -> SignalwindowhammingCluster {
-  let result = signal_window_hamming_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_cluster_add(a : SignalwindowhammingCluster, b : SignalwindowhammingCluster) -> SignalwindowhammingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_cluster_copy(s : SignalwindowhammingCluster) -> SignalwindowhammingCluster {
-  let result = signal_window_hamming_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_cluster_fill(s : SignalwindowhammingCluster, v : Double) -> SignalwindowhammingCluster {
-  let result = signal_window_hamming_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_cluster_min(s : SignalwindowhammingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_window_hamming_model_sum(s : SignalwindowhammingModel) -> Double {
 pub fn signal_window_hamming_model_mean(s : SignalwindowhammingModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_model_scale(s : SignalwindowhammingModel, f : Double) -> SignalwindowhammingModel {
-  let result = signal_window_hamming_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_model_add(a : SignalwindowhammingModel, b : SignalwindowhammingModel) -> SignalwindowhammingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_model_copy(s : SignalwindowhammingModel) -> SignalwindowhammingModel {
-  let result = signal_window_hamming_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_model_fill(s : SignalwindowhammingModel, v : Double) -> SignalwindowhammingModel {
-  let result = signal_window_hamming_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_model_min(s : SignalwindowhammingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_window_hamming_layer_sum(s : SignalwindowhammingLayer) -> Double {
 pub fn signal_window_hamming_layer_mean(s : SignalwindowhammingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_layer_scale(s : SignalwindowhammingLayer, f : Double) -> SignalwindowhammingLayer {
-  let result = signal_window_hamming_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_layer_add(a : SignalwindowhammingLayer, b : SignalwindowhammingLayer) -> SignalwindowhammingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_layer_copy(s : SignalwindowhammingLayer) -> SignalwindowhammingLayer {
-  let result = signal_window_hamming_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_layer_fill(s : SignalwindowhammingLayer, v : Double) -> SignalwindowhammingLayer {
-  let result = signal_window_hamming_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_layer_min(s : SignalwindowhammingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_window_hamming_buffer_sum(s : SignalwindowhammingBuffer) -> Double
 pub fn signal_window_hamming_buffer_mean(s : SignalwindowhammingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_buffer_scale(s : SignalwindowhammingBuffer, f : Double) -> SignalwindowhammingBuffer {
-  let result = signal_window_hamming_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_buffer_add(a : SignalwindowhammingBuffer, b : SignalwindowhammingBuffer) -> SignalwindowhammingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_buffer_copy(s : SignalwindowhammingBuffer) -> SignalwindowhammingBuffer {
-  let result = signal_window_hamming_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_buffer_fill(s : SignalwindowhammingBuffer, v : Double) -> SignalwindowhammingBuffer {
-  let result = signal_window_hamming_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_buffer_min(s : SignalwindowhammingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_window_hamming_cursor_sum(s : SignalwindowhammingCursor) -> Double
 pub fn signal_window_hamming_cursor_mean(s : SignalwindowhammingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_cursor_scale(s : SignalwindowhammingCursor, f : Double) -> SignalwindowhammingCursor {
-  let result = signal_window_hamming_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_cursor_add(a : SignalwindowhammingCursor, b : SignalwindowhammingCursor) -> SignalwindowhammingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_cursor_copy(s : SignalwindowhammingCursor) -> SignalwindowhammingCursor {
-  let result = signal_window_hamming_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_cursor_fill(s : SignalwindowhammingCursor, v : Double) -> SignalwindowhammingCursor {
-  let result = signal_window_hamming_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_cursor_min(s : SignalwindowhammingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_window_hamming_view_sum(s : SignalwindowhammingView) -> Double { @
 pub fn signal_window_hamming_view_mean(s : SignalwindowhammingView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_view_scale(s : SignalwindowhammingView, f : Double) -> SignalwindowhammingView {
-  let result = signal_window_hamming_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_view_add(a : SignalwindowhammingView, b : SignalwindowhammingView) -> SignalwindowhammingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_view_copy(s : SignalwindowhammingView) -> SignalwindowhammingView {
-  let result = signal_window_hamming_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_view_fill(s : SignalwindowhammingView, v : Double) -> SignalwindowhammingView {
-  let result = signal_window_hamming_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_view_min(s : SignalwindowhammingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_window_hamming_range_sum(s : SignalwindowhammingRange) -> Double {
 pub fn signal_window_hamming_range_mean(s : SignalwindowhammingRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_range_scale(s : SignalwindowhammingRange, f : Double) -> SignalwindowhammingRange {
-  let result = signal_window_hamming_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_range_add(a : SignalwindowhammingRange, b : SignalwindowhammingRange) -> SignalwindowhammingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_range_copy(s : SignalwindowhammingRange) -> SignalwindowhammingRange {
-  let result = signal_window_hamming_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_range_fill(s : SignalwindowhammingRange, v : Double) -> SignalwindowhammingRange {
-  let result = signal_window_hamming_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_range_min(s : SignalwindowhammingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_window_hamming_slice_sum(s : SignalwindowhammingSlice) -> Double {
 pub fn signal_window_hamming_slice_mean(s : SignalwindowhammingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_slice_scale(s : SignalwindowhammingSlice, f : Double) -> SignalwindowhammingSlice {
-  let result = signal_window_hamming_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_slice_add(a : SignalwindowhammingSlice, b : SignalwindowhammingSlice) -> SignalwindowhammingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_window_hamming_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_window_hamming_slice_copy(s : SignalwindowhammingSlice) -> SignalwindowhammingSlice {
-  let result = signal_window_hamming_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_slice_fill(s : SignalwindowhammingSlice, v : Double) -> SignalwindowhammingSlice {
-  let result = signal_window_hamming_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hamming_slice_min(s : SignalwindowhammingSlice) -> Double { @_common.min(s.data) }

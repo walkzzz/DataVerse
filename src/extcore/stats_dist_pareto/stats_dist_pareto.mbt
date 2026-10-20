@@ -383,28 +383,20 @@ pub fn stats_dist_pareto_frame_sum(s : StatsdistparetoFrame) -> Double { @_commo
 pub fn stats_dist_pareto_frame_mean(s : StatsdistparetoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_frame_scale(s : StatsdistparetoFrame, f : Double) -> StatsdistparetoFrame {
-  let result = stats_dist_pareto_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_frame_add(a : StatsdistparetoFrame, b : StatsdistparetoFrame) -> StatsdistparetoFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_frame_copy(s : StatsdistparetoFrame) -> StatsdistparetoFrame {
-  let result = stats_dist_pareto_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_frame_fill(s : StatsdistparetoFrame, v : Double) -> StatsdistparetoFrame {
-  let result = stats_dist_pareto_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_frame_min(s : StatsdistparetoFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_pareto_table_sum(s : StatsdistparetoTable) -> Double { @_commo
 pub fn stats_dist_pareto_table_mean(s : StatsdistparetoTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_table_scale(s : StatsdistparetoTable, f : Double) -> StatsdistparetoTable {
-  let result = stats_dist_pareto_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_table_add(a : StatsdistparetoTable, b : StatsdistparetoTable) -> StatsdistparetoTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_table_copy(s : StatsdistparetoTable) -> StatsdistparetoTable {
-  let result = stats_dist_pareto_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_table_fill(s : StatsdistparetoTable, v : Double) -> StatsdistparetoTable {
-  let result = stats_dist_pareto_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_table_min(s : StatsdistparetoTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_pareto_graphn_sum(s : StatsdistparetoGraphN) -> Double { @_com
 pub fn stats_dist_pareto_graphn_mean(s : StatsdistparetoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_graphn_scale(s : StatsdistparetoGraphN, f : Double) -> StatsdistparetoGraphN {
-  let result = stats_dist_pareto_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_graphn_add(a : StatsdistparetoGraphN, b : StatsdistparetoGraphN) -> StatsdistparetoGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_graphn_copy(s : StatsdistparetoGraphN) -> StatsdistparetoGraphN {
-  let result = stats_dist_pareto_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_graphn_fill(s : StatsdistparetoGraphN, v : Double) -> StatsdistparetoGraphN {
-  let result = stats_dist_pareto_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_graphn_min(s : StatsdistparetoGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_pareto_node_sum(s : StatsdistparetoNode) -> Double { @_common.
 pub fn stats_dist_pareto_node_mean(s : StatsdistparetoNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_node_scale(s : StatsdistparetoNode, f : Double) -> StatsdistparetoNode {
-  let result = stats_dist_pareto_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_node_add(a : StatsdistparetoNode, b : StatsdistparetoNode) -> StatsdistparetoNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_node_copy(s : StatsdistparetoNode) -> StatsdistparetoNode {
-  let result = stats_dist_pareto_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_node_fill(s : StatsdistparetoNode, v : Double) -> StatsdistparetoNode {
-  let result = stats_dist_pareto_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_node_min(s : StatsdistparetoNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_pareto_edge_sum(s : StatsdistparetoEdge) -> Double { @_common.
 pub fn stats_dist_pareto_edge_mean(s : StatsdistparetoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_edge_scale(s : StatsdistparetoEdge, f : Double) -> StatsdistparetoEdge {
-  let result = stats_dist_pareto_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_edge_add(a : StatsdistparetoEdge, b : StatsdistparetoEdge) -> StatsdistparetoEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_edge_copy(s : StatsdistparetoEdge) -> StatsdistparetoEdge {
-  let result = stats_dist_pareto_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_edge_fill(s : StatsdistparetoEdge, v : Double) -> StatsdistparetoEdge {
-  let result = stats_dist_pareto_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_edge_min(s : StatsdistparetoEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_pareto_path_sum(s : StatsdistparetoPath) -> Double { @_common.
 pub fn stats_dist_pareto_path_mean(s : StatsdistparetoPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_path_scale(s : StatsdistparetoPath, f : Double) -> StatsdistparetoPath {
-  let result = stats_dist_pareto_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_path_add(a : StatsdistparetoPath, b : StatsdistparetoPath) -> StatsdistparetoPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_path_copy(s : StatsdistparetoPath) -> StatsdistparetoPath {
-  let result = stats_dist_pareto_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_path_fill(s : StatsdistparetoPath, v : Double) -> StatsdistparetoPath {
-  let result = stats_dist_pareto_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_path_min(s : StatsdistparetoPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_pareto_cluster_sum(s : StatsdistparetoCluster) -> Double { @_c
 pub fn stats_dist_pareto_cluster_mean(s : StatsdistparetoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_cluster_scale(s : StatsdistparetoCluster, f : Double) -> StatsdistparetoCluster {
-  let result = stats_dist_pareto_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cluster_add(a : StatsdistparetoCluster, b : StatsdistparetoCluster) -> StatsdistparetoCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_cluster_copy(s : StatsdistparetoCluster) -> StatsdistparetoCluster {
-  let result = stats_dist_pareto_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cluster_fill(s : StatsdistparetoCluster, v : Double) -> StatsdistparetoCluster {
-  let result = stats_dist_pareto_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cluster_min(s : StatsdistparetoCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_pareto_model_sum(s : StatsdistparetoModel) -> Double { @_commo
 pub fn stats_dist_pareto_model_mean(s : StatsdistparetoModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_model_scale(s : StatsdistparetoModel, f : Double) -> StatsdistparetoModel {
-  let result = stats_dist_pareto_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_model_add(a : StatsdistparetoModel, b : StatsdistparetoModel) -> StatsdistparetoModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_model_copy(s : StatsdistparetoModel) -> StatsdistparetoModel {
-  let result = stats_dist_pareto_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_model_fill(s : StatsdistparetoModel, v : Double) -> StatsdistparetoModel {
-  let result = stats_dist_pareto_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_model_min(s : StatsdistparetoModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_pareto_layer_sum(s : StatsdistparetoLayer) -> Double { @_commo
 pub fn stats_dist_pareto_layer_mean(s : StatsdistparetoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_layer_scale(s : StatsdistparetoLayer, f : Double) -> StatsdistparetoLayer {
-  let result = stats_dist_pareto_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_layer_add(a : StatsdistparetoLayer, b : StatsdistparetoLayer) -> StatsdistparetoLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_layer_copy(s : StatsdistparetoLayer) -> StatsdistparetoLayer {
-  let result = stats_dist_pareto_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_layer_fill(s : StatsdistparetoLayer, v : Double) -> StatsdistparetoLayer {
-  let result = stats_dist_pareto_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_layer_min(s : StatsdistparetoLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_pareto_buffer_sum(s : StatsdistparetoBuffer) -> Double { @_com
 pub fn stats_dist_pareto_buffer_mean(s : StatsdistparetoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_buffer_scale(s : StatsdistparetoBuffer, f : Double) -> StatsdistparetoBuffer {
-  let result = stats_dist_pareto_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_buffer_add(a : StatsdistparetoBuffer, b : StatsdistparetoBuffer) -> StatsdistparetoBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_buffer_copy(s : StatsdistparetoBuffer) -> StatsdistparetoBuffer {
-  let result = stats_dist_pareto_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_buffer_fill(s : StatsdistparetoBuffer, v : Double) -> StatsdistparetoBuffer {
-  let result = stats_dist_pareto_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_buffer_min(s : StatsdistparetoBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_pareto_cursor_sum(s : StatsdistparetoCursor) -> Double { @_com
 pub fn stats_dist_pareto_cursor_mean(s : StatsdistparetoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_cursor_scale(s : StatsdistparetoCursor, f : Double) -> StatsdistparetoCursor {
-  let result = stats_dist_pareto_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cursor_add(a : StatsdistparetoCursor, b : StatsdistparetoCursor) -> StatsdistparetoCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_cursor_copy(s : StatsdistparetoCursor) -> StatsdistparetoCursor {
-  let result = stats_dist_pareto_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cursor_fill(s : StatsdistparetoCursor, v : Double) -> StatsdistparetoCursor {
-  let result = stats_dist_pareto_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cursor_min(s : StatsdistparetoCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_pareto_view_sum(s : StatsdistparetoView) -> Double { @_common.
 pub fn stats_dist_pareto_view_mean(s : StatsdistparetoView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_view_scale(s : StatsdistparetoView, f : Double) -> StatsdistparetoView {
-  let result = stats_dist_pareto_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_view_add(a : StatsdistparetoView, b : StatsdistparetoView) -> StatsdistparetoView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_view_copy(s : StatsdistparetoView) -> StatsdistparetoView {
-  let result = stats_dist_pareto_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_view_fill(s : StatsdistparetoView, v : Double) -> StatsdistparetoView {
-  let result = stats_dist_pareto_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_view_min(s : StatsdistparetoView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_pareto_range_sum(s : StatsdistparetoRange) -> Double { @_commo
 pub fn stats_dist_pareto_range_mean(s : StatsdistparetoRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_range_scale(s : StatsdistparetoRange, f : Double) -> StatsdistparetoRange {
-  let result = stats_dist_pareto_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_range_add(a : StatsdistparetoRange, b : StatsdistparetoRange) -> StatsdistparetoRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_range_copy(s : StatsdistparetoRange) -> StatsdistparetoRange {
-  let result = stats_dist_pareto_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_range_fill(s : StatsdistparetoRange, v : Double) -> StatsdistparetoRange {
-  let result = stats_dist_pareto_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_range_min(s : StatsdistparetoRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_pareto_slice_sum(s : StatsdistparetoSlice) -> Double { @_commo
 pub fn stats_dist_pareto_slice_mean(s : StatsdistparetoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_slice_scale(s : StatsdistparetoSlice, f : Double) -> StatsdistparetoSlice {
-  let result = stats_dist_pareto_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_slice_add(a : StatsdistparetoSlice, b : StatsdistparetoSlice) -> StatsdistparetoSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_pareto_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_pareto_slice_copy(s : StatsdistparetoSlice) -> StatsdistparetoSlice {
-  let result = stats_dist_pareto_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_slice_fill(s : StatsdistparetoSlice, v : Double) -> StatsdistparetoSlice {
-  let result = stats_dist_pareto_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_slice_min(s : StatsdistparetoSlice) -> Double { @_common.min(s.data) }

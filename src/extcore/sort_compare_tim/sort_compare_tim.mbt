@@ -383,28 +383,20 @@ pub fn sort_compare_tim_frame_sum(s : SortcomparetimFrame) -> Double { @_common.
 pub fn sort_compare_tim_frame_mean(s : SortcomparetimFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_frame_scale(s : SortcomparetimFrame, f : Double) -> SortcomparetimFrame {
-  let result = sort_compare_tim_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_frame_add(a : SortcomparetimFrame, b : SortcomparetimFrame) -> SortcomparetimFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_frame_copy(s : SortcomparetimFrame) -> SortcomparetimFrame {
-  let result = sort_compare_tim_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_frame_fill(s : SortcomparetimFrame, v : Double) -> SortcomparetimFrame {
-  let result = sort_compare_tim_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_frame_min(s : SortcomparetimFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_compare_tim_table_sum(s : SortcomparetimTable) -> Double { @_common.
 pub fn sort_compare_tim_table_mean(s : SortcomparetimTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_table_scale(s : SortcomparetimTable, f : Double) -> SortcomparetimTable {
-  let result = sort_compare_tim_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_table_add(a : SortcomparetimTable, b : SortcomparetimTable) -> SortcomparetimTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_table_copy(s : SortcomparetimTable) -> SortcomparetimTable {
-  let result = sort_compare_tim_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_table_fill(s : SortcomparetimTable, v : Double) -> SortcomparetimTable {
-  let result = sort_compare_tim_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_table_min(s : SortcomparetimTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_compare_tim_graphn_sum(s : SortcomparetimGraphN) -> Double { @_commo
 pub fn sort_compare_tim_graphn_mean(s : SortcomparetimGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_graphn_scale(s : SortcomparetimGraphN, f : Double) -> SortcomparetimGraphN {
-  let result = sort_compare_tim_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_graphn_add(a : SortcomparetimGraphN, b : SortcomparetimGraphN) -> SortcomparetimGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_graphn_copy(s : SortcomparetimGraphN) -> SortcomparetimGraphN {
-  let result = sort_compare_tim_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_graphn_fill(s : SortcomparetimGraphN, v : Double) -> SortcomparetimGraphN {
-  let result = sort_compare_tim_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_graphn_min(s : SortcomparetimGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_compare_tim_node_sum(s : SortcomparetimNode) -> Double { @_common.su
 pub fn sort_compare_tim_node_mean(s : SortcomparetimNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_node_scale(s : SortcomparetimNode, f : Double) -> SortcomparetimNode {
-  let result = sort_compare_tim_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_node_add(a : SortcomparetimNode, b : SortcomparetimNode) -> SortcomparetimNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_node_copy(s : SortcomparetimNode) -> SortcomparetimNode {
-  let result = sort_compare_tim_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_node_fill(s : SortcomparetimNode, v : Double) -> SortcomparetimNode {
-  let result = sort_compare_tim_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_node_min(s : SortcomparetimNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_compare_tim_edge_sum(s : SortcomparetimEdge) -> Double { @_common.su
 pub fn sort_compare_tim_edge_mean(s : SortcomparetimEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_edge_scale(s : SortcomparetimEdge, f : Double) -> SortcomparetimEdge {
-  let result = sort_compare_tim_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_edge_add(a : SortcomparetimEdge, b : SortcomparetimEdge) -> SortcomparetimEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_edge_copy(s : SortcomparetimEdge) -> SortcomparetimEdge {
-  let result = sort_compare_tim_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_edge_fill(s : SortcomparetimEdge, v : Double) -> SortcomparetimEdge {
-  let result = sort_compare_tim_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_edge_min(s : SortcomparetimEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_compare_tim_path_sum(s : SortcomparetimPath) -> Double { @_common.su
 pub fn sort_compare_tim_path_mean(s : SortcomparetimPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_path_scale(s : SortcomparetimPath, f : Double) -> SortcomparetimPath {
-  let result = sort_compare_tim_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_path_add(a : SortcomparetimPath, b : SortcomparetimPath) -> SortcomparetimPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_path_copy(s : SortcomparetimPath) -> SortcomparetimPath {
-  let result = sort_compare_tim_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_path_fill(s : SortcomparetimPath, v : Double) -> SortcomparetimPath {
-  let result = sort_compare_tim_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_path_min(s : SortcomparetimPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_compare_tim_cluster_sum(s : SortcomparetimCluster) -> Double { @_com
 pub fn sort_compare_tim_cluster_mean(s : SortcomparetimCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_cluster_scale(s : SortcomparetimCluster, f : Double) -> SortcomparetimCluster {
-  let result = sort_compare_tim_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cluster_add(a : SortcomparetimCluster, b : SortcomparetimCluster) -> SortcomparetimCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_cluster_copy(s : SortcomparetimCluster) -> SortcomparetimCluster {
-  let result = sort_compare_tim_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cluster_fill(s : SortcomparetimCluster, v : Double) -> SortcomparetimCluster {
-  let result = sort_compare_tim_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cluster_min(s : SortcomparetimCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_compare_tim_model_sum(s : SortcomparetimModel) -> Double { @_common.
 pub fn sort_compare_tim_model_mean(s : SortcomparetimModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_model_scale(s : SortcomparetimModel, f : Double) -> SortcomparetimModel {
-  let result = sort_compare_tim_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_model_add(a : SortcomparetimModel, b : SortcomparetimModel) -> SortcomparetimModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_model_copy(s : SortcomparetimModel) -> SortcomparetimModel {
-  let result = sort_compare_tim_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_model_fill(s : SortcomparetimModel, v : Double) -> SortcomparetimModel {
-  let result = sort_compare_tim_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_model_min(s : SortcomparetimModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_compare_tim_layer_sum(s : SortcomparetimLayer) -> Double { @_common.
 pub fn sort_compare_tim_layer_mean(s : SortcomparetimLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_layer_scale(s : SortcomparetimLayer, f : Double) -> SortcomparetimLayer {
-  let result = sort_compare_tim_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_layer_add(a : SortcomparetimLayer, b : SortcomparetimLayer) -> SortcomparetimLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_layer_copy(s : SortcomparetimLayer) -> SortcomparetimLayer {
-  let result = sort_compare_tim_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_layer_fill(s : SortcomparetimLayer, v : Double) -> SortcomparetimLayer {
-  let result = sort_compare_tim_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_layer_min(s : SortcomparetimLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_compare_tim_buffer_sum(s : SortcomparetimBuffer) -> Double { @_commo
 pub fn sort_compare_tim_buffer_mean(s : SortcomparetimBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_buffer_scale(s : SortcomparetimBuffer, f : Double) -> SortcomparetimBuffer {
-  let result = sort_compare_tim_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_buffer_add(a : SortcomparetimBuffer, b : SortcomparetimBuffer) -> SortcomparetimBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_buffer_copy(s : SortcomparetimBuffer) -> SortcomparetimBuffer {
-  let result = sort_compare_tim_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_buffer_fill(s : SortcomparetimBuffer, v : Double) -> SortcomparetimBuffer {
-  let result = sort_compare_tim_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_buffer_min(s : SortcomparetimBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_compare_tim_cursor_sum(s : SortcomparetimCursor) -> Double { @_commo
 pub fn sort_compare_tim_cursor_mean(s : SortcomparetimCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_cursor_scale(s : SortcomparetimCursor, f : Double) -> SortcomparetimCursor {
-  let result = sort_compare_tim_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cursor_add(a : SortcomparetimCursor, b : SortcomparetimCursor) -> SortcomparetimCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_cursor_copy(s : SortcomparetimCursor) -> SortcomparetimCursor {
-  let result = sort_compare_tim_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cursor_fill(s : SortcomparetimCursor, v : Double) -> SortcomparetimCursor {
-  let result = sort_compare_tim_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cursor_min(s : SortcomparetimCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_compare_tim_view_sum(s : SortcomparetimView) -> Double { @_common.su
 pub fn sort_compare_tim_view_mean(s : SortcomparetimView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_view_scale(s : SortcomparetimView, f : Double) -> SortcomparetimView {
-  let result = sort_compare_tim_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_view_add(a : SortcomparetimView, b : SortcomparetimView) -> SortcomparetimView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_view_copy(s : SortcomparetimView) -> SortcomparetimView {
-  let result = sort_compare_tim_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_view_fill(s : SortcomparetimView, v : Double) -> SortcomparetimView {
-  let result = sort_compare_tim_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_view_min(s : SortcomparetimView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_compare_tim_range_sum(s : SortcomparetimRange) -> Double { @_common.
 pub fn sort_compare_tim_range_mean(s : SortcomparetimRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_range_scale(s : SortcomparetimRange, f : Double) -> SortcomparetimRange {
-  let result = sort_compare_tim_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_range_add(a : SortcomparetimRange, b : SortcomparetimRange) -> SortcomparetimRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_range_copy(s : SortcomparetimRange) -> SortcomparetimRange {
-  let result = sort_compare_tim_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_range_fill(s : SortcomparetimRange, v : Double) -> SortcomparetimRange {
-  let result = sort_compare_tim_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_range_min(s : SortcomparetimRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_compare_tim_slice_sum(s : SortcomparetimSlice) -> Double { @_common.
 pub fn sort_compare_tim_slice_mean(s : SortcomparetimSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_tim_slice_scale(s : SortcomparetimSlice, f : Double) -> SortcomparetimSlice {
-  let result = sort_compare_tim_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_slice_add(a : SortcomparetimSlice, b : SortcomparetimSlice) -> SortcomparetimSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_compare_tim_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_compare_tim_slice_copy(s : SortcomparetimSlice) -> SortcomparetimSlice {
-  let result = sort_compare_tim_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_slice_fill(s : SortcomparetimSlice, v : Double) -> SortcomparetimSlice {
-  let result = sort_compare_tim_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_slice_min(s : SortcomparetimSlice) -> Double { @_common.min(s.data) }

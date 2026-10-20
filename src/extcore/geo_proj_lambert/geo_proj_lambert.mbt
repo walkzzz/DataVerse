@@ -383,28 +383,20 @@ pub fn geo_proj_lambert_frame_sum(s : GeoprojlambertFrame) -> Double { @_common.
 pub fn geo_proj_lambert_frame_mean(s : GeoprojlambertFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_frame_scale(s : GeoprojlambertFrame, f : Double) -> GeoprojlambertFrame {
-  let result = geo_proj_lambert_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_frame_add(a : GeoprojlambertFrame, b : GeoprojlambertFrame) -> GeoprojlambertFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_frame_copy(s : GeoprojlambertFrame) -> GeoprojlambertFrame {
-  let result = geo_proj_lambert_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_frame_fill(s : GeoprojlambertFrame, v : Double) -> GeoprojlambertFrame {
-  let result = geo_proj_lambert_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_frame_min(s : GeoprojlambertFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_proj_lambert_table_sum(s : GeoprojlambertTable) -> Double { @_common.
 pub fn geo_proj_lambert_table_mean(s : GeoprojlambertTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_table_scale(s : GeoprojlambertTable, f : Double) -> GeoprojlambertTable {
-  let result = geo_proj_lambert_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_table_add(a : GeoprojlambertTable, b : GeoprojlambertTable) -> GeoprojlambertTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_table_copy(s : GeoprojlambertTable) -> GeoprojlambertTable {
-  let result = geo_proj_lambert_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_table_fill(s : GeoprojlambertTable, v : Double) -> GeoprojlambertTable {
-  let result = geo_proj_lambert_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_table_min(s : GeoprojlambertTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_proj_lambert_graphn_sum(s : GeoprojlambertGraphN) -> Double { @_commo
 pub fn geo_proj_lambert_graphn_mean(s : GeoprojlambertGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_graphn_scale(s : GeoprojlambertGraphN, f : Double) -> GeoprojlambertGraphN {
-  let result = geo_proj_lambert_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_graphn_add(a : GeoprojlambertGraphN, b : GeoprojlambertGraphN) -> GeoprojlambertGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_graphn_copy(s : GeoprojlambertGraphN) -> GeoprojlambertGraphN {
-  let result = geo_proj_lambert_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_graphn_fill(s : GeoprojlambertGraphN, v : Double) -> GeoprojlambertGraphN {
-  let result = geo_proj_lambert_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_graphn_min(s : GeoprojlambertGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_proj_lambert_node_sum(s : GeoprojlambertNode) -> Double { @_common.su
 pub fn geo_proj_lambert_node_mean(s : GeoprojlambertNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_node_scale(s : GeoprojlambertNode, f : Double) -> GeoprojlambertNode {
-  let result = geo_proj_lambert_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_node_add(a : GeoprojlambertNode, b : GeoprojlambertNode) -> GeoprojlambertNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_node_copy(s : GeoprojlambertNode) -> GeoprojlambertNode {
-  let result = geo_proj_lambert_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_node_fill(s : GeoprojlambertNode, v : Double) -> GeoprojlambertNode {
-  let result = geo_proj_lambert_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_node_min(s : GeoprojlambertNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_proj_lambert_edge_sum(s : GeoprojlambertEdge) -> Double { @_common.su
 pub fn geo_proj_lambert_edge_mean(s : GeoprojlambertEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_edge_scale(s : GeoprojlambertEdge, f : Double) -> GeoprojlambertEdge {
-  let result = geo_proj_lambert_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_edge_add(a : GeoprojlambertEdge, b : GeoprojlambertEdge) -> GeoprojlambertEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_edge_copy(s : GeoprojlambertEdge) -> GeoprojlambertEdge {
-  let result = geo_proj_lambert_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_edge_fill(s : GeoprojlambertEdge, v : Double) -> GeoprojlambertEdge {
-  let result = geo_proj_lambert_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_edge_min(s : GeoprojlambertEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_proj_lambert_path_sum(s : GeoprojlambertPath) -> Double { @_common.su
 pub fn geo_proj_lambert_path_mean(s : GeoprojlambertPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_path_scale(s : GeoprojlambertPath, f : Double) -> GeoprojlambertPath {
-  let result = geo_proj_lambert_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_path_add(a : GeoprojlambertPath, b : GeoprojlambertPath) -> GeoprojlambertPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_path_copy(s : GeoprojlambertPath) -> GeoprojlambertPath {
-  let result = geo_proj_lambert_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_path_fill(s : GeoprojlambertPath, v : Double) -> GeoprojlambertPath {
-  let result = geo_proj_lambert_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_path_min(s : GeoprojlambertPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_proj_lambert_cluster_sum(s : GeoprojlambertCluster) -> Double { @_com
 pub fn geo_proj_lambert_cluster_mean(s : GeoprojlambertCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_cluster_scale(s : GeoprojlambertCluster, f : Double) -> GeoprojlambertCluster {
-  let result = geo_proj_lambert_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cluster_add(a : GeoprojlambertCluster, b : GeoprojlambertCluster) -> GeoprojlambertCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_cluster_copy(s : GeoprojlambertCluster) -> GeoprojlambertCluster {
-  let result = geo_proj_lambert_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cluster_fill(s : GeoprojlambertCluster, v : Double) -> GeoprojlambertCluster {
-  let result = geo_proj_lambert_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cluster_min(s : GeoprojlambertCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_proj_lambert_model_sum(s : GeoprojlambertModel) -> Double { @_common.
 pub fn geo_proj_lambert_model_mean(s : GeoprojlambertModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_model_scale(s : GeoprojlambertModel, f : Double) -> GeoprojlambertModel {
-  let result = geo_proj_lambert_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_model_add(a : GeoprojlambertModel, b : GeoprojlambertModel) -> GeoprojlambertModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_model_copy(s : GeoprojlambertModel) -> GeoprojlambertModel {
-  let result = geo_proj_lambert_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_model_fill(s : GeoprojlambertModel, v : Double) -> GeoprojlambertModel {
-  let result = geo_proj_lambert_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_model_min(s : GeoprojlambertModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_proj_lambert_layer_sum(s : GeoprojlambertLayer) -> Double { @_common.
 pub fn geo_proj_lambert_layer_mean(s : GeoprojlambertLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_layer_scale(s : GeoprojlambertLayer, f : Double) -> GeoprojlambertLayer {
-  let result = geo_proj_lambert_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_layer_add(a : GeoprojlambertLayer, b : GeoprojlambertLayer) -> GeoprojlambertLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_layer_copy(s : GeoprojlambertLayer) -> GeoprojlambertLayer {
-  let result = geo_proj_lambert_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_layer_fill(s : GeoprojlambertLayer, v : Double) -> GeoprojlambertLayer {
-  let result = geo_proj_lambert_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_layer_min(s : GeoprojlambertLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_proj_lambert_buffer_sum(s : GeoprojlambertBuffer) -> Double { @_commo
 pub fn geo_proj_lambert_buffer_mean(s : GeoprojlambertBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_buffer_scale(s : GeoprojlambertBuffer, f : Double) -> GeoprojlambertBuffer {
-  let result = geo_proj_lambert_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_buffer_add(a : GeoprojlambertBuffer, b : GeoprojlambertBuffer) -> GeoprojlambertBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_buffer_copy(s : GeoprojlambertBuffer) -> GeoprojlambertBuffer {
-  let result = geo_proj_lambert_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_buffer_fill(s : GeoprojlambertBuffer, v : Double) -> GeoprojlambertBuffer {
-  let result = geo_proj_lambert_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_buffer_min(s : GeoprojlambertBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_proj_lambert_cursor_sum(s : GeoprojlambertCursor) -> Double { @_commo
 pub fn geo_proj_lambert_cursor_mean(s : GeoprojlambertCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_cursor_scale(s : GeoprojlambertCursor, f : Double) -> GeoprojlambertCursor {
-  let result = geo_proj_lambert_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cursor_add(a : GeoprojlambertCursor, b : GeoprojlambertCursor) -> GeoprojlambertCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_cursor_copy(s : GeoprojlambertCursor) -> GeoprojlambertCursor {
-  let result = geo_proj_lambert_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cursor_fill(s : GeoprojlambertCursor, v : Double) -> GeoprojlambertCursor {
-  let result = geo_proj_lambert_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cursor_min(s : GeoprojlambertCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_proj_lambert_view_sum(s : GeoprojlambertView) -> Double { @_common.su
 pub fn geo_proj_lambert_view_mean(s : GeoprojlambertView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_view_scale(s : GeoprojlambertView, f : Double) -> GeoprojlambertView {
-  let result = geo_proj_lambert_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_view_add(a : GeoprojlambertView, b : GeoprojlambertView) -> GeoprojlambertView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_view_copy(s : GeoprojlambertView) -> GeoprojlambertView {
-  let result = geo_proj_lambert_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_view_fill(s : GeoprojlambertView, v : Double) -> GeoprojlambertView {
-  let result = geo_proj_lambert_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_view_min(s : GeoprojlambertView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_proj_lambert_range_sum(s : GeoprojlambertRange) -> Double { @_common.
 pub fn geo_proj_lambert_range_mean(s : GeoprojlambertRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_range_scale(s : GeoprojlambertRange, f : Double) -> GeoprojlambertRange {
-  let result = geo_proj_lambert_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_range_add(a : GeoprojlambertRange, b : GeoprojlambertRange) -> GeoprojlambertRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_range_copy(s : GeoprojlambertRange) -> GeoprojlambertRange {
-  let result = geo_proj_lambert_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_range_fill(s : GeoprojlambertRange, v : Double) -> GeoprojlambertRange {
-  let result = geo_proj_lambert_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_range_min(s : GeoprojlambertRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_proj_lambert_slice_sum(s : GeoprojlambertSlice) -> Double { @_common.
 pub fn geo_proj_lambert_slice_mean(s : GeoprojlambertSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_slice_scale(s : GeoprojlambertSlice, f : Double) -> GeoprojlambertSlice {
-  let result = geo_proj_lambert_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_slice_add(a : GeoprojlambertSlice, b : GeoprojlambertSlice) -> GeoprojlambertSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_lambert_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_lambert_slice_copy(s : GeoprojlambertSlice) -> GeoprojlambertSlice {
-  let result = geo_proj_lambert_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_slice_fill(s : GeoprojlambertSlice, v : Double) -> GeoprojlambertSlice {
-  let result = geo_proj_lambert_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_slice_min(s : GeoprojlambertSlice) -> Double { @_common.min(s.data) }

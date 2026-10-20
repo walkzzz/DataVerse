@@ -383,28 +383,20 @@ pub fn signal_filter_median_frame_sum(s : SignalfiltermedianFrame) -> Double { @
 pub fn signal_filter_median_frame_mean(s : SignalfiltermedianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_frame_scale(s : SignalfiltermedianFrame, f : Double) -> SignalfiltermedianFrame {
-  let result = signal_filter_median_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_frame_add(a : SignalfiltermedianFrame, b : SignalfiltermedianFrame) -> SignalfiltermedianFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_frame_copy(s : SignalfiltermedianFrame) -> SignalfiltermedianFrame {
-  let result = signal_filter_median_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_frame_fill(s : SignalfiltermedianFrame, v : Double) -> SignalfiltermedianFrame {
-  let result = signal_filter_median_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_frame_min(s : SignalfiltermedianFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_filter_median_table_sum(s : SignalfiltermedianTable) -> Double { @
 pub fn signal_filter_median_table_mean(s : SignalfiltermedianTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_table_scale(s : SignalfiltermedianTable, f : Double) -> SignalfiltermedianTable {
-  let result = signal_filter_median_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_table_add(a : SignalfiltermedianTable, b : SignalfiltermedianTable) -> SignalfiltermedianTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_table_copy(s : SignalfiltermedianTable) -> SignalfiltermedianTable {
-  let result = signal_filter_median_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_table_fill(s : SignalfiltermedianTable, v : Double) -> SignalfiltermedianTable {
-  let result = signal_filter_median_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_table_min(s : SignalfiltermedianTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_filter_median_graphn_sum(s : SignalfiltermedianGraphN) -> Double {
 pub fn signal_filter_median_graphn_mean(s : SignalfiltermedianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_graphn_scale(s : SignalfiltermedianGraphN, f : Double) -> SignalfiltermedianGraphN {
-  let result = signal_filter_median_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_graphn_add(a : SignalfiltermedianGraphN, b : SignalfiltermedianGraphN) -> SignalfiltermedianGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_graphn_copy(s : SignalfiltermedianGraphN) -> SignalfiltermedianGraphN {
-  let result = signal_filter_median_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_graphn_fill(s : SignalfiltermedianGraphN, v : Double) -> SignalfiltermedianGraphN {
-  let result = signal_filter_median_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_graphn_min(s : SignalfiltermedianGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_filter_median_node_sum(s : SignalfiltermedianNode) -> Double { @_c
 pub fn signal_filter_median_node_mean(s : SignalfiltermedianNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_node_scale(s : SignalfiltermedianNode, f : Double) -> SignalfiltermedianNode {
-  let result = signal_filter_median_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_node_add(a : SignalfiltermedianNode, b : SignalfiltermedianNode) -> SignalfiltermedianNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_node_copy(s : SignalfiltermedianNode) -> SignalfiltermedianNode {
-  let result = signal_filter_median_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_node_fill(s : SignalfiltermedianNode, v : Double) -> SignalfiltermedianNode {
-  let result = signal_filter_median_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_node_min(s : SignalfiltermedianNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_filter_median_edge_sum(s : SignalfiltermedianEdge) -> Double { @_c
 pub fn signal_filter_median_edge_mean(s : SignalfiltermedianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_edge_scale(s : SignalfiltermedianEdge, f : Double) -> SignalfiltermedianEdge {
-  let result = signal_filter_median_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_edge_add(a : SignalfiltermedianEdge, b : SignalfiltermedianEdge) -> SignalfiltermedianEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_edge_copy(s : SignalfiltermedianEdge) -> SignalfiltermedianEdge {
-  let result = signal_filter_median_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_edge_fill(s : SignalfiltermedianEdge, v : Double) -> SignalfiltermedianEdge {
-  let result = signal_filter_median_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_edge_min(s : SignalfiltermedianEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_filter_median_path_sum(s : SignalfiltermedianPath) -> Double { @_c
 pub fn signal_filter_median_path_mean(s : SignalfiltermedianPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_path_scale(s : SignalfiltermedianPath, f : Double) -> SignalfiltermedianPath {
-  let result = signal_filter_median_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_path_add(a : SignalfiltermedianPath, b : SignalfiltermedianPath) -> SignalfiltermedianPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_path_copy(s : SignalfiltermedianPath) -> SignalfiltermedianPath {
-  let result = signal_filter_median_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_path_fill(s : SignalfiltermedianPath, v : Double) -> SignalfiltermedianPath {
-  let result = signal_filter_median_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_path_min(s : SignalfiltermedianPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_filter_median_cluster_sum(s : SignalfiltermedianCluster) -> Double
 pub fn signal_filter_median_cluster_mean(s : SignalfiltermedianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_cluster_scale(s : SignalfiltermedianCluster, f : Double) -> SignalfiltermedianCluster {
-  let result = signal_filter_median_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_cluster_add(a : SignalfiltermedianCluster, b : SignalfiltermedianCluster) -> SignalfiltermedianCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_cluster_copy(s : SignalfiltermedianCluster) -> SignalfiltermedianCluster {
-  let result = signal_filter_median_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_cluster_fill(s : SignalfiltermedianCluster, v : Double) -> SignalfiltermedianCluster {
-  let result = signal_filter_median_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_cluster_min(s : SignalfiltermedianCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_filter_median_model_sum(s : SignalfiltermedianModel) -> Double { @
 pub fn signal_filter_median_model_mean(s : SignalfiltermedianModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_model_scale(s : SignalfiltermedianModel, f : Double) -> SignalfiltermedianModel {
-  let result = signal_filter_median_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_model_add(a : SignalfiltermedianModel, b : SignalfiltermedianModel) -> SignalfiltermedianModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_model_copy(s : SignalfiltermedianModel) -> SignalfiltermedianModel {
-  let result = signal_filter_median_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_model_fill(s : SignalfiltermedianModel, v : Double) -> SignalfiltermedianModel {
-  let result = signal_filter_median_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_model_min(s : SignalfiltermedianModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_filter_median_layer_sum(s : SignalfiltermedianLayer) -> Double { @
 pub fn signal_filter_median_layer_mean(s : SignalfiltermedianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_layer_scale(s : SignalfiltermedianLayer, f : Double) -> SignalfiltermedianLayer {
-  let result = signal_filter_median_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_layer_add(a : SignalfiltermedianLayer, b : SignalfiltermedianLayer) -> SignalfiltermedianLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_layer_copy(s : SignalfiltermedianLayer) -> SignalfiltermedianLayer {
-  let result = signal_filter_median_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_layer_fill(s : SignalfiltermedianLayer, v : Double) -> SignalfiltermedianLayer {
-  let result = signal_filter_median_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_layer_min(s : SignalfiltermedianLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_filter_median_buffer_sum(s : SignalfiltermedianBuffer) -> Double {
 pub fn signal_filter_median_buffer_mean(s : SignalfiltermedianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_buffer_scale(s : SignalfiltermedianBuffer, f : Double) -> SignalfiltermedianBuffer {
-  let result = signal_filter_median_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_buffer_add(a : SignalfiltermedianBuffer, b : SignalfiltermedianBuffer) -> SignalfiltermedianBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_buffer_copy(s : SignalfiltermedianBuffer) -> SignalfiltermedianBuffer {
-  let result = signal_filter_median_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_buffer_fill(s : SignalfiltermedianBuffer, v : Double) -> SignalfiltermedianBuffer {
-  let result = signal_filter_median_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_buffer_min(s : SignalfiltermedianBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_filter_median_cursor_sum(s : SignalfiltermedianCursor) -> Double {
 pub fn signal_filter_median_cursor_mean(s : SignalfiltermedianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_cursor_scale(s : SignalfiltermedianCursor, f : Double) -> SignalfiltermedianCursor {
-  let result = signal_filter_median_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_cursor_add(a : SignalfiltermedianCursor, b : SignalfiltermedianCursor) -> SignalfiltermedianCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_cursor_copy(s : SignalfiltermedianCursor) -> SignalfiltermedianCursor {
-  let result = signal_filter_median_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_cursor_fill(s : SignalfiltermedianCursor, v : Double) -> SignalfiltermedianCursor {
-  let result = signal_filter_median_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_cursor_min(s : SignalfiltermedianCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_filter_median_view_sum(s : SignalfiltermedianView) -> Double { @_c
 pub fn signal_filter_median_view_mean(s : SignalfiltermedianView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_view_scale(s : SignalfiltermedianView, f : Double) -> SignalfiltermedianView {
-  let result = signal_filter_median_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_view_add(a : SignalfiltermedianView, b : SignalfiltermedianView) -> SignalfiltermedianView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_view_copy(s : SignalfiltermedianView) -> SignalfiltermedianView {
-  let result = signal_filter_median_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_view_fill(s : SignalfiltermedianView, v : Double) -> SignalfiltermedianView {
-  let result = signal_filter_median_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_view_min(s : SignalfiltermedianView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_filter_median_range_sum(s : SignalfiltermedianRange) -> Double { @
 pub fn signal_filter_median_range_mean(s : SignalfiltermedianRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_range_scale(s : SignalfiltermedianRange, f : Double) -> SignalfiltermedianRange {
-  let result = signal_filter_median_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_range_add(a : SignalfiltermedianRange, b : SignalfiltermedianRange) -> SignalfiltermedianRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_range_copy(s : SignalfiltermedianRange) -> SignalfiltermedianRange {
-  let result = signal_filter_median_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_range_fill(s : SignalfiltermedianRange, v : Double) -> SignalfiltermedianRange {
-  let result = signal_filter_median_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_range_min(s : SignalfiltermedianRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_filter_median_slice_sum(s : SignalfiltermedianSlice) -> Double { @
 pub fn signal_filter_median_slice_mean(s : SignalfiltermedianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_median_slice_scale(s : SignalfiltermedianSlice, f : Double) -> SignalfiltermedianSlice {
-  let result = signal_filter_median_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_slice_add(a : SignalfiltermedianSlice, b : SignalfiltermedianSlice) -> SignalfiltermedianSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_median_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_median_slice_copy(s : SignalfiltermedianSlice) -> SignalfiltermedianSlice {
-  let result = signal_filter_median_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_slice_fill(s : SignalfiltermedianSlice, v : Double) -> SignalfiltermedianSlice {
-  let result = signal_filter_median_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_median_slice_min(s : SignalfiltermedianSlice) -> Double { @_common.min(s.data) }

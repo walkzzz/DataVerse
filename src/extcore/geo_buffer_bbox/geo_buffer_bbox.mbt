@@ -383,28 +383,20 @@ pub fn geo_buffer_bbox_frame_sum(s : GeobufferbboxFrame) -> Double { @_common.su
 pub fn geo_buffer_bbox_frame_mean(s : GeobufferbboxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_frame_scale(s : GeobufferbboxFrame, f : Double) -> GeobufferbboxFrame {
-  let result = geo_buffer_bbox_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_frame_add(a : GeobufferbboxFrame, b : GeobufferbboxFrame) -> GeobufferbboxFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_frame_copy(s : GeobufferbboxFrame) -> GeobufferbboxFrame {
-  let result = geo_buffer_bbox_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_frame_fill(s : GeobufferbboxFrame, v : Double) -> GeobufferbboxFrame {
-  let result = geo_buffer_bbox_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_frame_min(s : GeobufferbboxFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_buffer_bbox_table_sum(s : GeobufferbboxTable) -> Double { @_common.su
 pub fn geo_buffer_bbox_table_mean(s : GeobufferbboxTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_table_scale(s : GeobufferbboxTable, f : Double) -> GeobufferbboxTable {
-  let result = geo_buffer_bbox_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_table_add(a : GeobufferbboxTable, b : GeobufferbboxTable) -> GeobufferbboxTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_table_copy(s : GeobufferbboxTable) -> GeobufferbboxTable {
-  let result = geo_buffer_bbox_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_table_fill(s : GeobufferbboxTable, v : Double) -> GeobufferbboxTable {
-  let result = geo_buffer_bbox_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_table_min(s : GeobufferbboxTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_buffer_bbox_graphn_sum(s : GeobufferbboxGraphN) -> Double { @_common.
 pub fn geo_buffer_bbox_graphn_mean(s : GeobufferbboxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_graphn_scale(s : GeobufferbboxGraphN, f : Double) -> GeobufferbboxGraphN {
-  let result = geo_buffer_bbox_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_graphn_add(a : GeobufferbboxGraphN, b : GeobufferbboxGraphN) -> GeobufferbboxGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_graphn_copy(s : GeobufferbboxGraphN) -> GeobufferbboxGraphN {
-  let result = geo_buffer_bbox_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_graphn_fill(s : GeobufferbboxGraphN, v : Double) -> GeobufferbboxGraphN {
-  let result = geo_buffer_bbox_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_graphn_min(s : GeobufferbboxGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_buffer_bbox_node_sum(s : GeobufferbboxNode) -> Double { @_common.sum(
 pub fn geo_buffer_bbox_node_mean(s : GeobufferbboxNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_node_scale(s : GeobufferbboxNode, f : Double) -> GeobufferbboxNode {
-  let result = geo_buffer_bbox_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_node_add(a : GeobufferbboxNode, b : GeobufferbboxNode) -> GeobufferbboxNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_node_copy(s : GeobufferbboxNode) -> GeobufferbboxNode {
-  let result = geo_buffer_bbox_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_node_fill(s : GeobufferbboxNode, v : Double) -> GeobufferbboxNode {
-  let result = geo_buffer_bbox_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_node_min(s : GeobufferbboxNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_buffer_bbox_edge_sum(s : GeobufferbboxEdge) -> Double { @_common.sum(
 pub fn geo_buffer_bbox_edge_mean(s : GeobufferbboxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_edge_scale(s : GeobufferbboxEdge, f : Double) -> GeobufferbboxEdge {
-  let result = geo_buffer_bbox_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_edge_add(a : GeobufferbboxEdge, b : GeobufferbboxEdge) -> GeobufferbboxEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_edge_copy(s : GeobufferbboxEdge) -> GeobufferbboxEdge {
-  let result = geo_buffer_bbox_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_edge_fill(s : GeobufferbboxEdge, v : Double) -> GeobufferbboxEdge {
-  let result = geo_buffer_bbox_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_edge_min(s : GeobufferbboxEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_buffer_bbox_path_sum(s : GeobufferbboxPath) -> Double { @_common.sum(
 pub fn geo_buffer_bbox_path_mean(s : GeobufferbboxPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_path_scale(s : GeobufferbboxPath, f : Double) -> GeobufferbboxPath {
-  let result = geo_buffer_bbox_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_path_add(a : GeobufferbboxPath, b : GeobufferbboxPath) -> GeobufferbboxPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_path_copy(s : GeobufferbboxPath) -> GeobufferbboxPath {
-  let result = geo_buffer_bbox_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_path_fill(s : GeobufferbboxPath, v : Double) -> GeobufferbboxPath {
-  let result = geo_buffer_bbox_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_path_min(s : GeobufferbboxPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_buffer_bbox_cluster_sum(s : GeobufferbboxCluster) -> Double { @_commo
 pub fn geo_buffer_bbox_cluster_mean(s : GeobufferbboxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_cluster_scale(s : GeobufferbboxCluster, f : Double) -> GeobufferbboxCluster {
-  let result = geo_buffer_bbox_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_cluster_add(a : GeobufferbboxCluster, b : GeobufferbboxCluster) -> GeobufferbboxCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_cluster_copy(s : GeobufferbboxCluster) -> GeobufferbboxCluster {
-  let result = geo_buffer_bbox_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_cluster_fill(s : GeobufferbboxCluster, v : Double) -> GeobufferbboxCluster {
-  let result = geo_buffer_bbox_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_cluster_min(s : GeobufferbboxCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_buffer_bbox_model_sum(s : GeobufferbboxModel) -> Double { @_common.su
 pub fn geo_buffer_bbox_model_mean(s : GeobufferbboxModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_model_scale(s : GeobufferbboxModel, f : Double) -> GeobufferbboxModel {
-  let result = geo_buffer_bbox_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_model_add(a : GeobufferbboxModel, b : GeobufferbboxModel) -> GeobufferbboxModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_model_copy(s : GeobufferbboxModel) -> GeobufferbboxModel {
-  let result = geo_buffer_bbox_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_model_fill(s : GeobufferbboxModel, v : Double) -> GeobufferbboxModel {
-  let result = geo_buffer_bbox_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_model_min(s : GeobufferbboxModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_buffer_bbox_layer_sum(s : GeobufferbboxLayer) -> Double { @_common.su
 pub fn geo_buffer_bbox_layer_mean(s : GeobufferbboxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_layer_scale(s : GeobufferbboxLayer, f : Double) -> GeobufferbboxLayer {
-  let result = geo_buffer_bbox_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_layer_add(a : GeobufferbboxLayer, b : GeobufferbboxLayer) -> GeobufferbboxLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_layer_copy(s : GeobufferbboxLayer) -> GeobufferbboxLayer {
-  let result = geo_buffer_bbox_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_layer_fill(s : GeobufferbboxLayer, v : Double) -> GeobufferbboxLayer {
-  let result = geo_buffer_bbox_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_layer_min(s : GeobufferbboxLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_buffer_bbox_buffer_sum(s : GeobufferbboxBuffer) -> Double { @_common.
 pub fn geo_buffer_bbox_buffer_mean(s : GeobufferbboxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_buffer_scale(s : GeobufferbboxBuffer, f : Double) -> GeobufferbboxBuffer {
-  let result = geo_buffer_bbox_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_buffer_add(a : GeobufferbboxBuffer, b : GeobufferbboxBuffer) -> GeobufferbboxBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_buffer_copy(s : GeobufferbboxBuffer) -> GeobufferbboxBuffer {
-  let result = geo_buffer_bbox_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_buffer_fill(s : GeobufferbboxBuffer, v : Double) -> GeobufferbboxBuffer {
-  let result = geo_buffer_bbox_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_buffer_min(s : GeobufferbboxBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_buffer_bbox_cursor_sum(s : GeobufferbboxCursor) -> Double { @_common.
 pub fn geo_buffer_bbox_cursor_mean(s : GeobufferbboxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_cursor_scale(s : GeobufferbboxCursor, f : Double) -> GeobufferbboxCursor {
-  let result = geo_buffer_bbox_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_cursor_add(a : GeobufferbboxCursor, b : GeobufferbboxCursor) -> GeobufferbboxCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_cursor_copy(s : GeobufferbboxCursor) -> GeobufferbboxCursor {
-  let result = geo_buffer_bbox_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_cursor_fill(s : GeobufferbboxCursor, v : Double) -> GeobufferbboxCursor {
-  let result = geo_buffer_bbox_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_cursor_min(s : GeobufferbboxCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_buffer_bbox_view_sum(s : GeobufferbboxView) -> Double { @_common.sum(
 pub fn geo_buffer_bbox_view_mean(s : GeobufferbboxView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_view_scale(s : GeobufferbboxView, f : Double) -> GeobufferbboxView {
-  let result = geo_buffer_bbox_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_view_add(a : GeobufferbboxView, b : GeobufferbboxView) -> GeobufferbboxView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_view_copy(s : GeobufferbboxView) -> GeobufferbboxView {
-  let result = geo_buffer_bbox_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_view_fill(s : GeobufferbboxView, v : Double) -> GeobufferbboxView {
-  let result = geo_buffer_bbox_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_view_min(s : GeobufferbboxView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_buffer_bbox_range_sum(s : GeobufferbboxRange) -> Double { @_common.su
 pub fn geo_buffer_bbox_range_mean(s : GeobufferbboxRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_range_scale(s : GeobufferbboxRange, f : Double) -> GeobufferbboxRange {
-  let result = geo_buffer_bbox_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_range_add(a : GeobufferbboxRange, b : GeobufferbboxRange) -> GeobufferbboxRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_range_copy(s : GeobufferbboxRange) -> GeobufferbboxRange {
-  let result = geo_buffer_bbox_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_range_fill(s : GeobufferbboxRange, v : Double) -> GeobufferbboxRange {
-  let result = geo_buffer_bbox_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_range_min(s : GeobufferbboxRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_buffer_bbox_slice_sum(s : GeobufferbboxSlice) -> Double { @_common.su
 pub fn geo_buffer_bbox_slice_mean(s : GeobufferbboxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_slice_scale(s : GeobufferbboxSlice, f : Double) -> GeobufferbboxSlice {
-  let result = geo_buffer_bbox_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_slice_add(a : GeobufferbboxSlice, b : GeobufferbboxSlice) -> GeobufferbboxSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_bbox_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_bbox_slice_copy(s : GeobufferbboxSlice) -> GeobufferbboxSlice {
-  let result = geo_buffer_bbox_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_slice_fill(s : GeobufferbboxSlice, v : Double) -> GeobufferbboxSlice {
-  let result = geo_buffer_bbox_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_bbox_slice_min(s : GeobufferbboxSlice) -> Double { @_common.min(s.data) }

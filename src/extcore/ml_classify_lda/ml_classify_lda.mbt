@@ -383,28 +383,20 @@ pub fn ml_classify_lda_frame_sum(s : MlclassifyldaFrame) -> Double { @_common.su
 pub fn ml_classify_lda_frame_mean(s : MlclassifyldaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_frame_scale(s : MlclassifyldaFrame, f : Double) -> MlclassifyldaFrame {
-  let result = ml_classify_lda_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_frame_add(a : MlclassifyldaFrame, b : MlclassifyldaFrame) -> MlclassifyldaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_frame_copy(s : MlclassifyldaFrame) -> MlclassifyldaFrame {
-  let result = ml_classify_lda_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_frame_fill(s : MlclassifyldaFrame, v : Double) -> MlclassifyldaFrame {
-  let result = ml_classify_lda_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_frame_min(s : MlclassifyldaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_classify_lda_table_sum(s : MlclassifyldaTable) -> Double { @_common.su
 pub fn ml_classify_lda_table_mean(s : MlclassifyldaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_table_scale(s : MlclassifyldaTable, f : Double) -> MlclassifyldaTable {
-  let result = ml_classify_lda_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_table_add(a : MlclassifyldaTable, b : MlclassifyldaTable) -> MlclassifyldaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_table_copy(s : MlclassifyldaTable) -> MlclassifyldaTable {
-  let result = ml_classify_lda_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_table_fill(s : MlclassifyldaTable, v : Double) -> MlclassifyldaTable {
-  let result = ml_classify_lda_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_table_min(s : MlclassifyldaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_classify_lda_graphn_sum(s : MlclassifyldaGraphN) -> Double { @_common.
 pub fn ml_classify_lda_graphn_mean(s : MlclassifyldaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_graphn_scale(s : MlclassifyldaGraphN, f : Double) -> MlclassifyldaGraphN {
-  let result = ml_classify_lda_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_graphn_add(a : MlclassifyldaGraphN, b : MlclassifyldaGraphN) -> MlclassifyldaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_graphn_copy(s : MlclassifyldaGraphN) -> MlclassifyldaGraphN {
-  let result = ml_classify_lda_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_graphn_fill(s : MlclassifyldaGraphN, v : Double) -> MlclassifyldaGraphN {
-  let result = ml_classify_lda_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_graphn_min(s : MlclassifyldaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_classify_lda_node_sum(s : MlclassifyldaNode) -> Double { @_common.sum(
 pub fn ml_classify_lda_node_mean(s : MlclassifyldaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_node_scale(s : MlclassifyldaNode, f : Double) -> MlclassifyldaNode {
-  let result = ml_classify_lda_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_node_add(a : MlclassifyldaNode, b : MlclassifyldaNode) -> MlclassifyldaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_node_copy(s : MlclassifyldaNode) -> MlclassifyldaNode {
-  let result = ml_classify_lda_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_node_fill(s : MlclassifyldaNode, v : Double) -> MlclassifyldaNode {
-  let result = ml_classify_lda_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_node_min(s : MlclassifyldaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_classify_lda_edge_sum(s : MlclassifyldaEdge) -> Double { @_common.sum(
 pub fn ml_classify_lda_edge_mean(s : MlclassifyldaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_edge_scale(s : MlclassifyldaEdge, f : Double) -> MlclassifyldaEdge {
-  let result = ml_classify_lda_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_edge_add(a : MlclassifyldaEdge, b : MlclassifyldaEdge) -> MlclassifyldaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_edge_copy(s : MlclassifyldaEdge) -> MlclassifyldaEdge {
-  let result = ml_classify_lda_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_edge_fill(s : MlclassifyldaEdge, v : Double) -> MlclassifyldaEdge {
-  let result = ml_classify_lda_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_edge_min(s : MlclassifyldaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_classify_lda_path_sum(s : MlclassifyldaPath) -> Double { @_common.sum(
 pub fn ml_classify_lda_path_mean(s : MlclassifyldaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_path_scale(s : MlclassifyldaPath, f : Double) -> MlclassifyldaPath {
-  let result = ml_classify_lda_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_path_add(a : MlclassifyldaPath, b : MlclassifyldaPath) -> MlclassifyldaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_path_copy(s : MlclassifyldaPath) -> MlclassifyldaPath {
-  let result = ml_classify_lda_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_path_fill(s : MlclassifyldaPath, v : Double) -> MlclassifyldaPath {
-  let result = ml_classify_lda_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_path_min(s : MlclassifyldaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_classify_lda_cluster_sum(s : MlclassifyldaCluster) -> Double { @_commo
 pub fn ml_classify_lda_cluster_mean(s : MlclassifyldaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_cluster_scale(s : MlclassifyldaCluster, f : Double) -> MlclassifyldaCluster {
-  let result = ml_classify_lda_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_cluster_add(a : MlclassifyldaCluster, b : MlclassifyldaCluster) -> MlclassifyldaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_cluster_copy(s : MlclassifyldaCluster) -> MlclassifyldaCluster {
-  let result = ml_classify_lda_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_cluster_fill(s : MlclassifyldaCluster, v : Double) -> MlclassifyldaCluster {
-  let result = ml_classify_lda_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_cluster_min(s : MlclassifyldaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_classify_lda_model_sum(s : MlclassifyldaModel) -> Double { @_common.su
 pub fn ml_classify_lda_model_mean(s : MlclassifyldaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_model_scale(s : MlclassifyldaModel, f : Double) -> MlclassifyldaModel {
-  let result = ml_classify_lda_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_model_add(a : MlclassifyldaModel, b : MlclassifyldaModel) -> MlclassifyldaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_model_copy(s : MlclassifyldaModel) -> MlclassifyldaModel {
-  let result = ml_classify_lda_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_model_fill(s : MlclassifyldaModel, v : Double) -> MlclassifyldaModel {
-  let result = ml_classify_lda_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_model_min(s : MlclassifyldaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_classify_lda_layer_sum(s : MlclassifyldaLayer) -> Double { @_common.su
 pub fn ml_classify_lda_layer_mean(s : MlclassifyldaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_layer_scale(s : MlclassifyldaLayer, f : Double) -> MlclassifyldaLayer {
-  let result = ml_classify_lda_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_layer_add(a : MlclassifyldaLayer, b : MlclassifyldaLayer) -> MlclassifyldaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_layer_copy(s : MlclassifyldaLayer) -> MlclassifyldaLayer {
-  let result = ml_classify_lda_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_layer_fill(s : MlclassifyldaLayer, v : Double) -> MlclassifyldaLayer {
-  let result = ml_classify_lda_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_layer_min(s : MlclassifyldaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_classify_lda_buffer_sum(s : MlclassifyldaBuffer) -> Double { @_common.
 pub fn ml_classify_lda_buffer_mean(s : MlclassifyldaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_buffer_scale(s : MlclassifyldaBuffer, f : Double) -> MlclassifyldaBuffer {
-  let result = ml_classify_lda_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_buffer_add(a : MlclassifyldaBuffer, b : MlclassifyldaBuffer) -> MlclassifyldaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_buffer_copy(s : MlclassifyldaBuffer) -> MlclassifyldaBuffer {
-  let result = ml_classify_lda_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_buffer_fill(s : MlclassifyldaBuffer, v : Double) -> MlclassifyldaBuffer {
-  let result = ml_classify_lda_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_buffer_min(s : MlclassifyldaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_classify_lda_cursor_sum(s : MlclassifyldaCursor) -> Double { @_common.
 pub fn ml_classify_lda_cursor_mean(s : MlclassifyldaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_cursor_scale(s : MlclassifyldaCursor, f : Double) -> MlclassifyldaCursor {
-  let result = ml_classify_lda_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_cursor_add(a : MlclassifyldaCursor, b : MlclassifyldaCursor) -> MlclassifyldaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_cursor_copy(s : MlclassifyldaCursor) -> MlclassifyldaCursor {
-  let result = ml_classify_lda_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_cursor_fill(s : MlclassifyldaCursor, v : Double) -> MlclassifyldaCursor {
-  let result = ml_classify_lda_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_cursor_min(s : MlclassifyldaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_classify_lda_view_sum(s : MlclassifyldaView) -> Double { @_common.sum(
 pub fn ml_classify_lda_view_mean(s : MlclassifyldaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_view_scale(s : MlclassifyldaView, f : Double) -> MlclassifyldaView {
-  let result = ml_classify_lda_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_view_add(a : MlclassifyldaView, b : MlclassifyldaView) -> MlclassifyldaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_view_copy(s : MlclassifyldaView) -> MlclassifyldaView {
-  let result = ml_classify_lda_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_view_fill(s : MlclassifyldaView, v : Double) -> MlclassifyldaView {
-  let result = ml_classify_lda_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_view_min(s : MlclassifyldaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_classify_lda_range_sum(s : MlclassifyldaRange) -> Double { @_common.su
 pub fn ml_classify_lda_range_mean(s : MlclassifyldaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_range_scale(s : MlclassifyldaRange, f : Double) -> MlclassifyldaRange {
-  let result = ml_classify_lda_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_range_add(a : MlclassifyldaRange, b : MlclassifyldaRange) -> MlclassifyldaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_range_copy(s : MlclassifyldaRange) -> MlclassifyldaRange {
-  let result = ml_classify_lda_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_range_fill(s : MlclassifyldaRange, v : Double) -> MlclassifyldaRange {
-  let result = ml_classify_lda_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_range_min(s : MlclassifyldaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_classify_lda_slice_sum(s : MlclassifyldaSlice) -> Double { @_common.su
 pub fn ml_classify_lda_slice_mean(s : MlclassifyldaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_lda_slice_scale(s : MlclassifyldaSlice, f : Double) -> MlclassifyldaSlice {
-  let result = ml_classify_lda_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_slice_add(a : MlclassifyldaSlice, b : MlclassifyldaSlice) -> MlclassifyldaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_classify_lda_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_classify_lda_slice_copy(s : MlclassifyldaSlice) -> MlclassifyldaSlice {
-  let result = ml_classify_lda_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_slice_fill(s : MlclassifyldaSlice, v : Double) -> MlclassifyldaSlice {
-  let result = ml_classify_lda_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_lda_slice_min(s : MlclassifyldaSlice) -> Double { @_common.min(s.data) }

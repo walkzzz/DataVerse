@@ -383,28 +383,20 @@ pub fn ml_metric_ranking_frame_sum(s : MlmetricrankingFrame) -> Double { @_commo
 pub fn ml_metric_ranking_frame_mean(s : MlmetricrankingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_frame_scale(s : MlmetricrankingFrame, f : Double) -> MlmetricrankingFrame {
-  let result = ml_metric_ranking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_frame_add(a : MlmetricrankingFrame, b : MlmetricrankingFrame) -> MlmetricrankingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_frame_copy(s : MlmetricrankingFrame) -> MlmetricrankingFrame {
-  let result = ml_metric_ranking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_frame_fill(s : MlmetricrankingFrame, v : Double) -> MlmetricrankingFrame {
-  let result = ml_metric_ranking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_frame_min(s : MlmetricrankingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_metric_ranking_table_sum(s : MlmetricrankingTable) -> Double { @_commo
 pub fn ml_metric_ranking_table_mean(s : MlmetricrankingTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_table_scale(s : MlmetricrankingTable, f : Double) -> MlmetricrankingTable {
-  let result = ml_metric_ranking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_table_add(a : MlmetricrankingTable, b : MlmetricrankingTable) -> MlmetricrankingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_table_copy(s : MlmetricrankingTable) -> MlmetricrankingTable {
-  let result = ml_metric_ranking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_table_fill(s : MlmetricrankingTable, v : Double) -> MlmetricrankingTable {
-  let result = ml_metric_ranking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_table_min(s : MlmetricrankingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_metric_ranking_graphn_sum(s : MlmetricrankingGraphN) -> Double { @_com
 pub fn ml_metric_ranking_graphn_mean(s : MlmetricrankingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_graphn_scale(s : MlmetricrankingGraphN, f : Double) -> MlmetricrankingGraphN {
-  let result = ml_metric_ranking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_graphn_add(a : MlmetricrankingGraphN, b : MlmetricrankingGraphN) -> MlmetricrankingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_graphn_copy(s : MlmetricrankingGraphN) -> MlmetricrankingGraphN {
-  let result = ml_metric_ranking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_graphn_fill(s : MlmetricrankingGraphN, v : Double) -> MlmetricrankingGraphN {
-  let result = ml_metric_ranking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_graphn_min(s : MlmetricrankingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_metric_ranking_node_sum(s : MlmetricrankingNode) -> Double { @_common.
 pub fn ml_metric_ranking_node_mean(s : MlmetricrankingNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_node_scale(s : MlmetricrankingNode, f : Double) -> MlmetricrankingNode {
-  let result = ml_metric_ranking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_node_add(a : MlmetricrankingNode, b : MlmetricrankingNode) -> MlmetricrankingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_node_copy(s : MlmetricrankingNode) -> MlmetricrankingNode {
-  let result = ml_metric_ranking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_node_fill(s : MlmetricrankingNode, v : Double) -> MlmetricrankingNode {
-  let result = ml_metric_ranking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_node_min(s : MlmetricrankingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_metric_ranking_edge_sum(s : MlmetricrankingEdge) -> Double { @_common.
 pub fn ml_metric_ranking_edge_mean(s : MlmetricrankingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_edge_scale(s : MlmetricrankingEdge, f : Double) -> MlmetricrankingEdge {
-  let result = ml_metric_ranking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_edge_add(a : MlmetricrankingEdge, b : MlmetricrankingEdge) -> MlmetricrankingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_edge_copy(s : MlmetricrankingEdge) -> MlmetricrankingEdge {
-  let result = ml_metric_ranking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_edge_fill(s : MlmetricrankingEdge, v : Double) -> MlmetricrankingEdge {
-  let result = ml_metric_ranking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_edge_min(s : MlmetricrankingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_metric_ranking_path_sum(s : MlmetricrankingPath) -> Double { @_common.
 pub fn ml_metric_ranking_path_mean(s : MlmetricrankingPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_path_scale(s : MlmetricrankingPath, f : Double) -> MlmetricrankingPath {
-  let result = ml_metric_ranking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_path_add(a : MlmetricrankingPath, b : MlmetricrankingPath) -> MlmetricrankingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_path_copy(s : MlmetricrankingPath) -> MlmetricrankingPath {
-  let result = ml_metric_ranking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_path_fill(s : MlmetricrankingPath, v : Double) -> MlmetricrankingPath {
-  let result = ml_metric_ranking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_path_min(s : MlmetricrankingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_metric_ranking_cluster_sum(s : MlmetricrankingCluster) -> Double { @_c
 pub fn ml_metric_ranking_cluster_mean(s : MlmetricrankingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_cluster_scale(s : MlmetricrankingCluster, f : Double) -> MlmetricrankingCluster {
-  let result = ml_metric_ranking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_cluster_add(a : MlmetricrankingCluster, b : MlmetricrankingCluster) -> MlmetricrankingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_cluster_copy(s : MlmetricrankingCluster) -> MlmetricrankingCluster {
-  let result = ml_metric_ranking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_cluster_fill(s : MlmetricrankingCluster, v : Double) -> MlmetricrankingCluster {
-  let result = ml_metric_ranking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_cluster_min(s : MlmetricrankingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_metric_ranking_model_sum(s : MlmetricrankingModel) -> Double { @_commo
 pub fn ml_metric_ranking_model_mean(s : MlmetricrankingModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_model_scale(s : MlmetricrankingModel, f : Double) -> MlmetricrankingModel {
-  let result = ml_metric_ranking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_model_add(a : MlmetricrankingModel, b : MlmetricrankingModel) -> MlmetricrankingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_model_copy(s : MlmetricrankingModel) -> MlmetricrankingModel {
-  let result = ml_metric_ranking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_model_fill(s : MlmetricrankingModel, v : Double) -> MlmetricrankingModel {
-  let result = ml_metric_ranking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_model_min(s : MlmetricrankingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_metric_ranking_layer_sum(s : MlmetricrankingLayer) -> Double { @_commo
 pub fn ml_metric_ranking_layer_mean(s : MlmetricrankingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_layer_scale(s : MlmetricrankingLayer, f : Double) -> MlmetricrankingLayer {
-  let result = ml_metric_ranking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_layer_add(a : MlmetricrankingLayer, b : MlmetricrankingLayer) -> MlmetricrankingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_layer_copy(s : MlmetricrankingLayer) -> MlmetricrankingLayer {
-  let result = ml_metric_ranking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_layer_fill(s : MlmetricrankingLayer, v : Double) -> MlmetricrankingLayer {
-  let result = ml_metric_ranking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_layer_min(s : MlmetricrankingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_metric_ranking_buffer_sum(s : MlmetricrankingBuffer) -> Double { @_com
 pub fn ml_metric_ranking_buffer_mean(s : MlmetricrankingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_buffer_scale(s : MlmetricrankingBuffer, f : Double) -> MlmetricrankingBuffer {
-  let result = ml_metric_ranking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_buffer_add(a : MlmetricrankingBuffer, b : MlmetricrankingBuffer) -> MlmetricrankingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_buffer_copy(s : MlmetricrankingBuffer) -> MlmetricrankingBuffer {
-  let result = ml_metric_ranking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_buffer_fill(s : MlmetricrankingBuffer, v : Double) -> MlmetricrankingBuffer {
-  let result = ml_metric_ranking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_buffer_min(s : MlmetricrankingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_metric_ranking_cursor_sum(s : MlmetricrankingCursor) -> Double { @_com
 pub fn ml_metric_ranking_cursor_mean(s : MlmetricrankingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_cursor_scale(s : MlmetricrankingCursor, f : Double) -> MlmetricrankingCursor {
-  let result = ml_metric_ranking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_cursor_add(a : MlmetricrankingCursor, b : MlmetricrankingCursor) -> MlmetricrankingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_cursor_copy(s : MlmetricrankingCursor) -> MlmetricrankingCursor {
-  let result = ml_metric_ranking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_cursor_fill(s : MlmetricrankingCursor, v : Double) -> MlmetricrankingCursor {
-  let result = ml_metric_ranking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_cursor_min(s : MlmetricrankingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_metric_ranking_view_sum(s : MlmetricrankingView) -> Double { @_common.
 pub fn ml_metric_ranking_view_mean(s : MlmetricrankingView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_view_scale(s : MlmetricrankingView, f : Double) -> MlmetricrankingView {
-  let result = ml_metric_ranking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_view_add(a : MlmetricrankingView, b : MlmetricrankingView) -> MlmetricrankingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_view_copy(s : MlmetricrankingView) -> MlmetricrankingView {
-  let result = ml_metric_ranking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_view_fill(s : MlmetricrankingView, v : Double) -> MlmetricrankingView {
-  let result = ml_metric_ranking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_view_min(s : MlmetricrankingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_metric_ranking_range_sum(s : MlmetricrankingRange) -> Double { @_commo
 pub fn ml_metric_ranking_range_mean(s : MlmetricrankingRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_range_scale(s : MlmetricrankingRange, f : Double) -> MlmetricrankingRange {
-  let result = ml_metric_ranking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_range_add(a : MlmetricrankingRange, b : MlmetricrankingRange) -> MlmetricrankingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_range_copy(s : MlmetricrankingRange) -> MlmetricrankingRange {
-  let result = ml_metric_ranking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_range_fill(s : MlmetricrankingRange, v : Double) -> MlmetricrankingRange {
-  let result = ml_metric_ranking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_range_min(s : MlmetricrankingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_metric_ranking_slice_sum(s : MlmetricrankingSlice) -> Double { @_commo
 pub fn ml_metric_ranking_slice_mean(s : MlmetricrankingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_ranking_slice_scale(s : MlmetricrankingSlice, f : Double) -> MlmetricrankingSlice {
-  let result = ml_metric_ranking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_slice_add(a : MlmetricrankingSlice, b : MlmetricrankingSlice) -> MlmetricrankingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_ranking_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_ranking_slice_copy(s : MlmetricrankingSlice) -> MlmetricrankingSlice {
-  let result = ml_metric_ranking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_slice_fill(s : MlmetricrankingSlice, v : Double) -> MlmetricrankingSlice {
-  let result = ml_metric_ranking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_ranking_slice_min(s : MlmetricrankingSlice) -> Double { @_common.min(s.data) }

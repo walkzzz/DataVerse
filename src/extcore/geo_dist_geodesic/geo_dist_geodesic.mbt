@@ -383,28 +383,20 @@ pub fn geo_dist_geodesic_frame_sum(s : GeodistgeodesicFrame) -> Double { @_commo
 pub fn geo_dist_geodesic_frame_mean(s : GeodistgeodesicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_frame_scale(s : GeodistgeodesicFrame, f : Double) -> GeodistgeodesicFrame {
-  let result = geo_dist_geodesic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_frame_add(a : GeodistgeodesicFrame, b : GeodistgeodesicFrame) -> GeodistgeodesicFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_frame_copy(s : GeodistgeodesicFrame) -> GeodistgeodesicFrame {
-  let result = geo_dist_geodesic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_frame_fill(s : GeodistgeodesicFrame, v : Double) -> GeodistgeodesicFrame {
-  let result = geo_dist_geodesic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_frame_min(s : GeodistgeodesicFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_dist_geodesic_table_sum(s : GeodistgeodesicTable) -> Double { @_commo
 pub fn geo_dist_geodesic_table_mean(s : GeodistgeodesicTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_table_scale(s : GeodistgeodesicTable, f : Double) -> GeodistgeodesicTable {
-  let result = geo_dist_geodesic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_table_add(a : GeodistgeodesicTable, b : GeodistgeodesicTable) -> GeodistgeodesicTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_table_copy(s : GeodistgeodesicTable) -> GeodistgeodesicTable {
-  let result = geo_dist_geodesic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_table_fill(s : GeodistgeodesicTable, v : Double) -> GeodistgeodesicTable {
-  let result = geo_dist_geodesic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_table_min(s : GeodistgeodesicTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_dist_geodesic_graphn_sum(s : GeodistgeodesicGraphN) -> Double { @_com
 pub fn geo_dist_geodesic_graphn_mean(s : GeodistgeodesicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_graphn_scale(s : GeodistgeodesicGraphN, f : Double) -> GeodistgeodesicGraphN {
-  let result = geo_dist_geodesic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_graphn_add(a : GeodistgeodesicGraphN, b : GeodistgeodesicGraphN) -> GeodistgeodesicGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_graphn_copy(s : GeodistgeodesicGraphN) -> GeodistgeodesicGraphN {
-  let result = geo_dist_geodesic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_graphn_fill(s : GeodistgeodesicGraphN, v : Double) -> GeodistgeodesicGraphN {
-  let result = geo_dist_geodesic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_graphn_min(s : GeodistgeodesicGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_dist_geodesic_node_sum(s : GeodistgeodesicNode) -> Double { @_common.
 pub fn geo_dist_geodesic_node_mean(s : GeodistgeodesicNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_node_scale(s : GeodistgeodesicNode, f : Double) -> GeodistgeodesicNode {
-  let result = geo_dist_geodesic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_node_add(a : GeodistgeodesicNode, b : GeodistgeodesicNode) -> GeodistgeodesicNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_node_copy(s : GeodistgeodesicNode) -> GeodistgeodesicNode {
-  let result = geo_dist_geodesic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_node_fill(s : GeodistgeodesicNode, v : Double) -> GeodistgeodesicNode {
-  let result = geo_dist_geodesic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_node_min(s : GeodistgeodesicNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_dist_geodesic_edge_sum(s : GeodistgeodesicEdge) -> Double { @_common.
 pub fn geo_dist_geodesic_edge_mean(s : GeodistgeodesicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_edge_scale(s : GeodistgeodesicEdge, f : Double) -> GeodistgeodesicEdge {
-  let result = geo_dist_geodesic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_edge_add(a : GeodistgeodesicEdge, b : GeodistgeodesicEdge) -> GeodistgeodesicEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_edge_copy(s : GeodistgeodesicEdge) -> GeodistgeodesicEdge {
-  let result = geo_dist_geodesic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_edge_fill(s : GeodistgeodesicEdge, v : Double) -> GeodistgeodesicEdge {
-  let result = geo_dist_geodesic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_edge_min(s : GeodistgeodesicEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_dist_geodesic_path_sum(s : GeodistgeodesicPath) -> Double { @_common.
 pub fn geo_dist_geodesic_path_mean(s : GeodistgeodesicPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_path_scale(s : GeodistgeodesicPath, f : Double) -> GeodistgeodesicPath {
-  let result = geo_dist_geodesic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_path_add(a : GeodistgeodesicPath, b : GeodistgeodesicPath) -> GeodistgeodesicPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_path_copy(s : GeodistgeodesicPath) -> GeodistgeodesicPath {
-  let result = geo_dist_geodesic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_path_fill(s : GeodistgeodesicPath, v : Double) -> GeodistgeodesicPath {
-  let result = geo_dist_geodesic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_path_min(s : GeodistgeodesicPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_dist_geodesic_cluster_sum(s : GeodistgeodesicCluster) -> Double { @_c
 pub fn geo_dist_geodesic_cluster_mean(s : GeodistgeodesicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_cluster_scale(s : GeodistgeodesicCluster, f : Double) -> GeodistgeodesicCluster {
-  let result = geo_dist_geodesic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_cluster_add(a : GeodistgeodesicCluster, b : GeodistgeodesicCluster) -> GeodistgeodesicCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_cluster_copy(s : GeodistgeodesicCluster) -> GeodistgeodesicCluster {
-  let result = geo_dist_geodesic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_cluster_fill(s : GeodistgeodesicCluster, v : Double) -> GeodistgeodesicCluster {
-  let result = geo_dist_geodesic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_cluster_min(s : GeodistgeodesicCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_dist_geodesic_model_sum(s : GeodistgeodesicModel) -> Double { @_commo
 pub fn geo_dist_geodesic_model_mean(s : GeodistgeodesicModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_model_scale(s : GeodistgeodesicModel, f : Double) -> GeodistgeodesicModel {
-  let result = geo_dist_geodesic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_model_add(a : GeodistgeodesicModel, b : GeodistgeodesicModel) -> GeodistgeodesicModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_model_copy(s : GeodistgeodesicModel) -> GeodistgeodesicModel {
-  let result = geo_dist_geodesic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_model_fill(s : GeodistgeodesicModel, v : Double) -> GeodistgeodesicModel {
-  let result = geo_dist_geodesic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_model_min(s : GeodistgeodesicModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_dist_geodesic_layer_sum(s : GeodistgeodesicLayer) -> Double { @_commo
 pub fn geo_dist_geodesic_layer_mean(s : GeodistgeodesicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_layer_scale(s : GeodistgeodesicLayer, f : Double) -> GeodistgeodesicLayer {
-  let result = geo_dist_geodesic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_layer_add(a : GeodistgeodesicLayer, b : GeodistgeodesicLayer) -> GeodistgeodesicLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_layer_copy(s : GeodistgeodesicLayer) -> GeodistgeodesicLayer {
-  let result = geo_dist_geodesic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_layer_fill(s : GeodistgeodesicLayer, v : Double) -> GeodistgeodesicLayer {
-  let result = geo_dist_geodesic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_layer_min(s : GeodistgeodesicLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_dist_geodesic_buffer_sum(s : GeodistgeodesicBuffer) -> Double { @_com
 pub fn geo_dist_geodesic_buffer_mean(s : GeodistgeodesicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_buffer_scale(s : GeodistgeodesicBuffer, f : Double) -> GeodistgeodesicBuffer {
-  let result = geo_dist_geodesic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_buffer_add(a : GeodistgeodesicBuffer, b : GeodistgeodesicBuffer) -> GeodistgeodesicBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_buffer_copy(s : GeodistgeodesicBuffer) -> GeodistgeodesicBuffer {
-  let result = geo_dist_geodesic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_buffer_fill(s : GeodistgeodesicBuffer, v : Double) -> GeodistgeodesicBuffer {
-  let result = geo_dist_geodesic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_buffer_min(s : GeodistgeodesicBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_dist_geodesic_cursor_sum(s : GeodistgeodesicCursor) -> Double { @_com
 pub fn geo_dist_geodesic_cursor_mean(s : GeodistgeodesicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_cursor_scale(s : GeodistgeodesicCursor, f : Double) -> GeodistgeodesicCursor {
-  let result = geo_dist_geodesic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_cursor_add(a : GeodistgeodesicCursor, b : GeodistgeodesicCursor) -> GeodistgeodesicCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_cursor_copy(s : GeodistgeodesicCursor) -> GeodistgeodesicCursor {
-  let result = geo_dist_geodesic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_cursor_fill(s : GeodistgeodesicCursor, v : Double) -> GeodistgeodesicCursor {
-  let result = geo_dist_geodesic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_cursor_min(s : GeodistgeodesicCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_dist_geodesic_view_sum(s : GeodistgeodesicView) -> Double { @_common.
 pub fn geo_dist_geodesic_view_mean(s : GeodistgeodesicView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_view_scale(s : GeodistgeodesicView, f : Double) -> GeodistgeodesicView {
-  let result = geo_dist_geodesic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_view_add(a : GeodistgeodesicView, b : GeodistgeodesicView) -> GeodistgeodesicView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_view_copy(s : GeodistgeodesicView) -> GeodistgeodesicView {
-  let result = geo_dist_geodesic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_view_fill(s : GeodistgeodesicView, v : Double) -> GeodistgeodesicView {
-  let result = geo_dist_geodesic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_view_min(s : GeodistgeodesicView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_dist_geodesic_range_sum(s : GeodistgeodesicRange) -> Double { @_commo
 pub fn geo_dist_geodesic_range_mean(s : GeodistgeodesicRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_range_scale(s : GeodistgeodesicRange, f : Double) -> GeodistgeodesicRange {
-  let result = geo_dist_geodesic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_range_add(a : GeodistgeodesicRange, b : GeodistgeodesicRange) -> GeodistgeodesicRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_range_copy(s : GeodistgeodesicRange) -> GeodistgeodesicRange {
-  let result = geo_dist_geodesic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_range_fill(s : GeodistgeodesicRange, v : Double) -> GeodistgeodesicRange {
-  let result = geo_dist_geodesic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_range_min(s : GeodistgeodesicRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_dist_geodesic_slice_sum(s : GeodistgeodesicSlice) -> Double { @_commo
 pub fn geo_dist_geodesic_slice_mean(s : GeodistgeodesicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_slice_scale(s : GeodistgeodesicSlice, f : Double) -> GeodistgeodesicSlice {
-  let result = geo_dist_geodesic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_slice_add(a : GeodistgeodesicSlice, b : GeodistgeodesicSlice) -> GeodistgeodesicSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_geodesic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_geodesic_slice_copy(s : GeodistgeodesicSlice) -> GeodistgeodesicSlice {
-  let result = geo_dist_geodesic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_slice_fill(s : GeodistgeodesicSlice, v : Double) -> GeodistgeodesicSlice {
-  let result = geo_dist_geodesic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_geodesic_slice_min(s : GeodistgeodesicSlice) -> Double { @_common.min(s.data) }

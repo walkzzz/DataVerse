@@ -383,28 +383,20 @@ pub fn timeseries_anomaly_isolation_frame_sum(s : TimeseriesanomalyisolationFram
 pub fn timeseries_anomaly_isolation_frame_mean(s : TimeseriesanomalyisolationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_frame_scale(s : TimeseriesanomalyisolationFrame, f : Double) -> TimeseriesanomalyisolationFrame {
-  let result = timeseries_anomaly_isolation_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_frame_add(a : TimeseriesanomalyisolationFrame, b : TimeseriesanomalyisolationFrame) -> TimeseriesanomalyisolationFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_frame_copy(s : TimeseriesanomalyisolationFrame) -> TimeseriesanomalyisolationFrame {
-  let result = timeseries_anomaly_isolation_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_frame_fill(s : TimeseriesanomalyisolationFrame, v : Double) -> TimeseriesanomalyisolationFrame {
-  let result = timeseries_anomaly_isolation_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_frame_min(s : TimeseriesanomalyisolationFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_anomaly_isolation_table_sum(s : TimeseriesanomalyisolationTabl
 pub fn timeseries_anomaly_isolation_table_mean(s : TimeseriesanomalyisolationTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_table_scale(s : TimeseriesanomalyisolationTable, f : Double) -> TimeseriesanomalyisolationTable {
-  let result = timeseries_anomaly_isolation_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_table_add(a : TimeseriesanomalyisolationTable, b : TimeseriesanomalyisolationTable) -> TimeseriesanomalyisolationTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_table_copy(s : TimeseriesanomalyisolationTable) -> TimeseriesanomalyisolationTable {
-  let result = timeseries_anomaly_isolation_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_table_fill(s : TimeseriesanomalyisolationTable, v : Double) -> TimeseriesanomalyisolationTable {
-  let result = timeseries_anomaly_isolation_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_table_min(s : TimeseriesanomalyisolationTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_anomaly_isolation_graphn_sum(s : TimeseriesanomalyisolationGra
 pub fn timeseries_anomaly_isolation_graphn_mean(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_graphn_scale(s : TimeseriesanomalyisolationGraphN, f : Double) -> TimeseriesanomalyisolationGraphN {
-  let result = timeseries_anomaly_isolation_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_graphn_add(a : TimeseriesanomalyisolationGraphN, b : TimeseriesanomalyisolationGraphN) -> TimeseriesanomalyisolationGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_graphn_copy(s : TimeseriesanomalyisolationGraphN) -> TimeseriesanomalyisolationGraphN {
-  let result = timeseries_anomaly_isolation_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_graphn_fill(s : TimeseriesanomalyisolationGraphN, v : Double) -> TimeseriesanomalyisolationGraphN {
-  let result = timeseries_anomaly_isolation_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_graphn_min(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_anomaly_isolation_node_sum(s : TimeseriesanomalyisolationNode)
 pub fn timeseries_anomaly_isolation_node_mean(s : TimeseriesanomalyisolationNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_node_scale(s : TimeseriesanomalyisolationNode, f : Double) -> TimeseriesanomalyisolationNode {
-  let result = timeseries_anomaly_isolation_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_node_add(a : TimeseriesanomalyisolationNode, b : TimeseriesanomalyisolationNode) -> TimeseriesanomalyisolationNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_node_copy(s : TimeseriesanomalyisolationNode) -> TimeseriesanomalyisolationNode {
-  let result = timeseries_anomaly_isolation_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_node_fill(s : TimeseriesanomalyisolationNode, v : Double) -> TimeseriesanomalyisolationNode {
-  let result = timeseries_anomaly_isolation_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_node_min(s : TimeseriesanomalyisolationNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_anomaly_isolation_edge_sum(s : TimeseriesanomalyisolationEdge)
 pub fn timeseries_anomaly_isolation_edge_mean(s : TimeseriesanomalyisolationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_edge_scale(s : TimeseriesanomalyisolationEdge, f : Double) -> TimeseriesanomalyisolationEdge {
-  let result = timeseries_anomaly_isolation_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_edge_add(a : TimeseriesanomalyisolationEdge, b : TimeseriesanomalyisolationEdge) -> TimeseriesanomalyisolationEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_edge_copy(s : TimeseriesanomalyisolationEdge) -> TimeseriesanomalyisolationEdge {
-  let result = timeseries_anomaly_isolation_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_edge_fill(s : TimeseriesanomalyisolationEdge, v : Double) -> TimeseriesanomalyisolationEdge {
-  let result = timeseries_anomaly_isolation_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_edge_min(s : TimeseriesanomalyisolationEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_anomaly_isolation_path_sum(s : TimeseriesanomalyisolationPath)
 pub fn timeseries_anomaly_isolation_path_mean(s : TimeseriesanomalyisolationPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_path_scale(s : TimeseriesanomalyisolationPath, f : Double) -> TimeseriesanomalyisolationPath {
-  let result = timeseries_anomaly_isolation_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_path_add(a : TimeseriesanomalyisolationPath, b : TimeseriesanomalyisolationPath) -> TimeseriesanomalyisolationPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_path_copy(s : TimeseriesanomalyisolationPath) -> TimeseriesanomalyisolationPath {
-  let result = timeseries_anomaly_isolation_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_path_fill(s : TimeseriesanomalyisolationPath, v : Double) -> TimeseriesanomalyisolationPath {
-  let result = timeseries_anomaly_isolation_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_path_min(s : TimeseriesanomalyisolationPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_anomaly_isolation_cluster_sum(s : TimeseriesanomalyisolationCl
 pub fn timeseries_anomaly_isolation_cluster_mean(s : TimeseriesanomalyisolationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_cluster_scale(s : TimeseriesanomalyisolationCluster, f : Double) -> TimeseriesanomalyisolationCluster {
-  let result = timeseries_anomaly_isolation_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cluster_add(a : TimeseriesanomalyisolationCluster, b : TimeseriesanomalyisolationCluster) -> TimeseriesanomalyisolationCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cluster_copy(s : TimeseriesanomalyisolationCluster) -> TimeseriesanomalyisolationCluster {
-  let result = timeseries_anomaly_isolation_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cluster_fill(s : TimeseriesanomalyisolationCluster, v : Double) -> TimeseriesanomalyisolationCluster {
-  let result = timeseries_anomaly_isolation_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cluster_min(s : TimeseriesanomalyisolationCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_anomaly_isolation_model_sum(s : TimeseriesanomalyisolationMode
 pub fn timeseries_anomaly_isolation_model_mean(s : TimeseriesanomalyisolationModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_model_scale(s : TimeseriesanomalyisolationModel, f : Double) -> TimeseriesanomalyisolationModel {
-  let result = timeseries_anomaly_isolation_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_model_add(a : TimeseriesanomalyisolationModel, b : TimeseriesanomalyisolationModel) -> TimeseriesanomalyisolationModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_model_copy(s : TimeseriesanomalyisolationModel) -> TimeseriesanomalyisolationModel {
-  let result = timeseries_anomaly_isolation_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_model_fill(s : TimeseriesanomalyisolationModel, v : Double) -> TimeseriesanomalyisolationModel {
-  let result = timeseries_anomaly_isolation_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_model_min(s : TimeseriesanomalyisolationModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_anomaly_isolation_layer_sum(s : TimeseriesanomalyisolationLaye
 pub fn timeseries_anomaly_isolation_layer_mean(s : TimeseriesanomalyisolationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_layer_scale(s : TimeseriesanomalyisolationLayer, f : Double) -> TimeseriesanomalyisolationLayer {
-  let result = timeseries_anomaly_isolation_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_layer_add(a : TimeseriesanomalyisolationLayer, b : TimeseriesanomalyisolationLayer) -> TimeseriesanomalyisolationLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_layer_copy(s : TimeseriesanomalyisolationLayer) -> TimeseriesanomalyisolationLayer {
-  let result = timeseries_anomaly_isolation_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_layer_fill(s : TimeseriesanomalyisolationLayer, v : Double) -> TimeseriesanomalyisolationLayer {
-  let result = timeseries_anomaly_isolation_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_layer_min(s : TimeseriesanomalyisolationLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_anomaly_isolation_buffer_sum(s : TimeseriesanomalyisolationBuf
 pub fn timeseries_anomaly_isolation_buffer_mean(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_buffer_scale(s : TimeseriesanomalyisolationBuffer, f : Double) -> TimeseriesanomalyisolationBuffer {
-  let result = timeseries_anomaly_isolation_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_buffer_add(a : TimeseriesanomalyisolationBuffer, b : TimeseriesanomalyisolationBuffer) -> TimeseriesanomalyisolationBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_buffer_copy(s : TimeseriesanomalyisolationBuffer) -> TimeseriesanomalyisolationBuffer {
-  let result = timeseries_anomaly_isolation_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_buffer_fill(s : TimeseriesanomalyisolationBuffer, v : Double) -> TimeseriesanomalyisolationBuffer {
-  let result = timeseries_anomaly_isolation_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_buffer_min(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_anomaly_isolation_cursor_sum(s : TimeseriesanomalyisolationCur
 pub fn timeseries_anomaly_isolation_cursor_mean(s : TimeseriesanomalyisolationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_cursor_scale(s : TimeseriesanomalyisolationCursor, f : Double) -> TimeseriesanomalyisolationCursor {
-  let result = timeseries_anomaly_isolation_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cursor_add(a : TimeseriesanomalyisolationCursor, b : TimeseriesanomalyisolationCursor) -> TimeseriesanomalyisolationCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cursor_copy(s : TimeseriesanomalyisolationCursor) -> TimeseriesanomalyisolationCursor {
-  let result = timeseries_anomaly_isolation_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cursor_fill(s : TimeseriesanomalyisolationCursor, v : Double) -> TimeseriesanomalyisolationCursor {
-  let result = timeseries_anomaly_isolation_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_cursor_min(s : TimeseriesanomalyisolationCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_anomaly_isolation_view_sum(s : TimeseriesanomalyisolationView)
 pub fn timeseries_anomaly_isolation_view_mean(s : TimeseriesanomalyisolationView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_view_scale(s : TimeseriesanomalyisolationView, f : Double) -> TimeseriesanomalyisolationView {
-  let result = timeseries_anomaly_isolation_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_view_add(a : TimeseriesanomalyisolationView, b : TimeseriesanomalyisolationView) -> TimeseriesanomalyisolationView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_view_copy(s : TimeseriesanomalyisolationView) -> TimeseriesanomalyisolationView {
-  let result = timeseries_anomaly_isolation_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_view_fill(s : TimeseriesanomalyisolationView, v : Double) -> TimeseriesanomalyisolationView {
-  let result = timeseries_anomaly_isolation_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_view_min(s : TimeseriesanomalyisolationView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_anomaly_isolation_range_sum(s : TimeseriesanomalyisolationRang
 pub fn timeseries_anomaly_isolation_range_mean(s : TimeseriesanomalyisolationRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_range_scale(s : TimeseriesanomalyisolationRange, f : Double) -> TimeseriesanomalyisolationRange {
-  let result = timeseries_anomaly_isolation_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_range_add(a : TimeseriesanomalyisolationRange, b : TimeseriesanomalyisolationRange) -> TimeseriesanomalyisolationRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_range_copy(s : TimeseriesanomalyisolationRange) -> TimeseriesanomalyisolationRange {
-  let result = timeseries_anomaly_isolation_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_range_fill(s : TimeseriesanomalyisolationRange, v : Double) -> TimeseriesanomalyisolationRange {
-  let result = timeseries_anomaly_isolation_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_range_min(s : TimeseriesanomalyisolationRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_anomaly_isolation_slice_sum(s : TimeseriesanomalyisolationSlic
 pub fn timeseries_anomaly_isolation_slice_mean(s : TimeseriesanomalyisolationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_slice_scale(s : TimeseriesanomalyisolationSlice, f : Double) -> TimeseriesanomalyisolationSlice {
-  let result = timeseries_anomaly_isolation_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_slice_add(a : TimeseriesanomalyisolationSlice, b : TimeseriesanomalyisolationSlice) -> TimeseriesanomalyisolationSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_isolation_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_isolation_slice_copy(s : TimeseriesanomalyisolationSlice) -> TimeseriesanomalyisolationSlice {
-  let result = timeseries_anomaly_isolation_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_slice_fill(s : TimeseriesanomalyisolationSlice, v : Double) -> TimeseriesanomalyisolationSlice {
-  let result = timeseries_anomaly_isolation_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_isolation_slice_min(s : TimeseriesanomalyisolationSlice) -> Double { @_common.min(s.data) }

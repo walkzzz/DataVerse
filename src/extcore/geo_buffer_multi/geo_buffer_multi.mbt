@@ -383,28 +383,20 @@ pub fn geo_buffer_multi_frame_sum(s : GeobuffermultiFrame) -> Double { @_common.
 pub fn geo_buffer_multi_frame_mean(s : GeobuffermultiFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_frame_scale(s : GeobuffermultiFrame, f : Double) -> GeobuffermultiFrame {
-  let result = geo_buffer_multi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_frame_add(a : GeobuffermultiFrame, b : GeobuffermultiFrame) -> GeobuffermultiFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_frame_copy(s : GeobuffermultiFrame) -> GeobuffermultiFrame {
-  let result = geo_buffer_multi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_frame_fill(s : GeobuffermultiFrame, v : Double) -> GeobuffermultiFrame {
-  let result = geo_buffer_multi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_frame_min(s : GeobuffermultiFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_buffer_multi_table_sum(s : GeobuffermultiTable) -> Double { @_common.
 pub fn geo_buffer_multi_table_mean(s : GeobuffermultiTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_table_scale(s : GeobuffermultiTable, f : Double) -> GeobuffermultiTable {
-  let result = geo_buffer_multi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_table_add(a : GeobuffermultiTable, b : GeobuffermultiTable) -> GeobuffermultiTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_table_copy(s : GeobuffermultiTable) -> GeobuffermultiTable {
-  let result = geo_buffer_multi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_table_fill(s : GeobuffermultiTable, v : Double) -> GeobuffermultiTable {
-  let result = geo_buffer_multi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_table_min(s : GeobuffermultiTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_buffer_multi_graphn_sum(s : GeobuffermultiGraphN) -> Double { @_commo
 pub fn geo_buffer_multi_graphn_mean(s : GeobuffermultiGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_graphn_scale(s : GeobuffermultiGraphN, f : Double) -> GeobuffermultiGraphN {
-  let result = geo_buffer_multi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_graphn_add(a : GeobuffermultiGraphN, b : GeobuffermultiGraphN) -> GeobuffermultiGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_graphn_copy(s : GeobuffermultiGraphN) -> GeobuffermultiGraphN {
-  let result = geo_buffer_multi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_graphn_fill(s : GeobuffermultiGraphN, v : Double) -> GeobuffermultiGraphN {
-  let result = geo_buffer_multi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_graphn_min(s : GeobuffermultiGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_buffer_multi_node_sum(s : GeobuffermultiNode) -> Double { @_common.su
 pub fn geo_buffer_multi_node_mean(s : GeobuffermultiNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_node_scale(s : GeobuffermultiNode, f : Double) -> GeobuffermultiNode {
-  let result = geo_buffer_multi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_node_add(a : GeobuffermultiNode, b : GeobuffermultiNode) -> GeobuffermultiNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_node_copy(s : GeobuffermultiNode) -> GeobuffermultiNode {
-  let result = geo_buffer_multi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_node_fill(s : GeobuffermultiNode, v : Double) -> GeobuffermultiNode {
-  let result = geo_buffer_multi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_node_min(s : GeobuffermultiNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_buffer_multi_edge_sum(s : GeobuffermultiEdge) -> Double { @_common.su
 pub fn geo_buffer_multi_edge_mean(s : GeobuffermultiEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_edge_scale(s : GeobuffermultiEdge, f : Double) -> GeobuffermultiEdge {
-  let result = geo_buffer_multi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_edge_add(a : GeobuffermultiEdge, b : GeobuffermultiEdge) -> GeobuffermultiEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_edge_copy(s : GeobuffermultiEdge) -> GeobuffermultiEdge {
-  let result = geo_buffer_multi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_edge_fill(s : GeobuffermultiEdge, v : Double) -> GeobuffermultiEdge {
-  let result = geo_buffer_multi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_edge_min(s : GeobuffermultiEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_buffer_multi_path_sum(s : GeobuffermultiPath) -> Double { @_common.su
 pub fn geo_buffer_multi_path_mean(s : GeobuffermultiPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_path_scale(s : GeobuffermultiPath, f : Double) -> GeobuffermultiPath {
-  let result = geo_buffer_multi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_path_add(a : GeobuffermultiPath, b : GeobuffermultiPath) -> GeobuffermultiPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_path_copy(s : GeobuffermultiPath) -> GeobuffermultiPath {
-  let result = geo_buffer_multi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_path_fill(s : GeobuffermultiPath, v : Double) -> GeobuffermultiPath {
-  let result = geo_buffer_multi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_path_min(s : GeobuffermultiPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_buffer_multi_cluster_sum(s : GeobuffermultiCluster) -> Double { @_com
 pub fn geo_buffer_multi_cluster_mean(s : GeobuffermultiCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_cluster_scale(s : GeobuffermultiCluster, f : Double) -> GeobuffermultiCluster {
-  let result = geo_buffer_multi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_cluster_add(a : GeobuffermultiCluster, b : GeobuffermultiCluster) -> GeobuffermultiCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_cluster_copy(s : GeobuffermultiCluster) -> GeobuffermultiCluster {
-  let result = geo_buffer_multi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_cluster_fill(s : GeobuffermultiCluster, v : Double) -> GeobuffermultiCluster {
-  let result = geo_buffer_multi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_cluster_min(s : GeobuffermultiCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_buffer_multi_model_sum(s : GeobuffermultiModel) -> Double { @_common.
 pub fn geo_buffer_multi_model_mean(s : GeobuffermultiModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_model_scale(s : GeobuffermultiModel, f : Double) -> GeobuffermultiModel {
-  let result = geo_buffer_multi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_model_add(a : GeobuffermultiModel, b : GeobuffermultiModel) -> GeobuffermultiModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_model_copy(s : GeobuffermultiModel) -> GeobuffermultiModel {
-  let result = geo_buffer_multi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_model_fill(s : GeobuffermultiModel, v : Double) -> GeobuffermultiModel {
-  let result = geo_buffer_multi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_model_min(s : GeobuffermultiModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_buffer_multi_layer_sum(s : GeobuffermultiLayer) -> Double { @_common.
 pub fn geo_buffer_multi_layer_mean(s : GeobuffermultiLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_layer_scale(s : GeobuffermultiLayer, f : Double) -> GeobuffermultiLayer {
-  let result = geo_buffer_multi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_layer_add(a : GeobuffermultiLayer, b : GeobuffermultiLayer) -> GeobuffermultiLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_layer_copy(s : GeobuffermultiLayer) -> GeobuffermultiLayer {
-  let result = geo_buffer_multi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_layer_fill(s : GeobuffermultiLayer, v : Double) -> GeobuffermultiLayer {
-  let result = geo_buffer_multi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_layer_min(s : GeobuffermultiLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_buffer_multi_buffer_sum(s : GeobuffermultiBuffer) -> Double { @_commo
 pub fn geo_buffer_multi_buffer_mean(s : GeobuffermultiBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_buffer_scale(s : GeobuffermultiBuffer, f : Double) -> GeobuffermultiBuffer {
-  let result = geo_buffer_multi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_buffer_add(a : GeobuffermultiBuffer, b : GeobuffermultiBuffer) -> GeobuffermultiBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_buffer_copy(s : GeobuffermultiBuffer) -> GeobuffermultiBuffer {
-  let result = geo_buffer_multi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_buffer_fill(s : GeobuffermultiBuffer, v : Double) -> GeobuffermultiBuffer {
-  let result = geo_buffer_multi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_buffer_min(s : GeobuffermultiBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_buffer_multi_cursor_sum(s : GeobuffermultiCursor) -> Double { @_commo
 pub fn geo_buffer_multi_cursor_mean(s : GeobuffermultiCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_cursor_scale(s : GeobuffermultiCursor, f : Double) -> GeobuffermultiCursor {
-  let result = geo_buffer_multi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_cursor_add(a : GeobuffermultiCursor, b : GeobuffermultiCursor) -> GeobuffermultiCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_cursor_copy(s : GeobuffermultiCursor) -> GeobuffermultiCursor {
-  let result = geo_buffer_multi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_cursor_fill(s : GeobuffermultiCursor, v : Double) -> GeobuffermultiCursor {
-  let result = geo_buffer_multi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_cursor_min(s : GeobuffermultiCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_buffer_multi_view_sum(s : GeobuffermultiView) -> Double { @_common.su
 pub fn geo_buffer_multi_view_mean(s : GeobuffermultiView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_view_scale(s : GeobuffermultiView, f : Double) -> GeobuffermultiView {
-  let result = geo_buffer_multi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_view_add(a : GeobuffermultiView, b : GeobuffermultiView) -> GeobuffermultiView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_view_copy(s : GeobuffermultiView) -> GeobuffermultiView {
-  let result = geo_buffer_multi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_view_fill(s : GeobuffermultiView, v : Double) -> GeobuffermultiView {
-  let result = geo_buffer_multi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_view_min(s : GeobuffermultiView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_buffer_multi_range_sum(s : GeobuffermultiRange) -> Double { @_common.
 pub fn geo_buffer_multi_range_mean(s : GeobuffermultiRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_range_scale(s : GeobuffermultiRange, f : Double) -> GeobuffermultiRange {
-  let result = geo_buffer_multi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_range_add(a : GeobuffermultiRange, b : GeobuffermultiRange) -> GeobuffermultiRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_range_copy(s : GeobuffermultiRange) -> GeobuffermultiRange {
-  let result = geo_buffer_multi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_range_fill(s : GeobuffermultiRange, v : Double) -> GeobuffermultiRange {
-  let result = geo_buffer_multi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_range_min(s : GeobuffermultiRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_buffer_multi_slice_sum(s : GeobuffermultiSlice) -> Double { @_common.
 pub fn geo_buffer_multi_slice_mean(s : GeobuffermultiSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_multi_slice_scale(s : GeobuffermultiSlice, f : Double) -> GeobuffermultiSlice {
-  let result = geo_buffer_multi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_slice_add(a : GeobuffermultiSlice, b : GeobuffermultiSlice) -> GeobuffermultiSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_buffer_multi_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_buffer_multi_slice_copy(s : GeobuffermultiSlice) -> GeobuffermultiSlice {
-  let result = geo_buffer_multi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_slice_fill(s : GeobuffermultiSlice, v : Double) -> GeobuffermultiSlice {
-  let result = geo_buffer_multi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_multi_slice_min(s : GeobuffermultiSlice) -> Double { @_common.min(s.data) }

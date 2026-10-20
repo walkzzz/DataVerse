@@ -383,28 +383,20 @@ pub fn nlp_embed_word2vec_frame_sum(s : Nlpembedword2vecFrame) -> Double { @_com
 pub fn nlp_embed_word2vec_frame_mean(s : Nlpembedword2vecFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_frame_scale(s : Nlpembedword2vecFrame, f : Double) -> Nlpembedword2vecFrame {
-  let result = nlp_embed_word2vec_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_frame_add(a : Nlpembedword2vecFrame, b : Nlpembedword2vecFrame) -> Nlpembedword2vecFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_frame_copy(s : Nlpembedword2vecFrame) -> Nlpembedword2vecFrame {
-  let result = nlp_embed_word2vec_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_frame_fill(s : Nlpembedword2vecFrame, v : Double) -> Nlpembedword2vecFrame {
-  let result = nlp_embed_word2vec_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_frame_min(s : Nlpembedword2vecFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_embed_word2vec_table_sum(s : Nlpembedword2vecTable) -> Double { @_com
 pub fn nlp_embed_word2vec_table_mean(s : Nlpembedword2vecTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_table_scale(s : Nlpembedword2vecTable, f : Double) -> Nlpembedword2vecTable {
-  let result = nlp_embed_word2vec_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_table_add(a : Nlpembedword2vecTable, b : Nlpembedword2vecTable) -> Nlpembedword2vecTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_table_copy(s : Nlpembedword2vecTable) -> Nlpembedword2vecTable {
-  let result = nlp_embed_word2vec_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_table_fill(s : Nlpembedword2vecTable, v : Double) -> Nlpembedword2vecTable {
-  let result = nlp_embed_word2vec_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_table_min(s : Nlpembedword2vecTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_embed_word2vec_graphn_sum(s : Nlpembedword2vecGraphN) -> Double { @_c
 pub fn nlp_embed_word2vec_graphn_mean(s : Nlpembedword2vecGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_graphn_scale(s : Nlpembedword2vecGraphN, f : Double) -> Nlpembedword2vecGraphN {
-  let result = nlp_embed_word2vec_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_graphn_add(a : Nlpembedword2vecGraphN, b : Nlpembedword2vecGraphN) -> Nlpembedword2vecGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_graphn_copy(s : Nlpembedword2vecGraphN) -> Nlpembedword2vecGraphN {
-  let result = nlp_embed_word2vec_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_graphn_fill(s : Nlpembedword2vecGraphN, v : Double) -> Nlpembedword2vecGraphN {
-  let result = nlp_embed_word2vec_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_graphn_min(s : Nlpembedword2vecGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_embed_word2vec_node_sum(s : Nlpembedword2vecNode) -> Double { @_commo
 pub fn nlp_embed_word2vec_node_mean(s : Nlpembedword2vecNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_node_scale(s : Nlpembedword2vecNode, f : Double) -> Nlpembedword2vecNode {
-  let result = nlp_embed_word2vec_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_node_add(a : Nlpembedword2vecNode, b : Nlpembedword2vecNode) -> Nlpembedword2vecNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_node_copy(s : Nlpembedword2vecNode) -> Nlpembedword2vecNode {
-  let result = nlp_embed_word2vec_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_node_fill(s : Nlpembedword2vecNode, v : Double) -> Nlpembedword2vecNode {
-  let result = nlp_embed_word2vec_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_node_min(s : Nlpembedword2vecNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_embed_word2vec_edge_sum(s : Nlpembedword2vecEdge) -> Double { @_commo
 pub fn nlp_embed_word2vec_edge_mean(s : Nlpembedword2vecEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_edge_scale(s : Nlpembedword2vecEdge, f : Double) -> Nlpembedword2vecEdge {
-  let result = nlp_embed_word2vec_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_edge_add(a : Nlpembedword2vecEdge, b : Nlpembedword2vecEdge) -> Nlpembedword2vecEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_edge_copy(s : Nlpembedword2vecEdge) -> Nlpembedword2vecEdge {
-  let result = nlp_embed_word2vec_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_edge_fill(s : Nlpembedword2vecEdge, v : Double) -> Nlpembedword2vecEdge {
-  let result = nlp_embed_word2vec_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_edge_min(s : Nlpembedword2vecEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_embed_word2vec_path_sum(s : Nlpembedword2vecPath) -> Double { @_commo
 pub fn nlp_embed_word2vec_path_mean(s : Nlpembedword2vecPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_path_scale(s : Nlpembedword2vecPath, f : Double) -> Nlpembedword2vecPath {
-  let result = nlp_embed_word2vec_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_path_add(a : Nlpembedword2vecPath, b : Nlpembedword2vecPath) -> Nlpembedword2vecPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_path_copy(s : Nlpembedword2vecPath) -> Nlpembedword2vecPath {
-  let result = nlp_embed_word2vec_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_path_fill(s : Nlpembedword2vecPath, v : Double) -> Nlpembedword2vecPath {
-  let result = nlp_embed_word2vec_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_path_min(s : Nlpembedword2vecPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_embed_word2vec_cluster_sum(s : Nlpembedword2vecCluster) -> Double { @
 pub fn nlp_embed_word2vec_cluster_mean(s : Nlpembedword2vecCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_cluster_scale(s : Nlpembedword2vecCluster, f : Double) -> Nlpembedword2vecCluster {
-  let result = nlp_embed_word2vec_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_cluster_add(a : Nlpembedword2vecCluster, b : Nlpembedword2vecCluster) -> Nlpembedword2vecCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_cluster_copy(s : Nlpembedword2vecCluster) -> Nlpembedword2vecCluster {
-  let result = nlp_embed_word2vec_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_cluster_fill(s : Nlpembedword2vecCluster, v : Double) -> Nlpembedword2vecCluster {
-  let result = nlp_embed_word2vec_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_cluster_min(s : Nlpembedword2vecCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_embed_word2vec_model_sum(s : Nlpembedword2vecModel) -> Double { @_com
 pub fn nlp_embed_word2vec_model_mean(s : Nlpembedword2vecModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_model_scale(s : Nlpembedword2vecModel, f : Double) -> Nlpembedword2vecModel {
-  let result = nlp_embed_word2vec_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_model_add(a : Nlpembedword2vecModel, b : Nlpembedword2vecModel) -> Nlpembedword2vecModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_model_copy(s : Nlpembedword2vecModel) -> Nlpembedword2vecModel {
-  let result = nlp_embed_word2vec_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_model_fill(s : Nlpembedword2vecModel, v : Double) -> Nlpembedword2vecModel {
-  let result = nlp_embed_word2vec_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_model_min(s : Nlpembedword2vecModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_embed_word2vec_layer_sum(s : Nlpembedword2vecLayer) -> Double { @_com
 pub fn nlp_embed_word2vec_layer_mean(s : Nlpembedword2vecLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_layer_scale(s : Nlpembedword2vecLayer, f : Double) -> Nlpembedword2vecLayer {
-  let result = nlp_embed_word2vec_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_layer_add(a : Nlpembedword2vecLayer, b : Nlpembedword2vecLayer) -> Nlpembedword2vecLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_layer_copy(s : Nlpembedword2vecLayer) -> Nlpembedword2vecLayer {
-  let result = nlp_embed_word2vec_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_layer_fill(s : Nlpembedword2vecLayer, v : Double) -> Nlpembedword2vecLayer {
-  let result = nlp_embed_word2vec_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_layer_min(s : Nlpembedword2vecLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_embed_word2vec_buffer_sum(s : Nlpembedword2vecBuffer) -> Double { @_c
 pub fn nlp_embed_word2vec_buffer_mean(s : Nlpembedword2vecBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_buffer_scale(s : Nlpembedword2vecBuffer, f : Double) -> Nlpembedword2vecBuffer {
-  let result = nlp_embed_word2vec_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_buffer_add(a : Nlpembedword2vecBuffer, b : Nlpembedword2vecBuffer) -> Nlpembedword2vecBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_buffer_copy(s : Nlpembedword2vecBuffer) -> Nlpembedword2vecBuffer {
-  let result = nlp_embed_word2vec_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_buffer_fill(s : Nlpembedword2vecBuffer, v : Double) -> Nlpembedword2vecBuffer {
-  let result = nlp_embed_word2vec_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_buffer_min(s : Nlpembedword2vecBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_embed_word2vec_cursor_sum(s : Nlpembedword2vecCursor) -> Double { @_c
 pub fn nlp_embed_word2vec_cursor_mean(s : Nlpembedword2vecCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_cursor_scale(s : Nlpembedword2vecCursor, f : Double) -> Nlpembedword2vecCursor {
-  let result = nlp_embed_word2vec_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_cursor_add(a : Nlpembedword2vecCursor, b : Nlpembedword2vecCursor) -> Nlpembedword2vecCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_cursor_copy(s : Nlpembedword2vecCursor) -> Nlpembedword2vecCursor {
-  let result = nlp_embed_word2vec_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_cursor_fill(s : Nlpembedword2vecCursor, v : Double) -> Nlpembedword2vecCursor {
-  let result = nlp_embed_word2vec_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_cursor_min(s : Nlpembedword2vecCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_embed_word2vec_view_sum(s : Nlpembedword2vecView) -> Double { @_commo
 pub fn nlp_embed_word2vec_view_mean(s : Nlpembedword2vecView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_view_scale(s : Nlpembedword2vecView, f : Double) -> Nlpembedword2vecView {
-  let result = nlp_embed_word2vec_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_view_add(a : Nlpembedword2vecView, b : Nlpembedword2vecView) -> Nlpembedword2vecView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_view_copy(s : Nlpembedword2vecView) -> Nlpembedword2vecView {
-  let result = nlp_embed_word2vec_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_view_fill(s : Nlpembedword2vecView, v : Double) -> Nlpembedword2vecView {
-  let result = nlp_embed_word2vec_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_view_min(s : Nlpembedword2vecView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_embed_word2vec_range_sum(s : Nlpembedword2vecRange) -> Double { @_com
 pub fn nlp_embed_word2vec_range_mean(s : Nlpembedword2vecRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_range_scale(s : Nlpembedword2vecRange, f : Double) -> Nlpembedword2vecRange {
-  let result = nlp_embed_word2vec_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_range_add(a : Nlpembedword2vecRange, b : Nlpembedword2vecRange) -> Nlpembedword2vecRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_range_copy(s : Nlpembedword2vecRange) -> Nlpembedword2vecRange {
-  let result = nlp_embed_word2vec_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_range_fill(s : Nlpembedword2vecRange, v : Double) -> Nlpembedword2vecRange {
-  let result = nlp_embed_word2vec_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_range_min(s : Nlpembedword2vecRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_embed_word2vec_slice_sum(s : Nlpembedword2vecSlice) -> Double { @_com
 pub fn nlp_embed_word2vec_slice_mean(s : Nlpembedword2vecSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_word2vec_slice_scale(s : Nlpembedword2vecSlice, f : Double) -> Nlpembedword2vecSlice {
-  let result = nlp_embed_word2vec_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_slice_add(a : Nlpembedword2vecSlice, b : Nlpembedword2vecSlice) -> Nlpembedword2vecSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_embed_word2vec_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_embed_word2vec_slice_copy(s : Nlpembedword2vecSlice) -> Nlpembedword2vecSlice {
-  let result = nlp_embed_word2vec_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_slice_fill(s : Nlpembedword2vecSlice, v : Double) -> Nlpembedword2vecSlice {
-  let result = nlp_embed_word2vec_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_word2vec_slice_min(s : Nlpembedword2vecSlice) -> Double { @_common.min(s.data) }

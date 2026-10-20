@@ -383,28 +383,20 @@ pub fn opt_grad_momentum_frame_sum(s : OptgradmomentumFrame) -> Double { @_commo
 pub fn opt_grad_momentum_frame_mean(s : OptgradmomentumFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_frame_scale(s : OptgradmomentumFrame, f : Double) -> OptgradmomentumFrame {
-  let result = opt_grad_momentum_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_frame_add(a : OptgradmomentumFrame, b : OptgradmomentumFrame) -> OptgradmomentumFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_frame_copy(s : OptgradmomentumFrame) -> OptgradmomentumFrame {
-  let result = opt_grad_momentum_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_frame_fill(s : OptgradmomentumFrame, v : Double) -> OptgradmomentumFrame {
-  let result = opt_grad_momentum_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_frame_min(s : OptgradmomentumFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn opt_grad_momentum_table_sum(s : OptgradmomentumTable) -> Double { @_commo
 pub fn opt_grad_momentum_table_mean(s : OptgradmomentumTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_table_scale(s : OptgradmomentumTable, f : Double) -> OptgradmomentumTable {
-  let result = opt_grad_momentum_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_table_add(a : OptgradmomentumTable, b : OptgradmomentumTable) -> OptgradmomentumTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_table_copy(s : OptgradmomentumTable) -> OptgradmomentumTable {
-  let result = opt_grad_momentum_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_table_fill(s : OptgradmomentumTable, v : Double) -> OptgradmomentumTable {
-  let result = opt_grad_momentum_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_table_min(s : OptgradmomentumTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn opt_grad_momentum_graphn_sum(s : OptgradmomentumGraphN) -> Double { @_com
 pub fn opt_grad_momentum_graphn_mean(s : OptgradmomentumGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_graphn_scale(s : OptgradmomentumGraphN, f : Double) -> OptgradmomentumGraphN {
-  let result = opt_grad_momentum_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_graphn_add(a : OptgradmomentumGraphN, b : OptgradmomentumGraphN) -> OptgradmomentumGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_graphn_copy(s : OptgradmomentumGraphN) -> OptgradmomentumGraphN {
-  let result = opt_grad_momentum_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_graphn_fill(s : OptgradmomentumGraphN, v : Double) -> OptgradmomentumGraphN {
-  let result = opt_grad_momentum_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_graphn_min(s : OptgradmomentumGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn opt_grad_momentum_node_sum(s : OptgradmomentumNode) -> Double { @_common.
 pub fn opt_grad_momentum_node_mean(s : OptgradmomentumNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_node_scale(s : OptgradmomentumNode, f : Double) -> OptgradmomentumNode {
-  let result = opt_grad_momentum_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_node_add(a : OptgradmomentumNode, b : OptgradmomentumNode) -> OptgradmomentumNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_node_copy(s : OptgradmomentumNode) -> OptgradmomentumNode {
-  let result = opt_grad_momentum_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_node_fill(s : OptgradmomentumNode, v : Double) -> OptgradmomentumNode {
-  let result = opt_grad_momentum_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_node_min(s : OptgradmomentumNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn opt_grad_momentum_edge_sum(s : OptgradmomentumEdge) -> Double { @_common.
 pub fn opt_grad_momentum_edge_mean(s : OptgradmomentumEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_edge_scale(s : OptgradmomentumEdge, f : Double) -> OptgradmomentumEdge {
-  let result = opt_grad_momentum_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_edge_add(a : OptgradmomentumEdge, b : OptgradmomentumEdge) -> OptgradmomentumEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_edge_copy(s : OptgradmomentumEdge) -> OptgradmomentumEdge {
-  let result = opt_grad_momentum_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_edge_fill(s : OptgradmomentumEdge, v : Double) -> OptgradmomentumEdge {
-  let result = opt_grad_momentum_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_edge_min(s : OptgradmomentumEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn opt_grad_momentum_path_sum(s : OptgradmomentumPath) -> Double { @_common.
 pub fn opt_grad_momentum_path_mean(s : OptgradmomentumPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_path_scale(s : OptgradmomentumPath, f : Double) -> OptgradmomentumPath {
-  let result = opt_grad_momentum_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_path_add(a : OptgradmomentumPath, b : OptgradmomentumPath) -> OptgradmomentumPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_path_copy(s : OptgradmomentumPath) -> OptgradmomentumPath {
-  let result = opt_grad_momentum_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_path_fill(s : OptgradmomentumPath, v : Double) -> OptgradmomentumPath {
-  let result = opt_grad_momentum_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_path_min(s : OptgradmomentumPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn opt_grad_momentum_cluster_sum(s : OptgradmomentumCluster) -> Double { @_c
 pub fn opt_grad_momentum_cluster_mean(s : OptgradmomentumCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_cluster_scale(s : OptgradmomentumCluster, f : Double) -> OptgradmomentumCluster {
-  let result = opt_grad_momentum_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_cluster_add(a : OptgradmomentumCluster, b : OptgradmomentumCluster) -> OptgradmomentumCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_cluster_copy(s : OptgradmomentumCluster) -> OptgradmomentumCluster {
-  let result = opt_grad_momentum_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_cluster_fill(s : OptgradmomentumCluster, v : Double) -> OptgradmomentumCluster {
-  let result = opt_grad_momentum_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_cluster_min(s : OptgradmomentumCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn opt_grad_momentum_model_sum(s : OptgradmomentumModel) -> Double { @_commo
 pub fn opt_grad_momentum_model_mean(s : OptgradmomentumModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_model_scale(s : OptgradmomentumModel, f : Double) -> OptgradmomentumModel {
-  let result = opt_grad_momentum_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_model_add(a : OptgradmomentumModel, b : OptgradmomentumModel) -> OptgradmomentumModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_model_copy(s : OptgradmomentumModel) -> OptgradmomentumModel {
-  let result = opt_grad_momentum_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_model_fill(s : OptgradmomentumModel, v : Double) -> OptgradmomentumModel {
-  let result = opt_grad_momentum_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_model_min(s : OptgradmomentumModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn opt_grad_momentum_layer_sum(s : OptgradmomentumLayer) -> Double { @_commo
 pub fn opt_grad_momentum_layer_mean(s : OptgradmomentumLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_layer_scale(s : OptgradmomentumLayer, f : Double) -> OptgradmomentumLayer {
-  let result = opt_grad_momentum_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_layer_add(a : OptgradmomentumLayer, b : OptgradmomentumLayer) -> OptgradmomentumLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_layer_copy(s : OptgradmomentumLayer) -> OptgradmomentumLayer {
-  let result = opt_grad_momentum_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_layer_fill(s : OptgradmomentumLayer, v : Double) -> OptgradmomentumLayer {
-  let result = opt_grad_momentum_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_layer_min(s : OptgradmomentumLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn opt_grad_momentum_buffer_sum(s : OptgradmomentumBuffer) -> Double { @_com
 pub fn opt_grad_momentum_buffer_mean(s : OptgradmomentumBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_buffer_scale(s : OptgradmomentumBuffer, f : Double) -> OptgradmomentumBuffer {
-  let result = opt_grad_momentum_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_buffer_add(a : OptgradmomentumBuffer, b : OptgradmomentumBuffer) -> OptgradmomentumBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_buffer_copy(s : OptgradmomentumBuffer) -> OptgradmomentumBuffer {
-  let result = opt_grad_momentum_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_buffer_fill(s : OptgradmomentumBuffer, v : Double) -> OptgradmomentumBuffer {
-  let result = opt_grad_momentum_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_buffer_min(s : OptgradmomentumBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn opt_grad_momentum_cursor_sum(s : OptgradmomentumCursor) -> Double { @_com
 pub fn opt_grad_momentum_cursor_mean(s : OptgradmomentumCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_cursor_scale(s : OptgradmomentumCursor, f : Double) -> OptgradmomentumCursor {
-  let result = opt_grad_momentum_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_cursor_add(a : OptgradmomentumCursor, b : OptgradmomentumCursor) -> OptgradmomentumCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_cursor_copy(s : OptgradmomentumCursor) -> OptgradmomentumCursor {
-  let result = opt_grad_momentum_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_cursor_fill(s : OptgradmomentumCursor, v : Double) -> OptgradmomentumCursor {
-  let result = opt_grad_momentum_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_cursor_min(s : OptgradmomentumCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn opt_grad_momentum_view_sum(s : OptgradmomentumView) -> Double { @_common.
 pub fn opt_grad_momentum_view_mean(s : OptgradmomentumView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_view_scale(s : OptgradmomentumView, f : Double) -> OptgradmomentumView {
-  let result = opt_grad_momentum_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_view_add(a : OptgradmomentumView, b : OptgradmomentumView) -> OptgradmomentumView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_view_copy(s : OptgradmomentumView) -> OptgradmomentumView {
-  let result = opt_grad_momentum_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_view_fill(s : OptgradmomentumView, v : Double) -> OptgradmomentumView {
-  let result = opt_grad_momentum_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_view_min(s : OptgradmomentumView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn opt_grad_momentum_range_sum(s : OptgradmomentumRange) -> Double { @_commo
 pub fn opt_grad_momentum_range_mean(s : OptgradmomentumRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_range_scale(s : OptgradmomentumRange, f : Double) -> OptgradmomentumRange {
-  let result = opt_grad_momentum_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_range_add(a : OptgradmomentumRange, b : OptgradmomentumRange) -> OptgradmomentumRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_range_copy(s : OptgradmomentumRange) -> OptgradmomentumRange {
-  let result = opt_grad_momentum_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_range_fill(s : OptgradmomentumRange, v : Double) -> OptgradmomentumRange {
-  let result = opt_grad_momentum_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_range_min(s : OptgradmomentumRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn opt_grad_momentum_slice_sum(s : OptgradmomentumSlice) -> Double { @_commo
 pub fn opt_grad_momentum_slice_mean(s : OptgradmomentumSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_slice_scale(s : OptgradmomentumSlice, f : Double) -> OptgradmomentumSlice {
-  let result = opt_grad_momentum_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_slice_add(a : OptgradmomentumSlice, b : OptgradmomentumSlice) -> OptgradmomentumSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_grad_momentum_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_grad_momentum_slice_copy(s : OptgradmomentumSlice) -> OptgradmomentumSlice {
-  let result = opt_grad_momentum_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_slice_fill(s : OptgradmomentumSlice, v : Double) -> OptgradmomentumSlice {
-  let result = opt_grad_momentum_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_momentum_slice_min(s : OptgradmomentumSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn graph_search_dijkstra_frame_sum(s : GraphsearchdijkstraFrame) -> Double {
 pub fn graph_search_dijkstra_frame_mean(s : GraphsearchdijkstraFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_frame_scale(s : GraphsearchdijkstraFrame, f : Double) -> GraphsearchdijkstraFrame {
-  let result = graph_search_dijkstra_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_frame_add(a : GraphsearchdijkstraFrame, b : GraphsearchdijkstraFrame) -> GraphsearchdijkstraFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_frame_copy(s : GraphsearchdijkstraFrame) -> GraphsearchdijkstraFrame {
-  let result = graph_search_dijkstra_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_frame_fill(s : GraphsearchdijkstraFrame, v : Double) -> GraphsearchdijkstraFrame {
-  let result = graph_search_dijkstra_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_frame_min(s : GraphsearchdijkstraFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_search_dijkstra_table_sum(s : GraphsearchdijkstraTable) -> Double {
 pub fn graph_search_dijkstra_table_mean(s : GraphsearchdijkstraTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_table_scale(s : GraphsearchdijkstraTable, f : Double) -> GraphsearchdijkstraTable {
-  let result = graph_search_dijkstra_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_table_add(a : GraphsearchdijkstraTable, b : GraphsearchdijkstraTable) -> GraphsearchdijkstraTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_table_copy(s : GraphsearchdijkstraTable) -> GraphsearchdijkstraTable {
-  let result = graph_search_dijkstra_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_table_fill(s : GraphsearchdijkstraTable, v : Double) -> GraphsearchdijkstraTable {
-  let result = graph_search_dijkstra_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_table_min(s : GraphsearchdijkstraTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_search_dijkstra_graphn_sum(s : GraphsearchdijkstraGraphN) -> Double
 pub fn graph_search_dijkstra_graphn_mean(s : GraphsearchdijkstraGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_graphn_scale(s : GraphsearchdijkstraGraphN, f : Double) -> GraphsearchdijkstraGraphN {
-  let result = graph_search_dijkstra_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_graphn_add(a : GraphsearchdijkstraGraphN, b : GraphsearchdijkstraGraphN) -> GraphsearchdijkstraGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_graphn_copy(s : GraphsearchdijkstraGraphN) -> GraphsearchdijkstraGraphN {
-  let result = graph_search_dijkstra_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_graphn_fill(s : GraphsearchdijkstraGraphN, v : Double) -> GraphsearchdijkstraGraphN {
-  let result = graph_search_dijkstra_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_graphn_min(s : GraphsearchdijkstraGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_search_dijkstra_node_sum(s : GraphsearchdijkstraNode) -> Double { @
 pub fn graph_search_dijkstra_node_mean(s : GraphsearchdijkstraNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_node_scale(s : GraphsearchdijkstraNode, f : Double) -> GraphsearchdijkstraNode {
-  let result = graph_search_dijkstra_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_node_add(a : GraphsearchdijkstraNode, b : GraphsearchdijkstraNode) -> GraphsearchdijkstraNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_node_copy(s : GraphsearchdijkstraNode) -> GraphsearchdijkstraNode {
-  let result = graph_search_dijkstra_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_node_fill(s : GraphsearchdijkstraNode, v : Double) -> GraphsearchdijkstraNode {
-  let result = graph_search_dijkstra_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_node_min(s : GraphsearchdijkstraNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_search_dijkstra_edge_sum(s : GraphsearchdijkstraEdge) -> Double { @
 pub fn graph_search_dijkstra_edge_mean(s : GraphsearchdijkstraEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_edge_scale(s : GraphsearchdijkstraEdge, f : Double) -> GraphsearchdijkstraEdge {
-  let result = graph_search_dijkstra_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_edge_add(a : GraphsearchdijkstraEdge, b : GraphsearchdijkstraEdge) -> GraphsearchdijkstraEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_edge_copy(s : GraphsearchdijkstraEdge) -> GraphsearchdijkstraEdge {
-  let result = graph_search_dijkstra_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_edge_fill(s : GraphsearchdijkstraEdge, v : Double) -> GraphsearchdijkstraEdge {
-  let result = graph_search_dijkstra_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_edge_min(s : GraphsearchdijkstraEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_search_dijkstra_path_sum(s : GraphsearchdijkstraPath) -> Double { @
 pub fn graph_search_dijkstra_path_mean(s : GraphsearchdijkstraPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_path_scale(s : GraphsearchdijkstraPath, f : Double) -> GraphsearchdijkstraPath {
-  let result = graph_search_dijkstra_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_path_add(a : GraphsearchdijkstraPath, b : GraphsearchdijkstraPath) -> GraphsearchdijkstraPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_path_copy(s : GraphsearchdijkstraPath) -> GraphsearchdijkstraPath {
-  let result = graph_search_dijkstra_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_path_fill(s : GraphsearchdijkstraPath, v : Double) -> GraphsearchdijkstraPath {
-  let result = graph_search_dijkstra_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_path_min(s : GraphsearchdijkstraPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_search_dijkstra_cluster_sum(s : GraphsearchdijkstraCluster) -> Doub
 pub fn graph_search_dijkstra_cluster_mean(s : GraphsearchdijkstraCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_cluster_scale(s : GraphsearchdijkstraCluster, f : Double) -> GraphsearchdijkstraCluster {
-  let result = graph_search_dijkstra_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cluster_add(a : GraphsearchdijkstraCluster, b : GraphsearchdijkstraCluster) -> GraphsearchdijkstraCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_cluster_copy(s : GraphsearchdijkstraCluster) -> GraphsearchdijkstraCluster {
-  let result = graph_search_dijkstra_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cluster_fill(s : GraphsearchdijkstraCluster, v : Double) -> GraphsearchdijkstraCluster {
-  let result = graph_search_dijkstra_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cluster_min(s : GraphsearchdijkstraCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_search_dijkstra_model_sum(s : GraphsearchdijkstraModel) -> Double {
 pub fn graph_search_dijkstra_model_mean(s : GraphsearchdijkstraModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_model_scale(s : GraphsearchdijkstraModel, f : Double) -> GraphsearchdijkstraModel {
-  let result = graph_search_dijkstra_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_model_add(a : GraphsearchdijkstraModel, b : GraphsearchdijkstraModel) -> GraphsearchdijkstraModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_model_copy(s : GraphsearchdijkstraModel) -> GraphsearchdijkstraModel {
-  let result = graph_search_dijkstra_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_model_fill(s : GraphsearchdijkstraModel, v : Double) -> GraphsearchdijkstraModel {
-  let result = graph_search_dijkstra_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_model_min(s : GraphsearchdijkstraModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_search_dijkstra_layer_sum(s : GraphsearchdijkstraLayer) -> Double {
 pub fn graph_search_dijkstra_layer_mean(s : GraphsearchdijkstraLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_layer_scale(s : GraphsearchdijkstraLayer, f : Double) -> GraphsearchdijkstraLayer {
-  let result = graph_search_dijkstra_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_layer_add(a : GraphsearchdijkstraLayer, b : GraphsearchdijkstraLayer) -> GraphsearchdijkstraLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_layer_copy(s : GraphsearchdijkstraLayer) -> GraphsearchdijkstraLayer {
-  let result = graph_search_dijkstra_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_layer_fill(s : GraphsearchdijkstraLayer, v : Double) -> GraphsearchdijkstraLayer {
-  let result = graph_search_dijkstra_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_layer_min(s : GraphsearchdijkstraLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_search_dijkstra_buffer_sum(s : GraphsearchdijkstraBuffer) -> Double
 pub fn graph_search_dijkstra_buffer_mean(s : GraphsearchdijkstraBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_buffer_scale(s : GraphsearchdijkstraBuffer, f : Double) -> GraphsearchdijkstraBuffer {
-  let result = graph_search_dijkstra_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_buffer_add(a : GraphsearchdijkstraBuffer, b : GraphsearchdijkstraBuffer) -> GraphsearchdijkstraBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_buffer_copy(s : GraphsearchdijkstraBuffer) -> GraphsearchdijkstraBuffer {
-  let result = graph_search_dijkstra_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_buffer_fill(s : GraphsearchdijkstraBuffer, v : Double) -> GraphsearchdijkstraBuffer {
-  let result = graph_search_dijkstra_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_buffer_min(s : GraphsearchdijkstraBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_search_dijkstra_cursor_sum(s : GraphsearchdijkstraCursor) -> Double
 pub fn graph_search_dijkstra_cursor_mean(s : GraphsearchdijkstraCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_cursor_scale(s : GraphsearchdijkstraCursor, f : Double) -> GraphsearchdijkstraCursor {
-  let result = graph_search_dijkstra_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cursor_add(a : GraphsearchdijkstraCursor, b : GraphsearchdijkstraCursor) -> GraphsearchdijkstraCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_cursor_copy(s : GraphsearchdijkstraCursor) -> GraphsearchdijkstraCursor {
-  let result = graph_search_dijkstra_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cursor_fill(s : GraphsearchdijkstraCursor, v : Double) -> GraphsearchdijkstraCursor {
-  let result = graph_search_dijkstra_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cursor_min(s : GraphsearchdijkstraCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_search_dijkstra_view_sum(s : GraphsearchdijkstraView) -> Double { @
 pub fn graph_search_dijkstra_view_mean(s : GraphsearchdijkstraView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_view_scale(s : GraphsearchdijkstraView, f : Double) -> GraphsearchdijkstraView {
-  let result = graph_search_dijkstra_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_view_add(a : GraphsearchdijkstraView, b : GraphsearchdijkstraView) -> GraphsearchdijkstraView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_view_copy(s : GraphsearchdijkstraView) -> GraphsearchdijkstraView {
-  let result = graph_search_dijkstra_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_view_fill(s : GraphsearchdijkstraView, v : Double) -> GraphsearchdijkstraView {
-  let result = graph_search_dijkstra_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_view_min(s : GraphsearchdijkstraView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_search_dijkstra_range_sum(s : GraphsearchdijkstraRange) -> Double {
 pub fn graph_search_dijkstra_range_mean(s : GraphsearchdijkstraRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_range_scale(s : GraphsearchdijkstraRange, f : Double) -> GraphsearchdijkstraRange {
-  let result = graph_search_dijkstra_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_range_add(a : GraphsearchdijkstraRange, b : GraphsearchdijkstraRange) -> GraphsearchdijkstraRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_range_copy(s : GraphsearchdijkstraRange) -> GraphsearchdijkstraRange {
-  let result = graph_search_dijkstra_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_range_fill(s : GraphsearchdijkstraRange, v : Double) -> GraphsearchdijkstraRange {
-  let result = graph_search_dijkstra_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_range_min(s : GraphsearchdijkstraRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_search_dijkstra_slice_sum(s : GraphsearchdijkstraSlice) -> Double {
 pub fn graph_search_dijkstra_slice_mean(s : GraphsearchdijkstraSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_slice_scale(s : GraphsearchdijkstraSlice, f : Double) -> GraphsearchdijkstraSlice {
-  let result = graph_search_dijkstra_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_slice_add(a : GraphsearchdijkstraSlice, b : GraphsearchdijkstraSlice) -> GraphsearchdijkstraSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_dijkstra_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_dijkstra_slice_copy(s : GraphsearchdijkstraSlice) -> GraphsearchdijkstraSlice {
-  let result = graph_search_dijkstra_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_slice_fill(s : GraphsearchdijkstraSlice, v : Double) -> GraphsearchdijkstraSlice {
-  let result = graph_search_dijkstra_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_slice_min(s : GraphsearchdijkstraSlice) -> Double { @_common.min(s.data) }

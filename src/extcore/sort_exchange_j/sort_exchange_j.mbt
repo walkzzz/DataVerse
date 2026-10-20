@@ -383,28 +383,20 @@ pub fn sort_exchange_j_frame_sum(s : SortexchangejFrame) -> Double { @_common.su
 pub fn sort_exchange_j_frame_mean(s : SortexchangejFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_frame_scale(s : SortexchangejFrame, f : Double) -> SortexchangejFrame {
-  let result = sort_exchange_j_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_frame_add(a : SortexchangejFrame, b : SortexchangejFrame) -> SortexchangejFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_frame_copy(s : SortexchangejFrame) -> SortexchangejFrame {
-  let result = sort_exchange_j_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_frame_fill(s : SortexchangejFrame, v : Double) -> SortexchangejFrame {
-  let result = sort_exchange_j_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_frame_min(s : SortexchangejFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_exchange_j_table_sum(s : SortexchangejTable) -> Double { @_common.su
 pub fn sort_exchange_j_table_mean(s : SortexchangejTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_table_scale(s : SortexchangejTable, f : Double) -> SortexchangejTable {
-  let result = sort_exchange_j_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_table_add(a : SortexchangejTable, b : SortexchangejTable) -> SortexchangejTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_table_copy(s : SortexchangejTable) -> SortexchangejTable {
-  let result = sort_exchange_j_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_table_fill(s : SortexchangejTable, v : Double) -> SortexchangejTable {
-  let result = sort_exchange_j_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_table_min(s : SortexchangejTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_exchange_j_graphn_sum(s : SortexchangejGraphN) -> Double { @_common.
 pub fn sort_exchange_j_graphn_mean(s : SortexchangejGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_graphn_scale(s : SortexchangejGraphN, f : Double) -> SortexchangejGraphN {
-  let result = sort_exchange_j_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_graphn_add(a : SortexchangejGraphN, b : SortexchangejGraphN) -> SortexchangejGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_graphn_copy(s : SortexchangejGraphN) -> SortexchangejGraphN {
-  let result = sort_exchange_j_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_graphn_fill(s : SortexchangejGraphN, v : Double) -> SortexchangejGraphN {
-  let result = sort_exchange_j_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_graphn_min(s : SortexchangejGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_exchange_j_node_sum(s : SortexchangejNode) -> Double { @_common.sum(
 pub fn sort_exchange_j_node_mean(s : SortexchangejNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_node_scale(s : SortexchangejNode, f : Double) -> SortexchangejNode {
-  let result = sort_exchange_j_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_node_add(a : SortexchangejNode, b : SortexchangejNode) -> SortexchangejNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_node_copy(s : SortexchangejNode) -> SortexchangejNode {
-  let result = sort_exchange_j_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_node_fill(s : SortexchangejNode, v : Double) -> SortexchangejNode {
-  let result = sort_exchange_j_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_node_min(s : SortexchangejNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_exchange_j_edge_sum(s : SortexchangejEdge) -> Double { @_common.sum(
 pub fn sort_exchange_j_edge_mean(s : SortexchangejEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_edge_scale(s : SortexchangejEdge, f : Double) -> SortexchangejEdge {
-  let result = sort_exchange_j_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_edge_add(a : SortexchangejEdge, b : SortexchangejEdge) -> SortexchangejEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_edge_copy(s : SortexchangejEdge) -> SortexchangejEdge {
-  let result = sort_exchange_j_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_edge_fill(s : SortexchangejEdge, v : Double) -> SortexchangejEdge {
-  let result = sort_exchange_j_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_edge_min(s : SortexchangejEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_exchange_j_path_sum(s : SortexchangejPath) -> Double { @_common.sum(
 pub fn sort_exchange_j_path_mean(s : SortexchangejPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_path_scale(s : SortexchangejPath, f : Double) -> SortexchangejPath {
-  let result = sort_exchange_j_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_path_add(a : SortexchangejPath, b : SortexchangejPath) -> SortexchangejPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_path_copy(s : SortexchangejPath) -> SortexchangejPath {
-  let result = sort_exchange_j_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_path_fill(s : SortexchangejPath, v : Double) -> SortexchangejPath {
-  let result = sort_exchange_j_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_path_min(s : SortexchangejPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_exchange_j_cluster_sum(s : SortexchangejCluster) -> Double { @_commo
 pub fn sort_exchange_j_cluster_mean(s : SortexchangejCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_cluster_scale(s : SortexchangejCluster, f : Double) -> SortexchangejCluster {
-  let result = sort_exchange_j_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_cluster_add(a : SortexchangejCluster, b : SortexchangejCluster) -> SortexchangejCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_cluster_copy(s : SortexchangejCluster) -> SortexchangejCluster {
-  let result = sort_exchange_j_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_cluster_fill(s : SortexchangejCluster, v : Double) -> SortexchangejCluster {
-  let result = sort_exchange_j_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_cluster_min(s : SortexchangejCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_exchange_j_model_sum(s : SortexchangejModel) -> Double { @_common.su
 pub fn sort_exchange_j_model_mean(s : SortexchangejModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_model_scale(s : SortexchangejModel, f : Double) -> SortexchangejModel {
-  let result = sort_exchange_j_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_model_add(a : SortexchangejModel, b : SortexchangejModel) -> SortexchangejModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_model_copy(s : SortexchangejModel) -> SortexchangejModel {
-  let result = sort_exchange_j_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_model_fill(s : SortexchangejModel, v : Double) -> SortexchangejModel {
-  let result = sort_exchange_j_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_model_min(s : SortexchangejModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_exchange_j_layer_sum(s : SortexchangejLayer) -> Double { @_common.su
 pub fn sort_exchange_j_layer_mean(s : SortexchangejLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_layer_scale(s : SortexchangejLayer, f : Double) -> SortexchangejLayer {
-  let result = sort_exchange_j_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_layer_add(a : SortexchangejLayer, b : SortexchangejLayer) -> SortexchangejLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_layer_copy(s : SortexchangejLayer) -> SortexchangejLayer {
-  let result = sort_exchange_j_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_layer_fill(s : SortexchangejLayer, v : Double) -> SortexchangejLayer {
-  let result = sort_exchange_j_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_layer_min(s : SortexchangejLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_exchange_j_buffer_sum(s : SortexchangejBuffer) -> Double { @_common.
 pub fn sort_exchange_j_buffer_mean(s : SortexchangejBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_buffer_scale(s : SortexchangejBuffer, f : Double) -> SortexchangejBuffer {
-  let result = sort_exchange_j_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_buffer_add(a : SortexchangejBuffer, b : SortexchangejBuffer) -> SortexchangejBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_buffer_copy(s : SortexchangejBuffer) -> SortexchangejBuffer {
-  let result = sort_exchange_j_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_buffer_fill(s : SortexchangejBuffer, v : Double) -> SortexchangejBuffer {
-  let result = sort_exchange_j_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_buffer_min(s : SortexchangejBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_exchange_j_cursor_sum(s : SortexchangejCursor) -> Double { @_common.
 pub fn sort_exchange_j_cursor_mean(s : SortexchangejCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_cursor_scale(s : SortexchangejCursor, f : Double) -> SortexchangejCursor {
-  let result = sort_exchange_j_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_cursor_add(a : SortexchangejCursor, b : SortexchangejCursor) -> SortexchangejCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_cursor_copy(s : SortexchangejCursor) -> SortexchangejCursor {
-  let result = sort_exchange_j_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_cursor_fill(s : SortexchangejCursor, v : Double) -> SortexchangejCursor {
-  let result = sort_exchange_j_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_cursor_min(s : SortexchangejCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_exchange_j_view_sum(s : SortexchangejView) -> Double { @_common.sum(
 pub fn sort_exchange_j_view_mean(s : SortexchangejView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_view_scale(s : SortexchangejView, f : Double) -> SortexchangejView {
-  let result = sort_exchange_j_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_view_add(a : SortexchangejView, b : SortexchangejView) -> SortexchangejView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_view_copy(s : SortexchangejView) -> SortexchangejView {
-  let result = sort_exchange_j_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_view_fill(s : SortexchangejView, v : Double) -> SortexchangejView {
-  let result = sort_exchange_j_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_view_min(s : SortexchangejView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_exchange_j_range_sum(s : SortexchangejRange) -> Double { @_common.su
 pub fn sort_exchange_j_range_mean(s : SortexchangejRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_range_scale(s : SortexchangejRange, f : Double) -> SortexchangejRange {
-  let result = sort_exchange_j_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_range_add(a : SortexchangejRange, b : SortexchangejRange) -> SortexchangejRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_range_copy(s : SortexchangejRange) -> SortexchangejRange {
-  let result = sort_exchange_j_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_range_fill(s : SortexchangejRange, v : Double) -> SortexchangejRange {
-  let result = sort_exchange_j_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_range_min(s : SortexchangejRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_exchange_j_slice_sum(s : SortexchangejSlice) -> Double { @_common.su
 pub fn sort_exchange_j_slice_mean(s : SortexchangejSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_slice_scale(s : SortexchangejSlice, f : Double) -> SortexchangejSlice {
-  let result = sort_exchange_j_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_slice_add(a : SortexchangejSlice, b : SortexchangejSlice) -> SortexchangejSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_j_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_j_slice_copy(s : SortexchangejSlice) -> SortexchangejSlice {
-  let result = sort_exchange_j_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_slice_fill(s : SortexchangejSlice, v : Double) -> SortexchangejSlice {
-  let result = sort_exchange_j_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_j_slice_min(s : SortexchangejSlice) -> Double { @_common.min(s.data) }

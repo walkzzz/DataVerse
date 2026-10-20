@@ -383,28 +383,20 @@ pub fn graph_flow_maxflow_frame_sum(s : GraphflowmaxflowFrame) -> Double { @_com
 pub fn graph_flow_maxflow_frame_mean(s : GraphflowmaxflowFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_frame_scale(s : GraphflowmaxflowFrame, f : Double) -> GraphflowmaxflowFrame {
-  let result = graph_flow_maxflow_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_frame_add(a : GraphflowmaxflowFrame, b : GraphflowmaxflowFrame) -> GraphflowmaxflowFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_frame_copy(s : GraphflowmaxflowFrame) -> GraphflowmaxflowFrame {
-  let result = graph_flow_maxflow_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_frame_fill(s : GraphflowmaxflowFrame, v : Double) -> GraphflowmaxflowFrame {
-  let result = graph_flow_maxflow_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_frame_min(s : GraphflowmaxflowFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_flow_maxflow_table_sum(s : GraphflowmaxflowTable) -> Double { @_com
 pub fn graph_flow_maxflow_table_mean(s : GraphflowmaxflowTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_table_scale(s : GraphflowmaxflowTable, f : Double) -> GraphflowmaxflowTable {
-  let result = graph_flow_maxflow_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_table_add(a : GraphflowmaxflowTable, b : GraphflowmaxflowTable) -> GraphflowmaxflowTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_table_copy(s : GraphflowmaxflowTable) -> GraphflowmaxflowTable {
-  let result = graph_flow_maxflow_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_table_fill(s : GraphflowmaxflowTable, v : Double) -> GraphflowmaxflowTable {
-  let result = graph_flow_maxflow_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_table_min(s : GraphflowmaxflowTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_flow_maxflow_graphn_sum(s : GraphflowmaxflowGraphN) -> Double { @_c
 pub fn graph_flow_maxflow_graphn_mean(s : GraphflowmaxflowGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_graphn_scale(s : GraphflowmaxflowGraphN, f : Double) -> GraphflowmaxflowGraphN {
-  let result = graph_flow_maxflow_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_graphn_add(a : GraphflowmaxflowGraphN, b : GraphflowmaxflowGraphN) -> GraphflowmaxflowGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_graphn_copy(s : GraphflowmaxflowGraphN) -> GraphflowmaxflowGraphN {
-  let result = graph_flow_maxflow_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_graphn_fill(s : GraphflowmaxflowGraphN, v : Double) -> GraphflowmaxflowGraphN {
-  let result = graph_flow_maxflow_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_graphn_min(s : GraphflowmaxflowGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_flow_maxflow_node_sum(s : GraphflowmaxflowNode) -> Double { @_commo
 pub fn graph_flow_maxflow_node_mean(s : GraphflowmaxflowNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_node_scale(s : GraphflowmaxflowNode, f : Double) -> GraphflowmaxflowNode {
-  let result = graph_flow_maxflow_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_node_add(a : GraphflowmaxflowNode, b : GraphflowmaxflowNode) -> GraphflowmaxflowNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_node_copy(s : GraphflowmaxflowNode) -> GraphflowmaxflowNode {
-  let result = graph_flow_maxflow_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_node_fill(s : GraphflowmaxflowNode, v : Double) -> GraphflowmaxflowNode {
-  let result = graph_flow_maxflow_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_node_min(s : GraphflowmaxflowNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_flow_maxflow_edge_sum(s : GraphflowmaxflowEdge) -> Double { @_commo
 pub fn graph_flow_maxflow_edge_mean(s : GraphflowmaxflowEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_edge_scale(s : GraphflowmaxflowEdge, f : Double) -> GraphflowmaxflowEdge {
-  let result = graph_flow_maxflow_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_edge_add(a : GraphflowmaxflowEdge, b : GraphflowmaxflowEdge) -> GraphflowmaxflowEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_edge_copy(s : GraphflowmaxflowEdge) -> GraphflowmaxflowEdge {
-  let result = graph_flow_maxflow_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_edge_fill(s : GraphflowmaxflowEdge, v : Double) -> GraphflowmaxflowEdge {
-  let result = graph_flow_maxflow_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_edge_min(s : GraphflowmaxflowEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_flow_maxflow_path_sum(s : GraphflowmaxflowPath) -> Double { @_commo
 pub fn graph_flow_maxflow_path_mean(s : GraphflowmaxflowPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_path_scale(s : GraphflowmaxflowPath, f : Double) -> GraphflowmaxflowPath {
-  let result = graph_flow_maxflow_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_path_add(a : GraphflowmaxflowPath, b : GraphflowmaxflowPath) -> GraphflowmaxflowPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_path_copy(s : GraphflowmaxflowPath) -> GraphflowmaxflowPath {
-  let result = graph_flow_maxflow_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_path_fill(s : GraphflowmaxflowPath, v : Double) -> GraphflowmaxflowPath {
-  let result = graph_flow_maxflow_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_path_min(s : GraphflowmaxflowPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_flow_maxflow_cluster_sum(s : GraphflowmaxflowCluster) -> Double { @
 pub fn graph_flow_maxflow_cluster_mean(s : GraphflowmaxflowCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_cluster_scale(s : GraphflowmaxflowCluster, f : Double) -> GraphflowmaxflowCluster {
-  let result = graph_flow_maxflow_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_cluster_add(a : GraphflowmaxflowCluster, b : GraphflowmaxflowCluster) -> GraphflowmaxflowCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_cluster_copy(s : GraphflowmaxflowCluster) -> GraphflowmaxflowCluster {
-  let result = graph_flow_maxflow_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_cluster_fill(s : GraphflowmaxflowCluster, v : Double) -> GraphflowmaxflowCluster {
-  let result = graph_flow_maxflow_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_cluster_min(s : GraphflowmaxflowCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_flow_maxflow_model_sum(s : GraphflowmaxflowModel) -> Double { @_com
 pub fn graph_flow_maxflow_model_mean(s : GraphflowmaxflowModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_model_scale(s : GraphflowmaxflowModel, f : Double) -> GraphflowmaxflowModel {
-  let result = graph_flow_maxflow_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_model_add(a : GraphflowmaxflowModel, b : GraphflowmaxflowModel) -> GraphflowmaxflowModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_model_copy(s : GraphflowmaxflowModel) -> GraphflowmaxflowModel {
-  let result = graph_flow_maxflow_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_model_fill(s : GraphflowmaxflowModel, v : Double) -> GraphflowmaxflowModel {
-  let result = graph_flow_maxflow_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_model_min(s : GraphflowmaxflowModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_flow_maxflow_layer_sum(s : GraphflowmaxflowLayer) -> Double { @_com
 pub fn graph_flow_maxflow_layer_mean(s : GraphflowmaxflowLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_layer_scale(s : GraphflowmaxflowLayer, f : Double) -> GraphflowmaxflowLayer {
-  let result = graph_flow_maxflow_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_layer_add(a : GraphflowmaxflowLayer, b : GraphflowmaxflowLayer) -> GraphflowmaxflowLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_layer_copy(s : GraphflowmaxflowLayer) -> GraphflowmaxflowLayer {
-  let result = graph_flow_maxflow_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_layer_fill(s : GraphflowmaxflowLayer, v : Double) -> GraphflowmaxflowLayer {
-  let result = graph_flow_maxflow_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_layer_min(s : GraphflowmaxflowLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_flow_maxflow_buffer_sum(s : GraphflowmaxflowBuffer) -> Double { @_c
 pub fn graph_flow_maxflow_buffer_mean(s : GraphflowmaxflowBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_buffer_scale(s : GraphflowmaxflowBuffer, f : Double) -> GraphflowmaxflowBuffer {
-  let result = graph_flow_maxflow_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_buffer_add(a : GraphflowmaxflowBuffer, b : GraphflowmaxflowBuffer) -> GraphflowmaxflowBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_buffer_copy(s : GraphflowmaxflowBuffer) -> GraphflowmaxflowBuffer {
-  let result = graph_flow_maxflow_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_buffer_fill(s : GraphflowmaxflowBuffer, v : Double) -> GraphflowmaxflowBuffer {
-  let result = graph_flow_maxflow_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_buffer_min(s : GraphflowmaxflowBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_flow_maxflow_cursor_sum(s : GraphflowmaxflowCursor) -> Double { @_c
 pub fn graph_flow_maxflow_cursor_mean(s : GraphflowmaxflowCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_cursor_scale(s : GraphflowmaxflowCursor, f : Double) -> GraphflowmaxflowCursor {
-  let result = graph_flow_maxflow_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_cursor_add(a : GraphflowmaxflowCursor, b : GraphflowmaxflowCursor) -> GraphflowmaxflowCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_cursor_copy(s : GraphflowmaxflowCursor) -> GraphflowmaxflowCursor {
-  let result = graph_flow_maxflow_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_cursor_fill(s : GraphflowmaxflowCursor, v : Double) -> GraphflowmaxflowCursor {
-  let result = graph_flow_maxflow_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_cursor_min(s : GraphflowmaxflowCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_flow_maxflow_view_sum(s : GraphflowmaxflowView) -> Double { @_commo
 pub fn graph_flow_maxflow_view_mean(s : GraphflowmaxflowView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_view_scale(s : GraphflowmaxflowView, f : Double) -> GraphflowmaxflowView {
-  let result = graph_flow_maxflow_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_view_add(a : GraphflowmaxflowView, b : GraphflowmaxflowView) -> GraphflowmaxflowView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_view_copy(s : GraphflowmaxflowView) -> GraphflowmaxflowView {
-  let result = graph_flow_maxflow_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_view_fill(s : GraphflowmaxflowView, v : Double) -> GraphflowmaxflowView {
-  let result = graph_flow_maxflow_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_view_min(s : GraphflowmaxflowView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_flow_maxflow_range_sum(s : GraphflowmaxflowRange) -> Double { @_com
 pub fn graph_flow_maxflow_range_mean(s : GraphflowmaxflowRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_range_scale(s : GraphflowmaxflowRange, f : Double) -> GraphflowmaxflowRange {
-  let result = graph_flow_maxflow_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_range_add(a : GraphflowmaxflowRange, b : GraphflowmaxflowRange) -> GraphflowmaxflowRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_range_copy(s : GraphflowmaxflowRange) -> GraphflowmaxflowRange {
-  let result = graph_flow_maxflow_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_range_fill(s : GraphflowmaxflowRange, v : Double) -> GraphflowmaxflowRange {
-  let result = graph_flow_maxflow_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_range_min(s : GraphflowmaxflowRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_flow_maxflow_slice_sum(s : GraphflowmaxflowSlice) -> Double { @_com
 pub fn graph_flow_maxflow_slice_mean(s : GraphflowmaxflowSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_maxflow_slice_scale(s : GraphflowmaxflowSlice, f : Double) -> GraphflowmaxflowSlice {
-  let result = graph_flow_maxflow_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_slice_add(a : GraphflowmaxflowSlice, b : GraphflowmaxflowSlice) -> GraphflowmaxflowSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_maxflow_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_maxflow_slice_copy(s : GraphflowmaxflowSlice) -> GraphflowmaxflowSlice {
-  let result = graph_flow_maxflow_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_slice_fill(s : GraphflowmaxflowSlice, v : Double) -> GraphflowmaxflowSlice {
-  let result = graph_flow_maxflow_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_maxflow_slice_min(s : GraphflowmaxflowSlice) -> Double { @_common.min(s.data) }

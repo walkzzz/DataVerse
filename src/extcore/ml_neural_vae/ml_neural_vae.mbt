@@ -383,28 +383,20 @@ pub fn ml_neural_vae_frame_sum(s : MlneuralvaeFrame) -> Double { @_common.sum(s.
 pub fn ml_neural_vae_frame_mean(s : MlneuralvaeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_frame_scale(s : MlneuralvaeFrame, f : Double) -> MlneuralvaeFrame {
-  let result = ml_neural_vae_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_frame_add(a : MlneuralvaeFrame, b : MlneuralvaeFrame) -> MlneuralvaeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_frame_copy(s : MlneuralvaeFrame) -> MlneuralvaeFrame {
-  let result = ml_neural_vae_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_frame_fill(s : MlneuralvaeFrame, v : Double) -> MlneuralvaeFrame {
-  let result = ml_neural_vae_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_frame_min(s : MlneuralvaeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_neural_vae_table_sum(s : MlneuralvaeTable) -> Double { @_common.sum(s.
 pub fn ml_neural_vae_table_mean(s : MlneuralvaeTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_table_scale(s : MlneuralvaeTable, f : Double) -> MlneuralvaeTable {
-  let result = ml_neural_vae_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_table_add(a : MlneuralvaeTable, b : MlneuralvaeTable) -> MlneuralvaeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_table_copy(s : MlneuralvaeTable) -> MlneuralvaeTable {
-  let result = ml_neural_vae_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_table_fill(s : MlneuralvaeTable, v : Double) -> MlneuralvaeTable {
-  let result = ml_neural_vae_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_table_min(s : MlneuralvaeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_neural_vae_graphn_sum(s : MlneuralvaeGraphN) -> Double { @_common.sum(
 pub fn ml_neural_vae_graphn_mean(s : MlneuralvaeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_graphn_scale(s : MlneuralvaeGraphN, f : Double) -> MlneuralvaeGraphN {
-  let result = ml_neural_vae_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_graphn_add(a : MlneuralvaeGraphN, b : MlneuralvaeGraphN) -> MlneuralvaeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_graphn_copy(s : MlneuralvaeGraphN) -> MlneuralvaeGraphN {
-  let result = ml_neural_vae_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_graphn_fill(s : MlneuralvaeGraphN, v : Double) -> MlneuralvaeGraphN {
-  let result = ml_neural_vae_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_graphn_min(s : MlneuralvaeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_neural_vae_node_sum(s : MlneuralvaeNode) -> Double { @_common.sum(s.da
 pub fn ml_neural_vae_node_mean(s : MlneuralvaeNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_node_scale(s : MlneuralvaeNode, f : Double) -> MlneuralvaeNode {
-  let result = ml_neural_vae_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_node_add(a : MlneuralvaeNode, b : MlneuralvaeNode) -> MlneuralvaeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_node_copy(s : MlneuralvaeNode) -> MlneuralvaeNode {
-  let result = ml_neural_vae_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_node_fill(s : MlneuralvaeNode, v : Double) -> MlneuralvaeNode {
-  let result = ml_neural_vae_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_node_min(s : MlneuralvaeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_neural_vae_edge_sum(s : MlneuralvaeEdge) -> Double { @_common.sum(s.da
 pub fn ml_neural_vae_edge_mean(s : MlneuralvaeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_edge_scale(s : MlneuralvaeEdge, f : Double) -> MlneuralvaeEdge {
-  let result = ml_neural_vae_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_edge_add(a : MlneuralvaeEdge, b : MlneuralvaeEdge) -> MlneuralvaeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_edge_copy(s : MlneuralvaeEdge) -> MlneuralvaeEdge {
-  let result = ml_neural_vae_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_edge_fill(s : MlneuralvaeEdge, v : Double) -> MlneuralvaeEdge {
-  let result = ml_neural_vae_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_edge_min(s : MlneuralvaeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_neural_vae_path_sum(s : MlneuralvaePath) -> Double { @_common.sum(s.da
 pub fn ml_neural_vae_path_mean(s : MlneuralvaePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_path_scale(s : MlneuralvaePath, f : Double) -> MlneuralvaePath {
-  let result = ml_neural_vae_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_path_add(a : MlneuralvaePath, b : MlneuralvaePath) -> MlneuralvaePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_path_copy(s : MlneuralvaePath) -> MlneuralvaePath {
-  let result = ml_neural_vae_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_path_fill(s : MlneuralvaePath, v : Double) -> MlneuralvaePath {
-  let result = ml_neural_vae_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_path_min(s : MlneuralvaePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_neural_vae_cluster_sum(s : MlneuralvaeCluster) -> Double { @_common.su
 pub fn ml_neural_vae_cluster_mean(s : MlneuralvaeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_cluster_scale(s : MlneuralvaeCluster, f : Double) -> MlneuralvaeCluster {
-  let result = ml_neural_vae_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cluster_add(a : MlneuralvaeCluster, b : MlneuralvaeCluster) -> MlneuralvaeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_cluster_copy(s : MlneuralvaeCluster) -> MlneuralvaeCluster {
-  let result = ml_neural_vae_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cluster_fill(s : MlneuralvaeCluster, v : Double) -> MlneuralvaeCluster {
-  let result = ml_neural_vae_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cluster_min(s : MlneuralvaeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_neural_vae_model_sum(s : MlneuralvaeModel) -> Double { @_common.sum(s.
 pub fn ml_neural_vae_model_mean(s : MlneuralvaeModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_model_scale(s : MlneuralvaeModel, f : Double) -> MlneuralvaeModel {
-  let result = ml_neural_vae_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_model_add(a : MlneuralvaeModel, b : MlneuralvaeModel) -> MlneuralvaeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_model_copy(s : MlneuralvaeModel) -> MlneuralvaeModel {
-  let result = ml_neural_vae_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_model_fill(s : MlneuralvaeModel, v : Double) -> MlneuralvaeModel {
-  let result = ml_neural_vae_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_model_min(s : MlneuralvaeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_neural_vae_layer_sum(s : MlneuralvaeLayer) -> Double { @_common.sum(s.
 pub fn ml_neural_vae_layer_mean(s : MlneuralvaeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_layer_scale(s : MlneuralvaeLayer, f : Double) -> MlneuralvaeLayer {
-  let result = ml_neural_vae_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_layer_add(a : MlneuralvaeLayer, b : MlneuralvaeLayer) -> MlneuralvaeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_layer_copy(s : MlneuralvaeLayer) -> MlneuralvaeLayer {
-  let result = ml_neural_vae_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_layer_fill(s : MlneuralvaeLayer, v : Double) -> MlneuralvaeLayer {
-  let result = ml_neural_vae_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_layer_min(s : MlneuralvaeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_neural_vae_buffer_sum(s : MlneuralvaeBuffer) -> Double { @_common.sum(
 pub fn ml_neural_vae_buffer_mean(s : MlneuralvaeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_buffer_scale(s : MlneuralvaeBuffer, f : Double) -> MlneuralvaeBuffer {
-  let result = ml_neural_vae_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_buffer_add(a : MlneuralvaeBuffer, b : MlneuralvaeBuffer) -> MlneuralvaeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_buffer_copy(s : MlneuralvaeBuffer) -> MlneuralvaeBuffer {
-  let result = ml_neural_vae_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_buffer_fill(s : MlneuralvaeBuffer, v : Double) -> MlneuralvaeBuffer {
-  let result = ml_neural_vae_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_buffer_min(s : MlneuralvaeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_neural_vae_cursor_sum(s : MlneuralvaeCursor) -> Double { @_common.sum(
 pub fn ml_neural_vae_cursor_mean(s : MlneuralvaeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_cursor_scale(s : MlneuralvaeCursor, f : Double) -> MlneuralvaeCursor {
-  let result = ml_neural_vae_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cursor_add(a : MlneuralvaeCursor, b : MlneuralvaeCursor) -> MlneuralvaeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_cursor_copy(s : MlneuralvaeCursor) -> MlneuralvaeCursor {
-  let result = ml_neural_vae_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cursor_fill(s : MlneuralvaeCursor, v : Double) -> MlneuralvaeCursor {
-  let result = ml_neural_vae_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cursor_min(s : MlneuralvaeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_neural_vae_view_sum(s : MlneuralvaeView) -> Double { @_common.sum(s.da
 pub fn ml_neural_vae_view_mean(s : MlneuralvaeView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_view_scale(s : MlneuralvaeView, f : Double) -> MlneuralvaeView {
-  let result = ml_neural_vae_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_view_add(a : MlneuralvaeView, b : MlneuralvaeView) -> MlneuralvaeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_view_copy(s : MlneuralvaeView) -> MlneuralvaeView {
-  let result = ml_neural_vae_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_view_fill(s : MlneuralvaeView, v : Double) -> MlneuralvaeView {
-  let result = ml_neural_vae_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_view_min(s : MlneuralvaeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_neural_vae_range_sum(s : MlneuralvaeRange) -> Double { @_common.sum(s.
 pub fn ml_neural_vae_range_mean(s : MlneuralvaeRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_range_scale(s : MlneuralvaeRange, f : Double) -> MlneuralvaeRange {
-  let result = ml_neural_vae_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_range_add(a : MlneuralvaeRange, b : MlneuralvaeRange) -> MlneuralvaeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_range_copy(s : MlneuralvaeRange) -> MlneuralvaeRange {
-  let result = ml_neural_vae_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_range_fill(s : MlneuralvaeRange, v : Double) -> MlneuralvaeRange {
-  let result = ml_neural_vae_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_range_min(s : MlneuralvaeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_neural_vae_slice_sum(s : MlneuralvaeSlice) -> Double { @_common.sum(s.
 pub fn ml_neural_vae_slice_mean(s : MlneuralvaeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_slice_scale(s : MlneuralvaeSlice, f : Double) -> MlneuralvaeSlice {
-  let result = ml_neural_vae_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_slice_add(a : MlneuralvaeSlice, b : MlneuralvaeSlice) -> MlneuralvaeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_vae_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_vae_slice_copy(s : MlneuralvaeSlice) -> MlneuralvaeSlice {
-  let result = ml_neural_vae_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_slice_fill(s : MlneuralvaeSlice, v : Double) -> MlneuralvaeSlice {
-  let result = ml_neural_vae_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_slice_min(s : MlneuralvaeSlice) -> Double { @_common.min(s.data) }

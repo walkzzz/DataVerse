@@ -383,28 +383,20 @@ pub fn db_tx_acid_frame_sum(s : DbtxacidFrame) -> Double { @_common.sum(s.data) 
 pub fn db_tx_acid_frame_mean(s : DbtxacidFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_frame_scale(s : DbtxacidFrame, f : Double) -> DbtxacidFrame {
-  let result = db_tx_acid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_frame_add(a : DbtxacidFrame, b : DbtxacidFrame) -> DbtxacidFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_frame_copy(s : DbtxacidFrame) -> DbtxacidFrame {
-  let result = db_tx_acid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_frame_fill(s : DbtxacidFrame, v : Double) -> DbtxacidFrame {
-  let result = db_tx_acid_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_frame_min(s : DbtxacidFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_tx_acid_table_sum(s : DbtxacidTable) -> Double { @_common.sum(s.data) 
 pub fn db_tx_acid_table_mean(s : DbtxacidTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_table_scale(s : DbtxacidTable, f : Double) -> DbtxacidTable {
-  let result = db_tx_acid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_table_add(a : DbtxacidTable, b : DbtxacidTable) -> DbtxacidTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_table_copy(s : DbtxacidTable) -> DbtxacidTable {
-  let result = db_tx_acid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_table_fill(s : DbtxacidTable, v : Double) -> DbtxacidTable {
-  let result = db_tx_acid_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_table_min(s : DbtxacidTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_tx_acid_graphn_sum(s : DbtxacidGraphN) -> Double { @_common.sum(s.data
 pub fn db_tx_acid_graphn_mean(s : DbtxacidGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_graphn_scale(s : DbtxacidGraphN, f : Double) -> DbtxacidGraphN {
-  let result = db_tx_acid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_graphn_add(a : DbtxacidGraphN, b : DbtxacidGraphN) -> DbtxacidGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_graphn_copy(s : DbtxacidGraphN) -> DbtxacidGraphN {
-  let result = db_tx_acid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_graphn_fill(s : DbtxacidGraphN, v : Double) -> DbtxacidGraphN {
-  let result = db_tx_acid_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_graphn_min(s : DbtxacidGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_tx_acid_node_sum(s : DbtxacidNode) -> Double { @_common.sum(s.data) }
 pub fn db_tx_acid_node_mean(s : DbtxacidNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_node_scale(s : DbtxacidNode, f : Double) -> DbtxacidNode {
-  let result = db_tx_acid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_node_add(a : DbtxacidNode, b : DbtxacidNode) -> DbtxacidNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_node_copy(s : DbtxacidNode) -> DbtxacidNode {
-  let result = db_tx_acid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_node_fill(s : DbtxacidNode, v : Double) -> DbtxacidNode {
-  let result = db_tx_acid_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_node_min(s : DbtxacidNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_tx_acid_edge_sum(s : DbtxacidEdge) -> Double { @_common.sum(s.data) }
 pub fn db_tx_acid_edge_mean(s : DbtxacidEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_edge_scale(s : DbtxacidEdge, f : Double) -> DbtxacidEdge {
-  let result = db_tx_acid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_edge_add(a : DbtxacidEdge, b : DbtxacidEdge) -> DbtxacidEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_edge_copy(s : DbtxacidEdge) -> DbtxacidEdge {
-  let result = db_tx_acid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_edge_fill(s : DbtxacidEdge, v : Double) -> DbtxacidEdge {
-  let result = db_tx_acid_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_edge_min(s : DbtxacidEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_tx_acid_path_sum(s : DbtxacidPath) -> Double { @_common.sum(s.data) }
 pub fn db_tx_acid_path_mean(s : DbtxacidPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_path_scale(s : DbtxacidPath, f : Double) -> DbtxacidPath {
-  let result = db_tx_acid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_path_add(a : DbtxacidPath, b : DbtxacidPath) -> DbtxacidPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_path_copy(s : DbtxacidPath) -> DbtxacidPath {
-  let result = db_tx_acid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_path_fill(s : DbtxacidPath, v : Double) -> DbtxacidPath {
-  let result = db_tx_acid_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_path_min(s : DbtxacidPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_tx_acid_cluster_sum(s : DbtxacidCluster) -> Double { @_common.sum(s.da
 pub fn db_tx_acid_cluster_mean(s : DbtxacidCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_cluster_scale(s : DbtxacidCluster, f : Double) -> DbtxacidCluster {
-  let result = db_tx_acid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_cluster_add(a : DbtxacidCluster, b : DbtxacidCluster) -> DbtxacidCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_cluster_copy(s : DbtxacidCluster) -> DbtxacidCluster {
-  let result = db_tx_acid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_cluster_fill(s : DbtxacidCluster, v : Double) -> DbtxacidCluster {
-  let result = db_tx_acid_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_cluster_min(s : DbtxacidCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_tx_acid_model_sum(s : DbtxacidModel) -> Double { @_common.sum(s.data) 
 pub fn db_tx_acid_model_mean(s : DbtxacidModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_model_scale(s : DbtxacidModel, f : Double) -> DbtxacidModel {
-  let result = db_tx_acid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_model_add(a : DbtxacidModel, b : DbtxacidModel) -> DbtxacidModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_model_copy(s : DbtxacidModel) -> DbtxacidModel {
-  let result = db_tx_acid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_model_fill(s : DbtxacidModel, v : Double) -> DbtxacidModel {
-  let result = db_tx_acid_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_model_min(s : DbtxacidModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_tx_acid_layer_sum(s : DbtxacidLayer) -> Double { @_common.sum(s.data) 
 pub fn db_tx_acid_layer_mean(s : DbtxacidLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_layer_scale(s : DbtxacidLayer, f : Double) -> DbtxacidLayer {
-  let result = db_tx_acid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_layer_add(a : DbtxacidLayer, b : DbtxacidLayer) -> DbtxacidLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_layer_copy(s : DbtxacidLayer) -> DbtxacidLayer {
-  let result = db_tx_acid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_layer_fill(s : DbtxacidLayer, v : Double) -> DbtxacidLayer {
-  let result = db_tx_acid_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_layer_min(s : DbtxacidLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_tx_acid_buffer_sum(s : DbtxacidBuffer) -> Double { @_common.sum(s.data
 pub fn db_tx_acid_buffer_mean(s : DbtxacidBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_buffer_scale(s : DbtxacidBuffer, f : Double) -> DbtxacidBuffer {
-  let result = db_tx_acid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_buffer_add(a : DbtxacidBuffer, b : DbtxacidBuffer) -> DbtxacidBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_buffer_copy(s : DbtxacidBuffer) -> DbtxacidBuffer {
-  let result = db_tx_acid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_buffer_fill(s : DbtxacidBuffer, v : Double) -> DbtxacidBuffer {
-  let result = db_tx_acid_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_buffer_min(s : DbtxacidBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_tx_acid_cursor_sum(s : DbtxacidCursor) -> Double { @_common.sum(s.data
 pub fn db_tx_acid_cursor_mean(s : DbtxacidCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_cursor_scale(s : DbtxacidCursor, f : Double) -> DbtxacidCursor {
-  let result = db_tx_acid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_cursor_add(a : DbtxacidCursor, b : DbtxacidCursor) -> DbtxacidCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_cursor_copy(s : DbtxacidCursor) -> DbtxacidCursor {
-  let result = db_tx_acid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_cursor_fill(s : DbtxacidCursor, v : Double) -> DbtxacidCursor {
-  let result = db_tx_acid_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_cursor_min(s : DbtxacidCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_tx_acid_view_sum(s : DbtxacidView) -> Double { @_common.sum(s.data) }
 pub fn db_tx_acid_view_mean(s : DbtxacidView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_view_scale(s : DbtxacidView, f : Double) -> DbtxacidView {
-  let result = db_tx_acid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_view_add(a : DbtxacidView, b : DbtxacidView) -> DbtxacidView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_view_copy(s : DbtxacidView) -> DbtxacidView {
-  let result = db_tx_acid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_view_fill(s : DbtxacidView, v : Double) -> DbtxacidView {
-  let result = db_tx_acid_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_view_min(s : DbtxacidView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_tx_acid_range_sum(s : DbtxacidRange) -> Double { @_common.sum(s.data) 
 pub fn db_tx_acid_range_mean(s : DbtxacidRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_range_scale(s : DbtxacidRange, f : Double) -> DbtxacidRange {
-  let result = db_tx_acid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_range_add(a : DbtxacidRange, b : DbtxacidRange) -> DbtxacidRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_range_copy(s : DbtxacidRange) -> DbtxacidRange {
-  let result = db_tx_acid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_range_fill(s : DbtxacidRange, v : Double) -> DbtxacidRange {
-  let result = db_tx_acid_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_range_min(s : DbtxacidRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_tx_acid_slice_sum(s : DbtxacidSlice) -> Double { @_common.sum(s.data) 
 pub fn db_tx_acid_slice_mean(s : DbtxacidSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_acid_slice_scale(s : DbtxacidSlice, f : Double) -> DbtxacidSlice {
-  let result = db_tx_acid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_slice_add(a : DbtxacidSlice, b : DbtxacidSlice) -> DbtxacidSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_acid_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_acid_slice_copy(s : DbtxacidSlice) -> DbtxacidSlice {
-  let result = db_tx_acid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_slice_fill(s : DbtxacidSlice, v : Double) -> DbtxacidSlice {
-  let result = db_tx_acid_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_acid_slice_min(s : DbtxacidSlice) -> Double { @_common.min(s.data) }

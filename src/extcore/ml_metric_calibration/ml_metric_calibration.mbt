@@ -383,28 +383,20 @@ pub fn ml_metric_calibration_frame_sum(s : MlmetriccalibrationFrame) -> Double {
 pub fn ml_metric_calibration_frame_mean(s : MlmetriccalibrationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_frame_scale(s : MlmetriccalibrationFrame, f : Double) -> MlmetriccalibrationFrame {
-  let result = ml_metric_calibration_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_frame_add(a : MlmetriccalibrationFrame, b : MlmetriccalibrationFrame) -> MlmetriccalibrationFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_frame_copy(s : MlmetriccalibrationFrame) -> MlmetriccalibrationFrame {
-  let result = ml_metric_calibration_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_frame_fill(s : MlmetriccalibrationFrame, v : Double) -> MlmetriccalibrationFrame {
-  let result = ml_metric_calibration_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_frame_min(s : MlmetriccalibrationFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_metric_calibration_table_sum(s : MlmetriccalibrationTable) -> Double {
 pub fn ml_metric_calibration_table_mean(s : MlmetriccalibrationTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_table_scale(s : MlmetriccalibrationTable, f : Double) -> MlmetriccalibrationTable {
-  let result = ml_metric_calibration_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_table_add(a : MlmetriccalibrationTable, b : MlmetriccalibrationTable) -> MlmetriccalibrationTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_table_copy(s : MlmetriccalibrationTable) -> MlmetriccalibrationTable {
-  let result = ml_metric_calibration_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_table_fill(s : MlmetriccalibrationTable, v : Double) -> MlmetriccalibrationTable {
-  let result = ml_metric_calibration_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_table_min(s : MlmetriccalibrationTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_metric_calibration_graphn_sum(s : MlmetriccalibrationGraphN) -> Double
 pub fn ml_metric_calibration_graphn_mean(s : MlmetriccalibrationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_graphn_scale(s : MlmetriccalibrationGraphN, f : Double) -> MlmetriccalibrationGraphN {
-  let result = ml_metric_calibration_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_graphn_add(a : MlmetriccalibrationGraphN, b : MlmetriccalibrationGraphN) -> MlmetriccalibrationGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_graphn_copy(s : MlmetriccalibrationGraphN) -> MlmetriccalibrationGraphN {
-  let result = ml_metric_calibration_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_graphn_fill(s : MlmetriccalibrationGraphN, v : Double) -> MlmetriccalibrationGraphN {
-  let result = ml_metric_calibration_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_graphn_min(s : MlmetriccalibrationGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_metric_calibration_node_sum(s : MlmetriccalibrationNode) -> Double { @
 pub fn ml_metric_calibration_node_mean(s : MlmetriccalibrationNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_node_scale(s : MlmetriccalibrationNode, f : Double) -> MlmetriccalibrationNode {
-  let result = ml_metric_calibration_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_node_add(a : MlmetriccalibrationNode, b : MlmetriccalibrationNode) -> MlmetriccalibrationNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_node_copy(s : MlmetriccalibrationNode) -> MlmetriccalibrationNode {
-  let result = ml_metric_calibration_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_node_fill(s : MlmetriccalibrationNode, v : Double) -> MlmetriccalibrationNode {
-  let result = ml_metric_calibration_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_node_min(s : MlmetriccalibrationNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_metric_calibration_edge_sum(s : MlmetriccalibrationEdge) -> Double { @
 pub fn ml_metric_calibration_edge_mean(s : MlmetriccalibrationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_edge_scale(s : MlmetriccalibrationEdge, f : Double) -> MlmetriccalibrationEdge {
-  let result = ml_metric_calibration_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_edge_add(a : MlmetriccalibrationEdge, b : MlmetriccalibrationEdge) -> MlmetriccalibrationEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_edge_copy(s : MlmetriccalibrationEdge) -> MlmetriccalibrationEdge {
-  let result = ml_metric_calibration_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_edge_fill(s : MlmetriccalibrationEdge, v : Double) -> MlmetriccalibrationEdge {
-  let result = ml_metric_calibration_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_edge_min(s : MlmetriccalibrationEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_metric_calibration_path_sum(s : MlmetriccalibrationPath) -> Double { @
 pub fn ml_metric_calibration_path_mean(s : MlmetriccalibrationPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_path_scale(s : MlmetriccalibrationPath, f : Double) -> MlmetriccalibrationPath {
-  let result = ml_metric_calibration_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_path_add(a : MlmetriccalibrationPath, b : MlmetriccalibrationPath) -> MlmetriccalibrationPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_path_copy(s : MlmetriccalibrationPath) -> MlmetriccalibrationPath {
-  let result = ml_metric_calibration_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_path_fill(s : MlmetriccalibrationPath, v : Double) -> MlmetriccalibrationPath {
-  let result = ml_metric_calibration_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_path_min(s : MlmetriccalibrationPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_metric_calibration_cluster_sum(s : MlmetriccalibrationCluster) -> Doub
 pub fn ml_metric_calibration_cluster_mean(s : MlmetriccalibrationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_cluster_scale(s : MlmetriccalibrationCluster, f : Double) -> MlmetriccalibrationCluster {
-  let result = ml_metric_calibration_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_cluster_add(a : MlmetriccalibrationCluster, b : MlmetriccalibrationCluster) -> MlmetriccalibrationCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_cluster_copy(s : MlmetriccalibrationCluster) -> MlmetriccalibrationCluster {
-  let result = ml_metric_calibration_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_cluster_fill(s : MlmetriccalibrationCluster, v : Double) -> MlmetriccalibrationCluster {
-  let result = ml_metric_calibration_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_cluster_min(s : MlmetriccalibrationCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_metric_calibration_model_sum(s : MlmetriccalibrationModel) -> Double {
 pub fn ml_metric_calibration_model_mean(s : MlmetriccalibrationModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_model_scale(s : MlmetriccalibrationModel, f : Double) -> MlmetriccalibrationModel {
-  let result = ml_metric_calibration_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_model_add(a : MlmetriccalibrationModel, b : MlmetriccalibrationModel) -> MlmetriccalibrationModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_model_copy(s : MlmetriccalibrationModel) -> MlmetriccalibrationModel {
-  let result = ml_metric_calibration_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_model_fill(s : MlmetriccalibrationModel, v : Double) -> MlmetriccalibrationModel {
-  let result = ml_metric_calibration_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_model_min(s : MlmetriccalibrationModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_metric_calibration_layer_sum(s : MlmetriccalibrationLayer) -> Double {
 pub fn ml_metric_calibration_layer_mean(s : MlmetriccalibrationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_layer_scale(s : MlmetriccalibrationLayer, f : Double) -> MlmetriccalibrationLayer {
-  let result = ml_metric_calibration_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_layer_add(a : MlmetriccalibrationLayer, b : MlmetriccalibrationLayer) -> MlmetriccalibrationLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_layer_copy(s : MlmetriccalibrationLayer) -> MlmetriccalibrationLayer {
-  let result = ml_metric_calibration_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_layer_fill(s : MlmetriccalibrationLayer, v : Double) -> MlmetriccalibrationLayer {
-  let result = ml_metric_calibration_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_layer_min(s : MlmetriccalibrationLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_metric_calibration_buffer_sum(s : MlmetriccalibrationBuffer) -> Double
 pub fn ml_metric_calibration_buffer_mean(s : MlmetriccalibrationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_buffer_scale(s : MlmetriccalibrationBuffer, f : Double) -> MlmetriccalibrationBuffer {
-  let result = ml_metric_calibration_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_buffer_add(a : MlmetriccalibrationBuffer, b : MlmetriccalibrationBuffer) -> MlmetriccalibrationBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_buffer_copy(s : MlmetriccalibrationBuffer) -> MlmetriccalibrationBuffer {
-  let result = ml_metric_calibration_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_buffer_fill(s : MlmetriccalibrationBuffer, v : Double) -> MlmetriccalibrationBuffer {
-  let result = ml_metric_calibration_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_buffer_min(s : MlmetriccalibrationBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_metric_calibration_cursor_sum(s : MlmetriccalibrationCursor) -> Double
 pub fn ml_metric_calibration_cursor_mean(s : MlmetriccalibrationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_cursor_scale(s : MlmetriccalibrationCursor, f : Double) -> MlmetriccalibrationCursor {
-  let result = ml_metric_calibration_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_cursor_add(a : MlmetriccalibrationCursor, b : MlmetriccalibrationCursor) -> MlmetriccalibrationCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_cursor_copy(s : MlmetriccalibrationCursor) -> MlmetriccalibrationCursor {
-  let result = ml_metric_calibration_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_cursor_fill(s : MlmetriccalibrationCursor, v : Double) -> MlmetriccalibrationCursor {
-  let result = ml_metric_calibration_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_cursor_min(s : MlmetriccalibrationCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_metric_calibration_view_sum(s : MlmetriccalibrationView) -> Double { @
 pub fn ml_metric_calibration_view_mean(s : MlmetriccalibrationView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_view_scale(s : MlmetriccalibrationView, f : Double) -> MlmetriccalibrationView {
-  let result = ml_metric_calibration_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_view_add(a : MlmetriccalibrationView, b : MlmetriccalibrationView) -> MlmetriccalibrationView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_view_copy(s : MlmetriccalibrationView) -> MlmetriccalibrationView {
-  let result = ml_metric_calibration_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_view_fill(s : MlmetriccalibrationView, v : Double) -> MlmetriccalibrationView {
-  let result = ml_metric_calibration_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_view_min(s : MlmetriccalibrationView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_metric_calibration_range_sum(s : MlmetriccalibrationRange) -> Double {
 pub fn ml_metric_calibration_range_mean(s : MlmetriccalibrationRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_range_scale(s : MlmetriccalibrationRange, f : Double) -> MlmetriccalibrationRange {
-  let result = ml_metric_calibration_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_range_add(a : MlmetriccalibrationRange, b : MlmetriccalibrationRange) -> MlmetriccalibrationRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_range_copy(s : MlmetriccalibrationRange) -> MlmetriccalibrationRange {
-  let result = ml_metric_calibration_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_range_fill(s : MlmetriccalibrationRange, v : Double) -> MlmetriccalibrationRange {
-  let result = ml_metric_calibration_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_range_min(s : MlmetriccalibrationRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_metric_calibration_slice_sum(s : MlmetriccalibrationSlice) -> Double {
 pub fn ml_metric_calibration_slice_mean(s : MlmetriccalibrationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_slice_scale(s : MlmetriccalibrationSlice, f : Double) -> MlmetriccalibrationSlice {
-  let result = ml_metric_calibration_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_slice_add(a : MlmetriccalibrationSlice, b : MlmetriccalibrationSlice) -> MlmetriccalibrationSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_calibration_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_calibration_slice_copy(s : MlmetriccalibrationSlice) -> MlmetriccalibrationSlice {
-  let result = ml_metric_calibration_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_slice_fill(s : MlmetriccalibrationSlice, v : Double) -> MlmetriccalibrationSlice {
-  let result = ml_metric_calibration_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_calibration_slice_min(s : MlmetriccalibrationSlice) -> Double { @_common.min(s.data) }

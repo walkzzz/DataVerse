@@ -383,28 +383,20 @@ pub fn net_sec_firewall_frame_sum(s : NetsecfirewallFrame) -> Double { @_common.
 pub fn net_sec_firewall_frame_mean(s : NetsecfirewallFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_frame_scale(s : NetsecfirewallFrame, f : Double) -> NetsecfirewallFrame {
-  let result = net_sec_firewall_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_frame_add(a : NetsecfirewallFrame, b : NetsecfirewallFrame) -> NetsecfirewallFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_frame_copy(s : NetsecfirewallFrame) -> NetsecfirewallFrame {
-  let result = net_sec_firewall_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_frame_fill(s : NetsecfirewallFrame, v : Double) -> NetsecfirewallFrame {
-  let result = net_sec_firewall_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_frame_min(s : NetsecfirewallFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_sec_firewall_table_sum(s : NetsecfirewallTable) -> Double { @_common.
 pub fn net_sec_firewall_table_mean(s : NetsecfirewallTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_table_scale(s : NetsecfirewallTable, f : Double) -> NetsecfirewallTable {
-  let result = net_sec_firewall_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_table_add(a : NetsecfirewallTable, b : NetsecfirewallTable) -> NetsecfirewallTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_table_copy(s : NetsecfirewallTable) -> NetsecfirewallTable {
-  let result = net_sec_firewall_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_table_fill(s : NetsecfirewallTable, v : Double) -> NetsecfirewallTable {
-  let result = net_sec_firewall_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_table_min(s : NetsecfirewallTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_sec_firewall_graphn_sum(s : NetsecfirewallGraphN) -> Double { @_commo
 pub fn net_sec_firewall_graphn_mean(s : NetsecfirewallGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_graphn_scale(s : NetsecfirewallGraphN, f : Double) -> NetsecfirewallGraphN {
-  let result = net_sec_firewall_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_graphn_add(a : NetsecfirewallGraphN, b : NetsecfirewallGraphN) -> NetsecfirewallGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_graphn_copy(s : NetsecfirewallGraphN) -> NetsecfirewallGraphN {
-  let result = net_sec_firewall_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_graphn_fill(s : NetsecfirewallGraphN, v : Double) -> NetsecfirewallGraphN {
-  let result = net_sec_firewall_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_graphn_min(s : NetsecfirewallGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_sec_firewall_node_sum(s : NetsecfirewallNode) -> Double { @_common.su
 pub fn net_sec_firewall_node_mean(s : NetsecfirewallNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_node_scale(s : NetsecfirewallNode, f : Double) -> NetsecfirewallNode {
-  let result = net_sec_firewall_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_node_add(a : NetsecfirewallNode, b : NetsecfirewallNode) -> NetsecfirewallNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_node_copy(s : NetsecfirewallNode) -> NetsecfirewallNode {
-  let result = net_sec_firewall_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_node_fill(s : NetsecfirewallNode, v : Double) -> NetsecfirewallNode {
-  let result = net_sec_firewall_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_node_min(s : NetsecfirewallNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_sec_firewall_edge_sum(s : NetsecfirewallEdge) -> Double { @_common.su
 pub fn net_sec_firewall_edge_mean(s : NetsecfirewallEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_edge_scale(s : NetsecfirewallEdge, f : Double) -> NetsecfirewallEdge {
-  let result = net_sec_firewall_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_edge_add(a : NetsecfirewallEdge, b : NetsecfirewallEdge) -> NetsecfirewallEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_edge_copy(s : NetsecfirewallEdge) -> NetsecfirewallEdge {
-  let result = net_sec_firewall_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_edge_fill(s : NetsecfirewallEdge, v : Double) -> NetsecfirewallEdge {
-  let result = net_sec_firewall_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_edge_min(s : NetsecfirewallEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_sec_firewall_path_sum(s : NetsecfirewallPath) -> Double { @_common.su
 pub fn net_sec_firewall_path_mean(s : NetsecfirewallPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_path_scale(s : NetsecfirewallPath, f : Double) -> NetsecfirewallPath {
-  let result = net_sec_firewall_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_path_add(a : NetsecfirewallPath, b : NetsecfirewallPath) -> NetsecfirewallPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_path_copy(s : NetsecfirewallPath) -> NetsecfirewallPath {
-  let result = net_sec_firewall_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_path_fill(s : NetsecfirewallPath, v : Double) -> NetsecfirewallPath {
-  let result = net_sec_firewall_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_path_min(s : NetsecfirewallPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_sec_firewall_cluster_sum(s : NetsecfirewallCluster) -> Double { @_com
 pub fn net_sec_firewall_cluster_mean(s : NetsecfirewallCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_cluster_scale(s : NetsecfirewallCluster, f : Double) -> NetsecfirewallCluster {
-  let result = net_sec_firewall_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_cluster_add(a : NetsecfirewallCluster, b : NetsecfirewallCluster) -> NetsecfirewallCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_cluster_copy(s : NetsecfirewallCluster) -> NetsecfirewallCluster {
-  let result = net_sec_firewall_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_cluster_fill(s : NetsecfirewallCluster, v : Double) -> NetsecfirewallCluster {
-  let result = net_sec_firewall_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_cluster_min(s : NetsecfirewallCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_sec_firewall_model_sum(s : NetsecfirewallModel) -> Double { @_common.
 pub fn net_sec_firewall_model_mean(s : NetsecfirewallModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_model_scale(s : NetsecfirewallModel, f : Double) -> NetsecfirewallModel {
-  let result = net_sec_firewall_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_model_add(a : NetsecfirewallModel, b : NetsecfirewallModel) -> NetsecfirewallModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_model_copy(s : NetsecfirewallModel) -> NetsecfirewallModel {
-  let result = net_sec_firewall_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_model_fill(s : NetsecfirewallModel, v : Double) -> NetsecfirewallModel {
-  let result = net_sec_firewall_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_model_min(s : NetsecfirewallModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_sec_firewall_layer_sum(s : NetsecfirewallLayer) -> Double { @_common.
 pub fn net_sec_firewall_layer_mean(s : NetsecfirewallLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_layer_scale(s : NetsecfirewallLayer, f : Double) -> NetsecfirewallLayer {
-  let result = net_sec_firewall_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_layer_add(a : NetsecfirewallLayer, b : NetsecfirewallLayer) -> NetsecfirewallLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_layer_copy(s : NetsecfirewallLayer) -> NetsecfirewallLayer {
-  let result = net_sec_firewall_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_layer_fill(s : NetsecfirewallLayer, v : Double) -> NetsecfirewallLayer {
-  let result = net_sec_firewall_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_layer_min(s : NetsecfirewallLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_sec_firewall_buffer_sum(s : NetsecfirewallBuffer) -> Double { @_commo
 pub fn net_sec_firewall_buffer_mean(s : NetsecfirewallBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_buffer_scale(s : NetsecfirewallBuffer, f : Double) -> NetsecfirewallBuffer {
-  let result = net_sec_firewall_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_buffer_add(a : NetsecfirewallBuffer, b : NetsecfirewallBuffer) -> NetsecfirewallBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_buffer_copy(s : NetsecfirewallBuffer) -> NetsecfirewallBuffer {
-  let result = net_sec_firewall_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_buffer_fill(s : NetsecfirewallBuffer, v : Double) -> NetsecfirewallBuffer {
-  let result = net_sec_firewall_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_buffer_min(s : NetsecfirewallBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_sec_firewall_cursor_sum(s : NetsecfirewallCursor) -> Double { @_commo
 pub fn net_sec_firewall_cursor_mean(s : NetsecfirewallCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_cursor_scale(s : NetsecfirewallCursor, f : Double) -> NetsecfirewallCursor {
-  let result = net_sec_firewall_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_cursor_add(a : NetsecfirewallCursor, b : NetsecfirewallCursor) -> NetsecfirewallCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_cursor_copy(s : NetsecfirewallCursor) -> NetsecfirewallCursor {
-  let result = net_sec_firewall_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_cursor_fill(s : NetsecfirewallCursor, v : Double) -> NetsecfirewallCursor {
-  let result = net_sec_firewall_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_cursor_min(s : NetsecfirewallCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_sec_firewall_view_sum(s : NetsecfirewallView) -> Double { @_common.su
 pub fn net_sec_firewall_view_mean(s : NetsecfirewallView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_view_scale(s : NetsecfirewallView, f : Double) -> NetsecfirewallView {
-  let result = net_sec_firewall_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_view_add(a : NetsecfirewallView, b : NetsecfirewallView) -> NetsecfirewallView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_view_copy(s : NetsecfirewallView) -> NetsecfirewallView {
-  let result = net_sec_firewall_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_view_fill(s : NetsecfirewallView, v : Double) -> NetsecfirewallView {
-  let result = net_sec_firewall_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_view_min(s : NetsecfirewallView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_sec_firewall_range_sum(s : NetsecfirewallRange) -> Double { @_common.
 pub fn net_sec_firewall_range_mean(s : NetsecfirewallRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_range_scale(s : NetsecfirewallRange, f : Double) -> NetsecfirewallRange {
-  let result = net_sec_firewall_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_range_add(a : NetsecfirewallRange, b : NetsecfirewallRange) -> NetsecfirewallRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_range_copy(s : NetsecfirewallRange) -> NetsecfirewallRange {
-  let result = net_sec_firewall_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_range_fill(s : NetsecfirewallRange, v : Double) -> NetsecfirewallRange {
-  let result = net_sec_firewall_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_range_min(s : NetsecfirewallRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_sec_firewall_slice_sum(s : NetsecfirewallSlice) -> Double { @_common.
 pub fn net_sec_firewall_slice_mean(s : NetsecfirewallSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_slice_scale(s : NetsecfirewallSlice, f : Double) -> NetsecfirewallSlice {
-  let result = net_sec_firewall_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_slice_add(a : NetsecfirewallSlice, b : NetsecfirewallSlice) -> NetsecfirewallSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_sec_firewall_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_sec_firewall_slice_copy(s : NetsecfirewallSlice) -> NetsecfirewallSlice {
-  let result = net_sec_firewall_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_slice_fill(s : NetsecfirewallSlice, v : Double) -> NetsecfirewallSlice {
-  let result = net_sec_firewall_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_firewall_slice_min(s : NetsecfirewallSlice) -> Double { @_common.min(s.data) }

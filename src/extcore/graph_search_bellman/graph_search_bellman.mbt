@@ -383,28 +383,20 @@ pub fn graph_search_bellman_frame_sum(s : GraphsearchbellmanFrame) -> Double { @
 pub fn graph_search_bellman_frame_mean(s : GraphsearchbellmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_frame_scale(s : GraphsearchbellmanFrame, f : Double) -> GraphsearchbellmanFrame {
-  let result = graph_search_bellman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_frame_add(a : GraphsearchbellmanFrame, b : GraphsearchbellmanFrame) -> GraphsearchbellmanFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_frame_copy(s : GraphsearchbellmanFrame) -> GraphsearchbellmanFrame {
-  let result = graph_search_bellman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_frame_fill(s : GraphsearchbellmanFrame, v : Double) -> GraphsearchbellmanFrame {
-  let result = graph_search_bellman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_frame_min(s : GraphsearchbellmanFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_search_bellman_table_sum(s : GraphsearchbellmanTable) -> Double { @
 pub fn graph_search_bellman_table_mean(s : GraphsearchbellmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_table_scale(s : GraphsearchbellmanTable, f : Double) -> GraphsearchbellmanTable {
-  let result = graph_search_bellman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_table_add(a : GraphsearchbellmanTable, b : GraphsearchbellmanTable) -> GraphsearchbellmanTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_table_copy(s : GraphsearchbellmanTable) -> GraphsearchbellmanTable {
-  let result = graph_search_bellman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_table_fill(s : GraphsearchbellmanTable, v : Double) -> GraphsearchbellmanTable {
-  let result = graph_search_bellman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_table_min(s : GraphsearchbellmanTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_search_bellman_graphn_sum(s : GraphsearchbellmanGraphN) -> Double {
 pub fn graph_search_bellman_graphn_mean(s : GraphsearchbellmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_graphn_scale(s : GraphsearchbellmanGraphN, f : Double) -> GraphsearchbellmanGraphN {
-  let result = graph_search_bellman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_graphn_add(a : GraphsearchbellmanGraphN, b : GraphsearchbellmanGraphN) -> GraphsearchbellmanGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_graphn_copy(s : GraphsearchbellmanGraphN) -> GraphsearchbellmanGraphN {
-  let result = graph_search_bellman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_graphn_fill(s : GraphsearchbellmanGraphN, v : Double) -> GraphsearchbellmanGraphN {
-  let result = graph_search_bellman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_graphn_min(s : GraphsearchbellmanGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_search_bellman_node_sum(s : GraphsearchbellmanNode) -> Double { @_c
 pub fn graph_search_bellman_node_mean(s : GraphsearchbellmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_node_scale(s : GraphsearchbellmanNode, f : Double) -> GraphsearchbellmanNode {
-  let result = graph_search_bellman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_node_add(a : GraphsearchbellmanNode, b : GraphsearchbellmanNode) -> GraphsearchbellmanNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_node_copy(s : GraphsearchbellmanNode) -> GraphsearchbellmanNode {
-  let result = graph_search_bellman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_node_fill(s : GraphsearchbellmanNode, v : Double) -> GraphsearchbellmanNode {
-  let result = graph_search_bellman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_node_min(s : GraphsearchbellmanNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_search_bellman_edge_sum(s : GraphsearchbellmanEdge) -> Double { @_c
 pub fn graph_search_bellman_edge_mean(s : GraphsearchbellmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_edge_scale(s : GraphsearchbellmanEdge, f : Double) -> GraphsearchbellmanEdge {
-  let result = graph_search_bellman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_edge_add(a : GraphsearchbellmanEdge, b : GraphsearchbellmanEdge) -> GraphsearchbellmanEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_edge_copy(s : GraphsearchbellmanEdge) -> GraphsearchbellmanEdge {
-  let result = graph_search_bellman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_edge_fill(s : GraphsearchbellmanEdge, v : Double) -> GraphsearchbellmanEdge {
-  let result = graph_search_bellman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_edge_min(s : GraphsearchbellmanEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_search_bellman_path_sum(s : GraphsearchbellmanPath) -> Double { @_c
 pub fn graph_search_bellman_path_mean(s : GraphsearchbellmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_path_scale(s : GraphsearchbellmanPath, f : Double) -> GraphsearchbellmanPath {
-  let result = graph_search_bellman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_path_add(a : GraphsearchbellmanPath, b : GraphsearchbellmanPath) -> GraphsearchbellmanPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_path_copy(s : GraphsearchbellmanPath) -> GraphsearchbellmanPath {
-  let result = graph_search_bellman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_path_fill(s : GraphsearchbellmanPath, v : Double) -> GraphsearchbellmanPath {
-  let result = graph_search_bellman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_path_min(s : GraphsearchbellmanPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_search_bellman_cluster_sum(s : GraphsearchbellmanCluster) -> Double
 pub fn graph_search_bellman_cluster_mean(s : GraphsearchbellmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_cluster_scale(s : GraphsearchbellmanCluster, f : Double) -> GraphsearchbellmanCluster {
-  let result = graph_search_bellman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cluster_add(a : GraphsearchbellmanCluster, b : GraphsearchbellmanCluster) -> GraphsearchbellmanCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_cluster_copy(s : GraphsearchbellmanCluster) -> GraphsearchbellmanCluster {
-  let result = graph_search_bellman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cluster_fill(s : GraphsearchbellmanCluster, v : Double) -> GraphsearchbellmanCluster {
-  let result = graph_search_bellman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cluster_min(s : GraphsearchbellmanCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_search_bellman_model_sum(s : GraphsearchbellmanModel) -> Double { @
 pub fn graph_search_bellman_model_mean(s : GraphsearchbellmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_model_scale(s : GraphsearchbellmanModel, f : Double) -> GraphsearchbellmanModel {
-  let result = graph_search_bellman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_model_add(a : GraphsearchbellmanModel, b : GraphsearchbellmanModel) -> GraphsearchbellmanModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_model_copy(s : GraphsearchbellmanModel) -> GraphsearchbellmanModel {
-  let result = graph_search_bellman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_model_fill(s : GraphsearchbellmanModel, v : Double) -> GraphsearchbellmanModel {
-  let result = graph_search_bellman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_model_min(s : GraphsearchbellmanModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_search_bellman_layer_sum(s : GraphsearchbellmanLayer) -> Double { @
 pub fn graph_search_bellman_layer_mean(s : GraphsearchbellmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_layer_scale(s : GraphsearchbellmanLayer, f : Double) -> GraphsearchbellmanLayer {
-  let result = graph_search_bellman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_layer_add(a : GraphsearchbellmanLayer, b : GraphsearchbellmanLayer) -> GraphsearchbellmanLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_layer_copy(s : GraphsearchbellmanLayer) -> GraphsearchbellmanLayer {
-  let result = graph_search_bellman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_layer_fill(s : GraphsearchbellmanLayer, v : Double) -> GraphsearchbellmanLayer {
-  let result = graph_search_bellman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_layer_min(s : GraphsearchbellmanLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_search_bellman_buffer_sum(s : GraphsearchbellmanBuffer) -> Double {
 pub fn graph_search_bellman_buffer_mean(s : GraphsearchbellmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_buffer_scale(s : GraphsearchbellmanBuffer, f : Double) -> GraphsearchbellmanBuffer {
-  let result = graph_search_bellman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_buffer_add(a : GraphsearchbellmanBuffer, b : GraphsearchbellmanBuffer) -> GraphsearchbellmanBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_buffer_copy(s : GraphsearchbellmanBuffer) -> GraphsearchbellmanBuffer {
-  let result = graph_search_bellman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_buffer_fill(s : GraphsearchbellmanBuffer, v : Double) -> GraphsearchbellmanBuffer {
-  let result = graph_search_bellman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_buffer_min(s : GraphsearchbellmanBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_search_bellman_cursor_sum(s : GraphsearchbellmanCursor) -> Double {
 pub fn graph_search_bellman_cursor_mean(s : GraphsearchbellmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_cursor_scale(s : GraphsearchbellmanCursor, f : Double) -> GraphsearchbellmanCursor {
-  let result = graph_search_bellman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cursor_add(a : GraphsearchbellmanCursor, b : GraphsearchbellmanCursor) -> GraphsearchbellmanCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_cursor_copy(s : GraphsearchbellmanCursor) -> GraphsearchbellmanCursor {
-  let result = graph_search_bellman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cursor_fill(s : GraphsearchbellmanCursor, v : Double) -> GraphsearchbellmanCursor {
-  let result = graph_search_bellman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cursor_min(s : GraphsearchbellmanCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_search_bellman_view_sum(s : GraphsearchbellmanView) -> Double { @_c
 pub fn graph_search_bellman_view_mean(s : GraphsearchbellmanView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_view_scale(s : GraphsearchbellmanView, f : Double) -> GraphsearchbellmanView {
-  let result = graph_search_bellman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_view_add(a : GraphsearchbellmanView, b : GraphsearchbellmanView) -> GraphsearchbellmanView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_view_copy(s : GraphsearchbellmanView) -> GraphsearchbellmanView {
-  let result = graph_search_bellman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_view_fill(s : GraphsearchbellmanView, v : Double) -> GraphsearchbellmanView {
-  let result = graph_search_bellman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_view_min(s : GraphsearchbellmanView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_search_bellman_range_sum(s : GraphsearchbellmanRange) -> Double { @
 pub fn graph_search_bellman_range_mean(s : GraphsearchbellmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_range_scale(s : GraphsearchbellmanRange, f : Double) -> GraphsearchbellmanRange {
-  let result = graph_search_bellman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_range_add(a : GraphsearchbellmanRange, b : GraphsearchbellmanRange) -> GraphsearchbellmanRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_range_copy(s : GraphsearchbellmanRange) -> GraphsearchbellmanRange {
-  let result = graph_search_bellman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_range_fill(s : GraphsearchbellmanRange, v : Double) -> GraphsearchbellmanRange {
-  let result = graph_search_bellman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_range_min(s : GraphsearchbellmanRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_search_bellman_slice_sum(s : GraphsearchbellmanSlice) -> Double { @
 pub fn graph_search_bellman_slice_mean(s : GraphsearchbellmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bellman_slice_scale(s : GraphsearchbellmanSlice, f : Double) -> GraphsearchbellmanSlice {
-  let result = graph_search_bellman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_slice_add(a : GraphsearchbellmanSlice, b : GraphsearchbellmanSlice) -> GraphsearchbellmanSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_search_bellman_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_search_bellman_slice_copy(s : GraphsearchbellmanSlice) -> GraphsearchbellmanSlice {
-  let result = graph_search_bellman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_slice_fill(s : GraphsearchbellmanSlice, v : Double) -> GraphsearchbellmanSlice {
-  let result = graph_search_bellman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_slice_min(s : GraphsearchbellmanSlice) -> Double { @_common.min(s.data) }

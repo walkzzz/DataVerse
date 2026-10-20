@@ -383,28 +383,20 @@ pub fn signal_spec_min_norm_frame_sum(s : SignalspecminnormFrame) -> Double { @_
 pub fn signal_spec_min_norm_frame_mean(s : SignalspecminnormFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_frame_scale(s : SignalspecminnormFrame, f : Double) -> SignalspecminnormFrame {
-  let result = signal_spec_min_norm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_frame_add(a : SignalspecminnormFrame, b : SignalspecminnormFrame) -> SignalspecminnormFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_frame_copy(s : SignalspecminnormFrame) -> SignalspecminnormFrame {
-  let result = signal_spec_min_norm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_frame_fill(s : SignalspecminnormFrame, v : Double) -> SignalspecminnormFrame {
-  let result = signal_spec_min_norm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_frame_min(s : SignalspecminnormFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_spec_min_norm_table_sum(s : SignalspecminnormTable) -> Double { @_
 pub fn signal_spec_min_norm_table_mean(s : SignalspecminnormTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_table_scale(s : SignalspecminnormTable, f : Double) -> SignalspecminnormTable {
-  let result = signal_spec_min_norm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_table_add(a : SignalspecminnormTable, b : SignalspecminnormTable) -> SignalspecminnormTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_table_copy(s : SignalspecminnormTable) -> SignalspecminnormTable {
-  let result = signal_spec_min_norm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_table_fill(s : SignalspecminnormTable, v : Double) -> SignalspecminnormTable {
-  let result = signal_spec_min_norm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_table_min(s : SignalspecminnormTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_spec_min_norm_graphn_sum(s : SignalspecminnormGraphN) -> Double { 
 pub fn signal_spec_min_norm_graphn_mean(s : SignalspecminnormGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_graphn_scale(s : SignalspecminnormGraphN, f : Double) -> SignalspecminnormGraphN {
-  let result = signal_spec_min_norm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_graphn_add(a : SignalspecminnormGraphN, b : SignalspecminnormGraphN) -> SignalspecminnormGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_graphn_copy(s : SignalspecminnormGraphN) -> SignalspecminnormGraphN {
-  let result = signal_spec_min_norm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_graphn_fill(s : SignalspecminnormGraphN, v : Double) -> SignalspecminnormGraphN {
-  let result = signal_spec_min_norm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_graphn_min(s : SignalspecminnormGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_spec_min_norm_node_sum(s : SignalspecminnormNode) -> Double { @_co
 pub fn signal_spec_min_norm_node_mean(s : SignalspecminnormNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_node_scale(s : SignalspecminnormNode, f : Double) -> SignalspecminnormNode {
-  let result = signal_spec_min_norm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_node_add(a : SignalspecminnormNode, b : SignalspecminnormNode) -> SignalspecminnormNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_node_copy(s : SignalspecminnormNode) -> SignalspecminnormNode {
-  let result = signal_spec_min_norm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_node_fill(s : SignalspecminnormNode, v : Double) -> SignalspecminnormNode {
-  let result = signal_spec_min_norm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_node_min(s : SignalspecminnormNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_spec_min_norm_edge_sum(s : SignalspecminnormEdge) -> Double { @_co
 pub fn signal_spec_min_norm_edge_mean(s : SignalspecminnormEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_edge_scale(s : SignalspecminnormEdge, f : Double) -> SignalspecminnormEdge {
-  let result = signal_spec_min_norm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_edge_add(a : SignalspecminnormEdge, b : SignalspecminnormEdge) -> SignalspecminnormEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_edge_copy(s : SignalspecminnormEdge) -> SignalspecminnormEdge {
-  let result = signal_spec_min_norm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_edge_fill(s : SignalspecminnormEdge, v : Double) -> SignalspecminnormEdge {
-  let result = signal_spec_min_norm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_edge_min(s : SignalspecminnormEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_spec_min_norm_path_sum(s : SignalspecminnormPath) -> Double { @_co
 pub fn signal_spec_min_norm_path_mean(s : SignalspecminnormPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_path_scale(s : SignalspecminnormPath, f : Double) -> SignalspecminnormPath {
-  let result = signal_spec_min_norm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_path_add(a : SignalspecminnormPath, b : SignalspecminnormPath) -> SignalspecminnormPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_path_copy(s : SignalspecminnormPath) -> SignalspecminnormPath {
-  let result = signal_spec_min_norm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_path_fill(s : SignalspecminnormPath, v : Double) -> SignalspecminnormPath {
-  let result = signal_spec_min_norm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_path_min(s : SignalspecminnormPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_spec_min_norm_cluster_sum(s : SignalspecminnormCluster) -> Double 
 pub fn signal_spec_min_norm_cluster_mean(s : SignalspecminnormCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_cluster_scale(s : SignalspecminnormCluster, f : Double) -> SignalspecminnormCluster {
-  let result = signal_spec_min_norm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_cluster_add(a : SignalspecminnormCluster, b : SignalspecminnormCluster) -> SignalspecminnormCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_cluster_copy(s : SignalspecminnormCluster) -> SignalspecminnormCluster {
-  let result = signal_spec_min_norm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_cluster_fill(s : SignalspecminnormCluster, v : Double) -> SignalspecminnormCluster {
-  let result = signal_spec_min_norm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_cluster_min(s : SignalspecminnormCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_spec_min_norm_model_sum(s : SignalspecminnormModel) -> Double { @_
 pub fn signal_spec_min_norm_model_mean(s : SignalspecminnormModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_model_scale(s : SignalspecminnormModel, f : Double) -> SignalspecminnormModel {
-  let result = signal_spec_min_norm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_model_add(a : SignalspecminnormModel, b : SignalspecminnormModel) -> SignalspecminnormModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_model_copy(s : SignalspecminnormModel) -> SignalspecminnormModel {
-  let result = signal_spec_min_norm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_model_fill(s : SignalspecminnormModel, v : Double) -> SignalspecminnormModel {
-  let result = signal_spec_min_norm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_model_min(s : SignalspecminnormModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_spec_min_norm_layer_sum(s : SignalspecminnormLayer) -> Double { @_
 pub fn signal_spec_min_norm_layer_mean(s : SignalspecminnormLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_layer_scale(s : SignalspecminnormLayer, f : Double) -> SignalspecminnormLayer {
-  let result = signal_spec_min_norm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_layer_add(a : SignalspecminnormLayer, b : SignalspecminnormLayer) -> SignalspecminnormLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_layer_copy(s : SignalspecminnormLayer) -> SignalspecminnormLayer {
-  let result = signal_spec_min_norm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_layer_fill(s : SignalspecminnormLayer, v : Double) -> SignalspecminnormLayer {
-  let result = signal_spec_min_norm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_layer_min(s : SignalspecminnormLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_spec_min_norm_buffer_sum(s : SignalspecminnormBuffer) -> Double { 
 pub fn signal_spec_min_norm_buffer_mean(s : SignalspecminnormBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_buffer_scale(s : SignalspecminnormBuffer, f : Double) -> SignalspecminnormBuffer {
-  let result = signal_spec_min_norm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_buffer_add(a : SignalspecminnormBuffer, b : SignalspecminnormBuffer) -> SignalspecminnormBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_buffer_copy(s : SignalspecminnormBuffer) -> SignalspecminnormBuffer {
-  let result = signal_spec_min_norm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_buffer_fill(s : SignalspecminnormBuffer, v : Double) -> SignalspecminnormBuffer {
-  let result = signal_spec_min_norm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_buffer_min(s : SignalspecminnormBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_spec_min_norm_cursor_sum(s : SignalspecminnormCursor) -> Double { 
 pub fn signal_spec_min_norm_cursor_mean(s : SignalspecminnormCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_cursor_scale(s : SignalspecminnormCursor, f : Double) -> SignalspecminnormCursor {
-  let result = signal_spec_min_norm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_cursor_add(a : SignalspecminnormCursor, b : SignalspecminnormCursor) -> SignalspecminnormCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_cursor_copy(s : SignalspecminnormCursor) -> SignalspecminnormCursor {
-  let result = signal_spec_min_norm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_cursor_fill(s : SignalspecminnormCursor, v : Double) -> SignalspecminnormCursor {
-  let result = signal_spec_min_norm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_cursor_min(s : SignalspecminnormCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_spec_min_norm_view_sum(s : SignalspecminnormView) -> Double { @_co
 pub fn signal_spec_min_norm_view_mean(s : SignalspecminnormView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_view_scale(s : SignalspecminnormView, f : Double) -> SignalspecminnormView {
-  let result = signal_spec_min_norm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_view_add(a : SignalspecminnormView, b : SignalspecminnormView) -> SignalspecminnormView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_view_copy(s : SignalspecminnormView) -> SignalspecminnormView {
-  let result = signal_spec_min_norm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_view_fill(s : SignalspecminnormView, v : Double) -> SignalspecminnormView {
-  let result = signal_spec_min_norm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_view_min(s : SignalspecminnormView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_spec_min_norm_range_sum(s : SignalspecminnormRange) -> Double { @_
 pub fn signal_spec_min_norm_range_mean(s : SignalspecminnormRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_range_scale(s : SignalspecminnormRange, f : Double) -> SignalspecminnormRange {
-  let result = signal_spec_min_norm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_range_add(a : SignalspecminnormRange, b : SignalspecminnormRange) -> SignalspecminnormRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_range_copy(s : SignalspecminnormRange) -> SignalspecminnormRange {
-  let result = signal_spec_min_norm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_range_fill(s : SignalspecminnormRange, v : Double) -> SignalspecminnormRange {
-  let result = signal_spec_min_norm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_range_min(s : SignalspecminnormRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_spec_min_norm_slice_sum(s : SignalspecminnormSlice) -> Double { @_
 pub fn signal_spec_min_norm_slice_mean(s : SignalspecminnormSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_min_norm_slice_scale(s : SignalspecminnormSlice, f : Double) -> SignalspecminnormSlice {
-  let result = signal_spec_min_norm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_slice_add(a : SignalspecminnormSlice, b : SignalspecminnormSlice) -> SignalspecminnormSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_min_norm_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_min_norm_slice_copy(s : SignalspecminnormSlice) -> SignalspecminnormSlice {
-  let result = signal_spec_min_norm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_slice_fill(s : SignalspecminnormSlice, v : Double) -> SignalspecminnormSlice {
-  let result = signal_spec_min_norm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_min_norm_slice_min(s : SignalspecminnormSlice) -> Double { @_common.min(s.data) }

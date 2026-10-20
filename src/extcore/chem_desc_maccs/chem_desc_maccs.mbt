@@ -383,28 +383,20 @@ pub fn chem_desc_maccs_frame_sum(s : ChemdescmaccsFrame) -> Double { @_common.su
 pub fn chem_desc_maccs_frame_mean(s : ChemdescmaccsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_frame_scale(s : ChemdescmaccsFrame, f : Double) -> ChemdescmaccsFrame {
-  let result = chem_desc_maccs_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_frame_add(a : ChemdescmaccsFrame, b : ChemdescmaccsFrame) -> ChemdescmaccsFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_frame_copy(s : ChemdescmaccsFrame) -> ChemdescmaccsFrame {
-  let result = chem_desc_maccs_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_frame_fill(s : ChemdescmaccsFrame, v : Double) -> ChemdescmaccsFrame {
-  let result = chem_desc_maccs_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_frame_min(s : ChemdescmaccsFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_desc_maccs_table_sum(s : ChemdescmaccsTable) -> Double { @_common.su
 pub fn chem_desc_maccs_table_mean(s : ChemdescmaccsTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_table_scale(s : ChemdescmaccsTable, f : Double) -> ChemdescmaccsTable {
-  let result = chem_desc_maccs_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_table_add(a : ChemdescmaccsTable, b : ChemdescmaccsTable) -> ChemdescmaccsTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_table_copy(s : ChemdescmaccsTable) -> ChemdescmaccsTable {
-  let result = chem_desc_maccs_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_table_fill(s : ChemdescmaccsTable, v : Double) -> ChemdescmaccsTable {
-  let result = chem_desc_maccs_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_table_min(s : ChemdescmaccsTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_desc_maccs_graphn_sum(s : ChemdescmaccsGraphN) -> Double { @_common.
 pub fn chem_desc_maccs_graphn_mean(s : ChemdescmaccsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_graphn_scale(s : ChemdescmaccsGraphN, f : Double) -> ChemdescmaccsGraphN {
-  let result = chem_desc_maccs_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_graphn_add(a : ChemdescmaccsGraphN, b : ChemdescmaccsGraphN) -> ChemdescmaccsGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_graphn_copy(s : ChemdescmaccsGraphN) -> ChemdescmaccsGraphN {
-  let result = chem_desc_maccs_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_graphn_fill(s : ChemdescmaccsGraphN, v : Double) -> ChemdescmaccsGraphN {
-  let result = chem_desc_maccs_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_graphn_min(s : ChemdescmaccsGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_desc_maccs_node_sum(s : ChemdescmaccsNode) -> Double { @_common.sum(
 pub fn chem_desc_maccs_node_mean(s : ChemdescmaccsNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_node_scale(s : ChemdescmaccsNode, f : Double) -> ChemdescmaccsNode {
-  let result = chem_desc_maccs_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_node_add(a : ChemdescmaccsNode, b : ChemdescmaccsNode) -> ChemdescmaccsNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_node_copy(s : ChemdescmaccsNode) -> ChemdescmaccsNode {
-  let result = chem_desc_maccs_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_node_fill(s : ChemdescmaccsNode, v : Double) -> ChemdescmaccsNode {
-  let result = chem_desc_maccs_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_node_min(s : ChemdescmaccsNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_desc_maccs_edge_sum(s : ChemdescmaccsEdge) -> Double { @_common.sum(
 pub fn chem_desc_maccs_edge_mean(s : ChemdescmaccsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_edge_scale(s : ChemdescmaccsEdge, f : Double) -> ChemdescmaccsEdge {
-  let result = chem_desc_maccs_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_edge_add(a : ChemdescmaccsEdge, b : ChemdescmaccsEdge) -> ChemdescmaccsEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_edge_copy(s : ChemdescmaccsEdge) -> ChemdescmaccsEdge {
-  let result = chem_desc_maccs_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_edge_fill(s : ChemdescmaccsEdge, v : Double) -> ChemdescmaccsEdge {
-  let result = chem_desc_maccs_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_edge_min(s : ChemdescmaccsEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_desc_maccs_path_sum(s : ChemdescmaccsPath) -> Double { @_common.sum(
 pub fn chem_desc_maccs_path_mean(s : ChemdescmaccsPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_path_scale(s : ChemdescmaccsPath, f : Double) -> ChemdescmaccsPath {
-  let result = chem_desc_maccs_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_path_add(a : ChemdescmaccsPath, b : ChemdescmaccsPath) -> ChemdescmaccsPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_path_copy(s : ChemdescmaccsPath) -> ChemdescmaccsPath {
-  let result = chem_desc_maccs_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_path_fill(s : ChemdescmaccsPath, v : Double) -> ChemdescmaccsPath {
-  let result = chem_desc_maccs_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_path_min(s : ChemdescmaccsPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_desc_maccs_cluster_sum(s : ChemdescmaccsCluster) -> Double { @_commo
 pub fn chem_desc_maccs_cluster_mean(s : ChemdescmaccsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_cluster_scale(s : ChemdescmaccsCluster, f : Double) -> ChemdescmaccsCluster {
-  let result = chem_desc_maccs_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cluster_add(a : ChemdescmaccsCluster, b : ChemdescmaccsCluster) -> ChemdescmaccsCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_cluster_copy(s : ChemdescmaccsCluster) -> ChemdescmaccsCluster {
-  let result = chem_desc_maccs_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cluster_fill(s : ChemdescmaccsCluster, v : Double) -> ChemdescmaccsCluster {
-  let result = chem_desc_maccs_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cluster_min(s : ChemdescmaccsCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_desc_maccs_model_sum(s : ChemdescmaccsModel) -> Double { @_common.su
 pub fn chem_desc_maccs_model_mean(s : ChemdescmaccsModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_model_scale(s : ChemdescmaccsModel, f : Double) -> ChemdescmaccsModel {
-  let result = chem_desc_maccs_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_model_add(a : ChemdescmaccsModel, b : ChemdescmaccsModel) -> ChemdescmaccsModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_model_copy(s : ChemdescmaccsModel) -> ChemdescmaccsModel {
-  let result = chem_desc_maccs_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_model_fill(s : ChemdescmaccsModel, v : Double) -> ChemdescmaccsModel {
-  let result = chem_desc_maccs_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_model_min(s : ChemdescmaccsModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_desc_maccs_layer_sum(s : ChemdescmaccsLayer) -> Double { @_common.su
 pub fn chem_desc_maccs_layer_mean(s : ChemdescmaccsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_layer_scale(s : ChemdescmaccsLayer, f : Double) -> ChemdescmaccsLayer {
-  let result = chem_desc_maccs_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_layer_add(a : ChemdescmaccsLayer, b : ChemdescmaccsLayer) -> ChemdescmaccsLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_layer_copy(s : ChemdescmaccsLayer) -> ChemdescmaccsLayer {
-  let result = chem_desc_maccs_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_layer_fill(s : ChemdescmaccsLayer, v : Double) -> ChemdescmaccsLayer {
-  let result = chem_desc_maccs_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_layer_min(s : ChemdescmaccsLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_desc_maccs_buffer_sum(s : ChemdescmaccsBuffer) -> Double { @_common.
 pub fn chem_desc_maccs_buffer_mean(s : ChemdescmaccsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_buffer_scale(s : ChemdescmaccsBuffer, f : Double) -> ChemdescmaccsBuffer {
-  let result = chem_desc_maccs_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_buffer_add(a : ChemdescmaccsBuffer, b : ChemdescmaccsBuffer) -> ChemdescmaccsBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_buffer_copy(s : ChemdescmaccsBuffer) -> ChemdescmaccsBuffer {
-  let result = chem_desc_maccs_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_buffer_fill(s : ChemdescmaccsBuffer, v : Double) -> ChemdescmaccsBuffer {
-  let result = chem_desc_maccs_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_buffer_min(s : ChemdescmaccsBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_desc_maccs_cursor_sum(s : ChemdescmaccsCursor) -> Double { @_common.
 pub fn chem_desc_maccs_cursor_mean(s : ChemdescmaccsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_cursor_scale(s : ChemdescmaccsCursor, f : Double) -> ChemdescmaccsCursor {
-  let result = chem_desc_maccs_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cursor_add(a : ChemdescmaccsCursor, b : ChemdescmaccsCursor) -> ChemdescmaccsCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_cursor_copy(s : ChemdescmaccsCursor) -> ChemdescmaccsCursor {
-  let result = chem_desc_maccs_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cursor_fill(s : ChemdescmaccsCursor, v : Double) -> ChemdescmaccsCursor {
-  let result = chem_desc_maccs_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cursor_min(s : ChemdescmaccsCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_desc_maccs_view_sum(s : ChemdescmaccsView) -> Double { @_common.sum(
 pub fn chem_desc_maccs_view_mean(s : ChemdescmaccsView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_view_scale(s : ChemdescmaccsView, f : Double) -> ChemdescmaccsView {
-  let result = chem_desc_maccs_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_view_add(a : ChemdescmaccsView, b : ChemdescmaccsView) -> ChemdescmaccsView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_view_copy(s : ChemdescmaccsView) -> ChemdescmaccsView {
-  let result = chem_desc_maccs_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_view_fill(s : ChemdescmaccsView, v : Double) -> ChemdescmaccsView {
-  let result = chem_desc_maccs_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_view_min(s : ChemdescmaccsView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_desc_maccs_range_sum(s : ChemdescmaccsRange) -> Double { @_common.su
 pub fn chem_desc_maccs_range_mean(s : ChemdescmaccsRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_range_scale(s : ChemdescmaccsRange, f : Double) -> ChemdescmaccsRange {
-  let result = chem_desc_maccs_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_range_add(a : ChemdescmaccsRange, b : ChemdescmaccsRange) -> ChemdescmaccsRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_range_copy(s : ChemdescmaccsRange) -> ChemdescmaccsRange {
-  let result = chem_desc_maccs_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_range_fill(s : ChemdescmaccsRange, v : Double) -> ChemdescmaccsRange {
-  let result = chem_desc_maccs_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_range_min(s : ChemdescmaccsRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_desc_maccs_slice_sum(s : ChemdescmaccsSlice) -> Double { @_common.su
 pub fn chem_desc_maccs_slice_mean(s : ChemdescmaccsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_slice_scale(s : ChemdescmaccsSlice, f : Double) -> ChemdescmaccsSlice {
-  let result = chem_desc_maccs_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_slice_add(a : ChemdescmaccsSlice, b : ChemdescmaccsSlice) -> ChemdescmaccsSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_desc_maccs_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_desc_maccs_slice_copy(s : ChemdescmaccsSlice) -> ChemdescmaccsSlice {
-  let result = chem_desc_maccs_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_slice_fill(s : ChemdescmaccsSlice, v : Double) -> ChemdescmaccsSlice {
-  let result = chem_desc_maccs_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_slice_min(s : ChemdescmaccsSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_dist_wishart_frame_sum(s : StatsdistwishartFrame) -> Double { @_com
 pub fn stats_dist_wishart_frame_mean(s : StatsdistwishartFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_frame_scale(s : StatsdistwishartFrame, f : Double) -> StatsdistwishartFrame {
-  let result = stats_dist_wishart_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_frame_add(a : StatsdistwishartFrame, b : StatsdistwishartFrame) -> StatsdistwishartFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_frame_copy(s : StatsdistwishartFrame) -> StatsdistwishartFrame {
-  let result = stats_dist_wishart_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_frame_fill(s : StatsdistwishartFrame, v : Double) -> StatsdistwishartFrame {
-  let result = stats_dist_wishart_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_frame_min(s : StatsdistwishartFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_wishart_table_sum(s : StatsdistwishartTable) -> Double { @_com
 pub fn stats_dist_wishart_table_mean(s : StatsdistwishartTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_table_scale(s : StatsdistwishartTable, f : Double) -> StatsdistwishartTable {
-  let result = stats_dist_wishart_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_table_add(a : StatsdistwishartTable, b : StatsdistwishartTable) -> StatsdistwishartTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_table_copy(s : StatsdistwishartTable) -> StatsdistwishartTable {
-  let result = stats_dist_wishart_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_table_fill(s : StatsdistwishartTable, v : Double) -> StatsdistwishartTable {
-  let result = stats_dist_wishart_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_table_min(s : StatsdistwishartTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_wishart_graphn_sum(s : StatsdistwishartGraphN) -> Double { @_c
 pub fn stats_dist_wishart_graphn_mean(s : StatsdistwishartGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_graphn_scale(s : StatsdistwishartGraphN, f : Double) -> StatsdistwishartGraphN {
-  let result = stats_dist_wishart_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_graphn_add(a : StatsdistwishartGraphN, b : StatsdistwishartGraphN) -> StatsdistwishartGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_graphn_copy(s : StatsdistwishartGraphN) -> StatsdistwishartGraphN {
-  let result = stats_dist_wishart_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_graphn_fill(s : StatsdistwishartGraphN, v : Double) -> StatsdistwishartGraphN {
-  let result = stats_dist_wishart_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_graphn_min(s : StatsdistwishartGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_wishart_node_sum(s : StatsdistwishartNode) -> Double { @_commo
 pub fn stats_dist_wishart_node_mean(s : StatsdistwishartNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_node_scale(s : StatsdistwishartNode, f : Double) -> StatsdistwishartNode {
-  let result = stats_dist_wishart_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_node_add(a : StatsdistwishartNode, b : StatsdistwishartNode) -> StatsdistwishartNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_node_copy(s : StatsdistwishartNode) -> StatsdistwishartNode {
-  let result = stats_dist_wishart_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_node_fill(s : StatsdistwishartNode, v : Double) -> StatsdistwishartNode {
-  let result = stats_dist_wishart_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_node_min(s : StatsdistwishartNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_wishart_edge_sum(s : StatsdistwishartEdge) -> Double { @_commo
 pub fn stats_dist_wishart_edge_mean(s : StatsdistwishartEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_edge_scale(s : StatsdistwishartEdge, f : Double) -> StatsdistwishartEdge {
-  let result = stats_dist_wishart_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_edge_add(a : StatsdistwishartEdge, b : StatsdistwishartEdge) -> StatsdistwishartEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_edge_copy(s : StatsdistwishartEdge) -> StatsdistwishartEdge {
-  let result = stats_dist_wishart_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_edge_fill(s : StatsdistwishartEdge, v : Double) -> StatsdistwishartEdge {
-  let result = stats_dist_wishart_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_edge_min(s : StatsdistwishartEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_wishart_path_sum(s : StatsdistwishartPath) -> Double { @_commo
 pub fn stats_dist_wishart_path_mean(s : StatsdistwishartPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_path_scale(s : StatsdistwishartPath, f : Double) -> StatsdistwishartPath {
-  let result = stats_dist_wishart_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_path_add(a : StatsdistwishartPath, b : StatsdistwishartPath) -> StatsdistwishartPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_path_copy(s : StatsdistwishartPath) -> StatsdistwishartPath {
-  let result = stats_dist_wishart_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_path_fill(s : StatsdistwishartPath, v : Double) -> StatsdistwishartPath {
-  let result = stats_dist_wishart_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_path_min(s : StatsdistwishartPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_wishart_cluster_sum(s : StatsdistwishartCluster) -> Double { @
 pub fn stats_dist_wishart_cluster_mean(s : StatsdistwishartCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_cluster_scale(s : StatsdistwishartCluster, f : Double) -> StatsdistwishartCluster {
-  let result = stats_dist_wishart_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_cluster_add(a : StatsdistwishartCluster, b : StatsdistwishartCluster) -> StatsdistwishartCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_cluster_copy(s : StatsdistwishartCluster) -> StatsdistwishartCluster {
-  let result = stats_dist_wishart_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_cluster_fill(s : StatsdistwishartCluster, v : Double) -> StatsdistwishartCluster {
-  let result = stats_dist_wishart_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_cluster_min(s : StatsdistwishartCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_wishart_model_sum(s : StatsdistwishartModel) -> Double { @_com
 pub fn stats_dist_wishart_model_mean(s : StatsdistwishartModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_model_scale(s : StatsdistwishartModel, f : Double) -> StatsdistwishartModel {
-  let result = stats_dist_wishart_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_model_add(a : StatsdistwishartModel, b : StatsdistwishartModel) -> StatsdistwishartModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_model_copy(s : StatsdistwishartModel) -> StatsdistwishartModel {
-  let result = stats_dist_wishart_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_model_fill(s : StatsdistwishartModel, v : Double) -> StatsdistwishartModel {
-  let result = stats_dist_wishart_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_model_min(s : StatsdistwishartModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_wishart_layer_sum(s : StatsdistwishartLayer) -> Double { @_com
 pub fn stats_dist_wishart_layer_mean(s : StatsdistwishartLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_layer_scale(s : StatsdistwishartLayer, f : Double) -> StatsdistwishartLayer {
-  let result = stats_dist_wishart_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_layer_add(a : StatsdistwishartLayer, b : StatsdistwishartLayer) -> StatsdistwishartLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_layer_copy(s : StatsdistwishartLayer) -> StatsdistwishartLayer {
-  let result = stats_dist_wishart_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_layer_fill(s : StatsdistwishartLayer, v : Double) -> StatsdistwishartLayer {
-  let result = stats_dist_wishart_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_layer_min(s : StatsdistwishartLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_wishart_buffer_sum(s : StatsdistwishartBuffer) -> Double { @_c
 pub fn stats_dist_wishart_buffer_mean(s : StatsdistwishartBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_buffer_scale(s : StatsdistwishartBuffer, f : Double) -> StatsdistwishartBuffer {
-  let result = stats_dist_wishart_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_buffer_add(a : StatsdistwishartBuffer, b : StatsdistwishartBuffer) -> StatsdistwishartBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_buffer_copy(s : StatsdistwishartBuffer) -> StatsdistwishartBuffer {
-  let result = stats_dist_wishart_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_buffer_fill(s : StatsdistwishartBuffer, v : Double) -> StatsdistwishartBuffer {
-  let result = stats_dist_wishart_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_buffer_min(s : StatsdistwishartBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_wishart_cursor_sum(s : StatsdistwishartCursor) -> Double { @_c
 pub fn stats_dist_wishart_cursor_mean(s : StatsdistwishartCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_cursor_scale(s : StatsdistwishartCursor, f : Double) -> StatsdistwishartCursor {
-  let result = stats_dist_wishart_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_cursor_add(a : StatsdistwishartCursor, b : StatsdistwishartCursor) -> StatsdistwishartCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_cursor_copy(s : StatsdistwishartCursor) -> StatsdistwishartCursor {
-  let result = stats_dist_wishart_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_cursor_fill(s : StatsdistwishartCursor, v : Double) -> StatsdistwishartCursor {
-  let result = stats_dist_wishart_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_cursor_min(s : StatsdistwishartCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_wishart_view_sum(s : StatsdistwishartView) -> Double { @_commo
 pub fn stats_dist_wishart_view_mean(s : StatsdistwishartView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_view_scale(s : StatsdistwishartView, f : Double) -> StatsdistwishartView {
-  let result = stats_dist_wishart_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_view_add(a : StatsdistwishartView, b : StatsdistwishartView) -> StatsdistwishartView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_view_copy(s : StatsdistwishartView) -> StatsdistwishartView {
-  let result = stats_dist_wishart_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_view_fill(s : StatsdistwishartView, v : Double) -> StatsdistwishartView {
-  let result = stats_dist_wishart_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_view_min(s : StatsdistwishartView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_wishart_range_sum(s : StatsdistwishartRange) -> Double { @_com
 pub fn stats_dist_wishart_range_mean(s : StatsdistwishartRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_range_scale(s : StatsdistwishartRange, f : Double) -> StatsdistwishartRange {
-  let result = stats_dist_wishart_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_range_add(a : StatsdistwishartRange, b : StatsdistwishartRange) -> StatsdistwishartRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_range_copy(s : StatsdistwishartRange) -> StatsdistwishartRange {
-  let result = stats_dist_wishart_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_range_fill(s : StatsdistwishartRange, v : Double) -> StatsdistwishartRange {
-  let result = stats_dist_wishart_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_range_min(s : StatsdistwishartRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_wishart_slice_sum(s : StatsdistwishartSlice) -> Double { @_com
 pub fn stats_dist_wishart_slice_mean(s : StatsdistwishartSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_slice_scale(s : StatsdistwishartSlice, f : Double) -> StatsdistwishartSlice {
-  let result = stats_dist_wishart_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_slice_add(a : StatsdistwishartSlice, b : StatsdistwishartSlice) -> StatsdistwishartSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_wishart_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_wishart_slice_copy(s : StatsdistwishartSlice) -> StatsdistwishartSlice {
-  let result = stats_dist_wishart_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_slice_fill(s : StatsdistwishartSlice, v : Double) -> StatsdistwishartSlice {
-  let result = stats_dist_wishart_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_wishart_slice_min(s : StatsdistwishartSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn stats_model_gam_frame_sum(s : StatsmodelgamFrame) -> Double { @_common.su
 pub fn stats_model_gam_frame_mean(s : StatsmodelgamFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_frame_scale(s : StatsmodelgamFrame, f : Double) -> StatsmodelgamFrame {
-  let result = stats_model_gam_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_frame_add(a : StatsmodelgamFrame, b : StatsmodelgamFrame) -> StatsmodelgamFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_frame_copy(s : StatsmodelgamFrame) -> StatsmodelgamFrame {
-  let result = stats_model_gam_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_frame_fill(s : StatsmodelgamFrame, v : Double) -> StatsmodelgamFrame {
-  let result = stats_model_gam_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_frame_min(s : StatsmodelgamFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_model_gam_table_sum(s : StatsmodelgamTable) -> Double { @_common.su
 pub fn stats_model_gam_table_mean(s : StatsmodelgamTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_table_scale(s : StatsmodelgamTable, f : Double) -> StatsmodelgamTable {
-  let result = stats_model_gam_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_table_add(a : StatsmodelgamTable, b : StatsmodelgamTable) -> StatsmodelgamTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_table_copy(s : StatsmodelgamTable) -> StatsmodelgamTable {
-  let result = stats_model_gam_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_table_fill(s : StatsmodelgamTable, v : Double) -> StatsmodelgamTable {
-  let result = stats_model_gam_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_table_min(s : StatsmodelgamTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_model_gam_graphn_sum(s : StatsmodelgamGraphN) -> Double { @_common.
 pub fn stats_model_gam_graphn_mean(s : StatsmodelgamGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_graphn_scale(s : StatsmodelgamGraphN, f : Double) -> StatsmodelgamGraphN {
-  let result = stats_model_gam_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_graphn_add(a : StatsmodelgamGraphN, b : StatsmodelgamGraphN) -> StatsmodelgamGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_graphn_copy(s : StatsmodelgamGraphN) -> StatsmodelgamGraphN {
-  let result = stats_model_gam_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_graphn_fill(s : StatsmodelgamGraphN, v : Double) -> StatsmodelgamGraphN {
-  let result = stats_model_gam_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_graphn_min(s : StatsmodelgamGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_model_gam_node_sum(s : StatsmodelgamNode) -> Double { @_common.sum(
 pub fn stats_model_gam_node_mean(s : StatsmodelgamNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_node_scale(s : StatsmodelgamNode, f : Double) -> StatsmodelgamNode {
-  let result = stats_model_gam_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_node_add(a : StatsmodelgamNode, b : StatsmodelgamNode) -> StatsmodelgamNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_node_copy(s : StatsmodelgamNode) -> StatsmodelgamNode {
-  let result = stats_model_gam_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_node_fill(s : StatsmodelgamNode, v : Double) -> StatsmodelgamNode {
-  let result = stats_model_gam_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_node_min(s : StatsmodelgamNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_model_gam_edge_sum(s : StatsmodelgamEdge) -> Double { @_common.sum(
 pub fn stats_model_gam_edge_mean(s : StatsmodelgamEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_edge_scale(s : StatsmodelgamEdge, f : Double) -> StatsmodelgamEdge {
-  let result = stats_model_gam_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_edge_add(a : StatsmodelgamEdge, b : StatsmodelgamEdge) -> StatsmodelgamEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_edge_copy(s : StatsmodelgamEdge) -> StatsmodelgamEdge {
-  let result = stats_model_gam_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_edge_fill(s : StatsmodelgamEdge, v : Double) -> StatsmodelgamEdge {
-  let result = stats_model_gam_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_edge_min(s : StatsmodelgamEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_model_gam_path_sum(s : StatsmodelgamPath) -> Double { @_common.sum(
 pub fn stats_model_gam_path_mean(s : StatsmodelgamPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_path_scale(s : StatsmodelgamPath, f : Double) -> StatsmodelgamPath {
-  let result = stats_model_gam_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_path_add(a : StatsmodelgamPath, b : StatsmodelgamPath) -> StatsmodelgamPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_path_copy(s : StatsmodelgamPath) -> StatsmodelgamPath {
-  let result = stats_model_gam_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_path_fill(s : StatsmodelgamPath, v : Double) -> StatsmodelgamPath {
-  let result = stats_model_gam_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_path_min(s : StatsmodelgamPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_model_gam_cluster_sum(s : StatsmodelgamCluster) -> Double { @_commo
 pub fn stats_model_gam_cluster_mean(s : StatsmodelgamCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_cluster_scale(s : StatsmodelgamCluster, f : Double) -> StatsmodelgamCluster {
-  let result = stats_model_gam_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cluster_add(a : StatsmodelgamCluster, b : StatsmodelgamCluster) -> StatsmodelgamCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_cluster_copy(s : StatsmodelgamCluster) -> StatsmodelgamCluster {
-  let result = stats_model_gam_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cluster_fill(s : StatsmodelgamCluster, v : Double) -> StatsmodelgamCluster {
-  let result = stats_model_gam_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cluster_min(s : StatsmodelgamCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_model_gam_model_sum(s : StatsmodelgamModel) -> Double { @_common.su
 pub fn stats_model_gam_model_mean(s : StatsmodelgamModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_model_scale(s : StatsmodelgamModel, f : Double) -> StatsmodelgamModel {
-  let result = stats_model_gam_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_model_add(a : StatsmodelgamModel, b : StatsmodelgamModel) -> StatsmodelgamModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_model_copy(s : StatsmodelgamModel) -> StatsmodelgamModel {
-  let result = stats_model_gam_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_model_fill(s : StatsmodelgamModel, v : Double) -> StatsmodelgamModel {
-  let result = stats_model_gam_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_model_min(s : StatsmodelgamModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_model_gam_layer_sum(s : StatsmodelgamLayer) -> Double { @_common.su
 pub fn stats_model_gam_layer_mean(s : StatsmodelgamLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_layer_scale(s : StatsmodelgamLayer, f : Double) -> StatsmodelgamLayer {
-  let result = stats_model_gam_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_layer_add(a : StatsmodelgamLayer, b : StatsmodelgamLayer) -> StatsmodelgamLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_layer_copy(s : StatsmodelgamLayer) -> StatsmodelgamLayer {
-  let result = stats_model_gam_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_layer_fill(s : StatsmodelgamLayer, v : Double) -> StatsmodelgamLayer {
-  let result = stats_model_gam_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_layer_min(s : StatsmodelgamLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_model_gam_buffer_sum(s : StatsmodelgamBuffer) -> Double { @_common.
 pub fn stats_model_gam_buffer_mean(s : StatsmodelgamBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_buffer_scale(s : StatsmodelgamBuffer, f : Double) -> StatsmodelgamBuffer {
-  let result = stats_model_gam_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_buffer_add(a : StatsmodelgamBuffer, b : StatsmodelgamBuffer) -> StatsmodelgamBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_buffer_copy(s : StatsmodelgamBuffer) -> StatsmodelgamBuffer {
-  let result = stats_model_gam_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_buffer_fill(s : StatsmodelgamBuffer, v : Double) -> StatsmodelgamBuffer {
-  let result = stats_model_gam_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_buffer_min(s : StatsmodelgamBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_model_gam_cursor_sum(s : StatsmodelgamCursor) -> Double { @_common.
 pub fn stats_model_gam_cursor_mean(s : StatsmodelgamCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_cursor_scale(s : StatsmodelgamCursor, f : Double) -> StatsmodelgamCursor {
-  let result = stats_model_gam_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cursor_add(a : StatsmodelgamCursor, b : StatsmodelgamCursor) -> StatsmodelgamCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_cursor_copy(s : StatsmodelgamCursor) -> StatsmodelgamCursor {
-  let result = stats_model_gam_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cursor_fill(s : StatsmodelgamCursor, v : Double) -> StatsmodelgamCursor {
-  let result = stats_model_gam_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cursor_min(s : StatsmodelgamCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_model_gam_view_sum(s : StatsmodelgamView) -> Double { @_common.sum(
 pub fn stats_model_gam_view_mean(s : StatsmodelgamView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_view_scale(s : StatsmodelgamView, f : Double) -> StatsmodelgamView {
-  let result = stats_model_gam_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_view_add(a : StatsmodelgamView, b : StatsmodelgamView) -> StatsmodelgamView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_view_copy(s : StatsmodelgamView) -> StatsmodelgamView {
-  let result = stats_model_gam_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_view_fill(s : StatsmodelgamView, v : Double) -> StatsmodelgamView {
-  let result = stats_model_gam_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_view_min(s : StatsmodelgamView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_model_gam_range_sum(s : StatsmodelgamRange) -> Double { @_common.su
 pub fn stats_model_gam_range_mean(s : StatsmodelgamRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_range_scale(s : StatsmodelgamRange, f : Double) -> StatsmodelgamRange {
-  let result = stats_model_gam_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_range_add(a : StatsmodelgamRange, b : StatsmodelgamRange) -> StatsmodelgamRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_range_copy(s : StatsmodelgamRange) -> StatsmodelgamRange {
-  let result = stats_model_gam_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_range_fill(s : StatsmodelgamRange, v : Double) -> StatsmodelgamRange {
-  let result = stats_model_gam_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_range_min(s : StatsmodelgamRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_model_gam_slice_sum(s : StatsmodelgamSlice) -> Double { @_common.su
 pub fn stats_model_gam_slice_mean(s : StatsmodelgamSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_slice_scale(s : StatsmodelgamSlice, f : Double) -> StatsmodelgamSlice {
-  let result = stats_model_gam_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_slice_add(a : StatsmodelgamSlice, b : StatsmodelgamSlice) -> StatsmodelgamSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_model_gam_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_model_gam_slice_copy(s : StatsmodelgamSlice) -> StatsmodelgamSlice {
-  let result = stats_model_gam_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_slice_fill(s : StatsmodelgamSlice, v : Double) -> StatsmodelgamSlice {
-  let result = stats_model_gam_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_slice_min(s : StatsmodelgamSlice) -> Double { @_common.min(s.data) }

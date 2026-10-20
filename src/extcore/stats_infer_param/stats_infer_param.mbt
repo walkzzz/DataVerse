@@ -383,28 +383,20 @@ pub fn stats_infer_param_frame_sum(s : StatsinferparamFrame) -> Double { @_commo
 pub fn stats_infer_param_frame_mean(s : StatsinferparamFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_frame_scale(s : StatsinferparamFrame, f : Double) -> StatsinferparamFrame {
-  let result = stats_infer_param_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_frame_add(a : StatsinferparamFrame, b : StatsinferparamFrame) -> StatsinferparamFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_frame_copy(s : StatsinferparamFrame) -> StatsinferparamFrame {
-  let result = stats_infer_param_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_frame_fill(s : StatsinferparamFrame, v : Double) -> StatsinferparamFrame {
-  let result = stats_infer_param_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_frame_min(s : StatsinferparamFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_infer_param_table_sum(s : StatsinferparamTable) -> Double { @_commo
 pub fn stats_infer_param_table_mean(s : StatsinferparamTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_table_scale(s : StatsinferparamTable, f : Double) -> StatsinferparamTable {
-  let result = stats_infer_param_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_table_add(a : StatsinferparamTable, b : StatsinferparamTable) -> StatsinferparamTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_table_copy(s : StatsinferparamTable) -> StatsinferparamTable {
-  let result = stats_infer_param_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_table_fill(s : StatsinferparamTable, v : Double) -> StatsinferparamTable {
-  let result = stats_infer_param_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_table_min(s : StatsinferparamTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_infer_param_graphn_sum(s : StatsinferparamGraphN) -> Double { @_com
 pub fn stats_infer_param_graphn_mean(s : StatsinferparamGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_graphn_scale(s : StatsinferparamGraphN, f : Double) -> StatsinferparamGraphN {
-  let result = stats_infer_param_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_graphn_add(a : StatsinferparamGraphN, b : StatsinferparamGraphN) -> StatsinferparamGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_graphn_copy(s : StatsinferparamGraphN) -> StatsinferparamGraphN {
-  let result = stats_infer_param_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_graphn_fill(s : StatsinferparamGraphN, v : Double) -> StatsinferparamGraphN {
-  let result = stats_infer_param_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_graphn_min(s : StatsinferparamGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_infer_param_node_sum(s : StatsinferparamNode) -> Double { @_common.
 pub fn stats_infer_param_node_mean(s : StatsinferparamNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_node_scale(s : StatsinferparamNode, f : Double) -> StatsinferparamNode {
-  let result = stats_infer_param_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_node_add(a : StatsinferparamNode, b : StatsinferparamNode) -> StatsinferparamNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_node_copy(s : StatsinferparamNode) -> StatsinferparamNode {
-  let result = stats_infer_param_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_node_fill(s : StatsinferparamNode, v : Double) -> StatsinferparamNode {
-  let result = stats_infer_param_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_node_min(s : StatsinferparamNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_infer_param_edge_sum(s : StatsinferparamEdge) -> Double { @_common.
 pub fn stats_infer_param_edge_mean(s : StatsinferparamEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_edge_scale(s : StatsinferparamEdge, f : Double) -> StatsinferparamEdge {
-  let result = stats_infer_param_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_edge_add(a : StatsinferparamEdge, b : StatsinferparamEdge) -> StatsinferparamEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_edge_copy(s : StatsinferparamEdge) -> StatsinferparamEdge {
-  let result = stats_infer_param_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_edge_fill(s : StatsinferparamEdge, v : Double) -> StatsinferparamEdge {
-  let result = stats_infer_param_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_edge_min(s : StatsinferparamEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_infer_param_path_sum(s : StatsinferparamPath) -> Double { @_common.
 pub fn stats_infer_param_path_mean(s : StatsinferparamPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_path_scale(s : StatsinferparamPath, f : Double) -> StatsinferparamPath {
-  let result = stats_infer_param_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_path_add(a : StatsinferparamPath, b : StatsinferparamPath) -> StatsinferparamPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_path_copy(s : StatsinferparamPath) -> StatsinferparamPath {
-  let result = stats_infer_param_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_path_fill(s : StatsinferparamPath, v : Double) -> StatsinferparamPath {
-  let result = stats_infer_param_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_path_min(s : StatsinferparamPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_infer_param_cluster_sum(s : StatsinferparamCluster) -> Double { @_c
 pub fn stats_infer_param_cluster_mean(s : StatsinferparamCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_cluster_scale(s : StatsinferparamCluster, f : Double) -> StatsinferparamCluster {
-  let result = stats_infer_param_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cluster_add(a : StatsinferparamCluster, b : StatsinferparamCluster) -> StatsinferparamCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_cluster_copy(s : StatsinferparamCluster) -> StatsinferparamCluster {
-  let result = stats_infer_param_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cluster_fill(s : StatsinferparamCluster, v : Double) -> StatsinferparamCluster {
-  let result = stats_infer_param_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cluster_min(s : StatsinferparamCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_infer_param_model_sum(s : StatsinferparamModel) -> Double { @_commo
 pub fn stats_infer_param_model_mean(s : StatsinferparamModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_model_scale(s : StatsinferparamModel, f : Double) -> StatsinferparamModel {
-  let result = stats_infer_param_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_model_add(a : StatsinferparamModel, b : StatsinferparamModel) -> StatsinferparamModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_model_copy(s : StatsinferparamModel) -> StatsinferparamModel {
-  let result = stats_infer_param_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_model_fill(s : StatsinferparamModel, v : Double) -> StatsinferparamModel {
-  let result = stats_infer_param_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_model_min(s : StatsinferparamModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_infer_param_layer_sum(s : StatsinferparamLayer) -> Double { @_commo
 pub fn stats_infer_param_layer_mean(s : StatsinferparamLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_layer_scale(s : StatsinferparamLayer, f : Double) -> StatsinferparamLayer {
-  let result = stats_infer_param_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_layer_add(a : StatsinferparamLayer, b : StatsinferparamLayer) -> StatsinferparamLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_layer_copy(s : StatsinferparamLayer) -> StatsinferparamLayer {
-  let result = stats_infer_param_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_layer_fill(s : StatsinferparamLayer, v : Double) -> StatsinferparamLayer {
-  let result = stats_infer_param_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_layer_min(s : StatsinferparamLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_infer_param_buffer_sum(s : StatsinferparamBuffer) -> Double { @_com
 pub fn stats_infer_param_buffer_mean(s : StatsinferparamBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_buffer_scale(s : StatsinferparamBuffer, f : Double) -> StatsinferparamBuffer {
-  let result = stats_infer_param_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_buffer_add(a : StatsinferparamBuffer, b : StatsinferparamBuffer) -> StatsinferparamBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_buffer_copy(s : StatsinferparamBuffer) -> StatsinferparamBuffer {
-  let result = stats_infer_param_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_buffer_fill(s : StatsinferparamBuffer, v : Double) -> StatsinferparamBuffer {
-  let result = stats_infer_param_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_buffer_min(s : StatsinferparamBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_infer_param_cursor_sum(s : StatsinferparamCursor) -> Double { @_com
 pub fn stats_infer_param_cursor_mean(s : StatsinferparamCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_cursor_scale(s : StatsinferparamCursor, f : Double) -> StatsinferparamCursor {
-  let result = stats_infer_param_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cursor_add(a : StatsinferparamCursor, b : StatsinferparamCursor) -> StatsinferparamCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_cursor_copy(s : StatsinferparamCursor) -> StatsinferparamCursor {
-  let result = stats_infer_param_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cursor_fill(s : StatsinferparamCursor, v : Double) -> StatsinferparamCursor {
-  let result = stats_infer_param_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cursor_min(s : StatsinferparamCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_infer_param_view_sum(s : StatsinferparamView) -> Double { @_common.
 pub fn stats_infer_param_view_mean(s : StatsinferparamView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_view_scale(s : StatsinferparamView, f : Double) -> StatsinferparamView {
-  let result = stats_infer_param_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_view_add(a : StatsinferparamView, b : StatsinferparamView) -> StatsinferparamView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_view_copy(s : StatsinferparamView) -> StatsinferparamView {
-  let result = stats_infer_param_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_view_fill(s : StatsinferparamView, v : Double) -> StatsinferparamView {
-  let result = stats_infer_param_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_view_min(s : StatsinferparamView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_infer_param_range_sum(s : StatsinferparamRange) -> Double { @_commo
 pub fn stats_infer_param_range_mean(s : StatsinferparamRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_range_scale(s : StatsinferparamRange, f : Double) -> StatsinferparamRange {
-  let result = stats_infer_param_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_range_add(a : StatsinferparamRange, b : StatsinferparamRange) -> StatsinferparamRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_range_copy(s : StatsinferparamRange) -> StatsinferparamRange {
-  let result = stats_infer_param_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_range_fill(s : StatsinferparamRange, v : Double) -> StatsinferparamRange {
-  let result = stats_infer_param_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_range_min(s : StatsinferparamRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_infer_param_slice_sum(s : StatsinferparamSlice) -> Double { @_commo
 pub fn stats_infer_param_slice_mean(s : StatsinferparamSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_param_slice_scale(s : StatsinferparamSlice, f : Double) -> StatsinferparamSlice {
-  let result = stats_infer_param_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_slice_add(a : StatsinferparamSlice, b : StatsinferparamSlice) -> StatsinferparamSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_infer_param_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_infer_param_slice_copy(s : StatsinferparamSlice) -> StatsinferparamSlice {
-  let result = stats_infer_param_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_slice_fill(s : StatsinferparamSlice, v : Double) -> StatsinferparamSlice {
-  let result = stats_infer_param_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_slice_min(s : StatsinferparamSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn image_feature_sift_frame_sum(s : ImagefeaturesiftFrame) -> Double { @_com
 pub fn image_feature_sift_frame_mean(s : ImagefeaturesiftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_frame_scale(s : ImagefeaturesiftFrame, f : Double) -> ImagefeaturesiftFrame {
-  let result = image_feature_sift_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_frame_add(a : ImagefeaturesiftFrame, b : ImagefeaturesiftFrame) -> ImagefeaturesiftFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_frame_copy(s : ImagefeaturesiftFrame) -> ImagefeaturesiftFrame {
-  let result = image_feature_sift_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_frame_fill(s : ImagefeaturesiftFrame, v : Double) -> ImagefeaturesiftFrame {
-  let result = image_feature_sift_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_frame_min(s : ImagefeaturesiftFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_feature_sift_table_sum(s : ImagefeaturesiftTable) -> Double { @_com
 pub fn image_feature_sift_table_mean(s : ImagefeaturesiftTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_table_scale(s : ImagefeaturesiftTable, f : Double) -> ImagefeaturesiftTable {
-  let result = image_feature_sift_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_table_add(a : ImagefeaturesiftTable, b : ImagefeaturesiftTable) -> ImagefeaturesiftTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_table_copy(s : ImagefeaturesiftTable) -> ImagefeaturesiftTable {
-  let result = image_feature_sift_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_table_fill(s : ImagefeaturesiftTable, v : Double) -> ImagefeaturesiftTable {
-  let result = image_feature_sift_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_table_min(s : ImagefeaturesiftTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_feature_sift_graphn_sum(s : ImagefeaturesiftGraphN) -> Double { @_c
 pub fn image_feature_sift_graphn_mean(s : ImagefeaturesiftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_graphn_scale(s : ImagefeaturesiftGraphN, f : Double) -> ImagefeaturesiftGraphN {
-  let result = image_feature_sift_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_graphn_add(a : ImagefeaturesiftGraphN, b : ImagefeaturesiftGraphN) -> ImagefeaturesiftGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_graphn_copy(s : ImagefeaturesiftGraphN) -> ImagefeaturesiftGraphN {
-  let result = image_feature_sift_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_graphn_fill(s : ImagefeaturesiftGraphN, v : Double) -> ImagefeaturesiftGraphN {
-  let result = image_feature_sift_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_graphn_min(s : ImagefeaturesiftGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_feature_sift_node_sum(s : ImagefeaturesiftNode) -> Double { @_commo
 pub fn image_feature_sift_node_mean(s : ImagefeaturesiftNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_node_scale(s : ImagefeaturesiftNode, f : Double) -> ImagefeaturesiftNode {
-  let result = image_feature_sift_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_node_add(a : ImagefeaturesiftNode, b : ImagefeaturesiftNode) -> ImagefeaturesiftNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_node_copy(s : ImagefeaturesiftNode) -> ImagefeaturesiftNode {
-  let result = image_feature_sift_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_node_fill(s : ImagefeaturesiftNode, v : Double) -> ImagefeaturesiftNode {
-  let result = image_feature_sift_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_node_min(s : ImagefeaturesiftNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_feature_sift_edge_sum(s : ImagefeaturesiftEdge) -> Double { @_commo
 pub fn image_feature_sift_edge_mean(s : ImagefeaturesiftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_edge_scale(s : ImagefeaturesiftEdge, f : Double) -> ImagefeaturesiftEdge {
-  let result = image_feature_sift_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_edge_add(a : ImagefeaturesiftEdge, b : ImagefeaturesiftEdge) -> ImagefeaturesiftEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_edge_copy(s : ImagefeaturesiftEdge) -> ImagefeaturesiftEdge {
-  let result = image_feature_sift_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_edge_fill(s : ImagefeaturesiftEdge, v : Double) -> ImagefeaturesiftEdge {
-  let result = image_feature_sift_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_edge_min(s : ImagefeaturesiftEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_feature_sift_path_sum(s : ImagefeaturesiftPath) -> Double { @_commo
 pub fn image_feature_sift_path_mean(s : ImagefeaturesiftPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_path_scale(s : ImagefeaturesiftPath, f : Double) -> ImagefeaturesiftPath {
-  let result = image_feature_sift_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_path_add(a : ImagefeaturesiftPath, b : ImagefeaturesiftPath) -> ImagefeaturesiftPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_path_copy(s : ImagefeaturesiftPath) -> ImagefeaturesiftPath {
-  let result = image_feature_sift_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_path_fill(s : ImagefeaturesiftPath, v : Double) -> ImagefeaturesiftPath {
-  let result = image_feature_sift_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_path_min(s : ImagefeaturesiftPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_feature_sift_cluster_sum(s : ImagefeaturesiftCluster) -> Double { @
 pub fn image_feature_sift_cluster_mean(s : ImagefeaturesiftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_cluster_scale(s : ImagefeaturesiftCluster, f : Double) -> ImagefeaturesiftCluster {
-  let result = image_feature_sift_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_cluster_add(a : ImagefeaturesiftCluster, b : ImagefeaturesiftCluster) -> ImagefeaturesiftCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_cluster_copy(s : ImagefeaturesiftCluster) -> ImagefeaturesiftCluster {
-  let result = image_feature_sift_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_cluster_fill(s : ImagefeaturesiftCluster, v : Double) -> ImagefeaturesiftCluster {
-  let result = image_feature_sift_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_cluster_min(s : ImagefeaturesiftCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_feature_sift_model_sum(s : ImagefeaturesiftModel) -> Double { @_com
 pub fn image_feature_sift_model_mean(s : ImagefeaturesiftModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_model_scale(s : ImagefeaturesiftModel, f : Double) -> ImagefeaturesiftModel {
-  let result = image_feature_sift_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_model_add(a : ImagefeaturesiftModel, b : ImagefeaturesiftModel) -> ImagefeaturesiftModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_model_copy(s : ImagefeaturesiftModel) -> ImagefeaturesiftModel {
-  let result = image_feature_sift_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_model_fill(s : ImagefeaturesiftModel, v : Double) -> ImagefeaturesiftModel {
-  let result = image_feature_sift_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_model_min(s : ImagefeaturesiftModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_feature_sift_layer_sum(s : ImagefeaturesiftLayer) -> Double { @_com
 pub fn image_feature_sift_layer_mean(s : ImagefeaturesiftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_layer_scale(s : ImagefeaturesiftLayer, f : Double) -> ImagefeaturesiftLayer {
-  let result = image_feature_sift_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_layer_add(a : ImagefeaturesiftLayer, b : ImagefeaturesiftLayer) -> ImagefeaturesiftLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_layer_copy(s : ImagefeaturesiftLayer) -> ImagefeaturesiftLayer {
-  let result = image_feature_sift_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_layer_fill(s : ImagefeaturesiftLayer, v : Double) -> ImagefeaturesiftLayer {
-  let result = image_feature_sift_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_layer_min(s : ImagefeaturesiftLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_feature_sift_buffer_sum(s : ImagefeaturesiftBuffer) -> Double { @_c
 pub fn image_feature_sift_buffer_mean(s : ImagefeaturesiftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_buffer_scale(s : ImagefeaturesiftBuffer, f : Double) -> ImagefeaturesiftBuffer {
-  let result = image_feature_sift_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_buffer_add(a : ImagefeaturesiftBuffer, b : ImagefeaturesiftBuffer) -> ImagefeaturesiftBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_buffer_copy(s : ImagefeaturesiftBuffer) -> ImagefeaturesiftBuffer {
-  let result = image_feature_sift_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_buffer_fill(s : ImagefeaturesiftBuffer, v : Double) -> ImagefeaturesiftBuffer {
-  let result = image_feature_sift_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_buffer_min(s : ImagefeaturesiftBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_feature_sift_cursor_sum(s : ImagefeaturesiftCursor) -> Double { @_c
 pub fn image_feature_sift_cursor_mean(s : ImagefeaturesiftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_cursor_scale(s : ImagefeaturesiftCursor, f : Double) -> ImagefeaturesiftCursor {
-  let result = image_feature_sift_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_cursor_add(a : ImagefeaturesiftCursor, b : ImagefeaturesiftCursor) -> ImagefeaturesiftCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_cursor_copy(s : ImagefeaturesiftCursor) -> ImagefeaturesiftCursor {
-  let result = image_feature_sift_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_cursor_fill(s : ImagefeaturesiftCursor, v : Double) -> ImagefeaturesiftCursor {
-  let result = image_feature_sift_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_cursor_min(s : ImagefeaturesiftCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_feature_sift_view_sum(s : ImagefeaturesiftView) -> Double { @_commo
 pub fn image_feature_sift_view_mean(s : ImagefeaturesiftView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_view_scale(s : ImagefeaturesiftView, f : Double) -> ImagefeaturesiftView {
-  let result = image_feature_sift_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_view_add(a : ImagefeaturesiftView, b : ImagefeaturesiftView) -> ImagefeaturesiftView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_view_copy(s : ImagefeaturesiftView) -> ImagefeaturesiftView {
-  let result = image_feature_sift_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_view_fill(s : ImagefeaturesiftView, v : Double) -> ImagefeaturesiftView {
-  let result = image_feature_sift_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_view_min(s : ImagefeaturesiftView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_feature_sift_range_sum(s : ImagefeaturesiftRange) -> Double { @_com
 pub fn image_feature_sift_range_mean(s : ImagefeaturesiftRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_range_scale(s : ImagefeaturesiftRange, f : Double) -> ImagefeaturesiftRange {
-  let result = image_feature_sift_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_range_add(a : ImagefeaturesiftRange, b : ImagefeaturesiftRange) -> ImagefeaturesiftRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_range_copy(s : ImagefeaturesiftRange) -> ImagefeaturesiftRange {
-  let result = image_feature_sift_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_range_fill(s : ImagefeaturesiftRange, v : Double) -> ImagefeaturesiftRange {
-  let result = image_feature_sift_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_range_min(s : ImagefeaturesiftRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_feature_sift_slice_sum(s : ImagefeaturesiftSlice) -> Double { @_com
 pub fn image_feature_sift_slice_mean(s : ImagefeaturesiftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_slice_scale(s : ImagefeaturesiftSlice, f : Double) -> ImagefeaturesiftSlice {
-  let result = image_feature_sift_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_slice_add(a : ImagefeaturesiftSlice, b : ImagefeaturesiftSlice) -> ImagefeaturesiftSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_feature_sift_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_feature_sift_slice_copy(s : ImagefeaturesiftSlice) -> ImagefeaturesiftSlice {
-  let result = image_feature_sift_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_slice_fill(s : ImagefeaturesiftSlice, v : Double) -> ImagefeaturesiftSlice {
-  let result = image_feature_sift_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_sift_slice_min(s : ImagefeaturesiftSlice) -> Double { @_common.min(s.data) }

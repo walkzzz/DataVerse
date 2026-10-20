@@ -383,28 +383,20 @@ pub fn math_matrix_decomp_frame_sum(s : MathmatrixdecompFrame) -> Double { @_com
 pub fn math_matrix_decomp_frame_mean(s : MathmatrixdecompFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_frame_scale(s : MathmatrixdecompFrame, f : Double) -> MathmatrixdecompFrame {
-  let result = math_matrix_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_frame_add(a : MathmatrixdecompFrame, b : MathmatrixdecompFrame) -> MathmatrixdecompFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_frame_copy(s : MathmatrixdecompFrame) -> MathmatrixdecompFrame {
-  let result = math_matrix_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_frame_fill(s : MathmatrixdecompFrame, v : Double) -> MathmatrixdecompFrame {
-  let result = math_matrix_decomp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_frame_min(s : MathmatrixdecompFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_matrix_decomp_table_sum(s : MathmatrixdecompTable) -> Double { @_com
 pub fn math_matrix_decomp_table_mean(s : MathmatrixdecompTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_table_scale(s : MathmatrixdecompTable, f : Double) -> MathmatrixdecompTable {
-  let result = math_matrix_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_table_add(a : MathmatrixdecompTable, b : MathmatrixdecompTable) -> MathmatrixdecompTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_table_copy(s : MathmatrixdecompTable) -> MathmatrixdecompTable {
-  let result = math_matrix_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_table_fill(s : MathmatrixdecompTable, v : Double) -> MathmatrixdecompTable {
-  let result = math_matrix_decomp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_table_min(s : MathmatrixdecompTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_matrix_decomp_graphn_sum(s : MathmatrixdecompGraphN) -> Double { @_c
 pub fn math_matrix_decomp_graphn_mean(s : MathmatrixdecompGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_graphn_scale(s : MathmatrixdecompGraphN, f : Double) -> MathmatrixdecompGraphN {
-  let result = math_matrix_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_graphn_add(a : MathmatrixdecompGraphN, b : MathmatrixdecompGraphN) -> MathmatrixdecompGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_graphn_copy(s : MathmatrixdecompGraphN) -> MathmatrixdecompGraphN {
-  let result = math_matrix_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_graphn_fill(s : MathmatrixdecompGraphN, v : Double) -> MathmatrixdecompGraphN {
-  let result = math_matrix_decomp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_graphn_min(s : MathmatrixdecompGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_matrix_decomp_node_sum(s : MathmatrixdecompNode) -> Double { @_commo
 pub fn math_matrix_decomp_node_mean(s : MathmatrixdecompNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_node_scale(s : MathmatrixdecompNode, f : Double) -> MathmatrixdecompNode {
-  let result = math_matrix_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_node_add(a : MathmatrixdecompNode, b : MathmatrixdecompNode) -> MathmatrixdecompNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_node_copy(s : MathmatrixdecompNode) -> MathmatrixdecompNode {
-  let result = math_matrix_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_node_fill(s : MathmatrixdecompNode, v : Double) -> MathmatrixdecompNode {
-  let result = math_matrix_decomp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_node_min(s : MathmatrixdecompNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_matrix_decomp_edge_sum(s : MathmatrixdecompEdge) -> Double { @_commo
 pub fn math_matrix_decomp_edge_mean(s : MathmatrixdecompEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_edge_scale(s : MathmatrixdecompEdge, f : Double) -> MathmatrixdecompEdge {
-  let result = math_matrix_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_edge_add(a : MathmatrixdecompEdge, b : MathmatrixdecompEdge) -> MathmatrixdecompEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_edge_copy(s : MathmatrixdecompEdge) -> MathmatrixdecompEdge {
-  let result = math_matrix_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_edge_fill(s : MathmatrixdecompEdge, v : Double) -> MathmatrixdecompEdge {
-  let result = math_matrix_decomp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_edge_min(s : MathmatrixdecompEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_matrix_decomp_path_sum(s : MathmatrixdecompPath) -> Double { @_commo
 pub fn math_matrix_decomp_path_mean(s : MathmatrixdecompPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_path_scale(s : MathmatrixdecompPath, f : Double) -> MathmatrixdecompPath {
-  let result = math_matrix_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_path_add(a : MathmatrixdecompPath, b : MathmatrixdecompPath) -> MathmatrixdecompPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_path_copy(s : MathmatrixdecompPath) -> MathmatrixdecompPath {
-  let result = math_matrix_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_path_fill(s : MathmatrixdecompPath, v : Double) -> MathmatrixdecompPath {
-  let result = math_matrix_decomp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_path_min(s : MathmatrixdecompPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_matrix_decomp_cluster_sum(s : MathmatrixdecompCluster) -> Double { @
 pub fn math_matrix_decomp_cluster_mean(s : MathmatrixdecompCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_cluster_scale(s : MathmatrixdecompCluster, f : Double) -> MathmatrixdecompCluster {
-  let result = math_matrix_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_cluster_add(a : MathmatrixdecompCluster, b : MathmatrixdecompCluster) -> MathmatrixdecompCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_cluster_copy(s : MathmatrixdecompCluster) -> MathmatrixdecompCluster {
-  let result = math_matrix_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_cluster_fill(s : MathmatrixdecompCluster, v : Double) -> MathmatrixdecompCluster {
-  let result = math_matrix_decomp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_cluster_min(s : MathmatrixdecompCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_matrix_decomp_model_sum(s : MathmatrixdecompModel) -> Double { @_com
 pub fn math_matrix_decomp_model_mean(s : MathmatrixdecompModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_model_scale(s : MathmatrixdecompModel, f : Double) -> MathmatrixdecompModel {
-  let result = math_matrix_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_model_add(a : MathmatrixdecompModel, b : MathmatrixdecompModel) -> MathmatrixdecompModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_model_copy(s : MathmatrixdecompModel) -> MathmatrixdecompModel {
-  let result = math_matrix_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_model_fill(s : MathmatrixdecompModel, v : Double) -> MathmatrixdecompModel {
-  let result = math_matrix_decomp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_model_min(s : MathmatrixdecompModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_matrix_decomp_layer_sum(s : MathmatrixdecompLayer) -> Double { @_com
 pub fn math_matrix_decomp_layer_mean(s : MathmatrixdecompLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_layer_scale(s : MathmatrixdecompLayer, f : Double) -> MathmatrixdecompLayer {
-  let result = math_matrix_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_layer_add(a : MathmatrixdecompLayer, b : MathmatrixdecompLayer) -> MathmatrixdecompLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_layer_copy(s : MathmatrixdecompLayer) -> MathmatrixdecompLayer {
-  let result = math_matrix_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_layer_fill(s : MathmatrixdecompLayer, v : Double) -> MathmatrixdecompLayer {
-  let result = math_matrix_decomp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_layer_min(s : MathmatrixdecompLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_matrix_decomp_buffer_sum(s : MathmatrixdecompBuffer) -> Double { @_c
 pub fn math_matrix_decomp_buffer_mean(s : MathmatrixdecompBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_buffer_scale(s : MathmatrixdecompBuffer, f : Double) -> MathmatrixdecompBuffer {
-  let result = math_matrix_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_buffer_add(a : MathmatrixdecompBuffer, b : MathmatrixdecompBuffer) -> MathmatrixdecompBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_buffer_copy(s : MathmatrixdecompBuffer) -> MathmatrixdecompBuffer {
-  let result = math_matrix_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_buffer_fill(s : MathmatrixdecompBuffer, v : Double) -> MathmatrixdecompBuffer {
-  let result = math_matrix_decomp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_buffer_min(s : MathmatrixdecompBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_matrix_decomp_cursor_sum(s : MathmatrixdecompCursor) -> Double { @_c
 pub fn math_matrix_decomp_cursor_mean(s : MathmatrixdecompCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_cursor_scale(s : MathmatrixdecompCursor, f : Double) -> MathmatrixdecompCursor {
-  let result = math_matrix_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_cursor_add(a : MathmatrixdecompCursor, b : MathmatrixdecompCursor) -> MathmatrixdecompCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_cursor_copy(s : MathmatrixdecompCursor) -> MathmatrixdecompCursor {
-  let result = math_matrix_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_cursor_fill(s : MathmatrixdecompCursor, v : Double) -> MathmatrixdecompCursor {
-  let result = math_matrix_decomp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_cursor_min(s : MathmatrixdecompCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_matrix_decomp_view_sum(s : MathmatrixdecompView) -> Double { @_commo
 pub fn math_matrix_decomp_view_mean(s : MathmatrixdecompView) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_view_scale(s : MathmatrixdecompView, f : Double) -> MathmatrixdecompView {
-  let result = math_matrix_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_view_add(a : MathmatrixdecompView, b : MathmatrixdecompView) -> MathmatrixdecompView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_view_copy(s : MathmatrixdecompView) -> MathmatrixdecompView {
-  let result = math_matrix_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_view_fill(s : MathmatrixdecompView, v : Double) -> MathmatrixdecompView {
-  let result = math_matrix_decomp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_view_min(s : MathmatrixdecompView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_matrix_decomp_range_sum(s : MathmatrixdecompRange) -> Double { @_com
 pub fn math_matrix_decomp_range_mean(s : MathmatrixdecompRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_range_scale(s : MathmatrixdecompRange, f : Double) -> MathmatrixdecompRange {
-  let result = math_matrix_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_range_add(a : MathmatrixdecompRange, b : MathmatrixdecompRange) -> MathmatrixdecompRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_range_copy(s : MathmatrixdecompRange) -> MathmatrixdecompRange {
-  let result = math_matrix_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_range_fill(s : MathmatrixdecompRange, v : Double) -> MathmatrixdecompRange {
-  let result = math_matrix_decomp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_range_min(s : MathmatrixdecompRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_matrix_decomp_slice_sum(s : MathmatrixdecompSlice) -> Double { @_com
 pub fn math_matrix_decomp_slice_mean(s : MathmatrixdecompSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_slice_scale(s : MathmatrixdecompSlice, f : Double) -> MathmatrixdecompSlice {
-  let result = math_matrix_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_slice_add(a : MathmatrixdecompSlice, b : MathmatrixdecompSlice) -> MathmatrixdecompSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_matrix_decomp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_matrix_decomp_slice_copy(s : MathmatrixdecompSlice) -> MathmatrixdecompSlice {
-  let result = math_matrix_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_slice_fill(s : MathmatrixdecompSlice, v : Double) -> MathmatrixdecompSlice {
-  let result = math_matrix_decomp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_matrix_decomp_slice_min(s : MathmatrixdecompSlice) -> Double { @_common.min(s.data) }

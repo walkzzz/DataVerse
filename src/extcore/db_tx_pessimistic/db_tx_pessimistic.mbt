@@ -383,28 +383,20 @@ pub fn db_tx_pessimistic_frame_sum(s : DbtxpessimisticFrame) -> Double { @_commo
 pub fn db_tx_pessimistic_frame_mean(s : DbtxpessimisticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_frame_scale(s : DbtxpessimisticFrame, f : Double) -> DbtxpessimisticFrame {
-  let result = db_tx_pessimistic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_frame_add(a : DbtxpessimisticFrame, b : DbtxpessimisticFrame) -> DbtxpessimisticFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_frame_copy(s : DbtxpessimisticFrame) -> DbtxpessimisticFrame {
-  let result = db_tx_pessimistic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_frame_fill(s : DbtxpessimisticFrame, v : Double) -> DbtxpessimisticFrame {
-  let result = db_tx_pessimistic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_frame_min(s : DbtxpessimisticFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_tx_pessimistic_table_sum(s : DbtxpessimisticTable) -> Double { @_commo
 pub fn db_tx_pessimistic_table_mean(s : DbtxpessimisticTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_table_scale(s : DbtxpessimisticTable, f : Double) -> DbtxpessimisticTable {
-  let result = db_tx_pessimistic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_table_add(a : DbtxpessimisticTable, b : DbtxpessimisticTable) -> DbtxpessimisticTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_table_copy(s : DbtxpessimisticTable) -> DbtxpessimisticTable {
-  let result = db_tx_pessimistic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_table_fill(s : DbtxpessimisticTable, v : Double) -> DbtxpessimisticTable {
-  let result = db_tx_pessimistic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_table_min(s : DbtxpessimisticTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_tx_pessimistic_graphn_sum(s : DbtxpessimisticGraphN) -> Double { @_com
 pub fn db_tx_pessimistic_graphn_mean(s : DbtxpessimisticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_graphn_scale(s : DbtxpessimisticGraphN, f : Double) -> DbtxpessimisticGraphN {
-  let result = db_tx_pessimistic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_graphn_add(a : DbtxpessimisticGraphN, b : DbtxpessimisticGraphN) -> DbtxpessimisticGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_graphn_copy(s : DbtxpessimisticGraphN) -> DbtxpessimisticGraphN {
-  let result = db_tx_pessimistic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_graphn_fill(s : DbtxpessimisticGraphN, v : Double) -> DbtxpessimisticGraphN {
-  let result = db_tx_pessimistic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_graphn_min(s : DbtxpessimisticGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_tx_pessimistic_node_sum(s : DbtxpessimisticNode) -> Double { @_common.
 pub fn db_tx_pessimistic_node_mean(s : DbtxpessimisticNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_node_scale(s : DbtxpessimisticNode, f : Double) -> DbtxpessimisticNode {
-  let result = db_tx_pessimistic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_node_add(a : DbtxpessimisticNode, b : DbtxpessimisticNode) -> DbtxpessimisticNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_node_copy(s : DbtxpessimisticNode) -> DbtxpessimisticNode {
-  let result = db_tx_pessimistic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_node_fill(s : DbtxpessimisticNode, v : Double) -> DbtxpessimisticNode {
-  let result = db_tx_pessimistic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_node_min(s : DbtxpessimisticNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_tx_pessimistic_edge_sum(s : DbtxpessimisticEdge) -> Double { @_common.
 pub fn db_tx_pessimistic_edge_mean(s : DbtxpessimisticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_edge_scale(s : DbtxpessimisticEdge, f : Double) -> DbtxpessimisticEdge {
-  let result = db_tx_pessimistic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_edge_add(a : DbtxpessimisticEdge, b : DbtxpessimisticEdge) -> DbtxpessimisticEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_edge_copy(s : DbtxpessimisticEdge) -> DbtxpessimisticEdge {
-  let result = db_tx_pessimistic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_edge_fill(s : DbtxpessimisticEdge, v : Double) -> DbtxpessimisticEdge {
-  let result = db_tx_pessimistic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_edge_min(s : DbtxpessimisticEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_tx_pessimistic_path_sum(s : DbtxpessimisticPath) -> Double { @_common.
 pub fn db_tx_pessimistic_path_mean(s : DbtxpessimisticPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_path_scale(s : DbtxpessimisticPath, f : Double) -> DbtxpessimisticPath {
-  let result = db_tx_pessimistic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_path_add(a : DbtxpessimisticPath, b : DbtxpessimisticPath) -> DbtxpessimisticPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_path_copy(s : DbtxpessimisticPath) -> DbtxpessimisticPath {
-  let result = db_tx_pessimistic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_path_fill(s : DbtxpessimisticPath, v : Double) -> DbtxpessimisticPath {
-  let result = db_tx_pessimistic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_path_min(s : DbtxpessimisticPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_tx_pessimistic_cluster_sum(s : DbtxpessimisticCluster) -> Double { @_c
 pub fn db_tx_pessimistic_cluster_mean(s : DbtxpessimisticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_cluster_scale(s : DbtxpessimisticCluster, f : Double) -> DbtxpessimisticCluster {
-  let result = db_tx_pessimistic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_cluster_add(a : DbtxpessimisticCluster, b : DbtxpessimisticCluster) -> DbtxpessimisticCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_cluster_copy(s : DbtxpessimisticCluster) -> DbtxpessimisticCluster {
-  let result = db_tx_pessimistic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_cluster_fill(s : DbtxpessimisticCluster, v : Double) -> DbtxpessimisticCluster {
-  let result = db_tx_pessimistic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_cluster_min(s : DbtxpessimisticCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_tx_pessimistic_model_sum(s : DbtxpessimisticModel) -> Double { @_commo
 pub fn db_tx_pessimistic_model_mean(s : DbtxpessimisticModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_model_scale(s : DbtxpessimisticModel, f : Double) -> DbtxpessimisticModel {
-  let result = db_tx_pessimistic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_model_add(a : DbtxpessimisticModel, b : DbtxpessimisticModel) -> DbtxpessimisticModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_model_copy(s : DbtxpessimisticModel) -> DbtxpessimisticModel {
-  let result = db_tx_pessimistic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_model_fill(s : DbtxpessimisticModel, v : Double) -> DbtxpessimisticModel {
-  let result = db_tx_pessimistic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_model_min(s : DbtxpessimisticModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_tx_pessimistic_layer_sum(s : DbtxpessimisticLayer) -> Double { @_commo
 pub fn db_tx_pessimistic_layer_mean(s : DbtxpessimisticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_layer_scale(s : DbtxpessimisticLayer, f : Double) -> DbtxpessimisticLayer {
-  let result = db_tx_pessimistic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_layer_add(a : DbtxpessimisticLayer, b : DbtxpessimisticLayer) -> DbtxpessimisticLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_layer_copy(s : DbtxpessimisticLayer) -> DbtxpessimisticLayer {
-  let result = db_tx_pessimistic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_layer_fill(s : DbtxpessimisticLayer, v : Double) -> DbtxpessimisticLayer {
-  let result = db_tx_pessimistic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_layer_min(s : DbtxpessimisticLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_tx_pessimistic_buffer_sum(s : DbtxpessimisticBuffer) -> Double { @_com
 pub fn db_tx_pessimistic_buffer_mean(s : DbtxpessimisticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_buffer_scale(s : DbtxpessimisticBuffer, f : Double) -> DbtxpessimisticBuffer {
-  let result = db_tx_pessimistic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_buffer_add(a : DbtxpessimisticBuffer, b : DbtxpessimisticBuffer) -> DbtxpessimisticBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_buffer_copy(s : DbtxpessimisticBuffer) -> DbtxpessimisticBuffer {
-  let result = db_tx_pessimistic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_buffer_fill(s : DbtxpessimisticBuffer, v : Double) -> DbtxpessimisticBuffer {
-  let result = db_tx_pessimistic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_buffer_min(s : DbtxpessimisticBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_tx_pessimistic_cursor_sum(s : DbtxpessimisticCursor) -> Double { @_com
 pub fn db_tx_pessimistic_cursor_mean(s : DbtxpessimisticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_cursor_scale(s : DbtxpessimisticCursor, f : Double) -> DbtxpessimisticCursor {
-  let result = db_tx_pessimistic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_cursor_add(a : DbtxpessimisticCursor, b : DbtxpessimisticCursor) -> DbtxpessimisticCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_cursor_copy(s : DbtxpessimisticCursor) -> DbtxpessimisticCursor {
-  let result = db_tx_pessimistic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_cursor_fill(s : DbtxpessimisticCursor, v : Double) -> DbtxpessimisticCursor {
-  let result = db_tx_pessimistic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_cursor_min(s : DbtxpessimisticCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_tx_pessimistic_view_sum(s : DbtxpessimisticView) -> Double { @_common.
 pub fn db_tx_pessimistic_view_mean(s : DbtxpessimisticView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_view_scale(s : DbtxpessimisticView, f : Double) -> DbtxpessimisticView {
-  let result = db_tx_pessimistic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_view_add(a : DbtxpessimisticView, b : DbtxpessimisticView) -> DbtxpessimisticView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_view_copy(s : DbtxpessimisticView) -> DbtxpessimisticView {
-  let result = db_tx_pessimistic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_view_fill(s : DbtxpessimisticView, v : Double) -> DbtxpessimisticView {
-  let result = db_tx_pessimistic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_view_min(s : DbtxpessimisticView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_tx_pessimistic_range_sum(s : DbtxpessimisticRange) -> Double { @_commo
 pub fn db_tx_pessimistic_range_mean(s : DbtxpessimisticRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_range_scale(s : DbtxpessimisticRange, f : Double) -> DbtxpessimisticRange {
-  let result = db_tx_pessimistic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_range_add(a : DbtxpessimisticRange, b : DbtxpessimisticRange) -> DbtxpessimisticRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_range_copy(s : DbtxpessimisticRange) -> DbtxpessimisticRange {
-  let result = db_tx_pessimistic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_range_fill(s : DbtxpessimisticRange, v : Double) -> DbtxpessimisticRange {
-  let result = db_tx_pessimistic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_range_min(s : DbtxpessimisticRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_tx_pessimistic_slice_sum(s : DbtxpessimisticSlice) -> Double { @_commo
 pub fn db_tx_pessimistic_slice_mean(s : DbtxpessimisticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_slice_scale(s : DbtxpessimisticSlice, f : Double) -> DbtxpessimisticSlice {
-  let result = db_tx_pessimistic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_slice_add(a : DbtxpessimisticSlice, b : DbtxpessimisticSlice) -> DbtxpessimisticSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_pessimistic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_pessimistic_slice_copy(s : DbtxpessimisticSlice) -> DbtxpessimisticSlice {
-  let result = db_tx_pessimistic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_slice_fill(s : DbtxpessimisticSlice, v : Double) -> DbtxpessimisticSlice {
-  let result = db_tx_pessimistic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_pessimistic_slice_min(s : DbtxpessimisticSlice) -> Double { @_common.min(s.data) }

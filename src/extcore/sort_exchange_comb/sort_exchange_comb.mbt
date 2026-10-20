@@ -383,28 +383,20 @@ pub fn sort_exchange_comb_frame_sum(s : SortexchangecombFrame) -> Double { @_com
 pub fn sort_exchange_comb_frame_mean(s : SortexchangecombFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_frame_scale(s : SortexchangecombFrame, f : Double) -> SortexchangecombFrame {
-  let result = sort_exchange_comb_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_frame_add(a : SortexchangecombFrame, b : SortexchangecombFrame) -> SortexchangecombFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_frame_copy(s : SortexchangecombFrame) -> SortexchangecombFrame {
-  let result = sort_exchange_comb_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_frame_fill(s : SortexchangecombFrame, v : Double) -> SortexchangecombFrame {
-  let result = sort_exchange_comb_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_frame_min(s : SortexchangecombFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn sort_exchange_comb_table_sum(s : SortexchangecombTable) -> Double { @_com
 pub fn sort_exchange_comb_table_mean(s : SortexchangecombTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_table_scale(s : SortexchangecombTable, f : Double) -> SortexchangecombTable {
-  let result = sort_exchange_comb_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_table_add(a : SortexchangecombTable, b : SortexchangecombTable) -> SortexchangecombTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_table_copy(s : SortexchangecombTable) -> SortexchangecombTable {
-  let result = sort_exchange_comb_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_table_fill(s : SortexchangecombTable, v : Double) -> SortexchangecombTable {
-  let result = sort_exchange_comb_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_table_min(s : SortexchangecombTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn sort_exchange_comb_graphn_sum(s : SortexchangecombGraphN) -> Double { @_c
 pub fn sort_exchange_comb_graphn_mean(s : SortexchangecombGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_graphn_scale(s : SortexchangecombGraphN, f : Double) -> SortexchangecombGraphN {
-  let result = sort_exchange_comb_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_graphn_add(a : SortexchangecombGraphN, b : SortexchangecombGraphN) -> SortexchangecombGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_graphn_copy(s : SortexchangecombGraphN) -> SortexchangecombGraphN {
-  let result = sort_exchange_comb_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_graphn_fill(s : SortexchangecombGraphN, v : Double) -> SortexchangecombGraphN {
-  let result = sort_exchange_comb_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_graphn_min(s : SortexchangecombGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn sort_exchange_comb_node_sum(s : SortexchangecombNode) -> Double { @_commo
 pub fn sort_exchange_comb_node_mean(s : SortexchangecombNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_node_scale(s : SortexchangecombNode, f : Double) -> SortexchangecombNode {
-  let result = sort_exchange_comb_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_node_add(a : SortexchangecombNode, b : SortexchangecombNode) -> SortexchangecombNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_node_copy(s : SortexchangecombNode) -> SortexchangecombNode {
-  let result = sort_exchange_comb_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_node_fill(s : SortexchangecombNode, v : Double) -> SortexchangecombNode {
-  let result = sort_exchange_comb_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_node_min(s : SortexchangecombNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn sort_exchange_comb_edge_sum(s : SortexchangecombEdge) -> Double { @_commo
 pub fn sort_exchange_comb_edge_mean(s : SortexchangecombEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_edge_scale(s : SortexchangecombEdge, f : Double) -> SortexchangecombEdge {
-  let result = sort_exchange_comb_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_edge_add(a : SortexchangecombEdge, b : SortexchangecombEdge) -> SortexchangecombEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_edge_copy(s : SortexchangecombEdge) -> SortexchangecombEdge {
-  let result = sort_exchange_comb_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_edge_fill(s : SortexchangecombEdge, v : Double) -> SortexchangecombEdge {
-  let result = sort_exchange_comb_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_edge_min(s : SortexchangecombEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn sort_exchange_comb_path_sum(s : SortexchangecombPath) -> Double { @_commo
 pub fn sort_exchange_comb_path_mean(s : SortexchangecombPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_path_scale(s : SortexchangecombPath, f : Double) -> SortexchangecombPath {
-  let result = sort_exchange_comb_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_path_add(a : SortexchangecombPath, b : SortexchangecombPath) -> SortexchangecombPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_path_copy(s : SortexchangecombPath) -> SortexchangecombPath {
-  let result = sort_exchange_comb_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_path_fill(s : SortexchangecombPath, v : Double) -> SortexchangecombPath {
-  let result = sort_exchange_comb_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_path_min(s : SortexchangecombPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn sort_exchange_comb_cluster_sum(s : SortexchangecombCluster) -> Double { @
 pub fn sort_exchange_comb_cluster_mean(s : SortexchangecombCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_cluster_scale(s : SortexchangecombCluster, f : Double) -> SortexchangecombCluster {
-  let result = sort_exchange_comb_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_cluster_add(a : SortexchangecombCluster, b : SortexchangecombCluster) -> SortexchangecombCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_cluster_copy(s : SortexchangecombCluster) -> SortexchangecombCluster {
-  let result = sort_exchange_comb_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_cluster_fill(s : SortexchangecombCluster, v : Double) -> SortexchangecombCluster {
-  let result = sort_exchange_comb_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_cluster_min(s : SortexchangecombCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn sort_exchange_comb_model_sum(s : SortexchangecombModel) -> Double { @_com
 pub fn sort_exchange_comb_model_mean(s : SortexchangecombModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_model_scale(s : SortexchangecombModel, f : Double) -> SortexchangecombModel {
-  let result = sort_exchange_comb_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_model_add(a : SortexchangecombModel, b : SortexchangecombModel) -> SortexchangecombModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_model_copy(s : SortexchangecombModel) -> SortexchangecombModel {
-  let result = sort_exchange_comb_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_model_fill(s : SortexchangecombModel, v : Double) -> SortexchangecombModel {
-  let result = sort_exchange_comb_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_model_min(s : SortexchangecombModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn sort_exchange_comb_layer_sum(s : SortexchangecombLayer) -> Double { @_com
 pub fn sort_exchange_comb_layer_mean(s : SortexchangecombLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_layer_scale(s : SortexchangecombLayer, f : Double) -> SortexchangecombLayer {
-  let result = sort_exchange_comb_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_layer_add(a : SortexchangecombLayer, b : SortexchangecombLayer) -> SortexchangecombLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_layer_copy(s : SortexchangecombLayer) -> SortexchangecombLayer {
-  let result = sort_exchange_comb_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_layer_fill(s : SortexchangecombLayer, v : Double) -> SortexchangecombLayer {
-  let result = sort_exchange_comb_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_layer_min(s : SortexchangecombLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn sort_exchange_comb_buffer_sum(s : SortexchangecombBuffer) -> Double { @_c
 pub fn sort_exchange_comb_buffer_mean(s : SortexchangecombBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_buffer_scale(s : SortexchangecombBuffer, f : Double) -> SortexchangecombBuffer {
-  let result = sort_exchange_comb_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_buffer_add(a : SortexchangecombBuffer, b : SortexchangecombBuffer) -> SortexchangecombBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_buffer_copy(s : SortexchangecombBuffer) -> SortexchangecombBuffer {
-  let result = sort_exchange_comb_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_buffer_fill(s : SortexchangecombBuffer, v : Double) -> SortexchangecombBuffer {
-  let result = sort_exchange_comb_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_buffer_min(s : SortexchangecombBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn sort_exchange_comb_cursor_sum(s : SortexchangecombCursor) -> Double { @_c
 pub fn sort_exchange_comb_cursor_mean(s : SortexchangecombCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_cursor_scale(s : SortexchangecombCursor, f : Double) -> SortexchangecombCursor {
-  let result = sort_exchange_comb_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_cursor_add(a : SortexchangecombCursor, b : SortexchangecombCursor) -> SortexchangecombCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_cursor_copy(s : SortexchangecombCursor) -> SortexchangecombCursor {
-  let result = sort_exchange_comb_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_cursor_fill(s : SortexchangecombCursor, v : Double) -> SortexchangecombCursor {
-  let result = sort_exchange_comb_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_cursor_min(s : SortexchangecombCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn sort_exchange_comb_view_sum(s : SortexchangecombView) -> Double { @_commo
 pub fn sort_exchange_comb_view_mean(s : SortexchangecombView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_view_scale(s : SortexchangecombView, f : Double) -> SortexchangecombView {
-  let result = sort_exchange_comb_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_view_add(a : SortexchangecombView, b : SortexchangecombView) -> SortexchangecombView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_view_copy(s : SortexchangecombView) -> SortexchangecombView {
-  let result = sort_exchange_comb_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_view_fill(s : SortexchangecombView, v : Double) -> SortexchangecombView {
-  let result = sort_exchange_comb_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_view_min(s : SortexchangecombView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn sort_exchange_comb_range_sum(s : SortexchangecombRange) -> Double { @_com
 pub fn sort_exchange_comb_range_mean(s : SortexchangecombRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_range_scale(s : SortexchangecombRange, f : Double) -> SortexchangecombRange {
-  let result = sort_exchange_comb_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_range_add(a : SortexchangecombRange, b : SortexchangecombRange) -> SortexchangecombRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_range_copy(s : SortexchangecombRange) -> SortexchangecombRange {
-  let result = sort_exchange_comb_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_range_fill(s : SortexchangecombRange, v : Double) -> SortexchangecombRange {
-  let result = sort_exchange_comb_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_range_min(s : SortexchangecombRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn sort_exchange_comb_slice_sum(s : SortexchangecombSlice) -> Double { @_com
 pub fn sort_exchange_comb_slice_mean(s : SortexchangecombSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_comb_slice_scale(s : SortexchangecombSlice, f : Double) -> SortexchangecombSlice {
-  let result = sort_exchange_comb_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_slice_add(a : SortexchangecombSlice, b : SortexchangecombSlice) -> SortexchangecombSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = sort_exchange_comb_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn sort_exchange_comb_slice_copy(s : SortexchangecombSlice) -> SortexchangecombSlice {
-  let result = sort_exchange_comb_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_slice_fill(s : SortexchangecombSlice, v : Double) -> SortexchangecombSlice {
-  let result = sort_exchange_comb_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_comb_slice_min(s : SortexchangecombSlice) -> Double { @_common.min(s.data) }

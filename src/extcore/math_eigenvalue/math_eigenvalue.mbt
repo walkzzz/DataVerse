@@ -383,28 +383,20 @@ pub fn math_eigenvalue_frame_sum(s : MatheigenvalueFrame) -> Double { @_common.s
 pub fn math_eigenvalue_frame_mean(s : MatheigenvalueFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_frame_scale(s : MatheigenvalueFrame, f : Double) -> MatheigenvalueFrame {
-  let result = math_eigenvalue_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_frame_add(a : MatheigenvalueFrame, b : MatheigenvalueFrame) -> MatheigenvalueFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_frame_copy(s : MatheigenvalueFrame) -> MatheigenvalueFrame {
-  let result = math_eigenvalue_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_frame_fill(s : MatheigenvalueFrame, v : Double) -> MatheigenvalueFrame {
-  let result = math_eigenvalue_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_frame_min(s : MatheigenvalueFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_eigenvalue_table_sum(s : MatheigenvalueTable) -> Double { @_common.s
 pub fn math_eigenvalue_table_mean(s : MatheigenvalueTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_table_scale(s : MatheigenvalueTable, f : Double) -> MatheigenvalueTable {
-  let result = math_eigenvalue_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_table_add(a : MatheigenvalueTable, b : MatheigenvalueTable) -> MatheigenvalueTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_table_copy(s : MatheigenvalueTable) -> MatheigenvalueTable {
-  let result = math_eigenvalue_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_table_fill(s : MatheigenvalueTable, v : Double) -> MatheigenvalueTable {
-  let result = math_eigenvalue_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_table_min(s : MatheigenvalueTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_eigenvalue_graphn_sum(s : MatheigenvalueGraphN) -> Double { @_common
 pub fn math_eigenvalue_graphn_mean(s : MatheigenvalueGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_graphn_scale(s : MatheigenvalueGraphN, f : Double) -> MatheigenvalueGraphN {
-  let result = math_eigenvalue_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_graphn_add(a : MatheigenvalueGraphN, b : MatheigenvalueGraphN) -> MatheigenvalueGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_graphn_copy(s : MatheigenvalueGraphN) -> MatheigenvalueGraphN {
-  let result = math_eigenvalue_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_graphn_fill(s : MatheigenvalueGraphN, v : Double) -> MatheigenvalueGraphN {
-  let result = math_eigenvalue_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_graphn_min(s : MatheigenvalueGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_eigenvalue_node_sum(s : MatheigenvalueNode) -> Double { @_common.sum
 pub fn math_eigenvalue_node_mean(s : MatheigenvalueNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_node_scale(s : MatheigenvalueNode, f : Double) -> MatheigenvalueNode {
-  let result = math_eigenvalue_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_node_add(a : MatheigenvalueNode, b : MatheigenvalueNode) -> MatheigenvalueNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_node_copy(s : MatheigenvalueNode) -> MatheigenvalueNode {
-  let result = math_eigenvalue_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_node_fill(s : MatheigenvalueNode, v : Double) -> MatheigenvalueNode {
-  let result = math_eigenvalue_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_node_min(s : MatheigenvalueNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_eigenvalue_edge_sum(s : MatheigenvalueEdge) -> Double { @_common.sum
 pub fn math_eigenvalue_edge_mean(s : MatheigenvalueEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_edge_scale(s : MatheigenvalueEdge, f : Double) -> MatheigenvalueEdge {
-  let result = math_eigenvalue_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_edge_add(a : MatheigenvalueEdge, b : MatheigenvalueEdge) -> MatheigenvalueEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_edge_copy(s : MatheigenvalueEdge) -> MatheigenvalueEdge {
-  let result = math_eigenvalue_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_edge_fill(s : MatheigenvalueEdge, v : Double) -> MatheigenvalueEdge {
-  let result = math_eigenvalue_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_edge_min(s : MatheigenvalueEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_eigenvalue_path_sum(s : MatheigenvaluePath) -> Double { @_common.sum
 pub fn math_eigenvalue_path_mean(s : MatheigenvaluePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_path_scale(s : MatheigenvaluePath, f : Double) -> MatheigenvaluePath {
-  let result = math_eigenvalue_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_path_add(a : MatheigenvaluePath, b : MatheigenvaluePath) -> MatheigenvaluePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_path_copy(s : MatheigenvaluePath) -> MatheigenvaluePath {
-  let result = math_eigenvalue_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_path_fill(s : MatheigenvaluePath, v : Double) -> MatheigenvaluePath {
-  let result = math_eigenvalue_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_path_min(s : MatheigenvaluePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_eigenvalue_cluster_sum(s : MatheigenvalueCluster) -> Double { @_comm
 pub fn math_eigenvalue_cluster_mean(s : MatheigenvalueCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_cluster_scale(s : MatheigenvalueCluster, f : Double) -> MatheigenvalueCluster {
-  let result = math_eigenvalue_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_cluster_add(a : MatheigenvalueCluster, b : MatheigenvalueCluster) -> MatheigenvalueCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_cluster_copy(s : MatheigenvalueCluster) -> MatheigenvalueCluster {
-  let result = math_eigenvalue_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_cluster_fill(s : MatheigenvalueCluster, v : Double) -> MatheigenvalueCluster {
-  let result = math_eigenvalue_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_cluster_min(s : MatheigenvalueCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_eigenvalue_model_sum(s : MatheigenvalueModel) -> Double { @_common.s
 pub fn math_eigenvalue_model_mean(s : MatheigenvalueModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_model_scale(s : MatheigenvalueModel, f : Double) -> MatheigenvalueModel {
-  let result = math_eigenvalue_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_model_add(a : MatheigenvalueModel, b : MatheigenvalueModel) -> MatheigenvalueModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_model_copy(s : MatheigenvalueModel) -> MatheigenvalueModel {
-  let result = math_eigenvalue_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_model_fill(s : MatheigenvalueModel, v : Double) -> MatheigenvalueModel {
-  let result = math_eigenvalue_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_model_min(s : MatheigenvalueModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_eigenvalue_layer_sum(s : MatheigenvalueLayer) -> Double { @_common.s
 pub fn math_eigenvalue_layer_mean(s : MatheigenvalueLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_layer_scale(s : MatheigenvalueLayer, f : Double) -> MatheigenvalueLayer {
-  let result = math_eigenvalue_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_layer_add(a : MatheigenvalueLayer, b : MatheigenvalueLayer) -> MatheigenvalueLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_layer_copy(s : MatheigenvalueLayer) -> MatheigenvalueLayer {
-  let result = math_eigenvalue_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_layer_fill(s : MatheigenvalueLayer, v : Double) -> MatheigenvalueLayer {
-  let result = math_eigenvalue_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_layer_min(s : MatheigenvalueLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_eigenvalue_buffer_sum(s : MatheigenvalueBuffer) -> Double { @_common
 pub fn math_eigenvalue_buffer_mean(s : MatheigenvalueBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_buffer_scale(s : MatheigenvalueBuffer, f : Double) -> MatheigenvalueBuffer {
-  let result = math_eigenvalue_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_buffer_add(a : MatheigenvalueBuffer, b : MatheigenvalueBuffer) -> MatheigenvalueBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_buffer_copy(s : MatheigenvalueBuffer) -> MatheigenvalueBuffer {
-  let result = math_eigenvalue_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_buffer_fill(s : MatheigenvalueBuffer, v : Double) -> MatheigenvalueBuffer {
-  let result = math_eigenvalue_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_buffer_min(s : MatheigenvalueBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_eigenvalue_cursor_sum(s : MatheigenvalueCursor) -> Double { @_common
 pub fn math_eigenvalue_cursor_mean(s : MatheigenvalueCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_cursor_scale(s : MatheigenvalueCursor, f : Double) -> MatheigenvalueCursor {
-  let result = math_eigenvalue_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_cursor_add(a : MatheigenvalueCursor, b : MatheigenvalueCursor) -> MatheigenvalueCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_cursor_copy(s : MatheigenvalueCursor) -> MatheigenvalueCursor {
-  let result = math_eigenvalue_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_cursor_fill(s : MatheigenvalueCursor, v : Double) -> MatheigenvalueCursor {
-  let result = math_eigenvalue_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_cursor_min(s : MatheigenvalueCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_eigenvalue_view_sum(s : MatheigenvalueView) -> Double { @_common.sum
 pub fn math_eigenvalue_view_mean(s : MatheigenvalueView) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_view_scale(s : MatheigenvalueView, f : Double) -> MatheigenvalueView {
-  let result = math_eigenvalue_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_view_add(a : MatheigenvalueView, b : MatheigenvalueView) -> MatheigenvalueView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_view_copy(s : MatheigenvalueView) -> MatheigenvalueView {
-  let result = math_eigenvalue_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_view_fill(s : MatheigenvalueView, v : Double) -> MatheigenvalueView {
-  let result = math_eigenvalue_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_view_min(s : MatheigenvalueView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_eigenvalue_range_sum(s : MatheigenvalueRange) -> Double { @_common.s
 pub fn math_eigenvalue_range_mean(s : MatheigenvalueRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_range_scale(s : MatheigenvalueRange, f : Double) -> MatheigenvalueRange {
-  let result = math_eigenvalue_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_range_add(a : MatheigenvalueRange, b : MatheigenvalueRange) -> MatheigenvalueRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_range_copy(s : MatheigenvalueRange) -> MatheigenvalueRange {
-  let result = math_eigenvalue_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_range_fill(s : MatheigenvalueRange, v : Double) -> MatheigenvalueRange {
-  let result = math_eigenvalue_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_range_min(s : MatheigenvalueRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_eigenvalue_slice_sum(s : MatheigenvalueSlice) -> Double { @_common.s
 pub fn math_eigenvalue_slice_mean(s : MatheigenvalueSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_slice_scale(s : MatheigenvalueSlice, f : Double) -> MatheigenvalueSlice {
-  let result = math_eigenvalue_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_slice_add(a : MatheigenvalueSlice, b : MatheigenvalueSlice) -> MatheigenvalueSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_eigenvalue_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_eigenvalue_slice_copy(s : MatheigenvalueSlice) -> MatheigenvalueSlice {
-  let result = math_eigenvalue_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_slice_fill(s : MatheigenvalueSlice, v : Double) -> MatheigenvalueSlice {
-  let result = math_eigenvalue_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_eigenvalue_slice_min(s : MatheigenvalueSlice) -> Double { @_common.min(s.data) }

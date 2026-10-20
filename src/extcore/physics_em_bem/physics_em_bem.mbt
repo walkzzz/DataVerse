@@ -383,28 +383,20 @@ pub fn physics_em_bem_frame_sum(s : PhysicsembemFrame) -> Double { @_common.sum(
 pub fn physics_em_bem_frame_mean(s : PhysicsembemFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_frame_scale(s : PhysicsembemFrame, f : Double) -> PhysicsembemFrame {
-  let result = physics_em_bem_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_frame_add(a : PhysicsembemFrame, b : PhysicsembemFrame) -> PhysicsembemFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_frame_copy(s : PhysicsembemFrame) -> PhysicsembemFrame {
-  let result = physics_em_bem_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_frame_fill(s : PhysicsembemFrame, v : Double) -> PhysicsembemFrame {
-  let result = physics_em_bem_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_frame_min(s : PhysicsembemFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_em_bem_table_sum(s : PhysicsembemTable) -> Double { @_common.sum(
 pub fn physics_em_bem_table_mean(s : PhysicsembemTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_table_scale(s : PhysicsembemTable, f : Double) -> PhysicsembemTable {
-  let result = physics_em_bem_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_table_add(a : PhysicsembemTable, b : PhysicsembemTable) -> PhysicsembemTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_table_copy(s : PhysicsembemTable) -> PhysicsembemTable {
-  let result = physics_em_bem_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_table_fill(s : PhysicsembemTable, v : Double) -> PhysicsembemTable {
-  let result = physics_em_bem_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_table_min(s : PhysicsembemTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_em_bem_graphn_sum(s : PhysicsembemGraphN) -> Double { @_common.su
 pub fn physics_em_bem_graphn_mean(s : PhysicsembemGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_graphn_scale(s : PhysicsembemGraphN, f : Double) -> PhysicsembemGraphN {
-  let result = physics_em_bem_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_graphn_add(a : PhysicsembemGraphN, b : PhysicsembemGraphN) -> PhysicsembemGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_graphn_copy(s : PhysicsembemGraphN) -> PhysicsembemGraphN {
-  let result = physics_em_bem_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_graphn_fill(s : PhysicsembemGraphN, v : Double) -> PhysicsembemGraphN {
-  let result = physics_em_bem_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_graphn_min(s : PhysicsembemGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_em_bem_node_sum(s : PhysicsembemNode) -> Double { @_common.sum(s.
 pub fn physics_em_bem_node_mean(s : PhysicsembemNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_node_scale(s : PhysicsembemNode, f : Double) -> PhysicsembemNode {
-  let result = physics_em_bem_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_node_add(a : PhysicsembemNode, b : PhysicsembemNode) -> PhysicsembemNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_node_copy(s : PhysicsembemNode) -> PhysicsembemNode {
-  let result = physics_em_bem_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_node_fill(s : PhysicsembemNode, v : Double) -> PhysicsembemNode {
-  let result = physics_em_bem_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_node_min(s : PhysicsembemNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_em_bem_edge_sum(s : PhysicsembemEdge) -> Double { @_common.sum(s.
 pub fn physics_em_bem_edge_mean(s : PhysicsembemEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_edge_scale(s : PhysicsembemEdge, f : Double) -> PhysicsembemEdge {
-  let result = physics_em_bem_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_edge_add(a : PhysicsembemEdge, b : PhysicsembemEdge) -> PhysicsembemEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_edge_copy(s : PhysicsembemEdge) -> PhysicsembemEdge {
-  let result = physics_em_bem_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_edge_fill(s : PhysicsembemEdge, v : Double) -> PhysicsembemEdge {
-  let result = physics_em_bem_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_edge_min(s : PhysicsembemEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_em_bem_path_sum(s : PhysicsembemPath) -> Double { @_common.sum(s.
 pub fn physics_em_bem_path_mean(s : PhysicsembemPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_path_scale(s : PhysicsembemPath, f : Double) -> PhysicsembemPath {
-  let result = physics_em_bem_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_path_add(a : PhysicsembemPath, b : PhysicsembemPath) -> PhysicsembemPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_path_copy(s : PhysicsembemPath) -> PhysicsembemPath {
-  let result = physics_em_bem_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_path_fill(s : PhysicsembemPath, v : Double) -> PhysicsembemPath {
-  let result = physics_em_bem_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_path_min(s : PhysicsembemPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_em_bem_cluster_sum(s : PhysicsembemCluster) -> Double { @_common.
 pub fn physics_em_bem_cluster_mean(s : PhysicsembemCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_cluster_scale(s : PhysicsembemCluster, f : Double) -> PhysicsembemCluster {
-  let result = physics_em_bem_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cluster_add(a : PhysicsembemCluster, b : PhysicsembemCluster) -> PhysicsembemCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_cluster_copy(s : PhysicsembemCluster) -> PhysicsembemCluster {
-  let result = physics_em_bem_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cluster_fill(s : PhysicsembemCluster, v : Double) -> PhysicsembemCluster {
-  let result = physics_em_bem_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cluster_min(s : PhysicsembemCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_em_bem_model_sum(s : PhysicsembemModel) -> Double { @_common.sum(
 pub fn physics_em_bem_model_mean(s : PhysicsembemModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_model_scale(s : PhysicsembemModel, f : Double) -> PhysicsembemModel {
-  let result = physics_em_bem_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_model_add(a : PhysicsembemModel, b : PhysicsembemModel) -> PhysicsembemModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_model_copy(s : PhysicsembemModel) -> PhysicsembemModel {
-  let result = physics_em_bem_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_model_fill(s : PhysicsembemModel, v : Double) -> PhysicsembemModel {
-  let result = physics_em_bem_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_model_min(s : PhysicsembemModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_em_bem_layer_sum(s : PhysicsembemLayer) -> Double { @_common.sum(
 pub fn physics_em_bem_layer_mean(s : PhysicsembemLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_layer_scale(s : PhysicsembemLayer, f : Double) -> PhysicsembemLayer {
-  let result = physics_em_bem_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_layer_add(a : PhysicsembemLayer, b : PhysicsembemLayer) -> PhysicsembemLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_layer_copy(s : PhysicsembemLayer) -> PhysicsembemLayer {
-  let result = physics_em_bem_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_layer_fill(s : PhysicsembemLayer, v : Double) -> PhysicsembemLayer {
-  let result = physics_em_bem_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_layer_min(s : PhysicsembemLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_em_bem_buffer_sum(s : PhysicsembemBuffer) -> Double { @_common.su
 pub fn physics_em_bem_buffer_mean(s : PhysicsembemBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_buffer_scale(s : PhysicsembemBuffer, f : Double) -> PhysicsembemBuffer {
-  let result = physics_em_bem_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_buffer_add(a : PhysicsembemBuffer, b : PhysicsembemBuffer) -> PhysicsembemBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_buffer_copy(s : PhysicsembemBuffer) -> PhysicsembemBuffer {
-  let result = physics_em_bem_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_buffer_fill(s : PhysicsembemBuffer, v : Double) -> PhysicsembemBuffer {
-  let result = physics_em_bem_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_buffer_min(s : PhysicsembemBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_em_bem_cursor_sum(s : PhysicsembemCursor) -> Double { @_common.su
 pub fn physics_em_bem_cursor_mean(s : PhysicsembemCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_cursor_scale(s : PhysicsembemCursor, f : Double) -> PhysicsembemCursor {
-  let result = physics_em_bem_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cursor_add(a : PhysicsembemCursor, b : PhysicsembemCursor) -> PhysicsembemCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_cursor_copy(s : PhysicsembemCursor) -> PhysicsembemCursor {
-  let result = physics_em_bem_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cursor_fill(s : PhysicsembemCursor, v : Double) -> PhysicsembemCursor {
-  let result = physics_em_bem_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cursor_min(s : PhysicsembemCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_em_bem_view_sum(s : PhysicsembemView) -> Double { @_common.sum(s.
 pub fn physics_em_bem_view_mean(s : PhysicsembemView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_view_scale(s : PhysicsembemView, f : Double) -> PhysicsembemView {
-  let result = physics_em_bem_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_view_add(a : PhysicsembemView, b : PhysicsembemView) -> PhysicsembemView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_view_copy(s : PhysicsembemView) -> PhysicsembemView {
-  let result = physics_em_bem_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_view_fill(s : PhysicsembemView, v : Double) -> PhysicsembemView {
-  let result = physics_em_bem_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_view_min(s : PhysicsembemView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_em_bem_range_sum(s : PhysicsembemRange) -> Double { @_common.sum(
 pub fn physics_em_bem_range_mean(s : PhysicsembemRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_range_scale(s : PhysicsembemRange, f : Double) -> PhysicsembemRange {
-  let result = physics_em_bem_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_range_add(a : PhysicsembemRange, b : PhysicsembemRange) -> PhysicsembemRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_range_copy(s : PhysicsembemRange) -> PhysicsembemRange {
-  let result = physics_em_bem_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_range_fill(s : PhysicsembemRange, v : Double) -> PhysicsembemRange {
-  let result = physics_em_bem_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_range_min(s : PhysicsembemRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_em_bem_slice_sum(s : PhysicsembemSlice) -> Double { @_common.sum(
 pub fn physics_em_bem_slice_mean(s : PhysicsembemSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_bem_slice_scale(s : PhysicsembemSlice, f : Double) -> PhysicsembemSlice {
-  let result = physics_em_bem_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_slice_add(a : PhysicsembemSlice, b : PhysicsembemSlice) -> PhysicsembemSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_em_bem_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_em_bem_slice_copy(s : PhysicsembemSlice) -> PhysicsembemSlice {
-  let result = physics_em_bem_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_slice_fill(s : PhysicsembemSlice, v : Double) -> PhysicsembemSlice {
-  let result = physics_em_bem_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_slice_min(s : PhysicsembemSlice) -> Double { @_common.min(s.data) }

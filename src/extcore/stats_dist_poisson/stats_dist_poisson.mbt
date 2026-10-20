@@ -383,28 +383,20 @@ pub fn stats_dist_poisson_frame_sum(s : StatsdistpoissonFrame) -> Double { @_com
 pub fn stats_dist_poisson_frame_mean(s : StatsdistpoissonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_frame_scale(s : StatsdistpoissonFrame, f : Double) -> StatsdistpoissonFrame {
-  let result = stats_dist_poisson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_frame_add(a : StatsdistpoissonFrame, b : StatsdistpoissonFrame) -> StatsdistpoissonFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_frame_copy(s : StatsdistpoissonFrame) -> StatsdistpoissonFrame {
-  let result = stats_dist_poisson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_frame_fill(s : StatsdistpoissonFrame, v : Double) -> StatsdistpoissonFrame {
-  let result = stats_dist_poisson_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_frame_min(s : StatsdistpoissonFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_poisson_table_sum(s : StatsdistpoissonTable) -> Double { @_com
 pub fn stats_dist_poisson_table_mean(s : StatsdistpoissonTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_table_scale(s : StatsdistpoissonTable, f : Double) -> StatsdistpoissonTable {
-  let result = stats_dist_poisson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_table_add(a : StatsdistpoissonTable, b : StatsdistpoissonTable) -> StatsdistpoissonTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_table_copy(s : StatsdistpoissonTable) -> StatsdistpoissonTable {
-  let result = stats_dist_poisson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_table_fill(s : StatsdistpoissonTable, v : Double) -> StatsdistpoissonTable {
-  let result = stats_dist_poisson_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_table_min(s : StatsdistpoissonTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_poisson_graphn_sum(s : StatsdistpoissonGraphN) -> Double { @_c
 pub fn stats_dist_poisson_graphn_mean(s : StatsdistpoissonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_graphn_scale(s : StatsdistpoissonGraphN, f : Double) -> StatsdistpoissonGraphN {
-  let result = stats_dist_poisson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_graphn_add(a : StatsdistpoissonGraphN, b : StatsdistpoissonGraphN) -> StatsdistpoissonGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_graphn_copy(s : StatsdistpoissonGraphN) -> StatsdistpoissonGraphN {
-  let result = stats_dist_poisson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_graphn_fill(s : StatsdistpoissonGraphN, v : Double) -> StatsdistpoissonGraphN {
-  let result = stats_dist_poisson_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_graphn_min(s : StatsdistpoissonGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_poisson_node_sum(s : StatsdistpoissonNode) -> Double { @_commo
 pub fn stats_dist_poisson_node_mean(s : StatsdistpoissonNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_node_scale(s : StatsdistpoissonNode, f : Double) -> StatsdistpoissonNode {
-  let result = stats_dist_poisson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_node_add(a : StatsdistpoissonNode, b : StatsdistpoissonNode) -> StatsdistpoissonNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_node_copy(s : StatsdistpoissonNode) -> StatsdistpoissonNode {
-  let result = stats_dist_poisson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_node_fill(s : StatsdistpoissonNode, v : Double) -> StatsdistpoissonNode {
-  let result = stats_dist_poisson_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_node_min(s : StatsdistpoissonNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_poisson_edge_sum(s : StatsdistpoissonEdge) -> Double { @_commo
 pub fn stats_dist_poisson_edge_mean(s : StatsdistpoissonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_edge_scale(s : StatsdistpoissonEdge, f : Double) -> StatsdistpoissonEdge {
-  let result = stats_dist_poisson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_edge_add(a : StatsdistpoissonEdge, b : StatsdistpoissonEdge) -> StatsdistpoissonEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_edge_copy(s : StatsdistpoissonEdge) -> StatsdistpoissonEdge {
-  let result = stats_dist_poisson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_edge_fill(s : StatsdistpoissonEdge, v : Double) -> StatsdistpoissonEdge {
-  let result = stats_dist_poisson_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_edge_min(s : StatsdistpoissonEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_poisson_path_sum(s : StatsdistpoissonPath) -> Double { @_commo
 pub fn stats_dist_poisson_path_mean(s : StatsdistpoissonPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_path_scale(s : StatsdistpoissonPath, f : Double) -> StatsdistpoissonPath {
-  let result = stats_dist_poisson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_path_add(a : StatsdistpoissonPath, b : StatsdistpoissonPath) -> StatsdistpoissonPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_path_copy(s : StatsdistpoissonPath) -> StatsdistpoissonPath {
-  let result = stats_dist_poisson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_path_fill(s : StatsdistpoissonPath, v : Double) -> StatsdistpoissonPath {
-  let result = stats_dist_poisson_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_path_min(s : StatsdistpoissonPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_poisson_cluster_sum(s : StatsdistpoissonCluster) -> Double { @
 pub fn stats_dist_poisson_cluster_mean(s : StatsdistpoissonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_cluster_scale(s : StatsdistpoissonCluster, f : Double) -> StatsdistpoissonCluster {
-  let result = stats_dist_poisson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_cluster_add(a : StatsdistpoissonCluster, b : StatsdistpoissonCluster) -> StatsdistpoissonCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_cluster_copy(s : StatsdistpoissonCluster) -> StatsdistpoissonCluster {
-  let result = stats_dist_poisson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_cluster_fill(s : StatsdistpoissonCluster, v : Double) -> StatsdistpoissonCluster {
-  let result = stats_dist_poisson_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_cluster_min(s : StatsdistpoissonCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_poisson_model_sum(s : StatsdistpoissonModel) -> Double { @_com
 pub fn stats_dist_poisson_model_mean(s : StatsdistpoissonModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_model_scale(s : StatsdistpoissonModel, f : Double) -> StatsdistpoissonModel {
-  let result = stats_dist_poisson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_model_add(a : StatsdistpoissonModel, b : StatsdistpoissonModel) -> StatsdistpoissonModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_model_copy(s : StatsdistpoissonModel) -> StatsdistpoissonModel {
-  let result = stats_dist_poisson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_model_fill(s : StatsdistpoissonModel, v : Double) -> StatsdistpoissonModel {
-  let result = stats_dist_poisson_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_model_min(s : StatsdistpoissonModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_poisson_layer_sum(s : StatsdistpoissonLayer) -> Double { @_com
 pub fn stats_dist_poisson_layer_mean(s : StatsdistpoissonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_layer_scale(s : StatsdistpoissonLayer, f : Double) -> StatsdistpoissonLayer {
-  let result = stats_dist_poisson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_layer_add(a : StatsdistpoissonLayer, b : StatsdistpoissonLayer) -> StatsdistpoissonLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_layer_copy(s : StatsdistpoissonLayer) -> StatsdistpoissonLayer {
-  let result = stats_dist_poisson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_layer_fill(s : StatsdistpoissonLayer, v : Double) -> StatsdistpoissonLayer {
-  let result = stats_dist_poisson_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_layer_min(s : StatsdistpoissonLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_poisson_buffer_sum(s : StatsdistpoissonBuffer) -> Double { @_c
 pub fn stats_dist_poisson_buffer_mean(s : StatsdistpoissonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_buffer_scale(s : StatsdistpoissonBuffer, f : Double) -> StatsdistpoissonBuffer {
-  let result = stats_dist_poisson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_buffer_add(a : StatsdistpoissonBuffer, b : StatsdistpoissonBuffer) -> StatsdistpoissonBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_buffer_copy(s : StatsdistpoissonBuffer) -> StatsdistpoissonBuffer {
-  let result = stats_dist_poisson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_buffer_fill(s : StatsdistpoissonBuffer, v : Double) -> StatsdistpoissonBuffer {
-  let result = stats_dist_poisson_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_buffer_min(s : StatsdistpoissonBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_poisson_cursor_sum(s : StatsdistpoissonCursor) -> Double { @_c
 pub fn stats_dist_poisson_cursor_mean(s : StatsdistpoissonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_cursor_scale(s : StatsdistpoissonCursor, f : Double) -> StatsdistpoissonCursor {
-  let result = stats_dist_poisson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_cursor_add(a : StatsdistpoissonCursor, b : StatsdistpoissonCursor) -> StatsdistpoissonCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_cursor_copy(s : StatsdistpoissonCursor) -> StatsdistpoissonCursor {
-  let result = stats_dist_poisson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_cursor_fill(s : StatsdistpoissonCursor, v : Double) -> StatsdistpoissonCursor {
-  let result = stats_dist_poisson_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_cursor_min(s : StatsdistpoissonCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_poisson_view_sum(s : StatsdistpoissonView) -> Double { @_commo
 pub fn stats_dist_poisson_view_mean(s : StatsdistpoissonView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_view_scale(s : StatsdistpoissonView, f : Double) -> StatsdistpoissonView {
-  let result = stats_dist_poisson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_view_add(a : StatsdistpoissonView, b : StatsdistpoissonView) -> StatsdistpoissonView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_view_copy(s : StatsdistpoissonView) -> StatsdistpoissonView {
-  let result = stats_dist_poisson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_view_fill(s : StatsdistpoissonView, v : Double) -> StatsdistpoissonView {
-  let result = stats_dist_poisson_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_view_min(s : StatsdistpoissonView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_poisson_range_sum(s : StatsdistpoissonRange) -> Double { @_com
 pub fn stats_dist_poisson_range_mean(s : StatsdistpoissonRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_range_scale(s : StatsdistpoissonRange, f : Double) -> StatsdistpoissonRange {
-  let result = stats_dist_poisson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_range_add(a : StatsdistpoissonRange, b : StatsdistpoissonRange) -> StatsdistpoissonRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_range_copy(s : StatsdistpoissonRange) -> StatsdistpoissonRange {
-  let result = stats_dist_poisson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_range_fill(s : StatsdistpoissonRange, v : Double) -> StatsdistpoissonRange {
-  let result = stats_dist_poisson_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_range_min(s : StatsdistpoissonRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_poisson_slice_sum(s : StatsdistpoissonSlice) -> Double { @_com
 pub fn stats_dist_poisson_slice_mean(s : StatsdistpoissonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_slice_scale(s : StatsdistpoissonSlice, f : Double) -> StatsdistpoissonSlice {
-  let result = stats_dist_poisson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_slice_add(a : StatsdistpoissonSlice, b : StatsdistpoissonSlice) -> StatsdistpoissonSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_poisson_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_poisson_slice_copy(s : StatsdistpoissonSlice) -> StatsdistpoissonSlice {
-  let result = stats_dist_poisson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_slice_fill(s : StatsdistpoissonSlice, v : Double) -> StatsdistpoissonSlice {
-  let result = stats_dist_poisson_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_poisson_slice_min(s : StatsdistpoissonSlice) -> Double { @_common.min(s.data) }

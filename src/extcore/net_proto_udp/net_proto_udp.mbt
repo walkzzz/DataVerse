@@ -383,28 +383,20 @@ pub fn net_proto_udp_frame_sum(s : NetprotoudpFrame) -> Double { @_common.sum(s.
 pub fn net_proto_udp_frame_mean(s : NetprotoudpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_frame_scale(s : NetprotoudpFrame, f : Double) -> NetprotoudpFrame {
-  let result = net_proto_udp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_frame_add(a : NetprotoudpFrame, b : NetprotoudpFrame) -> NetprotoudpFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_frame_copy(s : NetprotoudpFrame) -> NetprotoudpFrame {
-  let result = net_proto_udp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_frame_fill(s : NetprotoudpFrame, v : Double) -> NetprotoudpFrame {
-  let result = net_proto_udp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_frame_min(s : NetprotoudpFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_proto_udp_table_sum(s : NetprotoudpTable) -> Double { @_common.sum(s.
 pub fn net_proto_udp_table_mean(s : NetprotoudpTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_table_scale(s : NetprotoudpTable, f : Double) -> NetprotoudpTable {
-  let result = net_proto_udp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_table_add(a : NetprotoudpTable, b : NetprotoudpTable) -> NetprotoudpTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_table_copy(s : NetprotoudpTable) -> NetprotoudpTable {
-  let result = net_proto_udp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_table_fill(s : NetprotoudpTable, v : Double) -> NetprotoudpTable {
-  let result = net_proto_udp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_table_min(s : NetprotoudpTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_proto_udp_graphn_sum(s : NetprotoudpGraphN) -> Double { @_common.sum(
 pub fn net_proto_udp_graphn_mean(s : NetprotoudpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_graphn_scale(s : NetprotoudpGraphN, f : Double) -> NetprotoudpGraphN {
-  let result = net_proto_udp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_graphn_add(a : NetprotoudpGraphN, b : NetprotoudpGraphN) -> NetprotoudpGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_graphn_copy(s : NetprotoudpGraphN) -> NetprotoudpGraphN {
-  let result = net_proto_udp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_graphn_fill(s : NetprotoudpGraphN, v : Double) -> NetprotoudpGraphN {
-  let result = net_proto_udp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_graphn_min(s : NetprotoudpGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_proto_udp_node_sum(s : NetprotoudpNode) -> Double { @_common.sum(s.da
 pub fn net_proto_udp_node_mean(s : NetprotoudpNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_node_scale(s : NetprotoudpNode, f : Double) -> NetprotoudpNode {
-  let result = net_proto_udp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_node_add(a : NetprotoudpNode, b : NetprotoudpNode) -> NetprotoudpNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_node_copy(s : NetprotoudpNode) -> NetprotoudpNode {
-  let result = net_proto_udp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_node_fill(s : NetprotoudpNode, v : Double) -> NetprotoudpNode {
-  let result = net_proto_udp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_node_min(s : NetprotoudpNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_proto_udp_edge_sum(s : NetprotoudpEdge) -> Double { @_common.sum(s.da
 pub fn net_proto_udp_edge_mean(s : NetprotoudpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_edge_scale(s : NetprotoudpEdge, f : Double) -> NetprotoudpEdge {
-  let result = net_proto_udp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_edge_add(a : NetprotoudpEdge, b : NetprotoudpEdge) -> NetprotoudpEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_edge_copy(s : NetprotoudpEdge) -> NetprotoudpEdge {
-  let result = net_proto_udp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_edge_fill(s : NetprotoudpEdge, v : Double) -> NetprotoudpEdge {
-  let result = net_proto_udp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_edge_min(s : NetprotoudpEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_proto_udp_path_sum(s : NetprotoudpPath) -> Double { @_common.sum(s.da
 pub fn net_proto_udp_path_mean(s : NetprotoudpPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_path_scale(s : NetprotoudpPath, f : Double) -> NetprotoudpPath {
-  let result = net_proto_udp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_path_add(a : NetprotoudpPath, b : NetprotoudpPath) -> NetprotoudpPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_path_copy(s : NetprotoudpPath) -> NetprotoudpPath {
-  let result = net_proto_udp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_path_fill(s : NetprotoudpPath, v : Double) -> NetprotoudpPath {
-  let result = net_proto_udp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_path_min(s : NetprotoudpPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_proto_udp_cluster_sum(s : NetprotoudpCluster) -> Double { @_common.su
 pub fn net_proto_udp_cluster_mean(s : NetprotoudpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_cluster_scale(s : NetprotoudpCluster, f : Double) -> NetprotoudpCluster {
-  let result = net_proto_udp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_cluster_add(a : NetprotoudpCluster, b : NetprotoudpCluster) -> NetprotoudpCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_cluster_copy(s : NetprotoudpCluster) -> NetprotoudpCluster {
-  let result = net_proto_udp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_cluster_fill(s : NetprotoudpCluster, v : Double) -> NetprotoudpCluster {
-  let result = net_proto_udp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_cluster_min(s : NetprotoudpCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_proto_udp_model_sum(s : NetprotoudpModel) -> Double { @_common.sum(s.
 pub fn net_proto_udp_model_mean(s : NetprotoudpModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_model_scale(s : NetprotoudpModel, f : Double) -> NetprotoudpModel {
-  let result = net_proto_udp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_model_add(a : NetprotoudpModel, b : NetprotoudpModel) -> NetprotoudpModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_model_copy(s : NetprotoudpModel) -> NetprotoudpModel {
-  let result = net_proto_udp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_model_fill(s : NetprotoudpModel, v : Double) -> NetprotoudpModel {
-  let result = net_proto_udp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_model_min(s : NetprotoudpModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_proto_udp_layer_sum(s : NetprotoudpLayer) -> Double { @_common.sum(s.
 pub fn net_proto_udp_layer_mean(s : NetprotoudpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_layer_scale(s : NetprotoudpLayer, f : Double) -> NetprotoudpLayer {
-  let result = net_proto_udp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_layer_add(a : NetprotoudpLayer, b : NetprotoudpLayer) -> NetprotoudpLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_layer_copy(s : NetprotoudpLayer) -> NetprotoudpLayer {
-  let result = net_proto_udp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_layer_fill(s : NetprotoudpLayer, v : Double) -> NetprotoudpLayer {
-  let result = net_proto_udp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_layer_min(s : NetprotoudpLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_proto_udp_buffer_sum(s : NetprotoudpBuffer) -> Double { @_common.sum(
 pub fn net_proto_udp_buffer_mean(s : NetprotoudpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_buffer_scale(s : NetprotoudpBuffer, f : Double) -> NetprotoudpBuffer {
-  let result = net_proto_udp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_buffer_add(a : NetprotoudpBuffer, b : NetprotoudpBuffer) -> NetprotoudpBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_buffer_copy(s : NetprotoudpBuffer) -> NetprotoudpBuffer {
-  let result = net_proto_udp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_buffer_fill(s : NetprotoudpBuffer, v : Double) -> NetprotoudpBuffer {
-  let result = net_proto_udp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_buffer_min(s : NetprotoudpBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_proto_udp_cursor_sum(s : NetprotoudpCursor) -> Double { @_common.sum(
 pub fn net_proto_udp_cursor_mean(s : NetprotoudpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_cursor_scale(s : NetprotoudpCursor, f : Double) -> NetprotoudpCursor {
-  let result = net_proto_udp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_cursor_add(a : NetprotoudpCursor, b : NetprotoudpCursor) -> NetprotoudpCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_cursor_copy(s : NetprotoudpCursor) -> NetprotoudpCursor {
-  let result = net_proto_udp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_cursor_fill(s : NetprotoudpCursor, v : Double) -> NetprotoudpCursor {
-  let result = net_proto_udp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_cursor_min(s : NetprotoudpCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_proto_udp_view_sum(s : NetprotoudpView) -> Double { @_common.sum(s.da
 pub fn net_proto_udp_view_mean(s : NetprotoudpView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_view_scale(s : NetprotoudpView, f : Double) -> NetprotoudpView {
-  let result = net_proto_udp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_view_add(a : NetprotoudpView, b : NetprotoudpView) -> NetprotoudpView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_view_copy(s : NetprotoudpView) -> NetprotoudpView {
-  let result = net_proto_udp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_view_fill(s : NetprotoudpView, v : Double) -> NetprotoudpView {
-  let result = net_proto_udp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_view_min(s : NetprotoudpView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_proto_udp_range_sum(s : NetprotoudpRange) -> Double { @_common.sum(s.
 pub fn net_proto_udp_range_mean(s : NetprotoudpRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_range_scale(s : NetprotoudpRange, f : Double) -> NetprotoudpRange {
-  let result = net_proto_udp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_range_add(a : NetprotoudpRange, b : NetprotoudpRange) -> NetprotoudpRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_range_copy(s : NetprotoudpRange) -> NetprotoudpRange {
-  let result = net_proto_udp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_range_fill(s : NetprotoudpRange, v : Double) -> NetprotoudpRange {
-  let result = net_proto_udp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_range_min(s : NetprotoudpRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_proto_udp_slice_sum(s : NetprotoudpSlice) -> Double { @_common.sum(s.
 pub fn net_proto_udp_slice_mean(s : NetprotoudpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_slice_scale(s : NetprotoudpSlice, f : Double) -> NetprotoudpSlice {
-  let result = net_proto_udp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_slice_add(a : NetprotoudpSlice, b : NetprotoudpSlice) -> NetprotoudpSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_proto_udp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_proto_udp_slice_copy(s : NetprotoudpSlice) -> NetprotoudpSlice {
-  let result = net_proto_udp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_slice_fill(s : NetprotoudpSlice, v : Double) -> NetprotoudpSlice {
-  let result = net_proto_udp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_udp_slice_min(s : NetprotoudpSlice) -> Double { @_common.min(s.data) }

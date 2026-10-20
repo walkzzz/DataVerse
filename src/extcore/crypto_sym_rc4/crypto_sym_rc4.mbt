@@ -383,28 +383,20 @@ pub fn crypto_sym_rc4_frame_sum(s : Cryptosymrc4Frame) -> Double { @_common.sum(
 pub fn crypto_sym_rc4_frame_mean(s : Cryptosymrc4Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_frame_scale(s : Cryptosymrc4Frame, f : Double) -> Cryptosymrc4Frame {
-  let result = crypto_sym_rc4_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_frame_add(a : Cryptosymrc4Frame, b : Cryptosymrc4Frame) -> Cryptosymrc4Frame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_frame_copy(s : Cryptosymrc4Frame) -> Cryptosymrc4Frame {
-  let result = crypto_sym_rc4_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_frame_fill(s : Cryptosymrc4Frame, v : Double) -> Cryptosymrc4Frame {
-  let result = crypto_sym_rc4_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_frame_min(s : Cryptosymrc4Frame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sym_rc4_table_sum(s : Cryptosymrc4Table) -> Double { @_common.sum(
 pub fn crypto_sym_rc4_table_mean(s : Cryptosymrc4Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_table_scale(s : Cryptosymrc4Table, f : Double) -> Cryptosymrc4Table {
-  let result = crypto_sym_rc4_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_table_add(a : Cryptosymrc4Table, b : Cryptosymrc4Table) -> Cryptosymrc4Table {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_table_copy(s : Cryptosymrc4Table) -> Cryptosymrc4Table {
-  let result = crypto_sym_rc4_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_table_fill(s : Cryptosymrc4Table, v : Double) -> Cryptosymrc4Table {
-  let result = crypto_sym_rc4_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_table_min(s : Cryptosymrc4Table) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sym_rc4_graphn_sum(s : Cryptosymrc4GraphN) -> Double { @_common.su
 pub fn crypto_sym_rc4_graphn_mean(s : Cryptosymrc4GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_graphn_scale(s : Cryptosymrc4GraphN, f : Double) -> Cryptosymrc4GraphN {
-  let result = crypto_sym_rc4_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_graphn_add(a : Cryptosymrc4GraphN, b : Cryptosymrc4GraphN) -> Cryptosymrc4GraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_graphn_copy(s : Cryptosymrc4GraphN) -> Cryptosymrc4GraphN {
-  let result = crypto_sym_rc4_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_graphn_fill(s : Cryptosymrc4GraphN, v : Double) -> Cryptosymrc4GraphN {
-  let result = crypto_sym_rc4_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_graphn_min(s : Cryptosymrc4GraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sym_rc4_node_sum(s : Cryptosymrc4Node) -> Double { @_common.sum(s.
 pub fn crypto_sym_rc4_node_mean(s : Cryptosymrc4Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_node_scale(s : Cryptosymrc4Node, f : Double) -> Cryptosymrc4Node {
-  let result = crypto_sym_rc4_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_node_add(a : Cryptosymrc4Node, b : Cryptosymrc4Node) -> Cryptosymrc4Node {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_node_copy(s : Cryptosymrc4Node) -> Cryptosymrc4Node {
-  let result = crypto_sym_rc4_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_node_fill(s : Cryptosymrc4Node, v : Double) -> Cryptosymrc4Node {
-  let result = crypto_sym_rc4_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_node_min(s : Cryptosymrc4Node) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sym_rc4_edge_sum(s : Cryptosymrc4Edge) -> Double { @_common.sum(s.
 pub fn crypto_sym_rc4_edge_mean(s : Cryptosymrc4Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_edge_scale(s : Cryptosymrc4Edge, f : Double) -> Cryptosymrc4Edge {
-  let result = crypto_sym_rc4_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_edge_add(a : Cryptosymrc4Edge, b : Cryptosymrc4Edge) -> Cryptosymrc4Edge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_edge_copy(s : Cryptosymrc4Edge) -> Cryptosymrc4Edge {
-  let result = crypto_sym_rc4_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_edge_fill(s : Cryptosymrc4Edge, v : Double) -> Cryptosymrc4Edge {
-  let result = crypto_sym_rc4_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_edge_min(s : Cryptosymrc4Edge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sym_rc4_path_sum(s : Cryptosymrc4Path) -> Double { @_common.sum(s.
 pub fn crypto_sym_rc4_path_mean(s : Cryptosymrc4Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_path_scale(s : Cryptosymrc4Path, f : Double) -> Cryptosymrc4Path {
-  let result = crypto_sym_rc4_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_path_add(a : Cryptosymrc4Path, b : Cryptosymrc4Path) -> Cryptosymrc4Path {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_path_copy(s : Cryptosymrc4Path) -> Cryptosymrc4Path {
-  let result = crypto_sym_rc4_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_path_fill(s : Cryptosymrc4Path, v : Double) -> Cryptosymrc4Path {
-  let result = crypto_sym_rc4_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_path_min(s : Cryptosymrc4Path) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sym_rc4_cluster_sum(s : Cryptosymrc4Cluster) -> Double { @_common.
 pub fn crypto_sym_rc4_cluster_mean(s : Cryptosymrc4Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_cluster_scale(s : Cryptosymrc4Cluster, f : Double) -> Cryptosymrc4Cluster {
-  let result = crypto_sym_rc4_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_cluster_add(a : Cryptosymrc4Cluster, b : Cryptosymrc4Cluster) -> Cryptosymrc4Cluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_cluster_copy(s : Cryptosymrc4Cluster) -> Cryptosymrc4Cluster {
-  let result = crypto_sym_rc4_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_cluster_fill(s : Cryptosymrc4Cluster, v : Double) -> Cryptosymrc4Cluster {
-  let result = crypto_sym_rc4_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_cluster_min(s : Cryptosymrc4Cluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sym_rc4_model_sum(s : Cryptosymrc4Model) -> Double { @_common.sum(
 pub fn crypto_sym_rc4_model_mean(s : Cryptosymrc4Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_model_scale(s : Cryptosymrc4Model, f : Double) -> Cryptosymrc4Model {
-  let result = crypto_sym_rc4_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_model_add(a : Cryptosymrc4Model, b : Cryptosymrc4Model) -> Cryptosymrc4Model {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_model_copy(s : Cryptosymrc4Model) -> Cryptosymrc4Model {
-  let result = crypto_sym_rc4_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_model_fill(s : Cryptosymrc4Model, v : Double) -> Cryptosymrc4Model {
-  let result = crypto_sym_rc4_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_model_min(s : Cryptosymrc4Model) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sym_rc4_layer_sum(s : Cryptosymrc4Layer) -> Double { @_common.sum(
 pub fn crypto_sym_rc4_layer_mean(s : Cryptosymrc4Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_layer_scale(s : Cryptosymrc4Layer, f : Double) -> Cryptosymrc4Layer {
-  let result = crypto_sym_rc4_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_layer_add(a : Cryptosymrc4Layer, b : Cryptosymrc4Layer) -> Cryptosymrc4Layer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_layer_copy(s : Cryptosymrc4Layer) -> Cryptosymrc4Layer {
-  let result = crypto_sym_rc4_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_layer_fill(s : Cryptosymrc4Layer, v : Double) -> Cryptosymrc4Layer {
-  let result = crypto_sym_rc4_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_layer_min(s : Cryptosymrc4Layer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sym_rc4_buffer_sum(s : Cryptosymrc4Buffer) -> Double { @_common.su
 pub fn crypto_sym_rc4_buffer_mean(s : Cryptosymrc4Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_buffer_scale(s : Cryptosymrc4Buffer, f : Double) -> Cryptosymrc4Buffer {
-  let result = crypto_sym_rc4_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_buffer_add(a : Cryptosymrc4Buffer, b : Cryptosymrc4Buffer) -> Cryptosymrc4Buffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_buffer_copy(s : Cryptosymrc4Buffer) -> Cryptosymrc4Buffer {
-  let result = crypto_sym_rc4_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_buffer_fill(s : Cryptosymrc4Buffer, v : Double) -> Cryptosymrc4Buffer {
-  let result = crypto_sym_rc4_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_buffer_min(s : Cryptosymrc4Buffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sym_rc4_cursor_sum(s : Cryptosymrc4Cursor) -> Double { @_common.su
 pub fn crypto_sym_rc4_cursor_mean(s : Cryptosymrc4Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_cursor_scale(s : Cryptosymrc4Cursor, f : Double) -> Cryptosymrc4Cursor {
-  let result = crypto_sym_rc4_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_cursor_add(a : Cryptosymrc4Cursor, b : Cryptosymrc4Cursor) -> Cryptosymrc4Cursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_cursor_copy(s : Cryptosymrc4Cursor) -> Cryptosymrc4Cursor {
-  let result = crypto_sym_rc4_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_cursor_fill(s : Cryptosymrc4Cursor, v : Double) -> Cryptosymrc4Cursor {
-  let result = crypto_sym_rc4_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_cursor_min(s : Cryptosymrc4Cursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sym_rc4_view_sum(s : Cryptosymrc4View) -> Double { @_common.sum(s.
 pub fn crypto_sym_rc4_view_mean(s : Cryptosymrc4View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_view_scale(s : Cryptosymrc4View, f : Double) -> Cryptosymrc4View {
-  let result = crypto_sym_rc4_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_view_add(a : Cryptosymrc4View, b : Cryptosymrc4View) -> Cryptosymrc4View {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_view_copy(s : Cryptosymrc4View) -> Cryptosymrc4View {
-  let result = crypto_sym_rc4_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_view_fill(s : Cryptosymrc4View, v : Double) -> Cryptosymrc4View {
-  let result = crypto_sym_rc4_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_view_min(s : Cryptosymrc4View) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sym_rc4_range_sum(s : Cryptosymrc4Range) -> Double { @_common.sum(
 pub fn crypto_sym_rc4_range_mean(s : Cryptosymrc4Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_range_scale(s : Cryptosymrc4Range, f : Double) -> Cryptosymrc4Range {
-  let result = crypto_sym_rc4_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_range_add(a : Cryptosymrc4Range, b : Cryptosymrc4Range) -> Cryptosymrc4Range {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_range_copy(s : Cryptosymrc4Range) -> Cryptosymrc4Range {
-  let result = crypto_sym_rc4_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_range_fill(s : Cryptosymrc4Range, v : Double) -> Cryptosymrc4Range {
-  let result = crypto_sym_rc4_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_range_min(s : Cryptosymrc4Range) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sym_rc4_slice_sum(s : Cryptosymrc4Slice) -> Double { @_common.sum(
 pub fn crypto_sym_rc4_slice_mean(s : Cryptosymrc4Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_slice_scale(s : Cryptosymrc4Slice, f : Double) -> Cryptosymrc4Slice {
-  let result = crypto_sym_rc4_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_slice_add(a : Cryptosymrc4Slice, b : Cryptosymrc4Slice) -> Cryptosymrc4Slice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_rc4_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_rc4_slice_copy(s : Cryptosymrc4Slice) -> Cryptosymrc4Slice {
-  let result = crypto_sym_rc4_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_slice_fill(s : Cryptosymrc4Slice, v : Double) -> Cryptosymrc4Slice {
-  let result = crypto_sym_rc4_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_rc4_slice_min(s : Cryptosymrc4Slice) -> Double { @_common.min(s.data) }

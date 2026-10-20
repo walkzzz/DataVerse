@@ -383,28 +383,20 @@ pub fn ds_list_chunked_frame_sum(s : DslistchunkedFrame) -> Double { @_common.su
 pub fn ds_list_chunked_frame_mean(s : DslistchunkedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_frame_scale(s : DslistchunkedFrame, f : Double) -> DslistchunkedFrame {
-  let result = ds_list_chunked_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_frame_add(a : DslistchunkedFrame, b : DslistchunkedFrame) -> DslistchunkedFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_frame_copy(s : DslistchunkedFrame) -> DslistchunkedFrame {
-  let result = ds_list_chunked_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_frame_fill(s : DslistchunkedFrame, v : Double) -> DslistchunkedFrame {
-  let result = ds_list_chunked_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_frame_min(s : DslistchunkedFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_list_chunked_table_sum(s : DslistchunkedTable) -> Double { @_common.su
 pub fn ds_list_chunked_table_mean(s : DslistchunkedTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_table_scale(s : DslistchunkedTable, f : Double) -> DslistchunkedTable {
-  let result = ds_list_chunked_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_table_add(a : DslistchunkedTable, b : DslistchunkedTable) -> DslistchunkedTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_table_copy(s : DslistchunkedTable) -> DslistchunkedTable {
-  let result = ds_list_chunked_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_table_fill(s : DslistchunkedTable, v : Double) -> DslistchunkedTable {
-  let result = ds_list_chunked_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_table_min(s : DslistchunkedTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_list_chunked_graphn_sum(s : DslistchunkedGraphN) -> Double { @_common.
 pub fn ds_list_chunked_graphn_mean(s : DslistchunkedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_graphn_scale(s : DslistchunkedGraphN, f : Double) -> DslistchunkedGraphN {
-  let result = ds_list_chunked_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_graphn_add(a : DslistchunkedGraphN, b : DslistchunkedGraphN) -> DslistchunkedGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_graphn_copy(s : DslistchunkedGraphN) -> DslistchunkedGraphN {
-  let result = ds_list_chunked_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_graphn_fill(s : DslistchunkedGraphN, v : Double) -> DslistchunkedGraphN {
-  let result = ds_list_chunked_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_graphn_min(s : DslistchunkedGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_list_chunked_node_sum(s : DslistchunkedNode) -> Double { @_common.sum(
 pub fn ds_list_chunked_node_mean(s : DslistchunkedNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_node_scale(s : DslistchunkedNode, f : Double) -> DslistchunkedNode {
-  let result = ds_list_chunked_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_node_add(a : DslistchunkedNode, b : DslistchunkedNode) -> DslistchunkedNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_node_copy(s : DslistchunkedNode) -> DslistchunkedNode {
-  let result = ds_list_chunked_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_node_fill(s : DslistchunkedNode, v : Double) -> DslistchunkedNode {
-  let result = ds_list_chunked_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_node_min(s : DslistchunkedNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_list_chunked_edge_sum(s : DslistchunkedEdge) -> Double { @_common.sum(
 pub fn ds_list_chunked_edge_mean(s : DslistchunkedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_edge_scale(s : DslistchunkedEdge, f : Double) -> DslistchunkedEdge {
-  let result = ds_list_chunked_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_edge_add(a : DslistchunkedEdge, b : DslistchunkedEdge) -> DslistchunkedEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_edge_copy(s : DslistchunkedEdge) -> DslistchunkedEdge {
-  let result = ds_list_chunked_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_edge_fill(s : DslistchunkedEdge, v : Double) -> DslistchunkedEdge {
-  let result = ds_list_chunked_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_edge_min(s : DslistchunkedEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_list_chunked_path_sum(s : DslistchunkedPath) -> Double { @_common.sum(
 pub fn ds_list_chunked_path_mean(s : DslistchunkedPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_path_scale(s : DslistchunkedPath, f : Double) -> DslistchunkedPath {
-  let result = ds_list_chunked_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_path_add(a : DslistchunkedPath, b : DslistchunkedPath) -> DslistchunkedPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_path_copy(s : DslistchunkedPath) -> DslistchunkedPath {
-  let result = ds_list_chunked_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_path_fill(s : DslistchunkedPath, v : Double) -> DslistchunkedPath {
-  let result = ds_list_chunked_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_path_min(s : DslistchunkedPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_list_chunked_cluster_sum(s : DslistchunkedCluster) -> Double { @_commo
 pub fn ds_list_chunked_cluster_mean(s : DslistchunkedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_cluster_scale(s : DslistchunkedCluster, f : Double) -> DslistchunkedCluster {
-  let result = ds_list_chunked_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cluster_add(a : DslistchunkedCluster, b : DslistchunkedCluster) -> DslistchunkedCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_cluster_copy(s : DslistchunkedCluster) -> DslistchunkedCluster {
-  let result = ds_list_chunked_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cluster_fill(s : DslistchunkedCluster, v : Double) -> DslistchunkedCluster {
-  let result = ds_list_chunked_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cluster_min(s : DslistchunkedCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_list_chunked_model_sum(s : DslistchunkedModel) -> Double { @_common.su
 pub fn ds_list_chunked_model_mean(s : DslistchunkedModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_model_scale(s : DslistchunkedModel, f : Double) -> DslistchunkedModel {
-  let result = ds_list_chunked_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_model_add(a : DslistchunkedModel, b : DslistchunkedModel) -> DslistchunkedModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_model_copy(s : DslistchunkedModel) -> DslistchunkedModel {
-  let result = ds_list_chunked_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_model_fill(s : DslistchunkedModel, v : Double) -> DslistchunkedModel {
-  let result = ds_list_chunked_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_model_min(s : DslistchunkedModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_list_chunked_layer_sum(s : DslistchunkedLayer) -> Double { @_common.su
 pub fn ds_list_chunked_layer_mean(s : DslistchunkedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_layer_scale(s : DslistchunkedLayer, f : Double) -> DslistchunkedLayer {
-  let result = ds_list_chunked_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_layer_add(a : DslistchunkedLayer, b : DslistchunkedLayer) -> DslistchunkedLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_layer_copy(s : DslistchunkedLayer) -> DslistchunkedLayer {
-  let result = ds_list_chunked_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_layer_fill(s : DslistchunkedLayer, v : Double) -> DslistchunkedLayer {
-  let result = ds_list_chunked_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_layer_min(s : DslistchunkedLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_list_chunked_buffer_sum(s : DslistchunkedBuffer) -> Double { @_common.
 pub fn ds_list_chunked_buffer_mean(s : DslistchunkedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_buffer_scale(s : DslistchunkedBuffer, f : Double) -> DslistchunkedBuffer {
-  let result = ds_list_chunked_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_buffer_add(a : DslistchunkedBuffer, b : DslistchunkedBuffer) -> DslistchunkedBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_buffer_copy(s : DslistchunkedBuffer) -> DslistchunkedBuffer {
-  let result = ds_list_chunked_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_buffer_fill(s : DslistchunkedBuffer, v : Double) -> DslistchunkedBuffer {
-  let result = ds_list_chunked_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_buffer_min(s : DslistchunkedBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_list_chunked_cursor_sum(s : DslistchunkedCursor) -> Double { @_common.
 pub fn ds_list_chunked_cursor_mean(s : DslistchunkedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_cursor_scale(s : DslistchunkedCursor, f : Double) -> DslistchunkedCursor {
-  let result = ds_list_chunked_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cursor_add(a : DslistchunkedCursor, b : DslistchunkedCursor) -> DslistchunkedCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_cursor_copy(s : DslistchunkedCursor) -> DslistchunkedCursor {
-  let result = ds_list_chunked_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cursor_fill(s : DslistchunkedCursor, v : Double) -> DslistchunkedCursor {
-  let result = ds_list_chunked_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cursor_min(s : DslistchunkedCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_list_chunked_view_sum(s : DslistchunkedView) -> Double { @_common.sum(
 pub fn ds_list_chunked_view_mean(s : DslistchunkedView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_view_scale(s : DslistchunkedView, f : Double) -> DslistchunkedView {
-  let result = ds_list_chunked_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_view_add(a : DslistchunkedView, b : DslistchunkedView) -> DslistchunkedView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_view_copy(s : DslistchunkedView) -> DslistchunkedView {
-  let result = ds_list_chunked_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_view_fill(s : DslistchunkedView, v : Double) -> DslistchunkedView {
-  let result = ds_list_chunked_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_view_min(s : DslistchunkedView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_list_chunked_range_sum(s : DslistchunkedRange) -> Double { @_common.su
 pub fn ds_list_chunked_range_mean(s : DslistchunkedRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_range_scale(s : DslistchunkedRange, f : Double) -> DslistchunkedRange {
-  let result = ds_list_chunked_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_range_add(a : DslistchunkedRange, b : DslistchunkedRange) -> DslistchunkedRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_range_copy(s : DslistchunkedRange) -> DslistchunkedRange {
-  let result = ds_list_chunked_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_range_fill(s : DslistchunkedRange, v : Double) -> DslistchunkedRange {
-  let result = ds_list_chunked_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_range_min(s : DslistchunkedRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_list_chunked_slice_sum(s : DslistchunkedSlice) -> Double { @_common.su
 pub fn ds_list_chunked_slice_mean(s : DslistchunkedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_chunked_slice_scale(s : DslistchunkedSlice, f : Double) -> DslistchunkedSlice {
-  let result = ds_list_chunked_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_slice_add(a : DslistchunkedSlice, b : DslistchunkedSlice) -> DslistchunkedSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_chunked_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_chunked_slice_copy(s : DslistchunkedSlice) -> DslistchunkedSlice {
-  let result = ds_list_chunked_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_slice_fill(s : DslistchunkedSlice, v : Double) -> DslistchunkedSlice {
-  let result = ds_list_chunked_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_slice_min(s : DslistchunkedSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ds_tree_bst_frame_sum(s : DstreebstFrame) -> Double { @_common.sum(s.data
 pub fn ds_tree_bst_frame_mean(s : DstreebstFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_frame_scale(s : DstreebstFrame, f : Double) -> DstreebstFrame {
-  let result = ds_tree_bst_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_frame_add(a : DstreebstFrame, b : DstreebstFrame) -> DstreebstFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_frame_copy(s : DstreebstFrame) -> DstreebstFrame {
-  let result = ds_tree_bst_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_frame_fill(s : DstreebstFrame, v : Double) -> DstreebstFrame {
-  let result = ds_tree_bst_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_frame_min(s : DstreebstFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_tree_bst_table_sum(s : DstreebstTable) -> Double { @_common.sum(s.data
 pub fn ds_tree_bst_table_mean(s : DstreebstTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_table_scale(s : DstreebstTable, f : Double) -> DstreebstTable {
-  let result = ds_tree_bst_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_table_add(a : DstreebstTable, b : DstreebstTable) -> DstreebstTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_table_copy(s : DstreebstTable) -> DstreebstTable {
-  let result = ds_tree_bst_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_table_fill(s : DstreebstTable, v : Double) -> DstreebstTable {
-  let result = ds_tree_bst_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_table_min(s : DstreebstTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_tree_bst_graphn_sum(s : DstreebstGraphN) -> Double { @_common.sum(s.da
 pub fn ds_tree_bst_graphn_mean(s : DstreebstGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_graphn_scale(s : DstreebstGraphN, f : Double) -> DstreebstGraphN {
-  let result = ds_tree_bst_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_graphn_add(a : DstreebstGraphN, b : DstreebstGraphN) -> DstreebstGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_graphn_copy(s : DstreebstGraphN) -> DstreebstGraphN {
-  let result = ds_tree_bst_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_graphn_fill(s : DstreebstGraphN, v : Double) -> DstreebstGraphN {
-  let result = ds_tree_bst_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_graphn_min(s : DstreebstGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_tree_bst_node_sum(s : DstreebstNode) -> Double { @_common.sum(s.data) 
 pub fn ds_tree_bst_node_mean(s : DstreebstNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_node_scale(s : DstreebstNode, f : Double) -> DstreebstNode {
-  let result = ds_tree_bst_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_node_add(a : DstreebstNode, b : DstreebstNode) -> DstreebstNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_node_copy(s : DstreebstNode) -> DstreebstNode {
-  let result = ds_tree_bst_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_node_fill(s : DstreebstNode, v : Double) -> DstreebstNode {
-  let result = ds_tree_bst_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_node_min(s : DstreebstNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_tree_bst_edge_sum(s : DstreebstEdge) -> Double { @_common.sum(s.data) 
 pub fn ds_tree_bst_edge_mean(s : DstreebstEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_edge_scale(s : DstreebstEdge, f : Double) -> DstreebstEdge {
-  let result = ds_tree_bst_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_edge_add(a : DstreebstEdge, b : DstreebstEdge) -> DstreebstEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_edge_copy(s : DstreebstEdge) -> DstreebstEdge {
-  let result = ds_tree_bst_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_edge_fill(s : DstreebstEdge, v : Double) -> DstreebstEdge {
-  let result = ds_tree_bst_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_edge_min(s : DstreebstEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_tree_bst_path_sum(s : DstreebstPath) -> Double { @_common.sum(s.data) 
 pub fn ds_tree_bst_path_mean(s : DstreebstPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_path_scale(s : DstreebstPath, f : Double) -> DstreebstPath {
-  let result = ds_tree_bst_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_path_add(a : DstreebstPath, b : DstreebstPath) -> DstreebstPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_path_copy(s : DstreebstPath) -> DstreebstPath {
-  let result = ds_tree_bst_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_path_fill(s : DstreebstPath, v : Double) -> DstreebstPath {
-  let result = ds_tree_bst_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_path_min(s : DstreebstPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_tree_bst_cluster_sum(s : DstreebstCluster) -> Double { @_common.sum(s.
 pub fn ds_tree_bst_cluster_mean(s : DstreebstCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_cluster_scale(s : DstreebstCluster, f : Double) -> DstreebstCluster {
-  let result = ds_tree_bst_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_cluster_add(a : DstreebstCluster, b : DstreebstCluster) -> DstreebstCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_cluster_copy(s : DstreebstCluster) -> DstreebstCluster {
-  let result = ds_tree_bst_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_cluster_fill(s : DstreebstCluster, v : Double) -> DstreebstCluster {
-  let result = ds_tree_bst_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_cluster_min(s : DstreebstCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_tree_bst_model_sum(s : DstreebstModel) -> Double { @_common.sum(s.data
 pub fn ds_tree_bst_model_mean(s : DstreebstModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_model_scale(s : DstreebstModel, f : Double) -> DstreebstModel {
-  let result = ds_tree_bst_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_model_add(a : DstreebstModel, b : DstreebstModel) -> DstreebstModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_model_copy(s : DstreebstModel) -> DstreebstModel {
-  let result = ds_tree_bst_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_model_fill(s : DstreebstModel, v : Double) -> DstreebstModel {
-  let result = ds_tree_bst_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_model_min(s : DstreebstModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_tree_bst_layer_sum(s : DstreebstLayer) -> Double { @_common.sum(s.data
 pub fn ds_tree_bst_layer_mean(s : DstreebstLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_layer_scale(s : DstreebstLayer, f : Double) -> DstreebstLayer {
-  let result = ds_tree_bst_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_layer_add(a : DstreebstLayer, b : DstreebstLayer) -> DstreebstLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_layer_copy(s : DstreebstLayer) -> DstreebstLayer {
-  let result = ds_tree_bst_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_layer_fill(s : DstreebstLayer, v : Double) -> DstreebstLayer {
-  let result = ds_tree_bst_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_layer_min(s : DstreebstLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_tree_bst_buffer_sum(s : DstreebstBuffer) -> Double { @_common.sum(s.da
 pub fn ds_tree_bst_buffer_mean(s : DstreebstBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_buffer_scale(s : DstreebstBuffer, f : Double) -> DstreebstBuffer {
-  let result = ds_tree_bst_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_buffer_add(a : DstreebstBuffer, b : DstreebstBuffer) -> DstreebstBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_buffer_copy(s : DstreebstBuffer) -> DstreebstBuffer {
-  let result = ds_tree_bst_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_buffer_fill(s : DstreebstBuffer, v : Double) -> DstreebstBuffer {
-  let result = ds_tree_bst_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_buffer_min(s : DstreebstBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_tree_bst_cursor_sum(s : DstreebstCursor) -> Double { @_common.sum(s.da
 pub fn ds_tree_bst_cursor_mean(s : DstreebstCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_cursor_scale(s : DstreebstCursor, f : Double) -> DstreebstCursor {
-  let result = ds_tree_bst_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_cursor_add(a : DstreebstCursor, b : DstreebstCursor) -> DstreebstCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_cursor_copy(s : DstreebstCursor) -> DstreebstCursor {
-  let result = ds_tree_bst_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_cursor_fill(s : DstreebstCursor, v : Double) -> DstreebstCursor {
-  let result = ds_tree_bst_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_cursor_min(s : DstreebstCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_tree_bst_view_sum(s : DstreebstView) -> Double { @_common.sum(s.data) 
 pub fn ds_tree_bst_view_mean(s : DstreebstView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_view_scale(s : DstreebstView, f : Double) -> DstreebstView {
-  let result = ds_tree_bst_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_view_add(a : DstreebstView, b : DstreebstView) -> DstreebstView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_view_copy(s : DstreebstView) -> DstreebstView {
-  let result = ds_tree_bst_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_view_fill(s : DstreebstView, v : Double) -> DstreebstView {
-  let result = ds_tree_bst_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_view_min(s : DstreebstView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_tree_bst_range_sum(s : DstreebstRange) -> Double { @_common.sum(s.data
 pub fn ds_tree_bst_range_mean(s : DstreebstRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_range_scale(s : DstreebstRange, f : Double) -> DstreebstRange {
-  let result = ds_tree_bst_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_range_add(a : DstreebstRange, b : DstreebstRange) -> DstreebstRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_range_copy(s : DstreebstRange) -> DstreebstRange {
-  let result = ds_tree_bst_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_range_fill(s : DstreebstRange, v : Double) -> DstreebstRange {
-  let result = ds_tree_bst_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_range_min(s : DstreebstRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_tree_bst_slice_sum(s : DstreebstSlice) -> Double { @_common.sum(s.data
 pub fn ds_tree_bst_slice_mean(s : DstreebstSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_slice_scale(s : DstreebstSlice, f : Double) -> DstreebstSlice {
-  let result = ds_tree_bst_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_slice_add(a : DstreebstSlice, b : DstreebstSlice) -> DstreebstSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_bst_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_bst_slice_copy(s : DstreebstSlice) -> DstreebstSlice {
-  let result = ds_tree_bst_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_slice_fill(s : DstreebstSlice, v : Double) -> DstreebstSlice {
-  let result = ds_tree_bst_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_bst_slice_min(s : DstreebstSlice) -> Double { @_common.min(s.data) }

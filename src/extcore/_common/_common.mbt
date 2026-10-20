@@ -597,3 +597,41 @@ pub fn concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
   }
   result
 }
+/// 复制数组
+pub fn copy_arr(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = data[i]
+  }
+  result
+}
+
+/// 数组缩放
+pub fn scale_arr(data : Array[Double], f : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = data[i] * f
+  }
+  result
+}
+
+/// 数组逐元素加
+pub fn add_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let n = if a.length() < b.length() {
+    a.length()
+  } else {
+    b.length()
+  }
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = a[i] + b[i]
+  }
+  result
+}
+
+/// 填充数组
+pub fn fill_arr(n : Int, v : Double) -> Array[Double] {
+  Array::make(n, v)
+}

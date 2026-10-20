@@ -383,28 +383,20 @@ pub fn ds_list_persistent_frame_sum(s : DslistpersistentFrame) -> Double { @_com
 pub fn ds_list_persistent_frame_mean(s : DslistpersistentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_frame_scale(s : DslistpersistentFrame, f : Double) -> DslistpersistentFrame {
-  let result = ds_list_persistent_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_frame_add(a : DslistpersistentFrame, b : DslistpersistentFrame) -> DslistpersistentFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_frame_copy(s : DslistpersistentFrame) -> DslistpersistentFrame {
-  let result = ds_list_persistent_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_frame_fill(s : DslistpersistentFrame, v : Double) -> DslistpersistentFrame {
-  let result = ds_list_persistent_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_frame_min(s : DslistpersistentFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_list_persistent_table_sum(s : DslistpersistentTable) -> Double { @_com
 pub fn ds_list_persistent_table_mean(s : DslistpersistentTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_table_scale(s : DslistpersistentTable, f : Double) -> DslistpersistentTable {
-  let result = ds_list_persistent_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_table_add(a : DslistpersistentTable, b : DslistpersistentTable) -> DslistpersistentTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_table_copy(s : DslistpersistentTable) -> DslistpersistentTable {
-  let result = ds_list_persistent_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_table_fill(s : DslistpersistentTable, v : Double) -> DslistpersistentTable {
-  let result = ds_list_persistent_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_table_min(s : DslistpersistentTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_list_persistent_graphn_sum(s : DslistpersistentGraphN) -> Double { @_c
 pub fn ds_list_persistent_graphn_mean(s : DslistpersistentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_graphn_scale(s : DslistpersistentGraphN, f : Double) -> DslistpersistentGraphN {
-  let result = ds_list_persistent_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_graphn_add(a : DslistpersistentGraphN, b : DslistpersistentGraphN) -> DslistpersistentGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_graphn_copy(s : DslistpersistentGraphN) -> DslistpersistentGraphN {
-  let result = ds_list_persistent_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_graphn_fill(s : DslistpersistentGraphN, v : Double) -> DslistpersistentGraphN {
-  let result = ds_list_persistent_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_graphn_min(s : DslistpersistentGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_list_persistent_node_sum(s : DslistpersistentNode) -> Double { @_commo
 pub fn ds_list_persistent_node_mean(s : DslistpersistentNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_node_scale(s : DslistpersistentNode, f : Double) -> DslistpersistentNode {
-  let result = ds_list_persistent_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_node_add(a : DslistpersistentNode, b : DslistpersistentNode) -> DslistpersistentNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_node_copy(s : DslistpersistentNode) -> DslistpersistentNode {
-  let result = ds_list_persistent_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_node_fill(s : DslistpersistentNode, v : Double) -> DslistpersistentNode {
-  let result = ds_list_persistent_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_node_min(s : DslistpersistentNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_list_persistent_edge_sum(s : DslistpersistentEdge) -> Double { @_commo
 pub fn ds_list_persistent_edge_mean(s : DslistpersistentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_edge_scale(s : DslistpersistentEdge, f : Double) -> DslistpersistentEdge {
-  let result = ds_list_persistent_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_edge_add(a : DslistpersistentEdge, b : DslistpersistentEdge) -> DslistpersistentEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_edge_copy(s : DslistpersistentEdge) -> DslistpersistentEdge {
-  let result = ds_list_persistent_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_edge_fill(s : DslistpersistentEdge, v : Double) -> DslistpersistentEdge {
-  let result = ds_list_persistent_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_edge_min(s : DslistpersistentEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_list_persistent_path_sum(s : DslistpersistentPath) -> Double { @_commo
 pub fn ds_list_persistent_path_mean(s : DslistpersistentPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_path_scale(s : DslistpersistentPath, f : Double) -> DslistpersistentPath {
-  let result = ds_list_persistent_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_path_add(a : DslistpersistentPath, b : DslistpersistentPath) -> DslistpersistentPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_path_copy(s : DslistpersistentPath) -> DslistpersistentPath {
-  let result = ds_list_persistent_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_path_fill(s : DslistpersistentPath, v : Double) -> DslistpersistentPath {
-  let result = ds_list_persistent_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_path_min(s : DslistpersistentPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_list_persistent_cluster_sum(s : DslistpersistentCluster) -> Double { @
 pub fn ds_list_persistent_cluster_mean(s : DslistpersistentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_cluster_scale(s : DslistpersistentCluster, f : Double) -> DslistpersistentCluster {
-  let result = ds_list_persistent_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cluster_add(a : DslistpersistentCluster, b : DslistpersistentCluster) -> DslistpersistentCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_cluster_copy(s : DslistpersistentCluster) -> DslistpersistentCluster {
-  let result = ds_list_persistent_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cluster_fill(s : DslistpersistentCluster, v : Double) -> DslistpersistentCluster {
-  let result = ds_list_persistent_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cluster_min(s : DslistpersistentCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_list_persistent_model_sum(s : DslistpersistentModel) -> Double { @_com
 pub fn ds_list_persistent_model_mean(s : DslistpersistentModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_model_scale(s : DslistpersistentModel, f : Double) -> DslistpersistentModel {
-  let result = ds_list_persistent_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_model_add(a : DslistpersistentModel, b : DslistpersistentModel) -> DslistpersistentModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_model_copy(s : DslistpersistentModel) -> DslistpersistentModel {
-  let result = ds_list_persistent_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_model_fill(s : DslistpersistentModel, v : Double) -> DslistpersistentModel {
-  let result = ds_list_persistent_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_model_min(s : DslistpersistentModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_list_persistent_layer_sum(s : DslistpersistentLayer) -> Double { @_com
 pub fn ds_list_persistent_layer_mean(s : DslistpersistentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_layer_scale(s : DslistpersistentLayer, f : Double) -> DslistpersistentLayer {
-  let result = ds_list_persistent_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_layer_add(a : DslistpersistentLayer, b : DslistpersistentLayer) -> DslistpersistentLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_layer_copy(s : DslistpersistentLayer) -> DslistpersistentLayer {
-  let result = ds_list_persistent_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_layer_fill(s : DslistpersistentLayer, v : Double) -> DslistpersistentLayer {
-  let result = ds_list_persistent_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_layer_min(s : DslistpersistentLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_list_persistent_buffer_sum(s : DslistpersistentBuffer) -> Double { @_c
 pub fn ds_list_persistent_buffer_mean(s : DslistpersistentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_buffer_scale(s : DslistpersistentBuffer, f : Double) -> DslistpersistentBuffer {
-  let result = ds_list_persistent_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_buffer_add(a : DslistpersistentBuffer, b : DslistpersistentBuffer) -> DslistpersistentBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_buffer_copy(s : DslistpersistentBuffer) -> DslistpersistentBuffer {
-  let result = ds_list_persistent_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_buffer_fill(s : DslistpersistentBuffer, v : Double) -> DslistpersistentBuffer {
-  let result = ds_list_persistent_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_buffer_min(s : DslistpersistentBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_list_persistent_cursor_sum(s : DslistpersistentCursor) -> Double { @_c
 pub fn ds_list_persistent_cursor_mean(s : DslistpersistentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_cursor_scale(s : DslistpersistentCursor, f : Double) -> DslistpersistentCursor {
-  let result = ds_list_persistent_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cursor_add(a : DslistpersistentCursor, b : DslistpersistentCursor) -> DslistpersistentCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_cursor_copy(s : DslistpersistentCursor) -> DslistpersistentCursor {
-  let result = ds_list_persistent_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cursor_fill(s : DslistpersistentCursor, v : Double) -> DslistpersistentCursor {
-  let result = ds_list_persistent_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cursor_min(s : DslistpersistentCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_list_persistent_view_sum(s : DslistpersistentView) -> Double { @_commo
 pub fn ds_list_persistent_view_mean(s : DslistpersistentView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_view_scale(s : DslistpersistentView, f : Double) -> DslistpersistentView {
-  let result = ds_list_persistent_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_view_add(a : DslistpersistentView, b : DslistpersistentView) -> DslistpersistentView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_view_copy(s : DslistpersistentView) -> DslistpersistentView {
-  let result = ds_list_persistent_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_view_fill(s : DslistpersistentView, v : Double) -> DslistpersistentView {
-  let result = ds_list_persistent_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_view_min(s : DslistpersistentView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_list_persistent_range_sum(s : DslistpersistentRange) -> Double { @_com
 pub fn ds_list_persistent_range_mean(s : DslistpersistentRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_range_scale(s : DslistpersistentRange, f : Double) -> DslistpersistentRange {
-  let result = ds_list_persistent_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_range_add(a : DslistpersistentRange, b : DslistpersistentRange) -> DslistpersistentRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_range_copy(s : DslistpersistentRange) -> DslistpersistentRange {
-  let result = ds_list_persistent_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_range_fill(s : DslistpersistentRange, v : Double) -> DslistpersistentRange {
-  let result = ds_list_persistent_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_range_min(s : DslistpersistentRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_list_persistent_slice_sum(s : DslistpersistentSlice) -> Double { @_com
 pub fn ds_list_persistent_slice_mean(s : DslistpersistentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_slice_scale(s : DslistpersistentSlice, f : Double) -> DslistpersistentSlice {
-  let result = ds_list_persistent_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_slice_add(a : DslistpersistentSlice, b : DslistpersistentSlice) -> DslistpersistentSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_list_persistent_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_list_persistent_slice_copy(s : DslistpersistentSlice) -> DslistpersistentSlice {
-  let result = ds_list_persistent_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_slice_fill(s : DslistpersistentSlice, v : Double) -> DslistpersistentSlice {
-  let result = ds_list_persistent_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_slice_min(s : DslistpersistentSlice) -> Double { @_common.min(s.data) }

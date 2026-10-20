@@ -383,28 +383,20 @@ pub fn math_special_zeta_frame_sum(s : MathspecialzetaFrame) -> Double { @_commo
 pub fn math_special_zeta_frame_mean(s : MathspecialzetaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_frame_scale(s : MathspecialzetaFrame, f : Double) -> MathspecialzetaFrame {
-  let result = math_special_zeta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_frame_add(a : MathspecialzetaFrame, b : MathspecialzetaFrame) -> MathspecialzetaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_frame_copy(s : MathspecialzetaFrame) -> MathspecialzetaFrame {
-  let result = math_special_zeta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_frame_fill(s : MathspecialzetaFrame, v : Double) -> MathspecialzetaFrame {
-  let result = math_special_zeta_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_frame_min(s : MathspecialzetaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_special_zeta_table_sum(s : MathspecialzetaTable) -> Double { @_commo
 pub fn math_special_zeta_table_mean(s : MathspecialzetaTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_table_scale(s : MathspecialzetaTable, f : Double) -> MathspecialzetaTable {
-  let result = math_special_zeta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_table_add(a : MathspecialzetaTable, b : MathspecialzetaTable) -> MathspecialzetaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_table_copy(s : MathspecialzetaTable) -> MathspecialzetaTable {
-  let result = math_special_zeta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_table_fill(s : MathspecialzetaTable, v : Double) -> MathspecialzetaTable {
-  let result = math_special_zeta_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_table_min(s : MathspecialzetaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_special_zeta_graphn_sum(s : MathspecialzetaGraphN) -> Double { @_com
 pub fn math_special_zeta_graphn_mean(s : MathspecialzetaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_graphn_scale(s : MathspecialzetaGraphN, f : Double) -> MathspecialzetaGraphN {
-  let result = math_special_zeta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_graphn_add(a : MathspecialzetaGraphN, b : MathspecialzetaGraphN) -> MathspecialzetaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_graphn_copy(s : MathspecialzetaGraphN) -> MathspecialzetaGraphN {
-  let result = math_special_zeta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_graphn_fill(s : MathspecialzetaGraphN, v : Double) -> MathspecialzetaGraphN {
-  let result = math_special_zeta_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_graphn_min(s : MathspecialzetaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_special_zeta_node_sum(s : MathspecialzetaNode) -> Double { @_common.
 pub fn math_special_zeta_node_mean(s : MathspecialzetaNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_node_scale(s : MathspecialzetaNode, f : Double) -> MathspecialzetaNode {
-  let result = math_special_zeta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_node_add(a : MathspecialzetaNode, b : MathspecialzetaNode) -> MathspecialzetaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_node_copy(s : MathspecialzetaNode) -> MathspecialzetaNode {
-  let result = math_special_zeta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_node_fill(s : MathspecialzetaNode, v : Double) -> MathspecialzetaNode {
-  let result = math_special_zeta_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_node_min(s : MathspecialzetaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_special_zeta_edge_sum(s : MathspecialzetaEdge) -> Double { @_common.
 pub fn math_special_zeta_edge_mean(s : MathspecialzetaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_edge_scale(s : MathspecialzetaEdge, f : Double) -> MathspecialzetaEdge {
-  let result = math_special_zeta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_edge_add(a : MathspecialzetaEdge, b : MathspecialzetaEdge) -> MathspecialzetaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_edge_copy(s : MathspecialzetaEdge) -> MathspecialzetaEdge {
-  let result = math_special_zeta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_edge_fill(s : MathspecialzetaEdge, v : Double) -> MathspecialzetaEdge {
-  let result = math_special_zeta_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_edge_min(s : MathspecialzetaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_special_zeta_path_sum(s : MathspecialzetaPath) -> Double { @_common.
 pub fn math_special_zeta_path_mean(s : MathspecialzetaPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_path_scale(s : MathspecialzetaPath, f : Double) -> MathspecialzetaPath {
-  let result = math_special_zeta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_path_add(a : MathspecialzetaPath, b : MathspecialzetaPath) -> MathspecialzetaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_path_copy(s : MathspecialzetaPath) -> MathspecialzetaPath {
-  let result = math_special_zeta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_path_fill(s : MathspecialzetaPath, v : Double) -> MathspecialzetaPath {
-  let result = math_special_zeta_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_path_min(s : MathspecialzetaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_special_zeta_cluster_sum(s : MathspecialzetaCluster) -> Double { @_c
 pub fn math_special_zeta_cluster_mean(s : MathspecialzetaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_cluster_scale(s : MathspecialzetaCluster, f : Double) -> MathspecialzetaCluster {
-  let result = math_special_zeta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_cluster_add(a : MathspecialzetaCluster, b : MathspecialzetaCluster) -> MathspecialzetaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_cluster_copy(s : MathspecialzetaCluster) -> MathspecialzetaCluster {
-  let result = math_special_zeta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_cluster_fill(s : MathspecialzetaCluster, v : Double) -> MathspecialzetaCluster {
-  let result = math_special_zeta_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_cluster_min(s : MathspecialzetaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_special_zeta_model_sum(s : MathspecialzetaModel) -> Double { @_commo
 pub fn math_special_zeta_model_mean(s : MathspecialzetaModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_model_scale(s : MathspecialzetaModel, f : Double) -> MathspecialzetaModel {
-  let result = math_special_zeta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_model_add(a : MathspecialzetaModel, b : MathspecialzetaModel) -> MathspecialzetaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_model_copy(s : MathspecialzetaModel) -> MathspecialzetaModel {
-  let result = math_special_zeta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_model_fill(s : MathspecialzetaModel, v : Double) -> MathspecialzetaModel {
-  let result = math_special_zeta_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_model_min(s : MathspecialzetaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_special_zeta_layer_sum(s : MathspecialzetaLayer) -> Double { @_commo
 pub fn math_special_zeta_layer_mean(s : MathspecialzetaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_layer_scale(s : MathspecialzetaLayer, f : Double) -> MathspecialzetaLayer {
-  let result = math_special_zeta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_layer_add(a : MathspecialzetaLayer, b : MathspecialzetaLayer) -> MathspecialzetaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_layer_copy(s : MathspecialzetaLayer) -> MathspecialzetaLayer {
-  let result = math_special_zeta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_layer_fill(s : MathspecialzetaLayer, v : Double) -> MathspecialzetaLayer {
-  let result = math_special_zeta_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_layer_min(s : MathspecialzetaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_special_zeta_buffer_sum(s : MathspecialzetaBuffer) -> Double { @_com
 pub fn math_special_zeta_buffer_mean(s : MathspecialzetaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_buffer_scale(s : MathspecialzetaBuffer, f : Double) -> MathspecialzetaBuffer {
-  let result = math_special_zeta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_buffer_add(a : MathspecialzetaBuffer, b : MathspecialzetaBuffer) -> MathspecialzetaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_buffer_copy(s : MathspecialzetaBuffer) -> MathspecialzetaBuffer {
-  let result = math_special_zeta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_buffer_fill(s : MathspecialzetaBuffer, v : Double) -> MathspecialzetaBuffer {
-  let result = math_special_zeta_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_buffer_min(s : MathspecialzetaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_special_zeta_cursor_sum(s : MathspecialzetaCursor) -> Double { @_com
 pub fn math_special_zeta_cursor_mean(s : MathspecialzetaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_cursor_scale(s : MathspecialzetaCursor, f : Double) -> MathspecialzetaCursor {
-  let result = math_special_zeta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_cursor_add(a : MathspecialzetaCursor, b : MathspecialzetaCursor) -> MathspecialzetaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_cursor_copy(s : MathspecialzetaCursor) -> MathspecialzetaCursor {
-  let result = math_special_zeta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_cursor_fill(s : MathspecialzetaCursor, v : Double) -> MathspecialzetaCursor {
-  let result = math_special_zeta_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_cursor_min(s : MathspecialzetaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_special_zeta_view_sum(s : MathspecialzetaView) -> Double { @_common.
 pub fn math_special_zeta_view_mean(s : MathspecialzetaView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_view_scale(s : MathspecialzetaView, f : Double) -> MathspecialzetaView {
-  let result = math_special_zeta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_view_add(a : MathspecialzetaView, b : MathspecialzetaView) -> MathspecialzetaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_view_copy(s : MathspecialzetaView) -> MathspecialzetaView {
-  let result = math_special_zeta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_view_fill(s : MathspecialzetaView, v : Double) -> MathspecialzetaView {
-  let result = math_special_zeta_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_view_min(s : MathspecialzetaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_special_zeta_range_sum(s : MathspecialzetaRange) -> Double { @_commo
 pub fn math_special_zeta_range_mean(s : MathspecialzetaRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_range_scale(s : MathspecialzetaRange, f : Double) -> MathspecialzetaRange {
-  let result = math_special_zeta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_range_add(a : MathspecialzetaRange, b : MathspecialzetaRange) -> MathspecialzetaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_range_copy(s : MathspecialzetaRange) -> MathspecialzetaRange {
-  let result = math_special_zeta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_range_fill(s : MathspecialzetaRange, v : Double) -> MathspecialzetaRange {
-  let result = math_special_zeta_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_range_min(s : MathspecialzetaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_special_zeta_slice_sum(s : MathspecialzetaSlice) -> Double { @_commo
 pub fn math_special_zeta_slice_mean(s : MathspecialzetaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_slice_scale(s : MathspecialzetaSlice, f : Double) -> MathspecialzetaSlice {
-  let result = math_special_zeta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_slice_add(a : MathspecialzetaSlice, b : MathspecialzetaSlice) -> MathspecialzetaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_special_zeta_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_special_zeta_slice_copy(s : MathspecialzetaSlice) -> MathspecialzetaSlice {
-  let result = math_special_zeta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_slice_fill(s : MathspecialzetaSlice, v : Double) -> MathspecialzetaSlice {
-  let result = math_special_zeta_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_special_zeta_slice_min(s : MathspecialzetaSlice) -> Double { @_common.min(s.data) }

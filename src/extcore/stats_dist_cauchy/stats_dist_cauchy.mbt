@@ -383,28 +383,20 @@ pub fn stats_dist_cauchy_frame_sum(s : StatsdistcauchyFrame) -> Double { @_commo
 pub fn stats_dist_cauchy_frame_mean(s : StatsdistcauchyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_frame_scale(s : StatsdistcauchyFrame, f : Double) -> StatsdistcauchyFrame {
-  let result = stats_dist_cauchy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_frame_add(a : StatsdistcauchyFrame, b : StatsdistcauchyFrame) -> StatsdistcauchyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_frame_copy(s : StatsdistcauchyFrame) -> StatsdistcauchyFrame {
-  let result = stats_dist_cauchy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_frame_fill(s : StatsdistcauchyFrame, v : Double) -> StatsdistcauchyFrame {
-  let result = stats_dist_cauchy_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_frame_min(s : StatsdistcauchyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_dist_cauchy_table_sum(s : StatsdistcauchyTable) -> Double { @_commo
 pub fn stats_dist_cauchy_table_mean(s : StatsdistcauchyTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_table_scale(s : StatsdistcauchyTable, f : Double) -> StatsdistcauchyTable {
-  let result = stats_dist_cauchy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_table_add(a : StatsdistcauchyTable, b : StatsdistcauchyTable) -> StatsdistcauchyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_table_copy(s : StatsdistcauchyTable) -> StatsdistcauchyTable {
-  let result = stats_dist_cauchy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_table_fill(s : StatsdistcauchyTable, v : Double) -> StatsdistcauchyTable {
-  let result = stats_dist_cauchy_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_table_min(s : StatsdistcauchyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_dist_cauchy_graphn_sum(s : StatsdistcauchyGraphN) -> Double { @_com
 pub fn stats_dist_cauchy_graphn_mean(s : StatsdistcauchyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_graphn_scale(s : StatsdistcauchyGraphN, f : Double) -> StatsdistcauchyGraphN {
-  let result = stats_dist_cauchy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_graphn_add(a : StatsdistcauchyGraphN, b : StatsdistcauchyGraphN) -> StatsdistcauchyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_graphn_copy(s : StatsdistcauchyGraphN) -> StatsdistcauchyGraphN {
-  let result = stats_dist_cauchy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_graphn_fill(s : StatsdistcauchyGraphN, v : Double) -> StatsdistcauchyGraphN {
-  let result = stats_dist_cauchy_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_graphn_min(s : StatsdistcauchyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_dist_cauchy_node_sum(s : StatsdistcauchyNode) -> Double { @_common.
 pub fn stats_dist_cauchy_node_mean(s : StatsdistcauchyNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_node_scale(s : StatsdistcauchyNode, f : Double) -> StatsdistcauchyNode {
-  let result = stats_dist_cauchy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_node_add(a : StatsdistcauchyNode, b : StatsdistcauchyNode) -> StatsdistcauchyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_node_copy(s : StatsdistcauchyNode) -> StatsdistcauchyNode {
-  let result = stats_dist_cauchy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_node_fill(s : StatsdistcauchyNode, v : Double) -> StatsdistcauchyNode {
-  let result = stats_dist_cauchy_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_node_min(s : StatsdistcauchyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_dist_cauchy_edge_sum(s : StatsdistcauchyEdge) -> Double { @_common.
 pub fn stats_dist_cauchy_edge_mean(s : StatsdistcauchyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_edge_scale(s : StatsdistcauchyEdge, f : Double) -> StatsdistcauchyEdge {
-  let result = stats_dist_cauchy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_edge_add(a : StatsdistcauchyEdge, b : StatsdistcauchyEdge) -> StatsdistcauchyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_edge_copy(s : StatsdistcauchyEdge) -> StatsdistcauchyEdge {
-  let result = stats_dist_cauchy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_edge_fill(s : StatsdistcauchyEdge, v : Double) -> StatsdistcauchyEdge {
-  let result = stats_dist_cauchy_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_edge_min(s : StatsdistcauchyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_dist_cauchy_path_sum(s : StatsdistcauchyPath) -> Double { @_common.
 pub fn stats_dist_cauchy_path_mean(s : StatsdistcauchyPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_path_scale(s : StatsdistcauchyPath, f : Double) -> StatsdistcauchyPath {
-  let result = stats_dist_cauchy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_path_add(a : StatsdistcauchyPath, b : StatsdistcauchyPath) -> StatsdistcauchyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_path_copy(s : StatsdistcauchyPath) -> StatsdistcauchyPath {
-  let result = stats_dist_cauchy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_path_fill(s : StatsdistcauchyPath, v : Double) -> StatsdistcauchyPath {
-  let result = stats_dist_cauchy_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_path_min(s : StatsdistcauchyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_dist_cauchy_cluster_sum(s : StatsdistcauchyCluster) -> Double { @_c
 pub fn stats_dist_cauchy_cluster_mean(s : StatsdistcauchyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_cluster_scale(s : StatsdistcauchyCluster, f : Double) -> StatsdistcauchyCluster {
-  let result = stats_dist_cauchy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_cluster_add(a : StatsdistcauchyCluster, b : StatsdistcauchyCluster) -> StatsdistcauchyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_cluster_copy(s : StatsdistcauchyCluster) -> StatsdistcauchyCluster {
-  let result = stats_dist_cauchy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_cluster_fill(s : StatsdistcauchyCluster, v : Double) -> StatsdistcauchyCluster {
-  let result = stats_dist_cauchy_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_cluster_min(s : StatsdistcauchyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_dist_cauchy_model_sum(s : StatsdistcauchyModel) -> Double { @_commo
 pub fn stats_dist_cauchy_model_mean(s : StatsdistcauchyModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_model_scale(s : StatsdistcauchyModel, f : Double) -> StatsdistcauchyModel {
-  let result = stats_dist_cauchy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_model_add(a : StatsdistcauchyModel, b : StatsdistcauchyModel) -> StatsdistcauchyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_model_copy(s : StatsdistcauchyModel) -> StatsdistcauchyModel {
-  let result = stats_dist_cauchy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_model_fill(s : StatsdistcauchyModel, v : Double) -> StatsdistcauchyModel {
-  let result = stats_dist_cauchy_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_model_min(s : StatsdistcauchyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_dist_cauchy_layer_sum(s : StatsdistcauchyLayer) -> Double { @_commo
 pub fn stats_dist_cauchy_layer_mean(s : StatsdistcauchyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_layer_scale(s : StatsdistcauchyLayer, f : Double) -> StatsdistcauchyLayer {
-  let result = stats_dist_cauchy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_layer_add(a : StatsdistcauchyLayer, b : StatsdistcauchyLayer) -> StatsdistcauchyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_layer_copy(s : StatsdistcauchyLayer) -> StatsdistcauchyLayer {
-  let result = stats_dist_cauchy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_layer_fill(s : StatsdistcauchyLayer, v : Double) -> StatsdistcauchyLayer {
-  let result = stats_dist_cauchy_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_layer_min(s : StatsdistcauchyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_dist_cauchy_buffer_sum(s : StatsdistcauchyBuffer) -> Double { @_com
 pub fn stats_dist_cauchy_buffer_mean(s : StatsdistcauchyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_buffer_scale(s : StatsdistcauchyBuffer, f : Double) -> StatsdistcauchyBuffer {
-  let result = stats_dist_cauchy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_buffer_add(a : StatsdistcauchyBuffer, b : StatsdistcauchyBuffer) -> StatsdistcauchyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_buffer_copy(s : StatsdistcauchyBuffer) -> StatsdistcauchyBuffer {
-  let result = stats_dist_cauchy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_buffer_fill(s : StatsdistcauchyBuffer, v : Double) -> StatsdistcauchyBuffer {
-  let result = stats_dist_cauchy_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_buffer_min(s : StatsdistcauchyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_dist_cauchy_cursor_sum(s : StatsdistcauchyCursor) -> Double { @_com
 pub fn stats_dist_cauchy_cursor_mean(s : StatsdistcauchyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_cursor_scale(s : StatsdistcauchyCursor, f : Double) -> StatsdistcauchyCursor {
-  let result = stats_dist_cauchy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_cursor_add(a : StatsdistcauchyCursor, b : StatsdistcauchyCursor) -> StatsdistcauchyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_cursor_copy(s : StatsdistcauchyCursor) -> StatsdistcauchyCursor {
-  let result = stats_dist_cauchy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_cursor_fill(s : StatsdistcauchyCursor, v : Double) -> StatsdistcauchyCursor {
-  let result = stats_dist_cauchy_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_cursor_min(s : StatsdistcauchyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_dist_cauchy_view_sum(s : StatsdistcauchyView) -> Double { @_common.
 pub fn stats_dist_cauchy_view_mean(s : StatsdistcauchyView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_view_scale(s : StatsdistcauchyView, f : Double) -> StatsdistcauchyView {
-  let result = stats_dist_cauchy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_view_add(a : StatsdistcauchyView, b : StatsdistcauchyView) -> StatsdistcauchyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_view_copy(s : StatsdistcauchyView) -> StatsdistcauchyView {
-  let result = stats_dist_cauchy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_view_fill(s : StatsdistcauchyView, v : Double) -> StatsdistcauchyView {
-  let result = stats_dist_cauchy_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_view_min(s : StatsdistcauchyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_dist_cauchy_range_sum(s : StatsdistcauchyRange) -> Double { @_commo
 pub fn stats_dist_cauchy_range_mean(s : StatsdistcauchyRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_range_scale(s : StatsdistcauchyRange, f : Double) -> StatsdistcauchyRange {
-  let result = stats_dist_cauchy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_range_add(a : StatsdistcauchyRange, b : StatsdistcauchyRange) -> StatsdistcauchyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_range_copy(s : StatsdistcauchyRange) -> StatsdistcauchyRange {
-  let result = stats_dist_cauchy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_range_fill(s : StatsdistcauchyRange, v : Double) -> StatsdistcauchyRange {
-  let result = stats_dist_cauchy_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_range_min(s : StatsdistcauchyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_dist_cauchy_slice_sum(s : StatsdistcauchySlice) -> Double { @_commo
 pub fn stats_dist_cauchy_slice_mean(s : StatsdistcauchySlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_slice_scale(s : StatsdistcauchySlice, f : Double) -> StatsdistcauchySlice {
-  let result = stats_dist_cauchy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_slice_add(a : StatsdistcauchySlice, b : StatsdistcauchySlice) -> StatsdistcauchySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_dist_cauchy_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_dist_cauchy_slice_copy(s : StatsdistcauchySlice) -> StatsdistcauchySlice {
-  let result = stats_dist_cauchy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_slice_fill(s : StatsdistcauchySlice, v : Double) -> StatsdistcauchySlice {
-  let result = stats_dist_cauchy_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_cauchy_slice_min(s : StatsdistcauchySlice) -> Double { @_common.min(s.data) }

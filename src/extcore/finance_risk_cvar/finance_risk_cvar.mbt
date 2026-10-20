@@ -383,28 +383,20 @@ pub fn finance_risk_cvar_frame_sum(s : FinanceriskcvarFrame) -> Double { @_commo
 pub fn finance_risk_cvar_frame_mean(s : FinanceriskcvarFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_frame_scale(s : FinanceriskcvarFrame, f : Double) -> FinanceriskcvarFrame {
-  let result = finance_risk_cvar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_frame_add(a : FinanceriskcvarFrame, b : FinanceriskcvarFrame) -> FinanceriskcvarFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_frame_copy(s : FinanceriskcvarFrame) -> FinanceriskcvarFrame {
-  let result = finance_risk_cvar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_frame_fill(s : FinanceriskcvarFrame, v : Double) -> FinanceriskcvarFrame {
-  let result = finance_risk_cvar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_frame_min(s : FinanceriskcvarFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_risk_cvar_table_sum(s : FinanceriskcvarTable) -> Double { @_commo
 pub fn finance_risk_cvar_table_mean(s : FinanceriskcvarTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_table_scale(s : FinanceriskcvarTable, f : Double) -> FinanceriskcvarTable {
-  let result = finance_risk_cvar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_table_add(a : FinanceriskcvarTable, b : FinanceriskcvarTable) -> FinanceriskcvarTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_table_copy(s : FinanceriskcvarTable) -> FinanceriskcvarTable {
-  let result = finance_risk_cvar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_table_fill(s : FinanceriskcvarTable, v : Double) -> FinanceriskcvarTable {
-  let result = finance_risk_cvar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_table_min(s : FinanceriskcvarTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_risk_cvar_graphn_sum(s : FinanceriskcvarGraphN) -> Double { @_com
 pub fn finance_risk_cvar_graphn_mean(s : FinanceriskcvarGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_graphn_scale(s : FinanceriskcvarGraphN, f : Double) -> FinanceriskcvarGraphN {
-  let result = finance_risk_cvar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_graphn_add(a : FinanceriskcvarGraphN, b : FinanceriskcvarGraphN) -> FinanceriskcvarGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_graphn_copy(s : FinanceriskcvarGraphN) -> FinanceriskcvarGraphN {
-  let result = finance_risk_cvar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_graphn_fill(s : FinanceriskcvarGraphN, v : Double) -> FinanceriskcvarGraphN {
-  let result = finance_risk_cvar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_graphn_min(s : FinanceriskcvarGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_risk_cvar_node_sum(s : FinanceriskcvarNode) -> Double { @_common.
 pub fn finance_risk_cvar_node_mean(s : FinanceriskcvarNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_node_scale(s : FinanceriskcvarNode, f : Double) -> FinanceriskcvarNode {
-  let result = finance_risk_cvar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_node_add(a : FinanceriskcvarNode, b : FinanceriskcvarNode) -> FinanceriskcvarNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_node_copy(s : FinanceriskcvarNode) -> FinanceriskcvarNode {
-  let result = finance_risk_cvar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_node_fill(s : FinanceriskcvarNode, v : Double) -> FinanceriskcvarNode {
-  let result = finance_risk_cvar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_node_min(s : FinanceriskcvarNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_risk_cvar_edge_sum(s : FinanceriskcvarEdge) -> Double { @_common.
 pub fn finance_risk_cvar_edge_mean(s : FinanceriskcvarEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_edge_scale(s : FinanceriskcvarEdge, f : Double) -> FinanceriskcvarEdge {
-  let result = finance_risk_cvar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_edge_add(a : FinanceriskcvarEdge, b : FinanceriskcvarEdge) -> FinanceriskcvarEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_edge_copy(s : FinanceriskcvarEdge) -> FinanceriskcvarEdge {
-  let result = finance_risk_cvar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_edge_fill(s : FinanceriskcvarEdge, v : Double) -> FinanceriskcvarEdge {
-  let result = finance_risk_cvar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_edge_min(s : FinanceriskcvarEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_risk_cvar_path_sum(s : FinanceriskcvarPath) -> Double { @_common.
 pub fn finance_risk_cvar_path_mean(s : FinanceriskcvarPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_path_scale(s : FinanceriskcvarPath, f : Double) -> FinanceriskcvarPath {
-  let result = finance_risk_cvar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_path_add(a : FinanceriskcvarPath, b : FinanceriskcvarPath) -> FinanceriskcvarPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_path_copy(s : FinanceriskcvarPath) -> FinanceriskcvarPath {
-  let result = finance_risk_cvar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_path_fill(s : FinanceriskcvarPath, v : Double) -> FinanceriskcvarPath {
-  let result = finance_risk_cvar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_path_min(s : FinanceriskcvarPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_risk_cvar_cluster_sum(s : FinanceriskcvarCluster) -> Double { @_c
 pub fn finance_risk_cvar_cluster_mean(s : FinanceriskcvarCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_cluster_scale(s : FinanceriskcvarCluster, f : Double) -> FinanceriskcvarCluster {
-  let result = finance_risk_cvar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_cluster_add(a : FinanceriskcvarCluster, b : FinanceriskcvarCluster) -> FinanceriskcvarCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_cluster_copy(s : FinanceriskcvarCluster) -> FinanceriskcvarCluster {
-  let result = finance_risk_cvar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_cluster_fill(s : FinanceriskcvarCluster, v : Double) -> FinanceriskcvarCluster {
-  let result = finance_risk_cvar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_cluster_min(s : FinanceriskcvarCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_risk_cvar_model_sum(s : FinanceriskcvarModel) -> Double { @_commo
 pub fn finance_risk_cvar_model_mean(s : FinanceriskcvarModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_model_scale(s : FinanceriskcvarModel, f : Double) -> FinanceriskcvarModel {
-  let result = finance_risk_cvar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_model_add(a : FinanceriskcvarModel, b : FinanceriskcvarModel) -> FinanceriskcvarModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_model_copy(s : FinanceriskcvarModel) -> FinanceriskcvarModel {
-  let result = finance_risk_cvar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_model_fill(s : FinanceriskcvarModel, v : Double) -> FinanceriskcvarModel {
-  let result = finance_risk_cvar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_model_min(s : FinanceriskcvarModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_risk_cvar_layer_sum(s : FinanceriskcvarLayer) -> Double { @_commo
 pub fn finance_risk_cvar_layer_mean(s : FinanceriskcvarLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_layer_scale(s : FinanceriskcvarLayer, f : Double) -> FinanceriskcvarLayer {
-  let result = finance_risk_cvar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_layer_add(a : FinanceriskcvarLayer, b : FinanceriskcvarLayer) -> FinanceriskcvarLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_layer_copy(s : FinanceriskcvarLayer) -> FinanceriskcvarLayer {
-  let result = finance_risk_cvar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_layer_fill(s : FinanceriskcvarLayer, v : Double) -> FinanceriskcvarLayer {
-  let result = finance_risk_cvar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_layer_min(s : FinanceriskcvarLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_risk_cvar_buffer_sum(s : FinanceriskcvarBuffer) -> Double { @_com
 pub fn finance_risk_cvar_buffer_mean(s : FinanceriskcvarBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_buffer_scale(s : FinanceriskcvarBuffer, f : Double) -> FinanceriskcvarBuffer {
-  let result = finance_risk_cvar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_buffer_add(a : FinanceriskcvarBuffer, b : FinanceriskcvarBuffer) -> FinanceriskcvarBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_buffer_copy(s : FinanceriskcvarBuffer) -> FinanceriskcvarBuffer {
-  let result = finance_risk_cvar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_buffer_fill(s : FinanceriskcvarBuffer, v : Double) -> FinanceriskcvarBuffer {
-  let result = finance_risk_cvar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_buffer_min(s : FinanceriskcvarBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_risk_cvar_cursor_sum(s : FinanceriskcvarCursor) -> Double { @_com
 pub fn finance_risk_cvar_cursor_mean(s : FinanceriskcvarCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_cursor_scale(s : FinanceriskcvarCursor, f : Double) -> FinanceriskcvarCursor {
-  let result = finance_risk_cvar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_cursor_add(a : FinanceriskcvarCursor, b : FinanceriskcvarCursor) -> FinanceriskcvarCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_cursor_copy(s : FinanceriskcvarCursor) -> FinanceriskcvarCursor {
-  let result = finance_risk_cvar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_cursor_fill(s : FinanceriskcvarCursor, v : Double) -> FinanceriskcvarCursor {
-  let result = finance_risk_cvar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_cursor_min(s : FinanceriskcvarCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_risk_cvar_view_sum(s : FinanceriskcvarView) -> Double { @_common.
 pub fn finance_risk_cvar_view_mean(s : FinanceriskcvarView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_view_scale(s : FinanceriskcvarView, f : Double) -> FinanceriskcvarView {
-  let result = finance_risk_cvar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_view_add(a : FinanceriskcvarView, b : FinanceriskcvarView) -> FinanceriskcvarView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_view_copy(s : FinanceriskcvarView) -> FinanceriskcvarView {
-  let result = finance_risk_cvar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_view_fill(s : FinanceriskcvarView, v : Double) -> FinanceriskcvarView {
-  let result = finance_risk_cvar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_view_min(s : FinanceriskcvarView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_risk_cvar_range_sum(s : FinanceriskcvarRange) -> Double { @_commo
 pub fn finance_risk_cvar_range_mean(s : FinanceriskcvarRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_range_scale(s : FinanceriskcvarRange, f : Double) -> FinanceriskcvarRange {
-  let result = finance_risk_cvar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_range_add(a : FinanceriskcvarRange, b : FinanceriskcvarRange) -> FinanceriskcvarRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_range_copy(s : FinanceriskcvarRange) -> FinanceriskcvarRange {
-  let result = finance_risk_cvar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_range_fill(s : FinanceriskcvarRange, v : Double) -> FinanceriskcvarRange {
-  let result = finance_risk_cvar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_range_min(s : FinanceriskcvarRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_risk_cvar_slice_sum(s : FinanceriskcvarSlice) -> Double { @_commo
 pub fn finance_risk_cvar_slice_mean(s : FinanceriskcvarSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_cvar_slice_scale(s : FinanceriskcvarSlice, f : Double) -> FinanceriskcvarSlice {
-  let result = finance_risk_cvar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_slice_add(a : FinanceriskcvarSlice, b : FinanceriskcvarSlice) -> FinanceriskcvarSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_cvar_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_cvar_slice_copy(s : FinanceriskcvarSlice) -> FinanceriskcvarSlice {
-  let result = finance_risk_cvar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_slice_fill(s : FinanceriskcvarSlice, v : Double) -> FinanceriskcvarSlice {
-  let result = finance_risk_cvar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_cvar_slice_min(s : FinanceriskcvarSlice) -> Double { @_common.min(s.data) }

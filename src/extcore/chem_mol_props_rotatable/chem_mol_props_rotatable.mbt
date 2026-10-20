@@ -383,28 +383,20 @@ pub fn chem_mol_props_rotatable_frame_sum(s : ChemmolpropsrotatableFrame) -> Dou
 pub fn chem_mol_props_rotatable_frame_mean(s : ChemmolpropsrotatableFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_frame_scale(s : ChemmolpropsrotatableFrame, f : Double) -> ChemmolpropsrotatableFrame {
-  let result = chem_mol_props_rotatable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_frame_add(a : ChemmolpropsrotatableFrame, b : ChemmolpropsrotatableFrame) -> ChemmolpropsrotatableFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_frame_copy(s : ChemmolpropsrotatableFrame) -> ChemmolpropsrotatableFrame {
-  let result = chem_mol_props_rotatable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_frame_fill(s : ChemmolpropsrotatableFrame, v : Double) -> ChemmolpropsrotatableFrame {
-  let result = chem_mol_props_rotatable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_frame_min(s : ChemmolpropsrotatableFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_mol_props_rotatable_table_sum(s : ChemmolpropsrotatableTable) -> Dou
 pub fn chem_mol_props_rotatable_table_mean(s : ChemmolpropsrotatableTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_table_scale(s : ChemmolpropsrotatableTable, f : Double) -> ChemmolpropsrotatableTable {
-  let result = chem_mol_props_rotatable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_table_add(a : ChemmolpropsrotatableTable, b : ChemmolpropsrotatableTable) -> ChemmolpropsrotatableTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_table_copy(s : ChemmolpropsrotatableTable) -> ChemmolpropsrotatableTable {
-  let result = chem_mol_props_rotatable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_table_fill(s : ChemmolpropsrotatableTable, v : Double) -> ChemmolpropsrotatableTable {
-  let result = chem_mol_props_rotatable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_table_min(s : ChemmolpropsrotatableTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_mol_props_rotatable_graphn_sum(s : ChemmolpropsrotatableGraphN) -> D
 pub fn chem_mol_props_rotatable_graphn_mean(s : ChemmolpropsrotatableGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_graphn_scale(s : ChemmolpropsrotatableGraphN, f : Double) -> ChemmolpropsrotatableGraphN {
-  let result = chem_mol_props_rotatable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_graphn_add(a : ChemmolpropsrotatableGraphN, b : ChemmolpropsrotatableGraphN) -> ChemmolpropsrotatableGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_graphn_copy(s : ChemmolpropsrotatableGraphN) -> ChemmolpropsrotatableGraphN {
-  let result = chem_mol_props_rotatable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_graphn_fill(s : ChemmolpropsrotatableGraphN, v : Double) -> ChemmolpropsrotatableGraphN {
-  let result = chem_mol_props_rotatable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_graphn_min(s : ChemmolpropsrotatableGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_mol_props_rotatable_node_sum(s : ChemmolpropsrotatableNode) -> Doubl
 pub fn chem_mol_props_rotatable_node_mean(s : ChemmolpropsrotatableNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_node_scale(s : ChemmolpropsrotatableNode, f : Double) -> ChemmolpropsrotatableNode {
-  let result = chem_mol_props_rotatable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_node_add(a : ChemmolpropsrotatableNode, b : ChemmolpropsrotatableNode) -> ChemmolpropsrotatableNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_node_copy(s : ChemmolpropsrotatableNode) -> ChemmolpropsrotatableNode {
-  let result = chem_mol_props_rotatable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_node_fill(s : ChemmolpropsrotatableNode, v : Double) -> ChemmolpropsrotatableNode {
-  let result = chem_mol_props_rotatable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_node_min(s : ChemmolpropsrotatableNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_mol_props_rotatable_edge_sum(s : ChemmolpropsrotatableEdge) -> Doubl
 pub fn chem_mol_props_rotatable_edge_mean(s : ChemmolpropsrotatableEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_edge_scale(s : ChemmolpropsrotatableEdge, f : Double) -> ChemmolpropsrotatableEdge {
-  let result = chem_mol_props_rotatable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_edge_add(a : ChemmolpropsrotatableEdge, b : ChemmolpropsrotatableEdge) -> ChemmolpropsrotatableEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_edge_copy(s : ChemmolpropsrotatableEdge) -> ChemmolpropsrotatableEdge {
-  let result = chem_mol_props_rotatable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_edge_fill(s : ChemmolpropsrotatableEdge, v : Double) -> ChemmolpropsrotatableEdge {
-  let result = chem_mol_props_rotatable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_edge_min(s : ChemmolpropsrotatableEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_mol_props_rotatable_path_sum(s : ChemmolpropsrotatablePath) -> Doubl
 pub fn chem_mol_props_rotatable_path_mean(s : ChemmolpropsrotatablePath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_path_scale(s : ChemmolpropsrotatablePath, f : Double) -> ChemmolpropsrotatablePath {
-  let result = chem_mol_props_rotatable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_path_add(a : ChemmolpropsrotatablePath, b : ChemmolpropsrotatablePath) -> ChemmolpropsrotatablePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_path_copy(s : ChemmolpropsrotatablePath) -> ChemmolpropsrotatablePath {
-  let result = chem_mol_props_rotatable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_path_fill(s : ChemmolpropsrotatablePath, v : Double) -> ChemmolpropsrotatablePath {
-  let result = chem_mol_props_rotatable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_path_min(s : ChemmolpropsrotatablePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_mol_props_rotatable_cluster_sum(s : ChemmolpropsrotatableCluster) ->
 pub fn chem_mol_props_rotatable_cluster_mean(s : ChemmolpropsrotatableCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_cluster_scale(s : ChemmolpropsrotatableCluster, f : Double) -> ChemmolpropsrotatableCluster {
-  let result = chem_mol_props_rotatable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_cluster_add(a : ChemmolpropsrotatableCluster, b : ChemmolpropsrotatableCluster) -> ChemmolpropsrotatableCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_cluster_copy(s : ChemmolpropsrotatableCluster) -> ChemmolpropsrotatableCluster {
-  let result = chem_mol_props_rotatable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_cluster_fill(s : ChemmolpropsrotatableCluster, v : Double) -> ChemmolpropsrotatableCluster {
-  let result = chem_mol_props_rotatable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_cluster_min(s : ChemmolpropsrotatableCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_mol_props_rotatable_model_sum(s : ChemmolpropsrotatableModel) -> Dou
 pub fn chem_mol_props_rotatable_model_mean(s : ChemmolpropsrotatableModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_model_scale(s : ChemmolpropsrotatableModel, f : Double) -> ChemmolpropsrotatableModel {
-  let result = chem_mol_props_rotatable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_model_add(a : ChemmolpropsrotatableModel, b : ChemmolpropsrotatableModel) -> ChemmolpropsrotatableModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_model_copy(s : ChemmolpropsrotatableModel) -> ChemmolpropsrotatableModel {
-  let result = chem_mol_props_rotatable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_model_fill(s : ChemmolpropsrotatableModel, v : Double) -> ChemmolpropsrotatableModel {
-  let result = chem_mol_props_rotatable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_model_min(s : ChemmolpropsrotatableModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_mol_props_rotatable_layer_sum(s : ChemmolpropsrotatableLayer) -> Dou
 pub fn chem_mol_props_rotatable_layer_mean(s : ChemmolpropsrotatableLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_layer_scale(s : ChemmolpropsrotatableLayer, f : Double) -> ChemmolpropsrotatableLayer {
-  let result = chem_mol_props_rotatable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_layer_add(a : ChemmolpropsrotatableLayer, b : ChemmolpropsrotatableLayer) -> ChemmolpropsrotatableLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_layer_copy(s : ChemmolpropsrotatableLayer) -> ChemmolpropsrotatableLayer {
-  let result = chem_mol_props_rotatable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_layer_fill(s : ChemmolpropsrotatableLayer, v : Double) -> ChemmolpropsrotatableLayer {
-  let result = chem_mol_props_rotatable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_layer_min(s : ChemmolpropsrotatableLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_mol_props_rotatable_buffer_sum(s : ChemmolpropsrotatableBuffer) -> D
 pub fn chem_mol_props_rotatable_buffer_mean(s : ChemmolpropsrotatableBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_buffer_scale(s : ChemmolpropsrotatableBuffer, f : Double) -> ChemmolpropsrotatableBuffer {
-  let result = chem_mol_props_rotatable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_buffer_add(a : ChemmolpropsrotatableBuffer, b : ChemmolpropsrotatableBuffer) -> ChemmolpropsrotatableBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_buffer_copy(s : ChemmolpropsrotatableBuffer) -> ChemmolpropsrotatableBuffer {
-  let result = chem_mol_props_rotatable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_buffer_fill(s : ChemmolpropsrotatableBuffer, v : Double) -> ChemmolpropsrotatableBuffer {
-  let result = chem_mol_props_rotatable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_buffer_min(s : ChemmolpropsrotatableBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_mol_props_rotatable_cursor_sum(s : ChemmolpropsrotatableCursor) -> D
 pub fn chem_mol_props_rotatable_cursor_mean(s : ChemmolpropsrotatableCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_cursor_scale(s : ChemmolpropsrotatableCursor, f : Double) -> ChemmolpropsrotatableCursor {
-  let result = chem_mol_props_rotatable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_cursor_add(a : ChemmolpropsrotatableCursor, b : ChemmolpropsrotatableCursor) -> ChemmolpropsrotatableCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_cursor_copy(s : ChemmolpropsrotatableCursor) -> ChemmolpropsrotatableCursor {
-  let result = chem_mol_props_rotatable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_cursor_fill(s : ChemmolpropsrotatableCursor, v : Double) -> ChemmolpropsrotatableCursor {
-  let result = chem_mol_props_rotatable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_cursor_min(s : ChemmolpropsrotatableCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_mol_props_rotatable_view_sum(s : ChemmolpropsrotatableView) -> Doubl
 pub fn chem_mol_props_rotatable_view_mean(s : ChemmolpropsrotatableView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_view_scale(s : ChemmolpropsrotatableView, f : Double) -> ChemmolpropsrotatableView {
-  let result = chem_mol_props_rotatable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_view_add(a : ChemmolpropsrotatableView, b : ChemmolpropsrotatableView) -> ChemmolpropsrotatableView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_view_copy(s : ChemmolpropsrotatableView) -> ChemmolpropsrotatableView {
-  let result = chem_mol_props_rotatable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_view_fill(s : ChemmolpropsrotatableView, v : Double) -> ChemmolpropsrotatableView {
-  let result = chem_mol_props_rotatable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_view_min(s : ChemmolpropsrotatableView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_mol_props_rotatable_range_sum(s : ChemmolpropsrotatableRange) -> Dou
 pub fn chem_mol_props_rotatable_range_mean(s : ChemmolpropsrotatableRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_range_scale(s : ChemmolpropsrotatableRange, f : Double) -> ChemmolpropsrotatableRange {
-  let result = chem_mol_props_rotatable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_range_add(a : ChemmolpropsrotatableRange, b : ChemmolpropsrotatableRange) -> ChemmolpropsrotatableRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_range_copy(s : ChemmolpropsrotatableRange) -> ChemmolpropsrotatableRange {
-  let result = chem_mol_props_rotatable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_range_fill(s : ChemmolpropsrotatableRange, v : Double) -> ChemmolpropsrotatableRange {
-  let result = chem_mol_props_rotatable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_range_min(s : ChemmolpropsrotatableRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_mol_props_rotatable_slice_sum(s : ChemmolpropsrotatableSlice) -> Dou
 pub fn chem_mol_props_rotatable_slice_mean(s : ChemmolpropsrotatableSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_rotatable_slice_scale(s : ChemmolpropsrotatableSlice, f : Double) -> ChemmolpropsrotatableSlice {
-  let result = chem_mol_props_rotatable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_slice_add(a : ChemmolpropsrotatableSlice, b : ChemmolpropsrotatableSlice) -> ChemmolpropsrotatableSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_props_rotatable_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_props_rotatable_slice_copy(s : ChemmolpropsrotatableSlice) -> ChemmolpropsrotatableSlice {
-  let result = chem_mol_props_rotatable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_slice_fill(s : ChemmolpropsrotatableSlice, v : Double) -> ChemmolpropsrotatableSlice {
-  let result = chem_mol_props_rotatable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rotatable_slice_min(s : ChemmolpropsrotatableSlice) -> Double { @_common.min(s.data) }

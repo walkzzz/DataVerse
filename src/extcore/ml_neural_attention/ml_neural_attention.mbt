@@ -383,28 +383,20 @@ pub fn ml_neural_attention_frame_sum(s : MlneuralattentionFrame) -> Double { @_c
 pub fn ml_neural_attention_frame_mean(s : MlneuralattentionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_frame_scale(s : MlneuralattentionFrame, f : Double) -> MlneuralattentionFrame {
-  let result = ml_neural_attention_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_frame_add(a : MlneuralattentionFrame, b : MlneuralattentionFrame) -> MlneuralattentionFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_frame_copy(s : MlneuralattentionFrame) -> MlneuralattentionFrame {
-  let result = ml_neural_attention_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_frame_fill(s : MlneuralattentionFrame, v : Double) -> MlneuralattentionFrame {
-  let result = ml_neural_attention_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_frame_min(s : MlneuralattentionFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_neural_attention_table_sum(s : MlneuralattentionTable) -> Double { @_c
 pub fn ml_neural_attention_table_mean(s : MlneuralattentionTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_table_scale(s : MlneuralattentionTable, f : Double) -> MlneuralattentionTable {
-  let result = ml_neural_attention_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_table_add(a : MlneuralattentionTable, b : MlneuralattentionTable) -> MlneuralattentionTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_table_copy(s : MlneuralattentionTable) -> MlneuralattentionTable {
-  let result = ml_neural_attention_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_table_fill(s : MlneuralattentionTable, v : Double) -> MlneuralattentionTable {
-  let result = ml_neural_attention_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_table_min(s : MlneuralattentionTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_neural_attention_graphn_sum(s : MlneuralattentionGraphN) -> Double { @
 pub fn ml_neural_attention_graphn_mean(s : MlneuralattentionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_graphn_scale(s : MlneuralattentionGraphN, f : Double) -> MlneuralattentionGraphN {
-  let result = ml_neural_attention_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_graphn_add(a : MlneuralattentionGraphN, b : MlneuralattentionGraphN) -> MlneuralattentionGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_graphn_copy(s : MlneuralattentionGraphN) -> MlneuralattentionGraphN {
-  let result = ml_neural_attention_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_graphn_fill(s : MlneuralattentionGraphN, v : Double) -> MlneuralattentionGraphN {
-  let result = ml_neural_attention_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_graphn_min(s : MlneuralattentionGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_neural_attention_node_sum(s : MlneuralattentionNode) -> Double { @_com
 pub fn ml_neural_attention_node_mean(s : MlneuralattentionNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_node_scale(s : MlneuralattentionNode, f : Double) -> MlneuralattentionNode {
-  let result = ml_neural_attention_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_node_add(a : MlneuralattentionNode, b : MlneuralattentionNode) -> MlneuralattentionNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_node_copy(s : MlneuralattentionNode) -> MlneuralattentionNode {
-  let result = ml_neural_attention_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_node_fill(s : MlneuralattentionNode, v : Double) -> MlneuralattentionNode {
-  let result = ml_neural_attention_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_node_min(s : MlneuralattentionNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_neural_attention_edge_sum(s : MlneuralattentionEdge) -> Double { @_com
 pub fn ml_neural_attention_edge_mean(s : MlneuralattentionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_edge_scale(s : MlneuralattentionEdge, f : Double) -> MlneuralattentionEdge {
-  let result = ml_neural_attention_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_edge_add(a : MlneuralattentionEdge, b : MlneuralattentionEdge) -> MlneuralattentionEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_edge_copy(s : MlneuralattentionEdge) -> MlneuralattentionEdge {
-  let result = ml_neural_attention_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_edge_fill(s : MlneuralattentionEdge, v : Double) -> MlneuralattentionEdge {
-  let result = ml_neural_attention_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_edge_min(s : MlneuralattentionEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_neural_attention_path_sum(s : MlneuralattentionPath) -> Double { @_com
 pub fn ml_neural_attention_path_mean(s : MlneuralattentionPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_path_scale(s : MlneuralattentionPath, f : Double) -> MlneuralattentionPath {
-  let result = ml_neural_attention_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_path_add(a : MlneuralattentionPath, b : MlneuralattentionPath) -> MlneuralattentionPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_path_copy(s : MlneuralattentionPath) -> MlneuralattentionPath {
-  let result = ml_neural_attention_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_path_fill(s : MlneuralattentionPath, v : Double) -> MlneuralattentionPath {
-  let result = ml_neural_attention_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_path_min(s : MlneuralattentionPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_neural_attention_cluster_sum(s : MlneuralattentionCluster) -> Double {
 pub fn ml_neural_attention_cluster_mean(s : MlneuralattentionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_cluster_scale(s : MlneuralattentionCluster, f : Double) -> MlneuralattentionCluster {
-  let result = ml_neural_attention_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_cluster_add(a : MlneuralattentionCluster, b : MlneuralattentionCluster) -> MlneuralattentionCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_cluster_copy(s : MlneuralattentionCluster) -> MlneuralattentionCluster {
-  let result = ml_neural_attention_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_cluster_fill(s : MlneuralattentionCluster, v : Double) -> MlneuralattentionCluster {
-  let result = ml_neural_attention_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_cluster_min(s : MlneuralattentionCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_neural_attention_model_sum(s : MlneuralattentionModel) -> Double { @_c
 pub fn ml_neural_attention_model_mean(s : MlneuralattentionModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_model_scale(s : MlneuralattentionModel, f : Double) -> MlneuralattentionModel {
-  let result = ml_neural_attention_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_model_add(a : MlneuralattentionModel, b : MlneuralattentionModel) -> MlneuralattentionModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_model_copy(s : MlneuralattentionModel) -> MlneuralattentionModel {
-  let result = ml_neural_attention_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_model_fill(s : MlneuralattentionModel, v : Double) -> MlneuralattentionModel {
-  let result = ml_neural_attention_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_model_min(s : MlneuralattentionModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_neural_attention_layer_sum(s : MlneuralattentionLayer) -> Double { @_c
 pub fn ml_neural_attention_layer_mean(s : MlneuralattentionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_layer_scale(s : MlneuralattentionLayer, f : Double) -> MlneuralattentionLayer {
-  let result = ml_neural_attention_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_layer_add(a : MlneuralattentionLayer, b : MlneuralattentionLayer) -> MlneuralattentionLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_layer_copy(s : MlneuralattentionLayer) -> MlneuralattentionLayer {
-  let result = ml_neural_attention_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_layer_fill(s : MlneuralattentionLayer, v : Double) -> MlneuralattentionLayer {
-  let result = ml_neural_attention_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_layer_min(s : MlneuralattentionLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_neural_attention_buffer_sum(s : MlneuralattentionBuffer) -> Double { @
 pub fn ml_neural_attention_buffer_mean(s : MlneuralattentionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_buffer_scale(s : MlneuralattentionBuffer, f : Double) -> MlneuralattentionBuffer {
-  let result = ml_neural_attention_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_buffer_add(a : MlneuralattentionBuffer, b : MlneuralattentionBuffer) -> MlneuralattentionBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_buffer_copy(s : MlneuralattentionBuffer) -> MlneuralattentionBuffer {
-  let result = ml_neural_attention_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_buffer_fill(s : MlneuralattentionBuffer, v : Double) -> MlneuralattentionBuffer {
-  let result = ml_neural_attention_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_buffer_min(s : MlneuralattentionBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_neural_attention_cursor_sum(s : MlneuralattentionCursor) -> Double { @
 pub fn ml_neural_attention_cursor_mean(s : MlneuralattentionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_cursor_scale(s : MlneuralattentionCursor, f : Double) -> MlneuralattentionCursor {
-  let result = ml_neural_attention_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_cursor_add(a : MlneuralattentionCursor, b : MlneuralattentionCursor) -> MlneuralattentionCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_cursor_copy(s : MlneuralattentionCursor) -> MlneuralattentionCursor {
-  let result = ml_neural_attention_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_cursor_fill(s : MlneuralattentionCursor, v : Double) -> MlneuralattentionCursor {
-  let result = ml_neural_attention_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_cursor_min(s : MlneuralattentionCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_neural_attention_view_sum(s : MlneuralattentionView) -> Double { @_com
 pub fn ml_neural_attention_view_mean(s : MlneuralattentionView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_view_scale(s : MlneuralattentionView, f : Double) -> MlneuralattentionView {
-  let result = ml_neural_attention_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_view_add(a : MlneuralattentionView, b : MlneuralattentionView) -> MlneuralattentionView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_view_copy(s : MlneuralattentionView) -> MlneuralattentionView {
-  let result = ml_neural_attention_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_view_fill(s : MlneuralattentionView, v : Double) -> MlneuralattentionView {
-  let result = ml_neural_attention_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_view_min(s : MlneuralattentionView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_neural_attention_range_sum(s : MlneuralattentionRange) -> Double { @_c
 pub fn ml_neural_attention_range_mean(s : MlneuralattentionRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_range_scale(s : MlneuralattentionRange, f : Double) -> MlneuralattentionRange {
-  let result = ml_neural_attention_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_range_add(a : MlneuralattentionRange, b : MlneuralattentionRange) -> MlneuralattentionRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_range_copy(s : MlneuralattentionRange) -> MlneuralattentionRange {
-  let result = ml_neural_attention_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_range_fill(s : MlneuralattentionRange, v : Double) -> MlneuralattentionRange {
-  let result = ml_neural_attention_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_range_min(s : MlneuralattentionRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_neural_attention_slice_sum(s : MlneuralattentionSlice) -> Double { @_c
 pub fn ml_neural_attention_slice_mean(s : MlneuralattentionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_slice_scale(s : MlneuralattentionSlice, f : Double) -> MlneuralattentionSlice {
-  let result = ml_neural_attention_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_slice_add(a : MlneuralattentionSlice, b : MlneuralattentionSlice) -> MlneuralattentionSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_attention_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_attention_slice_copy(s : MlneuralattentionSlice) -> MlneuralattentionSlice {
-  let result = ml_neural_attention_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_slice_fill(s : MlneuralattentionSlice, v : Double) -> MlneuralattentionSlice {
-  let result = ml_neural_attention_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_attention_slice_min(s : MlneuralattentionSlice) -> Double { @_common.min(s.data) }

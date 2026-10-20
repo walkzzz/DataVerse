@@ -383,28 +383,20 @@ pub fn ml_rl_ddpg_frame_sum(s : MlrlddpgFrame) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_ddpg_frame_mean(s : MlrlddpgFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_frame_scale(s : MlrlddpgFrame, f : Double) -> MlrlddpgFrame {
-  let result = ml_rl_ddpg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_frame_add(a : MlrlddpgFrame, b : MlrlddpgFrame) -> MlrlddpgFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_frame_copy(s : MlrlddpgFrame) -> MlrlddpgFrame {
-  let result = ml_rl_ddpg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_frame_fill(s : MlrlddpgFrame, v : Double) -> MlrlddpgFrame {
-  let result = ml_rl_ddpg_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_frame_min(s : MlrlddpgFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_ddpg_table_sum(s : MlrlddpgTable) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_ddpg_table_mean(s : MlrlddpgTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_table_scale(s : MlrlddpgTable, f : Double) -> MlrlddpgTable {
-  let result = ml_rl_ddpg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_table_add(a : MlrlddpgTable, b : MlrlddpgTable) -> MlrlddpgTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_table_copy(s : MlrlddpgTable) -> MlrlddpgTable {
-  let result = ml_rl_ddpg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_table_fill(s : MlrlddpgTable, v : Double) -> MlrlddpgTable {
-  let result = ml_rl_ddpg_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_table_min(s : MlrlddpgTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_ddpg_graphn_sum(s : MlrlddpgGraphN) -> Double { @_common.sum(s.data
 pub fn ml_rl_ddpg_graphn_mean(s : MlrlddpgGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_graphn_scale(s : MlrlddpgGraphN, f : Double) -> MlrlddpgGraphN {
-  let result = ml_rl_ddpg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_graphn_add(a : MlrlddpgGraphN, b : MlrlddpgGraphN) -> MlrlddpgGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_graphn_copy(s : MlrlddpgGraphN) -> MlrlddpgGraphN {
-  let result = ml_rl_ddpg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_graphn_fill(s : MlrlddpgGraphN, v : Double) -> MlrlddpgGraphN {
-  let result = ml_rl_ddpg_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_graphn_min(s : MlrlddpgGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_ddpg_node_sum(s : MlrlddpgNode) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_ddpg_node_mean(s : MlrlddpgNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_node_scale(s : MlrlddpgNode, f : Double) -> MlrlddpgNode {
-  let result = ml_rl_ddpg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_node_add(a : MlrlddpgNode, b : MlrlddpgNode) -> MlrlddpgNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_node_copy(s : MlrlddpgNode) -> MlrlddpgNode {
-  let result = ml_rl_ddpg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_node_fill(s : MlrlddpgNode, v : Double) -> MlrlddpgNode {
-  let result = ml_rl_ddpg_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_node_min(s : MlrlddpgNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_ddpg_edge_sum(s : MlrlddpgEdge) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_ddpg_edge_mean(s : MlrlddpgEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_edge_scale(s : MlrlddpgEdge, f : Double) -> MlrlddpgEdge {
-  let result = ml_rl_ddpg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_edge_add(a : MlrlddpgEdge, b : MlrlddpgEdge) -> MlrlddpgEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_edge_copy(s : MlrlddpgEdge) -> MlrlddpgEdge {
-  let result = ml_rl_ddpg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_edge_fill(s : MlrlddpgEdge, v : Double) -> MlrlddpgEdge {
-  let result = ml_rl_ddpg_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_edge_min(s : MlrlddpgEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_ddpg_path_sum(s : MlrlddpgPath) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_ddpg_path_mean(s : MlrlddpgPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_path_scale(s : MlrlddpgPath, f : Double) -> MlrlddpgPath {
-  let result = ml_rl_ddpg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_path_add(a : MlrlddpgPath, b : MlrlddpgPath) -> MlrlddpgPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_path_copy(s : MlrlddpgPath) -> MlrlddpgPath {
-  let result = ml_rl_ddpg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_path_fill(s : MlrlddpgPath, v : Double) -> MlrlddpgPath {
-  let result = ml_rl_ddpg_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_path_min(s : MlrlddpgPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_ddpg_cluster_sum(s : MlrlddpgCluster) -> Double { @_common.sum(s.da
 pub fn ml_rl_ddpg_cluster_mean(s : MlrlddpgCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_cluster_scale(s : MlrlddpgCluster, f : Double) -> MlrlddpgCluster {
-  let result = ml_rl_ddpg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_cluster_add(a : MlrlddpgCluster, b : MlrlddpgCluster) -> MlrlddpgCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_cluster_copy(s : MlrlddpgCluster) -> MlrlddpgCluster {
-  let result = ml_rl_ddpg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_cluster_fill(s : MlrlddpgCluster, v : Double) -> MlrlddpgCluster {
-  let result = ml_rl_ddpg_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_cluster_min(s : MlrlddpgCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_ddpg_model_sum(s : MlrlddpgModel) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_ddpg_model_mean(s : MlrlddpgModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_model_scale(s : MlrlddpgModel, f : Double) -> MlrlddpgModel {
-  let result = ml_rl_ddpg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_model_add(a : MlrlddpgModel, b : MlrlddpgModel) -> MlrlddpgModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_model_copy(s : MlrlddpgModel) -> MlrlddpgModel {
-  let result = ml_rl_ddpg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_model_fill(s : MlrlddpgModel, v : Double) -> MlrlddpgModel {
-  let result = ml_rl_ddpg_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_model_min(s : MlrlddpgModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_ddpg_layer_sum(s : MlrlddpgLayer) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_ddpg_layer_mean(s : MlrlddpgLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_layer_scale(s : MlrlddpgLayer, f : Double) -> MlrlddpgLayer {
-  let result = ml_rl_ddpg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_layer_add(a : MlrlddpgLayer, b : MlrlddpgLayer) -> MlrlddpgLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_layer_copy(s : MlrlddpgLayer) -> MlrlddpgLayer {
-  let result = ml_rl_ddpg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_layer_fill(s : MlrlddpgLayer, v : Double) -> MlrlddpgLayer {
-  let result = ml_rl_ddpg_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_layer_min(s : MlrlddpgLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_ddpg_buffer_sum(s : MlrlddpgBuffer) -> Double { @_common.sum(s.data
 pub fn ml_rl_ddpg_buffer_mean(s : MlrlddpgBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_buffer_scale(s : MlrlddpgBuffer, f : Double) -> MlrlddpgBuffer {
-  let result = ml_rl_ddpg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_buffer_add(a : MlrlddpgBuffer, b : MlrlddpgBuffer) -> MlrlddpgBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_buffer_copy(s : MlrlddpgBuffer) -> MlrlddpgBuffer {
-  let result = ml_rl_ddpg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_buffer_fill(s : MlrlddpgBuffer, v : Double) -> MlrlddpgBuffer {
-  let result = ml_rl_ddpg_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_buffer_min(s : MlrlddpgBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_ddpg_cursor_sum(s : MlrlddpgCursor) -> Double { @_common.sum(s.data
 pub fn ml_rl_ddpg_cursor_mean(s : MlrlddpgCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_cursor_scale(s : MlrlddpgCursor, f : Double) -> MlrlddpgCursor {
-  let result = ml_rl_ddpg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_cursor_add(a : MlrlddpgCursor, b : MlrlddpgCursor) -> MlrlddpgCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_cursor_copy(s : MlrlddpgCursor) -> MlrlddpgCursor {
-  let result = ml_rl_ddpg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_cursor_fill(s : MlrlddpgCursor, v : Double) -> MlrlddpgCursor {
-  let result = ml_rl_ddpg_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_cursor_min(s : MlrlddpgCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_ddpg_view_sum(s : MlrlddpgView) -> Double { @_common.sum(s.data) }
 pub fn ml_rl_ddpg_view_mean(s : MlrlddpgView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_view_scale(s : MlrlddpgView, f : Double) -> MlrlddpgView {
-  let result = ml_rl_ddpg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_view_add(a : MlrlddpgView, b : MlrlddpgView) -> MlrlddpgView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_view_copy(s : MlrlddpgView) -> MlrlddpgView {
-  let result = ml_rl_ddpg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_view_fill(s : MlrlddpgView, v : Double) -> MlrlddpgView {
-  let result = ml_rl_ddpg_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_view_min(s : MlrlddpgView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_ddpg_range_sum(s : MlrlddpgRange) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_ddpg_range_mean(s : MlrlddpgRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_range_scale(s : MlrlddpgRange, f : Double) -> MlrlddpgRange {
-  let result = ml_rl_ddpg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_range_add(a : MlrlddpgRange, b : MlrlddpgRange) -> MlrlddpgRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_range_copy(s : MlrlddpgRange) -> MlrlddpgRange {
-  let result = ml_rl_ddpg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_range_fill(s : MlrlddpgRange, v : Double) -> MlrlddpgRange {
-  let result = ml_rl_ddpg_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_range_min(s : MlrlddpgRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_ddpg_slice_sum(s : MlrlddpgSlice) -> Double { @_common.sum(s.data) 
 pub fn ml_rl_ddpg_slice_mean(s : MlrlddpgSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_slice_scale(s : MlrlddpgSlice, f : Double) -> MlrlddpgSlice {
-  let result = ml_rl_ddpg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_slice_add(a : MlrlddpgSlice, b : MlrlddpgSlice) -> MlrlddpgSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_ddpg_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_ddpg_slice_copy(s : MlrlddpgSlice) -> MlrlddpgSlice {
-  let result = ml_rl_ddpg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_slice_fill(s : MlrlddpgSlice, v : Double) -> MlrlddpgSlice {
-  let result = ml_rl_ddpg_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ddpg_slice_min(s : MlrlddpgSlice) -> Double { @_common.min(s.data) }

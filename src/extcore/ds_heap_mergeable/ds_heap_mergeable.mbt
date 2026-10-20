@@ -383,28 +383,20 @@ pub fn ds_heap_mergeable_frame_sum(s : DsheapmergeableFrame) -> Double { @_commo
 pub fn ds_heap_mergeable_frame_mean(s : DsheapmergeableFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_frame_scale(s : DsheapmergeableFrame, f : Double) -> DsheapmergeableFrame {
-  let result = ds_heap_mergeable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_frame_add(a : DsheapmergeableFrame, b : DsheapmergeableFrame) -> DsheapmergeableFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_frame_copy(s : DsheapmergeableFrame) -> DsheapmergeableFrame {
-  let result = ds_heap_mergeable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_frame_fill(s : DsheapmergeableFrame, v : Double) -> DsheapmergeableFrame {
-  let result = ds_heap_mergeable_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_frame_min(s : DsheapmergeableFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_heap_mergeable_table_sum(s : DsheapmergeableTable) -> Double { @_commo
 pub fn ds_heap_mergeable_table_mean(s : DsheapmergeableTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_table_scale(s : DsheapmergeableTable, f : Double) -> DsheapmergeableTable {
-  let result = ds_heap_mergeable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_table_add(a : DsheapmergeableTable, b : DsheapmergeableTable) -> DsheapmergeableTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_table_copy(s : DsheapmergeableTable) -> DsheapmergeableTable {
-  let result = ds_heap_mergeable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_table_fill(s : DsheapmergeableTable, v : Double) -> DsheapmergeableTable {
-  let result = ds_heap_mergeable_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_table_min(s : DsheapmergeableTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_heap_mergeable_graphn_sum(s : DsheapmergeableGraphN) -> Double { @_com
 pub fn ds_heap_mergeable_graphn_mean(s : DsheapmergeableGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_graphn_scale(s : DsheapmergeableGraphN, f : Double) -> DsheapmergeableGraphN {
-  let result = ds_heap_mergeable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_graphn_add(a : DsheapmergeableGraphN, b : DsheapmergeableGraphN) -> DsheapmergeableGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_graphn_copy(s : DsheapmergeableGraphN) -> DsheapmergeableGraphN {
-  let result = ds_heap_mergeable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_graphn_fill(s : DsheapmergeableGraphN, v : Double) -> DsheapmergeableGraphN {
-  let result = ds_heap_mergeable_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_graphn_min(s : DsheapmergeableGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_heap_mergeable_node_sum(s : DsheapmergeableNode) -> Double { @_common.
 pub fn ds_heap_mergeable_node_mean(s : DsheapmergeableNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_node_scale(s : DsheapmergeableNode, f : Double) -> DsheapmergeableNode {
-  let result = ds_heap_mergeable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_node_add(a : DsheapmergeableNode, b : DsheapmergeableNode) -> DsheapmergeableNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_node_copy(s : DsheapmergeableNode) -> DsheapmergeableNode {
-  let result = ds_heap_mergeable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_node_fill(s : DsheapmergeableNode, v : Double) -> DsheapmergeableNode {
-  let result = ds_heap_mergeable_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_node_min(s : DsheapmergeableNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_heap_mergeable_edge_sum(s : DsheapmergeableEdge) -> Double { @_common.
 pub fn ds_heap_mergeable_edge_mean(s : DsheapmergeableEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_edge_scale(s : DsheapmergeableEdge, f : Double) -> DsheapmergeableEdge {
-  let result = ds_heap_mergeable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_edge_add(a : DsheapmergeableEdge, b : DsheapmergeableEdge) -> DsheapmergeableEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_edge_copy(s : DsheapmergeableEdge) -> DsheapmergeableEdge {
-  let result = ds_heap_mergeable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_edge_fill(s : DsheapmergeableEdge, v : Double) -> DsheapmergeableEdge {
-  let result = ds_heap_mergeable_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_edge_min(s : DsheapmergeableEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_heap_mergeable_path_sum(s : DsheapmergeablePath) -> Double { @_common.
 pub fn ds_heap_mergeable_path_mean(s : DsheapmergeablePath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_path_scale(s : DsheapmergeablePath, f : Double) -> DsheapmergeablePath {
-  let result = ds_heap_mergeable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_path_add(a : DsheapmergeablePath, b : DsheapmergeablePath) -> DsheapmergeablePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_path_copy(s : DsheapmergeablePath) -> DsheapmergeablePath {
-  let result = ds_heap_mergeable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_path_fill(s : DsheapmergeablePath, v : Double) -> DsheapmergeablePath {
-  let result = ds_heap_mergeable_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_path_min(s : DsheapmergeablePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_heap_mergeable_cluster_sum(s : DsheapmergeableCluster) -> Double { @_c
 pub fn ds_heap_mergeable_cluster_mean(s : DsheapmergeableCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_cluster_scale(s : DsheapmergeableCluster, f : Double) -> DsheapmergeableCluster {
-  let result = ds_heap_mergeable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_cluster_add(a : DsheapmergeableCluster, b : DsheapmergeableCluster) -> DsheapmergeableCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_cluster_copy(s : DsheapmergeableCluster) -> DsheapmergeableCluster {
-  let result = ds_heap_mergeable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_cluster_fill(s : DsheapmergeableCluster, v : Double) -> DsheapmergeableCluster {
-  let result = ds_heap_mergeable_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_cluster_min(s : DsheapmergeableCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_heap_mergeable_model_sum(s : DsheapmergeableModel) -> Double { @_commo
 pub fn ds_heap_mergeable_model_mean(s : DsheapmergeableModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_model_scale(s : DsheapmergeableModel, f : Double) -> DsheapmergeableModel {
-  let result = ds_heap_mergeable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_model_add(a : DsheapmergeableModel, b : DsheapmergeableModel) -> DsheapmergeableModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_model_copy(s : DsheapmergeableModel) -> DsheapmergeableModel {
-  let result = ds_heap_mergeable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_model_fill(s : DsheapmergeableModel, v : Double) -> DsheapmergeableModel {
-  let result = ds_heap_mergeable_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_model_min(s : DsheapmergeableModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_heap_mergeable_layer_sum(s : DsheapmergeableLayer) -> Double { @_commo
 pub fn ds_heap_mergeable_layer_mean(s : DsheapmergeableLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_layer_scale(s : DsheapmergeableLayer, f : Double) -> DsheapmergeableLayer {
-  let result = ds_heap_mergeable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_layer_add(a : DsheapmergeableLayer, b : DsheapmergeableLayer) -> DsheapmergeableLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_layer_copy(s : DsheapmergeableLayer) -> DsheapmergeableLayer {
-  let result = ds_heap_mergeable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_layer_fill(s : DsheapmergeableLayer, v : Double) -> DsheapmergeableLayer {
-  let result = ds_heap_mergeable_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_layer_min(s : DsheapmergeableLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_heap_mergeable_buffer_sum(s : DsheapmergeableBuffer) -> Double { @_com
 pub fn ds_heap_mergeable_buffer_mean(s : DsheapmergeableBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_buffer_scale(s : DsheapmergeableBuffer, f : Double) -> DsheapmergeableBuffer {
-  let result = ds_heap_mergeable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_buffer_add(a : DsheapmergeableBuffer, b : DsheapmergeableBuffer) -> DsheapmergeableBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_buffer_copy(s : DsheapmergeableBuffer) -> DsheapmergeableBuffer {
-  let result = ds_heap_mergeable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_buffer_fill(s : DsheapmergeableBuffer, v : Double) -> DsheapmergeableBuffer {
-  let result = ds_heap_mergeable_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_buffer_min(s : DsheapmergeableBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_heap_mergeable_cursor_sum(s : DsheapmergeableCursor) -> Double { @_com
 pub fn ds_heap_mergeable_cursor_mean(s : DsheapmergeableCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_cursor_scale(s : DsheapmergeableCursor, f : Double) -> DsheapmergeableCursor {
-  let result = ds_heap_mergeable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_cursor_add(a : DsheapmergeableCursor, b : DsheapmergeableCursor) -> DsheapmergeableCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_cursor_copy(s : DsheapmergeableCursor) -> DsheapmergeableCursor {
-  let result = ds_heap_mergeable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_cursor_fill(s : DsheapmergeableCursor, v : Double) -> DsheapmergeableCursor {
-  let result = ds_heap_mergeable_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_cursor_min(s : DsheapmergeableCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_heap_mergeable_view_sum(s : DsheapmergeableView) -> Double { @_common.
 pub fn ds_heap_mergeable_view_mean(s : DsheapmergeableView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_view_scale(s : DsheapmergeableView, f : Double) -> DsheapmergeableView {
-  let result = ds_heap_mergeable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_view_add(a : DsheapmergeableView, b : DsheapmergeableView) -> DsheapmergeableView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_view_copy(s : DsheapmergeableView) -> DsheapmergeableView {
-  let result = ds_heap_mergeable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_view_fill(s : DsheapmergeableView, v : Double) -> DsheapmergeableView {
-  let result = ds_heap_mergeable_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_view_min(s : DsheapmergeableView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_heap_mergeable_range_sum(s : DsheapmergeableRange) -> Double { @_commo
 pub fn ds_heap_mergeable_range_mean(s : DsheapmergeableRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_range_scale(s : DsheapmergeableRange, f : Double) -> DsheapmergeableRange {
-  let result = ds_heap_mergeable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_range_add(a : DsheapmergeableRange, b : DsheapmergeableRange) -> DsheapmergeableRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_range_copy(s : DsheapmergeableRange) -> DsheapmergeableRange {
-  let result = ds_heap_mergeable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_range_fill(s : DsheapmergeableRange, v : Double) -> DsheapmergeableRange {
-  let result = ds_heap_mergeable_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_range_min(s : DsheapmergeableRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_heap_mergeable_slice_sum(s : DsheapmergeableSlice) -> Double { @_commo
 pub fn ds_heap_mergeable_slice_mean(s : DsheapmergeableSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_mergeable_slice_scale(s : DsheapmergeableSlice, f : Double) -> DsheapmergeableSlice {
-  let result = ds_heap_mergeable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_slice_add(a : DsheapmergeableSlice, b : DsheapmergeableSlice) -> DsheapmergeableSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_mergeable_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_mergeable_slice_copy(s : DsheapmergeableSlice) -> DsheapmergeableSlice {
-  let result = ds_heap_mergeable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_slice_fill(s : DsheapmergeableSlice, v : Double) -> DsheapmergeableSlice {
-  let result = ds_heap_mergeable_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_mergeable_slice_min(s : DsheapmergeableSlice) -> Double { @_common.min(s.data) }

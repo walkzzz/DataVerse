@@ -383,28 +383,20 @@ pub fn db_tx_mvcc_frame_sum(s : DbtxmvccFrame) -> Double { @_common.sum(s.data) 
 pub fn db_tx_mvcc_frame_mean(s : DbtxmvccFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_frame_scale(s : DbtxmvccFrame, f : Double) -> DbtxmvccFrame {
-  let result = db_tx_mvcc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_frame_add(a : DbtxmvccFrame, b : DbtxmvccFrame) -> DbtxmvccFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_frame_copy(s : DbtxmvccFrame) -> DbtxmvccFrame {
-  let result = db_tx_mvcc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_frame_fill(s : DbtxmvccFrame, v : Double) -> DbtxmvccFrame {
-  let result = db_tx_mvcc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_frame_min(s : DbtxmvccFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_tx_mvcc_table_sum(s : DbtxmvccTable) -> Double { @_common.sum(s.data) 
 pub fn db_tx_mvcc_table_mean(s : DbtxmvccTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_table_scale(s : DbtxmvccTable, f : Double) -> DbtxmvccTable {
-  let result = db_tx_mvcc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_table_add(a : DbtxmvccTable, b : DbtxmvccTable) -> DbtxmvccTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_table_copy(s : DbtxmvccTable) -> DbtxmvccTable {
-  let result = db_tx_mvcc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_table_fill(s : DbtxmvccTable, v : Double) -> DbtxmvccTable {
-  let result = db_tx_mvcc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_table_min(s : DbtxmvccTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_tx_mvcc_graphn_sum(s : DbtxmvccGraphN) -> Double { @_common.sum(s.data
 pub fn db_tx_mvcc_graphn_mean(s : DbtxmvccGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_graphn_scale(s : DbtxmvccGraphN, f : Double) -> DbtxmvccGraphN {
-  let result = db_tx_mvcc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_graphn_add(a : DbtxmvccGraphN, b : DbtxmvccGraphN) -> DbtxmvccGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_graphn_copy(s : DbtxmvccGraphN) -> DbtxmvccGraphN {
-  let result = db_tx_mvcc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_graphn_fill(s : DbtxmvccGraphN, v : Double) -> DbtxmvccGraphN {
-  let result = db_tx_mvcc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_graphn_min(s : DbtxmvccGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_tx_mvcc_node_sum(s : DbtxmvccNode) -> Double { @_common.sum(s.data) }
 pub fn db_tx_mvcc_node_mean(s : DbtxmvccNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_node_scale(s : DbtxmvccNode, f : Double) -> DbtxmvccNode {
-  let result = db_tx_mvcc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_node_add(a : DbtxmvccNode, b : DbtxmvccNode) -> DbtxmvccNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_node_copy(s : DbtxmvccNode) -> DbtxmvccNode {
-  let result = db_tx_mvcc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_node_fill(s : DbtxmvccNode, v : Double) -> DbtxmvccNode {
-  let result = db_tx_mvcc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_node_min(s : DbtxmvccNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_tx_mvcc_edge_sum(s : DbtxmvccEdge) -> Double { @_common.sum(s.data) }
 pub fn db_tx_mvcc_edge_mean(s : DbtxmvccEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_edge_scale(s : DbtxmvccEdge, f : Double) -> DbtxmvccEdge {
-  let result = db_tx_mvcc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_edge_add(a : DbtxmvccEdge, b : DbtxmvccEdge) -> DbtxmvccEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_edge_copy(s : DbtxmvccEdge) -> DbtxmvccEdge {
-  let result = db_tx_mvcc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_edge_fill(s : DbtxmvccEdge, v : Double) -> DbtxmvccEdge {
-  let result = db_tx_mvcc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_edge_min(s : DbtxmvccEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_tx_mvcc_path_sum(s : DbtxmvccPath) -> Double { @_common.sum(s.data) }
 pub fn db_tx_mvcc_path_mean(s : DbtxmvccPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_path_scale(s : DbtxmvccPath, f : Double) -> DbtxmvccPath {
-  let result = db_tx_mvcc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_path_add(a : DbtxmvccPath, b : DbtxmvccPath) -> DbtxmvccPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_path_copy(s : DbtxmvccPath) -> DbtxmvccPath {
-  let result = db_tx_mvcc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_path_fill(s : DbtxmvccPath, v : Double) -> DbtxmvccPath {
-  let result = db_tx_mvcc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_path_min(s : DbtxmvccPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_tx_mvcc_cluster_sum(s : DbtxmvccCluster) -> Double { @_common.sum(s.da
 pub fn db_tx_mvcc_cluster_mean(s : DbtxmvccCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_cluster_scale(s : DbtxmvccCluster, f : Double) -> DbtxmvccCluster {
-  let result = db_tx_mvcc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cluster_add(a : DbtxmvccCluster, b : DbtxmvccCluster) -> DbtxmvccCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_cluster_copy(s : DbtxmvccCluster) -> DbtxmvccCluster {
-  let result = db_tx_mvcc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cluster_fill(s : DbtxmvccCluster, v : Double) -> DbtxmvccCluster {
-  let result = db_tx_mvcc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cluster_min(s : DbtxmvccCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_tx_mvcc_model_sum(s : DbtxmvccModel) -> Double { @_common.sum(s.data) 
 pub fn db_tx_mvcc_model_mean(s : DbtxmvccModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_model_scale(s : DbtxmvccModel, f : Double) -> DbtxmvccModel {
-  let result = db_tx_mvcc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_model_add(a : DbtxmvccModel, b : DbtxmvccModel) -> DbtxmvccModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_model_copy(s : DbtxmvccModel) -> DbtxmvccModel {
-  let result = db_tx_mvcc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_model_fill(s : DbtxmvccModel, v : Double) -> DbtxmvccModel {
-  let result = db_tx_mvcc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_model_min(s : DbtxmvccModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_tx_mvcc_layer_sum(s : DbtxmvccLayer) -> Double { @_common.sum(s.data) 
 pub fn db_tx_mvcc_layer_mean(s : DbtxmvccLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_layer_scale(s : DbtxmvccLayer, f : Double) -> DbtxmvccLayer {
-  let result = db_tx_mvcc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_layer_add(a : DbtxmvccLayer, b : DbtxmvccLayer) -> DbtxmvccLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_layer_copy(s : DbtxmvccLayer) -> DbtxmvccLayer {
-  let result = db_tx_mvcc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_layer_fill(s : DbtxmvccLayer, v : Double) -> DbtxmvccLayer {
-  let result = db_tx_mvcc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_layer_min(s : DbtxmvccLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_tx_mvcc_buffer_sum(s : DbtxmvccBuffer) -> Double { @_common.sum(s.data
 pub fn db_tx_mvcc_buffer_mean(s : DbtxmvccBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_buffer_scale(s : DbtxmvccBuffer, f : Double) -> DbtxmvccBuffer {
-  let result = db_tx_mvcc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_buffer_add(a : DbtxmvccBuffer, b : DbtxmvccBuffer) -> DbtxmvccBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_buffer_copy(s : DbtxmvccBuffer) -> DbtxmvccBuffer {
-  let result = db_tx_mvcc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_buffer_fill(s : DbtxmvccBuffer, v : Double) -> DbtxmvccBuffer {
-  let result = db_tx_mvcc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_buffer_min(s : DbtxmvccBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_tx_mvcc_cursor_sum(s : DbtxmvccCursor) -> Double { @_common.sum(s.data
 pub fn db_tx_mvcc_cursor_mean(s : DbtxmvccCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_cursor_scale(s : DbtxmvccCursor, f : Double) -> DbtxmvccCursor {
-  let result = db_tx_mvcc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cursor_add(a : DbtxmvccCursor, b : DbtxmvccCursor) -> DbtxmvccCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_cursor_copy(s : DbtxmvccCursor) -> DbtxmvccCursor {
-  let result = db_tx_mvcc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cursor_fill(s : DbtxmvccCursor, v : Double) -> DbtxmvccCursor {
-  let result = db_tx_mvcc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cursor_min(s : DbtxmvccCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_tx_mvcc_view_sum(s : DbtxmvccView) -> Double { @_common.sum(s.data) }
 pub fn db_tx_mvcc_view_mean(s : DbtxmvccView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_view_scale(s : DbtxmvccView, f : Double) -> DbtxmvccView {
-  let result = db_tx_mvcc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_view_add(a : DbtxmvccView, b : DbtxmvccView) -> DbtxmvccView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_view_copy(s : DbtxmvccView) -> DbtxmvccView {
-  let result = db_tx_mvcc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_view_fill(s : DbtxmvccView, v : Double) -> DbtxmvccView {
-  let result = db_tx_mvcc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_view_min(s : DbtxmvccView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_tx_mvcc_range_sum(s : DbtxmvccRange) -> Double { @_common.sum(s.data) 
 pub fn db_tx_mvcc_range_mean(s : DbtxmvccRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_range_scale(s : DbtxmvccRange, f : Double) -> DbtxmvccRange {
-  let result = db_tx_mvcc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_range_add(a : DbtxmvccRange, b : DbtxmvccRange) -> DbtxmvccRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_range_copy(s : DbtxmvccRange) -> DbtxmvccRange {
-  let result = db_tx_mvcc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_range_fill(s : DbtxmvccRange, v : Double) -> DbtxmvccRange {
-  let result = db_tx_mvcc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_range_min(s : DbtxmvccRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_tx_mvcc_slice_sum(s : DbtxmvccSlice) -> Double { @_common.sum(s.data) 
 pub fn db_tx_mvcc_slice_mean(s : DbtxmvccSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_mvcc_slice_scale(s : DbtxmvccSlice, f : Double) -> DbtxmvccSlice {
-  let result = db_tx_mvcc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_slice_add(a : DbtxmvccSlice, b : DbtxmvccSlice) -> DbtxmvccSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_mvcc_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_mvcc_slice_copy(s : DbtxmvccSlice) -> DbtxmvccSlice {
-  let result = db_tx_mvcc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_slice_fill(s : DbtxmvccSlice, v : Double) -> DbtxmvccSlice {
-  let result = db_tx_mvcc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_slice_min(s : DbtxmvccSlice) -> Double { @_common.min(s.data) }

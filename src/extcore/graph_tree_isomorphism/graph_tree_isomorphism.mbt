@@ -383,28 +383,20 @@ pub fn graph_tree_isomorphism_frame_sum(s : GraphtreeisomorphismFrame) -> Double
 pub fn graph_tree_isomorphism_frame_mean(s : GraphtreeisomorphismFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_frame_scale(s : GraphtreeisomorphismFrame, f : Double) -> GraphtreeisomorphismFrame {
-  let result = graph_tree_isomorphism_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_frame_add(a : GraphtreeisomorphismFrame, b : GraphtreeisomorphismFrame) -> GraphtreeisomorphismFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_frame_copy(s : GraphtreeisomorphismFrame) -> GraphtreeisomorphismFrame {
-  let result = graph_tree_isomorphism_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_frame_fill(s : GraphtreeisomorphismFrame, v : Double) -> GraphtreeisomorphismFrame {
-  let result = graph_tree_isomorphism_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_frame_min(s : GraphtreeisomorphismFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_tree_isomorphism_table_sum(s : GraphtreeisomorphismTable) -> Double
 pub fn graph_tree_isomorphism_table_mean(s : GraphtreeisomorphismTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_table_scale(s : GraphtreeisomorphismTable, f : Double) -> GraphtreeisomorphismTable {
-  let result = graph_tree_isomorphism_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_table_add(a : GraphtreeisomorphismTable, b : GraphtreeisomorphismTable) -> GraphtreeisomorphismTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_table_copy(s : GraphtreeisomorphismTable) -> GraphtreeisomorphismTable {
-  let result = graph_tree_isomorphism_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_table_fill(s : GraphtreeisomorphismTable, v : Double) -> GraphtreeisomorphismTable {
-  let result = graph_tree_isomorphism_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_table_min(s : GraphtreeisomorphismTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_tree_isomorphism_graphn_sum(s : GraphtreeisomorphismGraphN) -> Doub
 pub fn graph_tree_isomorphism_graphn_mean(s : GraphtreeisomorphismGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_graphn_scale(s : GraphtreeisomorphismGraphN, f : Double) -> GraphtreeisomorphismGraphN {
-  let result = graph_tree_isomorphism_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_graphn_add(a : GraphtreeisomorphismGraphN, b : GraphtreeisomorphismGraphN) -> GraphtreeisomorphismGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_graphn_copy(s : GraphtreeisomorphismGraphN) -> GraphtreeisomorphismGraphN {
-  let result = graph_tree_isomorphism_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_graphn_fill(s : GraphtreeisomorphismGraphN, v : Double) -> GraphtreeisomorphismGraphN {
-  let result = graph_tree_isomorphism_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_graphn_min(s : GraphtreeisomorphismGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_tree_isomorphism_node_sum(s : GraphtreeisomorphismNode) -> Double {
 pub fn graph_tree_isomorphism_node_mean(s : GraphtreeisomorphismNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_node_scale(s : GraphtreeisomorphismNode, f : Double) -> GraphtreeisomorphismNode {
-  let result = graph_tree_isomorphism_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_node_add(a : GraphtreeisomorphismNode, b : GraphtreeisomorphismNode) -> GraphtreeisomorphismNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_node_copy(s : GraphtreeisomorphismNode) -> GraphtreeisomorphismNode {
-  let result = graph_tree_isomorphism_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_node_fill(s : GraphtreeisomorphismNode, v : Double) -> GraphtreeisomorphismNode {
-  let result = graph_tree_isomorphism_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_node_min(s : GraphtreeisomorphismNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_tree_isomorphism_edge_sum(s : GraphtreeisomorphismEdge) -> Double {
 pub fn graph_tree_isomorphism_edge_mean(s : GraphtreeisomorphismEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_edge_scale(s : GraphtreeisomorphismEdge, f : Double) -> GraphtreeisomorphismEdge {
-  let result = graph_tree_isomorphism_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_edge_add(a : GraphtreeisomorphismEdge, b : GraphtreeisomorphismEdge) -> GraphtreeisomorphismEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_edge_copy(s : GraphtreeisomorphismEdge) -> GraphtreeisomorphismEdge {
-  let result = graph_tree_isomorphism_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_edge_fill(s : GraphtreeisomorphismEdge, v : Double) -> GraphtreeisomorphismEdge {
-  let result = graph_tree_isomorphism_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_edge_min(s : GraphtreeisomorphismEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_tree_isomorphism_path_sum(s : GraphtreeisomorphismPath) -> Double {
 pub fn graph_tree_isomorphism_path_mean(s : GraphtreeisomorphismPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_path_scale(s : GraphtreeisomorphismPath, f : Double) -> GraphtreeisomorphismPath {
-  let result = graph_tree_isomorphism_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_path_add(a : GraphtreeisomorphismPath, b : GraphtreeisomorphismPath) -> GraphtreeisomorphismPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_path_copy(s : GraphtreeisomorphismPath) -> GraphtreeisomorphismPath {
-  let result = graph_tree_isomorphism_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_path_fill(s : GraphtreeisomorphismPath, v : Double) -> GraphtreeisomorphismPath {
-  let result = graph_tree_isomorphism_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_path_min(s : GraphtreeisomorphismPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_tree_isomorphism_cluster_sum(s : GraphtreeisomorphismCluster) -> Do
 pub fn graph_tree_isomorphism_cluster_mean(s : GraphtreeisomorphismCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_cluster_scale(s : GraphtreeisomorphismCluster, f : Double) -> GraphtreeisomorphismCluster {
-  let result = graph_tree_isomorphism_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_cluster_add(a : GraphtreeisomorphismCluster, b : GraphtreeisomorphismCluster) -> GraphtreeisomorphismCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_cluster_copy(s : GraphtreeisomorphismCluster) -> GraphtreeisomorphismCluster {
-  let result = graph_tree_isomorphism_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_cluster_fill(s : GraphtreeisomorphismCluster, v : Double) -> GraphtreeisomorphismCluster {
-  let result = graph_tree_isomorphism_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_cluster_min(s : GraphtreeisomorphismCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_tree_isomorphism_model_sum(s : GraphtreeisomorphismModel) -> Double
 pub fn graph_tree_isomorphism_model_mean(s : GraphtreeisomorphismModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_model_scale(s : GraphtreeisomorphismModel, f : Double) -> GraphtreeisomorphismModel {
-  let result = graph_tree_isomorphism_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_model_add(a : GraphtreeisomorphismModel, b : GraphtreeisomorphismModel) -> GraphtreeisomorphismModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_model_copy(s : GraphtreeisomorphismModel) -> GraphtreeisomorphismModel {
-  let result = graph_tree_isomorphism_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_model_fill(s : GraphtreeisomorphismModel, v : Double) -> GraphtreeisomorphismModel {
-  let result = graph_tree_isomorphism_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_model_min(s : GraphtreeisomorphismModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_tree_isomorphism_layer_sum(s : GraphtreeisomorphismLayer) -> Double
 pub fn graph_tree_isomorphism_layer_mean(s : GraphtreeisomorphismLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_layer_scale(s : GraphtreeisomorphismLayer, f : Double) -> GraphtreeisomorphismLayer {
-  let result = graph_tree_isomorphism_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_layer_add(a : GraphtreeisomorphismLayer, b : GraphtreeisomorphismLayer) -> GraphtreeisomorphismLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_layer_copy(s : GraphtreeisomorphismLayer) -> GraphtreeisomorphismLayer {
-  let result = graph_tree_isomorphism_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_layer_fill(s : GraphtreeisomorphismLayer, v : Double) -> GraphtreeisomorphismLayer {
-  let result = graph_tree_isomorphism_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_layer_min(s : GraphtreeisomorphismLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_tree_isomorphism_buffer_sum(s : GraphtreeisomorphismBuffer) -> Doub
 pub fn graph_tree_isomorphism_buffer_mean(s : GraphtreeisomorphismBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_buffer_scale(s : GraphtreeisomorphismBuffer, f : Double) -> GraphtreeisomorphismBuffer {
-  let result = graph_tree_isomorphism_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_buffer_add(a : GraphtreeisomorphismBuffer, b : GraphtreeisomorphismBuffer) -> GraphtreeisomorphismBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_buffer_copy(s : GraphtreeisomorphismBuffer) -> GraphtreeisomorphismBuffer {
-  let result = graph_tree_isomorphism_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_buffer_fill(s : GraphtreeisomorphismBuffer, v : Double) -> GraphtreeisomorphismBuffer {
-  let result = graph_tree_isomorphism_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_buffer_min(s : GraphtreeisomorphismBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_tree_isomorphism_cursor_sum(s : GraphtreeisomorphismCursor) -> Doub
 pub fn graph_tree_isomorphism_cursor_mean(s : GraphtreeisomorphismCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_cursor_scale(s : GraphtreeisomorphismCursor, f : Double) -> GraphtreeisomorphismCursor {
-  let result = graph_tree_isomorphism_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_cursor_add(a : GraphtreeisomorphismCursor, b : GraphtreeisomorphismCursor) -> GraphtreeisomorphismCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_cursor_copy(s : GraphtreeisomorphismCursor) -> GraphtreeisomorphismCursor {
-  let result = graph_tree_isomorphism_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_cursor_fill(s : GraphtreeisomorphismCursor, v : Double) -> GraphtreeisomorphismCursor {
-  let result = graph_tree_isomorphism_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_cursor_min(s : GraphtreeisomorphismCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_tree_isomorphism_view_sum(s : GraphtreeisomorphismView) -> Double {
 pub fn graph_tree_isomorphism_view_mean(s : GraphtreeisomorphismView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_view_scale(s : GraphtreeisomorphismView, f : Double) -> GraphtreeisomorphismView {
-  let result = graph_tree_isomorphism_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_view_add(a : GraphtreeisomorphismView, b : GraphtreeisomorphismView) -> GraphtreeisomorphismView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_view_copy(s : GraphtreeisomorphismView) -> GraphtreeisomorphismView {
-  let result = graph_tree_isomorphism_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_view_fill(s : GraphtreeisomorphismView, v : Double) -> GraphtreeisomorphismView {
-  let result = graph_tree_isomorphism_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_view_min(s : GraphtreeisomorphismView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_tree_isomorphism_range_sum(s : GraphtreeisomorphismRange) -> Double
 pub fn graph_tree_isomorphism_range_mean(s : GraphtreeisomorphismRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_range_scale(s : GraphtreeisomorphismRange, f : Double) -> GraphtreeisomorphismRange {
-  let result = graph_tree_isomorphism_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_range_add(a : GraphtreeisomorphismRange, b : GraphtreeisomorphismRange) -> GraphtreeisomorphismRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_range_copy(s : GraphtreeisomorphismRange) -> GraphtreeisomorphismRange {
-  let result = graph_tree_isomorphism_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_range_fill(s : GraphtreeisomorphismRange, v : Double) -> GraphtreeisomorphismRange {
-  let result = graph_tree_isomorphism_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_range_min(s : GraphtreeisomorphismRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_tree_isomorphism_slice_sum(s : GraphtreeisomorphismSlice) -> Double
 pub fn graph_tree_isomorphism_slice_mean(s : GraphtreeisomorphismSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_slice_scale(s : GraphtreeisomorphismSlice, f : Double) -> GraphtreeisomorphismSlice {
-  let result = graph_tree_isomorphism_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_slice_add(a : GraphtreeisomorphismSlice, b : GraphtreeisomorphismSlice) -> GraphtreeisomorphismSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_isomorphism_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_isomorphism_slice_copy(s : GraphtreeisomorphismSlice) -> GraphtreeisomorphismSlice {
-  let result = graph_tree_isomorphism_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_slice_fill(s : GraphtreeisomorphismSlice, v : Double) -> GraphtreeisomorphismSlice {
-  let result = graph_tree_isomorphism_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_isomorphism_slice_min(s : GraphtreeisomorphismSlice) -> Double { @_common.min(s.data) }

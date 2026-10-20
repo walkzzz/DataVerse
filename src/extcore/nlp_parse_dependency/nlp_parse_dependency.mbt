@@ -383,28 +383,20 @@ pub fn nlp_parse_dependency_frame_sum(s : NlpparsedependencyFrame) -> Double { @
 pub fn nlp_parse_dependency_frame_mean(s : NlpparsedependencyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_frame_scale(s : NlpparsedependencyFrame, f : Double) -> NlpparsedependencyFrame {
-  let result = nlp_parse_dependency_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_frame_add(a : NlpparsedependencyFrame, b : NlpparsedependencyFrame) -> NlpparsedependencyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_frame_copy(s : NlpparsedependencyFrame) -> NlpparsedependencyFrame {
-  let result = nlp_parse_dependency_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_frame_fill(s : NlpparsedependencyFrame, v : Double) -> NlpparsedependencyFrame {
-  let result = nlp_parse_dependency_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_frame_min(s : NlpparsedependencyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_parse_dependency_table_sum(s : NlpparsedependencyTable) -> Double { @
 pub fn nlp_parse_dependency_table_mean(s : NlpparsedependencyTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_table_scale(s : NlpparsedependencyTable, f : Double) -> NlpparsedependencyTable {
-  let result = nlp_parse_dependency_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_table_add(a : NlpparsedependencyTable, b : NlpparsedependencyTable) -> NlpparsedependencyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_table_copy(s : NlpparsedependencyTable) -> NlpparsedependencyTable {
-  let result = nlp_parse_dependency_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_table_fill(s : NlpparsedependencyTable, v : Double) -> NlpparsedependencyTable {
-  let result = nlp_parse_dependency_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_table_min(s : NlpparsedependencyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_parse_dependency_graphn_sum(s : NlpparsedependencyGraphN) -> Double {
 pub fn nlp_parse_dependency_graphn_mean(s : NlpparsedependencyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_graphn_scale(s : NlpparsedependencyGraphN, f : Double) -> NlpparsedependencyGraphN {
-  let result = nlp_parse_dependency_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_graphn_add(a : NlpparsedependencyGraphN, b : NlpparsedependencyGraphN) -> NlpparsedependencyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_graphn_copy(s : NlpparsedependencyGraphN) -> NlpparsedependencyGraphN {
-  let result = nlp_parse_dependency_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_graphn_fill(s : NlpparsedependencyGraphN, v : Double) -> NlpparsedependencyGraphN {
-  let result = nlp_parse_dependency_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_graphn_min(s : NlpparsedependencyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_parse_dependency_node_sum(s : NlpparsedependencyNode) -> Double { @_c
 pub fn nlp_parse_dependency_node_mean(s : NlpparsedependencyNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_node_scale(s : NlpparsedependencyNode, f : Double) -> NlpparsedependencyNode {
-  let result = nlp_parse_dependency_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_node_add(a : NlpparsedependencyNode, b : NlpparsedependencyNode) -> NlpparsedependencyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_node_copy(s : NlpparsedependencyNode) -> NlpparsedependencyNode {
-  let result = nlp_parse_dependency_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_node_fill(s : NlpparsedependencyNode, v : Double) -> NlpparsedependencyNode {
-  let result = nlp_parse_dependency_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_node_min(s : NlpparsedependencyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_parse_dependency_edge_sum(s : NlpparsedependencyEdge) -> Double { @_c
 pub fn nlp_parse_dependency_edge_mean(s : NlpparsedependencyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_edge_scale(s : NlpparsedependencyEdge, f : Double) -> NlpparsedependencyEdge {
-  let result = nlp_parse_dependency_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_edge_add(a : NlpparsedependencyEdge, b : NlpparsedependencyEdge) -> NlpparsedependencyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_edge_copy(s : NlpparsedependencyEdge) -> NlpparsedependencyEdge {
-  let result = nlp_parse_dependency_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_edge_fill(s : NlpparsedependencyEdge, v : Double) -> NlpparsedependencyEdge {
-  let result = nlp_parse_dependency_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_edge_min(s : NlpparsedependencyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_parse_dependency_path_sum(s : NlpparsedependencyPath) -> Double { @_c
 pub fn nlp_parse_dependency_path_mean(s : NlpparsedependencyPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_path_scale(s : NlpparsedependencyPath, f : Double) -> NlpparsedependencyPath {
-  let result = nlp_parse_dependency_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_path_add(a : NlpparsedependencyPath, b : NlpparsedependencyPath) -> NlpparsedependencyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_path_copy(s : NlpparsedependencyPath) -> NlpparsedependencyPath {
-  let result = nlp_parse_dependency_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_path_fill(s : NlpparsedependencyPath, v : Double) -> NlpparsedependencyPath {
-  let result = nlp_parse_dependency_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_path_min(s : NlpparsedependencyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_parse_dependency_cluster_sum(s : NlpparsedependencyCluster) -> Double
 pub fn nlp_parse_dependency_cluster_mean(s : NlpparsedependencyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_cluster_scale(s : NlpparsedependencyCluster, f : Double) -> NlpparsedependencyCluster {
-  let result = nlp_parse_dependency_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_cluster_add(a : NlpparsedependencyCluster, b : NlpparsedependencyCluster) -> NlpparsedependencyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_cluster_copy(s : NlpparsedependencyCluster) -> NlpparsedependencyCluster {
-  let result = nlp_parse_dependency_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_cluster_fill(s : NlpparsedependencyCluster, v : Double) -> NlpparsedependencyCluster {
-  let result = nlp_parse_dependency_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_cluster_min(s : NlpparsedependencyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_parse_dependency_model_sum(s : NlpparsedependencyModel) -> Double { @
 pub fn nlp_parse_dependency_model_mean(s : NlpparsedependencyModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_model_scale(s : NlpparsedependencyModel, f : Double) -> NlpparsedependencyModel {
-  let result = nlp_parse_dependency_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_model_add(a : NlpparsedependencyModel, b : NlpparsedependencyModel) -> NlpparsedependencyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_model_copy(s : NlpparsedependencyModel) -> NlpparsedependencyModel {
-  let result = nlp_parse_dependency_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_model_fill(s : NlpparsedependencyModel, v : Double) -> NlpparsedependencyModel {
-  let result = nlp_parse_dependency_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_model_min(s : NlpparsedependencyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_parse_dependency_layer_sum(s : NlpparsedependencyLayer) -> Double { @
 pub fn nlp_parse_dependency_layer_mean(s : NlpparsedependencyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_layer_scale(s : NlpparsedependencyLayer, f : Double) -> NlpparsedependencyLayer {
-  let result = nlp_parse_dependency_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_layer_add(a : NlpparsedependencyLayer, b : NlpparsedependencyLayer) -> NlpparsedependencyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_layer_copy(s : NlpparsedependencyLayer) -> NlpparsedependencyLayer {
-  let result = nlp_parse_dependency_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_layer_fill(s : NlpparsedependencyLayer, v : Double) -> NlpparsedependencyLayer {
-  let result = nlp_parse_dependency_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_layer_min(s : NlpparsedependencyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_parse_dependency_buffer_sum(s : NlpparsedependencyBuffer) -> Double {
 pub fn nlp_parse_dependency_buffer_mean(s : NlpparsedependencyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_buffer_scale(s : NlpparsedependencyBuffer, f : Double) -> NlpparsedependencyBuffer {
-  let result = nlp_parse_dependency_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_buffer_add(a : NlpparsedependencyBuffer, b : NlpparsedependencyBuffer) -> NlpparsedependencyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_buffer_copy(s : NlpparsedependencyBuffer) -> NlpparsedependencyBuffer {
-  let result = nlp_parse_dependency_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_buffer_fill(s : NlpparsedependencyBuffer, v : Double) -> NlpparsedependencyBuffer {
-  let result = nlp_parse_dependency_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_buffer_min(s : NlpparsedependencyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_parse_dependency_cursor_sum(s : NlpparsedependencyCursor) -> Double {
 pub fn nlp_parse_dependency_cursor_mean(s : NlpparsedependencyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_cursor_scale(s : NlpparsedependencyCursor, f : Double) -> NlpparsedependencyCursor {
-  let result = nlp_parse_dependency_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_cursor_add(a : NlpparsedependencyCursor, b : NlpparsedependencyCursor) -> NlpparsedependencyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_cursor_copy(s : NlpparsedependencyCursor) -> NlpparsedependencyCursor {
-  let result = nlp_parse_dependency_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_cursor_fill(s : NlpparsedependencyCursor, v : Double) -> NlpparsedependencyCursor {
-  let result = nlp_parse_dependency_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_cursor_min(s : NlpparsedependencyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_parse_dependency_view_sum(s : NlpparsedependencyView) -> Double { @_c
 pub fn nlp_parse_dependency_view_mean(s : NlpparsedependencyView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_view_scale(s : NlpparsedependencyView, f : Double) -> NlpparsedependencyView {
-  let result = nlp_parse_dependency_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_view_add(a : NlpparsedependencyView, b : NlpparsedependencyView) -> NlpparsedependencyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_view_copy(s : NlpparsedependencyView) -> NlpparsedependencyView {
-  let result = nlp_parse_dependency_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_view_fill(s : NlpparsedependencyView, v : Double) -> NlpparsedependencyView {
-  let result = nlp_parse_dependency_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_view_min(s : NlpparsedependencyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_parse_dependency_range_sum(s : NlpparsedependencyRange) -> Double { @
 pub fn nlp_parse_dependency_range_mean(s : NlpparsedependencyRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_range_scale(s : NlpparsedependencyRange, f : Double) -> NlpparsedependencyRange {
-  let result = nlp_parse_dependency_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_range_add(a : NlpparsedependencyRange, b : NlpparsedependencyRange) -> NlpparsedependencyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_range_copy(s : NlpparsedependencyRange) -> NlpparsedependencyRange {
-  let result = nlp_parse_dependency_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_range_fill(s : NlpparsedependencyRange, v : Double) -> NlpparsedependencyRange {
-  let result = nlp_parse_dependency_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_range_min(s : NlpparsedependencyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_parse_dependency_slice_sum(s : NlpparsedependencySlice) -> Double { @
 pub fn nlp_parse_dependency_slice_mean(s : NlpparsedependencySlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_slice_scale(s : NlpparsedependencySlice, f : Double) -> NlpparsedependencySlice {
-  let result = nlp_parse_dependency_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_slice_add(a : NlpparsedependencySlice, b : NlpparsedependencySlice) -> NlpparsedependencySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_dependency_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_dependency_slice_copy(s : NlpparsedependencySlice) -> NlpparsedependencySlice {
-  let result = nlp_parse_dependency_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_slice_fill(s : NlpparsedependencySlice, v : Double) -> NlpparsedependencySlice {
-  let result = nlp_parse_dependency_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_dependency_slice_min(s : NlpparsedependencySlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn geo_intersect_segment_frame_sum(s : GeointersectsegmentFrame) -> Double {
 pub fn geo_intersect_segment_frame_mean(s : GeointersectsegmentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_frame_scale(s : GeointersectsegmentFrame, f : Double) -> GeointersectsegmentFrame {
-  let result = geo_intersect_segment_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_frame_add(a : GeointersectsegmentFrame, b : GeointersectsegmentFrame) -> GeointersectsegmentFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_frame_copy(s : GeointersectsegmentFrame) -> GeointersectsegmentFrame {
-  let result = geo_intersect_segment_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_frame_fill(s : GeointersectsegmentFrame, v : Double) -> GeointersectsegmentFrame {
-  let result = geo_intersect_segment_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_frame_min(s : GeointersectsegmentFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_intersect_segment_table_sum(s : GeointersectsegmentTable) -> Double {
 pub fn geo_intersect_segment_table_mean(s : GeointersectsegmentTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_table_scale(s : GeointersectsegmentTable, f : Double) -> GeointersectsegmentTable {
-  let result = geo_intersect_segment_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_table_add(a : GeointersectsegmentTable, b : GeointersectsegmentTable) -> GeointersectsegmentTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_table_copy(s : GeointersectsegmentTable) -> GeointersectsegmentTable {
-  let result = geo_intersect_segment_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_table_fill(s : GeointersectsegmentTable, v : Double) -> GeointersectsegmentTable {
-  let result = geo_intersect_segment_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_table_min(s : GeointersectsegmentTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_intersect_segment_graphn_sum(s : GeointersectsegmentGraphN) -> Double
 pub fn geo_intersect_segment_graphn_mean(s : GeointersectsegmentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_graphn_scale(s : GeointersectsegmentGraphN, f : Double) -> GeointersectsegmentGraphN {
-  let result = geo_intersect_segment_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_graphn_add(a : GeointersectsegmentGraphN, b : GeointersectsegmentGraphN) -> GeointersectsegmentGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_graphn_copy(s : GeointersectsegmentGraphN) -> GeointersectsegmentGraphN {
-  let result = geo_intersect_segment_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_graphn_fill(s : GeointersectsegmentGraphN, v : Double) -> GeointersectsegmentGraphN {
-  let result = geo_intersect_segment_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_graphn_min(s : GeointersectsegmentGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_intersect_segment_node_sum(s : GeointersectsegmentNode) -> Double { @
 pub fn geo_intersect_segment_node_mean(s : GeointersectsegmentNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_node_scale(s : GeointersectsegmentNode, f : Double) -> GeointersectsegmentNode {
-  let result = geo_intersect_segment_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_node_add(a : GeointersectsegmentNode, b : GeointersectsegmentNode) -> GeointersectsegmentNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_node_copy(s : GeointersectsegmentNode) -> GeointersectsegmentNode {
-  let result = geo_intersect_segment_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_node_fill(s : GeointersectsegmentNode, v : Double) -> GeointersectsegmentNode {
-  let result = geo_intersect_segment_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_node_min(s : GeointersectsegmentNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_intersect_segment_edge_sum(s : GeointersectsegmentEdge) -> Double { @
 pub fn geo_intersect_segment_edge_mean(s : GeointersectsegmentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_edge_scale(s : GeointersectsegmentEdge, f : Double) -> GeointersectsegmentEdge {
-  let result = geo_intersect_segment_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_edge_add(a : GeointersectsegmentEdge, b : GeointersectsegmentEdge) -> GeointersectsegmentEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_edge_copy(s : GeointersectsegmentEdge) -> GeointersectsegmentEdge {
-  let result = geo_intersect_segment_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_edge_fill(s : GeointersectsegmentEdge, v : Double) -> GeointersectsegmentEdge {
-  let result = geo_intersect_segment_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_edge_min(s : GeointersectsegmentEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_intersect_segment_path_sum(s : GeointersectsegmentPath) -> Double { @
 pub fn geo_intersect_segment_path_mean(s : GeointersectsegmentPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_path_scale(s : GeointersectsegmentPath, f : Double) -> GeointersectsegmentPath {
-  let result = geo_intersect_segment_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_path_add(a : GeointersectsegmentPath, b : GeointersectsegmentPath) -> GeointersectsegmentPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_path_copy(s : GeointersectsegmentPath) -> GeointersectsegmentPath {
-  let result = geo_intersect_segment_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_path_fill(s : GeointersectsegmentPath, v : Double) -> GeointersectsegmentPath {
-  let result = geo_intersect_segment_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_path_min(s : GeointersectsegmentPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_intersect_segment_cluster_sum(s : GeointersectsegmentCluster) -> Doub
 pub fn geo_intersect_segment_cluster_mean(s : GeointersectsegmentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_cluster_scale(s : GeointersectsegmentCluster, f : Double) -> GeointersectsegmentCluster {
-  let result = geo_intersect_segment_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_cluster_add(a : GeointersectsegmentCluster, b : GeointersectsegmentCluster) -> GeointersectsegmentCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_cluster_copy(s : GeointersectsegmentCluster) -> GeointersectsegmentCluster {
-  let result = geo_intersect_segment_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_cluster_fill(s : GeointersectsegmentCluster, v : Double) -> GeointersectsegmentCluster {
-  let result = geo_intersect_segment_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_cluster_min(s : GeointersectsegmentCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_intersect_segment_model_sum(s : GeointersectsegmentModel) -> Double {
 pub fn geo_intersect_segment_model_mean(s : GeointersectsegmentModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_model_scale(s : GeointersectsegmentModel, f : Double) -> GeointersectsegmentModel {
-  let result = geo_intersect_segment_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_model_add(a : GeointersectsegmentModel, b : GeointersectsegmentModel) -> GeointersectsegmentModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_model_copy(s : GeointersectsegmentModel) -> GeointersectsegmentModel {
-  let result = geo_intersect_segment_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_model_fill(s : GeointersectsegmentModel, v : Double) -> GeointersectsegmentModel {
-  let result = geo_intersect_segment_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_model_min(s : GeointersectsegmentModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_intersect_segment_layer_sum(s : GeointersectsegmentLayer) -> Double {
 pub fn geo_intersect_segment_layer_mean(s : GeointersectsegmentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_layer_scale(s : GeointersectsegmentLayer, f : Double) -> GeointersectsegmentLayer {
-  let result = geo_intersect_segment_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_layer_add(a : GeointersectsegmentLayer, b : GeointersectsegmentLayer) -> GeointersectsegmentLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_layer_copy(s : GeointersectsegmentLayer) -> GeointersectsegmentLayer {
-  let result = geo_intersect_segment_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_layer_fill(s : GeointersectsegmentLayer, v : Double) -> GeointersectsegmentLayer {
-  let result = geo_intersect_segment_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_layer_min(s : GeointersectsegmentLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_intersect_segment_buffer_sum(s : GeointersectsegmentBuffer) -> Double
 pub fn geo_intersect_segment_buffer_mean(s : GeointersectsegmentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_buffer_scale(s : GeointersectsegmentBuffer, f : Double) -> GeointersectsegmentBuffer {
-  let result = geo_intersect_segment_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_buffer_add(a : GeointersectsegmentBuffer, b : GeointersectsegmentBuffer) -> GeointersectsegmentBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_buffer_copy(s : GeointersectsegmentBuffer) -> GeointersectsegmentBuffer {
-  let result = geo_intersect_segment_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_buffer_fill(s : GeointersectsegmentBuffer, v : Double) -> GeointersectsegmentBuffer {
-  let result = geo_intersect_segment_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_buffer_min(s : GeointersectsegmentBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_intersect_segment_cursor_sum(s : GeointersectsegmentCursor) -> Double
 pub fn geo_intersect_segment_cursor_mean(s : GeointersectsegmentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_cursor_scale(s : GeointersectsegmentCursor, f : Double) -> GeointersectsegmentCursor {
-  let result = geo_intersect_segment_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_cursor_add(a : GeointersectsegmentCursor, b : GeointersectsegmentCursor) -> GeointersectsegmentCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_cursor_copy(s : GeointersectsegmentCursor) -> GeointersectsegmentCursor {
-  let result = geo_intersect_segment_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_cursor_fill(s : GeointersectsegmentCursor, v : Double) -> GeointersectsegmentCursor {
-  let result = geo_intersect_segment_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_cursor_min(s : GeointersectsegmentCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_intersect_segment_view_sum(s : GeointersectsegmentView) -> Double { @
 pub fn geo_intersect_segment_view_mean(s : GeointersectsegmentView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_view_scale(s : GeointersectsegmentView, f : Double) -> GeointersectsegmentView {
-  let result = geo_intersect_segment_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_view_add(a : GeointersectsegmentView, b : GeointersectsegmentView) -> GeointersectsegmentView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_view_copy(s : GeointersectsegmentView) -> GeointersectsegmentView {
-  let result = geo_intersect_segment_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_view_fill(s : GeointersectsegmentView, v : Double) -> GeointersectsegmentView {
-  let result = geo_intersect_segment_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_view_min(s : GeointersectsegmentView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_intersect_segment_range_sum(s : GeointersectsegmentRange) -> Double {
 pub fn geo_intersect_segment_range_mean(s : GeointersectsegmentRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_range_scale(s : GeointersectsegmentRange, f : Double) -> GeointersectsegmentRange {
-  let result = geo_intersect_segment_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_range_add(a : GeointersectsegmentRange, b : GeointersectsegmentRange) -> GeointersectsegmentRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_range_copy(s : GeointersectsegmentRange) -> GeointersectsegmentRange {
-  let result = geo_intersect_segment_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_range_fill(s : GeointersectsegmentRange, v : Double) -> GeointersectsegmentRange {
-  let result = geo_intersect_segment_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_range_min(s : GeointersectsegmentRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_intersect_segment_slice_sum(s : GeointersectsegmentSlice) -> Double {
 pub fn geo_intersect_segment_slice_mean(s : GeointersectsegmentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_segment_slice_scale(s : GeointersectsegmentSlice, f : Double) -> GeointersectsegmentSlice {
-  let result = geo_intersect_segment_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_slice_add(a : GeointersectsegmentSlice, b : GeointersectsegmentSlice) -> GeointersectsegmentSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_intersect_segment_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_intersect_segment_slice_copy(s : GeointersectsegmentSlice) -> GeointersectsegmentSlice {
-  let result = geo_intersect_segment_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_slice_fill(s : GeointersectsegmentSlice, v : Double) -> GeointersectsegmentSlice {
-  let result = geo_intersect_segment_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_segment_slice_min(s : GeointersectsegmentSlice) -> Double { @_common.min(s.data) }

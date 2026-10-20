@@ -383,28 +383,20 @@ pub fn image_morph_hit_miss_frame_sum(s : ImagemorphhitmissFrame) -> Double { @_
 pub fn image_morph_hit_miss_frame_mean(s : ImagemorphhitmissFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_frame_scale(s : ImagemorphhitmissFrame, f : Double) -> ImagemorphhitmissFrame {
-  let result = image_morph_hit_miss_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_frame_add(a : ImagemorphhitmissFrame, b : ImagemorphhitmissFrame) -> ImagemorphhitmissFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_frame_copy(s : ImagemorphhitmissFrame) -> ImagemorphhitmissFrame {
-  let result = image_morph_hit_miss_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_frame_fill(s : ImagemorphhitmissFrame, v : Double) -> ImagemorphhitmissFrame {
-  let result = image_morph_hit_miss_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_frame_min(s : ImagemorphhitmissFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_morph_hit_miss_table_sum(s : ImagemorphhitmissTable) -> Double { @_
 pub fn image_morph_hit_miss_table_mean(s : ImagemorphhitmissTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_table_scale(s : ImagemorphhitmissTable, f : Double) -> ImagemorphhitmissTable {
-  let result = image_morph_hit_miss_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_table_add(a : ImagemorphhitmissTable, b : ImagemorphhitmissTable) -> ImagemorphhitmissTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_table_copy(s : ImagemorphhitmissTable) -> ImagemorphhitmissTable {
-  let result = image_morph_hit_miss_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_table_fill(s : ImagemorphhitmissTable, v : Double) -> ImagemorphhitmissTable {
-  let result = image_morph_hit_miss_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_table_min(s : ImagemorphhitmissTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_morph_hit_miss_graphn_sum(s : ImagemorphhitmissGraphN) -> Double { 
 pub fn image_morph_hit_miss_graphn_mean(s : ImagemorphhitmissGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_graphn_scale(s : ImagemorphhitmissGraphN, f : Double) -> ImagemorphhitmissGraphN {
-  let result = image_morph_hit_miss_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_graphn_add(a : ImagemorphhitmissGraphN, b : ImagemorphhitmissGraphN) -> ImagemorphhitmissGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_graphn_copy(s : ImagemorphhitmissGraphN) -> ImagemorphhitmissGraphN {
-  let result = image_morph_hit_miss_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_graphn_fill(s : ImagemorphhitmissGraphN, v : Double) -> ImagemorphhitmissGraphN {
-  let result = image_morph_hit_miss_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_graphn_min(s : ImagemorphhitmissGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_morph_hit_miss_node_sum(s : ImagemorphhitmissNode) -> Double { @_co
 pub fn image_morph_hit_miss_node_mean(s : ImagemorphhitmissNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_node_scale(s : ImagemorphhitmissNode, f : Double) -> ImagemorphhitmissNode {
-  let result = image_morph_hit_miss_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_node_add(a : ImagemorphhitmissNode, b : ImagemorphhitmissNode) -> ImagemorphhitmissNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_node_copy(s : ImagemorphhitmissNode) -> ImagemorphhitmissNode {
-  let result = image_morph_hit_miss_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_node_fill(s : ImagemorphhitmissNode, v : Double) -> ImagemorphhitmissNode {
-  let result = image_morph_hit_miss_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_node_min(s : ImagemorphhitmissNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_morph_hit_miss_edge_sum(s : ImagemorphhitmissEdge) -> Double { @_co
 pub fn image_morph_hit_miss_edge_mean(s : ImagemorphhitmissEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_edge_scale(s : ImagemorphhitmissEdge, f : Double) -> ImagemorphhitmissEdge {
-  let result = image_morph_hit_miss_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_edge_add(a : ImagemorphhitmissEdge, b : ImagemorphhitmissEdge) -> ImagemorphhitmissEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_edge_copy(s : ImagemorphhitmissEdge) -> ImagemorphhitmissEdge {
-  let result = image_morph_hit_miss_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_edge_fill(s : ImagemorphhitmissEdge, v : Double) -> ImagemorphhitmissEdge {
-  let result = image_morph_hit_miss_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_edge_min(s : ImagemorphhitmissEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_morph_hit_miss_path_sum(s : ImagemorphhitmissPath) -> Double { @_co
 pub fn image_morph_hit_miss_path_mean(s : ImagemorphhitmissPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_path_scale(s : ImagemorphhitmissPath, f : Double) -> ImagemorphhitmissPath {
-  let result = image_morph_hit_miss_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_path_add(a : ImagemorphhitmissPath, b : ImagemorphhitmissPath) -> ImagemorphhitmissPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_path_copy(s : ImagemorphhitmissPath) -> ImagemorphhitmissPath {
-  let result = image_morph_hit_miss_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_path_fill(s : ImagemorphhitmissPath, v : Double) -> ImagemorphhitmissPath {
-  let result = image_morph_hit_miss_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_path_min(s : ImagemorphhitmissPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_morph_hit_miss_cluster_sum(s : ImagemorphhitmissCluster) -> Double 
 pub fn image_morph_hit_miss_cluster_mean(s : ImagemorphhitmissCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_cluster_scale(s : ImagemorphhitmissCluster, f : Double) -> ImagemorphhitmissCluster {
-  let result = image_morph_hit_miss_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_cluster_add(a : ImagemorphhitmissCluster, b : ImagemorphhitmissCluster) -> ImagemorphhitmissCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_cluster_copy(s : ImagemorphhitmissCluster) -> ImagemorphhitmissCluster {
-  let result = image_morph_hit_miss_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_cluster_fill(s : ImagemorphhitmissCluster, v : Double) -> ImagemorphhitmissCluster {
-  let result = image_morph_hit_miss_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_cluster_min(s : ImagemorphhitmissCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_morph_hit_miss_model_sum(s : ImagemorphhitmissModel) -> Double { @_
 pub fn image_morph_hit_miss_model_mean(s : ImagemorphhitmissModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_model_scale(s : ImagemorphhitmissModel, f : Double) -> ImagemorphhitmissModel {
-  let result = image_morph_hit_miss_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_model_add(a : ImagemorphhitmissModel, b : ImagemorphhitmissModel) -> ImagemorphhitmissModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_model_copy(s : ImagemorphhitmissModel) -> ImagemorphhitmissModel {
-  let result = image_morph_hit_miss_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_model_fill(s : ImagemorphhitmissModel, v : Double) -> ImagemorphhitmissModel {
-  let result = image_morph_hit_miss_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_model_min(s : ImagemorphhitmissModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_morph_hit_miss_layer_sum(s : ImagemorphhitmissLayer) -> Double { @_
 pub fn image_morph_hit_miss_layer_mean(s : ImagemorphhitmissLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_layer_scale(s : ImagemorphhitmissLayer, f : Double) -> ImagemorphhitmissLayer {
-  let result = image_morph_hit_miss_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_layer_add(a : ImagemorphhitmissLayer, b : ImagemorphhitmissLayer) -> ImagemorphhitmissLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_layer_copy(s : ImagemorphhitmissLayer) -> ImagemorphhitmissLayer {
-  let result = image_morph_hit_miss_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_layer_fill(s : ImagemorphhitmissLayer, v : Double) -> ImagemorphhitmissLayer {
-  let result = image_morph_hit_miss_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_layer_min(s : ImagemorphhitmissLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_morph_hit_miss_buffer_sum(s : ImagemorphhitmissBuffer) -> Double { 
 pub fn image_morph_hit_miss_buffer_mean(s : ImagemorphhitmissBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_buffer_scale(s : ImagemorphhitmissBuffer, f : Double) -> ImagemorphhitmissBuffer {
-  let result = image_morph_hit_miss_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_buffer_add(a : ImagemorphhitmissBuffer, b : ImagemorphhitmissBuffer) -> ImagemorphhitmissBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_buffer_copy(s : ImagemorphhitmissBuffer) -> ImagemorphhitmissBuffer {
-  let result = image_morph_hit_miss_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_buffer_fill(s : ImagemorphhitmissBuffer, v : Double) -> ImagemorphhitmissBuffer {
-  let result = image_morph_hit_miss_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_buffer_min(s : ImagemorphhitmissBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_morph_hit_miss_cursor_sum(s : ImagemorphhitmissCursor) -> Double { 
 pub fn image_morph_hit_miss_cursor_mean(s : ImagemorphhitmissCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_cursor_scale(s : ImagemorphhitmissCursor, f : Double) -> ImagemorphhitmissCursor {
-  let result = image_morph_hit_miss_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_cursor_add(a : ImagemorphhitmissCursor, b : ImagemorphhitmissCursor) -> ImagemorphhitmissCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_cursor_copy(s : ImagemorphhitmissCursor) -> ImagemorphhitmissCursor {
-  let result = image_morph_hit_miss_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_cursor_fill(s : ImagemorphhitmissCursor, v : Double) -> ImagemorphhitmissCursor {
-  let result = image_morph_hit_miss_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_cursor_min(s : ImagemorphhitmissCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_morph_hit_miss_view_sum(s : ImagemorphhitmissView) -> Double { @_co
 pub fn image_morph_hit_miss_view_mean(s : ImagemorphhitmissView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_view_scale(s : ImagemorphhitmissView, f : Double) -> ImagemorphhitmissView {
-  let result = image_morph_hit_miss_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_view_add(a : ImagemorphhitmissView, b : ImagemorphhitmissView) -> ImagemorphhitmissView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_view_copy(s : ImagemorphhitmissView) -> ImagemorphhitmissView {
-  let result = image_morph_hit_miss_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_view_fill(s : ImagemorphhitmissView, v : Double) -> ImagemorphhitmissView {
-  let result = image_morph_hit_miss_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_view_min(s : ImagemorphhitmissView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_morph_hit_miss_range_sum(s : ImagemorphhitmissRange) -> Double { @_
 pub fn image_morph_hit_miss_range_mean(s : ImagemorphhitmissRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_range_scale(s : ImagemorphhitmissRange, f : Double) -> ImagemorphhitmissRange {
-  let result = image_morph_hit_miss_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_range_add(a : ImagemorphhitmissRange, b : ImagemorphhitmissRange) -> ImagemorphhitmissRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_range_copy(s : ImagemorphhitmissRange) -> ImagemorphhitmissRange {
-  let result = image_morph_hit_miss_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_range_fill(s : ImagemorphhitmissRange, v : Double) -> ImagemorphhitmissRange {
-  let result = image_morph_hit_miss_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_range_min(s : ImagemorphhitmissRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_morph_hit_miss_slice_sum(s : ImagemorphhitmissSlice) -> Double { @_
 pub fn image_morph_hit_miss_slice_mean(s : ImagemorphhitmissSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_hit_miss_slice_scale(s : ImagemorphhitmissSlice, f : Double) -> ImagemorphhitmissSlice {
-  let result = image_morph_hit_miss_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_slice_add(a : ImagemorphhitmissSlice, b : ImagemorphhitmissSlice) -> ImagemorphhitmissSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_hit_miss_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_hit_miss_slice_copy(s : ImagemorphhitmissSlice) -> ImagemorphhitmissSlice {
-  let result = image_morph_hit_miss_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_slice_fill(s : ImagemorphhitmissSlice, v : Double) -> ImagemorphhitmissSlice {
-  let result = image_morph_hit_miss_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_hit_miss_slice_min(s : ImagemorphhitmissSlice) -> Double { @_common.min(s.data) }

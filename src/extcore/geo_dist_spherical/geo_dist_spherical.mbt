@@ -383,28 +383,20 @@ pub fn geo_dist_spherical_frame_sum(s : GeodistsphericalFrame) -> Double { @_com
 pub fn geo_dist_spherical_frame_mean(s : GeodistsphericalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_frame_scale(s : GeodistsphericalFrame, f : Double) -> GeodistsphericalFrame {
-  let result = geo_dist_spherical_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_frame_add(a : GeodistsphericalFrame, b : GeodistsphericalFrame) -> GeodistsphericalFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_frame_copy(s : GeodistsphericalFrame) -> GeodistsphericalFrame {
-  let result = geo_dist_spherical_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_frame_fill(s : GeodistsphericalFrame, v : Double) -> GeodistsphericalFrame {
-  let result = geo_dist_spherical_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_frame_min(s : GeodistsphericalFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_dist_spherical_table_sum(s : GeodistsphericalTable) -> Double { @_com
 pub fn geo_dist_spherical_table_mean(s : GeodistsphericalTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_table_scale(s : GeodistsphericalTable, f : Double) -> GeodistsphericalTable {
-  let result = geo_dist_spherical_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_table_add(a : GeodistsphericalTable, b : GeodistsphericalTable) -> GeodistsphericalTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_table_copy(s : GeodistsphericalTable) -> GeodistsphericalTable {
-  let result = geo_dist_spherical_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_table_fill(s : GeodistsphericalTable, v : Double) -> GeodistsphericalTable {
-  let result = geo_dist_spherical_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_table_min(s : GeodistsphericalTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_dist_spherical_graphn_sum(s : GeodistsphericalGraphN) -> Double { @_c
 pub fn geo_dist_spherical_graphn_mean(s : GeodistsphericalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_graphn_scale(s : GeodistsphericalGraphN, f : Double) -> GeodistsphericalGraphN {
-  let result = geo_dist_spherical_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_graphn_add(a : GeodistsphericalGraphN, b : GeodistsphericalGraphN) -> GeodistsphericalGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_graphn_copy(s : GeodistsphericalGraphN) -> GeodistsphericalGraphN {
-  let result = geo_dist_spherical_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_graphn_fill(s : GeodistsphericalGraphN, v : Double) -> GeodistsphericalGraphN {
-  let result = geo_dist_spherical_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_graphn_min(s : GeodistsphericalGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_dist_spherical_node_sum(s : GeodistsphericalNode) -> Double { @_commo
 pub fn geo_dist_spherical_node_mean(s : GeodistsphericalNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_node_scale(s : GeodistsphericalNode, f : Double) -> GeodistsphericalNode {
-  let result = geo_dist_spherical_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_node_add(a : GeodistsphericalNode, b : GeodistsphericalNode) -> GeodistsphericalNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_node_copy(s : GeodistsphericalNode) -> GeodistsphericalNode {
-  let result = geo_dist_spherical_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_node_fill(s : GeodistsphericalNode, v : Double) -> GeodistsphericalNode {
-  let result = geo_dist_spherical_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_node_min(s : GeodistsphericalNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_dist_spherical_edge_sum(s : GeodistsphericalEdge) -> Double { @_commo
 pub fn geo_dist_spherical_edge_mean(s : GeodistsphericalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_edge_scale(s : GeodistsphericalEdge, f : Double) -> GeodistsphericalEdge {
-  let result = geo_dist_spherical_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_edge_add(a : GeodistsphericalEdge, b : GeodistsphericalEdge) -> GeodistsphericalEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_edge_copy(s : GeodistsphericalEdge) -> GeodistsphericalEdge {
-  let result = geo_dist_spherical_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_edge_fill(s : GeodistsphericalEdge, v : Double) -> GeodistsphericalEdge {
-  let result = geo_dist_spherical_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_edge_min(s : GeodistsphericalEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_dist_spherical_path_sum(s : GeodistsphericalPath) -> Double { @_commo
 pub fn geo_dist_spherical_path_mean(s : GeodistsphericalPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_path_scale(s : GeodistsphericalPath, f : Double) -> GeodistsphericalPath {
-  let result = geo_dist_spherical_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_path_add(a : GeodistsphericalPath, b : GeodistsphericalPath) -> GeodistsphericalPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_path_copy(s : GeodistsphericalPath) -> GeodistsphericalPath {
-  let result = geo_dist_spherical_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_path_fill(s : GeodistsphericalPath, v : Double) -> GeodistsphericalPath {
-  let result = geo_dist_spherical_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_path_min(s : GeodistsphericalPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_dist_spherical_cluster_sum(s : GeodistsphericalCluster) -> Double { @
 pub fn geo_dist_spherical_cluster_mean(s : GeodistsphericalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_cluster_scale(s : GeodistsphericalCluster, f : Double) -> GeodistsphericalCluster {
-  let result = geo_dist_spherical_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_cluster_add(a : GeodistsphericalCluster, b : GeodistsphericalCluster) -> GeodistsphericalCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_cluster_copy(s : GeodistsphericalCluster) -> GeodistsphericalCluster {
-  let result = geo_dist_spherical_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_cluster_fill(s : GeodistsphericalCluster, v : Double) -> GeodistsphericalCluster {
-  let result = geo_dist_spherical_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_cluster_min(s : GeodistsphericalCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_dist_spherical_model_sum(s : GeodistsphericalModel) -> Double { @_com
 pub fn geo_dist_spherical_model_mean(s : GeodistsphericalModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_model_scale(s : GeodistsphericalModel, f : Double) -> GeodistsphericalModel {
-  let result = geo_dist_spherical_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_model_add(a : GeodistsphericalModel, b : GeodistsphericalModel) -> GeodistsphericalModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_model_copy(s : GeodistsphericalModel) -> GeodistsphericalModel {
-  let result = geo_dist_spherical_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_model_fill(s : GeodistsphericalModel, v : Double) -> GeodistsphericalModel {
-  let result = geo_dist_spherical_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_model_min(s : GeodistsphericalModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_dist_spherical_layer_sum(s : GeodistsphericalLayer) -> Double { @_com
 pub fn geo_dist_spherical_layer_mean(s : GeodistsphericalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_layer_scale(s : GeodistsphericalLayer, f : Double) -> GeodistsphericalLayer {
-  let result = geo_dist_spherical_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_layer_add(a : GeodistsphericalLayer, b : GeodistsphericalLayer) -> GeodistsphericalLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_layer_copy(s : GeodistsphericalLayer) -> GeodistsphericalLayer {
-  let result = geo_dist_spherical_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_layer_fill(s : GeodistsphericalLayer, v : Double) -> GeodistsphericalLayer {
-  let result = geo_dist_spherical_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_layer_min(s : GeodistsphericalLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_dist_spherical_buffer_sum(s : GeodistsphericalBuffer) -> Double { @_c
 pub fn geo_dist_spherical_buffer_mean(s : GeodistsphericalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_buffer_scale(s : GeodistsphericalBuffer, f : Double) -> GeodistsphericalBuffer {
-  let result = geo_dist_spherical_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_buffer_add(a : GeodistsphericalBuffer, b : GeodistsphericalBuffer) -> GeodistsphericalBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_buffer_copy(s : GeodistsphericalBuffer) -> GeodistsphericalBuffer {
-  let result = geo_dist_spherical_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_buffer_fill(s : GeodistsphericalBuffer, v : Double) -> GeodistsphericalBuffer {
-  let result = geo_dist_spherical_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_buffer_min(s : GeodistsphericalBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_dist_spherical_cursor_sum(s : GeodistsphericalCursor) -> Double { @_c
 pub fn geo_dist_spherical_cursor_mean(s : GeodistsphericalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_cursor_scale(s : GeodistsphericalCursor, f : Double) -> GeodistsphericalCursor {
-  let result = geo_dist_spherical_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_cursor_add(a : GeodistsphericalCursor, b : GeodistsphericalCursor) -> GeodistsphericalCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_cursor_copy(s : GeodistsphericalCursor) -> GeodistsphericalCursor {
-  let result = geo_dist_spherical_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_cursor_fill(s : GeodistsphericalCursor, v : Double) -> GeodistsphericalCursor {
-  let result = geo_dist_spherical_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_cursor_min(s : GeodistsphericalCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_dist_spherical_view_sum(s : GeodistsphericalView) -> Double { @_commo
 pub fn geo_dist_spherical_view_mean(s : GeodistsphericalView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_view_scale(s : GeodistsphericalView, f : Double) -> GeodistsphericalView {
-  let result = geo_dist_spherical_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_view_add(a : GeodistsphericalView, b : GeodistsphericalView) -> GeodistsphericalView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_view_copy(s : GeodistsphericalView) -> GeodistsphericalView {
-  let result = geo_dist_spherical_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_view_fill(s : GeodistsphericalView, v : Double) -> GeodistsphericalView {
-  let result = geo_dist_spherical_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_view_min(s : GeodistsphericalView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_dist_spherical_range_sum(s : GeodistsphericalRange) -> Double { @_com
 pub fn geo_dist_spherical_range_mean(s : GeodistsphericalRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_range_scale(s : GeodistsphericalRange, f : Double) -> GeodistsphericalRange {
-  let result = geo_dist_spherical_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_range_add(a : GeodistsphericalRange, b : GeodistsphericalRange) -> GeodistsphericalRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_range_copy(s : GeodistsphericalRange) -> GeodistsphericalRange {
-  let result = geo_dist_spherical_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_range_fill(s : GeodistsphericalRange, v : Double) -> GeodistsphericalRange {
-  let result = geo_dist_spherical_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_range_min(s : GeodistsphericalRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_dist_spherical_slice_sum(s : GeodistsphericalSlice) -> Double { @_com
 pub fn geo_dist_spherical_slice_mean(s : GeodistsphericalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_slice_scale(s : GeodistsphericalSlice, f : Double) -> GeodistsphericalSlice {
-  let result = geo_dist_spherical_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_slice_add(a : GeodistsphericalSlice, b : GeodistsphericalSlice) -> GeodistsphericalSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_dist_spherical_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_dist_spherical_slice_copy(s : GeodistsphericalSlice) -> GeodistsphericalSlice {
-  let result = geo_dist_spherical_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_slice_fill(s : GeodistsphericalSlice, v : Double) -> GeodistsphericalSlice {
-  let result = geo_dist_spherical_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_spherical_slice_min(s : GeodistsphericalSlice) -> Double { @_common.min(s.data) }

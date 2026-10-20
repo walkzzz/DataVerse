@@ -383,28 +383,20 @@ pub fn physics_heat_conduction_frame_sum(s : PhysicsheatconductionFrame) -> Doub
 pub fn physics_heat_conduction_frame_mean(s : PhysicsheatconductionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_frame_scale(s : PhysicsheatconductionFrame, f : Double) -> PhysicsheatconductionFrame {
-  let result = physics_heat_conduction_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_frame_add(a : PhysicsheatconductionFrame, b : PhysicsheatconductionFrame) -> PhysicsheatconductionFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_frame_copy(s : PhysicsheatconductionFrame) -> PhysicsheatconductionFrame {
-  let result = physics_heat_conduction_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_frame_fill(s : PhysicsheatconductionFrame, v : Double) -> PhysicsheatconductionFrame {
-  let result = physics_heat_conduction_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_frame_min(s : PhysicsheatconductionFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_heat_conduction_table_sum(s : PhysicsheatconductionTable) -> Doub
 pub fn physics_heat_conduction_table_mean(s : PhysicsheatconductionTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_table_scale(s : PhysicsheatconductionTable, f : Double) -> PhysicsheatconductionTable {
-  let result = physics_heat_conduction_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_table_add(a : PhysicsheatconductionTable, b : PhysicsheatconductionTable) -> PhysicsheatconductionTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_table_copy(s : PhysicsheatconductionTable) -> PhysicsheatconductionTable {
-  let result = physics_heat_conduction_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_table_fill(s : PhysicsheatconductionTable, v : Double) -> PhysicsheatconductionTable {
-  let result = physics_heat_conduction_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_table_min(s : PhysicsheatconductionTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_heat_conduction_graphn_sum(s : PhysicsheatconductionGraphN) -> Do
 pub fn physics_heat_conduction_graphn_mean(s : PhysicsheatconductionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_graphn_scale(s : PhysicsheatconductionGraphN, f : Double) -> PhysicsheatconductionGraphN {
-  let result = physics_heat_conduction_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_graphn_add(a : PhysicsheatconductionGraphN, b : PhysicsheatconductionGraphN) -> PhysicsheatconductionGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_graphn_copy(s : PhysicsheatconductionGraphN) -> PhysicsheatconductionGraphN {
-  let result = physics_heat_conduction_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_graphn_fill(s : PhysicsheatconductionGraphN, v : Double) -> PhysicsheatconductionGraphN {
-  let result = physics_heat_conduction_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_graphn_min(s : PhysicsheatconductionGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_heat_conduction_node_sum(s : PhysicsheatconductionNode) -> Double
 pub fn physics_heat_conduction_node_mean(s : PhysicsheatconductionNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_node_scale(s : PhysicsheatconductionNode, f : Double) -> PhysicsheatconductionNode {
-  let result = physics_heat_conduction_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_node_add(a : PhysicsheatconductionNode, b : PhysicsheatconductionNode) -> PhysicsheatconductionNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_node_copy(s : PhysicsheatconductionNode) -> PhysicsheatconductionNode {
-  let result = physics_heat_conduction_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_node_fill(s : PhysicsheatconductionNode, v : Double) -> PhysicsheatconductionNode {
-  let result = physics_heat_conduction_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_node_min(s : PhysicsheatconductionNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_heat_conduction_edge_sum(s : PhysicsheatconductionEdge) -> Double
 pub fn physics_heat_conduction_edge_mean(s : PhysicsheatconductionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_edge_scale(s : PhysicsheatconductionEdge, f : Double) -> PhysicsheatconductionEdge {
-  let result = physics_heat_conduction_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_edge_add(a : PhysicsheatconductionEdge, b : PhysicsheatconductionEdge) -> PhysicsheatconductionEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_edge_copy(s : PhysicsheatconductionEdge) -> PhysicsheatconductionEdge {
-  let result = physics_heat_conduction_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_edge_fill(s : PhysicsheatconductionEdge, v : Double) -> PhysicsheatconductionEdge {
-  let result = physics_heat_conduction_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_edge_min(s : PhysicsheatconductionEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_heat_conduction_path_sum(s : PhysicsheatconductionPath) -> Double
 pub fn physics_heat_conduction_path_mean(s : PhysicsheatconductionPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_path_scale(s : PhysicsheatconductionPath, f : Double) -> PhysicsheatconductionPath {
-  let result = physics_heat_conduction_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_path_add(a : PhysicsheatconductionPath, b : PhysicsheatconductionPath) -> PhysicsheatconductionPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_path_copy(s : PhysicsheatconductionPath) -> PhysicsheatconductionPath {
-  let result = physics_heat_conduction_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_path_fill(s : PhysicsheatconductionPath, v : Double) -> PhysicsheatconductionPath {
-  let result = physics_heat_conduction_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_path_min(s : PhysicsheatconductionPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_heat_conduction_cluster_sum(s : PhysicsheatconductionCluster) -> 
 pub fn physics_heat_conduction_cluster_mean(s : PhysicsheatconductionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_cluster_scale(s : PhysicsheatconductionCluster, f : Double) -> PhysicsheatconductionCluster {
-  let result = physics_heat_conduction_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_cluster_add(a : PhysicsheatconductionCluster, b : PhysicsheatconductionCluster) -> PhysicsheatconductionCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_cluster_copy(s : PhysicsheatconductionCluster) -> PhysicsheatconductionCluster {
-  let result = physics_heat_conduction_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_cluster_fill(s : PhysicsheatconductionCluster, v : Double) -> PhysicsheatconductionCluster {
-  let result = physics_heat_conduction_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_cluster_min(s : PhysicsheatconductionCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_heat_conduction_model_sum(s : PhysicsheatconductionModel) -> Doub
 pub fn physics_heat_conduction_model_mean(s : PhysicsheatconductionModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_model_scale(s : PhysicsheatconductionModel, f : Double) -> PhysicsheatconductionModel {
-  let result = physics_heat_conduction_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_model_add(a : PhysicsheatconductionModel, b : PhysicsheatconductionModel) -> PhysicsheatconductionModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_model_copy(s : PhysicsheatconductionModel) -> PhysicsheatconductionModel {
-  let result = physics_heat_conduction_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_model_fill(s : PhysicsheatconductionModel, v : Double) -> PhysicsheatconductionModel {
-  let result = physics_heat_conduction_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_model_min(s : PhysicsheatconductionModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_heat_conduction_layer_sum(s : PhysicsheatconductionLayer) -> Doub
 pub fn physics_heat_conduction_layer_mean(s : PhysicsheatconductionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_layer_scale(s : PhysicsheatconductionLayer, f : Double) -> PhysicsheatconductionLayer {
-  let result = physics_heat_conduction_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_layer_add(a : PhysicsheatconductionLayer, b : PhysicsheatconductionLayer) -> PhysicsheatconductionLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_layer_copy(s : PhysicsheatconductionLayer) -> PhysicsheatconductionLayer {
-  let result = physics_heat_conduction_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_layer_fill(s : PhysicsheatconductionLayer, v : Double) -> PhysicsheatconductionLayer {
-  let result = physics_heat_conduction_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_layer_min(s : PhysicsheatconductionLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_heat_conduction_buffer_sum(s : PhysicsheatconductionBuffer) -> Do
 pub fn physics_heat_conduction_buffer_mean(s : PhysicsheatconductionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_buffer_scale(s : PhysicsheatconductionBuffer, f : Double) -> PhysicsheatconductionBuffer {
-  let result = physics_heat_conduction_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_buffer_add(a : PhysicsheatconductionBuffer, b : PhysicsheatconductionBuffer) -> PhysicsheatconductionBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_buffer_copy(s : PhysicsheatconductionBuffer) -> PhysicsheatconductionBuffer {
-  let result = physics_heat_conduction_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_buffer_fill(s : PhysicsheatconductionBuffer, v : Double) -> PhysicsheatconductionBuffer {
-  let result = physics_heat_conduction_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_buffer_min(s : PhysicsheatconductionBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_heat_conduction_cursor_sum(s : PhysicsheatconductionCursor) -> Do
 pub fn physics_heat_conduction_cursor_mean(s : PhysicsheatconductionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_cursor_scale(s : PhysicsheatconductionCursor, f : Double) -> PhysicsheatconductionCursor {
-  let result = physics_heat_conduction_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_cursor_add(a : PhysicsheatconductionCursor, b : PhysicsheatconductionCursor) -> PhysicsheatconductionCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_cursor_copy(s : PhysicsheatconductionCursor) -> PhysicsheatconductionCursor {
-  let result = physics_heat_conduction_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_cursor_fill(s : PhysicsheatconductionCursor, v : Double) -> PhysicsheatconductionCursor {
-  let result = physics_heat_conduction_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_cursor_min(s : PhysicsheatconductionCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_heat_conduction_view_sum(s : PhysicsheatconductionView) -> Double
 pub fn physics_heat_conduction_view_mean(s : PhysicsheatconductionView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_view_scale(s : PhysicsheatconductionView, f : Double) -> PhysicsheatconductionView {
-  let result = physics_heat_conduction_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_view_add(a : PhysicsheatconductionView, b : PhysicsheatconductionView) -> PhysicsheatconductionView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_view_copy(s : PhysicsheatconductionView) -> PhysicsheatconductionView {
-  let result = physics_heat_conduction_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_view_fill(s : PhysicsheatconductionView, v : Double) -> PhysicsheatconductionView {
-  let result = physics_heat_conduction_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_view_min(s : PhysicsheatconductionView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_heat_conduction_range_sum(s : PhysicsheatconductionRange) -> Doub
 pub fn physics_heat_conduction_range_mean(s : PhysicsheatconductionRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_range_scale(s : PhysicsheatconductionRange, f : Double) -> PhysicsheatconductionRange {
-  let result = physics_heat_conduction_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_range_add(a : PhysicsheatconductionRange, b : PhysicsheatconductionRange) -> PhysicsheatconductionRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_range_copy(s : PhysicsheatconductionRange) -> PhysicsheatconductionRange {
-  let result = physics_heat_conduction_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_range_fill(s : PhysicsheatconductionRange, v : Double) -> PhysicsheatconductionRange {
-  let result = physics_heat_conduction_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_range_min(s : PhysicsheatconductionRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_heat_conduction_slice_sum(s : PhysicsheatconductionSlice) -> Doub
 pub fn physics_heat_conduction_slice_mean(s : PhysicsheatconductionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_conduction_slice_scale(s : PhysicsheatconductionSlice, f : Double) -> PhysicsheatconductionSlice {
-  let result = physics_heat_conduction_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_slice_add(a : PhysicsheatconductionSlice, b : PhysicsheatconductionSlice) -> PhysicsheatconductionSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_conduction_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_conduction_slice_copy(s : PhysicsheatconductionSlice) -> PhysicsheatconductionSlice {
-  let result = physics_heat_conduction_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_slice_fill(s : PhysicsheatconductionSlice, v : Double) -> PhysicsheatconductionSlice {
-  let result = physics_heat_conduction_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_conduction_slice_min(s : PhysicsheatconductionSlice) -> Double { @_common.min(s.data) }

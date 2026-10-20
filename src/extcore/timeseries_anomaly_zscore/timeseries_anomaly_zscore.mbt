@@ -383,28 +383,20 @@ pub fn timeseries_anomaly_zscore_frame_sum(s : TimeseriesanomalyzscoreFrame) -> 
 pub fn timeseries_anomaly_zscore_frame_mean(s : TimeseriesanomalyzscoreFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_frame_scale(s : TimeseriesanomalyzscoreFrame, f : Double) -> TimeseriesanomalyzscoreFrame {
-  let result = timeseries_anomaly_zscore_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_frame_add(a : TimeseriesanomalyzscoreFrame, b : TimeseriesanomalyzscoreFrame) -> TimeseriesanomalyzscoreFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_frame_copy(s : TimeseriesanomalyzscoreFrame) -> TimeseriesanomalyzscoreFrame {
-  let result = timeseries_anomaly_zscore_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_frame_fill(s : TimeseriesanomalyzscoreFrame, v : Double) -> TimeseriesanomalyzscoreFrame {
-  let result = timeseries_anomaly_zscore_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_frame_min(s : TimeseriesanomalyzscoreFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_anomaly_zscore_table_sum(s : TimeseriesanomalyzscoreTable) -> 
 pub fn timeseries_anomaly_zscore_table_mean(s : TimeseriesanomalyzscoreTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_table_scale(s : TimeseriesanomalyzscoreTable, f : Double) -> TimeseriesanomalyzscoreTable {
-  let result = timeseries_anomaly_zscore_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_table_add(a : TimeseriesanomalyzscoreTable, b : TimeseriesanomalyzscoreTable) -> TimeseriesanomalyzscoreTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_table_copy(s : TimeseriesanomalyzscoreTable) -> TimeseriesanomalyzscoreTable {
-  let result = timeseries_anomaly_zscore_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_table_fill(s : TimeseriesanomalyzscoreTable, v : Double) -> TimeseriesanomalyzscoreTable {
-  let result = timeseries_anomaly_zscore_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_table_min(s : TimeseriesanomalyzscoreTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_anomaly_zscore_graphn_sum(s : TimeseriesanomalyzscoreGraphN) -
 pub fn timeseries_anomaly_zscore_graphn_mean(s : TimeseriesanomalyzscoreGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_graphn_scale(s : TimeseriesanomalyzscoreGraphN, f : Double) -> TimeseriesanomalyzscoreGraphN {
-  let result = timeseries_anomaly_zscore_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_graphn_add(a : TimeseriesanomalyzscoreGraphN, b : TimeseriesanomalyzscoreGraphN) -> TimeseriesanomalyzscoreGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_graphn_copy(s : TimeseriesanomalyzscoreGraphN) -> TimeseriesanomalyzscoreGraphN {
-  let result = timeseries_anomaly_zscore_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_graphn_fill(s : TimeseriesanomalyzscoreGraphN, v : Double) -> TimeseriesanomalyzscoreGraphN {
-  let result = timeseries_anomaly_zscore_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_graphn_min(s : TimeseriesanomalyzscoreGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_anomaly_zscore_node_sum(s : TimeseriesanomalyzscoreNode) -> Do
 pub fn timeseries_anomaly_zscore_node_mean(s : TimeseriesanomalyzscoreNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_node_scale(s : TimeseriesanomalyzscoreNode, f : Double) -> TimeseriesanomalyzscoreNode {
-  let result = timeseries_anomaly_zscore_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_node_add(a : TimeseriesanomalyzscoreNode, b : TimeseriesanomalyzscoreNode) -> TimeseriesanomalyzscoreNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_node_copy(s : TimeseriesanomalyzscoreNode) -> TimeseriesanomalyzscoreNode {
-  let result = timeseries_anomaly_zscore_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_node_fill(s : TimeseriesanomalyzscoreNode, v : Double) -> TimeseriesanomalyzscoreNode {
-  let result = timeseries_anomaly_zscore_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_node_min(s : TimeseriesanomalyzscoreNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_anomaly_zscore_edge_sum(s : TimeseriesanomalyzscoreEdge) -> Do
 pub fn timeseries_anomaly_zscore_edge_mean(s : TimeseriesanomalyzscoreEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_edge_scale(s : TimeseriesanomalyzscoreEdge, f : Double) -> TimeseriesanomalyzscoreEdge {
-  let result = timeseries_anomaly_zscore_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_edge_add(a : TimeseriesanomalyzscoreEdge, b : TimeseriesanomalyzscoreEdge) -> TimeseriesanomalyzscoreEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_edge_copy(s : TimeseriesanomalyzscoreEdge) -> TimeseriesanomalyzscoreEdge {
-  let result = timeseries_anomaly_zscore_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_edge_fill(s : TimeseriesanomalyzscoreEdge, v : Double) -> TimeseriesanomalyzscoreEdge {
-  let result = timeseries_anomaly_zscore_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_edge_min(s : TimeseriesanomalyzscoreEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_anomaly_zscore_path_sum(s : TimeseriesanomalyzscorePath) -> Do
 pub fn timeseries_anomaly_zscore_path_mean(s : TimeseriesanomalyzscorePath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_path_scale(s : TimeseriesanomalyzscorePath, f : Double) -> TimeseriesanomalyzscorePath {
-  let result = timeseries_anomaly_zscore_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_path_add(a : TimeseriesanomalyzscorePath, b : TimeseriesanomalyzscorePath) -> TimeseriesanomalyzscorePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_path_copy(s : TimeseriesanomalyzscorePath) -> TimeseriesanomalyzscorePath {
-  let result = timeseries_anomaly_zscore_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_path_fill(s : TimeseriesanomalyzscorePath, v : Double) -> TimeseriesanomalyzscorePath {
-  let result = timeseries_anomaly_zscore_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_path_min(s : TimeseriesanomalyzscorePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_anomaly_zscore_cluster_sum(s : TimeseriesanomalyzscoreCluster)
 pub fn timeseries_anomaly_zscore_cluster_mean(s : TimeseriesanomalyzscoreCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_cluster_scale(s : TimeseriesanomalyzscoreCluster, f : Double) -> TimeseriesanomalyzscoreCluster {
-  let result = timeseries_anomaly_zscore_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cluster_add(a : TimeseriesanomalyzscoreCluster, b : TimeseriesanomalyzscoreCluster) -> TimeseriesanomalyzscoreCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cluster_copy(s : TimeseriesanomalyzscoreCluster) -> TimeseriesanomalyzscoreCluster {
-  let result = timeseries_anomaly_zscore_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cluster_fill(s : TimeseriesanomalyzscoreCluster, v : Double) -> TimeseriesanomalyzscoreCluster {
-  let result = timeseries_anomaly_zscore_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cluster_min(s : TimeseriesanomalyzscoreCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_anomaly_zscore_model_sum(s : TimeseriesanomalyzscoreModel) -> 
 pub fn timeseries_anomaly_zscore_model_mean(s : TimeseriesanomalyzscoreModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_model_scale(s : TimeseriesanomalyzscoreModel, f : Double) -> TimeseriesanomalyzscoreModel {
-  let result = timeseries_anomaly_zscore_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_model_add(a : TimeseriesanomalyzscoreModel, b : TimeseriesanomalyzscoreModel) -> TimeseriesanomalyzscoreModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_model_copy(s : TimeseriesanomalyzscoreModel) -> TimeseriesanomalyzscoreModel {
-  let result = timeseries_anomaly_zscore_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_model_fill(s : TimeseriesanomalyzscoreModel, v : Double) -> TimeseriesanomalyzscoreModel {
-  let result = timeseries_anomaly_zscore_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_model_min(s : TimeseriesanomalyzscoreModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_anomaly_zscore_layer_sum(s : TimeseriesanomalyzscoreLayer) -> 
 pub fn timeseries_anomaly_zscore_layer_mean(s : TimeseriesanomalyzscoreLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_layer_scale(s : TimeseriesanomalyzscoreLayer, f : Double) -> TimeseriesanomalyzscoreLayer {
-  let result = timeseries_anomaly_zscore_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_layer_add(a : TimeseriesanomalyzscoreLayer, b : TimeseriesanomalyzscoreLayer) -> TimeseriesanomalyzscoreLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_layer_copy(s : TimeseriesanomalyzscoreLayer) -> TimeseriesanomalyzscoreLayer {
-  let result = timeseries_anomaly_zscore_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_layer_fill(s : TimeseriesanomalyzscoreLayer, v : Double) -> TimeseriesanomalyzscoreLayer {
-  let result = timeseries_anomaly_zscore_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_layer_min(s : TimeseriesanomalyzscoreLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_anomaly_zscore_buffer_sum(s : TimeseriesanomalyzscoreBuffer) -
 pub fn timeseries_anomaly_zscore_buffer_mean(s : TimeseriesanomalyzscoreBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_buffer_scale(s : TimeseriesanomalyzscoreBuffer, f : Double) -> TimeseriesanomalyzscoreBuffer {
-  let result = timeseries_anomaly_zscore_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_buffer_add(a : TimeseriesanomalyzscoreBuffer, b : TimeseriesanomalyzscoreBuffer) -> TimeseriesanomalyzscoreBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_buffer_copy(s : TimeseriesanomalyzscoreBuffer) -> TimeseriesanomalyzscoreBuffer {
-  let result = timeseries_anomaly_zscore_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_buffer_fill(s : TimeseriesanomalyzscoreBuffer, v : Double) -> TimeseriesanomalyzscoreBuffer {
-  let result = timeseries_anomaly_zscore_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_buffer_min(s : TimeseriesanomalyzscoreBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_anomaly_zscore_cursor_sum(s : TimeseriesanomalyzscoreCursor) -
 pub fn timeseries_anomaly_zscore_cursor_mean(s : TimeseriesanomalyzscoreCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_cursor_scale(s : TimeseriesanomalyzscoreCursor, f : Double) -> TimeseriesanomalyzscoreCursor {
-  let result = timeseries_anomaly_zscore_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cursor_add(a : TimeseriesanomalyzscoreCursor, b : TimeseriesanomalyzscoreCursor) -> TimeseriesanomalyzscoreCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cursor_copy(s : TimeseriesanomalyzscoreCursor) -> TimeseriesanomalyzscoreCursor {
-  let result = timeseries_anomaly_zscore_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cursor_fill(s : TimeseriesanomalyzscoreCursor, v : Double) -> TimeseriesanomalyzscoreCursor {
-  let result = timeseries_anomaly_zscore_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_cursor_min(s : TimeseriesanomalyzscoreCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_anomaly_zscore_view_sum(s : TimeseriesanomalyzscoreView) -> Do
 pub fn timeseries_anomaly_zscore_view_mean(s : TimeseriesanomalyzscoreView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_view_scale(s : TimeseriesanomalyzscoreView, f : Double) -> TimeseriesanomalyzscoreView {
-  let result = timeseries_anomaly_zscore_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_view_add(a : TimeseriesanomalyzscoreView, b : TimeseriesanomalyzscoreView) -> TimeseriesanomalyzscoreView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_view_copy(s : TimeseriesanomalyzscoreView) -> TimeseriesanomalyzscoreView {
-  let result = timeseries_anomaly_zscore_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_view_fill(s : TimeseriesanomalyzscoreView, v : Double) -> TimeseriesanomalyzscoreView {
-  let result = timeseries_anomaly_zscore_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_view_min(s : TimeseriesanomalyzscoreView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_anomaly_zscore_range_sum(s : TimeseriesanomalyzscoreRange) -> 
 pub fn timeseries_anomaly_zscore_range_mean(s : TimeseriesanomalyzscoreRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_range_scale(s : TimeseriesanomalyzscoreRange, f : Double) -> TimeseriesanomalyzscoreRange {
-  let result = timeseries_anomaly_zscore_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_range_add(a : TimeseriesanomalyzscoreRange, b : TimeseriesanomalyzscoreRange) -> TimeseriesanomalyzscoreRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_range_copy(s : TimeseriesanomalyzscoreRange) -> TimeseriesanomalyzscoreRange {
-  let result = timeseries_anomaly_zscore_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_range_fill(s : TimeseriesanomalyzscoreRange, v : Double) -> TimeseriesanomalyzscoreRange {
-  let result = timeseries_anomaly_zscore_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_range_min(s : TimeseriesanomalyzscoreRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_anomaly_zscore_slice_sum(s : TimeseriesanomalyzscoreSlice) -> 
 pub fn timeseries_anomaly_zscore_slice_mean(s : TimeseriesanomalyzscoreSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_slice_scale(s : TimeseriesanomalyzscoreSlice, f : Double) -> TimeseriesanomalyzscoreSlice {
-  let result = timeseries_anomaly_zscore_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_slice_add(a : TimeseriesanomalyzscoreSlice, b : TimeseriesanomalyzscoreSlice) -> TimeseriesanomalyzscoreSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_zscore_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_zscore_slice_copy(s : TimeseriesanomalyzscoreSlice) -> TimeseriesanomalyzscoreSlice {
-  let result = timeseries_anomaly_zscore_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_slice_fill(s : TimeseriesanomalyzscoreSlice, v : Double) -> TimeseriesanomalyzscoreSlice {
-  let result = timeseries_anomaly_zscore_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_zscore_slice_min(s : TimeseriesanomalyzscoreSlice) -> Double { @_common.min(s.data) }

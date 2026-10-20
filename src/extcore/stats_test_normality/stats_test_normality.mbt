@@ -383,28 +383,20 @@ pub fn stats_test_normality_frame_sum(s : StatstestnormalityFrame) -> Double { @
 pub fn stats_test_normality_frame_mean(s : StatstestnormalityFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_frame_scale(s : StatstestnormalityFrame, f : Double) -> StatstestnormalityFrame {
-  let result = stats_test_normality_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_frame_add(a : StatstestnormalityFrame, b : StatstestnormalityFrame) -> StatstestnormalityFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_frame_copy(s : StatstestnormalityFrame) -> StatstestnormalityFrame {
-  let result = stats_test_normality_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_frame_fill(s : StatstestnormalityFrame, v : Double) -> StatstestnormalityFrame {
-  let result = stats_test_normality_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_frame_min(s : StatstestnormalityFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_test_normality_table_sum(s : StatstestnormalityTable) -> Double { @
 pub fn stats_test_normality_table_mean(s : StatstestnormalityTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_table_scale(s : StatstestnormalityTable, f : Double) -> StatstestnormalityTable {
-  let result = stats_test_normality_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_table_add(a : StatstestnormalityTable, b : StatstestnormalityTable) -> StatstestnormalityTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_table_copy(s : StatstestnormalityTable) -> StatstestnormalityTable {
-  let result = stats_test_normality_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_table_fill(s : StatstestnormalityTable, v : Double) -> StatstestnormalityTable {
-  let result = stats_test_normality_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_table_min(s : StatstestnormalityTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_test_normality_graphn_sum(s : StatstestnormalityGraphN) -> Double {
 pub fn stats_test_normality_graphn_mean(s : StatstestnormalityGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_graphn_scale(s : StatstestnormalityGraphN, f : Double) -> StatstestnormalityGraphN {
-  let result = stats_test_normality_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_graphn_add(a : StatstestnormalityGraphN, b : StatstestnormalityGraphN) -> StatstestnormalityGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_graphn_copy(s : StatstestnormalityGraphN) -> StatstestnormalityGraphN {
-  let result = stats_test_normality_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_graphn_fill(s : StatstestnormalityGraphN, v : Double) -> StatstestnormalityGraphN {
-  let result = stats_test_normality_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_graphn_min(s : StatstestnormalityGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_test_normality_node_sum(s : StatstestnormalityNode) -> Double { @_c
 pub fn stats_test_normality_node_mean(s : StatstestnormalityNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_node_scale(s : StatstestnormalityNode, f : Double) -> StatstestnormalityNode {
-  let result = stats_test_normality_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_node_add(a : StatstestnormalityNode, b : StatstestnormalityNode) -> StatstestnormalityNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_node_copy(s : StatstestnormalityNode) -> StatstestnormalityNode {
-  let result = stats_test_normality_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_node_fill(s : StatstestnormalityNode, v : Double) -> StatstestnormalityNode {
-  let result = stats_test_normality_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_node_min(s : StatstestnormalityNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_test_normality_edge_sum(s : StatstestnormalityEdge) -> Double { @_c
 pub fn stats_test_normality_edge_mean(s : StatstestnormalityEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_edge_scale(s : StatstestnormalityEdge, f : Double) -> StatstestnormalityEdge {
-  let result = stats_test_normality_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_edge_add(a : StatstestnormalityEdge, b : StatstestnormalityEdge) -> StatstestnormalityEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_edge_copy(s : StatstestnormalityEdge) -> StatstestnormalityEdge {
-  let result = stats_test_normality_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_edge_fill(s : StatstestnormalityEdge, v : Double) -> StatstestnormalityEdge {
-  let result = stats_test_normality_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_edge_min(s : StatstestnormalityEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_test_normality_path_sum(s : StatstestnormalityPath) -> Double { @_c
 pub fn stats_test_normality_path_mean(s : StatstestnormalityPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_path_scale(s : StatstestnormalityPath, f : Double) -> StatstestnormalityPath {
-  let result = stats_test_normality_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_path_add(a : StatstestnormalityPath, b : StatstestnormalityPath) -> StatstestnormalityPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_path_copy(s : StatstestnormalityPath) -> StatstestnormalityPath {
-  let result = stats_test_normality_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_path_fill(s : StatstestnormalityPath, v : Double) -> StatstestnormalityPath {
-  let result = stats_test_normality_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_path_min(s : StatstestnormalityPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_test_normality_cluster_sum(s : StatstestnormalityCluster) -> Double
 pub fn stats_test_normality_cluster_mean(s : StatstestnormalityCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_cluster_scale(s : StatstestnormalityCluster, f : Double) -> StatstestnormalityCluster {
-  let result = stats_test_normality_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_cluster_add(a : StatstestnormalityCluster, b : StatstestnormalityCluster) -> StatstestnormalityCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_cluster_copy(s : StatstestnormalityCluster) -> StatstestnormalityCluster {
-  let result = stats_test_normality_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_cluster_fill(s : StatstestnormalityCluster, v : Double) -> StatstestnormalityCluster {
-  let result = stats_test_normality_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_cluster_min(s : StatstestnormalityCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_test_normality_model_sum(s : StatstestnormalityModel) -> Double { @
 pub fn stats_test_normality_model_mean(s : StatstestnormalityModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_model_scale(s : StatstestnormalityModel, f : Double) -> StatstestnormalityModel {
-  let result = stats_test_normality_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_model_add(a : StatstestnormalityModel, b : StatstestnormalityModel) -> StatstestnormalityModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_model_copy(s : StatstestnormalityModel) -> StatstestnormalityModel {
-  let result = stats_test_normality_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_model_fill(s : StatstestnormalityModel, v : Double) -> StatstestnormalityModel {
-  let result = stats_test_normality_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_model_min(s : StatstestnormalityModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_test_normality_layer_sum(s : StatstestnormalityLayer) -> Double { @
 pub fn stats_test_normality_layer_mean(s : StatstestnormalityLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_layer_scale(s : StatstestnormalityLayer, f : Double) -> StatstestnormalityLayer {
-  let result = stats_test_normality_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_layer_add(a : StatstestnormalityLayer, b : StatstestnormalityLayer) -> StatstestnormalityLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_layer_copy(s : StatstestnormalityLayer) -> StatstestnormalityLayer {
-  let result = stats_test_normality_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_layer_fill(s : StatstestnormalityLayer, v : Double) -> StatstestnormalityLayer {
-  let result = stats_test_normality_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_layer_min(s : StatstestnormalityLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_test_normality_buffer_sum(s : StatstestnormalityBuffer) -> Double {
 pub fn stats_test_normality_buffer_mean(s : StatstestnormalityBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_buffer_scale(s : StatstestnormalityBuffer, f : Double) -> StatstestnormalityBuffer {
-  let result = stats_test_normality_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_buffer_add(a : StatstestnormalityBuffer, b : StatstestnormalityBuffer) -> StatstestnormalityBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_buffer_copy(s : StatstestnormalityBuffer) -> StatstestnormalityBuffer {
-  let result = stats_test_normality_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_buffer_fill(s : StatstestnormalityBuffer, v : Double) -> StatstestnormalityBuffer {
-  let result = stats_test_normality_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_buffer_min(s : StatstestnormalityBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_test_normality_cursor_sum(s : StatstestnormalityCursor) -> Double {
 pub fn stats_test_normality_cursor_mean(s : StatstestnormalityCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_cursor_scale(s : StatstestnormalityCursor, f : Double) -> StatstestnormalityCursor {
-  let result = stats_test_normality_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_cursor_add(a : StatstestnormalityCursor, b : StatstestnormalityCursor) -> StatstestnormalityCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_cursor_copy(s : StatstestnormalityCursor) -> StatstestnormalityCursor {
-  let result = stats_test_normality_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_cursor_fill(s : StatstestnormalityCursor, v : Double) -> StatstestnormalityCursor {
-  let result = stats_test_normality_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_cursor_min(s : StatstestnormalityCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_test_normality_view_sum(s : StatstestnormalityView) -> Double { @_c
 pub fn stats_test_normality_view_mean(s : StatstestnormalityView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_view_scale(s : StatstestnormalityView, f : Double) -> StatstestnormalityView {
-  let result = stats_test_normality_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_view_add(a : StatstestnormalityView, b : StatstestnormalityView) -> StatstestnormalityView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_view_copy(s : StatstestnormalityView) -> StatstestnormalityView {
-  let result = stats_test_normality_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_view_fill(s : StatstestnormalityView, v : Double) -> StatstestnormalityView {
-  let result = stats_test_normality_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_view_min(s : StatstestnormalityView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_test_normality_range_sum(s : StatstestnormalityRange) -> Double { @
 pub fn stats_test_normality_range_mean(s : StatstestnormalityRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_range_scale(s : StatstestnormalityRange, f : Double) -> StatstestnormalityRange {
-  let result = stats_test_normality_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_range_add(a : StatstestnormalityRange, b : StatstestnormalityRange) -> StatstestnormalityRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_range_copy(s : StatstestnormalityRange) -> StatstestnormalityRange {
-  let result = stats_test_normality_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_range_fill(s : StatstestnormalityRange, v : Double) -> StatstestnormalityRange {
-  let result = stats_test_normality_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_range_min(s : StatstestnormalityRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_test_normality_slice_sum(s : StatstestnormalitySlice) -> Double { @
 pub fn stats_test_normality_slice_mean(s : StatstestnormalitySlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_slice_scale(s : StatstestnormalitySlice, f : Double) -> StatstestnormalitySlice {
-  let result = stats_test_normality_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_slice_add(a : StatstestnormalitySlice, b : StatstestnormalitySlice) -> StatstestnormalitySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_normality_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_normality_slice_copy(s : StatstestnormalitySlice) -> StatstestnormalitySlice {
-  let result = stats_test_normality_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_slice_fill(s : StatstestnormalitySlice, v : Double) -> StatstestnormalitySlice {
-  let result = stats_test_normality_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_normality_slice_min(s : StatstestnormalitySlice) -> Double { @_common.min(s.data) }

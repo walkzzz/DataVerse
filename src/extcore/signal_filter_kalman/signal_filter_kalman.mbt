@@ -383,28 +383,20 @@ pub fn signal_filter_kalman_frame_sum(s : SignalfilterkalmanFrame) -> Double { @
 pub fn signal_filter_kalman_frame_mean(s : SignalfilterkalmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_frame_scale(s : SignalfilterkalmanFrame, f : Double) -> SignalfilterkalmanFrame {
-  let result = signal_filter_kalman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_frame_add(a : SignalfilterkalmanFrame, b : SignalfilterkalmanFrame) -> SignalfilterkalmanFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_frame_copy(s : SignalfilterkalmanFrame) -> SignalfilterkalmanFrame {
-  let result = signal_filter_kalman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_frame_fill(s : SignalfilterkalmanFrame, v : Double) -> SignalfilterkalmanFrame {
-  let result = signal_filter_kalman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_frame_min(s : SignalfilterkalmanFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_filter_kalman_table_sum(s : SignalfilterkalmanTable) -> Double { @
 pub fn signal_filter_kalman_table_mean(s : SignalfilterkalmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_table_scale(s : SignalfilterkalmanTable, f : Double) -> SignalfilterkalmanTable {
-  let result = signal_filter_kalman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_table_add(a : SignalfilterkalmanTable, b : SignalfilterkalmanTable) -> SignalfilterkalmanTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_table_copy(s : SignalfilterkalmanTable) -> SignalfilterkalmanTable {
-  let result = signal_filter_kalman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_table_fill(s : SignalfilterkalmanTable, v : Double) -> SignalfilterkalmanTable {
-  let result = signal_filter_kalman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_table_min(s : SignalfilterkalmanTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_filter_kalman_graphn_sum(s : SignalfilterkalmanGraphN) -> Double {
 pub fn signal_filter_kalman_graphn_mean(s : SignalfilterkalmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_graphn_scale(s : SignalfilterkalmanGraphN, f : Double) -> SignalfilterkalmanGraphN {
-  let result = signal_filter_kalman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_graphn_add(a : SignalfilterkalmanGraphN, b : SignalfilterkalmanGraphN) -> SignalfilterkalmanGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_graphn_copy(s : SignalfilterkalmanGraphN) -> SignalfilterkalmanGraphN {
-  let result = signal_filter_kalman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_graphn_fill(s : SignalfilterkalmanGraphN, v : Double) -> SignalfilterkalmanGraphN {
-  let result = signal_filter_kalman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_graphn_min(s : SignalfilterkalmanGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_filter_kalman_node_sum(s : SignalfilterkalmanNode) -> Double { @_c
 pub fn signal_filter_kalman_node_mean(s : SignalfilterkalmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_node_scale(s : SignalfilterkalmanNode, f : Double) -> SignalfilterkalmanNode {
-  let result = signal_filter_kalman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_node_add(a : SignalfilterkalmanNode, b : SignalfilterkalmanNode) -> SignalfilterkalmanNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_node_copy(s : SignalfilterkalmanNode) -> SignalfilterkalmanNode {
-  let result = signal_filter_kalman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_node_fill(s : SignalfilterkalmanNode, v : Double) -> SignalfilterkalmanNode {
-  let result = signal_filter_kalman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_node_min(s : SignalfilterkalmanNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_filter_kalman_edge_sum(s : SignalfilterkalmanEdge) -> Double { @_c
 pub fn signal_filter_kalman_edge_mean(s : SignalfilterkalmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_edge_scale(s : SignalfilterkalmanEdge, f : Double) -> SignalfilterkalmanEdge {
-  let result = signal_filter_kalman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_edge_add(a : SignalfilterkalmanEdge, b : SignalfilterkalmanEdge) -> SignalfilterkalmanEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_edge_copy(s : SignalfilterkalmanEdge) -> SignalfilterkalmanEdge {
-  let result = signal_filter_kalman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_edge_fill(s : SignalfilterkalmanEdge, v : Double) -> SignalfilterkalmanEdge {
-  let result = signal_filter_kalman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_edge_min(s : SignalfilterkalmanEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_filter_kalman_path_sum(s : SignalfilterkalmanPath) -> Double { @_c
 pub fn signal_filter_kalman_path_mean(s : SignalfilterkalmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_path_scale(s : SignalfilterkalmanPath, f : Double) -> SignalfilterkalmanPath {
-  let result = signal_filter_kalman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_path_add(a : SignalfilterkalmanPath, b : SignalfilterkalmanPath) -> SignalfilterkalmanPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_path_copy(s : SignalfilterkalmanPath) -> SignalfilterkalmanPath {
-  let result = signal_filter_kalman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_path_fill(s : SignalfilterkalmanPath, v : Double) -> SignalfilterkalmanPath {
-  let result = signal_filter_kalman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_path_min(s : SignalfilterkalmanPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_filter_kalman_cluster_sum(s : SignalfilterkalmanCluster) -> Double
 pub fn signal_filter_kalman_cluster_mean(s : SignalfilterkalmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_cluster_scale(s : SignalfilterkalmanCluster, f : Double) -> SignalfilterkalmanCluster {
-  let result = signal_filter_kalman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_cluster_add(a : SignalfilterkalmanCluster, b : SignalfilterkalmanCluster) -> SignalfilterkalmanCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_cluster_copy(s : SignalfilterkalmanCluster) -> SignalfilterkalmanCluster {
-  let result = signal_filter_kalman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_cluster_fill(s : SignalfilterkalmanCluster, v : Double) -> SignalfilterkalmanCluster {
-  let result = signal_filter_kalman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_cluster_min(s : SignalfilterkalmanCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_filter_kalman_model_sum(s : SignalfilterkalmanModel) -> Double { @
 pub fn signal_filter_kalman_model_mean(s : SignalfilterkalmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_model_scale(s : SignalfilterkalmanModel, f : Double) -> SignalfilterkalmanModel {
-  let result = signal_filter_kalman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_model_add(a : SignalfilterkalmanModel, b : SignalfilterkalmanModel) -> SignalfilterkalmanModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_model_copy(s : SignalfilterkalmanModel) -> SignalfilterkalmanModel {
-  let result = signal_filter_kalman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_model_fill(s : SignalfilterkalmanModel, v : Double) -> SignalfilterkalmanModel {
-  let result = signal_filter_kalman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_model_min(s : SignalfilterkalmanModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_filter_kalman_layer_sum(s : SignalfilterkalmanLayer) -> Double { @
 pub fn signal_filter_kalman_layer_mean(s : SignalfilterkalmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_layer_scale(s : SignalfilterkalmanLayer, f : Double) -> SignalfilterkalmanLayer {
-  let result = signal_filter_kalman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_layer_add(a : SignalfilterkalmanLayer, b : SignalfilterkalmanLayer) -> SignalfilterkalmanLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_layer_copy(s : SignalfilterkalmanLayer) -> SignalfilterkalmanLayer {
-  let result = signal_filter_kalman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_layer_fill(s : SignalfilterkalmanLayer, v : Double) -> SignalfilterkalmanLayer {
-  let result = signal_filter_kalman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_layer_min(s : SignalfilterkalmanLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_filter_kalman_buffer_sum(s : SignalfilterkalmanBuffer) -> Double {
 pub fn signal_filter_kalman_buffer_mean(s : SignalfilterkalmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_buffer_scale(s : SignalfilterkalmanBuffer, f : Double) -> SignalfilterkalmanBuffer {
-  let result = signal_filter_kalman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_buffer_add(a : SignalfilterkalmanBuffer, b : SignalfilterkalmanBuffer) -> SignalfilterkalmanBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_buffer_copy(s : SignalfilterkalmanBuffer) -> SignalfilterkalmanBuffer {
-  let result = signal_filter_kalman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_buffer_fill(s : SignalfilterkalmanBuffer, v : Double) -> SignalfilterkalmanBuffer {
-  let result = signal_filter_kalman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_buffer_min(s : SignalfilterkalmanBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_filter_kalman_cursor_sum(s : SignalfilterkalmanCursor) -> Double {
 pub fn signal_filter_kalman_cursor_mean(s : SignalfilterkalmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_cursor_scale(s : SignalfilterkalmanCursor, f : Double) -> SignalfilterkalmanCursor {
-  let result = signal_filter_kalman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_cursor_add(a : SignalfilterkalmanCursor, b : SignalfilterkalmanCursor) -> SignalfilterkalmanCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_cursor_copy(s : SignalfilterkalmanCursor) -> SignalfilterkalmanCursor {
-  let result = signal_filter_kalman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_cursor_fill(s : SignalfilterkalmanCursor, v : Double) -> SignalfilterkalmanCursor {
-  let result = signal_filter_kalman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_cursor_min(s : SignalfilterkalmanCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_filter_kalman_view_sum(s : SignalfilterkalmanView) -> Double { @_c
 pub fn signal_filter_kalman_view_mean(s : SignalfilterkalmanView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_view_scale(s : SignalfilterkalmanView, f : Double) -> SignalfilterkalmanView {
-  let result = signal_filter_kalman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_view_add(a : SignalfilterkalmanView, b : SignalfilterkalmanView) -> SignalfilterkalmanView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_view_copy(s : SignalfilterkalmanView) -> SignalfilterkalmanView {
-  let result = signal_filter_kalman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_view_fill(s : SignalfilterkalmanView, v : Double) -> SignalfilterkalmanView {
-  let result = signal_filter_kalman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_view_min(s : SignalfilterkalmanView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_filter_kalman_range_sum(s : SignalfilterkalmanRange) -> Double { @
 pub fn signal_filter_kalman_range_mean(s : SignalfilterkalmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_range_scale(s : SignalfilterkalmanRange, f : Double) -> SignalfilterkalmanRange {
-  let result = signal_filter_kalman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_range_add(a : SignalfilterkalmanRange, b : SignalfilterkalmanRange) -> SignalfilterkalmanRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_range_copy(s : SignalfilterkalmanRange) -> SignalfilterkalmanRange {
-  let result = signal_filter_kalman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_range_fill(s : SignalfilterkalmanRange, v : Double) -> SignalfilterkalmanRange {
-  let result = signal_filter_kalman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_range_min(s : SignalfilterkalmanRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_filter_kalman_slice_sum(s : SignalfilterkalmanSlice) -> Double { @
 pub fn signal_filter_kalman_slice_mean(s : SignalfilterkalmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_slice_scale(s : SignalfilterkalmanSlice, f : Double) -> SignalfilterkalmanSlice {
-  let result = signal_filter_kalman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_slice_add(a : SignalfilterkalmanSlice, b : SignalfilterkalmanSlice) -> SignalfilterkalmanSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_filter_kalman_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_filter_kalman_slice_copy(s : SignalfilterkalmanSlice) -> SignalfilterkalmanSlice {
-  let result = signal_filter_kalman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_slice_fill(s : SignalfilterkalmanSlice, v : Double) -> SignalfilterkalmanSlice {
-  let result = signal_filter_kalman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_kalman_slice_min(s : SignalfilterkalmanSlice) -> Double { @_common.min(s.data) }

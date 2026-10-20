@@ -383,28 +383,20 @@ pub fn ds_heap_binomial_frame_sum(s : DsheapbinomialFrame) -> Double { @_common.
 pub fn ds_heap_binomial_frame_mean(s : DsheapbinomialFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_frame_scale(s : DsheapbinomialFrame, f : Double) -> DsheapbinomialFrame {
-  let result = ds_heap_binomial_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_frame_add(a : DsheapbinomialFrame, b : DsheapbinomialFrame) -> DsheapbinomialFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_frame_copy(s : DsheapbinomialFrame) -> DsheapbinomialFrame {
-  let result = ds_heap_binomial_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_frame_fill(s : DsheapbinomialFrame, v : Double) -> DsheapbinomialFrame {
-  let result = ds_heap_binomial_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_frame_min(s : DsheapbinomialFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_heap_binomial_table_sum(s : DsheapbinomialTable) -> Double { @_common.
 pub fn ds_heap_binomial_table_mean(s : DsheapbinomialTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_table_scale(s : DsheapbinomialTable, f : Double) -> DsheapbinomialTable {
-  let result = ds_heap_binomial_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_table_add(a : DsheapbinomialTable, b : DsheapbinomialTable) -> DsheapbinomialTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_table_copy(s : DsheapbinomialTable) -> DsheapbinomialTable {
-  let result = ds_heap_binomial_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_table_fill(s : DsheapbinomialTable, v : Double) -> DsheapbinomialTable {
-  let result = ds_heap_binomial_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_table_min(s : DsheapbinomialTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_heap_binomial_graphn_sum(s : DsheapbinomialGraphN) -> Double { @_commo
 pub fn ds_heap_binomial_graphn_mean(s : DsheapbinomialGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_graphn_scale(s : DsheapbinomialGraphN, f : Double) -> DsheapbinomialGraphN {
-  let result = ds_heap_binomial_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_graphn_add(a : DsheapbinomialGraphN, b : DsheapbinomialGraphN) -> DsheapbinomialGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_graphn_copy(s : DsheapbinomialGraphN) -> DsheapbinomialGraphN {
-  let result = ds_heap_binomial_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_graphn_fill(s : DsheapbinomialGraphN, v : Double) -> DsheapbinomialGraphN {
-  let result = ds_heap_binomial_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_graphn_min(s : DsheapbinomialGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_heap_binomial_node_sum(s : DsheapbinomialNode) -> Double { @_common.su
 pub fn ds_heap_binomial_node_mean(s : DsheapbinomialNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_node_scale(s : DsheapbinomialNode, f : Double) -> DsheapbinomialNode {
-  let result = ds_heap_binomial_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_node_add(a : DsheapbinomialNode, b : DsheapbinomialNode) -> DsheapbinomialNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_node_copy(s : DsheapbinomialNode) -> DsheapbinomialNode {
-  let result = ds_heap_binomial_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_node_fill(s : DsheapbinomialNode, v : Double) -> DsheapbinomialNode {
-  let result = ds_heap_binomial_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_node_min(s : DsheapbinomialNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_heap_binomial_edge_sum(s : DsheapbinomialEdge) -> Double { @_common.su
 pub fn ds_heap_binomial_edge_mean(s : DsheapbinomialEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_edge_scale(s : DsheapbinomialEdge, f : Double) -> DsheapbinomialEdge {
-  let result = ds_heap_binomial_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_edge_add(a : DsheapbinomialEdge, b : DsheapbinomialEdge) -> DsheapbinomialEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_edge_copy(s : DsheapbinomialEdge) -> DsheapbinomialEdge {
-  let result = ds_heap_binomial_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_edge_fill(s : DsheapbinomialEdge, v : Double) -> DsheapbinomialEdge {
-  let result = ds_heap_binomial_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_edge_min(s : DsheapbinomialEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_heap_binomial_path_sum(s : DsheapbinomialPath) -> Double { @_common.su
 pub fn ds_heap_binomial_path_mean(s : DsheapbinomialPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_path_scale(s : DsheapbinomialPath, f : Double) -> DsheapbinomialPath {
-  let result = ds_heap_binomial_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_path_add(a : DsheapbinomialPath, b : DsheapbinomialPath) -> DsheapbinomialPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_path_copy(s : DsheapbinomialPath) -> DsheapbinomialPath {
-  let result = ds_heap_binomial_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_path_fill(s : DsheapbinomialPath, v : Double) -> DsheapbinomialPath {
-  let result = ds_heap_binomial_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_path_min(s : DsheapbinomialPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_heap_binomial_cluster_sum(s : DsheapbinomialCluster) -> Double { @_com
 pub fn ds_heap_binomial_cluster_mean(s : DsheapbinomialCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_cluster_scale(s : DsheapbinomialCluster, f : Double) -> DsheapbinomialCluster {
-  let result = ds_heap_binomial_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_cluster_add(a : DsheapbinomialCluster, b : DsheapbinomialCluster) -> DsheapbinomialCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_cluster_copy(s : DsheapbinomialCluster) -> DsheapbinomialCluster {
-  let result = ds_heap_binomial_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_cluster_fill(s : DsheapbinomialCluster, v : Double) -> DsheapbinomialCluster {
-  let result = ds_heap_binomial_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_cluster_min(s : DsheapbinomialCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_heap_binomial_model_sum(s : DsheapbinomialModel) -> Double { @_common.
 pub fn ds_heap_binomial_model_mean(s : DsheapbinomialModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_model_scale(s : DsheapbinomialModel, f : Double) -> DsheapbinomialModel {
-  let result = ds_heap_binomial_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_model_add(a : DsheapbinomialModel, b : DsheapbinomialModel) -> DsheapbinomialModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_model_copy(s : DsheapbinomialModel) -> DsheapbinomialModel {
-  let result = ds_heap_binomial_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_model_fill(s : DsheapbinomialModel, v : Double) -> DsheapbinomialModel {
-  let result = ds_heap_binomial_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_model_min(s : DsheapbinomialModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_heap_binomial_layer_sum(s : DsheapbinomialLayer) -> Double { @_common.
 pub fn ds_heap_binomial_layer_mean(s : DsheapbinomialLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_layer_scale(s : DsheapbinomialLayer, f : Double) -> DsheapbinomialLayer {
-  let result = ds_heap_binomial_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_layer_add(a : DsheapbinomialLayer, b : DsheapbinomialLayer) -> DsheapbinomialLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_layer_copy(s : DsheapbinomialLayer) -> DsheapbinomialLayer {
-  let result = ds_heap_binomial_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_layer_fill(s : DsheapbinomialLayer, v : Double) -> DsheapbinomialLayer {
-  let result = ds_heap_binomial_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_layer_min(s : DsheapbinomialLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_heap_binomial_buffer_sum(s : DsheapbinomialBuffer) -> Double { @_commo
 pub fn ds_heap_binomial_buffer_mean(s : DsheapbinomialBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_buffer_scale(s : DsheapbinomialBuffer, f : Double) -> DsheapbinomialBuffer {
-  let result = ds_heap_binomial_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_buffer_add(a : DsheapbinomialBuffer, b : DsheapbinomialBuffer) -> DsheapbinomialBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_buffer_copy(s : DsheapbinomialBuffer) -> DsheapbinomialBuffer {
-  let result = ds_heap_binomial_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_buffer_fill(s : DsheapbinomialBuffer, v : Double) -> DsheapbinomialBuffer {
-  let result = ds_heap_binomial_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_buffer_min(s : DsheapbinomialBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_heap_binomial_cursor_sum(s : DsheapbinomialCursor) -> Double { @_commo
 pub fn ds_heap_binomial_cursor_mean(s : DsheapbinomialCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_cursor_scale(s : DsheapbinomialCursor, f : Double) -> DsheapbinomialCursor {
-  let result = ds_heap_binomial_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_cursor_add(a : DsheapbinomialCursor, b : DsheapbinomialCursor) -> DsheapbinomialCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_cursor_copy(s : DsheapbinomialCursor) -> DsheapbinomialCursor {
-  let result = ds_heap_binomial_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_cursor_fill(s : DsheapbinomialCursor, v : Double) -> DsheapbinomialCursor {
-  let result = ds_heap_binomial_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_cursor_min(s : DsheapbinomialCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_heap_binomial_view_sum(s : DsheapbinomialView) -> Double { @_common.su
 pub fn ds_heap_binomial_view_mean(s : DsheapbinomialView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_view_scale(s : DsheapbinomialView, f : Double) -> DsheapbinomialView {
-  let result = ds_heap_binomial_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_view_add(a : DsheapbinomialView, b : DsheapbinomialView) -> DsheapbinomialView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_view_copy(s : DsheapbinomialView) -> DsheapbinomialView {
-  let result = ds_heap_binomial_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_view_fill(s : DsheapbinomialView, v : Double) -> DsheapbinomialView {
-  let result = ds_heap_binomial_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_view_min(s : DsheapbinomialView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_heap_binomial_range_sum(s : DsheapbinomialRange) -> Double { @_common.
 pub fn ds_heap_binomial_range_mean(s : DsheapbinomialRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_range_scale(s : DsheapbinomialRange, f : Double) -> DsheapbinomialRange {
-  let result = ds_heap_binomial_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_range_add(a : DsheapbinomialRange, b : DsheapbinomialRange) -> DsheapbinomialRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_range_copy(s : DsheapbinomialRange) -> DsheapbinomialRange {
-  let result = ds_heap_binomial_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_range_fill(s : DsheapbinomialRange, v : Double) -> DsheapbinomialRange {
-  let result = ds_heap_binomial_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_range_min(s : DsheapbinomialRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_heap_binomial_slice_sum(s : DsheapbinomialSlice) -> Double { @_common.
 pub fn ds_heap_binomial_slice_mean(s : DsheapbinomialSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_binomial_slice_scale(s : DsheapbinomialSlice, f : Double) -> DsheapbinomialSlice {
-  let result = ds_heap_binomial_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_slice_add(a : DsheapbinomialSlice, b : DsheapbinomialSlice) -> DsheapbinomialSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_binomial_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_binomial_slice_copy(s : DsheapbinomialSlice) -> DsheapbinomialSlice {
-  let result = ds_heap_binomial_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_slice_fill(s : DsheapbinomialSlice, v : Double) -> DsheapbinomialSlice {
-  let result = ds_heap_binomial_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binomial_slice_min(s : DsheapbinomialSlice) -> Double { @_common.min(s.data) }

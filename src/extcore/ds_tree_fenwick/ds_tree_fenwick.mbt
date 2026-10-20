@@ -383,28 +383,20 @@ pub fn ds_tree_fenwick_frame_sum(s : DstreefenwickFrame) -> Double { @_common.su
 pub fn ds_tree_fenwick_frame_mean(s : DstreefenwickFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_frame_scale(s : DstreefenwickFrame, f : Double) -> DstreefenwickFrame {
-  let result = ds_tree_fenwick_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_frame_add(a : DstreefenwickFrame, b : DstreefenwickFrame) -> DstreefenwickFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_frame_copy(s : DstreefenwickFrame) -> DstreefenwickFrame {
-  let result = ds_tree_fenwick_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_frame_fill(s : DstreefenwickFrame, v : Double) -> DstreefenwickFrame {
-  let result = ds_tree_fenwick_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_frame_min(s : DstreefenwickFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_tree_fenwick_table_sum(s : DstreefenwickTable) -> Double { @_common.su
 pub fn ds_tree_fenwick_table_mean(s : DstreefenwickTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_table_scale(s : DstreefenwickTable, f : Double) -> DstreefenwickTable {
-  let result = ds_tree_fenwick_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_table_add(a : DstreefenwickTable, b : DstreefenwickTable) -> DstreefenwickTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_table_copy(s : DstreefenwickTable) -> DstreefenwickTable {
-  let result = ds_tree_fenwick_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_table_fill(s : DstreefenwickTable, v : Double) -> DstreefenwickTable {
-  let result = ds_tree_fenwick_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_table_min(s : DstreefenwickTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_tree_fenwick_graphn_sum(s : DstreefenwickGraphN) -> Double { @_common.
 pub fn ds_tree_fenwick_graphn_mean(s : DstreefenwickGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_graphn_scale(s : DstreefenwickGraphN, f : Double) -> DstreefenwickGraphN {
-  let result = ds_tree_fenwick_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_graphn_add(a : DstreefenwickGraphN, b : DstreefenwickGraphN) -> DstreefenwickGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_graphn_copy(s : DstreefenwickGraphN) -> DstreefenwickGraphN {
-  let result = ds_tree_fenwick_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_graphn_fill(s : DstreefenwickGraphN, v : Double) -> DstreefenwickGraphN {
-  let result = ds_tree_fenwick_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_graphn_min(s : DstreefenwickGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_tree_fenwick_node_sum(s : DstreefenwickNode) -> Double { @_common.sum(
 pub fn ds_tree_fenwick_node_mean(s : DstreefenwickNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_node_scale(s : DstreefenwickNode, f : Double) -> DstreefenwickNode {
-  let result = ds_tree_fenwick_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_node_add(a : DstreefenwickNode, b : DstreefenwickNode) -> DstreefenwickNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_node_copy(s : DstreefenwickNode) -> DstreefenwickNode {
-  let result = ds_tree_fenwick_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_node_fill(s : DstreefenwickNode, v : Double) -> DstreefenwickNode {
-  let result = ds_tree_fenwick_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_node_min(s : DstreefenwickNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_tree_fenwick_edge_sum(s : DstreefenwickEdge) -> Double { @_common.sum(
 pub fn ds_tree_fenwick_edge_mean(s : DstreefenwickEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_edge_scale(s : DstreefenwickEdge, f : Double) -> DstreefenwickEdge {
-  let result = ds_tree_fenwick_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_edge_add(a : DstreefenwickEdge, b : DstreefenwickEdge) -> DstreefenwickEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_edge_copy(s : DstreefenwickEdge) -> DstreefenwickEdge {
-  let result = ds_tree_fenwick_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_edge_fill(s : DstreefenwickEdge, v : Double) -> DstreefenwickEdge {
-  let result = ds_tree_fenwick_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_edge_min(s : DstreefenwickEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_tree_fenwick_path_sum(s : DstreefenwickPath) -> Double { @_common.sum(
 pub fn ds_tree_fenwick_path_mean(s : DstreefenwickPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_path_scale(s : DstreefenwickPath, f : Double) -> DstreefenwickPath {
-  let result = ds_tree_fenwick_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_path_add(a : DstreefenwickPath, b : DstreefenwickPath) -> DstreefenwickPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_path_copy(s : DstreefenwickPath) -> DstreefenwickPath {
-  let result = ds_tree_fenwick_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_path_fill(s : DstreefenwickPath, v : Double) -> DstreefenwickPath {
-  let result = ds_tree_fenwick_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_path_min(s : DstreefenwickPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_tree_fenwick_cluster_sum(s : DstreefenwickCluster) -> Double { @_commo
 pub fn ds_tree_fenwick_cluster_mean(s : DstreefenwickCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_cluster_scale(s : DstreefenwickCluster, f : Double) -> DstreefenwickCluster {
-  let result = ds_tree_fenwick_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cluster_add(a : DstreefenwickCluster, b : DstreefenwickCluster) -> DstreefenwickCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_cluster_copy(s : DstreefenwickCluster) -> DstreefenwickCluster {
-  let result = ds_tree_fenwick_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cluster_fill(s : DstreefenwickCluster, v : Double) -> DstreefenwickCluster {
-  let result = ds_tree_fenwick_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cluster_min(s : DstreefenwickCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_tree_fenwick_model_sum(s : DstreefenwickModel) -> Double { @_common.su
 pub fn ds_tree_fenwick_model_mean(s : DstreefenwickModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_model_scale(s : DstreefenwickModel, f : Double) -> DstreefenwickModel {
-  let result = ds_tree_fenwick_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_model_add(a : DstreefenwickModel, b : DstreefenwickModel) -> DstreefenwickModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_model_copy(s : DstreefenwickModel) -> DstreefenwickModel {
-  let result = ds_tree_fenwick_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_model_fill(s : DstreefenwickModel, v : Double) -> DstreefenwickModel {
-  let result = ds_tree_fenwick_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_model_min(s : DstreefenwickModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_tree_fenwick_layer_sum(s : DstreefenwickLayer) -> Double { @_common.su
 pub fn ds_tree_fenwick_layer_mean(s : DstreefenwickLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_layer_scale(s : DstreefenwickLayer, f : Double) -> DstreefenwickLayer {
-  let result = ds_tree_fenwick_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_layer_add(a : DstreefenwickLayer, b : DstreefenwickLayer) -> DstreefenwickLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_layer_copy(s : DstreefenwickLayer) -> DstreefenwickLayer {
-  let result = ds_tree_fenwick_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_layer_fill(s : DstreefenwickLayer, v : Double) -> DstreefenwickLayer {
-  let result = ds_tree_fenwick_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_layer_min(s : DstreefenwickLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_tree_fenwick_buffer_sum(s : DstreefenwickBuffer) -> Double { @_common.
 pub fn ds_tree_fenwick_buffer_mean(s : DstreefenwickBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_buffer_scale(s : DstreefenwickBuffer, f : Double) -> DstreefenwickBuffer {
-  let result = ds_tree_fenwick_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_buffer_add(a : DstreefenwickBuffer, b : DstreefenwickBuffer) -> DstreefenwickBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_buffer_copy(s : DstreefenwickBuffer) -> DstreefenwickBuffer {
-  let result = ds_tree_fenwick_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_buffer_fill(s : DstreefenwickBuffer, v : Double) -> DstreefenwickBuffer {
-  let result = ds_tree_fenwick_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_buffer_min(s : DstreefenwickBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_tree_fenwick_cursor_sum(s : DstreefenwickCursor) -> Double { @_common.
 pub fn ds_tree_fenwick_cursor_mean(s : DstreefenwickCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_cursor_scale(s : DstreefenwickCursor, f : Double) -> DstreefenwickCursor {
-  let result = ds_tree_fenwick_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cursor_add(a : DstreefenwickCursor, b : DstreefenwickCursor) -> DstreefenwickCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_cursor_copy(s : DstreefenwickCursor) -> DstreefenwickCursor {
-  let result = ds_tree_fenwick_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cursor_fill(s : DstreefenwickCursor, v : Double) -> DstreefenwickCursor {
-  let result = ds_tree_fenwick_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cursor_min(s : DstreefenwickCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_tree_fenwick_view_sum(s : DstreefenwickView) -> Double { @_common.sum(
 pub fn ds_tree_fenwick_view_mean(s : DstreefenwickView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_view_scale(s : DstreefenwickView, f : Double) -> DstreefenwickView {
-  let result = ds_tree_fenwick_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_view_add(a : DstreefenwickView, b : DstreefenwickView) -> DstreefenwickView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_view_copy(s : DstreefenwickView) -> DstreefenwickView {
-  let result = ds_tree_fenwick_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_view_fill(s : DstreefenwickView, v : Double) -> DstreefenwickView {
-  let result = ds_tree_fenwick_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_view_min(s : DstreefenwickView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_tree_fenwick_range_sum(s : DstreefenwickRange) -> Double { @_common.su
 pub fn ds_tree_fenwick_range_mean(s : DstreefenwickRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_range_scale(s : DstreefenwickRange, f : Double) -> DstreefenwickRange {
-  let result = ds_tree_fenwick_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_range_add(a : DstreefenwickRange, b : DstreefenwickRange) -> DstreefenwickRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_range_copy(s : DstreefenwickRange) -> DstreefenwickRange {
-  let result = ds_tree_fenwick_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_range_fill(s : DstreefenwickRange, v : Double) -> DstreefenwickRange {
-  let result = ds_tree_fenwick_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_range_min(s : DstreefenwickRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_tree_fenwick_slice_sum(s : DstreefenwickSlice) -> Double { @_common.su
 pub fn ds_tree_fenwick_slice_mean(s : DstreefenwickSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_slice_scale(s : DstreefenwickSlice, f : Double) -> DstreefenwickSlice {
-  let result = ds_tree_fenwick_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_slice_add(a : DstreefenwickSlice, b : DstreefenwickSlice) -> DstreefenwickSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_tree_fenwick_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_tree_fenwick_slice_copy(s : DstreefenwickSlice) -> DstreefenwickSlice {
-  let result = ds_tree_fenwick_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_slice_fill(s : DstreefenwickSlice, v : Double) -> DstreefenwickSlice {
-  let result = ds_tree_fenwick_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_slice_min(s : DstreefenwickSlice) -> Double { @_common.min(s.data) }

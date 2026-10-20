@@ -383,28 +383,20 @@ pub fn finance_risk_es_frame_sum(s : FinanceriskesFrame) -> Double { @_common.su
 pub fn finance_risk_es_frame_mean(s : FinanceriskesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_frame_scale(s : FinanceriskesFrame, f : Double) -> FinanceriskesFrame {
-  let result = finance_risk_es_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_frame_add(a : FinanceriskesFrame, b : FinanceriskesFrame) -> FinanceriskesFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_frame_copy(s : FinanceriskesFrame) -> FinanceriskesFrame {
-  let result = finance_risk_es_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_frame_fill(s : FinanceriskesFrame, v : Double) -> FinanceriskesFrame {
-  let result = finance_risk_es_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_frame_min(s : FinanceriskesFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_risk_es_table_sum(s : FinanceriskesTable) -> Double { @_common.su
 pub fn finance_risk_es_table_mean(s : FinanceriskesTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_table_scale(s : FinanceriskesTable, f : Double) -> FinanceriskesTable {
-  let result = finance_risk_es_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_table_add(a : FinanceriskesTable, b : FinanceriskesTable) -> FinanceriskesTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_table_copy(s : FinanceriskesTable) -> FinanceriskesTable {
-  let result = finance_risk_es_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_table_fill(s : FinanceriskesTable, v : Double) -> FinanceriskesTable {
-  let result = finance_risk_es_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_table_min(s : FinanceriskesTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_risk_es_graphn_sum(s : FinanceriskesGraphN) -> Double { @_common.
 pub fn finance_risk_es_graphn_mean(s : FinanceriskesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_graphn_scale(s : FinanceriskesGraphN, f : Double) -> FinanceriskesGraphN {
-  let result = finance_risk_es_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_graphn_add(a : FinanceriskesGraphN, b : FinanceriskesGraphN) -> FinanceriskesGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_graphn_copy(s : FinanceriskesGraphN) -> FinanceriskesGraphN {
-  let result = finance_risk_es_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_graphn_fill(s : FinanceriskesGraphN, v : Double) -> FinanceriskesGraphN {
-  let result = finance_risk_es_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_graphn_min(s : FinanceriskesGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_risk_es_node_sum(s : FinanceriskesNode) -> Double { @_common.sum(
 pub fn finance_risk_es_node_mean(s : FinanceriskesNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_node_scale(s : FinanceriskesNode, f : Double) -> FinanceriskesNode {
-  let result = finance_risk_es_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_node_add(a : FinanceriskesNode, b : FinanceriskesNode) -> FinanceriskesNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_node_copy(s : FinanceriskesNode) -> FinanceriskesNode {
-  let result = finance_risk_es_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_node_fill(s : FinanceriskesNode, v : Double) -> FinanceriskesNode {
-  let result = finance_risk_es_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_node_min(s : FinanceriskesNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_risk_es_edge_sum(s : FinanceriskesEdge) -> Double { @_common.sum(
 pub fn finance_risk_es_edge_mean(s : FinanceriskesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_edge_scale(s : FinanceriskesEdge, f : Double) -> FinanceriskesEdge {
-  let result = finance_risk_es_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_edge_add(a : FinanceriskesEdge, b : FinanceriskesEdge) -> FinanceriskesEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_edge_copy(s : FinanceriskesEdge) -> FinanceriskesEdge {
-  let result = finance_risk_es_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_edge_fill(s : FinanceriskesEdge, v : Double) -> FinanceriskesEdge {
-  let result = finance_risk_es_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_edge_min(s : FinanceriskesEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_risk_es_path_sum(s : FinanceriskesPath) -> Double { @_common.sum(
 pub fn finance_risk_es_path_mean(s : FinanceriskesPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_path_scale(s : FinanceriskesPath, f : Double) -> FinanceriskesPath {
-  let result = finance_risk_es_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_path_add(a : FinanceriskesPath, b : FinanceriskesPath) -> FinanceriskesPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_path_copy(s : FinanceriskesPath) -> FinanceriskesPath {
-  let result = finance_risk_es_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_path_fill(s : FinanceriskesPath, v : Double) -> FinanceriskesPath {
-  let result = finance_risk_es_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_path_min(s : FinanceriskesPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_risk_es_cluster_sum(s : FinanceriskesCluster) -> Double { @_commo
 pub fn finance_risk_es_cluster_mean(s : FinanceriskesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_cluster_scale(s : FinanceriskesCluster, f : Double) -> FinanceriskesCluster {
-  let result = finance_risk_es_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_cluster_add(a : FinanceriskesCluster, b : FinanceriskesCluster) -> FinanceriskesCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_cluster_copy(s : FinanceriskesCluster) -> FinanceriskesCluster {
-  let result = finance_risk_es_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_cluster_fill(s : FinanceriskesCluster, v : Double) -> FinanceriskesCluster {
-  let result = finance_risk_es_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_cluster_min(s : FinanceriskesCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_risk_es_model_sum(s : FinanceriskesModel) -> Double { @_common.su
 pub fn finance_risk_es_model_mean(s : FinanceriskesModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_model_scale(s : FinanceriskesModel, f : Double) -> FinanceriskesModel {
-  let result = finance_risk_es_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_model_add(a : FinanceriskesModel, b : FinanceriskesModel) -> FinanceriskesModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_model_copy(s : FinanceriskesModel) -> FinanceriskesModel {
-  let result = finance_risk_es_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_model_fill(s : FinanceriskesModel, v : Double) -> FinanceriskesModel {
-  let result = finance_risk_es_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_model_min(s : FinanceriskesModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_risk_es_layer_sum(s : FinanceriskesLayer) -> Double { @_common.su
 pub fn finance_risk_es_layer_mean(s : FinanceriskesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_layer_scale(s : FinanceriskesLayer, f : Double) -> FinanceriskesLayer {
-  let result = finance_risk_es_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_layer_add(a : FinanceriskesLayer, b : FinanceriskesLayer) -> FinanceriskesLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_layer_copy(s : FinanceriskesLayer) -> FinanceriskesLayer {
-  let result = finance_risk_es_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_layer_fill(s : FinanceriskesLayer, v : Double) -> FinanceriskesLayer {
-  let result = finance_risk_es_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_layer_min(s : FinanceriskesLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_risk_es_buffer_sum(s : FinanceriskesBuffer) -> Double { @_common.
 pub fn finance_risk_es_buffer_mean(s : FinanceriskesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_buffer_scale(s : FinanceriskesBuffer, f : Double) -> FinanceriskesBuffer {
-  let result = finance_risk_es_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_buffer_add(a : FinanceriskesBuffer, b : FinanceriskesBuffer) -> FinanceriskesBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_buffer_copy(s : FinanceriskesBuffer) -> FinanceriskesBuffer {
-  let result = finance_risk_es_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_buffer_fill(s : FinanceriskesBuffer, v : Double) -> FinanceriskesBuffer {
-  let result = finance_risk_es_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_buffer_min(s : FinanceriskesBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_risk_es_cursor_sum(s : FinanceriskesCursor) -> Double { @_common.
 pub fn finance_risk_es_cursor_mean(s : FinanceriskesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_cursor_scale(s : FinanceriskesCursor, f : Double) -> FinanceriskesCursor {
-  let result = finance_risk_es_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_cursor_add(a : FinanceriskesCursor, b : FinanceriskesCursor) -> FinanceriskesCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_cursor_copy(s : FinanceriskesCursor) -> FinanceriskesCursor {
-  let result = finance_risk_es_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_cursor_fill(s : FinanceriskesCursor, v : Double) -> FinanceriskesCursor {
-  let result = finance_risk_es_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_cursor_min(s : FinanceriskesCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_risk_es_view_sum(s : FinanceriskesView) -> Double { @_common.sum(
 pub fn finance_risk_es_view_mean(s : FinanceriskesView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_view_scale(s : FinanceriskesView, f : Double) -> FinanceriskesView {
-  let result = finance_risk_es_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_view_add(a : FinanceriskesView, b : FinanceriskesView) -> FinanceriskesView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_view_copy(s : FinanceriskesView) -> FinanceriskesView {
-  let result = finance_risk_es_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_view_fill(s : FinanceriskesView, v : Double) -> FinanceriskesView {
-  let result = finance_risk_es_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_view_min(s : FinanceriskesView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_risk_es_range_sum(s : FinanceriskesRange) -> Double { @_common.su
 pub fn finance_risk_es_range_mean(s : FinanceriskesRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_range_scale(s : FinanceriskesRange, f : Double) -> FinanceriskesRange {
-  let result = finance_risk_es_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_range_add(a : FinanceriskesRange, b : FinanceriskesRange) -> FinanceriskesRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_range_copy(s : FinanceriskesRange) -> FinanceriskesRange {
-  let result = finance_risk_es_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_range_fill(s : FinanceriskesRange, v : Double) -> FinanceriskesRange {
-  let result = finance_risk_es_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_range_min(s : FinanceriskesRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_risk_es_slice_sum(s : FinanceriskesSlice) -> Double { @_common.su
 pub fn finance_risk_es_slice_mean(s : FinanceriskesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_es_slice_scale(s : FinanceriskesSlice, f : Double) -> FinanceriskesSlice {
-  let result = finance_risk_es_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_slice_add(a : FinanceriskesSlice, b : FinanceriskesSlice) -> FinanceriskesSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_risk_es_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_risk_es_slice_copy(s : FinanceriskesSlice) -> FinanceriskesSlice {
-  let result = finance_risk_es_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_slice_fill(s : FinanceriskesSlice, v : Double) -> FinanceriskesSlice {
-  let result = finance_risk_es_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_es_slice_min(s : FinanceriskesSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn math_finite_diff_frame_sum(s : MathfinitediffFrame) -> Double { @_common.
 pub fn math_finite_diff_frame_mean(s : MathfinitediffFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_frame_scale(s : MathfinitediffFrame, f : Double) -> MathfinitediffFrame {
-  let result = math_finite_diff_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_frame_add(a : MathfinitediffFrame, b : MathfinitediffFrame) -> MathfinitediffFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_frame_copy(s : MathfinitediffFrame) -> MathfinitediffFrame {
-  let result = math_finite_diff_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_frame_fill(s : MathfinitediffFrame, v : Double) -> MathfinitediffFrame {
-  let result = math_finite_diff_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_frame_min(s : MathfinitediffFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_finite_diff_table_sum(s : MathfinitediffTable) -> Double { @_common.
 pub fn math_finite_diff_table_mean(s : MathfinitediffTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_table_scale(s : MathfinitediffTable, f : Double) -> MathfinitediffTable {
-  let result = math_finite_diff_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_table_add(a : MathfinitediffTable, b : MathfinitediffTable) -> MathfinitediffTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_table_copy(s : MathfinitediffTable) -> MathfinitediffTable {
-  let result = math_finite_diff_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_table_fill(s : MathfinitediffTable, v : Double) -> MathfinitediffTable {
-  let result = math_finite_diff_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_table_min(s : MathfinitediffTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_finite_diff_graphn_sum(s : MathfinitediffGraphN) -> Double { @_commo
 pub fn math_finite_diff_graphn_mean(s : MathfinitediffGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_graphn_scale(s : MathfinitediffGraphN, f : Double) -> MathfinitediffGraphN {
-  let result = math_finite_diff_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_graphn_add(a : MathfinitediffGraphN, b : MathfinitediffGraphN) -> MathfinitediffGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_graphn_copy(s : MathfinitediffGraphN) -> MathfinitediffGraphN {
-  let result = math_finite_diff_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_graphn_fill(s : MathfinitediffGraphN, v : Double) -> MathfinitediffGraphN {
-  let result = math_finite_diff_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_graphn_min(s : MathfinitediffGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_finite_diff_node_sum(s : MathfinitediffNode) -> Double { @_common.su
 pub fn math_finite_diff_node_mean(s : MathfinitediffNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_node_scale(s : MathfinitediffNode, f : Double) -> MathfinitediffNode {
-  let result = math_finite_diff_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_node_add(a : MathfinitediffNode, b : MathfinitediffNode) -> MathfinitediffNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_node_copy(s : MathfinitediffNode) -> MathfinitediffNode {
-  let result = math_finite_diff_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_node_fill(s : MathfinitediffNode, v : Double) -> MathfinitediffNode {
-  let result = math_finite_diff_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_node_min(s : MathfinitediffNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_finite_diff_edge_sum(s : MathfinitediffEdge) -> Double { @_common.su
 pub fn math_finite_diff_edge_mean(s : MathfinitediffEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_edge_scale(s : MathfinitediffEdge, f : Double) -> MathfinitediffEdge {
-  let result = math_finite_diff_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_edge_add(a : MathfinitediffEdge, b : MathfinitediffEdge) -> MathfinitediffEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_edge_copy(s : MathfinitediffEdge) -> MathfinitediffEdge {
-  let result = math_finite_diff_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_edge_fill(s : MathfinitediffEdge, v : Double) -> MathfinitediffEdge {
-  let result = math_finite_diff_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_edge_min(s : MathfinitediffEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_finite_diff_path_sum(s : MathfinitediffPath) -> Double { @_common.su
 pub fn math_finite_diff_path_mean(s : MathfinitediffPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_path_scale(s : MathfinitediffPath, f : Double) -> MathfinitediffPath {
-  let result = math_finite_diff_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_path_add(a : MathfinitediffPath, b : MathfinitediffPath) -> MathfinitediffPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_path_copy(s : MathfinitediffPath) -> MathfinitediffPath {
-  let result = math_finite_diff_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_path_fill(s : MathfinitediffPath, v : Double) -> MathfinitediffPath {
-  let result = math_finite_diff_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_path_min(s : MathfinitediffPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_finite_diff_cluster_sum(s : MathfinitediffCluster) -> Double { @_com
 pub fn math_finite_diff_cluster_mean(s : MathfinitediffCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_cluster_scale(s : MathfinitediffCluster, f : Double) -> MathfinitediffCluster {
-  let result = math_finite_diff_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_cluster_add(a : MathfinitediffCluster, b : MathfinitediffCluster) -> MathfinitediffCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_cluster_copy(s : MathfinitediffCluster) -> MathfinitediffCluster {
-  let result = math_finite_diff_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_cluster_fill(s : MathfinitediffCluster, v : Double) -> MathfinitediffCluster {
-  let result = math_finite_diff_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_cluster_min(s : MathfinitediffCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_finite_diff_model_sum(s : MathfinitediffModel) -> Double { @_common.
 pub fn math_finite_diff_model_mean(s : MathfinitediffModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_model_scale(s : MathfinitediffModel, f : Double) -> MathfinitediffModel {
-  let result = math_finite_diff_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_model_add(a : MathfinitediffModel, b : MathfinitediffModel) -> MathfinitediffModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_model_copy(s : MathfinitediffModel) -> MathfinitediffModel {
-  let result = math_finite_diff_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_model_fill(s : MathfinitediffModel, v : Double) -> MathfinitediffModel {
-  let result = math_finite_diff_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_model_min(s : MathfinitediffModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_finite_diff_layer_sum(s : MathfinitediffLayer) -> Double { @_common.
 pub fn math_finite_diff_layer_mean(s : MathfinitediffLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_layer_scale(s : MathfinitediffLayer, f : Double) -> MathfinitediffLayer {
-  let result = math_finite_diff_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_layer_add(a : MathfinitediffLayer, b : MathfinitediffLayer) -> MathfinitediffLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_layer_copy(s : MathfinitediffLayer) -> MathfinitediffLayer {
-  let result = math_finite_diff_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_layer_fill(s : MathfinitediffLayer, v : Double) -> MathfinitediffLayer {
-  let result = math_finite_diff_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_layer_min(s : MathfinitediffLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_finite_diff_buffer_sum(s : MathfinitediffBuffer) -> Double { @_commo
 pub fn math_finite_diff_buffer_mean(s : MathfinitediffBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_buffer_scale(s : MathfinitediffBuffer, f : Double) -> MathfinitediffBuffer {
-  let result = math_finite_diff_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_buffer_add(a : MathfinitediffBuffer, b : MathfinitediffBuffer) -> MathfinitediffBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_buffer_copy(s : MathfinitediffBuffer) -> MathfinitediffBuffer {
-  let result = math_finite_diff_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_buffer_fill(s : MathfinitediffBuffer, v : Double) -> MathfinitediffBuffer {
-  let result = math_finite_diff_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_buffer_min(s : MathfinitediffBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_finite_diff_cursor_sum(s : MathfinitediffCursor) -> Double { @_commo
 pub fn math_finite_diff_cursor_mean(s : MathfinitediffCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_cursor_scale(s : MathfinitediffCursor, f : Double) -> MathfinitediffCursor {
-  let result = math_finite_diff_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_cursor_add(a : MathfinitediffCursor, b : MathfinitediffCursor) -> MathfinitediffCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_cursor_copy(s : MathfinitediffCursor) -> MathfinitediffCursor {
-  let result = math_finite_diff_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_cursor_fill(s : MathfinitediffCursor, v : Double) -> MathfinitediffCursor {
-  let result = math_finite_diff_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_cursor_min(s : MathfinitediffCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_finite_diff_view_sum(s : MathfinitediffView) -> Double { @_common.su
 pub fn math_finite_diff_view_mean(s : MathfinitediffView) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_view_scale(s : MathfinitediffView, f : Double) -> MathfinitediffView {
-  let result = math_finite_diff_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_view_add(a : MathfinitediffView, b : MathfinitediffView) -> MathfinitediffView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_view_copy(s : MathfinitediffView) -> MathfinitediffView {
-  let result = math_finite_diff_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_view_fill(s : MathfinitediffView, v : Double) -> MathfinitediffView {
-  let result = math_finite_diff_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_view_min(s : MathfinitediffView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_finite_diff_range_sum(s : MathfinitediffRange) -> Double { @_common.
 pub fn math_finite_diff_range_mean(s : MathfinitediffRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_range_scale(s : MathfinitediffRange, f : Double) -> MathfinitediffRange {
-  let result = math_finite_diff_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_range_add(a : MathfinitediffRange, b : MathfinitediffRange) -> MathfinitediffRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_range_copy(s : MathfinitediffRange) -> MathfinitediffRange {
-  let result = math_finite_diff_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_range_fill(s : MathfinitediffRange, v : Double) -> MathfinitediffRange {
-  let result = math_finite_diff_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_range_min(s : MathfinitediffRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_finite_diff_slice_sum(s : MathfinitediffSlice) -> Double { @_common.
 pub fn math_finite_diff_slice_mean(s : MathfinitediffSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_slice_scale(s : MathfinitediffSlice, f : Double) -> MathfinitediffSlice {
-  let result = math_finite_diff_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_slice_add(a : MathfinitediffSlice, b : MathfinitediffSlice) -> MathfinitediffSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_finite_diff_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_finite_diff_slice_copy(s : MathfinitediffSlice) -> MathfinitediffSlice {
-  let result = math_finite_diff_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_slice_fill(s : MathfinitediffSlice, v : Double) -> MathfinitediffSlice {
-  let result = math_finite_diff_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_finite_diff_slice_min(s : MathfinitediffSlice) -> Double { @_common.min(s.data) }

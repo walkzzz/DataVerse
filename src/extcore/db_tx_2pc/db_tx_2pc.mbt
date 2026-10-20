@@ -383,28 +383,20 @@ pub fn db_tx_2pc_frame_sum(s : Dbtx2pcFrame) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_frame_mean(s : Dbtx2pcFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_frame_scale(s : Dbtx2pcFrame, f : Double) -> Dbtx2pcFrame {
-  let result = db_tx_2pc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_frame_add(a : Dbtx2pcFrame, b : Dbtx2pcFrame) -> Dbtx2pcFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_frame_copy(s : Dbtx2pcFrame) -> Dbtx2pcFrame {
-  let result = db_tx_2pc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_frame_fill(s : Dbtx2pcFrame, v : Double) -> Dbtx2pcFrame {
-  let result = db_tx_2pc_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_frame_min(s : Dbtx2pcFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_tx_2pc_table_sum(s : Dbtx2pcTable) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_table_mean(s : Dbtx2pcTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_table_scale(s : Dbtx2pcTable, f : Double) -> Dbtx2pcTable {
-  let result = db_tx_2pc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_table_add(a : Dbtx2pcTable, b : Dbtx2pcTable) -> Dbtx2pcTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_table_copy(s : Dbtx2pcTable) -> Dbtx2pcTable {
-  let result = db_tx_2pc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_table_fill(s : Dbtx2pcTable, v : Double) -> Dbtx2pcTable {
-  let result = db_tx_2pc_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_table_min(s : Dbtx2pcTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_tx_2pc_graphn_sum(s : Dbtx2pcGraphN) -> Double { @_common.sum(s.data) 
 pub fn db_tx_2pc_graphn_mean(s : Dbtx2pcGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_graphn_scale(s : Dbtx2pcGraphN, f : Double) -> Dbtx2pcGraphN {
-  let result = db_tx_2pc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_graphn_add(a : Dbtx2pcGraphN, b : Dbtx2pcGraphN) -> Dbtx2pcGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_graphn_copy(s : Dbtx2pcGraphN) -> Dbtx2pcGraphN {
-  let result = db_tx_2pc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_graphn_fill(s : Dbtx2pcGraphN, v : Double) -> Dbtx2pcGraphN {
-  let result = db_tx_2pc_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_graphn_min(s : Dbtx2pcGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_tx_2pc_node_sum(s : Dbtx2pcNode) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_node_mean(s : Dbtx2pcNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_node_scale(s : Dbtx2pcNode, f : Double) -> Dbtx2pcNode {
-  let result = db_tx_2pc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_node_add(a : Dbtx2pcNode, b : Dbtx2pcNode) -> Dbtx2pcNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_node_copy(s : Dbtx2pcNode) -> Dbtx2pcNode {
-  let result = db_tx_2pc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_node_fill(s : Dbtx2pcNode, v : Double) -> Dbtx2pcNode {
-  let result = db_tx_2pc_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_node_min(s : Dbtx2pcNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_tx_2pc_edge_sum(s : Dbtx2pcEdge) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_edge_mean(s : Dbtx2pcEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_edge_scale(s : Dbtx2pcEdge, f : Double) -> Dbtx2pcEdge {
-  let result = db_tx_2pc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_edge_add(a : Dbtx2pcEdge, b : Dbtx2pcEdge) -> Dbtx2pcEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_edge_copy(s : Dbtx2pcEdge) -> Dbtx2pcEdge {
-  let result = db_tx_2pc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_edge_fill(s : Dbtx2pcEdge, v : Double) -> Dbtx2pcEdge {
-  let result = db_tx_2pc_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_edge_min(s : Dbtx2pcEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_tx_2pc_path_sum(s : Dbtx2pcPath) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_path_mean(s : Dbtx2pcPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_path_scale(s : Dbtx2pcPath, f : Double) -> Dbtx2pcPath {
-  let result = db_tx_2pc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_path_add(a : Dbtx2pcPath, b : Dbtx2pcPath) -> Dbtx2pcPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_path_copy(s : Dbtx2pcPath) -> Dbtx2pcPath {
-  let result = db_tx_2pc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_path_fill(s : Dbtx2pcPath, v : Double) -> Dbtx2pcPath {
-  let result = db_tx_2pc_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_path_min(s : Dbtx2pcPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_tx_2pc_cluster_sum(s : Dbtx2pcCluster) -> Double { @_common.sum(s.data
 pub fn db_tx_2pc_cluster_mean(s : Dbtx2pcCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_cluster_scale(s : Dbtx2pcCluster, f : Double) -> Dbtx2pcCluster {
-  let result = db_tx_2pc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_cluster_add(a : Dbtx2pcCluster, b : Dbtx2pcCluster) -> Dbtx2pcCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_cluster_copy(s : Dbtx2pcCluster) -> Dbtx2pcCluster {
-  let result = db_tx_2pc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_cluster_fill(s : Dbtx2pcCluster, v : Double) -> Dbtx2pcCluster {
-  let result = db_tx_2pc_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_cluster_min(s : Dbtx2pcCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_tx_2pc_model_sum(s : Dbtx2pcModel) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_model_mean(s : Dbtx2pcModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_model_scale(s : Dbtx2pcModel, f : Double) -> Dbtx2pcModel {
-  let result = db_tx_2pc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_model_add(a : Dbtx2pcModel, b : Dbtx2pcModel) -> Dbtx2pcModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_model_copy(s : Dbtx2pcModel) -> Dbtx2pcModel {
-  let result = db_tx_2pc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_model_fill(s : Dbtx2pcModel, v : Double) -> Dbtx2pcModel {
-  let result = db_tx_2pc_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_model_min(s : Dbtx2pcModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_tx_2pc_layer_sum(s : Dbtx2pcLayer) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_layer_mean(s : Dbtx2pcLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_layer_scale(s : Dbtx2pcLayer, f : Double) -> Dbtx2pcLayer {
-  let result = db_tx_2pc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_layer_add(a : Dbtx2pcLayer, b : Dbtx2pcLayer) -> Dbtx2pcLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_layer_copy(s : Dbtx2pcLayer) -> Dbtx2pcLayer {
-  let result = db_tx_2pc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_layer_fill(s : Dbtx2pcLayer, v : Double) -> Dbtx2pcLayer {
-  let result = db_tx_2pc_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_layer_min(s : Dbtx2pcLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_tx_2pc_buffer_sum(s : Dbtx2pcBuffer) -> Double { @_common.sum(s.data) 
 pub fn db_tx_2pc_buffer_mean(s : Dbtx2pcBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_buffer_scale(s : Dbtx2pcBuffer, f : Double) -> Dbtx2pcBuffer {
-  let result = db_tx_2pc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_buffer_add(a : Dbtx2pcBuffer, b : Dbtx2pcBuffer) -> Dbtx2pcBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_buffer_copy(s : Dbtx2pcBuffer) -> Dbtx2pcBuffer {
-  let result = db_tx_2pc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_buffer_fill(s : Dbtx2pcBuffer, v : Double) -> Dbtx2pcBuffer {
-  let result = db_tx_2pc_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_buffer_min(s : Dbtx2pcBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_tx_2pc_cursor_sum(s : Dbtx2pcCursor) -> Double { @_common.sum(s.data) 
 pub fn db_tx_2pc_cursor_mean(s : Dbtx2pcCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_cursor_scale(s : Dbtx2pcCursor, f : Double) -> Dbtx2pcCursor {
-  let result = db_tx_2pc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_cursor_add(a : Dbtx2pcCursor, b : Dbtx2pcCursor) -> Dbtx2pcCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_cursor_copy(s : Dbtx2pcCursor) -> Dbtx2pcCursor {
-  let result = db_tx_2pc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_cursor_fill(s : Dbtx2pcCursor, v : Double) -> Dbtx2pcCursor {
-  let result = db_tx_2pc_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_cursor_min(s : Dbtx2pcCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_tx_2pc_view_sum(s : Dbtx2pcView) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_view_mean(s : Dbtx2pcView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_view_scale(s : Dbtx2pcView, f : Double) -> Dbtx2pcView {
-  let result = db_tx_2pc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_view_add(a : Dbtx2pcView, b : Dbtx2pcView) -> Dbtx2pcView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_view_copy(s : Dbtx2pcView) -> Dbtx2pcView {
-  let result = db_tx_2pc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_view_fill(s : Dbtx2pcView, v : Double) -> Dbtx2pcView {
-  let result = db_tx_2pc_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_view_min(s : Dbtx2pcView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_tx_2pc_range_sum(s : Dbtx2pcRange) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_range_mean(s : Dbtx2pcRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_range_scale(s : Dbtx2pcRange, f : Double) -> Dbtx2pcRange {
-  let result = db_tx_2pc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_range_add(a : Dbtx2pcRange, b : Dbtx2pcRange) -> Dbtx2pcRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_range_copy(s : Dbtx2pcRange) -> Dbtx2pcRange {
-  let result = db_tx_2pc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_range_fill(s : Dbtx2pcRange, v : Double) -> Dbtx2pcRange {
-  let result = db_tx_2pc_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_range_min(s : Dbtx2pcRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_tx_2pc_slice_sum(s : Dbtx2pcSlice) -> Double { @_common.sum(s.data) }
 pub fn db_tx_2pc_slice_mean(s : Dbtx2pcSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_slice_scale(s : Dbtx2pcSlice, f : Double) -> Dbtx2pcSlice {
-  let result = db_tx_2pc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_slice_add(a : Dbtx2pcSlice, b : Dbtx2pcSlice) -> Dbtx2pcSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_2pc_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_2pc_slice_copy(s : Dbtx2pcSlice) -> Dbtx2pcSlice {
-  let result = db_tx_2pc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_slice_fill(s : Dbtx2pcSlice, v : Double) -> Dbtx2pcSlice {
-  let result = db_tx_2pc_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_2pc_slice_min(s : Dbtx2pcSlice) -> Double { @_common.min(s.data) }

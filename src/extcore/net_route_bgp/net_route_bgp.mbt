@@ -383,28 +383,20 @@ pub fn net_route_bgp_frame_sum(s : NetroutebgpFrame) -> Double { @_common.sum(s.
 pub fn net_route_bgp_frame_mean(s : NetroutebgpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_frame_scale(s : NetroutebgpFrame, f : Double) -> NetroutebgpFrame {
-  let result = net_route_bgp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_frame_add(a : NetroutebgpFrame, b : NetroutebgpFrame) -> NetroutebgpFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_frame_copy(s : NetroutebgpFrame) -> NetroutebgpFrame {
-  let result = net_route_bgp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_frame_fill(s : NetroutebgpFrame, v : Double) -> NetroutebgpFrame {
-  let result = net_route_bgp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_frame_min(s : NetroutebgpFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_route_bgp_table_sum(s : NetroutebgpTable) -> Double { @_common.sum(s.
 pub fn net_route_bgp_table_mean(s : NetroutebgpTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_table_scale(s : NetroutebgpTable, f : Double) -> NetroutebgpTable {
-  let result = net_route_bgp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_table_add(a : NetroutebgpTable, b : NetroutebgpTable) -> NetroutebgpTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_table_copy(s : NetroutebgpTable) -> NetroutebgpTable {
-  let result = net_route_bgp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_table_fill(s : NetroutebgpTable, v : Double) -> NetroutebgpTable {
-  let result = net_route_bgp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_table_min(s : NetroutebgpTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_route_bgp_graphn_sum(s : NetroutebgpGraphN) -> Double { @_common.sum(
 pub fn net_route_bgp_graphn_mean(s : NetroutebgpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_graphn_scale(s : NetroutebgpGraphN, f : Double) -> NetroutebgpGraphN {
-  let result = net_route_bgp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_graphn_add(a : NetroutebgpGraphN, b : NetroutebgpGraphN) -> NetroutebgpGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_graphn_copy(s : NetroutebgpGraphN) -> NetroutebgpGraphN {
-  let result = net_route_bgp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_graphn_fill(s : NetroutebgpGraphN, v : Double) -> NetroutebgpGraphN {
-  let result = net_route_bgp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_graphn_min(s : NetroutebgpGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_route_bgp_node_sum(s : NetroutebgpNode) -> Double { @_common.sum(s.da
 pub fn net_route_bgp_node_mean(s : NetroutebgpNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_node_scale(s : NetroutebgpNode, f : Double) -> NetroutebgpNode {
-  let result = net_route_bgp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_node_add(a : NetroutebgpNode, b : NetroutebgpNode) -> NetroutebgpNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_node_copy(s : NetroutebgpNode) -> NetroutebgpNode {
-  let result = net_route_bgp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_node_fill(s : NetroutebgpNode, v : Double) -> NetroutebgpNode {
-  let result = net_route_bgp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_node_min(s : NetroutebgpNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_route_bgp_edge_sum(s : NetroutebgpEdge) -> Double { @_common.sum(s.da
 pub fn net_route_bgp_edge_mean(s : NetroutebgpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_edge_scale(s : NetroutebgpEdge, f : Double) -> NetroutebgpEdge {
-  let result = net_route_bgp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_edge_add(a : NetroutebgpEdge, b : NetroutebgpEdge) -> NetroutebgpEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_edge_copy(s : NetroutebgpEdge) -> NetroutebgpEdge {
-  let result = net_route_bgp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_edge_fill(s : NetroutebgpEdge, v : Double) -> NetroutebgpEdge {
-  let result = net_route_bgp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_edge_min(s : NetroutebgpEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_route_bgp_path_sum(s : NetroutebgpPath) -> Double { @_common.sum(s.da
 pub fn net_route_bgp_path_mean(s : NetroutebgpPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_path_scale(s : NetroutebgpPath, f : Double) -> NetroutebgpPath {
-  let result = net_route_bgp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_path_add(a : NetroutebgpPath, b : NetroutebgpPath) -> NetroutebgpPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_path_copy(s : NetroutebgpPath) -> NetroutebgpPath {
-  let result = net_route_bgp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_path_fill(s : NetroutebgpPath, v : Double) -> NetroutebgpPath {
-  let result = net_route_bgp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_path_min(s : NetroutebgpPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_route_bgp_cluster_sum(s : NetroutebgpCluster) -> Double { @_common.su
 pub fn net_route_bgp_cluster_mean(s : NetroutebgpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_cluster_scale(s : NetroutebgpCluster, f : Double) -> NetroutebgpCluster {
-  let result = net_route_bgp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_cluster_add(a : NetroutebgpCluster, b : NetroutebgpCluster) -> NetroutebgpCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_cluster_copy(s : NetroutebgpCluster) -> NetroutebgpCluster {
-  let result = net_route_bgp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_cluster_fill(s : NetroutebgpCluster, v : Double) -> NetroutebgpCluster {
-  let result = net_route_bgp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_cluster_min(s : NetroutebgpCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_route_bgp_model_sum(s : NetroutebgpModel) -> Double { @_common.sum(s.
 pub fn net_route_bgp_model_mean(s : NetroutebgpModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_model_scale(s : NetroutebgpModel, f : Double) -> NetroutebgpModel {
-  let result = net_route_bgp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_model_add(a : NetroutebgpModel, b : NetroutebgpModel) -> NetroutebgpModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_model_copy(s : NetroutebgpModel) -> NetroutebgpModel {
-  let result = net_route_bgp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_model_fill(s : NetroutebgpModel, v : Double) -> NetroutebgpModel {
-  let result = net_route_bgp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_model_min(s : NetroutebgpModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_route_bgp_layer_sum(s : NetroutebgpLayer) -> Double { @_common.sum(s.
 pub fn net_route_bgp_layer_mean(s : NetroutebgpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_layer_scale(s : NetroutebgpLayer, f : Double) -> NetroutebgpLayer {
-  let result = net_route_bgp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_layer_add(a : NetroutebgpLayer, b : NetroutebgpLayer) -> NetroutebgpLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_layer_copy(s : NetroutebgpLayer) -> NetroutebgpLayer {
-  let result = net_route_bgp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_layer_fill(s : NetroutebgpLayer, v : Double) -> NetroutebgpLayer {
-  let result = net_route_bgp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_layer_min(s : NetroutebgpLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_route_bgp_buffer_sum(s : NetroutebgpBuffer) -> Double { @_common.sum(
 pub fn net_route_bgp_buffer_mean(s : NetroutebgpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_buffer_scale(s : NetroutebgpBuffer, f : Double) -> NetroutebgpBuffer {
-  let result = net_route_bgp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_buffer_add(a : NetroutebgpBuffer, b : NetroutebgpBuffer) -> NetroutebgpBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_buffer_copy(s : NetroutebgpBuffer) -> NetroutebgpBuffer {
-  let result = net_route_bgp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_buffer_fill(s : NetroutebgpBuffer, v : Double) -> NetroutebgpBuffer {
-  let result = net_route_bgp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_buffer_min(s : NetroutebgpBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_route_bgp_cursor_sum(s : NetroutebgpCursor) -> Double { @_common.sum(
 pub fn net_route_bgp_cursor_mean(s : NetroutebgpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_cursor_scale(s : NetroutebgpCursor, f : Double) -> NetroutebgpCursor {
-  let result = net_route_bgp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_cursor_add(a : NetroutebgpCursor, b : NetroutebgpCursor) -> NetroutebgpCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_cursor_copy(s : NetroutebgpCursor) -> NetroutebgpCursor {
-  let result = net_route_bgp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_cursor_fill(s : NetroutebgpCursor, v : Double) -> NetroutebgpCursor {
-  let result = net_route_bgp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_cursor_min(s : NetroutebgpCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_route_bgp_view_sum(s : NetroutebgpView) -> Double { @_common.sum(s.da
 pub fn net_route_bgp_view_mean(s : NetroutebgpView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_view_scale(s : NetroutebgpView, f : Double) -> NetroutebgpView {
-  let result = net_route_bgp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_view_add(a : NetroutebgpView, b : NetroutebgpView) -> NetroutebgpView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_view_copy(s : NetroutebgpView) -> NetroutebgpView {
-  let result = net_route_bgp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_view_fill(s : NetroutebgpView, v : Double) -> NetroutebgpView {
-  let result = net_route_bgp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_view_min(s : NetroutebgpView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_route_bgp_range_sum(s : NetroutebgpRange) -> Double { @_common.sum(s.
 pub fn net_route_bgp_range_mean(s : NetroutebgpRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_range_scale(s : NetroutebgpRange, f : Double) -> NetroutebgpRange {
-  let result = net_route_bgp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_range_add(a : NetroutebgpRange, b : NetroutebgpRange) -> NetroutebgpRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_range_copy(s : NetroutebgpRange) -> NetroutebgpRange {
-  let result = net_route_bgp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_range_fill(s : NetroutebgpRange, v : Double) -> NetroutebgpRange {
-  let result = net_route_bgp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_range_min(s : NetroutebgpRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_route_bgp_slice_sum(s : NetroutebgpSlice) -> Double { @_common.sum(s.
 pub fn net_route_bgp_slice_mean(s : NetroutebgpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_slice_scale(s : NetroutebgpSlice, f : Double) -> NetroutebgpSlice {
-  let result = net_route_bgp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_slice_add(a : NetroutebgpSlice, b : NetroutebgpSlice) -> NetroutebgpSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_route_bgp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_route_bgp_slice_copy(s : NetroutebgpSlice) -> NetroutebgpSlice {
-  let result = net_route_bgp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_slice_fill(s : NetroutebgpSlice, v : Double) -> NetroutebgpSlice {
-  let result = net_route_bgp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bgp_slice_min(s : NetroutebgpSlice) -> Double { @_common.min(s.data) }

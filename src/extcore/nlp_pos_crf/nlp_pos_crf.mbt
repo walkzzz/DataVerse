@@ -383,28 +383,20 @@ pub fn nlp_pos_crf_frame_sum(s : NlpposcrfFrame) -> Double { @_common.sum(s.data
 pub fn nlp_pos_crf_frame_mean(s : NlpposcrfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_frame_scale(s : NlpposcrfFrame, f : Double) -> NlpposcrfFrame {
-  let result = nlp_pos_crf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_frame_add(a : NlpposcrfFrame, b : NlpposcrfFrame) -> NlpposcrfFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_frame_copy(s : NlpposcrfFrame) -> NlpposcrfFrame {
-  let result = nlp_pos_crf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_frame_fill(s : NlpposcrfFrame, v : Double) -> NlpposcrfFrame {
-  let result = nlp_pos_crf_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_frame_min(s : NlpposcrfFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_pos_crf_table_sum(s : NlpposcrfTable) -> Double { @_common.sum(s.data
 pub fn nlp_pos_crf_table_mean(s : NlpposcrfTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_table_scale(s : NlpposcrfTable, f : Double) -> NlpposcrfTable {
-  let result = nlp_pos_crf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_table_add(a : NlpposcrfTable, b : NlpposcrfTable) -> NlpposcrfTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_table_copy(s : NlpposcrfTable) -> NlpposcrfTable {
-  let result = nlp_pos_crf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_table_fill(s : NlpposcrfTable, v : Double) -> NlpposcrfTable {
-  let result = nlp_pos_crf_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_table_min(s : NlpposcrfTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_pos_crf_graphn_sum(s : NlpposcrfGraphN) -> Double { @_common.sum(s.da
 pub fn nlp_pos_crf_graphn_mean(s : NlpposcrfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_graphn_scale(s : NlpposcrfGraphN, f : Double) -> NlpposcrfGraphN {
-  let result = nlp_pos_crf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_graphn_add(a : NlpposcrfGraphN, b : NlpposcrfGraphN) -> NlpposcrfGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_graphn_copy(s : NlpposcrfGraphN) -> NlpposcrfGraphN {
-  let result = nlp_pos_crf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_graphn_fill(s : NlpposcrfGraphN, v : Double) -> NlpposcrfGraphN {
-  let result = nlp_pos_crf_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_graphn_min(s : NlpposcrfGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_pos_crf_node_sum(s : NlpposcrfNode) -> Double { @_common.sum(s.data) 
 pub fn nlp_pos_crf_node_mean(s : NlpposcrfNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_node_scale(s : NlpposcrfNode, f : Double) -> NlpposcrfNode {
-  let result = nlp_pos_crf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_node_add(a : NlpposcrfNode, b : NlpposcrfNode) -> NlpposcrfNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_node_copy(s : NlpposcrfNode) -> NlpposcrfNode {
-  let result = nlp_pos_crf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_node_fill(s : NlpposcrfNode, v : Double) -> NlpposcrfNode {
-  let result = nlp_pos_crf_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_node_min(s : NlpposcrfNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_pos_crf_edge_sum(s : NlpposcrfEdge) -> Double { @_common.sum(s.data) 
 pub fn nlp_pos_crf_edge_mean(s : NlpposcrfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_edge_scale(s : NlpposcrfEdge, f : Double) -> NlpposcrfEdge {
-  let result = nlp_pos_crf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_edge_add(a : NlpposcrfEdge, b : NlpposcrfEdge) -> NlpposcrfEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_edge_copy(s : NlpposcrfEdge) -> NlpposcrfEdge {
-  let result = nlp_pos_crf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_edge_fill(s : NlpposcrfEdge, v : Double) -> NlpposcrfEdge {
-  let result = nlp_pos_crf_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_edge_min(s : NlpposcrfEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_pos_crf_path_sum(s : NlpposcrfPath) -> Double { @_common.sum(s.data) 
 pub fn nlp_pos_crf_path_mean(s : NlpposcrfPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_path_scale(s : NlpposcrfPath, f : Double) -> NlpposcrfPath {
-  let result = nlp_pos_crf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_path_add(a : NlpposcrfPath, b : NlpposcrfPath) -> NlpposcrfPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_path_copy(s : NlpposcrfPath) -> NlpposcrfPath {
-  let result = nlp_pos_crf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_path_fill(s : NlpposcrfPath, v : Double) -> NlpposcrfPath {
-  let result = nlp_pos_crf_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_path_min(s : NlpposcrfPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_pos_crf_cluster_sum(s : NlpposcrfCluster) -> Double { @_common.sum(s.
 pub fn nlp_pos_crf_cluster_mean(s : NlpposcrfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_cluster_scale(s : NlpposcrfCluster, f : Double) -> NlpposcrfCluster {
-  let result = nlp_pos_crf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cluster_add(a : NlpposcrfCluster, b : NlpposcrfCluster) -> NlpposcrfCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_cluster_copy(s : NlpposcrfCluster) -> NlpposcrfCluster {
-  let result = nlp_pos_crf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cluster_fill(s : NlpposcrfCluster, v : Double) -> NlpposcrfCluster {
-  let result = nlp_pos_crf_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cluster_min(s : NlpposcrfCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_pos_crf_model_sum(s : NlpposcrfModel) -> Double { @_common.sum(s.data
 pub fn nlp_pos_crf_model_mean(s : NlpposcrfModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_model_scale(s : NlpposcrfModel, f : Double) -> NlpposcrfModel {
-  let result = nlp_pos_crf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_model_add(a : NlpposcrfModel, b : NlpposcrfModel) -> NlpposcrfModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_model_copy(s : NlpposcrfModel) -> NlpposcrfModel {
-  let result = nlp_pos_crf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_model_fill(s : NlpposcrfModel, v : Double) -> NlpposcrfModel {
-  let result = nlp_pos_crf_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_model_min(s : NlpposcrfModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_pos_crf_layer_sum(s : NlpposcrfLayer) -> Double { @_common.sum(s.data
 pub fn nlp_pos_crf_layer_mean(s : NlpposcrfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_layer_scale(s : NlpposcrfLayer, f : Double) -> NlpposcrfLayer {
-  let result = nlp_pos_crf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_layer_add(a : NlpposcrfLayer, b : NlpposcrfLayer) -> NlpposcrfLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_layer_copy(s : NlpposcrfLayer) -> NlpposcrfLayer {
-  let result = nlp_pos_crf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_layer_fill(s : NlpposcrfLayer, v : Double) -> NlpposcrfLayer {
-  let result = nlp_pos_crf_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_layer_min(s : NlpposcrfLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_pos_crf_buffer_sum(s : NlpposcrfBuffer) -> Double { @_common.sum(s.da
 pub fn nlp_pos_crf_buffer_mean(s : NlpposcrfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_buffer_scale(s : NlpposcrfBuffer, f : Double) -> NlpposcrfBuffer {
-  let result = nlp_pos_crf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_buffer_add(a : NlpposcrfBuffer, b : NlpposcrfBuffer) -> NlpposcrfBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_buffer_copy(s : NlpposcrfBuffer) -> NlpposcrfBuffer {
-  let result = nlp_pos_crf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_buffer_fill(s : NlpposcrfBuffer, v : Double) -> NlpposcrfBuffer {
-  let result = nlp_pos_crf_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_buffer_min(s : NlpposcrfBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_pos_crf_cursor_sum(s : NlpposcrfCursor) -> Double { @_common.sum(s.da
 pub fn nlp_pos_crf_cursor_mean(s : NlpposcrfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_cursor_scale(s : NlpposcrfCursor, f : Double) -> NlpposcrfCursor {
-  let result = nlp_pos_crf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cursor_add(a : NlpposcrfCursor, b : NlpposcrfCursor) -> NlpposcrfCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_cursor_copy(s : NlpposcrfCursor) -> NlpposcrfCursor {
-  let result = nlp_pos_crf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cursor_fill(s : NlpposcrfCursor, v : Double) -> NlpposcrfCursor {
-  let result = nlp_pos_crf_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cursor_min(s : NlpposcrfCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_pos_crf_view_sum(s : NlpposcrfView) -> Double { @_common.sum(s.data) 
 pub fn nlp_pos_crf_view_mean(s : NlpposcrfView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_view_scale(s : NlpposcrfView, f : Double) -> NlpposcrfView {
-  let result = nlp_pos_crf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_view_add(a : NlpposcrfView, b : NlpposcrfView) -> NlpposcrfView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_view_copy(s : NlpposcrfView) -> NlpposcrfView {
-  let result = nlp_pos_crf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_view_fill(s : NlpposcrfView, v : Double) -> NlpposcrfView {
-  let result = nlp_pos_crf_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_view_min(s : NlpposcrfView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_pos_crf_range_sum(s : NlpposcrfRange) -> Double { @_common.sum(s.data
 pub fn nlp_pos_crf_range_mean(s : NlpposcrfRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_range_scale(s : NlpposcrfRange, f : Double) -> NlpposcrfRange {
-  let result = nlp_pos_crf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_range_add(a : NlpposcrfRange, b : NlpposcrfRange) -> NlpposcrfRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_range_copy(s : NlpposcrfRange) -> NlpposcrfRange {
-  let result = nlp_pos_crf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_range_fill(s : NlpposcrfRange, v : Double) -> NlpposcrfRange {
-  let result = nlp_pos_crf_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_range_min(s : NlpposcrfRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_pos_crf_slice_sum(s : NlpposcrfSlice) -> Double { @_common.sum(s.data
 pub fn nlp_pos_crf_slice_mean(s : NlpposcrfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_slice_scale(s : NlpposcrfSlice, f : Double) -> NlpposcrfSlice {
-  let result = nlp_pos_crf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_slice_add(a : NlpposcrfSlice, b : NlpposcrfSlice) -> NlpposcrfSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_crf_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_crf_slice_copy(s : NlpposcrfSlice) -> NlpposcrfSlice {
-  let result = nlp_pos_crf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_slice_fill(s : NlpposcrfSlice, v : Double) -> NlpposcrfSlice {
-  let result = nlp_pos_crf_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_slice_min(s : NlpposcrfSlice) -> Double { @_common.min(s.data) }

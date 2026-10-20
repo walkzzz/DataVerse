@@ -383,28 +383,20 @@ pub fn stats_test_goodness_frame_sum(s : StatstestgoodnessFrame) -> Double { @_c
 pub fn stats_test_goodness_frame_mean(s : StatstestgoodnessFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_frame_scale(s : StatstestgoodnessFrame, f : Double) -> StatstestgoodnessFrame {
-  let result = stats_test_goodness_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_frame_add(a : StatstestgoodnessFrame, b : StatstestgoodnessFrame) -> StatstestgoodnessFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_frame_copy(s : StatstestgoodnessFrame) -> StatstestgoodnessFrame {
-  let result = stats_test_goodness_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_frame_fill(s : StatstestgoodnessFrame, v : Double) -> StatstestgoodnessFrame {
-  let result = stats_test_goodness_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_frame_min(s : StatstestgoodnessFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_test_goodness_table_sum(s : StatstestgoodnessTable) -> Double { @_c
 pub fn stats_test_goodness_table_mean(s : StatstestgoodnessTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_table_scale(s : StatstestgoodnessTable, f : Double) -> StatstestgoodnessTable {
-  let result = stats_test_goodness_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_table_add(a : StatstestgoodnessTable, b : StatstestgoodnessTable) -> StatstestgoodnessTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_table_copy(s : StatstestgoodnessTable) -> StatstestgoodnessTable {
-  let result = stats_test_goodness_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_table_fill(s : StatstestgoodnessTable, v : Double) -> StatstestgoodnessTable {
-  let result = stats_test_goodness_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_table_min(s : StatstestgoodnessTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_test_goodness_graphn_sum(s : StatstestgoodnessGraphN) -> Double { @
 pub fn stats_test_goodness_graphn_mean(s : StatstestgoodnessGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_graphn_scale(s : StatstestgoodnessGraphN, f : Double) -> StatstestgoodnessGraphN {
-  let result = stats_test_goodness_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_graphn_add(a : StatstestgoodnessGraphN, b : StatstestgoodnessGraphN) -> StatstestgoodnessGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_graphn_copy(s : StatstestgoodnessGraphN) -> StatstestgoodnessGraphN {
-  let result = stats_test_goodness_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_graphn_fill(s : StatstestgoodnessGraphN, v : Double) -> StatstestgoodnessGraphN {
-  let result = stats_test_goodness_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_graphn_min(s : StatstestgoodnessGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_test_goodness_node_sum(s : StatstestgoodnessNode) -> Double { @_com
 pub fn stats_test_goodness_node_mean(s : StatstestgoodnessNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_node_scale(s : StatstestgoodnessNode, f : Double) -> StatstestgoodnessNode {
-  let result = stats_test_goodness_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_node_add(a : StatstestgoodnessNode, b : StatstestgoodnessNode) -> StatstestgoodnessNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_node_copy(s : StatstestgoodnessNode) -> StatstestgoodnessNode {
-  let result = stats_test_goodness_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_node_fill(s : StatstestgoodnessNode, v : Double) -> StatstestgoodnessNode {
-  let result = stats_test_goodness_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_node_min(s : StatstestgoodnessNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_test_goodness_edge_sum(s : StatstestgoodnessEdge) -> Double { @_com
 pub fn stats_test_goodness_edge_mean(s : StatstestgoodnessEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_edge_scale(s : StatstestgoodnessEdge, f : Double) -> StatstestgoodnessEdge {
-  let result = stats_test_goodness_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_edge_add(a : StatstestgoodnessEdge, b : StatstestgoodnessEdge) -> StatstestgoodnessEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_edge_copy(s : StatstestgoodnessEdge) -> StatstestgoodnessEdge {
-  let result = stats_test_goodness_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_edge_fill(s : StatstestgoodnessEdge, v : Double) -> StatstestgoodnessEdge {
-  let result = stats_test_goodness_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_edge_min(s : StatstestgoodnessEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_test_goodness_path_sum(s : StatstestgoodnessPath) -> Double { @_com
 pub fn stats_test_goodness_path_mean(s : StatstestgoodnessPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_path_scale(s : StatstestgoodnessPath, f : Double) -> StatstestgoodnessPath {
-  let result = stats_test_goodness_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_path_add(a : StatstestgoodnessPath, b : StatstestgoodnessPath) -> StatstestgoodnessPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_path_copy(s : StatstestgoodnessPath) -> StatstestgoodnessPath {
-  let result = stats_test_goodness_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_path_fill(s : StatstestgoodnessPath, v : Double) -> StatstestgoodnessPath {
-  let result = stats_test_goodness_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_path_min(s : StatstestgoodnessPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_test_goodness_cluster_sum(s : StatstestgoodnessCluster) -> Double {
 pub fn stats_test_goodness_cluster_mean(s : StatstestgoodnessCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_cluster_scale(s : StatstestgoodnessCluster, f : Double) -> StatstestgoodnessCluster {
-  let result = stats_test_goodness_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cluster_add(a : StatstestgoodnessCluster, b : StatstestgoodnessCluster) -> StatstestgoodnessCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_cluster_copy(s : StatstestgoodnessCluster) -> StatstestgoodnessCluster {
-  let result = stats_test_goodness_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cluster_fill(s : StatstestgoodnessCluster, v : Double) -> StatstestgoodnessCluster {
-  let result = stats_test_goodness_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cluster_min(s : StatstestgoodnessCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_test_goodness_model_sum(s : StatstestgoodnessModel) -> Double { @_c
 pub fn stats_test_goodness_model_mean(s : StatstestgoodnessModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_model_scale(s : StatstestgoodnessModel, f : Double) -> StatstestgoodnessModel {
-  let result = stats_test_goodness_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_model_add(a : StatstestgoodnessModel, b : StatstestgoodnessModel) -> StatstestgoodnessModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_model_copy(s : StatstestgoodnessModel) -> StatstestgoodnessModel {
-  let result = stats_test_goodness_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_model_fill(s : StatstestgoodnessModel, v : Double) -> StatstestgoodnessModel {
-  let result = stats_test_goodness_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_model_min(s : StatstestgoodnessModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_test_goodness_layer_sum(s : StatstestgoodnessLayer) -> Double { @_c
 pub fn stats_test_goodness_layer_mean(s : StatstestgoodnessLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_layer_scale(s : StatstestgoodnessLayer, f : Double) -> StatstestgoodnessLayer {
-  let result = stats_test_goodness_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_layer_add(a : StatstestgoodnessLayer, b : StatstestgoodnessLayer) -> StatstestgoodnessLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_layer_copy(s : StatstestgoodnessLayer) -> StatstestgoodnessLayer {
-  let result = stats_test_goodness_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_layer_fill(s : StatstestgoodnessLayer, v : Double) -> StatstestgoodnessLayer {
-  let result = stats_test_goodness_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_layer_min(s : StatstestgoodnessLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_test_goodness_buffer_sum(s : StatstestgoodnessBuffer) -> Double { @
 pub fn stats_test_goodness_buffer_mean(s : StatstestgoodnessBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_buffer_scale(s : StatstestgoodnessBuffer, f : Double) -> StatstestgoodnessBuffer {
-  let result = stats_test_goodness_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_buffer_add(a : StatstestgoodnessBuffer, b : StatstestgoodnessBuffer) -> StatstestgoodnessBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_buffer_copy(s : StatstestgoodnessBuffer) -> StatstestgoodnessBuffer {
-  let result = stats_test_goodness_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_buffer_fill(s : StatstestgoodnessBuffer, v : Double) -> StatstestgoodnessBuffer {
-  let result = stats_test_goodness_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_buffer_min(s : StatstestgoodnessBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_test_goodness_cursor_sum(s : StatstestgoodnessCursor) -> Double { @
 pub fn stats_test_goodness_cursor_mean(s : StatstestgoodnessCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_cursor_scale(s : StatstestgoodnessCursor, f : Double) -> StatstestgoodnessCursor {
-  let result = stats_test_goodness_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cursor_add(a : StatstestgoodnessCursor, b : StatstestgoodnessCursor) -> StatstestgoodnessCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_cursor_copy(s : StatstestgoodnessCursor) -> StatstestgoodnessCursor {
-  let result = stats_test_goodness_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cursor_fill(s : StatstestgoodnessCursor, v : Double) -> StatstestgoodnessCursor {
-  let result = stats_test_goodness_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cursor_min(s : StatstestgoodnessCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_test_goodness_view_sum(s : StatstestgoodnessView) -> Double { @_com
 pub fn stats_test_goodness_view_mean(s : StatstestgoodnessView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_view_scale(s : StatstestgoodnessView, f : Double) -> StatstestgoodnessView {
-  let result = stats_test_goodness_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_view_add(a : StatstestgoodnessView, b : StatstestgoodnessView) -> StatstestgoodnessView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_view_copy(s : StatstestgoodnessView) -> StatstestgoodnessView {
-  let result = stats_test_goodness_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_view_fill(s : StatstestgoodnessView, v : Double) -> StatstestgoodnessView {
-  let result = stats_test_goodness_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_view_min(s : StatstestgoodnessView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_test_goodness_range_sum(s : StatstestgoodnessRange) -> Double { @_c
 pub fn stats_test_goodness_range_mean(s : StatstestgoodnessRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_range_scale(s : StatstestgoodnessRange, f : Double) -> StatstestgoodnessRange {
-  let result = stats_test_goodness_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_range_add(a : StatstestgoodnessRange, b : StatstestgoodnessRange) -> StatstestgoodnessRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_range_copy(s : StatstestgoodnessRange) -> StatstestgoodnessRange {
-  let result = stats_test_goodness_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_range_fill(s : StatstestgoodnessRange, v : Double) -> StatstestgoodnessRange {
-  let result = stats_test_goodness_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_range_min(s : StatstestgoodnessRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_test_goodness_slice_sum(s : StatstestgoodnessSlice) -> Double { @_c
 pub fn stats_test_goodness_slice_mean(s : StatstestgoodnessSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_slice_scale(s : StatstestgoodnessSlice, f : Double) -> StatstestgoodnessSlice {
-  let result = stats_test_goodness_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_slice_add(a : StatstestgoodnessSlice, b : StatstestgoodnessSlice) -> StatstestgoodnessSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_test_goodness_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_test_goodness_slice_copy(s : StatstestgoodnessSlice) -> StatstestgoodnessSlice {
-  let result = stats_test_goodness_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_slice_fill(s : StatstestgoodnessSlice, v : Double) -> StatstestgoodnessSlice {
-  let result = stats_test_goodness_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_slice_min(s : StatstestgoodnessSlice) -> Double { @_common.min(s.data) }

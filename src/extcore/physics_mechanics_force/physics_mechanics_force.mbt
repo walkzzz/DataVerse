@@ -383,28 +383,20 @@ pub fn physics_mechanics_force_frame_sum(s : PhysicsmechanicsforceFrame) -> Doub
 pub fn physics_mechanics_force_frame_mean(s : PhysicsmechanicsforceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_frame_scale(s : PhysicsmechanicsforceFrame, f : Double) -> PhysicsmechanicsforceFrame {
-  let result = physics_mechanics_force_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_frame_add(a : PhysicsmechanicsforceFrame, b : PhysicsmechanicsforceFrame) -> PhysicsmechanicsforceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_frame_copy(s : PhysicsmechanicsforceFrame) -> PhysicsmechanicsforceFrame {
-  let result = physics_mechanics_force_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_frame_fill(s : PhysicsmechanicsforceFrame, v : Double) -> PhysicsmechanicsforceFrame {
-  let result = physics_mechanics_force_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_frame_min(s : PhysicsmechanicsforceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_mechanics_force_table_sum(s : PhysicsmechanicsforceTable) -> Doub
 pub fn physics_mechanics_force_table_mean(s : PhysicsmechanicsforceTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_table_scale(s : PhysicsmechanicsforceTable, f : Double) -> PhysicsmechanicsforceTable {
-  let result = physics_mechanics_force_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_table_add(a : PhysicsmechanicsforceTable, b : PhysicsmechanicsforceTable) -> PhysicsmechanicsforceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_table_copy(s : PhysicsmechanicsforceTable) -> PhysicsmechanicsforceTable {
-  let result = physics_mechanics_force_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_table_fill(s : PhysicsmechanicsforceTable, v : Double) -> PhysicsmechanicsforceTable {
-  let result = physics_mechanics_force_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_table_min(s : PhysicsmechanicsforceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_mechanics_force_graphn_sum(s : PhysicsmechanicsforceGraphN) -> Do
 pub fn physics_mechanics_force_graphn_mean(s : PhysicsmechanicsforceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_graphn_scale(s : PhysicsmechanicsforceGraphN, f : Double) -> PhysicsmechanicsforceGraphN {
-  let result = physics_mechanics_force_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_graphn_add(a : PhysicsmechanicsforceGraphN, b : PhysicsmechanicsforceGraphN) -> PhysicsmechanicsforceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_graphn_copy(s : PhysicsmechanicsforceGraphN) -> PhysicsmechanicsforceGraphN {
-  let result = physics_mechanics_force_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_graphn_fill(s : PhysicsmechanicsforceGraphN, v : Double) -> PhysicsmechanicsforceGraphN {
-  let result = physics_mechanics_force_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_graphn_min(s : PhysicsmechanicsforceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_mechanics_force_node_sum(s : PhysicsmechanicsforceNode) -> Double
 pub fn physics_mechanics_force_node_mean(s : PhysicsmechanicsforceNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_node_scale(s : PhysicsmechanicsforceNode, f : Double) -> PhysicsmechanicsforceNode {
-  let result = physics_mechanics_force_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_node_add(a : PhysicsmechanicsforceNode, b : PhysicsmechanicsforceNode) -> PhysicsmechanicsforceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_node_copy(s : PhysicsmechanicsforceNode) -> PhysicsmechanicsforceNode {
-  let result = physics_mechanics_force_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_node_fill(s : PhysicsmechanicsforceNode, v : Double) -> PhysicsmechanicsforceNode {
-  let result = physics_mechanics_force_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_node_min(s : PhysicsmechanicsforceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_mechanics_force_edge_sum(s : PhysicsmechanicsforceEdge) -> Double
 pub fn physics_mechanics_force_edge_mean(s : PhysicsmechanicsforceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_edge_scale(s : PhysicsmechanicsforceEdge, f : Double) -> PhysicsmechanicsforceEdge {
-  let result = physics_mechanics_force_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_edge_add(a : PhysicsmechanicsforceEdge, b : PhysicsmechanicsforceEdge) -> PhysicsmechanicsforceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_edge_copy(s : PhysicsmechanicsforceEdge) -> PhysicsmechanicsforceEdge {
-  let result = physics_mechanics_force_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_edge_fill(s : PhysicsmechanicsforceEdge, v : Double) -> PhysicsmechanicsforceEdge {
-  let result = physics_mechanics_force_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_edge_min(s : PhysicsmechanicsforceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_mechanics_force_path_sum(s : PhysicsmechanicsforcePath) -> Double
 pub fn physics_mechanics_force_path_mean(s : PhysicsmechanicsforcePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_path_scale(s : PhysicsmechanicsforcePath, f : Double) -> PhysicsmechanicsforcePath {
-  let result = physics_mechanics_force_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_path_add(a : PhysicsmechanicsforcePath, b : PhysicsmechanicsforcePath) -> PhysicsmechanicsforcePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_path_copy(s : PhysicsmechanicsforcePath) -> PhysicsmechanicsforcePath {
-  let result = physics_mechanics_force_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_path_fill(s : PhysicsmechanicsforcePath, v : Double) -> PhysicsmechanicsforcePath {
-  let result = physics_mechanics_force_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_path_min(s : PhysicsmechanicsforcePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_mechanics_force_cluster_sum(s : PhysicsmechanicsforceCluster) -> 
 pub fn physics_mechanics_force_cluster_mean(s : PhysicsmechanicsforceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_cluster_scale(s : PhysicsmechanicsforceCluster, f : Double) -> PhysicsmechanicsforceCluster {
-  let result = physics_mechanics_force_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cluster_add(a : PhysicsmechanicsforceCluster, b : PhysicsmechanicsforceCluster) -> PhysicsmechanicsforceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_cluster_copy(s : PhysicsmechanicsforceCluster) -> PhysicsmechanicsforceCluster {
-  let result = physics_mechanics_force_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cluster_fill(s : PhysicsmechanicsforceCluster, v : Double) -> PhysicsmechanicsforceCluster {
-  let result = physics_mechanics_force_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cluster_min(s : PhysicsmechanicsforceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_mechanics_force_model_sum(s : PhysicsmechanicsforceModel) -> Doub
 pub fn physics_mechanics_force_model_mean(s : PhysicsmechanicsforceModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_model_scale(s : PhysicsmechanicsforceModel, f : Double) -> PhysicsmechanicsforceModel {
-  let result = physics_mechanics_force_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_model_add(a : PhysicsmechanicsforceModel, b : PhysicsmechanicsforceModel) -> PhysicsmechanicsforceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_model_copy(s : PhysicsmechanicsforceModel) -> PhysicsmechanicsforceModel {
-  let result = physics_mechanics_force_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_model_fill(s : PhysicsmechanicsforceModel, v : Double) -> PhysicsmechanicsforceModel {
-  let result = physics_mechanics_force_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_model_min(s : PhysicsmechanicsforceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_mechanics_force_layer_sum(s : PhysicsmechanicsforceLayer) -> Doub
 pub fn physics_mechanics_force_layer_mean(s : PhysicsmechanicsforceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_layer_scale(s : PhysicsmechanicsforceLayer, f : Double) -> PhysicsmechanicsforceLayer {
-  let result = physics_mechanics_force_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_layer_add(a : PhysicsmechanicsforceLayer, b : PhysicsmechanicsforceLayer) -> PhysicsmechanicsforceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_layer_copy(s : PhysicsmechanicsforceLayer) -> PhysicsmechanicsforceLayer {
-  let result = physics_mechanics_force_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_layer_fill(s : PhysicsmechanicsforceLayer, v : Double) -> PhysicsmechanicsforceLayer {
-  let result = physics_mechanics_force_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_layer_min(s : PhysicsmechanicsforceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_mechanics_force_buffer_sum(s : PhysicsmechanicsforceBuffer) -> Do
 pub fn physics_mechanics_force_buffer_mean(s : PhysicsmechanicsforceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_buffer_scale(s : PhysicsmechanicsforceBuffer, f : Double) -> PhysicsmechanicsforceBuffer {
-  let result = physics_mechanics_force_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_buffer_add(a : PhysicsmechanicsforceBuffer, b : PhysicsmechanicsforceBuffer) -> PhysicsmechanicsforceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_buffer_copy(s : PhysicsmechanicsforceBuffer) -> PhysicsmechanicsforceBuffer {
-  let result = physics_mechanics_force_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_buffer_fill(s : PhysicsmechanicsforceBuffer, v : Double) -> PhysicsmechanicsforceBuffer {
-  let result = physics_mechanics_force_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_buffer_min(s : PhysicsmechanicsforceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_mechanics_force_cursor_sum(s : PhysicsmechanicsforceCursor) -> Do
 pub fn physics_mechanics_force_cursor_mean(s : PhysicsmechanicsforceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_cursor_scale(s : PhysicsmechanicsforceCursor, f : Double) -> PhysicsmechanicsforceCursor {
-  let result = physics_mechanics_force_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cursor_add(a : PhysicsmechanicsforceCursor, b : PhysicsmechanicsforceCursor) -> PhysicsmechanicsforceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_cursor_copy(s : PhysicsmechanicsforceCursor) -> PhysicsmechanicsforceCursor {
-  let result = physics_mechanics_force_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cursor_fill(s : PhysicsmechanicsforceCursor, v : Double) -> PhysicsmechanicsforceCursor {
-  let result = physics_mechanics_force_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cursor_min(s : PhysicsmechanicsforceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_mechanics_force_view_sum(s : PhysicsmechanicsforceView) -> Double
 pub fn physics_mechanics_force_view_mean(s : PhysicsmechanicsforceView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_view_scale(s : PhysicsmechanicsforceView, f : Double) -> PhysicsmechanicsforceView {
-  let result = physics_mechanics_force_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_view_add(a : PhysicsmechanicsforceView, b : PhysicsmechanicsforceView) -> PhysicsmechanicsforceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_view_copy(s : PhysicsmechanicsforceView) -> PhysicsmechanicsforceView {
-  let result = physics_mechanics_force_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_view_fill(s : PhysicsmechanicsforceView, v : Double) -> PhysicsmechanicsforceView {
-  let result = physics_mechanics_force_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_view_min(s : PhysicsmechanicsforceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_mechanics_force_range_sum(s : PhysicsmechanicsforceRange) -> Doub
 pub fn physics_mechanics_force_range_mean(s : PhysicsmechanicsforceRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_range_scale(s : PhysicsmechanicsforceRange, f : Double) -> PhysicsmechanicsforceRange {
-  let result = physics_mechanics_force_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_range_add(a : PhysicsmechanicsforceRange, b : PhysicsmechanicsforceRange) -> PhysicsmechanicsforceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_range_copy(s : PhysicsmechanicsforceRange) -> PhysicsmechanicsforceRange {
-  let result = physics_mechanics_force_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_range_fill(s : PhysicsmechanicsforceRange, v : Double) -> PhysicsmechanicsforceRange {
-  let result = physics_mechanics_force_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_range_min(s : PhysicsmechanicsforceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_mechanics_force_slice_sum(s : PhysicsmechanicsforceSlice) -> Doub
 pub fn physics_mechanics_force_slice_mean(s : PhysicsmechanicsforceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_slice_scale(s : PhysicsmechanicsforceSlice, f : Double) -> PhysicsmechanicsforceSlice {
-  let result = physics_mechanics_force_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_slice_add(a : PhysicsmechanicsforceSlice, b : PhysicsmechanicsforceSlice) -> PhysicsmechanicsforceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_force_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_force_slice_copy(s : PhysicsmechanicsforceSlice) -> PhysicsmechanicsforceSlice {
-  let result = physics_mechanics_force_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_slice_fill(s : PhysicsmechanicsforceSlice, v : Double) -> PhysicsmechanicsforceSlice {
-  let result = physics_mechanics_force_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_slice_min(s : PhysicsmechanicsforceSlice) -> Double { @_common.min(s.data) }

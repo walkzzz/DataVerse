@@ -383,28 +383,20 @@ pub fn math_galerkin_frame_sum(s : MathgalerkinFrame) -> Double { @_common.sum(s
 pub fn math_galerkin_frame_mean(s : MathgalerkinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_frame_scale(s : MathgalerkinFrame, f : Double) -> MathgalerkinFrame {
-  let result = math_galerkin_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_frame_add(a : MathgalerkinFrame, b : MathgalerkinFrame) -> MathgalerkinFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_frame_copy(s : MathgalerkinFrame) -> MathgalerkinFrame {
-  let result = math_galerkin_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_frame_fill(s : MathgalerkinFrame, v : Double) -> MathgalerkinFrame {
-  let result = math_galerkin_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_frame_min(s : MathgalerkinFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_galerkin_table_sum(s : MathgalerkinTable) -> Double { @_common.sum(s
 pub fn math_galerkin_table_mean(s : MathgalerkinTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_table_scale(s : MathgalerkinTable, f : Double) -> MathgalerkinTable {
-  let result = math_galerkin_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_table_add(a : MathgalerkinTable, b : MathgalerkinTable) -> MathgalerkinTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_table_copy(s : MathgalerkinTable) -> MathgalerkinTable {
-  let result = math_galerkin_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_table_fill(s : MathgalerkinTable, v : Double) -> MathgalerkinTable {
-  let result = math_galerkin_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_table_min(s : MathgalerkinTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_galerkin_graphn_sum(s : MathgalerkinGraphN) -> Double { @_common.sum
 pub fn math_galerkin_graphn_mean(s : MathgalerkinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_graphn_scale(s : MathgalerkinGraphN, f : Double) -> MathgalerkinGraphN {
-  let result = math_galerkin_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_graphn_add(a : MathgalerkinGraphN, b : MathgalerkinGraphN) -> MathgalerkinGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_graphn_copy(s : MathgalerkinGraphN) -> MathgalerkinGraphN {
-  let result = math_galerkin_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_graphn_fill(s : MathgalerkinGraphN, v : Double) -> MathgalerkinGraphN {
-  let result = math_galerkin_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_graphn_min(s : MathgalerkinGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_galerkin_node_sum(s : MathgalerkinNode) -> Double { @_common.sum(s.d
 pub fn math_galerkin_node_mean(s : MathgalerkinNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_node_scale(s : MathgalerkinNode, f : Double) -> MathgalerkinNode {
-  let result = math_galerkin_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_node_add(a : MathgalerkinNode, b : MathgalerkinNode) -> MathgalerkinNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_node_copy(s : MathgalerkinNode) -> MathgalerkinNode {
-  let result = math_galerkin_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_node_fill(s : MathgalerkinNode, v : Double) -> MathgalerkinNode {
-  let result = math_galerkin_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_node_min(s : MathgalerkinNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_galerkin_edge_sum(s : MathgalerkinEdge) -> Double { @_common.sum(s.d
 pub fn math_galerkin_edge_mean(s : MathgalerkinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_edge_scale(s : MathgalerkinEdge, f : Double) -> MathgalerkinEdge {
-  let result = math_galerkin_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_edge_add(a : MathgalerkinEdge, b : MathgalerkinEdge) -> MathgalerkinEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_edge_copy(s : MathgalerkinEdge) -> MathgalerkinEdge {
-  let result = math_galerkin_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_edge_fill(s : MathgalerkinEdge, v : Double) -> MathgalerkinEdge {
-  let result = math_galerkin_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_edge_min(s : MathgalerkinEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_galerkin_path_sum(s : MathgalerkinPath) -> Double { @_common.sum(s.d
 pub fn math_galerkin_path_mean(s : MathgalerkinPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_path_scale(s : MathgalerkinPath, f : Double) -> MathgalerkinPath {
-  let result = math_galerkin_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_path_add(a : MathgalerkinPath, b : MathgalerkinPath) -> MathgalerkinPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_path_copy(s : MathgalerkinPath) -> MathgalerkinPath {
-  let result = math_galerkin_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_path_fill(s : MathgalerkinPath, v : Double) -> MathgalerkinPath {
-  let result = math_galerkin_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_path_min(s : MathgalerkinPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_galerkin_cluster_sum(s : MathgalerkinCluster) -> Double { @_common.s
 pub fn math_galerkin_cluster_mean(s : MathgalerkinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_cluster_scale(s : MathgalerkinCluster, f : Double) -> MathgalerkinCluster {
-  let result = math_galerkin_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_cluster_add(a : MathgalerkinCluster, b : MathgalerkinCluster) -> MathgalerkinCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_cluster_copy(s : MathgalerkinCluster) -> MathgalerkinCluster {
-  let result = math_galerkin_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_cluster_fill(s : MathgalerkinCluster, v : Double) -> MathgalerkinCluster {
-  let result = math_galerkin_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_cluster_min(s : MathgalerkinCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_galerkin_model_sum(s : MathgalerkinModel) -> Double { @_common.sum(s
 pub fn math_galerkin_model_mean(s : MathgalerkinModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_model_scale(s : MathgalerkinModel, f : Double) -> MathgalerkinModel {
-  let result = math_galerkin_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_model_add(a : MathgalerkinModel, b : MathgalerkinModel) -> MathgalerkinModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_model_copy(s : MathgalerkinModel) -> MathgalerkinModel {
-  let result = math_galerkin_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_model_fill(s : MathgalerkinModel, v : Double) -> MathgalerkinModel {
-  let result = math_galerkin_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_model_min(s : MathgalerkinModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_galerkin_layer_sum(s : MathgalerkinLayer) -> Double { @_common.sum(s
 pub fn math_galerkin_layer_mean(s : MathgalerkinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_layer_scale(s : MathgalerkinLayer, f : Double) -> MathgalerkinLayer {
-  let result = math_galerkin_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_layer_add(a : MathgalerkinLayer, b : MathgalerkinLayer) -> MathgalerkinLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_layer_copy(s : MathgalerkinLayer) -> MathgalerkinLayer {
-  let result = math_galerkin_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_layer_fill(s : MathgalerkinLayer, v : Double) -> MathgalerkinLayer {
-  let result = math_galerkin_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_layer_min(s : MathgalerkinLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_galerkin_buffer_sum(s : MathgalerkinBuffer) -> Double { @_common.sum
 pub fn math_galerkin_buffer_mean(s : MathgalerkinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_buffer_scale(s : MathgalerkinBuffer, f : Double) -> MathgalerkinBuffer {
-  let result = math_galerkin_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_buffer_add(a : MathgalerkinBuffer, b : MathgalerkinBuffer) -> MathgalerkinBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_buffer_copy(s : MathgalerkinBuffer) -> MathgalerkinBuffer {
-  let result = math_galerkin_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_buffer_fill(s : MathgalerkinBuffer, v : Double) -> MathgalerkinBuffer {
-  let result = math_galerkin_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_buffer_min(s : MathgalerkinBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_galerkin_cursor_sum(s : MathgalerkinCursor) -> Double { @_common.sum
 pub fn math_galerkin_cursor_mean(s : MathgalerkinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_cursor_scale(s : MathgalerkinCursor, f : Double) -> MathgalerkinCursor {
-  let result = math_galerkin_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_cursor_add(a : MathgalerkinCursor, b : MathgalerkinCursor) -> MathgalerkinCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_cursor_copy(s : MathgalerkinCursor) -> MathgalerkinCursor {
-  let result = math_galerkin_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_cursor_fill(s : MathgalerkinCursor, v : Double) -> MathgalerkinCursor {
-  let result = math_galerkin_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_cursor_min(s : MathgalerkinCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_galerkin_view_sum(s : MathgalerkinView) -> Double { @_common.sum(s.d
 pub fn math_galerkin_view_mean(s : MathgalerkinView) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_view_scale(s : MathgalerkinView, f : Double) -> MathgalerkinView {
-  let result = math_galerkin_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_view_add(a : MathgalerkinView, b : MathgalerkinView) -> MathgalerkinView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_view_copy(s : MathgalerkinView) -> MathgalerkinView {
-  let result = math_galerkin_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_view_fill(s : MathgalerkinView, v : Double) -> MathgalerkinView {
-  let result = math_galerkin_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_view_min(s : MathgalerkinView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_galerkin_range_sum(s : MathgalerkinRange) -> Double { @_common.sum(s
 pub fn math_galerkin_range_mean(s : MathgalerkinRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_range_scale(s : MathgalerkinRange, f : Double) -> MathgalerkinRange {
-  let result = math_galerkin_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_range_add(a : MathgalerkinRange, b : MathgalerkinRange) -> MathgalerkinRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_range_copy(s : MathgalerkinRange) -> MathgalerkinRange {
-  let result = math_galerkin_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_range_fill(s : MathgalerkinRange, v : Double) -> MathgalerkinRange {
-  let result = math_galerkin_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_range_min(s : MathgalerkinRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_galerkin_slice_sum(s : MathgalerkinSlice) -> Double { @_common.sum(s
 pub fn math_galerkin_slice_mean(s : MathgalerkinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_slice_scale(s : MathgalerkinSlice, f : Double) -> MathgalerkinSlice {
-  let result = math_galerkin_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_slice_add(a : MathgalerkinSlice, b : MathgalerkinSlice) -> MathgalerkinSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_galerkin_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_galerkin_slice_copy(s : MathgalerkinSlice) -> MathgalerkinSlice {
-  let result = math_galerkin_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_slice_fill(s : MathgalerkinSlice, v : Double) -> MathgalerkinSlice {
-  let result = math_galerkin_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_galerkin_slice_min(s : MathgalerkinSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn db_query_group_frame_sum(s : DbquerygroupFrame) -> Double { @_common.sum(
 pub fn db_query_group_frame_mean(s : DbquerygroupFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_frame_scale(s : DbquerygroupFrame, f : Double) -> DbquerygroupFrame {
-  let result = db_query_group_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_frame_add(a : DbquerygroupFrame, b : DbquerygroupFrame) -> DbquerygroupFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_frame_copy(s : DbquerygroupFrame) -> DbquerygroupFrame {
-  let result = db_query_group_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_frame_fill(s : DbquerygroupFrame, v : Double) -> DbquerygroupFrame {
-  let result = db_query_group_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_frame_min(s : DbquerygroupFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_query_group_table_sum(s : DbquerygroupTable) -> Double { @_common.sum(
 pub fn db_query_group_table_mean(s : DbquerygroupTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_table_scale(s : DbquerygroupTable, f : Double) -> DbquerygroupTable {
-  let result = db_query_group_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_table_add(a : DbquerygroupTable, b : DbquerygroupTable) -> DbquerygroupTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_table_copy(s : DbquerygroupTable) -> DbquerygroupTable {
-  let result = db_query_group_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_table_fill(s : DbquerygroupTable, v : Double) -> DbquerygroupTable {
-  let result = db_query_group_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_table_min(s : DbquerygroupTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_query_group_graphn_sum(s : DbquerygroupGraphN) -> Double { @_common.su
 pub fn db_query_group_graphn_mean(s : DbquerygroupGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_graphn_scale(s : DbquerygroupGraphN, f : Double) -> DbquerygroupGraphN {
-  let result = db_query_group_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_graphn_add(a : DbquerygroupGraphN, b : DbquerygroupGraphN) -> DbquerygroupGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_graphn_copy(s : DbquerygroupGraphN) -> DbquerygroupGraphN {
-  let result = db_query_group_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_graphn_fill(s : DbquerygroupGraphN, v : Double) -> DbquerygroupGraphN {
-  let result = db_query_group_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_graphn_min(s : DbquerygroupGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_query_group_node_sum(s : DbquerygroupNode) -> Double { @_common.sum(s.
 pub fn db_query_group_node_mean(s : DbquerygroupNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_node_scale(s : DbquerygroupNode, f : Double) -> DbquerygroupNode {
-  let result = db_query_group_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_node_add(a : DbquerygroupNode, b : DbquerygroupNode) -> DbquerygroupNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_node_copy(s : DbquerygroupNode) -> DbquerygroupNode {
-  let result = db_query_group_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_node_fill(s : DbquerygroupNode, v : Double) -> DbquerygroupNode {
-  let result = db_query_group_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_node_min(s : DbquerygroupNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_query_group_edge_sum(s : DbquerygroupEdge) -> Double { @_common.sum(s.
 pub fn db_query_group_edge_mean(s : DbquerygroupEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_edge_scale(s : DbquerygroupEdge, f : Double) -> DbquerygroupEdge {
-  let result = db_query_group_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_edge_add(a : DbquerygroupEdge, b : DbquerygroupEdge) -> DbquerygroupEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_edge_copy(s : DbquerygroupEdge) -> DbquerygroupEdge {
-  let result = db_query_group_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_edge_fill(s : DbquerygroupEdge, v : Double) -> DbquerygroupEdge {
-  let result = db_query_group_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_edge_min(s : DbquerygroupEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_query_group_path_sum(s : DbquerygroupPath) -> Double { @_common.sum(s.
 pub fn db_query_group_path_mean(s : DbquerygroupPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_path_scale(s : DbquerygroupPath, f : Double) -> DbquerygroupPath {
-  let result = db_query_group_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_path_add(a : DbquerygroupPath, b : DbquerygroupPath) -> DbquerygroupPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_path_copy(s : DbquerygroupPath) -> DbquerygroupPath {
-  let result = db_query_group_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_path_fill(s : DbquerygroupPath, v : Double) -> DbquerygroupPath {
-  let result = db_query_group_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_path_min(s : DbquerygroupPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_query_group_cluster_sum(s : DbquerygroupCluster) -> Double { @_common.
 pub fn db_query_group_cluster_mean(s : DbquerygroupCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_cluster_scale(s : DbquerygroupCluster, f : Double) -> DbquerygroupCluster {
-  let result = db_query_group_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_cluster_add(a : DbquerygroupCluster, b : DbquerygroupCluster) -> DbquerygroupCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_cluster_copy(s : DbquerygroupCluster) -> DbquerygroupCluster {
-  let result = db_query_group_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_cluster_fill(s : DbquerygroupCluster, v : Double) -> DbquerygroupCluster {
-  let result = db_query_group_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_cluster_min(s : DbquerygroupCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_query_group_model_sum(s : DbquerygroupModel) -> Double { @_common.sum(
 pub fn db_query_group_model_mean(s : DbquerygroupModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_model_scale(s : DbquerygroupModel, f : Double) -> DbquerygroupModel {
-  let result = db_query_group_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_model_add(a : DbquerygroupModel, b : DbquerygroupModel) -> DbquerygroupModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_model_copy(s : DbquerygroupModel) -> DbquerygroupModel {
-  let result = db_query_group_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_model_fill(s : DbquerygroupModel, v : Double) -> DbquerygroupModel {
-  let result = db_query_group_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_model_min(s : DbquerygroupModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_query_group_layer_sum(s : DbquerygroupLayer) -> Double { @_common.sum(
 pub fn db_query_group_layer_mean(s : DbquerygroupLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_layer_scale(s : DbquerygroupLayer, f : Double) -> DbquerygroupLayer {
-  let result = db_query_group_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_layer_add(a : DbquerygroupLayer, b : DbquerygroupLayer) -> DbquerygroupLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_layer_copy(s : DbquerygroupLayer) -> DbquerygroupLayer {
-  let result = db_query_group_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_layer_fill(s : DbquerygroupLayer, v : Double) -> DbquerygroupLayer {
-  let result = db_query_group_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_layer_min(s : DbquerygroupLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_query_group_buffer_sum(s : DbquerygroupBuffer) -> Double { @_common.su
 pub fn db_query_group_buffer_mean(s : DbquerygroupBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_buffer_scale(s : DbquerygroupBuffer, f : Double) -> DbquerygroupBuffer {
-  let result = db_query_group_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_buffer_add(a : DbquerygroupBuffer, b : DbquerygroupBuffer) -> DbquerygroupBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_buffer_copy(s : DbquerygroupBuffer) -> DbquerygroupBuffer {
-  let result = db_query_group_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_buffer_fill(s : DbquerygroupBuffer, v : Double) -> DbquerygroupBuffer {
-  let result = db_query_group_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_buffer_min(s : DbquerygroupBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_query_group_cursor_sum(s : DbquerygroupCursor) -> Double { @_common.su
 pub fn db_query_group_cursor_mean(s : DbquerygroupCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_cursor_scale(s : DbquerygroupCursor, f : Double) -> DbquerygroupCursor {
-  let result = db_query_group_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_cursor_add(a : DbquerygroupCursor, b : DbquerygroupCursor) -> DbquerygroupCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_cursor_copy(s : DbquerygroupCursor) -> DbquerygroupCursor {
-  let result = db_query_group_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_cursor_fill(s : DbquerygroupCursor, v : Double) -> DbquerygroupCursor {
-  let result = db_query_group_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_cursor_min(s : DbquerygroupCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_query_group_view_sum(s : DbquerygroupView) -> Double { @_common.sum(s.
 pub fn db_query_group_view_mean(s : DbquerygroupView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_view_scale(s : DbquerygroupView, f : Double) -> DbquerygroupView {
-  let result = db_query_group_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_view_add(a : DbquerygroupView, b : DbquerygroupView) -> DbquerygroupView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_view_copy(s : DbquerygroupView) -> DbquerygroupView {
-  let result = db_query_group_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_view_fill(s : DbquerygroupView, v : Double) -> DbquerygroupView {
-  let result = db_query_group_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_view_min(s : DbquerygroupView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_query_group_range_sum(s : DbquerygroupRange) -> Double { @_common.sum(
 pub fn db_query_group_range_mean(s : DbquerygroupRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_range_scale(s : DbquerygroupRange, f : Double) -> DbquerygroupRange {
-  let result = db_query_group_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_range_add(a : DbquerygroupRange, b : DbquerygroupRange) -> DbquerygroupRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_range_copy(s : DbquerygroupRange) -> DbquerygroupRange {
-  let result = db_query_group_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_range_fill(s : DbquerygroupRange, v : Double) -> DbquerygroupRange {
-  let result = db_query_group_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_range_min(s : DbquerygroupRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_query_group_slice_sum(s : DbquerygroupSlice) -> Double { @_common.sum(
 pub fn db_query_group_slice_mean(s : DbquerygroupSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_slice_scale(s : DbquerygroupSlice, f : Double) -> DbquerygroupSlice {
-  let result = db_query_group_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_slice_add(a : DbquerygroupSlice, b : DbquerygroupSlice) -> DbquerygroupSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_group_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_group_slice_copy(s : DbquerygroupSlice) -> DbquerygroupSlice {
-  let result = db_query_group_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_slice_fill(s : DbquerygroupSlice, v : Double) -> DbquerygroupSlice {
-  let result = db_query_group_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_group_slice_min(s : DbquerygroupSlice) -> Double { @_common.min(s.data) }

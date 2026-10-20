@@ -383,28 +383,20 @@ pub fn db_store_col_frame_sum(s : DbstorecolFrame) -> Double { @_common.sum(s.da
 pub fn db_store_col_frame_mean(s : DbstorecolFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_frame_scale(s : DbstorecolFrame, f : Double) -> DbstorecolFrame {
-  let result = db_store_col_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_frame_add(a : DbstorecolFrame, b : DbstorecolFrame) -> DbstorecolFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_frame_copy(s : DbstorecolFrame) -> DbstorecolFrame {
-  let result = db_store_col_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_frame_fill(s : DbstorecolFrame, v : Double) -> DbstorecolFrame {
-  let result = db_store_col_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_frame_min(s : DbstorecolFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_store_col_table_sum(s : DbstorecolTable) -> Double { @_common.sum(s.da
 pub fn db_store_col_table_mean(s : DbstorecolTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_table_scale(s : DbstorecolTable, f : Double) -> DbstorecolTable {
-  let result = db_store_col_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_table_add(a : DbstorecolTable, b : DbstorecolTable) -> DbstorecolTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_table_copy(s : DbstorecolTable) -> DbstorecolTable {
-  let result = db_store_col_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_table_fill(s : DbstorecolTable, v : Double) -> DbstorecolTable {
-  let result = db_store_col_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_table_min(s : DbstorecolTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_store_col_graphn_sum(s : DbstorecolGraphN) -> Double { @_common.sum(s.
 pub fn db_store_col_graphn_mean(s : DbstorecolGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_graphn_scale(s : DbstorecolGraphN, f : Double) -> DbstorecolGraphN {
-  let result = db_store_col_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_graphn_add(a : DbstorecolGraphN, b : DbstorecolGraphN) -> DbstorecolGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_graphn_copy(s : DbstorecolGraphN) -> DbstorecolGraphN {
-  let result = db_store_col_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_graphn_fill(s : DbstorecolGraphN, v : Double) -> DbstorecolGraphN {
-  let result = db_store_col_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_graphn_min(s : DbstorecolGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_store_col_node_sum(s : DbstorecolNode) -> Double { @_common.sum(s.data
 pub fn db_store_col_node_mean(s : DbstorecolNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_node_scale(s : DbstorecolNode, f : Double) -> DbstorecolNode {
-  let result = db_store_col_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_node_add(a : DbstorecolNode, b : DbstorecolNode) -> DbstorecolNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_node_copy(s : DbstorecolNode) -> DbstorecolNode {
-  let result = db_store_col_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_node_fill(s : DbstorecolNode, v : Double) -> DbstorecolNode {
-  let result = db_store_col_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_node_min(s : DbstorecolNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_store_col_edge_sum(s : DbstorecolEdge) -> Double { @_common.sum(s.data
 pub fn db_store_col_edge_mean(s : DbstorecolEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_edge_scale(s : DbstorecolEdge, f : Double) -> DbstorecolEdge {
-  let result = db_store_col_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_edge_add(a : DbstorecolEdge, b : DbstorecolEdge) -> DbstorecolEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_edge_copy(s : DbstorecolEdge) -> DbstorecolEdge {
-  let result = db_store_col_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_edge_fill(s : DbstorecolEdge, v : Double) -> DbstorecolEdge {
-  let result = db_store_col_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_edge_min(s : DbstorecolEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_store_col_path_sum(s : DbstorecolPath) -> Double { @_common.sum(s.data
 pub fn db_store_col_path_mean(s : DbstorecolPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_path_scale(s : DbstorecolPath, f : Double) -> DbstorecolPath {
-  let result = db_store_col_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_path_add(a : DbstorecolPath, b : DbstorecolPath) -> DbstorecolPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_path_copy(s : DbstorecolPath) -> DbstorecolPath {
-  let result = db_store_col_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_path_fill(s : DbstorecolPath, v : Double) -> DbstorecolPath {
-  let result = db_store_col_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_path_min(s : DbstorecolPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_store_col_cluster_sum(s : DbstorecolCluster) -> Double { @_common.sum(
 pub fn db_store_col_cluster_mean(s : DbstorecolCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_cluster_scale(s : DbstorecolCluster, f : Double) -> DbstorecolCluster {
-  let result = db_store_col_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_cluster_add(a : DbstorecolCluster, b : DbstorecolCluster) -> DbstorecolCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_cluster_copy(s : DbstorecolCluster) -> DbstorecolCluster {
-  let result = db_store_col_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_cluster_fill(s : DbstorecolCluster, v : Double) -> DbstorecolCluster {
-  let result = db_store_col_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_cluster_min(s : DbstorecolCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_store_col_model_sum(s : DbstorecolModel) -> Double { @_common.sum(s.da
 pub fn db_store_col_model_mean(s : DbstorecolModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_model_scale(s : DbstorecolModel, f : Double) -> DbstorecolModel {
-  let result = db_store_col_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_model_add(a : DbstorecolModel, b : DbstorecolModel) -> DbstorecolModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_model_copy(s : DbstorecolModel) -> DbstorecolModel {
-  let result = db_store_col_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_model_fill(s : DbstorecolModel, v : Double) -> DbstorecolModel {
-  let result = db_store_col_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_model_min(s : DbstorecolModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_store_col_layer_sum(s : DbstorecolLayer) -> Double { @_common.sum(s.da
 pub fn db_store_col_layer_mean(s : DbstorecolLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_layer_scale(s : DbstorecolLayer, f : Double) -> DbstorecolLayer {
-  let result = db_store_col_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_layer_add(a : DbstorecolLayer, b : DbstorecolLayer) -> DbstorecolLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_layer_copy(s : DbstorecolLayer) -> DbstorecolLayer {
-  let result = db_store_col_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_layer_fill(s : DbstorecolLayer, v : Double) -> DbstorecolLayer {
-  let result = db_store_col_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_layer_min(s : DbstorecolLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_store_col_buffer_sum(s : DbstorecolBuffer) -> Double { @_common.sum(s.
 pub fn db_store_col_buffer_mean(s : DbstorecolBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_buffer_scale(s : DbstorecolBuffer, f : Double) -> DbstorecolBuffer {
-  let result = db_store_col_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_buffer_add(a : DbstorecolBuffer, b : DbstorecolBuffer) -> DbstorecolBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_buffer_copy(s : DbstorecolBuffer) -> DbstorecolBuffer {
-  let result = db_store_col_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_buffer_fill(s : DbstorecolBuffer, v : Double) -> DbstorecolBuffer {
-  let result = db_store_col_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_buffer_min(s : DbstorecolBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_store_col_cursor_sum(s : DbstorecolCursor) -> Double { @_common.sum(s.
 pub fn db_store_col_cursor_mean(s : DbstorecolCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_cursor_scale(s : DbstorecolCursor, f : Double) -> DbstorecolCursor {
-  let result = db_store_col_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_cursor_add(a : DbstorecolCursor, b : DbstorecolCursor) -> DbstorecolCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_cursor_copy(s : DbstorecolCursor) -> DbstorecolCursor {
-  let result = db_store_col_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_cursor_fill(s : DbstorecolCursor, v : Double) -> DbstorecolCursor {
-  let result = db_store_col_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_cursor_min(s : DbstorecolCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_store_col_view_sum(s : DbstorecolView) -> Double { @_common.sum(s.data
 pub fn db_store_col_view_mean(s : DbstorecolView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_view_scale(s : DbstorecolView, f : Double) -> DbstorecolView {
-  let result = db_store_col_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_view_add(a : DbstorecolView, b : DbstorecolView) -> DbstorecolView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_view_copy(s : DbstorecolView) -> DbstorecolView {
-  let result = db_store_col_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_view_fill(s : DbstorecolView, v : Double) -> DbstorecolView {
-  let result = db_store_col_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_view_min(s : DbstorecolView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_store_col_range_sum(s : DbstorecolRange) -> Double { @_common.sum(s.da
 pub fn db_store_col_range_mean(s : DbstorecolRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_range_scale(s : DbstorecolRange, f : Double) -> DbstorecolRange {
-  let result = db_store_col_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_range_add(a : DbstorecolRange, b : DbstorecolRange) -> DbstorecolRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_range_copy(s : DbstorecolRange) -> DbstorecolRange {
-  let result = db_store_col_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_range_fill(s : DbstorecolRange, v : Double) -> DbstorecolRange {
-  let result = db_store_col_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_range_min(s : DbstorecolRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_store_col_slice_sum(s : DbstorecolSlice) -> Double { @_common.sum(s.da
 pub fn db_store_col_slice_mean(s : DbstorecolSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_slice_scale(s : DbstorecolSlice, f : Double) -> DbstorecolSlice {
-  let result = db_store_col_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_slice_add(a : DbstorecolSlice, b : DbstorecolSlice) -> DbstorecolSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_store_col_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_store_col_slice_copy(s : DbstorecolSlice) -> DbstorecolSlice {
-  let result = db_store_col_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_slice_fill(s : DbstorecolSlice, v : Double) -> DbstorecolSlice {
-  let result = db_store_col_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_store_col_slice_min(s : DbstorecolSlice) -> Double { @_common.min(s.data) }

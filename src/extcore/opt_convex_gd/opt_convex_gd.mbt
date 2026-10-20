@@ -383,28 +383,20 @@ pub fn opt_convex_gd_frame_sum(s : OptconvexgdFrame) -> Double { @_common.sum(s.
 pub fn opt_convex_gd_frame_mean(s : OptconvexgdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_frame_scale(s : OptconvexgdFrame, f : Double) -> OptconvexgdFrame {
-  let result = opt_convex_gd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_frame_add(a : OptconvexgdFrame, b : OptconvexgdFrame) -> OptconvexgdFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_frame_copy(s : OptconvexgdFrame) -> OptconvexgdFrame {
-  let result = opt_convex_gd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_frame_fill(s : OptconvexgdFrame, v : Double) -> OptconvexgdFrame {
-  let result = opt_convex_gd_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_frame_min(s : OptconvexgdFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn opt_convex_gd_table_sum(s : OptconvexgdTable) -> Double { @_common.sum(s.
 pub fn opt_convex_gd_table_mean(s : OptconvexgdTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_table_scale(s : OptconvexgdTable, f : Double) -> OptconvexgdTable {
-  let result = opt_convex_gd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_table_add(a : OptconvexgdTable, b : OptconvexgdTable) -> OptconvexgdTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_table_copy(s : OptconvexgdTable) -> OptconvexgdTable {
-  let result = opt_convex_gd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_table_fill(s : OptconvexgdTable, v : Double) -> OptconvexgdTable {
-  let result = opt_convex_gd_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_table_min(s : OptconvexgdTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn opt_convex_gd_graphn_sum(s : OptconvexgdGraphN) -> Double { @_common.sum(
 pub fn opt_convex_gd_graphn_mean(s : OptconvexgdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_graphn_scale(s : OptconvexgdGraphN, f : Double) -> OptconvexgdGraphN {
-  let result = opt_convex_gd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_graphn_add(a : OptconvexgdGraphN, b : OptconvexgdGraphN) -> OptconvexgdGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_graphn_copy(s : OptconvexgdGraphN) -> OptconvexgdGraphN {
-  let result = opt_convex_gd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_graphn_fill(s : OptconvexgdGraphN, v : Double) -> OptconvexgdGraphN {
-  let result = opt_convex_gd_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_graphn_min(s : OptconvexgdGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn opt_convex_gd_node_sum(s : OptconvexgdNode) -> Double { @_common.sum(s.da
 pub fn opt_convex_gd_node_mean(s : OptconvexgdNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_node_scale(s : OptconvexgdNode, f : Double) -> OptconvexgdNode {
-  let result = opt_convex_gd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_node_add(a : OptconvexgdNode, b : OptconvexgdNode) -> OptconvexgdNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_node_copy(s : OptconvexgdNode) -> OptconvexgdNode {
-  let result = opt_convex_gd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_node_fill(s : OptconvexgdNode, v : Double) -> OptconvexgdNode {
-  let result = opt_convex_gd_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_node_min(s : OptconvexgdNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn opt_convex_gd_edge_sum(s : OptconvexgdEdge) -> Double { @_common.sum(s.da
 pub fn opt_convex_gd_edge_mean(s : OptconvexgdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_edge_scale(s : OptconvexgdEdge, f : Double) -> OptconvexgdEdge {
-  let result = opt_convex_gd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_edge_add(a : OptconvexgdEdge, b : OptconvexgdEdge) -> OptconvexgdEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_edge_copy(s : OptconvexgdEdge) -> OptconvexgdEdge {
-  let result = opt_convex_gd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_edge_fill(s : OptconvexgdEdge, v : Double) -> OptconvexgdEdge {
-  let result = opt_convex_gd_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_edge_min(s : OptconvexgdEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn opt_convex_gd_path_sum(s : OptconvexgdPath) -> Double { @_common.sum(s.da
 pub fn opt_convex_gd_path_mean(s : OptconvexgdPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_path_scale(s : OptconvexgdPath, f : Double) -> OptconvexgdPath {
-  let result = opt_convex_gd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_path_add(a : OptconvexgdPath, b : OptconvexgdPath) -> OptconvexgdPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_path_copy(s : OptconvexgdPath) -> OptconvexgdPath {
-  let result = opt_convex_gd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_path_fill(s : OptconvexgdPath, v : Double) -> OptconvexgdPath {
-  let result = opt_convex_gd_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_path_min(s : OptconvexgdPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn opt_convex_gd_cluster_sum(s : OptconvexgdCluster) -> Double { @_common.su
 pub fn opt_convex_gd_cluster_mean(s : OptconvexgdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_cluster_scale(s : OptconvexgdCluster, f : Double) -> OptconvexgdCluster {
-  let result = opt_convex_gd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_cluster_add(a : OptconvexgdCluster, b : OptconvexgdCluster) -> OptconvexgdCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_cluster_copy(s : OptconvexgdCluster) -> OptconvexgdCluster {
-  let result = opt_convex_gd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_cluster_fill(s : OptconvexgdCluster, v : Double) -> OptconvexgdCluster {
-  let result = opt_convex_gd_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_cluster_min(s : OptconvexgdCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn opt_convex_gd_model_sum(s : OptconvexgdModel) -> Double { @_common.sum(s.
 pub fn opt_convex_gd_model_mean(s : OptconvexgdModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_model_scale(s : OptconvexgdModel, f : Double) -> OptconvexgdModel {
-  let result = opt_convex_gd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_model_add(a : OptconvexgdModel, b : OptconvexgdModel) -> OptconvexgdModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_model_copy(s : OptconvexgdModel) -> OptconvexgdModel {
-  let result = opt_convex_gd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_model_fill(s : OptconvexgdModel, v : Double) -> OptconvexgdModel {
-  let result = opt_convex_gd_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_model_min(s : OptconvexgdModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn opt_convex_gd_layer_sum(s : OptconvexgdLayer) -> Double { @_common.sum(s.
 pub fn opt_convex_gd_layer_mean(s : OptconvexgdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_layer_scale(s : OptconvexgdLayer, f : Double) -> OptconvexgdLayer {
-  let result = opt_convex_gd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_layer_add(a : OptconvexgdLayer, b : OptconvexgdLayer) -> OptconvexgdLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_layer_copy(s : OptconvexgdLayer) -> OptconvexgdLayer {
-  let result = opt_convex_gd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_layer_fill(s : OptconvexgdLayer, v : Double) -> OptconvexgdLayer {
-  let result = opt_convex_gd_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_layer_min(s : OptconvexgdLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn opt_convex_gd_buffer_sum(s : OptconvexgdBuffer) -> Double { @_common.sum(
 pub fn opt_convex_gd_buffer_mean(s : OptconvexgdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_buffer_scale(s : OptconvexgdBuffer, f : Double) -> OptconvexgdBuffer {
-  let result = opt_convex_gd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_buffer_add(a : OptconvexgdBuffer, b : OptconvexgdBuffer) -> OptconvexgdBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_buffer_copy(s : OptconvexgdBuffer) -> OptconvexgdBuffer {
-  let result = opt_convex_gd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_buffer_fill(s : OptconvexgdBuffer, v : Double) -> OptconvexgdBuffer {
-  let result = opt_convex_gd_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_buffer_min(s : OptconvexgdBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn opt_convex_gd_cursor_sum(s : OptconvexgdCursor) -> Double { @_common.sum(
 pub fn opt_convex_gd_cursor_mean(s : OptconvexgdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_cursor_scale(s : OptconvexgdCursor, f : Double) -> OptconvexgdCursor {
-  let result = opt_convex_gd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_cursor_add(a : OptconvexgdCursor, b : OptconvexgdCursor) -> OptconvexgdCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_cursor_copy(s : OptconvexgdCursor) -> OptconvexgdCursor {
-  let result = opt_convex_gd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_cursor_fill(s : OptconvexgdCursor, v : Double) -> OptconvexgdCursor {
-  let result = opt_convex_gd_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_cursor_min(s : OptconvexgdCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn opt_convex_gd_view_sum(s : OptconvexgdView) -> Double { @_common.sum(s.da
 pub fn opt_convex_gd_view_mean(s : OptconvexgdView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_view_scale(s : OptconvexgdView, f : Double) -> OptconvexgdView {
-  let result = opt_convex_gd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_view_add(a : OptconvexgdView, b : OptconvexgdView) -> OptconvexgdView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_view_copy(s : OptconvexgdView) -> OptconvexgdView {
-  let result = opt_convex_gd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_view_fill(s : OptconvexgdView, v : Double) -> OptconvexgdView {
-  let result = opt_convex_gd_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_view_min(s : OptconvexgdView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn opt_convex_gd_range_sum(s : OptconvexgdRange) -> Double { @_common.sum(s.
 pub fn opt_convex_gd_range_mean(s : OptconvexgdRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_range_scale(s : OptconvexgdRange, f : Double) -> OptconvexgdRange {
-  let result = opt_convex_gd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_range_add(a : OptconvexgdRange, b : OptconvexgdRange) -> OptconvexgdRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_range_copy(s : OptconvexgdRange) -> OptconvexgdRange {
-  let result = opt_convex_gd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_range_fill(s : OptconvexgdRange, v : Double) -> OptconvexgdRange {
-  let result = opt_convex_gd_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_range_min(s : OptconvexgdRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn opt_convex_gd_slice_sum(s : OptconvexgdSlice) -> Double { @_common.sum(s.
 pub fn opt_convex_gd_slice_mean(s : OptconvexgdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_gd_slice_scale(s : OptconvexgdSlice, f : Double) -> OptconvexgdSlice {
-  let result = opt_convex_gd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_slice_add(a : OptconvexgdSlice, b : OptconvexgdSlice) -> OptconvexgdSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_convex_gd_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_convex_gd_slice_copy(s : OptconvexgdSlice) -> OptconvexgdSlice {
-  let result = opt_convex_gd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_slice_fill(s : OptconvexgdSlice, v : Double) -> OptconvexgdSlice {
-  let result = opt_convex_gd_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_gd_slice_min(s : OptconvexgdSlice) -> Double { @_common.min(s.data) }

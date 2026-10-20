@@ -383,28 +383,20 @@ pub fn signal_spec_modified_frame_sum(s : SignalspecmodifiedFrame) -> Double { @
 pub fn signal_spec_modified_frame_mean(s : SignalspecmodifiedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_frame_scale(s : SignalspecmodifiedFrame, f : Double) -> SignalspecmodifiedFrame {
-  let result = signal_spec_modified_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_frame_add(a : SignalspecmodifiedFrame, b : SignalspecmodifiedFrame) -> SignalspecmodifiedFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_frame_copy(s : SignalspecmodifiedFrame) -> SignalspecmodifiedFrame {
-  let result = signal_spec_modified_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_frame_fill(s : SignalspecmodifiedFrame, v : Double) -> SignalspecmodifiedFrame {
-  let result = signal_spec_modified_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_frame_min(s : SignalspecmodifiedFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_spec_modified_table_sum(s : SignalspecmodifiedTable) -> Double { @
 pub fn signal_spec_modified_table_mean(s : SignalspecmodifiedTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_table_scale(s : SignalspecmodifiedTable, f : Double) -> SignalspecmodifiedTable {
-  let result = signal_spec_modified_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_table_add(a : SignalspecmodifiedTable, b : SignalspecmodifiedTable) -> SignalspecmodifiedTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_table_copy(s : SignalspecmodifiedTable) -> SignalspecmodifiedTable {
-  let result = signal_spec_modified_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_table_fill(s : SignalspecmodifiedTable, v : Double) -> SignalspecmodifiedTable {
-  let result = signal_spec_modified_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_table_min(s : SignalspecmodifiedTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_spec_modified_graphn_sum(s : SignalspecmodifiedGraphN) -> Double {
 pub fn signal_spec_modified_graphn_mean(s : SignalspecmodifiedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_graphn_scale(s : SignalspecmodifiedGraphN, f : Double) -> SignalspecmodifiedGraphN {
-  let result = signal_spec_modified_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_graphn_add(a : SignalspecmodifiedGraphN, b : SignalspecmodifiedGraphN) -> SignalspecmodifiedGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_graphn_copy(s : SignalspecmodifiedGraphN) -> SignalspecmodifiedGraphN {
-  let result = signal_spec_modified_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_graphn_fill(s : SignalspecmodifiedGraphN, v : Double) -> SignalspecmodifiedGraphN {
-  let result = signal_spec_modified_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_graphn_min(s : SignalspecmodifiedGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_spec_modified_node_sum(s : SignalspecmodifiedNode) -> Double { @_c
 pub fn signal_spec_modified_node_mean(s : SignalspecmodifiedNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_node_scale(s : SignalspecmodifiedNode, f : Double) -> SignalspecmodifiedNode {
-  let result = signal_spec_modified_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_node_add(a : SignalspecmodifiedNode, b : SignalspecmodifiedNode) -> SignalspecmodifiedNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_node_copy(s : SignalspecmodifiedNode) -> SignalspecmodifiedNode {
-  let result = signal_spec_modified_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_node_fill(s : SignalspecmodifiedNode, v : Double) -> SignalspecmodifiedNode {
-  let result = signal_spec_modified_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_node_min(s : SignalspecmodifiedNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_spec_modified_edge_sum(s : SignalspecmodifiedEdge) -> Double { @_c
 pub fn signal_spec_modified_edge_mean(s : SignalspecmodifiedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_edge_scale(s : SignalspecmodifiedEdge, f : Double) -> SignalspecmodifiedEdge {
-  let result = signal_spec_modified_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_edge_add(a : SignalspecmodifiedEdge, b : SignalspecmodifiedEdge) -> SignalspecmodifiedEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_edge_copy(s : SignalspecmodifiedEdge) -> SignalspecmodifiedEdge {
-  let result = signal_spec_modified_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_edge_fill(s : SignalspecmodifiedEdge, v : Double) -> SignalspecmodifiedEdge {
-  let result = signal_spec_modified_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_edge_min(s : SignalspecmodifiedEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_spec_modified_path_sum(s : SignalspecmodifiedPath) -> Double { @_c
 pub fn signal_spec_modified_path_mean(s : SignalspecmodifiedPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_path_scale(s : SignalspecmodifiedPath, f : Double) -> SignalspecmodifiedPath {
-  let result = signal_spec_modified_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_path_add(a : SignalspecmodifiedPath, b : SignalspecmodifiedPath) -> SignalspecmodifiedPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_path_copy(s : SignalspecmodifiedPath) -> SignalspecmodifiedPath {
-  let result = signal_spec_modified_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_path_fill(s : SignalspecmodifiedPath, v : Double) -> SignalspecmodifiedPath {
-  let result = signal_spec_modified_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_path_min(s : SignalspecmodifiedPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_spec_modified_cluster_sum(s : SignalspecmodifiedCluster) -> Double
 pub fn signal_spec_modified_cluster_mean(s : SignalspecmodifiedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_cluster_scale(s : SignalspecmodifiedCluster, f : Double) -> SignalspecmodifiedCluster {
-  let result = signal_spec_modified_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_cluster_add(a : SignalspecmodifiedCluster, b : SignalspecmodifiedCluster) -> SignalspecmodifiedCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_cluster_copy(s : SignalspecmodifiedCluster) -> SignalspecmodifiedCluster {
-  let result = signal_spec_modified_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_cluster_fill(s : SignalspecmodifiedCluster, v : Double) -> SignalspecmodifiedCluster {
-  let result = signal_spec_modified_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_cluster_min(s : SignalspecmodifiedCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_spec_modified_model_sum(s : SignalspecmodifiedModel) -> Double { @
 pub fn signal_spec_modified_model_mean(s : SignalspecmodifiedModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_model_scale(s : SignalspecmodifiedModel, f : Double) -> SignalspecmodifiedModel {
-  let result = signal_spec_modified_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_model_add(a : SignalspecmodifiedModel, b : SignalspecmodifiedModel) -> SignalspecmodifiedModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_model_copy(s : SignalspecmodifiedModel) -> SignalspecmodifiedModel {
-  let result = signal_spec_modified_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_model_fill(s : SignalspecmodifiedModel, v : Double) -> SignalspecmodifiedModel {
-  let result = signal_spec_modified_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_model_min(s : SignalspecmodifiedModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_spec_modified_layer_sum(s : SignalspecmodifiedLayer) -> Double { @
 pub fn signal_spec_modified_layer_mean(s : SignalspecmodifiedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_layer_scale(s : SignalspecmodifiedLayer, f : Double) -> SignalspecmodifiedLayer {
-  let result = signal_spec_modified_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_layer_add(a : SignalspecmodifiedLayer, b : SignalspecmodifiedLayer) -> SignalspecmodifiedLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_layer_copy(s : SignalspecmodifiedLayer) -> SignalspecmodifiedLayer {
-  let result = signal_spec_modified_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_layer_fill(s : SignalspecmodifiedLayer, v : Double) -> SignalspecmodifiedLayer {
-  let result = signal_spec_modified_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_layer_min(s : SignalspecmodifiedLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_spec_modified_buffer_sum(s : SignalspecmodifiedBuffer) -> Double {
 pub fn signal_spec_modified_buffer_mean(s : SignalspecmodifiedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_buffer_scale(s : SignalspecmodifiedBuffer, f : Double) -> SignalspecmodifiedBuffer {
-  let result = signal_spec_modified_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_buffer_add(a : SignalspecmodifiedBuffer, b : SignalspecmodifiedBuffer) -> SignalspecmodifiedBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_buffer_copy(s : SignalspecmodifiedBuffer) -> SignalspecmodifiedBuffer {
-  let result = signal_spec_modified_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_buffer_fill(s : SignalspecmodifiedBuffer, v : Double) -> SignalspecmodifiedBuffer {
-  let result = signal_spec_modified_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_buffer_min(s : SignalspecmodifiedBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_spec_modified_cursor_sum(s : SignalspecmodifiedCursor) -> Double {
 pub fn signal_spec_modified_cursor_mean(s : SignalspecmodifiedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_cursor_scale(s : SignalspecmodifiedCursor, f : Double) -> SignalspecmodifiedCursor {
-  let result = signal_spec_modified_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_cursor_add(a : SignalspecmodifiedCursor, b : SignalspecmodifiedCursor) -> SignalspecmodifiedCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_cursor_copy(s : SignalspecmodifiedCursor) -> SignalspecmodifiedCursor {
-  let result = signal_spec_modified_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_cursor_fill(s : SignalspecmodifiedCursor, v : Double) -> SignalspecmodifiedCursor {
-  let result = signal_spec_modified_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_cursor_min(s : SignalspecmodifiedCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_spec_modified_view_sum(s : SignalspecmodifiedView) -> Double { @_c
 pub fn signal_spec_modified_view_mean(s : SignalspecmodifiedView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_view_scale(s : SignalspecmodifiedView, f : Double) -> SignalspecmodifiedView {
-  let result = signal_spec_modified_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_view_add(a : SignalspecmodifiedView, b : SignalspecmodifiedView) -> SignalspecmodifiedView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_view_copy(s : SignalspecmodifiedView) -> SignalspecmodifiedView {
-  let result = signal_spec_modified_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_view_fill(s : SignalspecmodifiedView, v : Double) -> SignalspecmodifiedView {
-  let result = signal_spec_modified_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_view_min(s : SignalspecmodifiedView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_spec_modified_range_sum(s : SignalspecmodifiedRange) -> Double { @
 pub fn signal_spec_modified_range_mean(s : SignalspecmodifiedRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_range_scale(s : SignalspecmodifiedRange, f : Double) -> SignalspecmodifiedRange {
-  let result = signal_spec_modified_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_range_add(a : SignalspecmodifiedRange, b : SignalspecmodifiedRange) -> SignalspecmodifiedRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_range_copy(s : SignalspecmodifiedRange) -> SignalspecmodifiedRange {
-  let result = signal_spec_modified_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_range_fill(s : SignalspecmodifiedRange, v : Double) -> SignalspecmodifiedRange {
-  let result = signal_spec_modified_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_range_min(s : SignalspecmodifiedRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_spec_modified_slice_sum(s : SignalspecmodifiedSlice) -> Double { @
 pub fn signal_spec_modified_slice_mean(s : SignalspecmodifiedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_modified_slice_scale(s : SignalspecmodifiedSlice, f : Double) -> SignalspecmodifiedSlice {
-  let result = signal_spec_modified_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_slice_add(a : SignalspecmodifiedSlice, b : SignalspecmodifiedSlice) -> SignalspecmodifiedSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_spec_modified_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_spec_modified_slice_copy(s : SignalspecmodifiedSlice) -> SignalspecmodifiedSlice {
-  let result = signal_spec_modified_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_slice_fill(s : SignalspecmodifiedSlice, v : Double) -> SignalspecmodifiedSlice {
-  let result = signal_spec_modified_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_modified_slice_min(s : SignalspecmodifiedSlice) -> Double { @_common.min(s.data) }

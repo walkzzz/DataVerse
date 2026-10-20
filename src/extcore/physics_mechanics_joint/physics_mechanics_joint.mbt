@@ -383,28 +383,20 @@ pub fn physics_mechanics_joint_frame_sum(s : PhysicsmechanicsjointFrame) -> Doub
 pub fn physics_mechanics_joint_frame_mean(s : PhysicsmechanicsjointFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_frame_scale(s : PhysicsmechanicsjointFrame, f : Double) -> PhysicsmechanicsjointFrame {
-  let result = physics_mechanics_joint_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_frame_add(a : PhysicsmechanicsjointFrame, b : PhysicsmechanicsjointFrame) -> PhysicsmechanicsjointFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_frame_copy(s : PhysicsmechanicsjointFrame) -> PhysicsmechanicsjointFrame {
-  let result = physics_mechanics_joint_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_frame_fill(s : PhysicsmechanicsjointFrame, v : Double) -> PhysicsmechanicsjointFrame {
-  let result = physics_mechanics_joint_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_frame_min(s : PhysicsmechanicsjointFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_mechanics_joint_table_sum(s : PhysicsmechanicsjointTable) -> Doub
 pub fn physics_mechanics_joint_table_mean(s : PhysicsmechanicsjointTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_table_scale(s : PhysicsmechanicsjointTable, f : Double) -> PhysicsmechanicsjointTable {
-  let result = physics_mechanics_joint_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_table_add(a : PhysicsmechanicsjointTable, b : PhysicsmechanicsjointTable) -> PhysicsmechanicsjointTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_table_copy(s : PhysicsmechanicsjointTable) -> PhysicsmechanicsjointTable {
-  let result = physics_mechanics_joint_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_table_fill(s : PhysicsmechanicsjointTable, v : Double) -> PhysicsmechanicsjointTable {
-  let result = physics_mechanics_joint_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_table_min(s : PhysicsmechanicsjointTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_mechanics_joint_graphn_sum(s : PhysicsmechanicsjointGraphN) -> Do
 pub fn physics_mechanics_joint_graphn_mean(s : PhysicsmechanicsjointGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_graphn_scale(s : PhysicsmechanicsjointGraphN, f : Double) -> PhysicsmechanicsjointGraphN {
-  let result = physics_mechanics_joint_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_graphn_add(a : PhysicsmechanicsjointGraphN, b : PhysicsmechanicsjointGraphN) -> PhysicsmechanicsjointGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_graphn_copy(s : PhysicsmechanicsjointGraphN) -> PhysicsmechanicsjointGraphN {
-  let result = physics_mechanics_joint_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_graphn_fill(s : PhysicsmechanicsjointGraphN, v : Double) -> PhysicsmechanicsjointGraphN {
-  let result = physics_mechanics_joint_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_graphn_min(s : PhysicsmechanicsjointGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_mechanics_joint_node_sum(s : PhysicsmechanicsjointNode) -> Double
 pub fn physics_mechanics_joint_node_mean(s : PhysicsmechanicsjointNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_node_scale(s : PhysicsmechanicsjointNode, f : Double) -> PhysicsmechanicsjointNode {
-  let result = physics_mechanics_joint_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_node_add(a : PhysicsmechanicsjointNode, b : PhysicsmechanicsjointNode) -> PhysicsmechanicsjointNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_node_copy(s : PhysicsmechanicsjointNode) -> PhysicsmechanicsjointNode {
-  let result = physics_mechanics_joint_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_node_fill(s : PhysicsmechanicsjointNode, v : Double) -> PhysicsmechanicsjointNode {
-  let result = physics_mechanics_joint_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_node_min(s : PhysicsmechanicsjointNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_mechanics_joint_edge_sum(s : PhysicsmechanicsjointEdge) -> Double
 pub fn physics_mechanics_joint_edge_mean(s : PhysicsmechanicsjointEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_edge_scale(s : PhysicsmechanicsjointEdge, f : Double) -> PhysicsmechanicsjointEdge {
-  let result = physics_mechanics_joint_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_edge_add(a : PhysicsmechanicsjointEdge, b : PhysicsmechanicsjointEdge) -> PhysicsmechanicsjointEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_edge_copy(s : PhysicsmechanicsjointEdge) -> PhysicsmechanicsjointEdge {
-  let result = physics_mechanics_joint_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_edge_fill(s : PhysicsmechanicsjointEdge, v : Double) -> PhysicsmechanicsjointEdge {
-  let result = physics_mechanics_joint_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_edge_min(s : PhysicsmechanicsjointEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_mechanics_joint_path_sum(s : PhysicsmechanicsjointPath) -> Double
 pub fn physics_mechanics_joint_path_mean(s : PhysicsmechanicsjointPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_path_scale(s : PhysicsmechanicsjointPath, f : Double) -> PhysicsmechanicsjointPath {
-  let result = physics_mechanics_joint_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_path_add(a : PhysicsmechanicsjointPath, b : PhysicsmechanicsjointPath) -> PhysicsmechanicsjointPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_path_copy(s : PhysicsmechanicsjointPath) -> PhysicsmechanicsjointPath {
-  let result = physics_mechanics_joint_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_path_fill(s : PhysicsmechanicsjointPath, v : Double) -> PhysicsmechanicsjointPath {
-  let result = physics_mechanics_joint_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_path_min(s : PhysicsmechanicsjointPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_mechanics_joint_cluster_sum(s : PhysicsmechanicsjointCluster) -> 
 pub fn physics_mechanics_joint_cluster_mean(s : PhysicsmechanicsjointCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_cluster_scale(s : PhysicsmechanicsjointCluster, f : Double) -> PhysicsmechanicsjointCluster {
-  let result = physics_mechanics_joint_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cluster_add(a : PhysicsmechanicsjointCluster, b : PhysicsmechanicsjointCluster) -> PhysicsmechanicsjointCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_cluster_copy(s : PhysicsmechanicsjointCluster) -> PhysicsmechanicsjointCluster {
-  let result = physics_mechanics_joint_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cluster_fill(s : PhysicsmechanicsjointCluster, v : Double) -> PhysicsmechanicsjointCluster {
-  let result = physics_mechanics_joint_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cluster_min(s : PhysicsmechanicsjointCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_mechanics_joint_model_sum(s : PhysicsmechanicsjointModel) -> Doub
 pub fn physics_mechanics_joint_model_mean(s : PhysicsmechanicsjointModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_model_scale(s : PhysicsmechanicsjointModel, f : Double) -> PhysicsmechanicsjointModel {
-  let result = physics_mechanics_joint_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_model_add(a : PhysicsmechanicsjointModel, b : PhysicsmechanicsjointModel) -> PhysicsmechanicsjointModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_model_copy(s : PhysicsmechanicsjointModel) -> PhysicsmechanicsjointModel {
-  let result = physics_mechanics_joint_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_model_fill(s : PhysicsmechanicsjointModel, v : Double) -> PhysicsmechanicsjointModel {
-  let result = physics_mechanics_joint_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_model_min(s : PhysicsmechanicsjointModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_mechanics_joint_layer_sum(s : PhysicsmechanicsjointLayer) -> Doub
 pub fn physics_mechanics_joint_layer_mean(s : PhysicsmechanicsjointLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_layer_scale(s : PhysicsmechanicsjointLayer, f : Double) -> PhysicsmechanicsjointLayer {
-  let result = physics_mechanics_joint_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_layer_add(a : PhysicsmechanicsjointLayer, b : PhysicsmechanicsjointLayer) -> PhysicsmechanicsjointLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_layer_copy(s : PhysicsmechanicsjointLayer) -> PhysicsmechanicsjointLayer {
-  let result = physics_mechanics_joint_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_layer_fill(s : PhysicsmechanicsjointLayer, v : Double) -> PhysicsmechanicsjointLayer {
-  let result = physics_mechanics_joint_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_layer_min(s : PhysicsmechanicsjointLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_mechanics_joint_buffer_sum(s : PhysicsmechanicsjointBuffer) -> Do
 pub fn physics_mechanics_joint_buffer_mean(s : PhysicsmechanicsjointBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_buffer_scale(s : PhysicsmechanicsjointBuffer, f : Double) -> PhysicsmechanicsjointBuffer {
-  let result = physics_mechanics_joint_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_buffer_add(a : PhysicsmechanicsjointBuffer, b : PhysicsmechanicsjointBuffer) -> PhysicsmechanicsjointBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_buffer_copy(s : PhysicsmechanicsjointBuffer) -> PhysicsmechanicsjointBuffer {
-  let result = physics_mechanics_joint_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_buffer_fill(s : PhysicsmechanicsjointBuffer, v : Double) -> PhysicsmechanicsjointBuffer {
-  let result = physics_mechanics_joint_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_buffer_min(s : PhysicsmechanicsjointBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_mechanics_joint_cursor_sum(s : PhysicsmechanicsjointCursor) -> Do
 pub fn physics_mechanics_joint_cursor_mean(s : PhysicsmechanicsjointCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_cursor_scale(s : PhysicsmechanicsjointCursor, f : Double) -> PhysicsmechanicsjointCursor {
-  let result = physics_mechanics_joint_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cursor_add(a : PhysicsmechanicsjointCursor, b : PhysicsmechanicsjointCursor) -> PhysicsmechanicsjointCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_cursor_copy(s : PhysicsmechanicsjointCursor) -> PhysicsmechanicsjointCursor {
-  let result = physics_mechanics_joint_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cursor_fill(s : PhysicsmechanicsjointCursor, v : Double) -> PhysicsmechanicsjointCursor {
-  let result = physics_mechanics_joint_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cursor_min(s : PhysicsmechanicsjointCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_mechanics_joint_view_sum(s : PhysicsmechanicsjointView) -> Double
 pub fn physics_mechanics_joint_view_mean(s : PhysicsmechanicsjointView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_view_scale(s : PhysicsmechanicsjointView, f : Double) -> PhysicsmechanicsjointView {
-  let result = physics_mechanics_joint_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_view_add(a : PhysicsmechanicsjointView, b : PhysicsmechanicsjointView) -> PhysicsmechanicsjointView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_view_copy(s : PhysicsmechanicsjointView) -> PhysicsmechanicsjointView {
-  let result = physics_mechanics_joint_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_view_fill(s : PhysicsmechanicsjointView, v : Double) -> PhysicsmechanicsjointView {
-  let result = physics_mechanics_joint_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_view_min(s : PhysicsmechanicsjointView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_mechanics_joint_range_sum(s : PhysicsmechanicsjointRange) -> Doub
 pub fn physics_mechanics_joint_range_mean(s : PhysicsmechanicsjointRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_range_scale(s : PhysicsmechanicsjointRange, f : Double) -> PhysicsmechanicsjointRange {
-  let result = physics_mechanics_joint_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_range_add(a : PhysicsmechanicsjointRange, b : PhysicsmechanicsjointRange) -> PhysicsmechanicsjointRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_range_copy(s : PhysicsmechanicsjointRange) -> PhysicsmechanicsjointRange {
-  let result = physics_mechanics_joint_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_range_fill(s : PhysicsmechanicsjointRange, v : Double) -> PhysicsmechanicsjointRange {
-  let result = physics_mechanics_joint_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_range_min(s : PhysicsmechanicsjointRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_mechanics_joint_slice_sum(s : PhysicsmechanicsjointSlice) -> Doub
 pub fn physics_mechanics_joint_slice_mean(s : PhysicsmechanicsjointSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_joint_slice_scale(s : PhysicsmechanicsjointSlice, f : Double) -> PhysicsmechanicsjointSlice {
-  let result = physics_mechanics_joint_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_slice_add(a : PhysicsmechanicsjointSlice, b : PhysicsmechanicsjointSlice) -> PhysicsmechanicsjointSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_joint_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_joint_slice_copy(s : PhysicsmechanicsjointSlice) -> PhysicsmechanicsjointSlice {
-  let result = physics_mechanics_joint_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_slice_fill(s : PhysicsmechanicsjointSlice, v : Double) -> PhysicsmechanicsjointSlice {
-  let result = physics_mechanics_joint_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_slice_min(s : PhysicsmechanicsjointSlice) -> Double { @_common.min(s.data) }

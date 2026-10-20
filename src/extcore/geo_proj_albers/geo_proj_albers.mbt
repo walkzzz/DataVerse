@@ -383,28 +383,20 @@ pub fn geo_proj_albers_frame_sum(s : GeoprojalbersFrame) -> Double { @_common.su
 pub fn geo_proj_albers_frame_mean(s : GeoprojalbersFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_frame_scale(s : GeoprojalbersFrame, f : Double) -> GeoprojalbersFrame {
-  let result = geo_proj_albers_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_frame_add(a : GeoprojalbersFrame, b : GeoprojalbersFrame) -> GeoprojalbersFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_frame_copy(s : GeoprojalbersFrame) -> GeoprojalbersFrame {
-  let result = geo_proj_albers_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_frame_fill(s : GeoprojalbersFrame, v : Double) -> GeoprojalbersFrame {
-  let result = geo_proj_albers_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_frame_min(s : GeoprojalbersFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn geo_proj_albers_table_sum(s : GeoprojalbersTable) -> Double { @_common.su
 pub fn geo_proj_albers_table_mean(s : GeoprojalbersTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_table_scale(s : GeoprojalbersTable, f : Double) -> GeoprojalbersTable {
-  let result = geo_proj_albers_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_table_add(a : GeoprojalbersTable, b : GeoprojalbersTable) -> GeoprojalbersTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_table_copy(s : GeoprojalbersTable) -> GeoprojalbersTable {
-  let result = geo_proj_albers_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_table_fill(s : GeoprojalbersTable, v : Double) -> GeoprojalbersTable {
-  let result = geo_proj_albers_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_table_min(s : GeoprojalbersTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn geo_proj_albers_graphn_sum(s : GeoprojalbersGraphN) -> Double { @_common.
 pub fn geo_proj_albers_graphn_mean(s : GeoprojalbersGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_graphn_scale(s : GeoprojalbersGraphN, f : Double) -> GeoprojalbersGraphN {
-  let result = geo_proj_albers_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_graphn_add(a : GeoprojalbersGraphN, b : GeoprojalbersGraphN) -> GeoprojalbersGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_graphn_copy(s : GeoprojalbersGraphN) -> GeoprojalbersGraphN {
-  let result = geo_proj_albers_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_graphn_fill(s : GeoprojalbersGraphN, v : Double) -> GeoprojalbersGraphN {
-  let result = geo_proj_albers_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_graphn_min(s : GeoprojalbersGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn geo_proj_albers_node_sum(s : GeoprojalbersNode) -> Double { @_common.sum(
 pub fn geo_proj_albers_node_mean(s : GeoprojalbersNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_node_scale(s : GeoprojalbersNode, f : Double) -> GeoprojalbersNode {
-  let result = geo_proj_albers_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_node_add(a : GeoprojalbersNode, b : GeoprojalbersNode) -> GeoprojalbersNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_node_copy(s : GeoprojalbersNode) -> GeoprojalbersNode {
-  let result = geo_proj_albers_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_node_fill(s : GeoprojalbersNode, v : Double) -> GeoprojalbersNode {
-  let result = geo_proj_albers_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_node_min(s : GeoprojalbersNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn geo_proj_albers_edge_sum(s : GeoprojalbersEdge) -> Double { @_common.sum(
 pub fn geo_proj_albers_edge_mean(s : GeoprojalbersEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_edge_scale(s : GeoprojalbersEdge, f : Double) -> GeoprojalbersEdge {
-  let result = geo_proj_albers_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_edge_add(a : GeoprojalbersEdge, b : GeoprojalbersEdge) -> GeoprojalbersEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_edge_copy(s : GeoprojalbersEdge) -> GeoprojalbersEdge {
-  let result = geo_proj_albers_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_edge_fill(s : GeoprojalbersEdge, v : Double) -> GeoprojalbersEdge {
-  let result = geo_proj_albers_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_edge_min(s : GeoprojalbersEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn geo_proj_albers_path_sum(s : GeoprojalbersPath) -> Double { @_common.sum(
 pub fn geo_proj_albers_path_mean(s : GeoprojalbersPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_path_scale(s : GeoprojalbersPath, f : Double) -> GeoprojalbersPath {
-  let result = geo_proj_albers_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_path_add(a : GeoprojalbersPath, b : GeoprojalbersPath) -> GeoprojalbersPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_path_copy(s : GeoprojalbersPath) -> GeoprojalbersPath {
-  let result = geo_proj_albers_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_path_fill(s : GeoprojalbersPath, v : Double) -> GeoprojalbersPath {
-  let result = geo_proj_albers_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_path_min(s : GeoprojalbersPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn geo_proj_albers_cluster_sum(s : GeoprojalbersCluster) -> Double { @_commo
 pub fn geo_proj_albers_cluster_mean(s : GeoprojalbersCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_cluster_scale(s : GeoprojalbersCluster, f : Double) -> GeoprojalbersCluster {
-  let result = geo_proj_albers_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_cluster_add(a : GeoprojalbersCluster, b : GeoprojalbersCluster) -> GeoprojalbersCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_cluster_copy(s : GeoprojalbersCluster) -> GeoprojalbersCluster {
-  let result = geo_proj_albers_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_cluster_fill(s : GeoprojalbersCluster, v : Double) -> GeoprojalbersCluster {
-  let result = geo_proj_albers_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_cluster_min(s : GeoprojalbersCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn geo_proj_albers_model_sum(s : GeoprojalbersModel) -> Double { @_common.su
 pub fn geo_proj_albers_model_mean(s : GeoprojalbersModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_model_scale(s : GeoprojalbersModel, f : Double) -> GeoprojalbersModel {
-  let result = geo_proj_albers_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_model_add(a : GeoprojalbersModel, b : GeoprojalbersModel) -> GeoprojalbersModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_model_copy(s : GeoprojalbersModel) -> GeoprojalbersModel {
-  let result = geo_proj_albers_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_model_fill(s : GeoprojalbersModel, v : Double) -> GeoprojalbersModel {
-  let result = geo_proj_albers_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_model_min(s : GeoprojalbersModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn geo_proj_albers_layer_sum(s : GeoprojalbersLayer) -> Double { @_common.su
 pub fn geo_proj_albers_layer_mean(s : GeoprojalbersLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_layer_scale(s : GeoprojalbersLayer, f : Double) -> GeoprojalbersLayer {
-  let result = geo_proj_albers_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_layer_add(a : GeoprojalbersLayer, b : GeoprojalbersLayer) -> GeoprojalbersLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_layer_copy(s : GeoprojalbersLayer) -> GeoprojalbersLayer {
-  let result = geo_proj_albers_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_layer_fill(s : GeoprojalbersLayer, v : Double) -> GeoprojalbersLayer {
-  let result = geo_proj_albers_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_layer_min(s : GeoprojalbersLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn geo_proj_albers_buffer_sum(s : GeoprojalbersBuffer) -> Double { @_common.
 pub fn geo_proj_albers_buffer_mean(s : GeoprojalbersBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_buffer_scale(s : GeoprojalbersBuffer, f : Double) -> GeoprojalbersBuffer {
-  let result = geo_proj_albers_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_buffer_add(a : GeoprojalbersBuffer, b : GeoprojalbersBuffer) -> GeoprojalbersBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_buffer_copy(s : GeoprojalbersBuffer) -> GeoprojalbersBuffer {
-  let result = geo_proj_albers_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_buffer_fill(s : GeoprojalbersBuffer, v : Double) -> GeoprojalbersBuffer {
-  let result = geo_proj_albers_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_buffer_min(s : GeoprojalbersBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn geo_proj_albers_cursor_sum(s : GeoprojalbersCursor) -> Double { @_common.
 pub fn geo_proj_albers_cursor_mean(s : GeoprojalbersCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_cursor_scale(s : GeoprojalbersCursor, f : Double) -> GeoprojalbersCursor {
-  let result = geo_proj_albers_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_cursor_add(a : GeoprojalbersCursor, b : GeoprojalbersCursor) -> GeoprojalbersCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_cursor_copy(s : GeoprojalbersCursor) -> GeoprojalbersCursor {
-  let result = geo_proj_albers_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_cursor_fill(s : GeoprojalbersCursor, v : Double) -> GeoprojalbersCursor {
-  let result = geo_proj_albers_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_cursor_min(s : GeoprojalbersCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn geo_proj_albers_view_sum(s : GeoprojalbersView) -> Double { @_common.sum(
 pub fn geo_proj_albers_view_mean(s : GeoprojalbersView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_view_scale(s : GeoprojalbersView, f : Double) -> GeoprojalbersView {
-  let result = geo_proj_albers_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_view_add(a : GeoprojalbersView, b : GeoprojalbersView) -> GeoprojalbersView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_view_copy(s : GeoprojalbersView) -> GeoprojalbersView {
-  let result = geo_proj_albers_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_view_fill(s : GeoprojalbersView, v : Double) -> GeoprojalbersView {
-  let result = geo_proj_albers_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_view_min(s : GeoprojalbersView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn geo_proj_albers_range_sum(s : GeoprojalbersRange) -> Double { @_common.su
 pub fn geo_proj_albers_range_mean(s : GeoprojalbersRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_range_scale(s : GeoprojalbersRange, f : Double) -> GeoprojalbersRange {
-  let result = geo_proj_albers_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_range_add(a : GeoprojalbersRange, b : GeoprojalbersRange) -> GeoprojalbersRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_range_copy(s : GeoprojalbersRange) -> GeoprojalbersRange {
-  let result = geo_proj_albers_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_range_fill(s : GeoprojalbersRange, v : Double) -> GeoprojalbersRange {
-  let result = geo_proj_albers_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_range_min(s : GeoprojalbersRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn geo_proj_albers_slice_sum(s : GeoprojalbersSlice) -> Double { @_common.su
 pub fn geo_proj_albers_slice_mean(s : GeoprojalbersSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_albers_slice_scale(s : GeoprojalbersSlice, f : Double) -> GeoprojalbersSlice {
-  let result = geo_proj_albers_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_slice_add(a : GeoprojalbersSlice, b : GeoprojalbersSlice) -> GeoprojalbersSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = geo_proj_albers_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn geo_proj_albers_slice_copy(s : GeoprojalbersSlice) -> GeoprojalbersSlice {
-  let result = geo_proj_albers_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_slice_fill(s : GeoprojalbersSlice, v : Double) -> GeoprojalbersSlice {
-  let result = geo_proj_albers_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_albers_slice_min(s : GeoprojalbersSlice) -> Double { @_common.min(s.data) }

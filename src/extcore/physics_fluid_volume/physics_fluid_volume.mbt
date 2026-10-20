@@ -383,28 +383,20 @@ pub fn physics_fluid_volume_frame_sum(s : PhysicsfluidvolumeFrame) -> Double { @
 pub fn physics_fluid_volume_frame_mean(s : PhysicsfluidvolumeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_frame_scale(s : PhysicsfluidvolumeFrame, f : Double) -> PhysicsfluidvolumeFrame {
-  let result = physics_fluid_volume_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_frame_add(a : PhysicsfluidvolumeFrame, b : PhysicsfluidvolumeFrame) -> PhysicsfluidvolumeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_frame_copy(s : PhysicsfluidvolumeFrame) -> PhysicsfluidvolumeFrame {
-  let result = physics_fluid_volume_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_frame_fill(s : PhysicsfluidvolumeFrame, v : Double) -> PhysicsfluidvolumeFrame {
-  let result = physics_fluid_volume_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_frame_min(s : PhysicsfluidvolumeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_fluid_volume_table_sum(s : PhysicsfluidvolumeTable) -> Double { @
 pub fn physics_fluid_volume_table_mean(s : PhysicsfluidvolumeTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_table_scale(s : PhysicsfluidvolumeTable, f : Double) -> PhysicsfluidvolumeTable {
-  let result = physics_fluid_volume_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_table_add(a : PhysicsfluidvolumeTable, b : PhysicsfluidvolumeTable) -> PhysicsfluidvolumeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_table_copy(s : PhysicsfluidvolumeTable) -> PhysicsfluidvolumeTable {
-  let result = physics_fluid_volume_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_table_fill(s : PhysicsfluidvolumeTable, v : Double) -> PhysicsfluidvolumeTable {
-  let result = physics_fluid_volume_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_table_min(s : PhysicsfluidvolumeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_fluid_volume_graphn_sum(s : PhysicsfluidvolumeGraphN) -> Double {
 pub fn physics_fluid_volume_graphn_mean(s : PhysicsfluidvolumeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_graphn_scale(s : PhysicsfluidvolumeGraphN, f : Double) -> PhysicsfluidvolumeGraphN {
-  let result = physics_fluid_volume_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_graphn_add(a : PhysicsfluidvolumeGraphN, b : PhysicsfluidvolumeGraphN) -> PhysicsfluidvolumeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_graphn_copy(s : PhysicsfluidvolumeGraphN) -> PhysicsfluidvolumeGraphN {
-  let result = physics_fluid_volume_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_graphn_fill(s : PhysicsfluidvolumeGraphN, v : Double) -> PhysicsfluidvolumeGraphN {
-  let result = physics_fluid_volume_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_graphn_min(s : PhysicsfluidvolumeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_fluid_volume_node_sum(s : PhysicsfluidvolumeNode) -> Double { @_c
 pub fn physics_fluid_volume_node_mean(s : PhysicsfluidvolumeNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_node_scale(s : PhysicsfluidvolumeNode, f : Double) -> PhysicsfluidvolumeNode {
-  let result = physics_fluid_volume_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_node_add(a : PhysicsfluidvolumeNode, b : PhysicsfluidvolumeNode) -> PhysicsfluidvolumeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_node_copy(s : PhysicsfluidvolumeNode) -> PhysicsfluidvolumeNode {
-  let result = physics_fluid_volume_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_node_fill(s : PhysicsfluidvolumeNode, v : Double) -> PhysicsfluidvolumeNode {
-  let result = physics_fluid_volume_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_node_min(s : PhysicsfluidvolumeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_fluid_volume_edge_sum(s : PhysicsfluidvolumeEdge) -> Double { @_c
 pub fn physics_fluid_volume_edge_mean(s : PhysicsfluidvolumeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_edge_scale(s : PhysicsfluidvolumeEdge, f : Double) -> PhysicsfluidvolumeEdge {
-  let result = physics_fluid_volume_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_edge_add(a : PhysicsfluidvolumeEdge, b : PhysicsfluidvolumeEdge) -> PhysicsfluidvolumeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_edge_copy(s : PhysicsfluidvolumeEdge) -> PhysicsfluidvolumeEdge {
-  let result = physics_fluid_volume_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_edge_fill(s : PhysicsfluidvolumeEdge, v : Double) -> PhysicsfluidvolumeEdge {
-  let result = physics_fluid_volume_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_edge_min(s : PhysicsfluidvolumeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_fluid_volume_path_sum(s : PhysicsfluidvolumePath) -> Double { @_c
 pub fn physics_fluid_volume_path_mean(s : PhysicsfluidvolumePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_path_scale(s : PhysicsfluidvolumePath, f : Double) -> PhysicsfluidvolumePath {
-  let result = physics_fluid_volume_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_path_add(a : PhysicsfluidvolumePath, b : PhysicsfluidvolumePath) -> PhysicsfluidvolumePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_path_copy(s : PhysicsfluidvolumePath) -> PhysicsfluidvolumePath {
-  let result = physics_fluid_volume_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_path_fill(s : PhysicsfluidvolumePath, v : Double) -> PhysicsfluidvolumePath {
-  let result = physics_fluid_volume_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_path_min(s : PhysicsfluidvolumePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_fluid_volume_cluster_sum(s : PhysicsfluidvolumeCluster) -> Double
 pub fn physics_fluid_volume_cluster_mean(s : PhysicsfluidvolumeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_cluster_scale(s : PhysicsfluidvolumeCluster, f : Double) -> PhysicsfluidvolumeCluster {
-  let result = physics_fluid_volume_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_cluster_add(a : PhysicsfluidvolumeCluster, b : PhysicsfluidvolumeCluster) -> PhysicsfluidvolumeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_cluster_copy(s : PhysicsfluidvolumeCluster) -> PhysicsfluidvolumeCluster {
-  let result = physics_fluid_volume_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_cluster_fill(s : PhysicsfluidvolumeCluster, v : Double) -> PhysicsfluidvolumeCluster {
-  let result = physics_fluid_volume_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_cluster_min(s : PhysicsfluidvolumeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_fluid_volume_model_sum(s : PhysicsfluidvolumeModel) -> Double { @
 pub fn physics_fluid_volume_model_mean(s : PhysicsfluidvolumeModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_model_scale(s : PhysicsfluidvolumeModel, f : Double) -> PhysicsfluidvolumeModel {
-  let result = physics_fluid_volume_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_model_add(a : PhysicsfluidvolumeModel, b : PhysicsfluidvolumeModel) -> PhysicsfluidvolumeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_model_copy(s : PhysicsfluidvolumeModel) -> PhysicsfluidvolumeModel {
-  let result = physics_fluid_volume_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_model_fill(s : PhysicsfluidvolumeModel, v : Double) -> PhysicsfluidvolumeModel {
-  let result = physics_fluid_volume_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_model_min(s : PhysicsfluidvolumeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_fluid_volume_layer_sum(s : PhysicsfluidvolumeLayer) -> Double { @
 pub fn physics_fluid_volume_layer_mean(s : PhysicsfluidvolumeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_layer_scale(s : PhysicsfluidvolumeLayer, f : Double) -> PhysicsfluidvolumeLayer {
-  let result = physics_fluid_volume_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_layer_add(a : PhysicsfluidvolumeLayer, b : PhysicsfluidvolumeLayer) -> PhysicsfluidvolumeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_layer_copy(s : PhysicsfluidvolumeLayer) -> PhysicsfluidvolumeLayer {
-  let result = physics_fluid_volume_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_layer_fill(s : PhysicsfluidvolumeLayer, v : Double) -> PhysicsfluidvolumeLayer {
-  let result = physics_fluid_volume_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_layer_min(s : PhysicsfluidvolumeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_fluid_volume_buffer_sum(s : PhysicsfluidvolumeBuffer) -> Double {
 pub fn physics_fluid_volume_buffer_mean(s : PhysicsfluidvolumeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_buffer_scale(s : PhysicsfluidvolumeBuffer, f : Double) -> PhysicsfluidvolumeBuffer {
-  let result = physics_fluid_volume_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_buffer_add(a : PhysicsfluidvolumeBuffer, b : PhysicsfluidvolumeBuffer) -> PhysicsfluidvolumeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_buffer_copy(s : PhysicsfluidvolumeBuffer) -> PhysicsfluidvolumeBuffer {
-  let result = physics_fluid_volume_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_buffer_fill(s : PhysicsfluidvolumeBuffer, v : Double) -> PhysicsfluidvolumeBuffer {
-  let result = physics_fluid_volume_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_buffer_min(s : PhysicsfluidvolumeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_fluid_volume_cursor_sum(s : PhysicsfluidvolumeCursor) -> Double {
 pub fn physics_fluid_volume_cursor_mean(s : PhysicsfluidvolumeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_cursor_scale(s : PhysicsfluidvolumeCursor, f : Double) -> PhysicsfluidvolumeCursor {
-  let result = physics_fluid_volume_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_cursor_add(a : PhysicsfluidvolumeCursor, b : PhysicsfluidvolumeCursor) -> PhysicsfluidvolumeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_cursor_copy(s : PhysicsfluidvolumeCursor) -> PhysicsfluidvolumeCursor {
-  let result = physics_fluid_volume_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_cursor_fill(s : PhysicsfluidvolumeCursor, v : Double) -> PhysicsfluidvolumeCursor {
-  let result = physics_fluid_volume_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_cursor_min(s : PhysicsfluidvolumeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_fluid_volume_view_sum(s : PhysicsfluidvolumeView) -> Double { @_c
 pub fn physics_fluid_volume_view_mean(s : PhysicsfluidvolumeView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_view_scale(s : PhysicsfluidvolumeView, f : Double) -> PhysicsfluidvolumeView {
-  let result = physics_fluid_volume_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_view_add(a : PhysicsfluidvolumeView, b : PhysicsfluidvolumeView) -> PhysicsfluidvolumeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_view_copy(s : PhysicsfluidvolumeView) -> PhysicsfluidvolumeView {
-  let result = physics_fluid_volume_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_view_fill(s : PhysicsfluidvolumeView, v : Double) -> PhysicsfluidvolumeView {
-  let result = physics_fluid_volume_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_view_min(s : PhysicsfluidvolumeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_fluid_volume_range_sum(s : PhysicsfluidvolumeRange) -> Double { @
 pub fn physics_fluid_volume_range_mean(s : PhysicsfluidvolumeRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_range_scale(s : PhysicsfluidvolumeRange, f : Double) -> PhysicsfluidvolumeRange {
-  let result = physics_fluid_volume_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_range_add(a : PhysicsfluidvolumeRange, b : PhysicsfluidvolumeRange) -> PhysicsfluidvolumeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_range_copy(s : PhysicsfluidvolumeRange) -> PhysicsfluidvolumeRange {
-  let result = physics_fluid_volume_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_range_fill(s : PhysicsfluidvolumeRange, v : Double) -> PhysicsfluidvolumeRange {
-  let result = physics_fluid_volume_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_range_min(s : PhysicsfluidvolumeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_fluid_volume_slice_sum(s : PhysicsfluidvolumeSlice) -> Double { @
 pub fn physics_fluid_volume_slice_mean(s : PhysicsfluidvolumeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_volume_slice_scale(s : PhysicsfluidvolumeSlice, f : Double) -> PhysicsfluidvolumeSlice {
-  let result = physics_fluid_volume_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_slice_add(a : PhysicsfluidvolumeSlice, b : PhysicsfluidvolumeSlice) -> PhysicsfluidvolumeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_volume_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_volume_slice_copy(s : PhysicsfluidvolumeSlice) -> PhysicsfluidvolumeSlice {
-  let result = physics_fluid_volume_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_slice_fill(s : PhysicsfluidvolumeSlice, v : Double) -> PhysicsfluidvolumeSlice {
-  let result = physics_fluid_volume_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_volume_slice_min(s : PhysicsfluidvolumeSlice) -> Double { @_common.min(s.data) }

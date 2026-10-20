@@ -383,28 +383,20 @@ pub fn graph_color_lawler_frame_sum(s : GraphcolorlawlerFrame) -> Double { @_com
 pub fn graph_color_lawler_frame_mean(s : GraphcolorlawlerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_frame_scale(s : GraphcolorlawlerFrame, f : Double) -> GraphcolorlawlerFrame {
-  let result = graph_color_lawler_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_frame_add(a : GraphcolorlawlerFrame, b : GraphcolorlawlerFrame) -> GraphcolorlawlerFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_frame_copy(s : GraphcolorlawlerFrame) -> GraphcolorlawlerFrame {
-  let result = graph_color_lawler_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_frame_fill(s : GraphcolorlawlerFrame, v : Double) -> GraphcolorlawlerFrame {
-  let result = graph_color_lawler_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_frame_min(s : GraphcolorlawlerFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_lawler_table_sum(s : GraphcolorlawlerTable) -> Double { @_com
 pub fn graph_color_lawler_table_mean(s : GraphcolorlawlerTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_table_scale(s : GraphcolorlawlerTable, f : Double) -> GraphcolorlawlerTable {
-  let result = graph_color_lawler_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_table_add(a : GraphcolorlawlerTable, b : GraphcolorlawlerTable) -> GraphcolorlawlerTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_table_copy(s : GraphcolorlawlerTable) -> GraphcolorlawlerTable {
-  let result = graph_color_lawler_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_table_fill(s : GraphcolorlawlerTable, v : Double) -> GraphcolorlawlerTable {
-  let result = graph_color_lawler_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_table_min(s : GraphcolorlawlerTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_lawler_graphn_sum(s : GraphcolorlawlerGraphN) -> Double { @_c
 pub fn graph_color_lawler_graphn_mean(s : GraphcolorlawlerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_graphn_scale(s : GraphcolorlawlerGraphN, f : Double) -> GraphcolorlawlerGraphN {
-  let result = graph_color_lawler_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_graphn_add(a : GraphcolorlawlerGraphN, b : GraphcolorlawlerGraphN) -> GraphcolorlawlerGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_graphn_copy(s : GraphcolorlawlerGraphN) -> GraphcolorlawlerGraphN {
-  let result = graph_color_lawler_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_graphn_fill(s : GraphcolorlawlerGraphN, v : Double) -> GraphcolorlawlerGraphN {
-  let result = graph_color_lawler_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_graphn_min(s : GraphcolorlawlerGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_lawler_node_sum(s : GraphcolorlawlerNode) -> Double { @_commo
 pub fn graph_color_lawler_node_mean(s : GraphcolorlawlerNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_node_scale(s : GraphcolorlawlerNode, f : Double) -> GraphcolorlawlerNode {
-  let result = graph_color_lawler_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_node_add(a : GraphcolorlawlerNode, b : GraphcolorlawlerNode) -> GraphcolorlawlerNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_node_copy(s : GraphcolorlawlerNode) -> GraphcolorlawlerNode {
-  let result = graph_color_lawler_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_node_fill(s : GraphcolorlawlerNode, v : Double) -> GraphcolorlawlerNode {
-  let result = graph_color_lawler_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_node_min(s : GraphcolorlawlerNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_lawler_edge_sum(s : GraphcolorlawlerEdge) -> Double { @_commo
 pub fn graph_color_lawler_edge_mean(s : GraphcolorlawlerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_edge_scale(s : GraphcolorlawlerEdge, f : Double) -> GraphcolorlawlerEdge {
-  let result = graph_color_lawler_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_edge_add(a : GraphcolorlawlerEdge, b : GraphcolorlawlerEdge) -> GraphcolorlawlerEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_edge_copy(s : GraphcolorlawlerEdge) -> GraphcolorlawlerEdge {
-  let result = graph_color_lawler_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_edge_fill(s : GraphcolorlawlerEdge, v : Double) -> GraphcolorlawlerEdge {
-  let result = graph_color_lawler_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_edge_min(s : GraphcolorlawlerEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_lawler_path_sum(s : GraphcolorlawlerPath) -> Double { @_commo
 pub fn graph_color_lawler_path_mean(s : GraphcolorlawlerPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_path_scale(s : GraphcolorlawlerPath, f : Double) -> GraphcolorlawlerPath {
-  let result = graph_color_lawler_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_path_add(a : GraphcolorlawlerPath, b : GraphcolorlawlerPath) -> GraphcolorlawlerPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_path_copy(s : GraphcolorlawlerPath) -> GraphcolorlawlerPath {
-  let result = graph_color_lawler_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_path_fill(s : GraphcolorlawlerPath, v : Double) -> GraphcolorlawlerPath {
-  let result = graph_color_lawler_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_path_min(s : GraphcolorlawlerPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_lawler_cluster_sum(s : GraphcolorlawlerCluster) -> Double { @
 pub fn graph_color_lawler_cluster_mean(s : GraphcolorlawlerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_cluster_scale(s : GraphcolorlawlerCluster, f : Double) -> GraphcolorlawlerCluster {
-  let result = graph_color_lawler_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_cluster_add(a : GraphcolorlawlerCluster, b : GraphcolorlawlerCluster) -> GraphcolorlawlerCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_cluster_copy(s : GraphcolorlawlerCluster) -> GraphcolorlawlerCluster {
-  let result = graph_color_lawler_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_cluster_fill(s : GraphcolorlawlerCluster, v : Double) -> GraphcolorlawlerCluster {
-  let result = graph_color_lawler_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_cluster_min(s : GraphcolorlawlerCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_lawler_model_sum(s : GraphcolorlawlerModel) -> Double { @_com
 pub fn graph_color_lawler_model_mean(s : GraphcolorlawlerModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_model_scale(s : GraphcolorlawlerModel, f : Double) -> GraphcolorlawlerModel {
-  let result = graph_color_lawler_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_model_add(a : GraphcolorlawlerModel, b : GraphcolorlawlerModel) -> GraphcolorlawlerModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_model_copy(s : GraphcolorlawlerModel) -> GraphcolorlawlerModel {
-  let result = graph_color_lawler_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_model_fill(s : GraphcolorlawlerModel, v : Double) -> GraphcolorlawlerModel {
-  let result = graph_color_lawler_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_model_min(s : GraphcolorlawlerModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_lawler_layer_sum(s : GraphcolorlawlerLayer) -> Double { @_com
 pub fn graph_color_lawler_layer_mean(s : GraphcolorlawlerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_layer_scale(s : GraphcolorlawlerLayer, f : Double) -> GraphcolorlawlerLayer {
-  let result = graph_color_lawler_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_layer_add(a : GraphcolorlawlerLayer, b : GraphcolorlawlerLayer) -> GraphcolorlawlerLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_layer_copy(s : GraphcolorlawlerLayer) -> GraphcolorlawlerLayer {
-  let result = graph_color_lawler_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_layer_fill(s : GraphcolorlawlerLayer, v : Double) -> GraphcolorlawlerLayer {
-  let result = graph_color_lawler_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_layer_min(s : GraphcolorlawlerLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_lawler_buffer_sum(s : GraphcolorlawlerBuffer) -> Double { @_c
 pub fn graph_color_lawler_buffer_mean(s : GraphcolorlawlerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_buffer_scale(s : GraphcolorlawlerBuffer, f : Double) -> GraphcolorlawlerBuffer {
-  let result = graph_color_lawler_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_buffer_add(a : GraphcolorlawlerBuffer, b : GraphcolorlawlerBuffer) -> GraphcolorlawlerBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_buffer_copy(s : GraphcolorlawlerBuffer) -> GraphcolorlawlerBuffer {
-  let result = graph_color_lawler_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_buffer_fill(s : GraphcolorlawlerBuffer, v : Double) -> GraphcolorlawlerBuffer {
-  let result = graph_color_lawler_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_buffer_min(s : GraphcolorlawlerBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_lawler_cursor_sum(s : GraphcolorlawlerCursor) -> Double { @_c
 pub fn graph_color_lawler_cursor_mean(s : GraphcolorlawlerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_cursor_scale(s : GraphcolorlawlerCursor, f : Double) -> GraphcolorlawlerCursor {
-  let result = graph_color_lawler_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_cursor_add(a : GraphcolorlawlerCursor, b : GraphcolorlawlerCursor) -> GraphcolorlawlerCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_cursor_copy(s : GraphcolorlawlerCursor) -> GraphcolorlawlerCursor {
-  let result = graph_color_lawler_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_cursor_fill(s : GraphcolorlawlerCursor, v : Double) -> GraphcolorlawlerCursor {
-  let result = graph_color_lawler_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_cursor_min(s : GraphcolorlawlerCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_lawler_view_sum(s : GraphcolorlawlerView) -> Double { @_commo
 pub fn graph_color_lawler_view_mean(s : GraphcolorlawlerView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_view_scale(s : GraphcolorlawlerView, f : Double) -> GraphcolorlawlerView {
-  let result = graph_color_lawler_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_view_add(a : GraphcolorlawlerView, b : GraphcolorlawlerView) -> GraphcolorlawlerView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_view_copy(s : GraphcolorlawlerView) -> GraphcolorlawlerView {
-  let result = graph_color_lawler_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_view_fill(s : GraphcolorlawlerView, v : Double) -> GraphcolorlawlerView {
-  let result = graph_color_lawler_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_view_min(s : GraphcolorlawlerView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_lawler_range_sum(s : GraphcolorlawlerRange) -> Double { @_com
 pub fn graph_color_lawler_range_mean(s : GraphcolorlawlerRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_range_scale(s : GraphcolorlawlerRange, f : Double) -> GraphcolorlawlerRange {
-  let result = graph_color_lawler_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_range_add(a : GraphcolorlawlerRange, b : GraphcolorlawlerRange) -> GraphcolorlawlerRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_range_copy(s : GraphcolorlawlerRange) -> GraphcolorlawlerRange {
-  let result = graph_color_lawler_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_range_fill(s : GraphcolorlawlerRange, v : Double) -> GraphcolorlawlerRange {
-  let result = graph_color_lawler_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_range_min(s : GraphcolorlawlerRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_lawler_slice_sum(s : GraphcolorlawlerSlice) -> Double { @_com
 pub fn graph_color_lawler_slice_mean(s : GraphcolorlawlerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_lawler_slice_scale(s : GraphcolorlawlerSlice, f : Double) -> GraphcolorlawlerSlice {
-  let result = graph_color_lawler_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_slice_add(a : GraphcolorlawlerSlice, b : GraphcolorlawlerSlice) -> GraphcolorlawlerSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_lawler_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_lawler_slice_copy(s : GraphcolorlawlerSlice) -> GraphcolorlawlerSlice {
-  let result = graph_color_lawler_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_slice_fill(s : GraphcolorlawlerSlice, v : Double) -> GraphcolorlawlerSlice {
-  let result = graph_color_lawler_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_lawler_slice_min(s : GraphcolorlawlerSlice) -> Double { @_common.min(s.data) }

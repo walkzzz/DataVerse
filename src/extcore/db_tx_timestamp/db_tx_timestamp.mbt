@@ -383,28 +383,20 @@ pub fn db_tx_timestamp_frame_sum(s : DbtxtimestampFrame) -> Double { @_common.su
 pub fn db_tx_timestamp_frame_mean(s : DbtxtimestampFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_frame_scale(s : DbtxtimestampFrame, f : Double) -> DbtxtimestampFrame {
-  let result = db_tx_timestamp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_frame_add(a : DbtxtimestampFrame, b : DbtxtimestampFrame) -> DbtxtimestampFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_frame_copy(s : DbtxtimestampFrame) -> DbtxtimestampFrame {
-  let result = db_tx_timestamp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_frame_fill(s : DbtxtimestampFrame, v : Double) -> DbtxtimestampFrame {
-  let result = db_tx_timestamp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_frame_min(s : DbtxtimestampFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_tx_timestamp_table_sum(s : DbtxtimestampTable) -> Double { @_common.su
 pub fn db_tx_timestamp_table_mean(s : DbtxtimestampTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_table_scale(s : DbtxtimestampTable, f : Double) -> DbtxtimestampTable {
-  let result = db_tx_timestamp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_table_add(a : DbtxtimestampTable, b : DbtxtimestampTable) -> DbtxtimestampTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_table_copy(s : DbtxtimestampTable) -> DbtxtimestampTable {
-  let result = db_tx_timestamp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_table_fill(s : DbtxtimestampTable, v : Double) -> DbtxtimestampTable {
-  let result = db_tx_timestamp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_table_min(s : DbtxtimestampTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_tx_timestamp_graphn_sum(s : DbtxtimestampGraphN) -> Double { @_common.
 pub fn db_tx_timestamp_graphn_mean(s : DbtxtimestampGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_graphn_scale(s : DbtxtimestampGraphN, f : Double) -> DbtxtimestampGraphN {
-  let result = db_tx_timestamp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_graphn_add(a : DbtxtimestampGraphN, b : DbtxtimestampGraphN) -> DbtxtimestampGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_graphn_copy(s : DbtxtimestampGraphN) -> DbtxtimestampGraphN {
-  let result = db_tx_timestamp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_graphn_fill(s : DbtxtimestampGraphN, v : Double) -> DbtxtimestampGraphN {
-  let result = db_tx_timestamp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_graphn_min(s : DbtxtimestampGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_tx_timestamp_node_sum(s : DbtxtimestampNode) -> Double { @_common.sum(
 pub fn db_tx_timestamp_node_mean(s : DbtxtimestampNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_node_scale(s : DbtxtimestampNode, f : Double) -> DbtxtimestampNode {
-  let result = db_tx_timestamp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_node_add(a : DbtxtimestampNode, b : DbtxtimestampNode) -> DbtxtimestampNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_node_copy(s : DbtxtimestampNode) -> DbtxtimestampNode {
-  let result = db_tx_timestamp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_node_fill(s : DbtxtimestampNode, v : Double) -> DbtxtimestampNode {
-  let result = db_tx_timestamp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_node_min(s : DbtxtimestampNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_tx_timestamp_edge_sum(s : DbtxtimestampEdge) -> Double { @_common.sum(
 pub fn db_tx_timestamp_edge_mean(s : DbtxtimestampEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_edge_scale(s : DbtxtimestampEdge, f : Double) -> DbtxtimestampEdge {
-  let result = db_tx_timestamp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_edge_add(a : DbtxtimestampEdge, b : DbtxtimestampEdge) -> DbtxtimestampEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_edge_copy(s : DbtxtimestampEdge) -> DbtxtimestampEdge {
-  let result = db_tx_timestamp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_edge_fill(s : DbtxtimestampEdge, v : Double) -> DbtxtimestampEdge {
-  let result = db_tx_timestamp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_edge_min(s : DbtxtimestampEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_tx_timestamp_path_sum(s : DbtxtimestampPath) -> Double { @_common.sum(
 pub fn db_tx_timestamp_path_mean(s : DbtxtimestampPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_path_scale(s : DbtxtimestampPath, f : Double) -> DbtxtimestampPath {
-  let result = db_tx_timestamp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_path_add(a : DbtxtimestampPath, b : DbtxtimestampPath) -> DbtxtimestampPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_path_copy(s : DbtxtimestampPath) -> DbtxtimestampPath {
-  let result = db_tx_timestamp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_path_fill(s : DbtxtimestampPath, v : Double) -> DbtxtimestampPath {
-  let result = db_tx_timestamp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_path_min(s : DbtxtimestampPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_tx_timestamp_cluster_sum(s : DbtxtimestampCluster) -> Double { @_commo
 pub fn db_tx_timestamp_cluster_mean(s : DbtxtimestampCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_cluster_scale(s : DbtxtimestampCluster, f : Double) -> DbtxtimestampCluster {
-  let result = db_tx_timestamp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_cluster_add(a : DbtxtimestampCluster, b : DbtxtimestampCluster) -> DbtxtimestampCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_cluster_copy(s : DbtxtimestampCluster) -> DbtxtimestampCluster {
-  let result = db_tx_timestamp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_cluster_fill(s : DbtxtimestampCluster, v : Double) -> DbtxtimestampCluster {
-  let result = db_tx_timestamp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_cluster_min(s : DbtxtimestampCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_tx_timestamp_model_sum(s : DbtxtimestampModel) -> Double { @_common.su
 pub fn db_tx_timestamp_model_mean(s : DbtxtimestampModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_model_scale(s : DbtxtimestampModel, f : Double) -> DbtxtimestampModel {
-  let result = db_tx_timestamp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_model_add(a : DbtxtimestampModel, b : DbtxtimestampModel) -> DbtxtimestampModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_model_copy(s : DbtxtimestampModel) -> DbtxtimestampModel {
-  let result = db_tx_timestamp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_model_fill(s : DbtxtimestampModel, v : Double) -> DbtxtimestampModel {
-  let result = db_tx_timestamp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_model_min(s : DbtxtimestampModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_tx_timestamp_layer_sum(s : DbtxtimestampLayer) -> Double { @_common.su
 pub fn db_tx_timestamp_layer_mean(s : DbtxtimestampLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_layer_scale(s : DbtxtimestampLayer, f : Double) -> DbtxtimestampLayer {
-  let result = db_tx_timestamp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_layer_add(a : DbtxtimestampLayer, b : DbtxtimestampLayer) -> DbtxtimestampLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_layer_copy(s : DbtxtimestampLayer) -> DbtxtimestampLayer {
-  let result = db_tx_timestamp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_layer_fill(s : DbtxtimestampLayer, v : Double) -> DbtxtimestampLayer {
-  let result = db_tx_timestamp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_layer_min(s : DbtxtimestampLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_tx_timestamp_buffer_sum(s : DbtxtimestampBuffer) -> Double { @_common.
 pub fn db_tx_timestamp_buffer_mean(s : DbtxtimestampBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_buffer_scale(s : DbtxtimestampBuffer, f : Double) -> DbtxtimestampBuffer {
-  let result = db_tx_timestamp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_buffer_add(a : DbtxtimestampBuffer, b : DbtxtimestampBuffer) -> DbtxtimestampBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_buffer_copy(s : DbtxtimestampBuffer) -> DbtxtimestampBuffer {
-  let result = db_tx_timestamp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_buffer_fill(s : DbtxtimestampBuffer, v : Double) -> DbtxtimestampBuffer {
-  let result = db_tx_timestamp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_buffer_min(s : DbtxtimestampBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_tx_timestamp_cursor_sum(s : DbtxtimestampCursor) -> Double { @_common.
 pub fn db_tx_timestamp_cursor_mean(s : DbtxtimestampCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_cursor_scale(s : DbtxtimestampCursor, f : Double) -> DbtxtimestampCursor {
-  let result = db_tx_timestamp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_cursor_add(a : DbtxtimestampCursor, b : DbtxtimestampCursor) -> DbtxtimestampCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_cursor_copy(s : DbtxtimestampCursor) -> DbtxtimestampCursor {
-  let result = db_tx_timestamp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_cursor_fill(s : DbtxtimestampCursor, v : Double) -> DbtxtimestampCursor {
-  let result = db_tx_timestamp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_cursor_min(s : DbtxtimestampCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_tx_timestamp_view_sum(s : DbtxtimestampView) -> Double { @_common.sum(
 pub fn db_tx_timestamp_view_mean(s : DbtxtimestampView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_view_scale(s : DbtxtimestampView, f : Double) -> DbtxtimestampView {
-  let result = db_tx_timestamp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_view_add(a : DbtxtimestampView, b : DbtxtimestampView) -> DbtxtimestampView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_view_copy(s : DbtxtimestampView) -> DbtxtimestampView {
-  let result = db_tx_timestamp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_view_fill(s : DbtxtimestampView, v : Double) -> DbtxtimestampView {
-  let result = db_tx_timestamp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_view_min(s : DbtxtimestampView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_tx_timestamp_range_sum(s : DbtxtimestampRange) -> Double { @_common.su
 pub fn db_tx_timestamp_range_mean(s : DbtxtimestampRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_range_scale(s : DbtxtimestampRange, f : Double) -> DbtxtimestampRange {
-  let result = db_tx_timestamp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_range_add(a : DbtxtimestampRange, b : DbtxtimestampRange) -> DbtxtimestampRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_range_copy(s : DbtxtimestampRange) -> DbtxtimestampRange {
-  let result = db_tx_timestamp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_range_fill(s : DbtxtimestampRange, v : Double) -> DbtxtimestampRange {
-  let result = db_tx_timestamp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_range_min(s : DbtxtimestampRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_tx_timestamp_slice_sum(s : DbtxtimestampSlice) -> Double { @_common.su
 pub fn db_tx_timestamp_slice_mean(s : DbtxtimestampSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_timestamp_slice_scale(s : DbtxtimestampSlice, f : Double) -> DbtxtimestampSlice {
-  let result = db_tx_timestamp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_slice_add(a : DbtxtimestampSlice, b : DbtxtimestampSlice) -> DbtxtimestampSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_tx_timestamp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_tx_timestamp_slice_copy(s : DbtxtimestampSlice) -> DbtxtimestampSlice {
-  let result = db_tx_timestamp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_slice_fill(s : DbtxtimestampSlice, v : Double) -> DbtxtimestampSlice {
-  let result = db_tx_timestamp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_timestamp_slice_min(s : DbtxtimestampSlice) -> Double { @_common.min(s.data) }

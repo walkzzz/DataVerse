@@ -383,28 +383,20 @@ pub fn ml_regress_elastic_frame_sum(s : MlregresselasticFrame) -> Double { @_com
 pub fn ml_regress_elastic_frame_mean(s : MlregresselasticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_frame_scale(s : MlregresselasticFrame, f : Double) -> MlregresselasticFrame {
-  let result = ml_regress_elastic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_frame_add(a : MlregresselasticFrame, b : MlregresselasticFrame) -> MlregresselasticFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_frame_copy(s : MlregresselasticFrame) -> MlregresselasticFrame {
-  let result = ml_regress_elastic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_frame_fill(s : MlregresselasticFrame, v : Double) -> MlregresselasticFrame {
-  let result = ml_regress_elastic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_frame_min(s : MlregresselasticFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_regress_elastic_table_sum(s : MlregresselasticTable) -> Double { @_com
 pub fn ml_regress_elastic_table_mean(s : MlregresselasticTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_table_scale(s : MlregresselasticTable, f : Double) -> MlregresselasticTable {
-  let result = ml_regress_elastic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_table_add(a : MlregresselasticTable, b : MlregresselasticTable) -> MlregresselasticTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_table_copy(s : MlregresselasticTable) -> MlregresselasticTable {
-  let result = ml_regress_elastic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_table_fill(s : MlregresselasticTable, v : Double) -> MlregresselasticTable {
-  let result = ml_regress_elastic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_table_min(s : MlregresselasticTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_regress_elastic_graphn_sum(s : MlregresselasticGraphN) -> Double { @_c
 pub fn ml_regress_elastic_graphn_mean(s : MlregresselasticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_graphn_scale(s : MlregresselasticGraphN, f : Double) -> MlregresselasticGraphN {
-  let result = ml_regress_elastic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_graphn_add(a : MlregresselasticGraphN, b : MlregresselasticGraphN) -> MlregresselasticGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_graphn_copy(s : MlregresselasticGraphN) -> MlregresselasticGraphN {
-  let result = ml_regress_elastic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_graphn_fill(s : MlregresselasticGraphN, v : Double) -> MlregresselasticGraphN {
-  let result = ml_regress_elastic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_graphn_min(s : MlregresselasticGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_regress_elastic_node_sum(s : MlregresselasticNode) -> Double { @_commo
 pub fn ml_regress_elastic_node_mean(s : MlregresselasticNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_node_scale(s : MlregresselasticNode, f : Double) -> MlregresselasticNode {
-  let result = ml_regress_elastic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_node_add(a : MlregresselasticNode, b : MlregresselasticNode) -> MlregresselasticNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_node_copy(s : MlregresselasticNode) -> MlregresselasticNode {
-  let result = ml_regress_elastic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_node_fill(s : MlregresselasticNode, v : Double) -> MlregresselasticNode {
-  let result = ml_regress_elastic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_node_min(s : MlregresselasticNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_regress_elastic_edge_sum(s : MlregresselasticEdge) -> Double { @_commo
 pub fn ml_regress_elastic_edge_mean(s : MlregresselasticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_edge_scale(s : MlregresselasticEdge, f : Double) -> MlregresselasticEdge {
-  let result = ml_regress_elastic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_edge_add(a : MlregresselasticEdge, b : MlregresselasticEdge) -> MlregresselasticEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_edge_copy(s : MlregresselasticEdge) -> MlregresselasticEdge {
-  let result = ml_regress_elastic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_edge_fill(s : MlregresselasticEdge, v : Double) -> MlregresselasticEdge {
-  let result = ml_regress_elastic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_edge_min(s : MlregresselasticEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_regress_elastic_path_sum(s : MlregresselasticPath) -> Double { @_commo
 pub fn ml_regress_elastic_path_mean(s : MlregresselasticPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_path_scale(s : MlregresselasticPath, f : Double) -> MlregresselasticPath {
-  let result = ml_regress_elastic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_path_add(a : MlregresselasticPath, b : MlregresselasticPath) -> MlregresselasticPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_path_copy(s : MlregresselasticPath) -> MlregresselasticPath {
-  let result = ml_regress_elastic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_path_fill(s : MlregresselasticPath, v : Double) -> MlregresselasticPath {
-  let result = ml_regress_elastic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_path_min(s : MlregresselasticPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_regress_elastic_cluster_sum(s : MlregresselasticCluster) -> Double { @
 pub fn ml_regress_elastic_cluster_mean(s : MlregresselasticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_cluster_scale(s : MlregresselasticCluster, f : Double) -> MlregresselasticCluster {
-  let result = ml_regress_elastic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_cluster_add(a : MlregresselasticCluster, b : MlregresselasticCluster) -> MlregresselasticCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_cluster_copy(s : MlregresselasticCluster) -> MlregresselasticCluster {
-  let result = ml_regress_elastic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_cluster_fill(s : MlregresselasticCluster, v : Double) -> MlregresselasticCluster {
-  let result = ml_regress_elastic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_cluster_min(s : MlregresselasticCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_regress_elastic_model_sum(s : MlregresselasticModel) -> Double { @_com
 pub fn ml_regress_elastic_model_mean(s : MlregresselasticModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_model_scale(s : MlregresselasticModel, f : Double) -> MlregresselasticModel {
-  let result = ml_regress_elastic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_model_add(a : MlregresselasticModel, b : MlregresselasticModel) -> MlregresselasticModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_model_copy(s : MlregresselasticModel) -> MlregresselasticModel {
-  let result = ml_regress_elastic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_model_fill(s : MlregresselasticModel, v : Double) -> MlregresselasticModel {
-  let result = ml_regress_elastic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_model_min(s : MlregresselasticModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_regress_elastic_layer_sum(s : MlregresselasticLayer) -> Double { @_com
 pub fn ml_regress_elastic_layer_mean(s : MlregresselasticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_layer_scale(s : MlregresselasticLayer, f : Double) -> MlregresselasticLayer {
-  let result = ml_regress_elastic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_layer_add(a : MlregresselasticLayer, b : MlregresselasticLayer) -> MlregresselasticLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_layer_copy(s : MlregresselasticLayer) -> MlregresselasticLayer {
-  let result = ml_regress_elastic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_layer_fill(s : MlregresselasticLayer, v : Double) -> MlregresselasticLayer {
-  let result = ml_regress_elastic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_layer_min(s : MlregresselasticLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_regress_elastic_buffer_sum(s : MlregresselasticBuffer) -> Double { @_c
 pub fn ml_regress_elastic_buffer_mean(s : MlregresselasticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_buffer_scale(s : MlregresselasticBuffer, f : Double) -> MlregresselasticBuffer {
-  let result = ml_regress_elastic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_buffer_add(a : MlregresselasticBuffer, b : MlregresselasticBuffer) -> MlregresselasticBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_buffer_copy(s : MlregresselasticBuffer) -> MlregresselasticBuffer {
-  let result = ml_regress_elastic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_buffer_fill(s : MlregresselasticBuffer, v : Double) -> MlregresselasticBuffer {
-  let result = ml_regress_elastic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_buffer_min(s : MlregresselasticBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_regress_elastic_cursor_sum(s : MlregresselasticCursor) -> Double { @_c
 pub fn ml_regress_elastic_cursor_mean(s : MlregresselasticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_cursor_scale(s : MlregresselasticCursor, f : Double) -> MlregresselasticCursor {
-  let result = ml_regress_elastic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_cursor_add(a : MlregresselasticCursor, b : MlregresselasticCursor) -> MlregresselasticCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_cursor_copy(s : MlregresselasticCursor) -> MlregresselasticCursor {
-  let result = ml_regress_elastic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_cursor_fill(s : MlregresselasticCursor, v : Double) -> MlregresselasticCursor {
-  let result = ml_regress_elastic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_cursor_min(s : MlregresselasticCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_regress_elastic_view_sum(s : MlregresselasticView) -> Double { @_commo
 pub fn ml_regress_elastic_view_mean(s : MlregresselasticView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_view_scale(s : MlregresselasticView, f : Double) -> MlregresselasticView {
-  let result = ml_regress_elastic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_view_add(a : MlregresselasticView, b : MlregresselasticView) -> MlregresselasticView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_view_copy(s : MlregresselasticView) -> MlregresselasticView {
-  let result = ml_regress_elastic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_view_fill(s : MlregresselasticView, v : Double) -> MlregresselasticView {
-  let result = ml_regress_elastic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_view_min(s : MlregresselasticView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_regress_elastic_range_sum(s : MlregresselasticRange) -> Double { @_com
 pub fn ml_regress_elastic_range_mean(s : MlregresselasticRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_range_scale(s : MlregresselasticRange, f : Double) -> MlregresselasticRange {
-  let result = ml_regress_elastic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_range_add(a : MlregresselasticRange, b : MlregresselasticRange) -> MlregresselasticRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_range_copy(s : MlregresselasticRange) -> MlregresselasticRange {
-  let result = ml_regress_elastic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_range_fill(s : MlregresselasticRange, v : Double) -> MlregresselasticRange {
-  let result = ml_regress_elastic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_range_min(s : MlregresselasticRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_regress_elastic_slice_sum(s : MlregresselasticSlice) -> Double { @_com
 pub fn ml_regress_elastic_slice_mean(s : MlregresselasticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_elastic_slice_scale(s : MlregresselasticSlice, f : Double) -> MlregresselasticSlice {
-  let result = ml_regress_elastic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_slice_add(a : MlregresselasticSlice, b : MlregresselasticSlice) -> MlregresselasticSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_regress_elastic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_regress_elastic_slice_copy(s : MlregresselasticSlice) -> MlregresselasticSlice {
-  let result = ml_regress_elastic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_slice_fill(s : MlregresselasticSlice, v : Double) -> MlregresselasticSlice {
-  let result = ml_regress_elastic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_elastic_slice_min(s : MlregresselasticSlice) -> Double { @_common.min(s.data) }

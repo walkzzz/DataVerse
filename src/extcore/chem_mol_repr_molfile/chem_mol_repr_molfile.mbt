@@ -383,28 +383,20 @@ pub fn chem_mol_repr_molfile_frame_sum(s : ChemmolreprmolfileFrame) -> Double { 
 pub fn chem_mol_repr_molfile_frame_mean(s : ChemmolreprmolfileFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_frame_scale(s : ChemmolreprmolfileFrame, f : Double) -> ChemmolreprmolfileFrame {
-  let result = chem_mol_repr_molfile_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_frame_add(a : ChemmolreprmolfileFrame, b : ChemmolreprmolfileFrame) -> ChemmolreprmolfileFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_frame_copy(s : ChemmolreprmolfileFrame) -> ChemmolreprmolfileFrame {
-  let result = chem_mol_repr_molfile_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_frame_fill(s : ChemmolreprmolfileFrame, v : Double) -> ChemmolreprmolfileFrame {
-  let result = chem_mol_repr_molfile_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_frame_min(s : ChemmolreprmolfileFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn chem_mol_repr_molfile_table_sum(s : ChemmolreprmolfileTable) -> Double { 
 pub fn chem_mol_repr_molfile_table_mean(s : ChemmolreprmolfileTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_table_scale(s : ChemmolreprmolfileTable, f : Double) -> ChemmolreprmolfileTable {
-  let result = chem_mol_repr_molfile_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_table_add(a : ChemmolreprmolfileTable, b : ChemmolreprmolfileTable) -> ChemmolreprmolfileTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_table_copy(s : ChemmolreprmolfileTable) -> ChemmolreprmolfileTable {
-  let result = chem_mol_repr_molfile_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_table_fill(s : ChemmolreprmolfileTable, v : Double) -> ChemmolreprmolfileTable {
-  let result = chem_mol_repr_molfile_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_table_min(s : ChemmolreprmolfileTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn chem_mol_repr_molfile_graphn_sum(s : ChemmolreprmolfileGraphN) -> Double 
 pub fn chem_mol_repr_molfile_graphn_mean(s : ChemmolreprmolfileGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_graphn_scale(s : ChemmolreprmolfileGraphN, f : Double) -> ChemmolreprmolfileGraphN {
-  let result = chem_mol_repr_molfile_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_graphn_add(a : ChemmolreprmolfileGraphN, b : ChemmolreprmolfileGraphN) -> ChemmolreprmolfileGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_graphn_copy(s : ChemmolreprmolfileGraphN) -> ChemmolreprmolfileGraphN {
-  let result = chem_mol_repr_molfile_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_graphn_fill(s : ChemmolreprmolfileGraphN, v : Double) -> ChemmolreprmolfileGraphN {
-  let result = chem_mol_repr_molfile_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_graphn_min(s : ChemmolreprmolfileGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn chem_mol_repr_molfile_node_sum(s : ChemmolreprmolfileNode) -> Double { @_
 pub fn chem_mol_repr_molfile_node_mean(s : ChemmolreprmolfileNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_node_scale(s : ChemmolreprmolfileNode, f : Double) -> ChemmolreprmolfileNode {
-  let result = chem_mol_repr_molfile_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_node_add(a : ChemmolreprmolfileNode, b : ChemmolreprmolfileNode) -> ChemmolreprmolfileNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_node_copy(s : ChemmolreprmolfileNode) -> ChemmolreprmolfileNode {
-  let result = chem_mol_repr_molfile_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_node_fill(s : ChemmolreprmolfileNode, v : Double) -> ChemmolreprmolfileNode {
-  let result = chem_mol_repr_molfile_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_node_min(s : ChemmolreprmolfileNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn chem_mol_repr_molfile_edge_sum(s : ChemmolreprmolfileEdge) -> Double { @_
 pub fn chem_mol_repr_molfile_edge_mean(s : ChemmolreprmolfileEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_edge_scale(s : ChemmolreprmolfileEdge, f : Double) -> ChemmolreprmolfileEdge {
-  let result = chem_mol_repr_molfile_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_edge_add(a : ChemmolreprmolfileEdge, b : ChemmolreprmolfileEdge) -> ChemmolreprmolfileEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_edge_copy(s : ChemmolreprmolfileEdge) -> ChemmolreprmolfileEdge {
-  let result = chem_mol_repr_molfile_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_edge_fill(s : ChemmolreprmolfileEdge, v : Double) -> ChemmolreprmolfileEdge {
-  let result = chem_mol_repr_molfile_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_edge_min(s : ChemmolreprmolfileEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn chem_mol_repr_molfile_path_sum(s : ChemmolreprmolfilePath) -> Double { @_
 pub fn chem_mol_repr_molfile_path_mean(s : ChemmolreprmolfilePath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_path_scale(s : ChemmolreprmolfilePath, f : Double) -> ChemmolreprmolfilePath {
-  let result = chem_mol_repr_molfile_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_path_add(a : ChemmolreprmolfilePath, b : ChemmolreprmolfilePath) -> ChemmolreprmolfilePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_path_copy(s : ChemmolreprmolfilePath) -> ChemmolreprmolfilePath {
-  let result = chem_mol_repr_molfile_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_path_fill(s : ChemmolreprmolfilePath, v : Double) -> ChemmolreprmolfilePath {
-  let result = chem_mol_repr_molfile_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_path_min(s : ChemmolreprmolfilePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn chem_mol_repr_molfile_cluster_sum(s : ChemmolreprmolfileCluster) -> Doubl
 pub fn chem_mol_repr_molfile_cluster_mean(s : ChemmolreprmolfileCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_cluster_scale(s : ChemmolreprmolfileCluster, f : Double) -> ChemmolreprmolfileCluster {
-  let result = chem_mol_repr_molfile_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_cluster_add(a : ChemmolreprmolfileCluster, b : ChemmolreprmolfileCluster) -> ChemmolreprmolfileCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_cluster_copy(s : ChemmolreprmolfileCluster) -> ChemmolreprmolfileCluster {
-  let result = chem_mol_repr_molfile_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_cluster_fill(s : ChemmolreprmolfileCluster, v : Double) -> ChemmolreprmolfileCluster {
-  let result = chem_mol_repr_molfile_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_cluster_min(s : ChemmolreprmolfileCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn chem_mol_repr_molfile_model_sum(s : ChemmolreprmolfileModel) -> Double { 
 pub fn chem_mol_repr_molfile_model_mean(s : ChemmolreprmolfileModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_model_scale(s : ChemmolreprmolfileModel, f : Double) -> ChemmolreprmolfileModel {
-  let result = chem_mol_repr_molfile_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_model_add(a : ChemmolreprmolfileModel, b : ChemmolreprmolfileModel) -> ChemmolreprmolfileModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_model_copy(s : ChemmolreprmolfileModel) -> ChemmolreprmolfileModel {
-  let result = chem_mol_repr_molfile_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_model_fill(s : ChemmolreprmolfileModel, v : Double) -> ChemmolreprmolfileModel {
-  let result = chem_mol_repr_molfile_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_model_min(s : ChemmolreprmolfileModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn chem_mol_repr_molfile_layer_sum(s : ChemmolreprmolfileLayer) -> Double { 
 pub fn chem_mol_repr_molfile_layer_mean(s : ChemmolreprmolfileLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_layer_scale(s : ChemmolreprmolfileLayer, f : Double) -> ChemmolreprmolfileLayer {
-  let result = chem_mol_repr_molfile_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_layer_add(a : ChemmolreprmolfileLayer, b : ChemmolreprmolfileLayer) -> ChemmolreprmolfileLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_layer_copy(s : ChemmolreprmolfileLayer) -> ChemmolreprmolfileLayer {
-  let result = chem_mol_repr_molfile_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_layer_fill(s : ChemmolreprmolfileLayer, v : Double) -> ChemmolreprmolfileLayer {
-  let result = chem_mol_repr_molfile_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_layer_min(s : ChemmolreprmolfileLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn chem_mol_repr_molfile_buffer_sum(s : ChemmolreprmolfileBuffer) -> Double 
 pub fn chem_mol_repr_molfile_buffer_mean(s : ChemmolreprmolfileBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_buffer_scale(s : ChemmolreprmolfileBuffer, f : Double) -> ChemmolreprmolfileBuffer {
-  let result = chem_mol_repr_molfile_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_buffer_add(a : ChemmolreprmolfileBuffer, b : ChemmolreprmolfileBuffer) -> ChemmolreprmolfileBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_buffer_copy(s : ChemmolreprmolfileBuffer) -> ChemmolreprmolfileBuffer {
-  let result = chem_mol_repr_molfile_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_buffer_fill(s : ChemmolreprmolfileBuffer, v : Double) -> ChemmolreprmolfileBuffer {
-  let result = chem_mol_repr_molfile_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_buffer_min(s : ChemmolreprmolfileBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn chem_mol_repr_molfile_cursor_sum(s : ChemmolreprmolfileCursor) -> Double 
 pub fn chem_mol_repr_molfile_cursor_mean(s : ChemmolreprmolfileCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_cursor_scale(s : ChemmolreprmolfileCursor, f : Double) -> ChemmolreprmolfileCursor {
-  let result = chem_mol_repr_molfile_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_cursor_add(a : ChemmolreprmolfileCursor, b : ChemmolreprmolfileCursor) -> ChemmolreprmolfileCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_cursor_copy(s : ChemmolreprmolfileCursor) -> ChemmolreprmolfileCursor {
-  let result = chem_mol_repr_molfile_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_cursor_fill(s : ChemmolreprmolfileCursor, v : Double) -> ChemmolreprmolfileCursor {
-  let result = chem_mol_repr_molfile_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_cursor_min(s : ChemmolreprmolfileCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn chem_mol_repr_molfile_view_sum(s : ChemmolreprmolfileView) -> Double { @_
 pub fn chem_mol_repr_molfile_view_mean(s : ChemmolreprmolfileView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_view_scale(s : ChemmolreprmolfileView, f : Double) -> ChemmolreprmolfileView {
-  let result = chem_mol_repr_molfile_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_view_add(a : ChemmolreprmolfileView, b : ChemmolreprmolfileView) -> ChemmolreprmolfileView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_view_copy(s : ChemmolreprmolfileView) -> ChemmolreprmolfileView {
-  let result = chem_mol_repr_molfile_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_view_fill(s : ChemmolreprmolfileView, v : Double) -> ChemmolreprmolfileView {
-  let result = chem_mol_repr_molfile_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_view_min(s : ChemmolreprmolfileView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn chem_mol_repr_molfile_range_sum(s : ChemmolreprmolfileRange) -> Double { 
 pub fn chem_mol_repr_molfile_range_mean(s : ChemmolreprmolfileRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_range_scale(s : ChemmolreprmolfileRange, f : Double) -> ChemmolreprmolfileRange {
-  let result = chem_mol_repr_molfile_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_range_add(a : ChemmolreprmolfileRange, b : ChemmolreprmolfileRange) -> ChemmolreprmolfileRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_range_copy(s : ChemmolreprmolfileRange) -> ChemmolreprmolfileRange {
-  let result = chem_mol_repr_molfile_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_range_fill(s : ChemmolreprmolfileRange, v : Double) -> ChemmolreprmolfileRange {
-  let result = chem_mol_repr_molfile_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_range_min(s : ChemmolreprmolfileRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn chem_mol_repr_molfile_slice_sum(s : ChemmolreprmolfileSlice) -> Double { 
 pub fn chem_mol_repr_molfile_slice_mean(s : ChemmolreprmolfileSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_molfile_slice_scale(s : ChemmolreprmolfileSlice, f : Double) -> ChemmolreprmolfileSlice {
-  let result = chem_mol_repr_molfile_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_slice_add(a : ChemmolreprmolfileSlice, b : ChemmolreprmolfileSlice) -> ChemmolreprmolfileSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = chem_mol_repr_molfile_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn chem_mol_repr_molfile_slice_copy(s : ChemmolreprmolfileSlice) -> ChemmolreprmolfileSlice {
-  let result = chem_mol_repr_molfile_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_slice_fill(s : ChemmolreprmolfileSlice, v : Double) -> ChemmolreprmolfileSlice {
-  let result = chem_mol_repr_molfile_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_molfile_slice_min(s : ChemmolreprmolfileSlice) -> Double { @_common.min(s.data) }

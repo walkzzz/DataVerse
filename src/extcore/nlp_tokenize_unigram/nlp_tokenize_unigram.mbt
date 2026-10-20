@@ -383,28 +383,20 @@ pub fn nlp_tokenize_unigram_frame_sum(s : NlptokenizeunigramFrame) -> Double { @
 pub fn nlp_tokenize_unigram_frame_mean(s : NlptokenizeunigramFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_frame_scale(s : NlptokenizeunigramFrame, f : Double) -> NlptokenizeunigramFrame {
-  let result = nlp_tokenize_unigram_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_frame_add(a : NlptokenizeunigramFrame, b : NlptokenizeunigramFrame) -> NlptokenizeunigramFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_frame_copy(s : NlptokenizeunigramFrame) -> NlptokenizeunigramFrame {
-  let result = nlp_tokenize_unigram_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_frame_fill(s : NlptokenizeunigramFrame, v : Double) -> NlptokenizeunigramFrame {
-  let result = nlp_tokenize_unigram_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_frame_min(s : NlptokenizeunigramFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_tokenize_unigram_table_sum(s : NlptokenizeunigramTable) -> Double { @
 pub fn nlp_tokenize_unigram_table_mean(s : NlptokenizeunigramTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_table_scale(s : NlptokenizeunigramTable, f : Double) -> NlptokenizeunigramTable {
-  let result = nlp_tokenize_unigram_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_table_add(a : NlptokenizeunigramTable, b : NlptokenizeunigramTable) -> NlptokenizeunigramTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_table_copy(s : NlptokenizeunigramTable) -> NlptokenizeunigramTable {
-  let result = nlp_tokenize_unigram_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_table_fill(s : NlptokenizeunigramTable, v : Double) -> NlptokenizeunigramTable {
-  let result = nlp_tokenize_unigram_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_table_min(s : NlptokenizeunigramTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_tokenize_unigram_graphn_sum(s : NlptokenizeunigramGraphN) -> Double {
 pub fn nlp_tokenize_unigram_graphn_mean(s : NlptokenizeunigramGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_graphn_scale(s : NlptokenizeunigramGraphN, f : Double) -> NlptokenizeunigramGraphN {
-  let result = nlp_tokenize_unigram_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_graphn_add(a : NlptokenizeunigramGraphN, b : NlptokenizeunigramGraphN) -> NlptokenizeunigramGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_graphn_copy(s : NlptokenizeunigramGraphN) -> NlptokenizeunigramGraphN {
-  let result = nlp_tokenize_unigram_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_graphn_fill(s : NlptokenizeunigramGraphN, v : Double) -> NlptokenizeunigramGraphN {
-  let result = nlp_tokenize_unigram_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_graphn_min(s : NlptokenizeunigramGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_tokenize_unigram_node_sum(s : NlptokenizeunigramNode) -> Double { @_c
 pub fn nlp_tokenize_unigram_node_mean(s : NlptokenizeunigramNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_node_scale(s : NlptokenizeunigramNode, f : Double) -> NlptokenizeunigramNode {
-  let result = nlp_tokenize_unigram_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_node_add(a : NlptokenizeunigramNode, b : NlptokenizeunigramNode) -> NlptokenizeunigramNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_node_copy(s : NlptokenizeunigramNode) -> NlptokenizeunigramNode {
-  let result = nlp_tokenize_unigram_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_node_fill(s : NlptokenizeunigramNode, v : Double) -> NlptokenizeunigramNode {
-  let result = nlp_tokenize_unigram_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_node_min(s : NlptokenizeunigramNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_tokenize_unigram_edge_sum(s : NlptokenizeunigramEdge) -> Double { @_c
 pub fn nlp_tokenize_unigram_edge_mean(s : NlptokenizeunigramEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_edge_scale(s : NlptokenizeunigramEdge, f : Double) -> NlptokenizeunigramEdge {
-  let result = nlp_tokenize_unigram_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_edge_add(a : NlptokenizeunigramEdge, b : NlptokenizeunigramEdge) -> NlptokenizeunigramEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_edge_copy(s : NlptokenizeunigramEdge) -> NlptokenizeunigramEdge {
-  let result = nlp_tokenize_unigram_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_edge_fill(s : NlptokenizeunigramEdge, v : Double) -> NlptokenizeunigramEdge {
-  let result = nlp_tokenize_unigram_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_edge_min(s : NlptokenizeunigramEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_tokenize_unigram_path_sum(s : NlptokenizeunigramPath) -> Double { @_c
 pub fn nlp_tokenize_unigram_path_mean(s : NlptokenizeunigramPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_path_scale(s : NlptokenizeunigramPath, f : Double) -> NlptokenizeunigramPath {
-  let result = nlp_tokenize_unigram_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_path_add(a : NlptokenizeunigramPath, b : NlptokenizeunigramPath) -> NlptokenizeunigramPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_path_copy(s : NlptokenizeunigramPath) -> NlptokenizeunigramPath {
-  let result = nlp_tokenize_unigram_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_path_fill(s : NlptokenizeunigramPath, v : Double) -> NlptokenizeunigramPath {
-  let result = nlp_tokenize_unigram_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_path_min(s : NlptokenizeunigramPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_tokenize_unigram_cluster_sum(s : NlptokenizeunigramCluster) -> Double
 pub fn nlp_tokenize_unigram_cluster_mean(s : NlptokenizeunigramCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_cluster_scale(s : NlptokenizeunigramCluster, f : Double) -> NlptokenizeunigramCluster {
-  let result = nlp_tokenize_unigram_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_cluster_add(a : NlptokenizeunigramCluster, b : NlptokenizeunigramCluster) -> NlptokenizeunigramCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_cluster_copy(s : NlptokenizeunigramCluster) -> NlptokenizeunigramCluster {
-  let result = nlp_tokenize_unigram_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_cluster_fill(s : NlptokenizeunigramCluster, v : Double) -> NlptokenizeunigramCluster {
-  let result = nlp_tokenize_unigram_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_cluster_min(s : NlptokenizeunigramCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_tokenize_unigram_model_sum(s : NlptokenizeunigramModel) -> Double { @
 pub fn nlp_tokenize_unigram_model_mean(s : NlptokenizeunigramModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_model_scale(s : NlptokenizeunigramModel, f : Double) -> NlptokenizeunigramModel {
-  let result = nlp_tokenize_unigram_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_model_add(a : NlptokenizeunigramModel, b : NlptokenizeunigramModel) -> NlptokenizeunigramModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_model_copy(s : NlptokenizeunigramModel) -> NlptokenizeunigramModel {
-  let result = nlp_tokenize_unigram_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_model_fill(s : NlptokenizeunigramModel, v : Double) -> NlptokenizeunigramModel {
-  let result = nlp_tokenize_unigram_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_model_min(s : NlptokenizeunigramModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_tokenize_unigram_layer_sum(s : NlptokenizeunigramLayer) -> Double { @
 pub fn nlp_tokenize_unigram_layer_mean(s : NlptokenizeunigramLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_layer_scale(s : NlptokenizeunigramLayer, f : Double) -> NlptokenizeunigramLayer {
-  let result = nlp_tokenize_unigram_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_layer_add(a : NlptokenizeunigramLayer, b : NlptokenizeunigramLayer) -> NlptokenizeunigramLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_layer_copy(s : NlptokenizeunigramLayer) -> NlptokenizeunigramLayer {
-  let result = nlp_tokenize_unigram_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_layer_fill(s : NlptokenizeunigramLayer, v : Double) -> NlptokenizeunigramLayer {
-  let result = nlp_tokenize_unigram_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_layer_min(s : NlptokenizeunigramLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_tokenize_unigram_buffer_sum(s : NlptokenizeunigramBuffer) -> Double {
 pub fn nlp_tokenize_unigram_buffer_mean(s : NlptokenizeunigramBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_buffer_scale(s : NlptokenizeunigramBuffer, f : Double) -> NlptokenizeunigramBuffer {
-  let result = nlp_tokenize_unigram_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_buffer_add(a : NlptokenizeunigramBuffer, b : NlptokenizeunigramBuffer) -> NlptokenizeunigramBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_buffer_copy(s : NlptokenizeunigramBuffer) -> NlptokenizeunigramBuffer {
-  let result = nlp_tokenize_unigram_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_buffer_fill(s : NlptokenizeunigramBuffer, v : Double) -> NlptokenizeunigramBuffer {
-  let result = nlp_tokenize_unigram_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_buffer_min(s : NlptokenizeunigramBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_tokenize_unigram_cursor_sum(s : NlptokenizeunigramCursor) -> Double {
 pub fn nlp_tokenize_unigram_cursor_mean(s : NlptokenizeunigramCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_cursor_scale(s : NlptokenizeunigramCursor, f : Double) -> NlptokenizeunigramCursor {
-  let result = nlp_tokenize_unigram_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_cursor_add(a : NlptokenizeunigramCursor, b : NlptokenizeunigramCursor) -> NlptokenizeunigramCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_cursor_copy(s : NlptokenizeunigramCursor) -> NlptokenizeunigramCursor {
-  let result = nlp_tokenize_unigram_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_cursor_fill(s : NlptokenizeunigramCursor, v : Double) -> NlptokenizeunigramCursor {
-  let result = nlp_tokenize_unigram_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_cursor_min(s : NlptokenizeunigramCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_tokenize_unigram_view_sum(s : NlptokenizeunigramView) -> Double { @_c
 pub fn nlp_tokenize_unigram_view_mean(s : NlptokenizeunigramView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_view_scale(s : NlptokenizeunigramView, f : Double) -> NlptokenizeunigramView {
-  let result = nlp_tokenize_unigram_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_view_add(a : NlptokenizeunigramView, b : NlptokenizeunigramView) -> NlptokenizeunigramView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_view_copy(s : NlptokenizeunigramView) -> NlptokenizeunigramView {
-  let result = nlp_tokenize_unigram_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_view_fill(s : NlptokenizeunigramView, v : Double) -> NlptokenizeunigramView {
-  let result = nlp_tokenize_unigram_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_view_min(s : NlptokenizeunigramView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_tokenize_unigram_range_sum(s : NlptokenizeunigramRange) -> Double { @
 pub fn nlp_tokenize_unigram_range_mean(s : NlptokenizeunigramRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_range_scale(s : NlptokenizeunigramRange, f : Double) -> NlptokenizeunigramRange {
-  let result = nlp_tokenize_unigram_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_range_add(a : NlptokenizeunigramRange, b : NlptokenizeunigramRange) -> NlptokenizeunigramRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_range_copy(s : NlptokenizeunigramRange) -> NlptokenizeunigramRange {
-  let result = nlp_tokenize_unigram_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_range_fill(s : NlptokenizeunigramRange, v : Double) -> NlptokenizeunigramRange {
-  let result = nlp_tokenize_unigram_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_range_min(s : NlptokenizeunigramRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_tokenize_unigram_slice_sum(s : NlptokenizeunigramSlice) -> Double { @
 pub fn nlp_tokenize_unigram_slice_mean(s : NlptokenizeunigramSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_slice_scale(s : NlptokenizeunigramSlice, f : Double) -> NlptokenizeunigramSlice {
-  let result = nlp_tokenize_unigram_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_slice_add(a : NlptokenizeunigramSlice, b : NlptokenizeunigramSlice) -> NlptokenizeunigramSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_tokenize_unigram_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_tokenize_unigram_slice_copy(s : NlptokenizeunigramSlice) -> NlptokenizeunigramSlice {
-  let result = nlp_tokenize_unigram_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_slice_fill(s : NlptokenizeunigramSlice, v : Double) -> NlptokenizeunigramSlice {
-  let result = nlp_tokenize_unigram_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_unigram_slice_min(s : NlptokenizeunigramSlice) -> Double { @_common.min(s.data) }

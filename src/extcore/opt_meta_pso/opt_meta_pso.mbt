@@ -383,28 +383,20 @@ pub fn opt_meta_pso_frame_sum(s : OptmetapsoFrame) -> Double { @_common.sum(s.da
 pub fn opt_meta_pso_frame_mean(s : OptmetapsoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_frame_scale(s : OptmetapsoFrame, f : Double) -> OptmetapsoFrame {
-  let result = opt_meta_pso_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_frame_add(a : OptmetapsoFrame, b : OptmetapsoFrame) -> OptmetapsoFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_frame_copy(s : OptmetapsoFrame) -> OptmetapsoFrame {
-  let result = opt_meta_pso_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_frame_fill(s : OptmetapsoFrame, v : Double) -> OptmetapsoFrame {
-  let result = opt_meta_pso_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_frame_min(s : OptmetapsoFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn opt_meta_pso_table_sum(s : OptmetapsoTable) -> Double { @_common.sum(s.da
 pub fn opt_meta_pso_table_mean(s : OptmetapsoTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_table_scale(s : OptmetapsoTable, f : Double) -> OptmetapsoTable {
-  let result = opt_meta_pso_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_table_add(a : OptmetapsoTable, b : OptmetapsoTable) -> OptmetapsoTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_table_copy(s : OptmetapsoTable) -> OptmetapsoTable {
-  let result = opt_meta_pso_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_table_fill(s : OptmetapsoTable, v : Double) -> OptmetapsoTable {
-  let result = opt_meta_pso_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_table_min(s : OptmetapsoTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn opt_meta_pso_graphn_sum(s : OptmetapsoGraphN) -> Double { @_common.sum(s.
 pub fn opt_meta_pso_graphn_mean(s : OptmetapsoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_graphn_scale(s : OptmetapsoGraphN, f : Double) -> OptmetapsoGraphN {
-  let result = opt_meta_pso_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_graphn_add(a : OptmetapsoGraphN, b : OptmetapsoGraphN) -> OptmetapsoGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_graphn_copy(s : OptmetapsoGraphN) -> OptmetapsoGraphN {
-  let result = opt_meta_pso_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_graphn_fill(s : OptmetapsoGraphN, v : Double) -> OptmetapsoGraphN {
-  let result = opt_meta_pso_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_graphn_min(s : OptmetapsoGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn opt_meta_pso_node_sum(s : OptmetapsoNode) -> Double { @_common.sum(s.data
 pub fn opt_meta_pso_node_mean(s : OptmetapsoNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_node_scale(s : OptmetapsoNode, f : Double) -> OptmetapsoNode {
-  let result = opt_meta_pso_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_node_add(a : OptmetapsoNode, b : OptmetapsoNode) -> OptmetapsoNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_node_copy(s : OptmetapsoNode) -> OptmetapsoNode {
-  let result = opt_meta_pso_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_node_fill(s : OptmetapsoNode, v : Double) -> OptmetapsoNode {
-  let result = opt_meta_pso_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_node_min(s : OptmetapsoNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn opt_meta_pso_edge_sum(s : OptmetapsoEdge) -> Double { @_common.sum(s.data
 pub fn opt_meta_pso_edge_mean(s : OptmetapsoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_edge_scale(s : OptmetapsoEdge, f : Double) -> OptmetapsoEdge {
-  let result = opt_meta_pso_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_edge_add(a : OptmetapsoEdge, b : OptmetapsoEdge) -> OptmetapsoEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_edge_copy(s : OptmetapsoEdge) -> OptmetapsoEdge {
-  let result = opt_meta_pso_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_edge_fill(s : OptmetapsoEdge, v : Double) -> OptmetapsoEdge {
-  let result = opt_meta_pso_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_edge_min(s : OptmetapsoEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn opt_meta_pso_path_sum(s : OptmetapsoPath) -> Double { @_common.sum(s.data
 pub fn opt_meta_pso_path_mean(s : OptmetapsoPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_path_scale(s : OptmetapsoPath, f : Double) -> OptmetapsoPath {
-  let result = opt_meta_pso_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_path_add(a : OptmetapsoPath, b : OptmetapsoPath) -> OptmetapsoPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_path_copy(s : OptmetapsoPath) -> OptmetapsoPath {
-  let result = opt_meta_pso_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_path_fill(s : OptmetapsoPath, v : Double) -> OptmetapsoPath {
-  let result = opt_meta_pso_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_path_min(s : OptmetapsoPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn opt_meta_pso_cluster_sum(s : OptmetapsoCluster) -> Double { @_common.sum(
 pub fn opt_meta_pso_cluster_mean(s : OptmetapsoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_cluster_scale(s : OptmetapsoCluster, f : Double) -> OptmetapsoCluster {
-  let result = opt_meta_pso_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_cluster_add(a : OptmetapsoCluster, b : OptmetapsoCluster) -> OptmetapsoCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_cluster_copy(s : OptmetapsoCluster) -> OptmetapsoCluster {
-  let result = opt_meta_pso_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_cluster_fill(s : OptmetapsoCluster, v : Double) -> OptmetapsoCluster {
-  let result = opt_meta_pso_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_cluster_min(s : OptmetapsoCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn opt_meta_pso_model_sum(s : OptmetapsoModel) -> Double { @_common.sum(s.da
 pub fn opt_meta_pso_model_mean(s : OptmetapsoModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_model_scale(s : OptmetapsoModel, f : Double) -> OptmetapsoModel {
-  let result = opt_meta_pso_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_model_add(a : OptmetapsoModel, b : OptmetapsoModel) -> OptmetapsoModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_model_copy(s : OptmetapsoModel) -> OptmetapsoModel {
-  let result = opt_meta_pso_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_model_fill(s : OptmetapsoModel, v : Double) -> OptmetapsoModel {
-  let result = opt_meta_pso_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_model_min(s : OptmetapsoModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn opt_meta_pso_layer_sum(s : OptmetapsoLayer) -> Double { @_common.sum(s.da
 pub fn opt_meta_pso_layer_mean(s : OptmetapsoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_layer_scale(s : OptmetapsoLayer, f : Double) -> OptmetapsoLayer {
-  let result = opt_meta_pso_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_layer_add(a : OptmetapsoLayer, b : OptmetapsoLayer) -> OptmetapsoLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_layer_copy(s : OptmetapsoLayer) -> OptmetapsoLayer {
-  let result = opt_meta_pso_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_layer_fill(s : OptmetapsoLayer, v : Double) -> OptmetapsoLayer {
-  let result = opt_meta_pso_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_layer_min(s : OptmetapsoLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn opt_meta_pso_buffer_sum(s : OptmetapsoBuffer) -> Double { @_common.sum(s.
 pub fn opt_meta_pso_buffer_mean(s : OptmetapsoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_buffer_scale(s : OptmetapsoBuffer, f : Double) -> OptmetapsoBuffer {
-  let result = opt_meta_pso_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_buffer_add(a : OptmetapsoBuffer, b : OptmetapsoBuffer) -> OptmetapsoBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_buffer_copy(s : OptmetapsoBuffer) -> OptmetapsoBuffer {
-  let result = opt_meta_pso_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_buffer_fill(s : OptmetapsoBuffer, v : Double) -> OptmetapsoBuffer {
-  let result = opt_meta_pso_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_buffer_min(s : OptmetapsoBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn opt_meta_pso_cursor_sum(s : OptmetapsoCursor) -> Double { @_common.sum(s.
 pub fn opt_meta_pso_cursor_mean(s : OptmetapsoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_cursor_scale(s : OptmetapsoCursor, f : Double) -> OptmetapsoCursor {
-  let result = opt_meta_pso_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_cursor_add(a : OptmetapsoCursor, b : OptmetapsoCursor) -> OptmetapsoCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_cursor_copy(s : OptmetapsoCursor) -> OptmetapsoCursor {
-  let result = opt_meta_pso_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_cursor_fill(s : OptmetapsoCursor, v : Double) -> OptmetapsoCursor {
-  let result = opt_meta_pso_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_cursor_min(s : OptmetapsoCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn opt_meta_pso_view_sum(s : OptmetapsoView) -> Double { @_common.sum(s.data
 pub fn opt_meta_pso_view_mean(s : OptmetapsoView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_view_scale(s : OptmetapsoView, f : Double) -> OptmetapsoView {
-  let result = opt_meta_pso_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_view_add(a : OptmetapsoView, b : OptmetapsoView) -> OptmetapsoView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_view_copy(s : OptmetapsoView) -> OptmetapsoView {
-  let result = opt_meta_pso_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_view_fill(s : OptmetapsoView, v : Double) -> OptmetapsoView {
-  let result = opt_meta_pso_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_view_min(s : OptmetapsoView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn opt_meta_pso_range_sum(s : OptmetapsoRange) -> Double { @_common.sum(s.da
 pub fn opt_meta_pso_range_mean(s : OptmetapsoRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_range_scale(s : OptmetapsoRange, f : Double) -> OptmetapsoRange {
-  let result = opt_meta_pso_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_range_add(a : OptmetapsoRange, b : OptmetapsoRange) -> OptmetapsoRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_range_copy(s : OptmetapsoRange) -> OptmetapsoRange {
-  let result = opt_meta_pso_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_range_fill(s : OptmetapsoRange, v : Double) -> OptmetapsoRange {
-  let result = opt_meta_pso_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_range_min(s : OptmetapsoRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn opt_meta_pso_slice_sum(s : OptmetapsoSlice) -> Double { @_common.sum(s.da
 pub fn opt_meta_pso_slice_mean(s : OptmetapsoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_slice_scale(s : OptmetapsoSlice, f : Double) -> OptmetapsoSlice {
-  let result = opt_meta_pso_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_slice_add(a : OptmetapsoSlice, b : OptmetapsoSlice) -> OptmetapsoSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = opt_meta_pso_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn opt_meta_pso_slice_copy(s : OptmetapsoSlice) -> OptmetapsoSlice {
-  let result = opt_meta_pso_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_slice_fill(s : OptmetapsoSlice, v : Double) -> OptmetapsoSlice {
-  let result = opt_meta_pso_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_pso_slice_min(s : OptmetapsoSlice) -> Double { @_common.min(s.data) }

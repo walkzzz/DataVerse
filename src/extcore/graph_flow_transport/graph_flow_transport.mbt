@@ -383,28 +383,20 @@ pub fn graph_flow_transport_frame_sum(s : GraphflowtransportFrame) -> Double { @
 pub fn graph_flow_transport_frame_mean(s : GraphflowtransportFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_frame_scale(s : GraphflowtransportFrame, f : Double) -> GraphflowtransportFrame {
-  let result = graph_flow_transport_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_frame_add(a : GraphflowtransportFrame, b : GraphflowtransportFrame) -> GraphflowtransportFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_frame_copy(s : GraphflowtransportFrame) -> GraphflowtransportFrame {
-  let result = graph_flow_transport_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_frame_fill(s : GraphflowtransportFrame, v : Double) -> GraphflowtransportFrame {
-  let result = graph_flow_transport_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_frame_min(s : GraphflowtransportFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_flow_transport_table_sum(s : GraphflowtransportTable) -> Double { @
 pub fn graph_flow_transport_table_mean(s : GraphflowtransportTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_table_scale(s : GraphflowtransportTable, f : Double) -> GraphflowtransportTable {
-  let result = graph_flow_transport_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_table_add(a : GraphflowtransportTable, b : GraphflowtransportTable) -> GraphflowtransportTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_table_copy(s : GraphflowtransportTable) -> GraphflowtransportTable {
-  let result = graph_flow_transport_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_table_fill(s : GraphflowtransportTable, v : Double) -> GraphflowtransportTable {
-  let result = graph_flow_transport_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_table_min(s : GraphflowtransportTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_flow_transport_graphn_sum(s : GraphflowtransportGraphN) -> Double {
 pub fn graph_flow_transport_graphn_mean(s : GraphflowtransportGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_graphn_scale(s : GraphflowtransportGraphN, f : Double) -> GraphflowtransportGraphN {
-  let result = graph_flow_transport_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_graphn_add(a : GraphflowtransportGraphN, b : GraphflowtransportGraphN) -> GraphflowtransportGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_graphn_copy(s : GraphflowtransportGraphN) -> GraphflowtransportGraphN {
-  let result = graph_flow_transport_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_graphn_fill(s : GraphflowtransportGraphN, v : Double) -> GraphflowtransportGraphN {
-  let result = graph_flow_transport_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_graphn_min(s : GraphflowtransportGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_flow_transport_node_sum(s : GraphflowtransportNode) -> Double { @_c
 pub fn graph_flow_transport_node_mean(s : GraphflowtransportNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_node_scale(s : GraphflowtransportNode, f : Double) -> GraphflowtransportNode {
-  let result = graph_flow_transport_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_node_add(a : GraphflowtransportNode, b : GraphflowtransportNode) -> GraphflowtransportNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_node_copy(s : GraphflowtransportNode) -> GraphflowtransportNode {
-  let result = graph_flow_transport_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_node_fill(s : GraphflowtransportNode, v : Double) -> GraphflowtransportNode {
-  let result = graph_flow_transport_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_node_min(s : GraphflowtransportNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_flow_transport_edge_sum(s : GraphflowtransportEdge) -> Double { @_c
 pub fn graph_flow_transport_edge_mean(s : GraphflowtransportEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_edge_scale(s : GraphflowtransportEdge, f : Double) -> GraphflowtransportEdge {
-  let result = graph_flow_transport_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_edge_add(a : GraphflowtransportEdge, b : GraphflowtransportEdge) -> GraphflowtransportEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_edge_copy(s : GraphflowtransportEdge) -> GraphflowtransportEdge {
-  let result = graph_flow_transport_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_edge_fill(s : GraphflowtransportEdge, v : Double) -> GraphflowtransportEdge {
-  let result = graph_flow_transport_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_edge_min(s : GraphflowtransportEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_flow_transport_path_sum(s : GraphflowtransportPath) -> Double { @_c
 pub fn graph_flow_transport_path_mean(s : GraphflowtransportPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_path_scale(s : GraphflowtransportPath, f : Double) -> GraphflowtransportPath {
-  let result = graph_flow_transport_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_path_add(a : GraphflowtransportPath, b : GraphflowtransportPath) -> GraphflowtransportPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_path_copy(s : GraphflowtransportPath) -> GraphflowtransportPath {
-  let result = graph_flow_transport_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_path_fill(s : GraphflowtransportPath, v : Double) -> GraphflowtransportPath {
-  let result = graph_flow_transport_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_path_min(s : GraphflowtransportPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_flow_transport_cluster_sum(s : GraphflowtransportCluster) -> Double
 pub fn graph_flow_transport_cluster_mean(s : GraphflowtransportCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_cluster_scale(s : GraphflowtransportCluster, f : Double) -> GraphflowtransportCluster {
-  let result = graph_flow_transport_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_cluster_add(a : GraphflowtransportCluster, b : GraphflowtransportCluster) -> GraphflowtransportCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_cluster_copy(s : GraphflowtransportCluster) -> GraphflowtransportCluster {
-  let result = graph_flow_transport_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_cluster_fill(s : GraphflowtransportCluster, v : Double) -> GraphflowtransportCluster {
-  let result = graph_flow_transport_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_cluster_min(s : GraphflowtransportCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_flow_transport_model_sum(s : GraphflowtransportModel) -> Double { @
 pub fn graph_flow_transport_model_mean(s : GraphflowtransportModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_model_scale(s : GraphflowtransportModel, f : Double) -> GraphflowtransportModel {
-  let result = graph_flow_transport_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_model_add(a : GraphflowtransportModel, b : GraphflowtransportModel) -> GraphflowtransportModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_model_copy(s : GraphflowtransportModel) -> GraphflowtransportModel {
-  let result = graph_flow_transport_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_model_fill(s : GraphflowtransportModel, v : Double) -> GraphflowtransportModel {
-  let result = graph_flow_transport_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_model_min(s : GraphflowtransportModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_flow_transport_layer_sum(s : GraphflowtransportLayer) -> Double { @
 pub fn graph_flow_transport_layer_mean(s : GraphflowtransportLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_layer_scale(s : GraphflowtransportLayer, f : Double) -> GraphflowtransportLayer {
-  let result = graph_flow_transport_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_layer_add(a : GraphflowtransportLayer, b : GraphflowtransportLayer) -> GraphflowtransportLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_layer_copy(s : GraphflowtransportLayer) -> GraphflowtransportLayer {
-  let result = graph_flow_transport_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_layer_fill(s : GraphflowtransportLayer, v : Double) -> GraphflowtransportLayer {
-  let result = graph_flow_transport_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_layer_min(s : GraphflowtransportLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_flow_transport_buffer_sum(s : GraphflowtransportBuffer) -> Double {
 pub fn graph_flow_transport_buffer_mean(s : GraphflowtransportBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_buffer_scale(s : GraphflowtransportBuffer, f : Double) -> GraphflowtransportBuffer {
-  let result = graph_flow_transport_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_buffer_add(a : GraphflowtransportBuffer, b : GraphflowtransportBuffer) -> GraphflowtransportBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_buffer_copy(s : GraphflowtransportBuffer) -> GraphflowtransportBuffer {
-  let result = graph_flow_transport_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_buffer_fill(s : GraphflowtransportBuffer, v : Double) -> GraphflowtransportBuffer {
-  let result = graph_flow_transport_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_buffer_min(s : GraphflowtransportBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_flow_transport_cursor_sum(s : GraphflowtransportCursor) -> Double {
 pub fn graph_flow_transport_cursor_mean(s : GraphflowtransportCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_cursor_scale(s : GraphflowtransportCursor, f : Double) -> GraphflowtransportCursor {
-  let result = graph_flow_transport_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_cursor_add(a : GraphflowtransportCursor, b : GraphflowtransportCursor) -> GraphflowtransportCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_cursor_copy(s : GraphflowtransportCursor) -> GraphflowtransportCursor {
-  let result = graph_flow_transport_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_cursor_fill(s : GraphflowtransportCursor, v : Double) -> GraphflowtransportCursor {
-  let result = graph_flow_transport_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_cursor_min(s : GraphflowtransportCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_flow_transport_view_sum(s : GraphflowtransportView) -> Double { @_c
 pub fn graph_flow_transport_view_mean(s : GraphflowtransportView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_view_scale(s : GraphflowtransportView, f : Double) -> GraphflowtransportView {
-  let result = graph_flow_transport_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_view_add(a : GraphflowtransportView, b : GraphflowtransportView) -> GraphflowtransportView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_view_copy(s : GraphflowtransportView) -> GraphflowtransportView {
-  let result = graph_flow_transport_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_view_fill(s : GraphflowtransportView, v : Double) -> GraphflowtransportView {
-  let result = graph_flow_transport_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_view_min(s : GraphflowtransportView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_flow_transport_range_sum(s : GraphflowtransportRange) -> Double { @
 pub fn graph_flow_transport_range_mean(s : GraphflowtransportRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_range_scale(s : GraphflowtransportRange, f : Double) -> GraphflowtransportRange {
-  let result = graph_flow_transport_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_range_add(a : GraphflowtransportRange, b : GraphflowtransportRange) -> GraphflowtransportRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_range_copy(s : GraphflowtransportRange) -> GraphflowtransportRange {
-  let result = graph_flow_transport_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_range_fill(s : GraphflowtransportRange, v : Double) -> GraphflowtransportRange {
-  let result = graph_flow_transport_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_range_min(s : GraphflowtransportRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_flow_transport_slice_sum(s : GraphflowtransportSlice) -> Double { @
 pub fn graph_flow_transport_slice_mean(s : GraphflowtransportSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_slice_scale(s : GraphflowtransportSlice, f : Double) -> GraphflowtransportSlice {
-  let result = graph_flow_transport_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_slice_add(a : GraphflowtransportSlice, b : GraphflowtransportSlice) -> GraphflowtransportSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_flow_transport_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_flow_transport_slice_copy(s : GraphflowtransportSlice) -> GraphflowtransportSlice {
-  let result = graph_flow_transport_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_slice_fill(s : GraphflowtransportSlice, v : Double) -> GraphflowtransportSlice {
-  let result = graph_flow_transport_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_transport_slice_min(s : GraphflowtransportSlice) -> Double { @_common.min(s.data) }

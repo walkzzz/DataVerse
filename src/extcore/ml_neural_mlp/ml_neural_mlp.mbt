@@ -383,28 +383,20 @@ pub fn ml_neural_mlp_frame_sum(s : MlneuralmlpFrame) -> Double { @_common.sum(s.
 pub fn ml_neural_mlp_frame_mean(s : MlneuralmlpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_frame_scale(s : MlneuralmlpFrame, f : Double) -> MlneuralmlpFrame {
-  let result = ml_neural_mlp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_frame_add(a : MlneuralmlpFrame, b : MlneuralmlpFrame) -> MlneuralmlpFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_frame_copy(s : MlneuralmlpFrame) -> MlneuralmlpFrame {
-  let result = ml_neural_mlp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_frame_fill(s : MlneuralmlpFrame, v : Double) -> MlneuralmlpFrame {
-  let result = ml_neural_mlp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_frame_min(s : MlneuralmlpFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_neural_mlp_table_sum(s : MlneuralmlpTable) -> Double { @_common.sum(s.
 pub fn ml_neural_mlp_table_mean(s : MlneuralmlpTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_table_scale(s : MlneuralmlpTable, f : Double) -> MlneuralmlpTable {
-  let result = ml_neural_mlp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_table_add(a : MlneuralmlpTable, b : MlneuralmlpTable) -> MlneuralmlpTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_table_copy(s : MlneuralmlpTable) -> MlneuralmlpTable {
-  let result = ml_neural_mlp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_table_fill(s : MlneuralmlpTable, v : Double) -> MlneuralmlpTable {
-  let result = ml_neural_mlp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_table_min(s : MlneuralmlpTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_neural_mlp_graphn_sum(s : MlneuralmlpGraphN) -> Double { @_common.sum(
 pub fn ml_neural_mlp_graphn_mean(s : MlneuralmlpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_graphn_scale(s : MlneuralmlpGraphN, f : Double) -> MlneuralmlpGraphN {
-  let result = ml_neural_mlp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_graphn_add(a : MlneuralmlpGraphN, b : MlneuralmlpGraphN) -> MlneuralmlpGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_graphn_copy(s : MlneuralmlpGraphN) -> MlneuralmlpGraphN {
-  let result = ml_neural_mlp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_graphn_fill(s : MlneuralmlpGraphN, v : Double) -> MlneuralmlpGraphN {
-  let result = ml_neural_mlp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_graphn_min(s : MlneuralmlpGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_neural_mlp_node_sum(s : MlneuralmlpNode) -> Double { @_common.sum(s.da
 pub fn ml_neural_mlp_node_mean(s : MlneuralmlpNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_node_scale(s : MlneuralmlpNode, f : Double) -> MlneuralmlpNode {
-  let result = ml_neural_mlp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_node_add(a : MlneuralmlpNode, b : MlneuralmlpNode) -> MlneuralmlpNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_node_copy(s : MlneuralmlpNode) -> MlneuralmlpNode {
-  let result = ml_neural_mlp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_node_fill(s : MlneuralmlpNode, v : Double) -> MlneuralmlpNode {
-  let result = ml_neural_mlp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_node_min(s : MlneuralmlpNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_neural_mlp_edge_sum(s : MlneuralmlpEdge) -> Double { @_common.sum(s.da
 pub fn ml_neural_mlp_edge_mean(s : MlneuralmlpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_edge_scale(s : MlneuralmlpEdge, f : Double) -> MlneuralmlpEdge {
-  let result = ml_neural_mlp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_edge_add(a : MlneuralmlpEdge, b : MlneuralmlpEdge) -> MlneuralmlpEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_edge_copy(s : MlneuralmlpEdge) -> MlneuralmlpEdge {
-  let result = ml_neural_mlp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_edge_fill(s : MlneuralmlpEdge, v : Double) -> MlneuralmlpEdge {
-  let result = ml_neural_mlp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_edge_min(s : MlneuralmlpEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_neural_mlp_path_sum(s : MlneuralmlpPath) -> Double { @_common.sum(s.da
 pub fn ml_neural_mlp_path_mean(s : MlneuralmlpPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_path_scale(s : MlneuralmlpPath, f : Double) -> MlneuralmlpPath {
-  let result = ml_neural_mlp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_path_add(a : MlneuralmlpPath, b : MlneuralmlpPath) -> MlneuralmlpPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_path_copy(s : MlneuralmlpPath) -> MlneuralmlpPath {
-  let result = ml_neural_mlp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_path_fill(s : MlneuralmlpPath, v : Double) -> MlneuralmlpPath {
-  let result = ml_neural_mlp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_path_min(s : MlneuralmlpPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_neural_mlp_cluster_sum(s : MlneuralmlpCluster) -> Double { @_common.su
 pub fn ml_neural_mlp_cluster_mean(s : MlneuralmlpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_cluster_scale(s : MlneuralmlpCluster, f : Double) -> MlneuralmlpCluster {
-  let result = ml_neural_mlp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_cluster_add(a : MlneuralmlpCluster, b : MlneuralmlpCluster) -> MlneuralmlpCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_cluster_copy(s : MlneuralmlpCluster) -> MlneuralmlpCluster {
-  let result = ml_neural_mlp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_cluster_fill(s : MlneuralmlpCluster, v : Double) -> MlneuralmlpCluster {
-  let result = ml_neural_mlp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_cluster_min(s : MlneuralmlpCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_neural_mlp_model_sum(s : MlneuralmlpModel) -> Double { @_common.sum(s.
 pub fn ml_neural_mlp_model_mean(s : MlneuralmlpModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_model_scale(s : MlneuralmlpModel, f : Double) -> MlneuralmlpModel {
-  let result = ml_neural_mlp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_model_add(a : MlneuralmlpModel, b : MlneuralmlpModel) -> MlneuralmlpModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_model_copy(s : MlneuralmlpModel) -> MlneuralmlpModel {
-  let result = ml_neural_mlp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_model_fill(s : MlneuralmlpModel, v : Double) -> MlneuralmlpModel {
-  let result = ml_neural_mlp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_model_min(s : MlneuralmlpModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_neural_mlp_layer_sum(s : MlneuralmlpLayer) -> Double { @_common.sum(s.
 pub fn ml_neural_mlp_layer_mean(s : MlneuralmlpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_layer_scale(s : MlneuralmlpLayer, f : Double) -> MlneuralmlpLayer {
-  let result = ml_neural_mlp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_layer_add(a : MlneuralmlpLayer, b : MlneuralmlpLayer) -> MlneuralmlpLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_layer_copy(s : MlneuralmlpLayer) -> MlneuralmlpLayer {
-  let result = ml_neural_mlp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_layer_fill(s : MlneuralmlpLayer, v : Double) -> MlneuralmlpLayer {
-  let result = ml_neural_mlp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_layer_min(s : MlneuralmlpLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_neural_mlp_buffer_sum(s : MlneuralmlpBuffer) -> Double { @_common.sum(
 pub fn ml_neural_mlp_buffer_mean(s : MlneuralmlpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_buffer_scale(s : MlneuralmlpBuffer, f : Double) -> MlneuralmlpBuffer {
-  let result = ml_neural_mlp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_buffer_add(a : MlneuralmlpBuffer, b : MlneuralmlpBuffer) -> MlneuralmlpBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_buffer_copy(s : MlneuralmlpBuffer) -> MlneuralmlpBuffer {
-  let result = ml_neural_mlp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_buffer_fill(s : MlneuralmlpBuffer, v : Double) -> MlneuralmlpBuffer {
-  let result = ml_neural_mlp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_buffer_min(s : MlneuralmlpBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_neural_mlp_cursor_sum(s : MlneuralmlpCursor) -> Double { @_common.sum(
 pub fn ml_neural_mlp_cursor_mean(s : MlneuralmlpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_cursor_scale(s : MlneuralmlpCursor, f : Double) -> MlneuralmlpCursor {
-  let result = ml_neural_mlp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_cursor_add(a : MlneuralmlpCursor, b : MlneuralmlpCursor) -> MlneuralmlpCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_cursor_copy(s : MlneuralmlpCursor) -> MlneuralmlpCursor {
-  let result = ml_neural_mlp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_cursor_fill(s : MlneuralmlpCursor, v : Double) -> MlneuralmlpCursor {
-  let result = ml_neural_mlp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_cursor_min(s : MlneuralmlpCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_neural_mlp_view_sum(s : MlneuralmlpView) -> Double { @_common.sum(s.da
 pub fn ml_neural_mlp_view_mean(s : MlneuralmlpView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_view_scale(s : MlneuralmlpView, f : Double) -> MlneuralmlpView {
-  let result = ml_neural_mlp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_view_add(a : MlneuralmlpView, b : MlneuralmlpView) -> MlneuralmlpView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_view_copy(s : MlneuralmlpView) -> MlneuralmlpView {
-  let result = ml_neural_mlp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_view_fill(s : MlneuralmlpView, v : Double) -> MlneuralmlpView {
-  let result = ml_neural_mlp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_view_min(s : MlneuralmlpView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_neural_mlp_range_sum(s : MlneuralmlpRange) -> Double { @_common.sum(s.
 pub fn ml_neural_mlp_range_mean(s : MlneuralmlpRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_range_scale(s : MlneuralmlpRange, f : Double) -> MlneuralmlpRange {
-  let result = ml_neural_mlp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_range_add(a : MlneuralmlpRange, b : MlneuralmlpRange) -> MlneuralmlpRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_range_copy(s : MlneuralmlpRange) -> MlneuralmlpRange {
-  let result = ml_neural_mlp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_range_fill(s : MlneuralmlpRange, v : Double) -> MlneuralmlpRange {
-  let result = ml_neural_mlp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_range_min(s : MlneuralmlpRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_neural_mlp_slice_sum(s : MlneuralmlpSlice) -> Double { @_common.sum(s.
 pub fn ml_neural_mlp_slice_mean(s : MlneuralmlpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_mlp_slice_scale(s : MlneuralmlpSlice, f : Double) -> MlneuralmlpSlice {
-  let result = ml_neural_mlp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_slice_add(a : MlneuralmlpSlice, b : MlneuralmlpSlice) -> MlneuralmlpSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_neural_mlp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_neural_mlp_slice_copy(s : MlneuralmlpSlice) -> MlneuralmlpSlice {
-  let result = ml_neural_mlp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_slice_fill(s : MlneuralmlpSlice, v : Double) -> MlneuralmlpSlice {
-  let result = ml_neural_mlp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_mlp_slice_min(s : MlneuralmlpSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn bio_struct_motif_frame_sum(s : BiostructmotifFrame) -> Double { @_common.
 pub fn bio_struct_motif_frame_mean(s : BiostructmotifFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_frame_scale(s : BiostructmotifFrame, f : Double) -> BiostructmotifFrame {
-  let result = bio_struct_motif_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_frame_add(a : BiostructmotifFrame, b : BiostructmotifFrame) -> BiostructmotifFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_frame_copy(s : BiostructmotifFrame) -> BiostructmotifFrame {
-  let result = bio_struct_motif_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_frame_fill(s : BiostructmotifFrame, v : Double) -> BiostructmotifFrame {
-  let result = bio_struct_motif_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_frame_min(s : BiostructmotifFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_struct_motif_table_sum(s : BiostructmotifTable) -> Double { @_common.
 pub fn bio_struct_motif_table_mean(s : BiostructmotifTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_table_scale(s : BiostructmotifTable, f : Double) -> BiostructmotifTable {
-  let result = bio_struct_motif_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_table_add(a : BiostructmotifTable, b : BiostructmotifTable) -> BiostructmotifTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_table_copy(s : BiostructmotifTable) -> BiostructmotifTable {
-  let result = bio_struct_motif_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_table_fill(s : BiostructmotifTable, v : Double) -> BiostructmotifTable {
-  let result = bio_struct_motif_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_table_min(s : BiostructmotifTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_struct_motif_graphn_sum(s : BiostructmotifGraphN) -> Double { @_commo
 pub fn bio_struct_motif_graphn_mean(s : BiostructmotifGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_graphn_scale(s : BiostructmotifGraphN, f : Double) -> BiostructmotifGraphN {
-  let result = bio_struct_motif_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_graphn_add(a : BiostructmotifGraphN, b : BiostructmotifGraphN) -> BiostructmotifGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_graphn_copy(s : BiostructmotifGraphN) -> BiostructmotifGraphN {
-  let result = bio_struct_motif_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_graphn_fill(s : BiostructmotifGraphN, v : Double) -> BiostructmotifGraphN {
-  let result = bio_struct_motif_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_graphn_min(s : BiostructmotifGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_struct_motif_node_sum(s : BiostructmotifNode) -> Double { @_common.su
 pub fn bio_struct_motif_node_mean(s : BiostructmotifNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_node_scale(s : BiostructmotifNode, f : Double) -> BiostructmotifNode {
-  let result = bio_struct_motif_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_node_add(a : BiostructmotifNode, b : BiostructmotifNode) -> BiostructmotifNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_node_copy(s : BiostructmotifNode) -> BiostructmotifNode {
-  let result = bio_struct_motif_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_node_fill(s : BiostructmotifNode, v : Double) -> BiostructmotifNode {
-  let result = bio_struct_motif_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_node_min(s : BiostructmotifNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_struct_motif_edge_sum(s : BiostructmotifEdge) -> Double { @_common.su
 pub fn bio_struct_motif_edge_mean(s : BiostructmotifEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_edge_scale(s : BiostructmotifEdge, f : Double) -> BiostructmotifEdge {
-  let result = bio_struct_motif_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_edge_add(a : BiostructmotifEdge, b : BiostructmotifEdge) -> BiostructmotifEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_edge_copy(s : BiostructmotifEdge) -> BiostructmotifEdge {
-  let result = bio_struct_motif_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_edge_fill(s : BiostructmotifEdge, v : Double) -> BiostructmotifEdge {
-  let result = bio_struct_motif_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_edge_min(s : BiostructmotifEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_struct_motif_path_sum(s : BiostructmotifPath) -> Double { @_common.su
 pub fn bio_struct_motif_path_mean(s : BiostructmotifPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_path_scale(s : BiostructmotifPath, f : Double) -> BiostructmotifPath {
-  let result = bio_struct_motif_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_path_add(a : BiostructmotifPath, b : BiostructmotifPath) -> BiostructmotifPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_path_copy(s : BiostructmotifPath) -> BiostructmotifPath {
-  let result = bio_struct_motif_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_path_fill(s : BiostructmotifPath, v : Double) -> BiostructmotifPath {
-  let result = bio_struct_motif_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_path_min(s : BiostructmotifPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_struct_motif_cluster_sum(s : BiostructmotifCluster) -> Double { @_com
 pub fn bio_struct_motif_cluster_mean(s : BiostructmotifCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_cluster_scale(s : BiostructmotifCluster, f : Double) -> BiostructmotifCluster {
-  let result = bio_struct_motif_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_cluster_add(a : BiostructmotifCluster, b : BiostructmotifCluster) -> BiostructmotifCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_cluster_copy(s : BiostructmotifCluster) -> BiostructmotifCluster {
-  let result = bio_struct_motif_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_cluster_fill(s : BiostructmotifCluster, v : Double) -> BiostructmotifCluster {
-  let result = bio_struct_motif_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_cluster_min(s : BiostructmotifCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_struct_motif_model_sum(s : BiostructmotifModel) -> Double { @_common.
 pub fn bio_struct_motif_model_mean(s : BiostructmotifModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_model_scale(s : BiostructmotifModel, f : Double) -> BiostructmotifModel {
-  let result = bio_struct_motif_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_model_add(a : BiostructmotifModel, b : BiostructmotifModel) -> BiostructmotifModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_model_copy(s : BiostructmotifModel) -> BiostructmotifModel {
-  let result = bio_struct_motif_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_model_fill(s : BiostructmotifModel, v : Double) -> BiostructmotifModel {
-  let result = bio_struct_motif_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_model_min(s : BiostructmotifModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_struct_motif_layer_sum(s : BiostructmotifLayer) -> Double { @_common.
 pub fn bio_struct_motif_layer_mean(s : BiostructmotifLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_layer_scale(s : BiostructmotifLayer, f : Double) -> BiostructmotifLayer {
-  let result = bio_struct_motif_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_layer_add(a : BiostructmotifLayer, b : BiostructmotifLayer) -> BiostructmotifLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_layer_copy(s : BiostructmotifLayer) -> BiostructmotifLayer {
-  let result = bio_struct_motif_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_layer_fill(s : BiostructmotifLayer, v : Double) -> BiostructmotifLayer {
-  let result = bio_struct_motif_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_layer_min(s : BiostructmotifLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_struct_motif_buffer_sum(s : BiostructmotifBuffer) -> Double { @_commo
 pub fn bio_struct_motif_buffer_mean(s : BiostructmotifBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_buffer_scale(s : BiostructmotifBuffer, f : Double) -> BiostructmotifBuffer {
-  let result = bio_struct_motif_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_buffer_add(a : BiostructmotifBuffer, b : BiostructmotifBuffer) -> BiostructmotifBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_buffer_copy(s : BiostructmotifBuffer) -> BiostructmotifBuffer {
-  let result = bio_struct_motif_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_buffer_fill(s : BiostructmotifBuffer, v : Double) -> BiostructmotifBuffer {
-  let result = bio_struct_motif_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_buffer_min(s : BiostructmotifBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_struct_motif_cursor_sum(s : BiostructmotifCursor) -> Double { @_commo
 pub fn bio_struct_motif_cursor_mean(s : BiostructmotifCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_cursor_scale(s : BiostructmotifCursor, f : Double) -> BiostructmotifCursor {
-  let result = bio_struct_motif_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_cursor_add(a : BiostructmotifCursor, b : BiostructmotifCursor) -> BiostructmotifCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_cursor_copy(s : BiostructmotifCursor) -> BiostructmotifCursor {
-  let result = bio_struct_motif_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_cursor_fill(s : BiostructmotifCursor, v : Double) -> BiostructmotifCursor {
-  let result = bio_struct_motif_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_cursor_min(s : BiostructmotifCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_struct_motif_view_sum(s : BiostructmotifView) -> Double { @_common.su
 pub fn bio_struct_motif_view_mean(s : BiostructmotifView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_view_scale(s : BiostructmotifView, f : Double) -> BiostructmotifView {
-  let result = bio_struct_motif_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_view_add(a : BiostructmotifView, b : BiostructmotifView) -> BiostructmotifView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_view_copy(s : BiostructmotifView) -> BiostructmotifView {
-  let result = bio_struct_motif_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_view_fill(s : BiostructmotifView, v : Double) -> BiostructmotifView {
-  let result = bio_struct_motif_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_view_min(s : BiostructmotifView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_struct_motif_range_sum(s : BiostructmotifRange) -> Double { @_common.
 pub fn bio_struct_motif_range_mean(s : BiostructmotifRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_range_scale(s : BiostructmotifRange, f : Double) -> BiostructmotifRange {
-  let result = bio_struct_motif_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_range_add(a : BiostructmotifRange, b : BiostructmotifRange) -> BiostructmotifRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_range_copy(s : BiostructmotifRange) -> BiostructmotifRange {
-  let result = bio_struct_motif_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_range_fill(s : BiostructmotifRange, v : Double) -> BiostructmotifRange {
-  let result = bio_struct_motif_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_range_min(s : BiostructmotifRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_struct_motif_slice_sum(s : BiostructmotifSlice) -> Double { @_common.
 pub fn bio_struct_motif_slice_mean(s : BiostructmotifSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_slice_scale(s : BiostructmotifSlice, f : Double) -> BiostructmotifSlice {
-  let result = bio_struct_motif_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_slice_add(a : BiostructmotifSlice, b : BiostructmotifSlice) -> BiostructmotifSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_motif_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_motif_slice_copy(s : BiostructmotifSlice) -> BiostructmotifSlice {
-  let result = bio_struct_motif_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_slice_fill(s : BiostructmotifSlice, v : Double) -> BiostructmotifSlice {
-  let result = bio_struct_motif_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_motif_slice_min(s : BiostructmotifSlice) -> Double { @_common.min(s.data) }

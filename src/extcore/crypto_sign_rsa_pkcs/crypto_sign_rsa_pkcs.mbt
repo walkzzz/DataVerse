@@ -383,28 +383,20 @@ pub fn crypto_sign_rsa_pkcs_frame_sum(s : CryptosignrsapkcsFrame) -> Double { @_
 pub fn crypto_sign_rsa_pkcs_frame_mean(s : CryptosignrsapkcsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_frame_scale(s : CryptosignrsapkcsFrame, f : Double) -> CryptosignrsapkcsFrame {
-  let result = crypto_sign_rsa_pkcs_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_frame_add(a : CryptosignrsapkcsFrame, b : CryptosignrsapkcsFrame) -> CryptosignrsapkcsFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_frame_copy(s : CryptosignrsapkcsFrame) -> CryptosignrsapkcsFrame {
-  let result = crypto_sign_rsa_pkcs_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_frame_fill(s : CryptosignrsapkcsFrame, v : Double) -> CryptosignrsapkcsFrame {
-  let result = crypto_sign_rsa_pkcs_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_frame_min(s : CryptosignrsapkcsFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sign_rsa_pkcs_table_sum(s : CryptosignrsapkcsTable) -> Double { @_
 pub fn crypto_sign_rsa_pkcs_table_mean(s : CryptosignrsapkcsTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_table_scale(s : CryptosignrsapkcsTable, f : Double) -> CryptosignrsapkcsTable {
-  let result = crypto_sign_rsa_pkcs_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_table_add(a : CryptosignrsapkcsTable, b : CryptosignrsapkcsTable) -> CryptosignrsapkcsTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_table_copy(s : CryptosignrsapkcsTable) -> CryptosignrsapkcsTable {
-  let result = crypto_sign_rsa_pkcs_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_table_fill(s : CryptosignrsapkcsTable, v : Double) -> CryptosignrsapkcsTable {
-  let result = crypto_sign_rsa_pkcs_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_table_min(s : CryptosignrsapkcsTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sign_rsa_pkcs_graphn_sum(s : CryptosignrsapkcsGraphN) -> Double { 
 pub fn crypto_sign_rsa_pkcs_graphn_mean(s : CryptosignrsapkcsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_graphn_scale(s : CryptosignrsapkcsGraphN, f : Double) -> CryptosignrsapkcsGraphN {
-  let result = crypto_sign_rsa_pkcs_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_graphn_add(a : CryptosignrsapkcsGraphN, b : CryptosignrsapkcsGraphN) -> CryptosignrsapkcsGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_graphn_copy(s : CryptosignrsapkcsGraphN) -> CryptosignrsapkcsGraphN {
-  let result = crypto_sign_rsa_pkcs_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_graphn_fill(s : CryptosignrsapkcsGraphN, v : Double) -> CryptosignrsapkcsGraphN {
-  let result = crypto_sign_rsa_pkcs_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_graphn_min(s : CryptosignrsapkcsGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sign_rsa_pkcs_node_sum(s : CryptosignrsapkcsNode) -> Double { @_co
 pub fn crypto_sign_rsa_pkcs_node_mean(s : CryptosignrsapkcsNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_node_scale(s : CryptosignrsapkcsNode, f : Double) -> CryptosignrsapkcsNode {
-  let result = crypto_sign_rsa_pkcs_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_node_add(a : CryptosignrsapkcsNode, b : CryptosignrsapkcsNode) -> CryptosignrsapkcsNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_node_copy(s : CryptosignrsapkcsNode) -> CryptosignrsapkcsNode {
-  let result = crypto_sign_rsa_pkcs_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_node_fill(s : CryptosignrsapkcsNode, v : Double) -> CryptosignrsapkcsNode {
-  let result = crypto_sign_rsa_pkcs_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_node_min(s : CryptosignrsapkcsNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sign_rsa_pkcs_edge_sum(s : CryptosignrsapkcsEdge) -> Double { @_co
 pub fn crypto_sign_rsa_pkcs_edge_mean(s : CryptosignrsapkcsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_edge_scale(s : CryptosignrsapkcsEdge, f : Double) -> CryptosignrsapkcsEdge {
-  let result = crypto_sign_rsa_pkcs_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_edge_add(a : CryptosignrsapkcsEdge, b : CryptosignrsapkcsEdge) -> CryptosignrsapkcsEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_edge_copy(s : CryptosignrsapkcsEdge) -> CryptosignrsapkcsEdge {
-  let result = crypto_sign_rsa_pkcs_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_edge_fill(s : CryptosignrsapkcsEdge, v : Double) -> CryptosignrsapkcsEdge {
-  let result = crypto_sign_rsa_pkcs_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_edge_min(s : CryptosignrsapkcsEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sign_rsa_pkcs_path_sum(s : CryptosignrsapkcsPath) -> Double { @_co
 pub fn crypto_sign_rsa_pkcs_path_mean(s : CryptosignrsapkcsPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_path_scale(s : CryptosignrsapkcsPath, f : Double) -> CryptosignrsapkcsPath {
-  let result = crypto_sign_rsa_pkcs_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_path_add(a : CryptosignrsapkcsPath, b : CryptosignrsapkcsPath) -> CryptosignrsapkcsPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_path_copy(s : CryptosignrsapkcsPath) -> CryptosignrsapkcsPath {
-  let result = crypto_sign_rsa_pkcs_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_path_fill(s : CryptosignrsapkcsPath, v : Double) -> CryptosignrsapkcsPath {
-  let result = crypto_sign_rsa_pkcs_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_path_min(s : CryptosignrsapkcsPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sign_rsa_pkcs_cluster_sum(s : CryptosignrsapkcsCluster) -> Double 
 pub fn crypto_sign_rsa_pkcs_cluster_mean(s : CryptosignrsapkcsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_cluster_scale(s : CryptosignrsapkcsCluster, f : Double) -> CryptosignrsapkcsCluster {
-  let result = crypto_sign_rsa_pkcs_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cluster_add(a : CryptosignrsapkcsCluster, b : CryptosignrsapkcsCluster) -> CryptosignrsapkcsCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cluster_copy(s : CryptosignrsapkcsCluster) -> CryptosignrsapkcsCluster {
-  let result = crypto_sign_rsa_pkcs_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cluster_fill(s : CryptosignrsapkcsCluster, v : Double) -> CryptosignrsapkcsCluster {
-  let result = crypto_sign_rsa_pkcs_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cluster_min(s : CryptosignrsapkcsCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sign_rsa_pkcs_model_sum(s : CryptosignrsapkcsModel) -> Double { @_
 pub fn crypto_sign_rsa_pkcs_model_mean(s : CryptosignrsapkcsModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_model_scale(s : CryptosignrsapkcsModel, f : Double) -> CryptosignrsapkcsModel {
-  let result = crypto_sign_rsa_pkcs_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_model_add(a : CryptosignrsapkcsModel, b : CryptosignrsapkcsModel) -> CryptosignrsapkcsModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_model_copy(s : CryptosignrsapkcsModel) -> CryptosignrsapkcsModel {
-  let result = crypto_sign_rsa_pkcs_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_model_fill(s : CryptosignrsapkcsModel, v : Double) -> CryptosignrsapkcsModel {
-  let result = crypto_sign_rsa_pkcs_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_model_min(s : CryptosignrsapkcsModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sign_rsa_pkcs_layer_sum(s : CryptosignrsapkcsLayer) -> Double { @_
 pub fn crypto_sign_rsa_pkcs_layer_mean(s : CryptosignrsapkcsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_layer_scale(s : CryptosignrsapkcsLayer, f : Double) -> CryptosignrsapkcsLayer {
-  let result = crypto_sign_rsa_pkcs_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_layer_add(a : CryptosignrsapkcsLayer, b : CryptosignrsapkcsLayer) -> CryptosignrsapkcsLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_layer_copy(s : CryptosignrsapkcsLayer) -> CryptosignrsapkcsLayer {
-  let result = crypto_sign_rsa_pkcs_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_layer_fill(s : CryptosignrsapkcsLayer, v : Double) -> CryptosignrsapkcsLayer {
-  let result = crypto_sign_rsa_pkcs_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_layer_min(s : CryptosignrsapkcsLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sign_rsa_pkcs_buffer_sum(s : CryptosignrsapkcsBuffer) -> Double { 
 pub fn crypto_sign_rsa_pkcs_buffer_mean(s : CryptosignrsapkcsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_buffer_scale(s : CryptosignrsapkcsBuffer, f : Double) -> CryptosignrsapkcsBuffer {
-  let result = crypto_sign_rsa_pkcs_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_buffer_add(a : CryptosignrsapkcsBuffer, b : CryptosignrsapkcsBuffer) -> CryptosignrsapkcsBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_buffer_copy(s : CryptosignrsapkcsBuffer) -> CryptosignrsapkcsBuffer {
-  let result = crypto_sign_rsa_pkcs_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_buffer_fill(s : CryptosignrsapkcsBuffer, v : Double) -> CryptosignrsapkcsBuffer {
-  let result = crypto_sign_rsa_pkcs_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_buffer_min(s : CryptosignrsapkcsBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sign_rsa_pkcs_cursor_sum(s : CryptosignrsapkcsCursor) -> Double { 
 pub fn crypto_sign_rsa_pkcs_cursor_mean(s : CryptosignrsapkcsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_cursor_scale(s : CryptosignrsapkcsCursor, f : Double) -> CryptosignrsapkcsCursor {
-  let result = crypto_sign_rsa_pkcs_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cursor_add(a : CryptosignrsapkcsCursor, b : CryptosignrsapkcsCursor) -> CryptosignrsapkcsCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cursor_copy(s : CryptosignrsapkcsCursor) -> CryptosignrsapkcsCursor {
-  let result = crypto_sign_rsa_pkcs_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cursor_fill(s : CryptosignrsapkcsCursor, v : Double) -> CryptosignrsapkcsCursor {
-  let result = crypto_sign_rsa_pkcs_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_cursor_min(s : CryptosignrsapkcsCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sign_rsa_pkcs_view_sum(s : CryptosignrsapkcsView) -> Double { @_co
 pub fn crypto_sign_rsa_pkcs_view_mean(s : CryptosignrsapkcsView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_view_scale(s : CryptosignrsapkcsView, f : Double) -> CryptosignrsapkcsView {
-  let result = crypto_sign_rsa_pkcs_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_view_add(a : CryptosignrsapkcsView, b : CryptosignrsapkcsView) -> CryptosignrsapkcsView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_view_copy(s : CryptosignrsapkcsView) -> CryptosignrsapkcsView {
-  let result = crypto_sign_rsa_pkcs_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_view_fill(s : CryptosignrsapkcsView, v : Double) -> CryptosignrsapkcsView {
-  let result = crypto_sign_rsa_pkcs_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_view_min(s : CryptosignrsapkcsView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sign_rsa_pkcs_range_sum(s : CryptosignrsapkcsRange) -> Double { @_
 pub fn crypto_sign_rsa_pkcs_range_mean(s : CryptosignrsapkcsRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_range_scale(s : CryptosignrsapkcsRange, f : Double) -> CryptosignrsapkcsRange {
-  let result = crypto_sign_rsa_pkcs_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_range_add(a : CryptosignrsapkcsRange, b : CryptosignrsapkcsRange) -> CryptosignrsapkcsRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_range_copy(s : CryptosignrsapkcsRange) -> CryptosignrsapkcsRange {
-  let result = crypto_sign_rsa_pkcs_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_range_fill(s : CryptosignrsapkcsRange, v : Double) -> CryptosignrsapkcsRange {
-  let result = crypto_sign_rsa_pkcs_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_range_min(s : CryptosignrsapkcsRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sign_rsa_pkcs_slice_sum(s : CryptosignrsapkcsSlice) -> Double { @_
 pub fn crypto_sign_rsa_pkcs_slice_mean(s : CryptosignrsapkcsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_rsa_pkcs_slice_scale(s : CryptosignrsapkcsSlice, f : Double) -> CryptosignrsapkcsSlice {
-  let result = crypto_sign_rsa_pkcs_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_slice_add(a : CryptosignrsapkcsSlice, b : CryptosignrsapkcsSlice) -> CryptosignrsapkcsSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sign_rsa_pkcs_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_slice_copy(s : CryptosignrsapkcsSlice) -> CryptosignrsapkcsSlice {
-  let result = crypto_sign_rsa_pkcs_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_slice_fill(s : CryptosignrsapkcsSlice, v : Double) -> CryptosignrsapkcsSlice {
-  let result = crypto_sign_rsa_pkcs_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_rsa_pkcs_slice_min(s : CryptosignrsapkcsSlice) -> Double { @_common.min(s.data) }

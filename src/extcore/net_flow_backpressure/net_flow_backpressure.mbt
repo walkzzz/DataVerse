@@ -383,28 +383,20 @@ pub fn net_flow_backpressure_frame_sum(s : NetflowbackpressureFrame) -> Double {
 pub fn net_flow_backpressure_frame_mean(s : NetflowbackpressureFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_frame_scale(s : NetflowbackpressureFrame, f : Double) -> NetflowbackpressureFrame {
-  let result = net_flow_backpressure_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_frame_add(a : NetflowbackpressureFrame, b : NetflowbackpressureFrame) -> NetflowbackpressureFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_frame_copy(s : NetflowbackpressureFrame) -> NetflowbackpressureFrame {
-  let result = net_flow_backpressure_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_frame_fill(s : NetflowbackpressureFrame, v : Double) -> NetflowbackpressureFrame {
-  let result = net_flow_backpressure_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_frame_min(s : NetflowbackpressureFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_flow_backpressure_table_sum(s : NetflowbackpressureTable) -> Double {
 pub fn net_flow_backpressure_table_mean(s : NetflowbackpressureTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_table_scale(s : NetflowbackpressureTable, f : Double) -> NetflowbackpressureTable {
-  let result = net_flow_backpressure_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_table_add(a : NetflowbackpressureTable, b : NetflowbackpressureTable) -> NetflowbackpressureTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_table_copy(s : NetflowbackpressureTable) -> NetflowbackpressureTable {
-  let result = net_flow_backpressure_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_table_fill(s : NetflowbackpressureTable, v : Double) -> NetflowbackpressureTable {
-  let result = net_flow_backpressure_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_table_min(s : NetflowbackpressureTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_flow_backpressure_graphn_sum(s : NetflowbackpressureGraphN) -> Double
 pub fn net_flow_backpressure_graphn_mean(s : NetflowbackpressureGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_graphn_scale(s : NetflowbackpressureGraphN, f : Double) -> NetflowbackpressureGraphN {
-  let result = net_flow_backpressure_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_graphn_add(a : NetflowbackpressureGraphN, b : NetflowbackpressureGraphN) -> NetflowbackpressureGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_graphn_copy(s : NetflowbackpressureGraphN) -> NetflowbackpressureGraphN {
-  let result = net_flow_backpressure_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_graphn_fill(s : NetflowbackpressureGraphN, v : Double) -> NetflowbackpressureGraphN {
-  let result = net_flow_backpressure_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_graphn_min(s : NetflowbackpressureGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_flow_backpressure_node_sum(s : NetflowbackpressureNode) -> Double { @
 pub fn net_flow_backpressure_node_mean(s : NetflowbackpressureNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_node_scale(s : NetflowbackpressureNode, f : Double) -> NetflowbackpressureNode {
-  let result = net_flow_backpressure_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_node_add(a : NetflowbackpressureNode, b : NetflowbackpressureNode) -> NetflowbackpressureNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_node_copy(s : NetflowbackpressureNode) -> NetflowbackpressureNode {
-  let result = net_flow_backpressure_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_node_fill(s : NetflowbackpressureNode, v : Double) -> NetflowbackpressureNode {
-  let result = net_flow_backpressure_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_node_min(s : NetflowbackpressureNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_flow_backpressure_edge_sum(s : NetflowbackpressureEdge) -> Double { @
 pub fn net_flow_backpressure_edge_mean(s : NetflowbackpressureEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_edge_scale(s : NetflowbackpressureEdge, f : Double) -> NetflowbackpressureEdge {
-  let result = net_flow_backpressure_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_edge_add(a : NetflowbackpressureEdge, b : NetflowbackpressureEdge) -> NetflowbackpressureEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_edge_copy(s : NetflowbackpressureEdge) -> NetflowbackpressureEdge {
-  let result = net_flow_backpressure_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_edge_fill(s : NetflowbackpressureEdge, v : Double) -> NetflowbackpressureEdge {
-  let result = net_flow_backpressure_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_edge_min(s : NetflowbackpressureEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_flow_backpressure_path_sum(s : NetflowbackpressurePath) -> Double { @
 pub fn net_flow_backpressure_path_mean(s : NetflowbackpressurePath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_path_scale(s : NetflowbackpressurePath, f : Double) -> NetflowbackpressurePath {
-  let result = net_flow_backpressure_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_path_add(a : NetflowbackpressurePath, b : NetflowbackpressurePath) -> NetflowbackpressurePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_path_copy(s : NetflowbackpressurePath) -> NetflowbackpressurePath {
-  let result = net_flow_backpressure_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_path_fill(s : NetflowbackpressurePath, v : Double) -> NetflowbackpressurePath {
-  let result = net_flow_backpressure_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_path_min(s : NetflowbackpressurePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_flow_backpressure_cluster_sum(s : NetflowbackpressureCluster) -> Doub
 pub fn net_flow_backpressure_cluster_mean(s : NetflowbackpressureCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_cluster_scale(s : NetflowbackpressureCluster, f : Double) -> NetflowbackpressureCluster {
-  let result = net_flow_backpressure_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cluster_add(a : NetflowbackpressureCluster, b : NetflowbackpressureCluster) -> NetflowbackpressureCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_cluster_copy(s : NetflowbackpressureCluster) -> NetflowbackpressureCluster {
-  let result = net_flow_backpressure_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cluster_fill(s : NetflowbackpressureCluster, v : Double) -> NetflowbackpressureCluster {
-  let result = net_flow_backpressure_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cluster_min(s : NetflowbackpressureCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_flow_backpressure_model_sum(s : NetflowbackpressureModel) -> Double {
 pub fn net_flow_backpressure_model_mean(s : NetflowbackpressureModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_model_scale(s : NetflowbackpressureModel, f : Double) -> NetflowbackpressureModel {
-  let result = net_flow_backpressure_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_model_add(a : NetflowbackpressureModel, b : NetflowbackpressureModel) -> NetflowbackpressureModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_model_copy(s : NetflowbackpressureModel) -> NetflowbackpressureModel {
-  let result = net_flow_backpressure_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_model_fill(s : NetflowbackpressureModel, v : Double) -> NetflowbackpressureModel {
-  let result = net_flow_backpressure_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_model_min(s : NetflowbackpressureModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_flow_backpressure_layer_sum(s : NetflowbackpressureLayer) -> Double {
 pub fn net_flow_backpressure_layer_mean(s : NetflowbackpressureLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_layer_scale(s : NetflowbackpressureLayer, f : Double) -> NetflowbackpressureLayer {
-  let result = net_flow_backpressure_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_layer_add(a : NetflowbackpressureLayer, b : NetflowbackpressureLayer) -> NetflowbackpressureLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_layer_copy(s : NetflowbackpressureLayer) -> NetflowbackpressureLayer {
-  let result = net_flow_backpressure_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_layer_fill(s : NetflowbackpressureLayer, v : Double) -> NetflowbackpressureLayer {
-  let result = net_flow_backpressure_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_layer_min(s : NetflowbackpressureLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_flow_backpressure_buffer_sum(s : NetflowbackpressureBuffer) -> Double
 pub fn net_flow_backpressure_buffer_mean(s : NetflowbackpressureBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_buffer_scale(s : NetflowbackpressureBuffer, f : Double) -> NetflowbackpressureBuffer {
-  let result = net_flow_backpressure_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_buffer_add(a : NetflowbackpressureBuffer, b : NetflowbackpressureBuffer) -> NetflowbackpressureBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_buffer_copy(s : NetflowbackpressureBuffer) -> NetflowbackpressureBuffer {
-  let result = net_flow_backpressure_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_buffer_fill(s : NetflowbackpressureBuffer, v : Double) -> NetflowbackpressureBuffer {
-  let result = net_flow_backpressure_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_buffer_min(s : NetflowbackpressureBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_flow_backpressure_cursor_sum(s : NetflowbackpressureCursor) -> Double
 pub fn net_flow_backpressure_cursor_mean(s : NetflowbackpressureCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_cursor_scale(s : NetflowbackpressureCursor, f : Double) -> NetflowbackpressureCursor {
-  let result = net_flow_backpressure_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cursor_add(a : NetflowbackpressureCursor, b : NetflowbackpressureCursor) -> NetflowbackpressureCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_cursor_copy(s : NetflowbackpressureCursor) -> NetflowbackpressureCursor {
-  let result = net_flow_backpressure_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cursor_fill(s : NetflowbackpressureCursor, v : Double) -> NetflowbackpressureCursor {
-  let result = net_flow_backpressure_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cursor_min(s : NetflowbackpressureCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_flow_backpressure_view_sum(s : NetflowbackpressureView) -> Double { @
 pub fn net_flow_backpressure_view_mean(s : NetflowbackpressureView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_view_scale(s : NetflowbackpressureView, f : Double) -> NetflowbackpressureView {
-  let result = net_flow_backpressure_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_view_add(a : NetflowbackpressureView, b : NetflowbackpressureView) -> NetflowbackpressureView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_view_copy(s : NetflowbackpressureView) -> NetflowbackpressureView {
-  let result = net_flow_backpressure_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_view_fill(s : NetflowbackpressureView, v : Double) -> NetflowbackpressureView {
-  let result = net_flow_backpressure_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_view_min(s : NetflowbackpressureView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_flow_backpressure_range_sum(s : NetflowbackpressureRange) -> Double {
 pub fn net_flow_backpressure_range_mean(s : NetflowbackpressureRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_range_scale(s : NetflowbackpressureRange, f : Double) -> NetflowbackpressureRange {
-  let result = net_flow_backpressure_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_range_add(a : NetflowbackpressureRange, b : NetflowbackpressureRange) -> NetflowbackpressureRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_range_copy(s : NetflowbackpressureRange) -> NetflowbackpressureRange {
-  let result = net_flow_backpressure_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_range_fill(s : NetflowbackpressureRange, v : Double) -> NetflowbackpressureRange {
-  let result = net_flow_backpressure_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_range_min(s : NetflowbackpressureRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_flow_backpressure_slice_sum(s : NetflowbackpressureSlice) -> Double {
 pub fn net_flow_backpressure_slice_mean(s : NetflowbackpressureSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_backpressure_slice_scale(s : NetflowbackpressureSlice, f : Double) -> NetflowbackpressureSlice {
-  let result = net_flow_backpressure_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_slice_add(a : NetflowbackpressureSlice, b : NetflowbackpressureSlice) -> NetflowbackpressureSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_backpressure_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_backpressure_slice_copy(s : NetflowbackpressureSlice) -> NetflowbackpressureSlice {
-  let result = net_flow_backpressure_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_slice_fill(s : NetflowbackpressureSlice, v : Double) -> NetflowbackpressureSlice {
-  let result = net_flow_backpressure_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_slice_min(s : NetflowbackpressureSlice) -> Double { @_common.min(s.data) }

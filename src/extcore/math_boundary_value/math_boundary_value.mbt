@@ -383,28 +383,20 @@ pub fn math_boundary_value_frame_sum(s : MathboundaryvalueFrame) -> Double { @_c
 pub fn math_boundary_value_frame_mean(s : MathboundaryvalueFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_frame_scale(s : MathboundaryvalueFrame, f : Double) -> MathboundaryvalueFrame {
-  let result = math_boundary_value_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_frame_add(a : MathboundaryvalueFrame, b : MathboundaryvalueFrame) -> MathboundaryvalueFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_frame_copy(s : MathboundaryvalueFrame) -> MathboundaryvalueFrame {
-  let result = math_boundary_value_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_frame_fill(s : MathboundaryvalueFrame, v : Double) -> MathboundaryvalueFrame {
-  let result = math_boundary_value_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_frame_min(s : MathboundaryvalueFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_boundary_value_table_sum(s : MathboundaryvalueTable) -> Double { @_c
 pub fn math_boundary_value_table_mean(s : MathboundaryvalueTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_table_scale(s : MathboundaryvalueTable, f : Double) -> MathboundaryvalueTable {
-  let result = math_boundary_value_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_table_add(a : MathboundaryvalueTable, b : MathboundaryvalueTable) -> MathboundaryvalueTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_table_copy(s : MathboundaryvalueTable) -> MathboundaryvalueTable {
-  let result = math_boundary_value_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_table_fill(s : MathboundaryvalueTable, v : Double) -> MathboundaryvalueTable {
-  let result = math_boundary_value_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_table_min(s : MathboundaryvalueTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_boundary_value_graphn_sum(s : MathboundaryvalueGraphN) -> Double { @
 pub fn math_boundary_value_graphn_mean(s : MathboundaryvalueGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_graphn_scale(s : MathboundaryvalueGraphN, f : Double) -> MathboundaryvalueGraphN {
-  let result = math_boundary_value_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_graphn_add(a : MathboundaryvalueGraphN, b : MathboundaryvalueGraphN) -> MathboundaryvalueGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_graphn_copy(s : MathboundaryvalueGraphN) -> MathboundaryvalueGraphN {
-  let result = math_boundary_value_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_graphn_fill(s : MathboundaryvalueGraphN, v : Double) -> MathboundaryvalueGraphN {
-  let result = math_boundary_value_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_graphn_min(s : MathboundaryvalueGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_boundary_value_node_sum(s : MathboundaryvalueNode) -> Double { @_com
 pub fn math_boundary_value_node_mean(s : MathboundaryvalueNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_node_scale(s : MathboundaryvalueNode, f : Double) -> MathboundaryvalueNode {
-  let result = math_boundary_value_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_node_add(a : MathboundaryvalueNode, b : MathboundaryvalueNode) -> MathboundaryvalueNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_node_copy(s : MathboundaryvalueNode) -> MathboundaryvalueNode {
-  let result = math_boundary_value_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_node_fill(s : MathboundaryvalueNode, v : Double) -> MathboundaryvalueNode {
-  let result = math_boundary_value_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_node_min(s : MathboundaryvalueNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_boundary_value_edge_sum(s : MathboundaryvalueEdge) -> Double { @_com
 pub fn math_boundary_value_edge_mean(s : MathboundaryvalueEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_edge_scale(s : MathboundaryvalueEdge, f : Double) -> MathboundaryvalueEdge {
-  let result = math_boundary_value_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_edge_add(a : MathboundaryvalueEdge, b : MathboundaryvalueEdge) -> MathboundaryvalueEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_edge_copy(s : MathboundaryvalueEdge) -> MathboundaryvalueEdge {
-  let result = math_boundary_value_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_edge_fill(s : MathboundaryvalueEdge, v : Double) -> MathboundaryvalueEdge {
-  let result = math_boundary_value_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_edge_min(s : MathboundaryvalueEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_boundary_value_path_sum(s : MathboundaryvaluePath) -> Double { @_com
 pub fn math_boundary_value_path_mean(s : MathboundaryvaluePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_path_scale(s : MathboundaryvaluePath, f : Double) -> MathboundaryvaluePath {
-  let result = math_boundary_value_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_path_add(a : MathboundaryvaluePath, b : MathboundaryvaluePath) -> MathboundaryvaluePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_path_copy(s : MathboundaryvaluePath) -> MathboundaryvaluePath {
-  let result = math_boundary_value_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_path_fill(s : MathboundaryvaluePath, v : Double) -> MathboundaryvaluePath {
-  let result = math_boundary_value_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_path_min(s : MathboundaryvaluePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_boundary_value_cluster_sum(s : MathboundaryvalueCluster) -> Double {
 pub fn math_boundary_value_cluster_mean(s : MathboundaryvalueCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_cluster_scale(s : MathboundaryvalueCluster, f : Double) -> MathboundaryvalueCluster {
-  let result = math_boundary_value_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_cluster_add(a : MathboundaryvalueCluster, b : MathboundaryvalueCluster) -> MathboundaryvalueCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_cluster_copy(s : MathboundaryvalueCluster) -> MathboundaryvalueCluster {
-  let result = math_boundary_value_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_cluster_fill(s : MathboundaryvalueCluster, v : Double) -> MathboundaryvalueCluster {
-  let result = math_boundary_value_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_cluster_min(s : MathboundaryvalueCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_boundary_value_model_sum(s : MathboundaryvalueModel) -> Double { @_c
 pub fn math_boundary_value_model_mean(s : MathboundaryvalueModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_model_scale(s : MathboundaryvalueModel, f : Double) -> MathboundaryvalueModel {
-  let result = math_boundary_value_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_model_add(a : MathboundaryvalueModel, b : MathboundaryvalueModel) -> MathboundaryvalueModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_model_copy(s : MathboundaryvalueModel) -> MathboundaryvalueModel {
-  let result = math_boundary_value_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_model_fill(s : MathboundaryvalueModel, v : Double) -> MathboundaryvalueModel {
-  let result = math_boundary_value_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_model_min(s : MathboundaryvalueModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_boundary_value_layer_sum(s : MathboundaryvalueLayer) -> Double { @_c
 pub fn math_boundary_value_layer_mean(s : MathboundaryvalueLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_layer_scale(s : MathboundaryvalueLayer, f : Double) -> MathboundaryvalueLayer {
-  let result = math_boundary_value_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_layer_add(a : MathboundaryvalueLayer, b : MathboundaryvalueLayer) -> MathboundaryvalueLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_layer_copy(s : MathboundaryvalueLayer) -> MathboundaryvalueLayer {
-  let result = math_boundary_value_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_layer_fill(s : MathboundaryvalueLayer, v : Double) -> MathboundaryvalueLayer {
-  let result = math_boundary_value_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_layer_min(s : MathboundaryvalueLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_boundary_value_buffer_sum(s : MathboundaryvalueBuffer) -> Double { @
 pub fn math_boundary_value_buffer_mean(s : MathboundaryvalueBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_buffer_scale(s : MathboundaryvalueBuffer, f : Double) -> MathboundaryvalueBuffer {
-  let result = math_boundary_value_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_buffer_add(a : MathboundaryvalueBuffer, b : MathboundaryvalueBuffer) -> MathboundaryvalueBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_buffer_copy(s : MathboundaryvalueBuffer) -> MathboundaryvalueBuffer {
-  let result = math_boundary_value_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_buffer_fill(s : MathboundaryvalueBuffer, v : Double) -> MathboundaryvalueBuffer {
-  let result = math_boundary_value_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_buffer_min(s : MathboundaryvalueBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_boundary_value_cursor_sum(s : MathboundaryvalueCursor) -> Double { @
 pub fn math_boundary_value_cursor_mean(s : MathboundaryvalueCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_cursor_scale(s : MathboundaryvalueCursor, f : Double) -> MathboundaryvalueCursor {
-  let result = math_boundary_value_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_cursor_add(a : MathboundaryvalueCursor, b : MathboundaryvalueCursor) -> MathboundaryvalueCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_cursor_copy(s : MathboundaryvalueCursor) -> MathboundaryvalueCursor {
-  let result = math_boundary_value_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_cursor_fill(s : MathboundaryvalueCursor, v : Double) -> MathboundaryvalueCursor {
-  let result = math_boundary_value_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_cursor_min(s : MathboundaryvalueCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_boundary_value_view_sum(s : MathboundaryvalueView) -> Double { @_com
 pub fn math_boundary_value_view_mean(s : MathboundaryvalueView) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_view_scale(s : MathboundaryvalueView, f : Double) -> MathboundaryvalueView {
-  let result = math_boundary_value_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_view_add(a : MathboundaryvalueView, b : MathboundaryvalueView) -> MathboundaryvalueView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_view_copy(s : MathboundaryvalueView) -> MathboundaryvalueView {
-  let result = math_boundary_value_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_view_fill(s : MathboundaryvalueView, v : Double) -> MathboundaryvalueView {
-  let result = math_boundary_value_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_view_min(s : MathboundaryvalueView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_boundary_value_range_sum(s : MathboundaryvalueRange) -> Double { @_c
 pub fn math_boundary_value_range_mean(s : MathboundaryvalueRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_range_scale(s : MathboundaryvalueRange, f : Double) -> MathboundaryvalueRange {
-  let result = math_boundary_value_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_range_add(a : MathboundaryvalueRange, b : MathboundaryvalueRange) -> MathboundaryvalueRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_range_copy(s : MathboundaryvalueRange) -> MathboundaryvalueRange {
-  let result = math_boundary_value_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_range_fill(s : MathboundaryvalueRange, v : Double) -> MathboundaryvalueRange {
-  let result = math_boundary_value_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_range_min(s : MathboundaryvalueRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_boundary_value_slice_sum(s : MathboundaryvalueSlice) -> Double { @_c
 pub fn math_boundary_value_slice_mean(s : MathboundaryvalueSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_slice_scale(s : MathboundaryvalueSlice, f : Double) -> MathboundaryvalueSlice {
-  let result = math_boundary_value_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_slice_add(a : MathboundaryvalueSlice, b : MathboundaryvalueSlice) -> MathboundaryvalueSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_boundary_value_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_boundary_value_slice_copy(s : MathboundaryvalueSlice) -> MathboundaryvalueSlice {
-  let result = math_boundary_value_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_slice_fill(s : MathboundaryvalueSlice, v : Double) -> MathboundaryvalueSlice {
-  let result = math_boundary_value_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_boundary_value_slice_min(s : MathboundaryvalueSlice) -> Double { @_common.min(s.data) }

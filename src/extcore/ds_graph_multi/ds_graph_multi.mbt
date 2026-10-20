@@ -383,28 +383,20 @@ pub fn ds_graph_multi_frame_sum(s : DsgraphmultiFrame) -> Double { @_common.sum(
 pub fn ds_graph_multi_frame_mean(s : DsgraphmultiFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_frame_scale(s : DsgraphmultiFrame, f : Double) -> DsgraphmultiFrame {
-  let result = ds_graph_multi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_frame_add(a : DsgraphmultiFrame, b : DsgraphmultiFrame) -> DsgraphmultiFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_frame_copy(s : DsgraphmultiFrame) -> DsgraphmultiFrame {
-  let result = ds_graph_multi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_frame_fill(s : DsgraphmultiFrame, v : Double) -> DsgraphmultiFrame {
-  let result = ds_graph_multi_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_frame_min(s : DsgraphmultiFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_graph_multi_table_sum(s : DsgraphmultiTable) -> Double { @_common.sum(
 pub fn ds_graph_multi_table_mean(s : DsgraphmultiTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_table_scale(s : DsgraphmultiTable, f : Double) -> DsgraphmultiTable {
-  let result = ds_graph_multi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_table_add(a : DsgraphmultiTable, b : DsgraphmultiTable) -> DsgraphmultiTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_table_copy(s : DsgraphmultiTable) -> DsgraphmultiTable {
-  let result = ds_graph_multi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_table_fill(s : DsgraphmultiTable, v : Double) -> DsgraphmultiTable {
-  let result = ds_graph_multi_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_table_min(s : DsgraphmultiTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_graph_multi_graphn_sum(s : DsgraphmultiGraphN) -> Double { @_common.su
 pub fn ds_graph_multi_graphn_mean(s : DsgraphmultiGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_graphn_scale(s : DsgraphmultiGraphN, f : Double) -> DsgraphmultiGraphN {
-  let result = ds_graph_multi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_graphn_add(a : DsgraphmultiGraphN, b : DsgraphmultiGraphN) -> DsgraphmultiGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_graphn_copy(s : DsgraphmultiGraphN) -> DsgraphmultiGraphN {
-  let result = ds_graph_multi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_graphn_fill(s : DsgraphmultiGraphN, v : Double) -> DsgraphmultiGraphN {
-  let result = ds_graph_multi_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_graphn_min(s : DsgraphmultiGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_graph_multi_node_sum(s : DsgraphmultiNode) -> Double { @_common.sum(s.
 pub fn ds_graph_multi_node_mean(s : DsgraphmultiNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_node_scale(s : DsgraphmultiNode, f : Double) -> DsgraphmultiNode {
-  let result = ds_graph_multi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_node_add(a : DsgraphmultiNode, b : DsgraphmultiNode) -> DsgraphmultiNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_node_copy(s : DsgraphmultiNode) -> DsgraphmultiNode {
-  let result = ds_graph_multi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_node_fill(s : DsgraphmultiNode, v : Double) -> DsgraphmultiNode {
-  let result = ds_graph_multi_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_node_min(s : DsgraphmultiNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_graph_multi_edge_sum(s : DsgraphmultiEdge) -> Double { @_common.sum(s.
 pub fn ds_graph_multi_edge_mean(s : DsgraphmultiEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_edge_scale(s : DsgraphmultiEdge, f : Double) -> DsgraphmultiEdge {
-  let result = ds_graph_multi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_edge_add(a : DsgraphmultiEdge, b : DsgraphmultiEdge) -> DsgraphmultiEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_edge_copy(s : DsgraphmultiEdge) -> DsgraphmultiEdge {
-  let result = ds_graph_multi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_edge_fill(s : DsgraphmultiEdge, v : Double) -> DsgraphmultiEdge {
-  let result = ds_graph_multi_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_edge_min(s : DsgraphmultiEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_graph_multi_path_sum(s : DsgraphmultiPath) -> Double { @_common.sum(s.
 pub fn ds_graph_multi_path_mean(s : DsgraphmultiPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_path_scale(s : DsgraphmultiPath, f : Double) -> DsgraphmultiPath {
-  let result = ds_graph_multi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_path_add(a : DsgraphmultiPath, b : DsgraphmultiPath) -> DsgraphmultiPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_path_copy(s : DsgraphmultiPath) -> DsgraphmultiPath {
-  let result = ds_graph_multi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_path_fill(s : DsgraphmultiPath, v : Double) -> DsgraphmultiPath {
-  let result = ds_graph_multi_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_path_min(s : DsgraphmultiPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_graph_multi_cluster_sum(s : DsgraphmultiCluster) -> Double { @_common.
 pub fn ds_graph_multi_cluster_mean(s : DsgraphmultiCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_cluster_scale(s : DsgraphmultiCluster, f : Double) -> DsgraphmultiCluster {
-  let result = ds_graph_multi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cluster_add(a : DsgraphmultiCluster, b : DsgraphmultiCluster) -> DsgraphmultiCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_cluster_copy(s : DsgraphmultiCluster) -> DsgraphmultiCluster {
-  let result = ds_graph_multi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cluster_fill(s : DsgraphmultiCluster, v : Double) -> DsgraphmultiCluster {
-  let result = ds_graph_multi_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cluster_min(s : DsgraphmultiCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_graph_multi_model_sum(s : DsgraphmultiModel) -> Double { @_common.sum(
 pub fn ds_graph_multi_model_mean(s : DsgraphmultiModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_model_scale(s : DsgraphmultiModel, f : Double) -> DsgraphmultiModel {
-  let result = ds_graph_multi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_model_add(a : DsgraphmultiModel, b : DsgraphmultiModel) -> DsgraphmultiModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_model_copy(s : DsgraphmultiModel) -> DsgraphmultiModel {
-  let result = ds_graph_multi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_model_fill(s : DsgraphmultiModel, v : Double) -> DsgraphmultiModel {
-  let result = ds_graph_multi_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_model_min(s : DsgraphmultiModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_graph_multi_layer_sum(s : DsgraphmultiLayer) -> Double { @_common.sum(
 pub fn ds_graph_multi_layer_mean(s : DsgraphmultiLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_layer_scale(s : DsgraphmultiLayer, f : Double) -> DsgraphmultiLayer {
-  let result = ds_graph_multi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_layer_add(a : DsgraphmultiLayer, b : DsgraphmultiLayer) -> DsgraphmultiLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_layer_copy(s : DsgraphmultiLayer) -> DsgraphmultiLayer {
-  let result = ds_graph_multi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_layer_fill(s : DsgraphmultiLayer, v : Double) -> DsgraphmultiLayer {
-  let result = ds_graph_multi_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_layer_min(s : DsgraphmultiLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_graph_multi_buffer_sum(s : DsgraphmultiBuffer) -> Double { @_common.su
 pub fn ds_graph_multi_buffer_mean(s : DsgraphmultiBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_buffer_scale(s : DsgraphmultiBuffer, f : Double) -> DsgraphmultiBuffer {
-  let result = ds_graph_multi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_buffer_add(a : DsgraphmultiBuffer, b : DsgraphmultiBuffer) -> DsgraphmultiBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_buffer_copy(s : DsgraphmultiBuffer) -> DsgraphmultiBuffer {
-  let result = ds_graph_multi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_buffer_fill(s : DsgraphmultiBuffer, v : Double) -> DsgraphmultiBuffer {
-  let result = ds_graph_multi_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_buffer_min(s : DsgraphmultiBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_graph_multi_cursor_sum(s : DsgraphmultiCursor) -> Double { @_common.su
 pub fn ds_graph_multi_cursor_mean(s : DsgraphmultiCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_cursor_scale(s : DsgraphmultiCursor, f : Double) -> DsgraphmultiCursor {
-  let result = ds_graph_multi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cursor_add(a : DsgraphmultiCursor, b : DsgraphmultiCursor) -> DsgraphmultiCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_cursor_copy(s : DsgraphmultiCursor) -> DsgraphmultiCursor {
-  let result = ds_graph_multi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cursor_fill(s : DsgraphmultiCursor, v : Double) -> DsgraphmultiCursor {
-  let result = ds_graph_multi_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cursor_min(s : DsgraphmultiCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_graph_multi_view_sum(s : DsgraphmultiView) -> Double { @_common.sum(s.
 pub fn ds_graph_multi_view_mean(s : DsgraphmultiView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_view_scale(s : DsgraphmultiView, f : Double) -> DsgraphmultiView {
-  let result = ds_graph_multi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_view_add(a : DsgraphmultiView, b : DsgraphmultiView) -> DsgraphmultiView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_view_copy(s : DsgraphmultiView) -> DsgraphmultiView {
-  let result = ds_graph_multi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_view_fill(s : DsgraphmultiView, v : Double) -> DsgraphmultiView {
-  let result = ds_graph_multi_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_view_min(s : DsgraphmultiView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_graph_multi_range_sum(s : DsgraphmultiRange) -> Double { @_common.sum(
 pub fn ds_graph_multi_range_mean(s : DsgraphmultiRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_range_scale(s : DsgraphmultiRange, f : Double) -> DsgraphmultiRange {
-  let result = ds_graph_multi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_range_add(a : DsgraphmultiRange, b : DsgraphmultiRange) -> DsgraphmultiRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_range_copy(s : DsgraphmultiRange) -> DsgraphmultiRange {
-  let result = ds_graph_multi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_range_fill(s : DsgraphmultiRange, v : Double) -> DsgraphmultiRange {
-  let result = ds_graph_multi_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_range_min(s : DsgraphmultiRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_graph_multi_slice_sum(s : DsgraphmultiSlice) -> Double { @_common.sum(
 pub fn ds_graph_multi_slice_mean(s : DsgraphmultiSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_multi_slice_scale(s : DsgraphmultiSlice, f : Double) -> DsgraphmultiSlice {
-  let result = ds_graph_multi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_slice_add(a : DsgraphmultiSlice, b : DsgraphmultiSlice) -> DsgraphmultiSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_graph_multi_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_graph_multi_slice_copy(s : DsgraphmultiSlice) -> DsgraphmultiSlice {
-  let result = ds_graph_multi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_slice_fill(s : DsgraphmultiSlice, v : Double) -> DsgraphmultiSlice {
-  let result = ds_graph_multi_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_slice_min(s : DsgraphmultiSlice) -> Double { @_common.min(s.data) }

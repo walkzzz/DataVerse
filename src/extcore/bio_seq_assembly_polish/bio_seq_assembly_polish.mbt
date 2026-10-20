@@ -383,28 +383,20 @@ pub fn bio_seq_assembly_polish_frame_sum(s : BioseqassemblypolishFrame) -> Doubl
 pub fn bio_seq_assembly_polish_frame_mean(s : BioseqassemblypolishFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_frame_scale(s : BioseqassemblypolishFrame, f : Double) -> BioseqassemblypolishFrame {
-  let result = bio_seq_assembly_polish_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_frame_add(a : BioseqassemblypolishFrame, b : BioseqassemblypolishFrame) -> BioseqassemblypolishFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_frame_copy(s : BioseqassemblypolishFrame) -> BioseqassemblypolishFrame {
-  let result = bio_seq_assembly_polish_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_frame_fill(s : BioseqassemblypolishFrame, v : Double) -> BioseqassemblypolishFrame {
-  let result = bio_seq_assembly_polish_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_frame_min(s : BioseqassemblypolishFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_seq_assembly_polish_table_sum(s : BioseqassemblypolishTable) -> Doubl
 pub fn bio_seq_assembly_polish_table_mean(s : BioseqassemblypolishTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_table_scale(s : BioseqassemblypolishTable, f : Double) -> BioseqassemblypolishTable {
-  let result = bio_seq_assembly_polish_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_table_add(a : BioseqassemblypolishTable, b : BioseqassemblypolishTable) -> BioseqassemblypolishTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_table_copy(s : BioseqassemblypolishTable) -> BioseqassemblypolishTable {
-  let result = bio_seq_assembly_polish_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_table_fill(s : BioseqassemblypolishTable, v : Double) -> BioseqassemblypolishTable {
-  let result = bio_seq_assembly_polish_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_table_min(s : BioseqassemblypolishTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_seq_assembly_polish_graphn_sum(s : BioseqassemblypolishGraphN) -> Dou
 pub fn bio_seq_assembly_polish_graphn_mean(s : BioseqassemblypolishGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_graphn_scale(s : BioseqassemblypolishGraphN, f : Double) -> BioseqassemblypolishGraphN {
-  let result = bio_seq_assembly_polish_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_graphn_add(a : BioseqassemblypolishGraphN, b : BioseqassemblypolishGraphN) -> BioseqassemblypolishGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_graphn_copy(s : BioseqassemblypolishGraphN) -> BioseqassemblypolishGraphN {
-  let result = bio_seq_assembly_polish_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_graphn_fill(s : BioseqassemblypolishGraphN, v : Double) -> BioseqassemblypolishGraphN {
-  let result = bio_seq_assembly_polish_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_graphn_min(s : BioseqassemblypolishGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_seq_assembly_polish_node_sum(s : BioseqassemblypolishNode) -> Double 
 pub fn bio_seq_assembly_polish_node_mean(s : BioseqassemblypolishNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_node_scale(s : BioseqassemblypolishNode, f : Double) -> BioseqassemblypolishNode {
-  let result = bio_seq_assembly_polish_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_node_add(a : BioseqassemblypolishNode, b : BioseqassemblypolishNode) -> BioseqassemblypolishNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_node_copy(s : BioseqassemblypolishNode) -> BioseqassemblypolishNode {
-  let result = bio_seq_assembly_polish_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_node_fill(s : BioseqassemblypolishNode, v : Double) -> BioseqassemblypolishNode {
-  let result = bio_seq_assembly_polish_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_node_min(s : BioseqassemblypolishNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_seq_assembly_polish_edge_sum(s : BioseqassemblypolishEdge) -> Double 
 pub fn bio_seq_assembly_polish_edge_mean(s : BioseqassemblypolishEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_edge_scale(s : BioseqassemblypolishEdge, f : Double) -> BioseqassemblypolishEdge {
-  let result = bio_seq_assembly_polish_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_edge_add(a : BioseqassemblypolishEdge, b : BioseqassemblypolishEdge) -> BioseqassemblypolishEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_edge_copy(s : BioseqassemblypolishEdge) -> BioseqassemblypolishEdge {
-  let result = bio_seq_assembly_polish_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_edge_fill(s : BioseqassemblypolishEdge, v : Double) -> BioseqassemblypolishEdge {
-  let result = bio_seq_assembly_polish_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_edge_min(s : BioseqassemblypolishEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_seq_assembly_polish_path_sum(s : BioseqassemblypolishPath) -> Double 
 pub fn bio_seq_assembly_polish_path_mean(s : BioseqassemblypolishPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_path_scale(s : BioseqassemblypolishPath, f : Double) -> BioseqassemblypolishPath {
-  let result = bio_seq_assembly_polish_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_path_add(a : BioseqassemblypolishPath, b : BioseqassemblypolishPath) -> BioseqassemblypolishPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_path_copy(s : BioseqassemblypolishPath) -> BioseqassemblypolishPath {
-  let result = bio_seq_assembly_polish_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_path_fill(s : BioseqassemblypolishPath, v : Double) -> BioseqassemblypolishPath {
-  let result = bio_seq_assembly_polish_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_path_min(s : BioseqassemblypolishPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_seq_assembly_polish_cluster_sum(s : BioseqassemblypolishCluster) -> D
 pub fn bio_seq_assembly_polish_cluster_mean(s : BioseqassemblypolishCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_cluster_scale(s : BioseqassemblypolishCluster, f : Double) -> BioseqassemblypolishCluster {
-  let result = bio_seq_assembly_polish_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_cluster_add(a : BioseqassemblypolishCluster, b : BioseqassemblypolishCluster) -> BioseqassemblypolishCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_cluster_copy(s : BioseqassemblypolishCluster) -> BioseqassemblypolishCluster {
-  let result = bio_seq_assembly_polish_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_cluster_fill(s : BioseqassemblypolishCluster, v : Double) -> BioseqassemblypolishCluster {
-  let result = bio_seq_assembly_polish_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_cluster_min(s : BioseqassemblypolishCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_seq_assembly_polish_model_sum(s : BioseqassemblypolishModel) -> Doubl
 pub fn bio_seq_assembly_polish_model_mean(s : BioseqassemblypolishModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_model_scale(s : BioseqassemblypolishModel, f : Double) -> BioseqassemblypolishModel {
-  let result = bio_seq_assembly_polish_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_model_add(a : BioseqassemblypolishModel, b : BioseqassemblypolishModel) -> BioseqassemblypolishModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_model_copy(s : BioseqassemblypolishModel) -> BioseqassemblypolishModel {
-  let result = bio_seq_assembly_polish_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_model_fill(s : BioseqassemblypolishModel, v : Double) -> BioseqassemblypolishModel {
-  let result = bio_seq_assembly_polish_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_model_min(s : BioseqassemblypolishModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_seq_assembly_polish_layer_sum(s : BioseqassemblypolishLayer) -> Doubl
 pub fn bio_seq_assembly_polish_layer_mean(s : BioseqassemblypolishLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_layer_scale(s : BioseqassemblypolishLayer, f : Double) -> BioseqassemblypolishLayer {
-  let result = bio_seq_assembly_polish_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_layer_add(a : BioseqassemblypolishLayer, b : BioseqassemblypolishLayer) -> BioseqassemblypolishLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_layer_copy(s : BioseqassemblypolishLayer) -> BioseqassemblypolishLayer {
-  let result = bio_seq_assembly_polish_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_layer_fill(s : BioseqassemblypolishLayer, v : Double) -> BioseqassemblypolishLayer {
-  let result = bio_seq_assembly_polish_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_layer_min(s : BioseqassemblypolishLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_seq_assembly_polish_buffer_sum(s : BioseqassemblypolishBuffer) -> Dou
 pub fn bio_seq_assembly_polish_buffer_mean(s : BioseqassemblypolishBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_buffer_scale(s : BioseqassemblypolishBuffer, f : Double) -> BioseqassemblypolishBuffer {
-  let result = bio_seq_assembly_polish_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_buffer_add(a : BioseqassemblypolishBuffer, b : BioseqassemblypolishBuffer) -> BioseqassemblypolishBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_buffer_copy(s : BioseqassemblypolishBuffer) -> BioseqassemblypolishBuffer {
-  let result = bio_seq_assembly_polish_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_buffer_fill(s : BioseqassemblypolishBuffer, v : Double) -> BioseqassemblypolishBuffer {
-  let result = bio_seq_assembly_polish_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_buffer_min(s : BioseqassemblypolishBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_seq_assembly_polish_cursor_sum(s : BioseqassemblypolishCursor) -> Dou
 pub fn bio_seq_assembly_polish_cursor_mean(s : BioseqassemblypolishCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_cursor_scale(s : BioseqassemblypolishCursor, f : Double) -> BioseqassemblypolishCursor {
-  let result = bio_seq_assembly_polish_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_cursor_add(a : BioseqassemblypolishCursor, b : BioseqassemblypolishCursor) -> BioseqassemblypolishCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_cursor_copy(s : BioseqassemblypolishCursor) -> BioseqassemblypolishCursor {
-  let result = bio_seq_assembly_polish_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_cursor_fill(s : BioseqassemblypolishCursor, v : Double) -> BioseqassemblypolishCursor {
-  let result = bio_seq_assembly_polish_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_cursor_min(s : BioseqassemblypolishCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_seq_assembly_polish_view_sum(s : BioseqassemblypolishView) -> Double 
 pub fn bio_seq_assembly_polish_view_mean(s : BioseqassemblypolishView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_view_scale(s : BioseqassemblypolishView, f : Double) -> BioseqassemblypolishView {
-  let result = bio_seq_assembly_polish_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_view_add(a : BioseqassemblypolishView, b : BioseqassemblypolishView) -> BioseqassemblypolishView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_view_copy(s : BioseqassemblypolishView) -> BioseqassemblypolishView {
-  let result = bio_seq_assembly_polish_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_view_fill(s : BioseqassemblypolishView, v : Double) -> BioseqassemblypolishView {
-  let result = bio_seq_assembly_polish_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_view_min(s : BioseqassemblypolishView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_seq_assembly_polish_range_sum(s : BioseqassemblypolishRange) -> Doubl
 pub fn bio_seq_assembly_polish_range_mean(s : BioseqassemblypolishRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_range_scale(s : BioseqassemblypolishRange, f : Double) -> BioseqassemblypolishRange {
-  let result = bio_seq_assembly_polish_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_range_add(a : BioseqassemblypolishRange, b : BioseqassemblypolishRange) -> BioseqassemblypolishRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_range_copy(s : BioseqassemblypolishRange) -> BioseqassemblypolishRange {
-  let result = bio_seq_assembly_polish_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_range_fill(s : BioseqassemblypolishRange, v : Double) -> BioseqassemblypolishRange {
-  let result = bio_seq_assembly_polish_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_range_min(s : BioseqassemblypolishRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_seq_assembly_polish_slice_sum(s : BioseqassemblypolishSlice) -> Doubl
 pub fn bio_seq_assembly_polish_slice_mean(s : BioseqassemblypolishSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_polish_slice_scale(s : BioseqassemblypolishSlice, f : Double) -> BioseqassemblypolishSlice {
-  let result = bio_seq_assembly_polish_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_slice_add(a : BioseqassemblypolishSlice, b : BioseqassemblypolishSlice) -> BioseqassemblypolishSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_seq_assembly_polish_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_seq_assembly_polish_slice_copy(s : BioseqassemblypolishSlice) -> BioseqassemblypolishSlice {
-  let result = bio_seq_assembly_polish_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_slice_fill(s : BioseqassemblypolishSlice, v : Double) -> BioseqassemblypolishSlice {
-  let result = bio_seq_assembly_polish_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_polish_slice_min(s : BioseqassemblypolishSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn graph_color_list_frame_sum(s : GraphcolorlistFrame) -> Double { @_common.
 pub fn graph_color_list_frame_mean(s : GraphcolorlistFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_frame_scale(s : GraphcolorlistFrame, f : Double) -> GraphcolorlistFrame {
-  let result = graph_color_list_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_frame_add(a : GraphcolorlistFrame, b : GraphcolorlistFrame) -> GraphcolorlistFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_frame_copy(s : GraphcolorlistFrame) -> GraphcolorlistFrame {
-  let result = graph_color_list_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_frame_fill(s : GraphcolorlistFrame, v : Double) -> GraphcolorlistFrame {
-  let result = graph_color_list_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_frame_min(s : GraphcolorlistFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_color_list_table_sum(s : GraphcolorlistTable) -> Double { @_common.
 pub fn graph_color_list_table_mean(s : GraphcolorlistTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_table_scale(s : GraphcolorlistTable, f : Double) -> GraphcolorlistTable {
-  let result = graph_color_list_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_table_add(a : GraphcolorlistTable, b : GraphcolorlistTable) -> GraphcolorlistTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_table_copy(s : GraphcolorlistTable) -> GraphcolorlistTable {
-  let result = graph_color_list_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_table_fill(s : GraphcolorlistTable, v : Double) -> GraphcolorlistTable {
-  let result = graph_color_list_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_table_min(s : GraphcolorlistTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_color_list_graphn_sum(s : GraphcolorlistGraphN) -> Double { @_commo
 pub fn graph_color_list_graphn_mean(s : GraphcolorlistGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_graphn_scale(s : GraphcolorlistGraphN, f : Double) -> GraphcolorlistGraphN {
-  let result = graph_color_list_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_graphn_add(a : GraphcolorlistGraphN, b : GraphcolorlistGraphN) -> GraphcolorlistGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_graphn_copy(s : GraphcolorlistGraphN) -> GraphcolorlistGraphN {
-  let result = graph_color_list_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_graphn_fill(s : GraphcolorlistGraphN, v : Double) -> GraphcolorlistGraphN {
-  let result = graph_color_list_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_graphn_min(s : GraphcolorlistGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_color_list_node_sum(s : GraphcolorlistNode) -> Double { @_common.su
 pub fn graph_color_list_node_mean(s : GraphcolorlistNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_node_scale(s : GraphcolorlistNode, f : Double) -> GraphcolorlistNode {
-  let result = graph_color_list_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_node_add(a : GraphcolorlistNode, b : GraphcolorlistNode) -> GraphcolorlistNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_node_copy(s : GraphcolorlistNode) -> GraphcolorlistNode {
-  let result = graph_color_list_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_node_fill(s : GraphcolorlistNode, v : Double) -> GraphcolorlistNode {
-  let result = graph_color_list_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_node_min(s : GraphcolorlistNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_color_list_edge_sum(s : GraphcolorlistEdge) -> Double { @_common.su
 pub fn graph_color_list_edge_mean(s : GraphcolorlistEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_edge_scale(s : GraphcolorlistEdge, f : Double) -> GraphcolorlistEdge {
-  let result = graph_color_list_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_edge_add(a : GraphcolorlistEdge, b : GraphcolorlistEdge) -> GraphcolorlistEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_edge_copy(s : GraphcolorlistEdge) -> GraphcolorlistEdge {
-  let result = graph_color_list_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_edge_fill(s : GraphcolorlistEdge, v : Double) -> GraphcolorlistEdge {
-  let result = graph_color_list_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_edge_min(s : GraphcolorlistEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_color_list_path_sum(s : GraphcolorlistPath) -> Double { @_common.su
 pub fn graph_color_list_path_mean(s : GraphcolorlistPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_path_scale(s : GraphcolorlistPath, f : Double) -> GraphcolorlistPath {
-  let result = graph_color_list_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_path_add(a : GraphcolorlistPath, b : GraphcolorlistPath) -> GraphcolorlistPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_path_copy(s : GraphcolorlistPath) -> GraphcolorlistPath {
-  let result = graph_color_list_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_path_fill(s : GraphcolorlistPath, v : Double) -> GraphcolorlistPath {
-  let result = graph_color_list_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_path_min(s : GraphcolorlistPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_color_list_cluster_sum(s : GraphcolorlistCluster) -> Double { @_com
 pub fn graph_color_list_cluster_mean(s : GraphcolorlistCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_cluster_scale(s : GraphcolorlistCluster, f : Double) -> GraphcolorlistCluster {
-  let result = graph_color_list_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_cluster_add(a : GraphcolorlistCluster, b : GraphcolorlistCluster) -> GraphcolorlistCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_cluster_copy(s : GraphcolorlistCluster) -> GraphcolorlistCluster {
-  let result = graph_color_list_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_cluster_fill(s : GraphcolorlistCluster, v : Double) -> GraphcolorlistCluster {
-  let result = graph_color_list_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_cluster_min(s : GraphcolorlistCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_color_list_model_sum(s : GraphcolorlistModel) -> Double { @_common.
 pub fn graph_color_list_model_mean(s : GraphcolorlistModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_model_scale(s : GraphcolorlistModel, f : Double) -> GraphcolorlistModel {
-  let result = graph_color_list_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_model_add(a : GraphcolorlistModel, b : GraphcolorlistModel) -> GraphcolorlistModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_model_copy(s : GraphcolorlistModel) -> GraphcolorlistModel {
-  let result = graph_color_list_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_model_fill(s : GraphcolorlistModel, v : Double) -> GraphcolorlistModel {
-  let result = graph_color_list_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_model_min(s : GraphcolorlistModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_color_list_layer_sum(s : GraphcolorlistLayer) -> Double { @_common.
 pub fn graph_color_list_layer_mean(s : GraphcolorlistLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_layer_scale(s : GraphcolorlistLayer, f : Double) -> GraphcolorlistLayer {
-  let result = graph_color_list_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_layer_add(a : GraphcolorlistLayer, b : GraphcolorlistLayer) -> GraphcolorlistLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_layer_copy(s : GraphcolorlistLayer) -> GraphcolorlistLayer {
-  let result = graph_color_list_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_layer_fill(s : GraphcolorlistLayer, v : Double) -> GraphcolorlistLayer {
-  let result = graph_color_list_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_layer_min(s : GraphcolorlistLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_color_list_buffer_sum(s : GraphcolorlistBuffer) -> Double { @_commo
 pub fn graph_color_list_buffer_mean(s : GraphcolorlistBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_buffer_scale(s : GraphcolorlistBuffer, f : Double) -> GraphcolorlistBuffer {
-  let result = graph_color_list_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_buffer_add(a : GraphcolorlistBuffer, b : GraphcolorlistBuffer) -> GraphcolorlistBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_buffer_copy(s : GraphcolorlistBuffer) -> GraphcolorlistBuffer {
-  let result = graph_color_list_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_buffer_fill(s : GraphcolorlistBuffer, v : Double) -> GraphcolorlistBuffer {
-  let result = graph_color_list_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_buffer_min(s : GraphcolorlistBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_color_list_cursor_sum(s : GraphcolorlistCursor) -> Double { @_commo
 pub fn graph_color_list_cursor_mean(s : GraphcolorlistCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_cursor_scale(s : GraphcolorlistCursor, f : Double) -> GraphcolorlistCursor {
-  let result = graph_color_list_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_cursor_add(a : GraphcolorlistCursor, b : GraphcolorlistCursor) -> GraphcolorlistCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_cursor_copy(s : GraphcolorlistCursor) -> GraphcolorlistCursor {
-  let result = graph_color_list_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_cursor_fill(s : GraphcolorlistCursor, v : Double) -> GraphcolorlistCursor {
-  let result = graph_color_list_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_cursor_min(s : GraphcolorlistCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_color_list_view_sum(s : GraphcolorlistView) -> Double { @_common.su
 pub fn graph_color_list_view_mean(s : GraphcolorlistView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_view_scale(s : GraphcolorlistView, f : Double) -> GraphcolorlistView {
-  let result = graph_color_list_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_view_add(a : GraphcolorlistView, b : GraphcolorlistView) -> GraphcolorlistView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_view_copy(s : GraphcolorlistView) -> GraphcolorlistView {
-  let result = graph_color_list_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_view_fill(s : GraphcolorlistView, v : Double) -> GraphcolorlistView {
-  let result = graph_color_list_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_view_min(s : GraphcolorlistView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_color_list_range_sum(s : GraphcolorlistRange) -> Double { @_common.
 pub fn graph_color_list_range_mean(s : GraphcolorlistRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_range_scale(s : GraphcolorlistRange, f : Double) -> GraphcolorlistRange {
-  let result = graph_color_list_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_range_add(a : GraphcolorlistRange, b : GraphcolorlistRange) -> GraphcolorlistRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_range_copy(s : GraphcolorlistRange) -> GraphcolorlistRange {
-  let result = graph_color_list_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_range_fill(s : GraphcolorlistRange, v : Double) -> GraphcolorlistRange {
-  let result = graph_color_list_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_range_min(s : GraphcolorlistRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_color_list_slice_sum(s : GraphcolorlistSlice) -> Double { @_common.
 pub fn graph_color_list_slice_mean(s : GraphcolorlistSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_list_slice_scale(s : GraphcolorlistSlice, f : Double) -> GraphcolorlistSlice {
-  let result = graph_color_list_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_slice_add(a : GraphcolorlistSlice, b : GraphcolorlistSlice) -> GraphcolorlistSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_color_list_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_color_list_slice_copy(s : GraphcolorlistSlice) -> GraphcolorlistSlice {
-  let result = graph_color_list_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_slice_fill(s : GraphcolorlistSlice, v : Double) -> GraphcolorlistSlice {
-  let result = graph_color_list_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_list_slice_min(s : GraphcolorlistSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ds_hash_perfect_frame_sum(s : DshashperfectFrame) -> Double { @_common.su
 pub fn ds_hash_perfect_frame_mean(s : DshashperfectFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_frame_scale(s : DshashperfectFrame, f : Double) -> DshashperfectFrame {
-  let result = ds_hash_perfect_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_frame_add(a : DshashperfectFrame, b : DshashperfectFrame) -> DshashperfectFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_frame_copy(s : DshashperfectFrame) -> DshashperfectFrame {
-  let result = ds_hash_perfect_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_frame_fill(s : DshashperfectFrame, v : Double) -> DshashperfectFrame {
-  let result = ds_hash_perfect_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_frame_min(s : DshashperfectFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_hash_perfect_table_sum(s : DshashperfectTable) -> Double { @_common.su
 pub fn ds_hash_perfect_table_mean(s : DshashperfectTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_table_scale(s : DshashperfectTable, f : Double) -> DshashperfectTable {
-  let result = ds_hash_perfect_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_table_add(a : DshashperfectTable, b : DshashperfectTable) -> DshashperfectTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_table_copy(s : DshashperfectTable) -> DshashperfectTable {
-  let result = ds_hash_perfect_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_table_fill(s : DshashperfectTable, v : Double) -> DshashperfectTable {
-  let result = ds_hash_perfect_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_table_min(s : DshashperfectTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_hash_perfect_graphn_sum(s : DshashperfectGraphN) -> Double { @_common.
 pub fn ds_hash_perfect_graphn_mean(s : DshashperfectGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_graphn_scale(s : DshashperfectGraphN, f : Double) -> DshashperfectGraphN {
-  let result = ds_hash_perfect_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_graphn_add(a : DshashperfectGraphN, b : DshashperfectGraphN) -> DshashperfectGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_graphn_copy(s : DshashperfectGraphN) -> DshashperfectGraphN {
-  let result = ds_hash_perfect_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_graphn_fill(s : DshashperfectGraphN, v : Double) -> DshashperfectGraphN {
-  let result = ds_hash_perfect_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_graphn_min(s : DshashperfectGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_hash_perfect_node_sum(s : DshashperfectNode) -> Double { @_common.sum(
 pub fn ds_hash_perfect_node_mean(s : DshashperfectNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_node_scale(s : DshashperfectNode, f : Double) -> DshashperfectNode {
-  let result = ds_hash_perfect_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_node_add(a : DshashperfectNode, b : DshashperfectNode) -> DshashperfectNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_node_copy(s : DshashperfectNode) -> DshashperfectNode {
-  let result = ds_hash_perfect_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_node_fill(s : DshashperfectNode, v : Double) -> DshashperfectNode {
-  let result = ds_hash_perfect_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_node_min(s : DshashperfectNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_hash_perfect_edge_sum(s : DshashperfectEdge) -> Double { @_common.sum(
 pub fn ds_hash_perfect_edge_mean(s : DshashperfectEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_edge_scale(s : DshashperfectEdge, f : Double) -> DshashperfectEdge {
-  let result = ds_hash_perfect_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_edge_add(a : DshashperfectEdge, b : DshashperfectEdge) -> DshashperfectEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_edge_copy(s : DshashperfectEdge) -> DshashperfectEdge {
-  let result = ds_hash_perfect_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_edge_fill(s : DshashperfectEdge, v : Double) -> DshashperfectEdge {
-  let result = ds_hash_perfect_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_edge_min(s : DshashperfectEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_hash_perfect_path_sum(s : DshashperfectPath) -> Double { @_common.sum(
 pub fn ds_hash_perfect_path_mean(s : DshashperfectPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_path_scale(s : DshashperfectPath, f : Double) -> DshashperfectPath {
-  let result = ds_hash_perfect_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_path_add(a : DshashperfectPath, b : DshashperfectPath) -> DshashperfectPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_path_copy(s : DshashperfectPath) -> DshashperfectPath {
-  let result = ds_hash_perfect_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_path_fill(s : DshashperfectPath, v : Double) -> DshashperfectPath {
-  let result = ds_hash_perfect_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_path_min(s : DshashperfectPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_hash_perfect_cluster_sum(s : DshashperfectCluster) -> Double { @_commo
 pub fn ds_hash_perfect_cluster_mean(s : DshashperfectCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_cluster_scale(s : DshashperfectCluster, f : Double) -> DshashperfectCluster {
-  let result = ds_hash_perfect_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cluster_add(a : DshashperfectCluster, b : DshashperfectCluster) -> DshashperfectCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_cluster_copy(s : DshashperfectCluster) -> DshashperfectCluster {
-  let result = ds_hash_perfect_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cluster_fill(s : DshashperfectCluster, v : Double) -> DshashperfectCluster {
-  let result = ds_hash_perfect_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cluster_min(s : DshashperfectCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_hash_perfect_model_sum(s : DshashperfectModel) -> Double { @_common.su
 pub fn ds_hash_perfect_model_mean(s : DshashperfectModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_model_scale(s : DshashperfectModel, f : Double) -> DshashperfectModel {
-  let result = ds_hash_perfect_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_model_add(a : DshashperfectModel, b : DshashperfectModel) -> DshashperfectModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_model_copy(s : DshashperfectModel) -> DshashperfectModel {
-  let result = ds_hash_perfect_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_model_fill(s : DshashperfectModel, v : Double) -> DshashperfectModel {
-  let result = ds_hash_perfect_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_model_min(s : DshashperfectModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_hash_perfect_layer_sum(s : DshashperfectLayer) -> Double { @_common.su
 pub fn ds_hash_perfect_layer_mean(s : DshashperfectLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_layer_scale(s : DshashperfectLayer, f : Double) -> DshashperfectLayer {
-  let result = ds_hash_perfect_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_layer_add(a : DshashperfectLayer, b : DshashperfectLayer) -> DshashperfectLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_layer_copy(s : DshashperfectLayer) -> DshashperfectLayer {
-  let result = ds_hash_perfect_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_layer_fill(s : DshashperfectLayer, v : Double) -> DshashperfectLayer {
-  let result = ds_hash_perfect_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_layer_min(s : DshashperfectLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_hash_perfect_buffer_sum(s : DshashperfectBuffer) -> Double { @_common.
 pub fn ds_hash_perfect_buffer_mean(s : DshashperfectBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_buffer_scale(s : DshashperfectBuffer, f : Double) -> DshashperfectBuffer {
-  let result = ds_hash_perfect_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_buffer_add(a : DshashperfectBuffer, b : DshashperfectBuffer) -> DshashperfectBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_buffer_copy(s : DshashperfectBuffer) -> DshashperfectBuffer {
-  let result = ds_hash_perfect_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_buffer_fill(s : DshashperfectBuffer, v : Double) -> DshashperfectBuffer {
-  let result = ds_hash_perfect_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_buffer_min(s : DshashperfectBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_hash_perfect_cursor_sum(s : DshashperfectCursor) -> Double { @_common.
 pub fn ds_hash_perfect_cursor_mean(s : DshashperfectCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_cursor_scale(s : DshashperfectCursor, f : Double) -> DshashperfectCursor {
-  let result = ds_hash_perfect_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cursor_add(a : DshashperfectCursor, b : DshashperfectCursor) -> DshashperfectCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_cursor_copy(s : DshashperfectCursor) -> DshashperfectCursor {
-  let result = ds_hash_perfect_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cursor_fill(s : DshashperfectCursor, v : Double) -> DshashperfectCursor {
-  let result = ds_hash_perfect_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cursor_min(s : DshashperfectCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_hash_perfect_view_sum(s : DshashperfectView) -> Double { @_common.sum(
 pub fn ds_hash_perfect_view_mean(s : DshashperfectView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_view_scale(s : DshashperfectView, f : Double) -> DshashperfectView {
-  let result = ds_hash_perfect_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_view_add(a : DshashperfectView, b : DshashperfectView) -> DshashperfectView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_view_copy(s : DshashperfectView) -> DshashperfectView {
-  let result = ds_hash_perfect_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_view_fill(s : DshashperfectView, v : Double) -> DshashperfectView {
-  let result = ds_hash_perfect_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_view_min(s : DshashperfectView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_hash_perfect_range_sum(s : DshashperfectRange) -> Double { @_common.su
 pub fn ds_hash_perfect_range_mean(s : DshashperfectRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_range_scale(s : DshashperfectRange, f : Double) -> DshashperfectRange {
-  let result = ds_hash_perfect_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_range_add(a : DshashperfectRange, b : DshashperfectRange) -> DshashperfectRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_range_copy(s : DshashperfectRange) -> DshashperfectRange {
-  let result = ds_hash_perfect_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_range_fill(s : DshashperfectRange, v : Double) -> DshashperfectRange {
-  let result = ds_hash_perfect_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_range_min(s : DshashperfectRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_hash_perfect_slice_sum(s : DshashperfectSlice) -> Double { @_common.su
 pub fn ds_hash_perfect_slice_mean(s : DshashperfectSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_perfect_slice_scale(s : DshashperfectSlice, f : Double) -> DshashperfectSlice {
-  let result = ds_hash_perfect_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_slice_add(a : DshashperfectSlice, b : DshashperfectSlice) -> DshashperfectSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_hash_perfect_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_hash_perfect_slice_copy(s : DshashperfectSlice) -> DshashperfectSlice {
-  let result = ds_hash_perfect_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_slice_fill(s : DshashperfectSlice, v : Double) -> DshashperfectSlice {
-  let result = ds_hash_perfect_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_slice_min(s : DshashperfectSlice) -> Double { @_common.min(s.data) }

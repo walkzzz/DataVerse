@@ -383,28 +383,20 @@ pub fn image_transform_scale_frame_sum(s : ImagetransformscaleFrame) -> Double {
 pub fn image_transform_scale_frame_mean(s : ImagetransformscaleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_frame_scale(s : ImagetransformscaleFrame, f : Double) -> ImagetransformscaleFrame {
-  let result = image_transform_scale_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_frame_add(a : ImagetransformscaleFrame, b : ImagetransformscaleFrame) -> ImagetransformscaleFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_frame_copy(s : ImagetransformscaleFrame) -> ImagetransformscaleFrame {
-  let result = image_transform_scale_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_frame_fill(s : ImagetransformscaleFrame, v : Double) -> ImagetransformscaleFrame {
-  let result = image_transform_scale_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_frame_min(s : ImagetransformscaleFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_transform_scale_table_sum(s : ImagetransformscaleTable) -> Double {
 pub fn image_transform_scale_table_mean(s : ImagetransformscaleTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_table_scale(s : ImagetransformscaleTable, f : Double) -> ImagetransformscaleTable {
-  let result = image_transform_scale_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_table_add(a : ImagetransformscaleTable, b : ImagetransformscaleTable) -> ImagetransformscaleTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_table_copy(s : ImagetransformscaleTable) -> ImagetransformscaleTable {
-  let result = image_transform_scale_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_table_fill(s : ImagetransformscaleTable, v : Double) -> ImagetransformscaleTable {
-  let result = image_transform_scale_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_table_min(s : ImagetransformscaleTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_transform_scale_graphn_sum(s : ImagetransformscaleGraphN) -> Double
 pub fn image_transform_scale_graphn_mean(s : ImagetransformscaleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_graphn_scale(s : ImagetransformscaleGraphN, f : Double) -> ImagetransformscaleGraphN {
-  let result = image_transform_scale_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_graphn_add(a : ImagetransformscaleGraphN, b : ImagetransformscaleGraphN) -> ImagetransformscaleGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_graphn_copy(s : ImagetransformscaleGraphN) -> ImagetransformscaleGraphN {
-  let result = image_transform_scale_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_graphn_fill(s : ImagetransformscaleGraphN, v : Double) -> ImagetransformscaleGraphN {
-  let result = image_transform_scale_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_graphn_min(s : ImagetransformscaleGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_transform_scale_node_sum(s : ImagetransformscaleNode) -> Double { @
 pub fn image_transform_scale_node_mean(s : ImagetransformscaleNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_node_scale(s : ImagetransformscaleNode, f : Double) -> ImagetransformscaleNode {
-  let result = image_transform_scale_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_node_add(a : ImagetransformscaleNode, b : ImagetransformscaleNode) -> ImagetransformscaleNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_node_copy(s : ImagetransformscaleNode) -> ImagetransformscaleNode {
-  let result = image_transform_scale_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_node_fill(s : ImagetransformscaleNode, v : Double) -> ImagetransformscaleNode {
-  let result = image_transform_scale_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_node_min(s : ImagetransformscaleNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_transform_scale_edge_sum(s : ImagetransformscaleEdge) -> Double { @
 pub fn image_transform_scale_edge_mean(s : ImagetransformscaleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_edge_scale(s : ImagetransformscaleEdge, f : Double) -> ImagetransformscaleEdge {
-  let result = image_transform_scale_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_edge_add(a : ImagetransformscaleEdge, b : ImagetransformscaleEdge) -> ImagetransformscaleEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_edge_copy(s : ImagetransformscaleEdge) -> ImagetransformscaleEdge {
-  let result = image_transform_scale_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_edge_fill(s : ImagetransformscaleEdge, v : Double) -> ImagetransformscaleEdge {
-  let result = image_transform_scale_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_edge_min(s : ImagetransformscaleEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_transform_scale_path_sum(s : ImagetransformscalePath) -> Double { @
 pub fn image_transform_scale_path_mean(s : ImagetransformscalePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_path_scale(s : ImagetransformscalePath, f : Double) -> ImagetransformscalePath {
-  let result = image_transform_scale_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_path_add(a : ImagetransformscalePath, b : ImagetransformscalePath) -> ImagetransformscalePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_path_copy(s : ImagetransformscalePath) -> ImagetransformscalePath {
-  let result = image_transform_scale_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_path_fill(s : ImagetransformscalePath, v : Double) -> ImagetransformscalePath {
-  let result = image_transform_scale_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_path_min(s : ImagetransformscalePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_transform_scale_cluster_sum(s : ImagetransformscaleCluster) -> Doub
 pub fn image_transform_scale_cluster_mean(s : ImagetransformscaleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_cluster_scale(s : ImagetransformscaleCluster, f : Double) -> ImagetransformscaleCluster {
-  let result = image_transform_scale_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cluster_add(a : ImagetransformscaleCluster, b : ImagetransformscaleCluster) -> ImagetransformscaleCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_cluster_copy(s : ImagetransformscaleCluster) -> ImagetransformscaleCluster {
-  let result = image_transform_scale_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cluster_fill(s : ImagetransformscaleCluster, v : Double) -> ImagetransformscaleCluster {
-  let result = image_transform_scale_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cluster_min(s : ImagetransformscaleCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_transform_scale_model_sum(s : ImagetransformscaleModel) -> Double {
 pub fn image_transform_scale_model_mean(s : ImagetransformscaleModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_model_scale(s : ImagetransformscaleModel, f : Double) -> ImagetransformscaleModel {
-  let result = image_transform_scale_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_model_add(a : ImagetransformscaleModel, b : ImagetransformscaleModel) -> ImagetransformscaleModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_model_copy(s : ImagetransformscaleModel) -> ImagetransformscaleModel {
-  let result = image_transform_scale_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_model_fill(s : ImagetransformscaleModel, v : Double) -> ImagetransformscaleModel {
-  let result = image_transform_scale_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_model_min(s : ImagetransformscaleModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_transform_scale_layer_sum(s : ImagetransformscaleLayer) -> Double {
 pub fn image_transform_scale_layer_mean(s : ImagetransformscaleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_layer_scale(s : ImagetransformscaleLayer, f : Double) -> ImagetransformscaleLayer {
-  let result = image_transform_scale_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_layer_add(a : ImagetransformscaleLayer, b : ImagetransformscaleLayer) -> ImagetransformscaleLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_layer_copy(s : ImagetransformscaleLayer) -> ImagetransformscaleLayer {
-  let result = image_transform_scale_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_layer_fill(s : ImagetransformscaleLayer, v : Double) -> ImagetransformscaleLayer {
-  let result = image_transform_scale_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_layer_min(s : ImagetransformscaleLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_transform_scale_buffer_sum(s : ImagetransformscaleBuffer) -> Double
 pub fn image_transform_scale_buffer_mean(s : ImagetransformscaleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_buffer_scale(s : ImagetransformscaleBuffer, f : Double) -> ImagetransformscaleBuffer {
-  let result = image_transform_scale_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_buffer_add(a : ImagetransformscaleBuffer, b : ImagetransformscaleBuffer) -> ImagetransformscaleBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_buffer_copy(s : ImagetransformscaleBuffer) -> ImagetransformscaleBuffer {
-  let result = image_transform_scale_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_buffer_fill(s : ImagetransformscaleBuffer, v : Double) -> ImagetransformscaleBuffer {
-  let result = image_transform_scale_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_buffer_min(s : ImagetransformscaleBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_transform_scale_cursor_sum(s : ImagetransformscaleCursor) -> Double
 pub fn image_transform_scale_cursor_mean(s : ImagetransformscaleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_cursor_scale(s : ImagetransformscaleCursor, f : Double) -> ImagetransformscaleCursor {
-  let result = image_transform_scale_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cursor_add(a : ImagetransformscaleCursor, b : ImagetransformscaleCursor) -> ImagetransformscaleCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_cursor_copy(s : ImagetransformscaleCursor) -> ImagetransformscaleCursor {
-  let result = image_transform_scale_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cursor_fill(s : ImagetransformscaleCursor, v : Double) -> ImagetransformscaleCursor {
-  let result = image_transform_scale_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cursor_min(s : ImagetransformscaleCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_transform_scale_view_sum(s : ImagetransformscaleView) -> Double { @
 pub fn image_transform_scale_view_mean(s : ImagetransformscaleView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_view_scale(s : ImagetransformscaleView, f : Double) -> ImagetransformscaleView {
-  let result = image_transform_scale_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_view_add(a : ImagetransformscaleView, b : ImagetransformscaleView) -> ImagetransformscaleView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_view_copy(s : ImagetransformscaleView) -> ImagetransformscaleView {
-  let result = image_transform_scale_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_view_fill(s : ImagetransformscaleView, v : Double) -> ImagetransformscaleView {
-  let result = image_transform_scale_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_view_min(s : ImagetransformscaleView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_transform_scale_range_sum(s : ImagetransformscaleRange) -> Double {
 pub fn image_transform_scale_range_mean(s : ImagetransformscaleRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_range_scale(s : ImagetransformscaleRange, f : Double) -> ImagetransformscaleRange {
-  let result = image_transform_scale_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_range_add(a : ImagetransformscaleRange, b : ImagetransformscaleRange) -> ImagetransformscaleRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_range_copy(s : ImagetransformscaleRange) -> ImagetransformscaleRange {
-  let result = image_transform_scale_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_range_fill(s : ImagetransformscaleRange, v : Double) -> ImagetransformscaleRange {
-  let result = image_transform_scale_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_range_min(s : ImagetransformscaleRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_transform_scale_slice_sum(s : ImagetransformscaleSlice) -> Double {
 pub fn image_transform_scale_slice_mean(s : ImagetransformscaleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_scale_slice_scale(s : ImagetransformscaleSlice, f : Double) -> ImagetransformscaleSlice {
-  let result = image_transform_scale_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_slice_add(a : ImagetransformscaleSlice, b : ImagetransformscaleSlice) -> ImagetransformscaleSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_transform_scale_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_transform_scale_slice_copy(s : ImagetransformscaleSlice) -> ImagetransformscaleSlice {
-  let result = image_transform_scale_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_slice_fill(s : ImagetransformscaleSlice, v : Double) -> ImagetransformscaleSlice {
-  let result = image_transform_scale_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_slice_min(s : ImagetransformscaleSlice) -> Double { @_common.min(s.data) }

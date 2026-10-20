@@ -383,28 +383,20 @@ pub fn timeseries_forecast_comb_frame_sum(s : TimeseriesforecastcombFrame) -> Do
 pub fn timeseries_forecast_comb_frame_mean(s : TimeseriesforecastcombFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_frame_scale(s : TimeseriesforecastcombFrame, f : Double) -> TimeseriesforecastcombFrame {
-  let result = timeseries_forecast_comb_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_frame_add(a : TimeseriesforecastcombFrame, b : TimeseriesforecastcombFrame) -> TimeseriesforecastcombFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_frame_copy(s : TimeseriesforecastcombFrame) -> TimeseriesforecastcombFrame {
-  let result = timeseries_forecast_comb_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_frame_fill(s : TimeseriesforecastcombFrame, v : Double) -> TimeseriesforecastcombFrame {
-  let result = timeseries_forecast_comb_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_frame_min(s : TimeseriesforecastcombFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_forecast_comb_table_sum(s : TimeseriesforecastcombTable) -> Do
 pub fn timeseries_forecast_comb_table_mean(s : TimeseriesforecastcombTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_table_scale(s : TimeseriesforecastcombTable, f : Double) -> TimeseriesforecastcombTable {
-  let result = timeseries_forecast_comb_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_table_add(a : TimeseriesforecastcombTable, b : TimeseriesforecastcombTable) -> TimeseriesforecastcombTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_table_copy(s : TimeseriesforecastcombTable) -> TimeseriesforecastcombTable {
-  let result = timeseries_forecast_comb_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_table_fill(s : TimeseriesforecastcombTable, v : Double) -> TimeseriesforecastcombTable {
-  let result = timeseries_forecast_comb_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_table_min(s : TimeseriesforecastcombTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_forecast_comb_graphn_sum(s : TimeseriesforecastcombGraphN) -> 
 pub fn timeseries_forecast_comb_graphn_mean(s : TimeseriesforecastcombGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_graphn_scale(s : TimeseriesforecastcombGraphN, f : Double) -> TimeseriesforecastcombGraphN {
-  let result = timeseries_forecast_comb_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_graphn_add(a : TimeseriesforecastcombGraphN, b : TimeseriesforecastcombGraphN) -> TimeseriesforecastcombGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_graphn_copy(s : TimeseriesforecastcombGraphN) -> TimeseriesforecastcombGraphN {
-  let result = timeseries_forecast_comb_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_graphn_fill(s : TimeseriesforecastcombGraphN, v : Double) -> TimeseriesforecastcombGraphN {
-  let result = timeseries_forecast_comb_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_graphn_min(s : TimeseriesforecastcombGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_forecast_comb_node_sum(s : TimeseriesforecastcombNode) -> Doub
 pub fn timeseries_forecast_comb_node_mean(s : TimeseriesforecastcombNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_node_scale(s : TimeseriesforecastcombNode, f : Double) -> TimeseriesforecastcombNode {
-  let result = timeseries_forecast_comb_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_node_add(a : TimeseriesforecastcombNode, b : TimeseriesforecastcombNode) -> TimeseriesforecastcombNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_node_copy(s : TimeseriesforecastcombNode) -> TimeseriesforecastcombNode {
-  let result = timeseries_forecast_comb_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_node_fill(s : TimeseriesforecastcombNode, v : Double) -> TimeseriesforecastcombNode {
-  let result = timeseries_forecast_comb_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_node_min(s : TimeseriesforecastcombNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_forecast_comb_edge_sum(s : TimeseriesforecastcombEdge) -> Doub
 pub fn timeseries_forecast_comb_edge_mean(s : TimeseriesforecastcombEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_edge_scale(s : TimeseriesforecastcombEdge, f : Double) -> TimeseriesforecastcombEdge {
-  let result = timeseries_forecast_comb_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_edge_add(a : TimeseriesforecastcombEdge, b : TimeseriesforecastcombEdge) -> TimeseriesforecastcombEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_edge_copy(s : TimeseriesforecastcombEdge) -> TimeseriesforecastcombEdge {
-  let result = timeseries_forecast_comb_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_edge_fill(s : TimeseriesforecastcombEdge, v : Double) -> TimeseriesforecastcombEdge {
-  let result = timeseries_forecast_comb_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_edge_min(s : TimeseriesforecastcombEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_forecast_comb_path_sum(s : TimeseriesforecastcombPath) -> Doub
 pub fn timeseries_forecast_comb_path_mean(s : TimeseriesforecastcombPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_path_scale(s : TimeseriesforecastcombPath, f : Double) -> TimeseriesforecastcombPath {
-  let result = timeseries_forecast_comb_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_path_add(a : TimeseriesforecastcombPath, b : TimeseriesforecastcombPath) -> TimeseriesforecastcombPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_path_copy(s : TimeseriesforecastcombPath) -> TimeseriesforecastcombPath {
-  let result = timeseries_forecast_comb_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_path_fill(s : TimeseriesforecastcombPath, v : Double) -> TimeseriesforecastcombPath {
-  let result = timeseries_forecast_comb_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_path_min(s : TimeseriesforecastcombPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_forecast_comb_cluster_sum(s : TimeseriesforecastcombCluster) -
 pub fn timeseries_forecast_comb_cluster_mean(s : TimeseriesforecastcombCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_cluster_scale(s : TimeseriesforecastcombCluster, f : Double) -> TimeseriesforecastcombCluster {
-  let result = timeseries_forecast_comb_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_cluster_add(a : TimeseriesforecastcombCluster, b : TimeseriesforecastcombCluster) -> TimeseriesforecastcombCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_cluster_copy(s : TimeseriesforecastcombCluster) -> TimeseriesforecastcombCluster {
-  let result = timeseries_forecast_comb_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_cluster_fill(s : TimeseriesforecastcombCluster, v : Double) -> TimeseriesforecastcombCluster {
-  let result = timeseries_forecast_comb_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_cluster_min(s : TimeseriesforecastcombCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_forecast_comb_model_sum(s : TimeseriesforecastcombModel) -> Do
 pub fn timeseries_forecast_comb_model_mean(s : TimeseriesforecastcombModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_model_scale(s : TimeseriesforecastcombModel, f : Double) -> TimeseriesforecastcombModel {
-  let result = timeseries_forecast_comb_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_model_add(a : TimeseriesforecastcombModel, b : TimeseriesforecastcombModel) -> TimeseriesforecastcombModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_model_copy(s : TimeseriesforecastcombModel) -> TimeseriesforecastcombModel {
-  let result = timeseries_forecast_comb_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_model_fill(s : TimeseriesforecastcombModel, v : Double) -> TimeseriesforecastcombModel {
-  let result = timeseries_forecast_comb_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_model_min(s : TimeseriesforecastcombModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_forecast_comb_layer_sum(s : TimeseriesforecastcombLayer) -> Do
 pub fn timeseries_forecast_comb_layer_mean(s : TimeseriesforecastcombLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_layer_scale(s : TimeseriesforecastcombLayer, f : Double) -> TimeseriesforecastcombLayer {
-  let result = timeseries_forecast_comb_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_layer_add(a : TimeseriesforecastcombLayer, b : TimeseriesforecastcombLayer) -> TimeseriesforecastcombLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_layer_copy(s : TimeseriesforecastcombLayer) -> TimeseriesforecastcombLayer {
-  let result = timeseries_forecast_comb_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_layer_fill(s : TimeseriesforecastcombLayer, v : Double) -> TimeseriesforecastcombLayer {
-  let result = timeseries_forecast_comb_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_layer_min(s : TimeseriesforecastcombLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_forecast_comb_buffer_sum(s : TimeseriesforecastcombBuffer) -> 
 pub fn timeseries_forecast_comb_buffer_mean(s : TimeseriesforecastcombBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_buffer_scale(s : TimeseriesforecastcombBuffer, f : Double) -> TimeseriesforecastcombBuffer {
-  let result = timeseries_forecast_comb_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_buffer_add(a : TimeseriesforecastcombBuffer, b : TimeseriesforecastcombBuffer) -> TimeseriesforecastcombBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_buffer_copy(s : TimeseriesforecastcombBuffer) -> TimeseriesforecastcombBuffer {
-  let result = timeseries_forecast_comb_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_buffer_fill(s : TimeseriesforecastcombBuffer, v : Double) -> TimeseriesforecastcombBuffer {
-  let result = timeseries_forecast_comb_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_buffer_min(s : TimeseriesforecastcombBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_forecast_comb_cursor_sum(s : TimeseriesforecastcombCursor) -> 
 pub fn timeseries_forecast_comb_cursor_mean(s : TimeseriesforecastcombCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_cursor_scale(s : TimeseriesforecastcombCursor, f : Double) -> TimeseriesforecastcombCursor {
-  let result = timeseries_forecast_comb_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_cursor_add(a : TimeseriesforecastcombCursor, b : TimeseriesforecastcombCursor) -> TimeseriesforecastcombCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_cursor_copy(s : TimeseriesforecastcombCursor) -> TimeseriesforecastcombCursor {
-  let result = timeseries_forecast_comb_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_cursor_fill(s : TimeseriesforecastcombCursor, v : Double) -> TimeseriesforecastcombCursor {
-  let result = timeseries_forecast_comb_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_cursor_min(s : TimeseriesforecastcombCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_forecast_comb_view_sum(s : TimeseriesforecastcombView) -> Doub
 pub fn timeseries_forecast_comb_view_mean(s : TimeseriesforecastcombView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_view_scale(s : TimeseriesforecastcombView, f : Double) -> TimeseriesforecastcombView {
-  let result = timeseries_forecast_comb_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_view_add(a : TimeseriesforecastcombView, b : TimeseriesforecastcombView) -> TimeseriesforecastcombView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_view_copy(s : TimeseriesforecastcombView) -> TimeseriesforecastcombView {
-  let result = timeseries_forecast_comb_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_view_fill(s : TimeseriesforecastcombView, v : Double) -> TimeseriesforecastcombView {
-  let result = timeseries_forecast_comb_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_view_min(s : TimeseriesforecastcombView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_forecast_comb_range_sum(s : TimeseriesforecastcombRange) -> Do
 pub fn timeseries_forecast_comb_range_mean(s : TimeseriesforecastcombRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_range_scale(s : TimeseriesforecastcombRange, f : Double) -> TimeseriesforecastcombRange {
-  let result = timeseries_forecast_comb_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_range_add(a : TimeseriesforecastcombRange, b : TimeseriesforecastcombRange) -> TimeseriesforecastcombRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_range_copy(s : TimeseriesforecastcombRange) -> TimeseriesforecastcombRange {
-  let result = timeseries_forecast_comb_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_range_fill(s : TimeseriesforecastcombRange, v : Double) -> TimeseriesforecastcombRange {
-  let result = timeseries_forecast_comb_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_range_min(s : TimeseriesforecastcombRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_forecast_comb_slice_sum(s : TimeseriesforecastcombSlice) -> Do
 pub fn timeseries_forecast_comb_slice_mean(s : TimeseriesforecastcombSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_slice_scale(s : TimeseriesforecastcombSlice, f : Double) -> TimeseriesforecastcombSlice {
-  let result = timeseries_forecast_comb_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_slice_add(a : TimeseriesforecastcombSlice, b : TimeseriesforecastcombSlice) -> TimeseriesforecastcombSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_comb_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_comb_slice_copy(s : TimeseriesforecastcombSlice) -> TimeseriesforecastcombSlice {
-  let result = timeseries_forecast_comb_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_slice_fill(s : TimeseriesforecastcombSlice, v : Double) -> TimeseriesforecastcombSlice {
-  let result = timeseries_forecast_comb_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_comb_slice_min(s : TimeseriesforecastcombSlice) -> Double { @_common.min(s.data) }

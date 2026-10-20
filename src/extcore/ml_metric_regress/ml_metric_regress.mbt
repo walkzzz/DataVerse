@@ -383,28 +383,20 @@ pub fn ml_metric_regress_frame_sum(s : MlmetricregressFrame) -> Double { @_commo
 pub fn ml_metric_regress_frame_mean(s : MlmetricregressFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_frame_scale(s : MlmetricregressFrame, f : Double) -> MlmetricregressFrame {
-  let result = ml_metric_regress_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_frame_add(a : MlmetricregressFrame, b : MlmetricregressFrame) -> MlmetricregressFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_frame_copy(s : MlmetricregressFrame) -> MlmetricregressFrame {
-  let result = ml_metric_regress_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_frame_fill(s : MlmetricregressFrame, v : Double) -> MlmetricregressFrame {
-  let result = ml_metric_regress_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_frame_min(s : MlmetricregressFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_metric_regress_table_sum(s : MlmetricregressTable) -> Double { @_commo
 pub fn ml_metric_regress_table_mean(s : MlmetricregressTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_table_scale(s : MlmetricregressTable, f : Double) -> MlmetricregressTable {
-  let result = ml_metric_regress_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_table_add(a : MlmetricregressTable, b : MlmetricregressTable) -> MlmetricregressTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_table_copy(s : MlmetricregressTable) -> MlmetricregressTable {
-  let result = ml_metric_regress_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_table_fill(s : MlmetricregressTable, v : Double) -> MlmetricregressTable {
-  let result = ml_metric_regress_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_table_min(s : MlmetricregressTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_metric_regress_graphn_sum(s : MlmetricregressGraphN) -> Double { @_com
 pub fn ml_metric_regress_graphn_mean(s : MlmetricregressGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_graphn_scale(s : MlmetricregressGraphN, f : Double) -> MlmetricregressGraphN {
-  let result = ml_metric_regress_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_graphn_add(a : MlmetricregressGraphN, b : MlmetricregressGraphN) -> MlmetricregressGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_graphn_copy(s : MlmetricregressGraphN) -> MlmetricregressGraphN {
-  let result = ml_metric_regress_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_graphn_fill(s : MlmetricregressGraphN, v : Double) -> MlmetricregressGraphN {
-  let result = ml_metric_regress_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_graphn_min(s : MlmetricregressGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_metric_regress_node_sum(s : MlmetricregressNode) -> Double { @_common.
 pub fn ml_metric_regress_node_mean(s : MlmetricregressNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_node_scale(s : MlmetricregressNode, f : Double) -> MlmetricregressNode {
-  let result = ml_metric_regress_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_node_add(a : MlmetricregressNode, b : MlmetricregressNode) -> MlmetricregressNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_node_copy(s : MlmetricregressNode) -> MlmetricregressNode {
-  let result = ml_metric_regress_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_node_fill(s : MlmetricregressNode, v : Double) -> MlmetricregressNode {
-  let result = ml_metric_regress_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_node_min(s : MlmetricregressNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_metric_regress_edge_sum(s : MlmetricregressEdge) -> Double { @_common.
 pub fn ml_metric_regress_edge_mean(s : MlmetricregressEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_edge_scale(s : MlmetricregressEdge, f : Double) -> MlmetricregressEdge {
-  let result = ml_metric_regress_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_edge_add(a : MlmetricregressEdge, b : MlmetricregressEdge) -> MlmetricregressEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_edge_copy(s : MlmetricregressEdge) -> MlmetricregressEdge {
-  let result = ml_metric_regress_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_edge_fill(s : MlmetricregressEdge, v : Double) -> MlmetricregressEdge {
-  let result = ml_metric_regress_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_edge_min(s : MlmetricregressEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_metric_regress_path_sum(s : MlmetricregressPath) -> Double { @_common.
 pub fn ml_metric_regress_path_mean(s : MlmetricregressPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_path_scale(s : MlmetricregressPath, f : Double) -> MlmetricregressPath {
-  let result = ml_metric_regress_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_path_add(a : MlmetricregressPath, b : MlmetricregressPath) -> MlmetricregressPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_path_copy(s : MlmetricregressPath) -> MlmetricregressPath {
-  let result = ml_metric_regress_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_path_fill(s : MlmetricregressPath, v : Double) -> MlmetricregressPath {
-  let result = ml_metric_regress_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_path_min(s : MlmetricregressPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_metric_regress_cluster_sum(s : MlmetricregressCluster) -> Double { @_c
 pub fn ml_metric_regress_cluster_mean(s : MlmetricregressCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_cluster_scale(s : MlmetricregressCluster, f : Double) -> MlmetricregressCluster {
-  let result = ml_metric_regress_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_cluster_add(a : MlmetricregressCluster, b : MlmetricregressCluster) -> MlmetricregressCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_cluster_copy(s : MlmetricregressCluster) -> MlmetricregressCluster {
-  let result = ml_metric_regress_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_cluster_fill(s : MlmetricregressCluster, v : Double) -> MlmetricregressCluster {
-  let result = ml_metric_regress_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_cluster_min(s : MlmetricregressCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_metric_regress_model_sum(s : MlmetricregressModel) -> Double { @_commo
 pub fn ml_metric_regress_model_mean(s : MlmetricregressModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_model_scale(s : MlmetricregressModel, f : Double) -> MlmetricregressModel {
-  let result = ml_metric_regress_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_model_add(a : MlmetricregressModel, b : MlmetricregressModel) -> MlmetricregressModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_model_copy(s : MlmetricregressModel) -> MlmetricregressModel {
-  let result = ml_metric_regress_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_model_fill(s : MlmetricregressModel, v : Double) -> MlmetricregressModel {
-  let result = ml_metric_regress_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_model_min(s : MlmetricregressModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_metric_regress_layer_sum(s : MlmetricregressLayer) -> Double { @_commo
 pub fn ml_metric_regress_layer_mean(s : MlmetricregressLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_layer_scale(s : MlmetricregressLayer, f : Double) -> MlmetricregressLayer {
-  let result = ml_metric_regress_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_layer_add(a : MlmetricregressLayer, b : MlmetricregressLayer) -> MlmetricregressLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_layer_copy(s : MlmetricregressLayer) -> MlmetricregressLayer {
-  let result = ml_metric_regress_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_layer_fill(s : MlmetricregressLayer, v : Double) -> MlmetricregressLayer {
-  let result = ml_metric_regress_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_layer_min(s : MlmetricregressLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_metric_regress_buffer_sum(s : MlmetricregressBuffer) -> Double { @_com
 pub fn ml_metric_regress_buffer_mean(s : MlmetricregressBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_buffer_scale(s : MlmetricregressBuffer, f : Double) -> MlmetricregressBuffer {
-  let result = ml_metric_regress_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_buffer_add(a : MlmetricregressBuffer, b : MlmetricregressBuffer) -> MlmetricregressBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_buffer_copy(s : MlmetricregressBuffer) -> MlmetricregressBuffer {
-  let result = ml_metric_regress_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_buffer_fill(s : MlmetricregressBuffer, v : Double) -> MlmetricregressBuffer {
-  let result = ml_metric_regress_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_buffer_min(s : MlmetricregressBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_metric_regress_cursor_sum(s : MlmetricregressCursor) -> Double { @_com
 pub fn ml_metric_regress_cursor_mean(s : MlmetricregressCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_cursor_scale(s : MlmetricregressCursor, f : Double) -> MlmetricregressCursor {
-  let result = ml_metric_regress_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_cursor_add(a : MlmetricregressCursor, b : MlmetricregressCursor) -> MlmetricregressCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_cursor_copy(s : MlmetricregressCursor) -> MlmetricregressCursor {
-  let result = ml_metric_regress_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_cursor_fill(s : MlmetricregressCursor, v : Double) -> MlmetricregressCursor {
-  let result = ml_metric_regress_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_cursor_min(s : MlmetricregressCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_metric_regress_view_sum(s : MlmetricregressView) -> Double { @_common.
 pub fn ml_metric_regress_view_mean(s : MlmetricregressView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_view_scale(s : MlmetricregressView, f : Double) -> MlmetricregressView {
-  let result = ml_metric_regress_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_view_add(a : MlmetricregressView, b : MlmetricregressView) -> MlmetricregressView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_view_copy(s : MlmetricregressView) -> MlmetricregressView {
-  let result = ml_metric_regress_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_view_fill(s : MlmetricregressView, v : Double) -> MlmetricregressView {
-  let result = ml_metric_regress_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_view_min(s : MlmetricregressView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_metric_regress_range_sum(s : MlmetricregressRange) -> Double { @_commo
 pub fn ml_metric_regress_range_mean(s : MlmetricregressRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_range_scale(s : MlmetricregressRange, f : Double) -> MlmetricregressRange {
-  let result = ml_metric_regress_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_range_add(a : MlmetricregressRange, b : MlmetricregressRange) -> MlmetricregressRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_range_copy(s : MlmetricregressRange) -> MlmetricregressRange {
-  let result = ml_metric_regress_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_range_fill(s : MlmetricregressRange, v : Double) -> MlmetricregressRange {
-  let result = ml_metric_regress_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_range_min(s : MlmetricregressRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_metric_regress_slice_sum(s : MlmetricregressSlice) -> Double { @_commo
 pub fn ml_metric_regress_slice_mean(s : MlmetricregressSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_regress_slice_scale(s : MlmetricregressSlice, f : Double) -> MlmetricregressSlice {
-  let result = ml_metric_regress_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_slice_add(a : MlmetricregressSlice, b : MlmetricregressSlice) -> MlmetricregressSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_metric_regress_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_metric_regress_slice_copy(s : MlmetricregressSlice) -> MlmetricregressSlice {
-  let result = ml_metric_regress_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_slice_fill(s : MlmetricregressSlice, v : Double) -> MlmetricregressSlice {
-  let result = ml_metric_regress_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_regress_slice_min(s : MlmetricregressSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn db_query_filter_frame_sum(s : DbqueryfilterFrame) -> Double { @_common.su
 pub fn db_query_filter_frame_mean(s : DbqueryfilterFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_frame_scale(s : DbqueryfilterFrame, f : Double) -> DbqueryfilterFrame {
-  let result = db_query_filter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_frame_add(a : DbqueryfilterFrame, b : DbqueryfilterFrame) -> DbqueryfilterFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_frame_copy(s : DbqueryfilterFrame) -> DbqueryfilterFrame {
-  let result = db_query_filter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_frame_fill(s : DbqueryfilterFrame, v : Double) -> DbqueryfilterFrame {
-  let result = db_query_filter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_frame_min(s : DbqueryfilterFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_query_filter_table_sum(s : DbqueryfilterTable) -> Double { @_common.su
 pub fn db_query_filter_table_mean(s : DbqueryfilterTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_table_scale(s : DbqueryfilterTable, f : Double) -> DbqueryfilterTable {
-  let result = db_query_filter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_table_add(a : DbqueryfilterTable, b : DbqueryfilterTable) -> DbqueryfilterTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_table_copy(s : DbqueryfilterTable) -> DbqueryfilterTable {
-  let result = db_query_filter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_table_fill(s : DbqueryfilterTable, v : Double) -> DbqueryfilterTable {
-  let result = db_query_filter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_table_min(s : DbqueryfilterTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_query_filter_graphn_sum(s : DbqueryfilterGraphN) -> Double { @_common.
 pub fn db_query_filter_graphn_mean(s : DbqueryfilterGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_graphn_scale(s : DbqueryfilterGraphN, f : Double) -> DbqueryfilterGraphN {
-  let result = db_query_filter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_graphn_add(a : DbqueryfilterGraphN, b : DbqueryfilterGraphN) -> DbqueryfilterGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_graphn_copy(s : DbqueryfilterGraphN) -> DbqueryfilterGraphN {
-  let result = db_query_filter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_graphn_fill(s : DbqueryfilterGraphN, v : Double) -> DbqueryfilterGraphN {
-  let result = db_query_filter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_graphn_min(s : DbqueryfilterGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_query_filter_node_sum(s : DbqueryfilterNode) -> Double { @_common.sum(
 pub fn db_query_filter_node_mean(s : DbqueryfilterNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_node_scale(s : DbqueryfilterNode, f : Double) -> DbqueryfilterNode {
-  let result = db_query_filter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_node_add(a : DbqueryfilterNode, b : DbqueryfilterNode) -> DbqueryfilterNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_node_copy(s : DbqueryfilterNode) -> DbqueryfilterNode {
-  let result = db_query_filter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_node_fill(s : DbqueryfilterNode, v : Double) -> DbqueryfilterNode {
-  let result = db_query_filter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_node_min(s : DbqueryfilterNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_query_filter_edge_sum(s : DbqueryfilterEdge) -> Double { @_common.sum(
 pub fn db_query_filter_edge_mean(s : DbqueryfilterEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_edge_scale(s : DbqueryfilterEdge, f : Double) -> DbqueryfilterEdge {
-  let result = db_query_filter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_edge_add(a : DbqueryfilterEdge, b : DbqueryfilterEdge) -> DbqueryfilterEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_edge_copy(s : DbqueryfilterEdge) -> DbqueryfilterEdge {
-  let result = db_query_filter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_edge_fill(s : DbqueryfilterEdge, v : Double) -> DbqueryfilterEdge {
-  let result = db_query_filter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_edge_min(s : DbqueryfilterEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_query_filter_path_sum(s : DbqueryfilterPath) -> Double { @_common.sum(
 pub fn db_query_filter_path_mean(s : DbqueryfilterPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_path_scale(s : DbqueryfilterPath, f : Double) -> DbqueryfilterPath {
-  let result = db_query_filter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_path_add(a : DbqueryfilterPath, b : DbqueryfilterPath) -> DbqueryfilterPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_path_copy(s : DbqueryfilterPath) -> DbqueryfilterPath {
-  let result = db_query_filter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_path_fill(s : DbqueryfilterPath, v : Double) -> DbqueryfilterPath {
-  let result = db_query_filter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_path_min(s : DbqueryfilterPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_query_filter_cluster_sum(s : DbqueryfilterCluster) -> Double { @_commo
 pub fn db_query_filter_cluster_mean(s : DbqueryfilterCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_cluster_scale(s : DbqueryfilterCluster, f : Double) -> DbqueryfilterCluster {
-  let result = db_query_filter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cluster_add(a : DbqueryfilterCluster, b : DbqueryfilterCluster) -> DbqueryfilterCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_cluster_copy(s : DbqueryfilterCluster) -> DbqueryfilterCluster {
-  let result = db_query_filter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cluster_fill(s : DbqueryfilterCluster, v : Double) -> DbqueryfilterCluster {
-  let result = db_query_filter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cluster_min(s : DbqueryfilterCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_query_filter_model_sum(s : DbqueryfilterModel) -> Double { @_common.su
 pub fn db_query_filter_model_mean(s : DbqueryfilterModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_model_scale(s : DbqueryfilterModel, f : Double) -> DbqueryfilterModel {
-  let result = db_query_filter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_model_add(a : DbqueryfilterModel, b : DbqueryfilterModel) -> DbqueryfilterModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_model_copy(s : DbqueryfilterModel) -> DbqueryfilterModel {
-  let result = db_query_filter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_model_fill(s : DbqueryfilterModel, v : Double) -> DbqueryfilterModel {
-  let result = db_query_filter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_model_min(s : DbqueryfilterModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_query_filter_layer_sum(s : DbqueryfilterLayer) -> Double { @_common.su
 pub fn db_query_filter_layer_mean(s : DbqueryfilterLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_layer_scale(s : DbqueryfilterLayer, f : Double) -> DbqueryfilterLayer {
-  let result = db_query_filter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_layer_add(a : DbqueryfilterLayer, b : DbqueryfilterLayer) -> DbqueryfilterLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_layer_copy(s : DbqueryfilterLayer) -> DbqueryfilterLayer {
-  let result = db_query_filter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_layer_fill(s : DbqueryfilterLayer, v : Double) -> DbqueryfilterLayer {
-  let result = db_query_filter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_layer_min(s : DbqueryfilterLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_query_filter_buffer_sum(s : DbqueryfilterBuffer) -> Double { @_common.
 pub fn db_query_filter_buffer_mean(s : DbqueryfilterBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_buffer_scale(s : DbqueryfilterBuffer, f : Double) -> DbqueryfilterBuffer {
-  let result = db_query_filter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_buffer_add(a : DbqueryfilterBuffer, b : DbqueryfilterBuffer) -> DbqueryfilterBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_buffer_copy(s : DbqueryfilterBuffer) -> DbqueryfilterBuffer {
-  let result = db_query_filter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_buffer_fill(s : DbqueryfilterBuffer, v : Double) -> DbqueryfilterBuffer {
-  let result = db_query_filter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_buffer_min(s : DbqueryfilterBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_query_filter_cursor_sum(s : DbqueryfilterCursor) -> Double { @_common.
 pub fn db_query_filter_cursor_mean(s : DbqueryfilterCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_cursor_scale(s : DbqueryfilterCursor, f : Double) -> DbqueryfilterCursor {
-  let result = db_query_filter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cursor_add(a : DbqueryfilterCursor, b : DbqueryfilterCursor) -> DbqueryfilterCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_cursor_copy(s : DbqueryfilterCursor) -> DbqueryfilterCursor {
-  let result = db_query_filter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cursor_fill(s : DbqueryfilterCursor, v : Double) -> DbqueryfilterCursor {
-  let result = db_query_filter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cursor_min(s : DbqueryfilterCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_query_filter_view_sum(s : DbqueryfilterView) -> Double { @_common.sum(
 pub fn db_query_filter_view_mean(s : DbqueryfilterView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_view_scale(s : DbqueryfilterView, f : Double) -> DbqueryfilterView {
-  let result = db_query_filter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_view_add(a : DbqueryfilterView, b : DbqueryfilterView) -> DbqueryfilterView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_view_copy(s : DbqueryfilterView) -> DbqueryfilterView {
-  let result = db_query_filter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_view_fill(s : DbqueryfilterView, v : Double) -> DbqueryfilterView {
-  let result = db_query_filter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_view_min(s : DbqueryfilterView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_query_filter_range_sum(s : DbqueryfilterRange) -> Double { @_common.su
 pub fn db_query_filter_range_mean(s : DbqueryfilterRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_range_scale(s : DbqueryfilterRange, f : Double) -> DbqueryfilterRange {
-  let result = db_query_filter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_range_add(a : DbqueryfilterRange, b : DbqueryfilterRange) -> DbqueryfilterRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_range_copy(s : DbqueryfilterRange) -> DbqueryfilterRange {
-  let result = db_query_filter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_range_fill(s : DbqueryfilterRange, v : Double) -> DbqueryfilterRange {
-  let result = db_query_filter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_range_min(s : DbqueryfilterRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_query_filter_slice_sum(s : DbqueryfilterSlice) -> Double { @_common.su
 pub fn db_query_filter_slice_mean(s : DbqueryfilterSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_slice_scale(s : DbqueryfilterSlice, f : Double) -> DbqueryfilterSlice {
-  let result = db_query_filter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_slice_add(a : DbqueryfilterSlice, b : DbqueryfilterSlice) -> DbqueryfilterSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_query_filter_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_query_filter_slice_copy(s : DbqueryfilterSlice) -> DbqueryfilterSlice {
-  let result = db_query_filter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_slice_fill(s : DbqueryfilterSlice, v : Double) -> DbqueryfilterSlice {
-  let result = db_query_filter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_slice_min(s : DbqueryfilterSlice) -> Double { @_common.min(s.data) }

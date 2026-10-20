@@ -383,28 +383,20 @@ pub fn ml_rl_actor_critic_frame_sum(s : MlrlactorcriticFrame) -> Double { @_comm
 pub fn ml_rl_actor_critic_frame_mean(s : MlrlactorcriticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_frame_scale(s : MlrlactorcriticFrame, f : Double) -> MlrlactorcriticFrame {
-  let result = ml_rl_actor_critic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_frame_add(a : MlrlactorcriticFrame, b : MlrlactorcriticFrame) -> MlrlactorcriticFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_frame_copy(s : MlrlactorcriticFrame) -> MlrlactorcriticFrame {
-  let result = ml_rl_actor_critic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_frame_fill(s : MlrlactorcriticFrame, v : Double) -> MlrlactorcriticFrame {
-  let result = ml_rl_actor_critic_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_frame_min(s : MlrlactorcriticFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ml_rl_actor_critic_table_sum(s : MlrlactorcriticTable) -> Double { @_comm
 pub fn ml_rl_actor_critic_table_mean(s : MlrlactorcriticTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_table_scale(s : MlrlactorcriticTable, f : Double) -> MlrlactorcriticTable {
-  let result = ml_rl_actor_critic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_table_add(a : MlrlactorcriticTable, b : MlrlactorcriticTable) -> MlrlactorcriticTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_table_copy(s : MlrlactorcriticTable) -> MlrlactorcriticTable {
-  let result = ml_rl_actor_critic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_table_fill(s : MlrlactorcriticTable, v : Double) -> MlrlactorcriticTable {
-  let result = ml_rl_actor_critic_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_table_min(s : MlrlactorcriticTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ml_rl_actor_critic_graphn_sum(s : MlrlactorcriticGraphN) -> Double { @_co
 pub fn ml_rl_actor_critic_graphn_mean(s : MlrlactorcriticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_graphn_scale(s : MlrlactorcriticGraphN, f : Double) -> MlrlactorcriticGraphN {
-  let result = ml_rl_actor_critic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_graphn_add(a : MlrlactorcriticGraphN, b : MlrlactorcriticGraphN) -> MlrlactorcriticGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_graphn_copy(s : MlrlactorcriticGraphN) -> MlrlactorcriticGraphN {
-  let result = ml_rl_actor_critic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_graphn_fill(s : MlrlactorcriticGraphN, v : Double) -> MlrlactorcriticGraphN {
-  let result = ml_rl_actor_critic_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_graphn_min(s : MlrlactorcriticGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ml_rl_actor_critic_node_sum(s : MlrlactorcriticNode) -> Double { @_common
 pub fn ml_rl_actor_critic_node_mean(s : MlrlactorcriticNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_node_scale(s : MlrlactorcriticNode, f : Double) -> MlrlactorcriticNode {
-  let result = ml_rl_actor_critic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_node_add(a : MlrlactorcriticNode, b : MlrlactorcriticNode) -> MlrlactorcriticNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_node_copy(s : MlrlactorcriticNode) -> MlrlactorcriticNode {
-  let result = ml_rl_actor_critic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_node_fill(s : MlrlactorcriticNode, v : Double) -> MlrlactorcriticNode {
-  let result = ml_rl_actor_critic_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_node_min(s : MlrlactorcriticNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ml_rl_actor_critic_edge_sum(s : MlrlactorcriticEdge) -> Double { @_common
 pub fn ml_rl_actor_critic_edge_mean(s : MlrlactorcriticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_edge_scale(s : MlrlactorcriticEdge, f : Double) -> MlrlactorcriticEdge {
-  let result = ml_rl_actor_critic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_edge_add(a : MlrlactorcriticEdge, b : MlrlactorcriticEdge) -> MlrlactorcriticEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_edge_copy(s : MlrlactorcriticEdge) -> MlrlactorcriticEdge {
-  let result = ml_rl_actor_critic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_edge_fill(s : MlrlactorcriticEdge, v : Double) -> MlrlactorcriticEdge {
-  let result = ml_rl_actor_critic_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_edge_min(s : MlrlactorcriticEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ml_rl_actor_critic_path_sum(s : MlrlactorcriticPath) -> Double { @_common
 pub fn ml_rl_actor_critic_path_mean(s : MlrlactorcriticPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_path_scale(s : MlrlactorcriticPath, f : Double) -> MlrlactorcriticPath {
-  let result = ml_rl_actor_critic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_path_add(a : MlrlactorcriticPath, b : MlrlactorcriticPath) -> MlrlactorcriticPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_path_copy(s : MlrlactorcriticPath) -> MlrlactorcriticPath {
-  let result = ml_rl_actor_critic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_path_fill(s : MlrlactorcriticPath, v : Double) -> MlrlactorcriticPath {
-  let result = ml_rl_actor_critic_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_path_min(s : MlrlactorcriticPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ml_rl_actor_critic_cluster_sum(s : MlrlactorcriticCluster) -> Double { @_
 pub fn ml_rl_actor_critic_cluster_mean(s : MlrlactorcriticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_cluster_scale(s : MlrlactorcriticCluster, f : Double) -> MlrlactorcriticCluster {
-  let result = ml_rl_actor_critic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_cluster_add(a : MlrlactorcriticCluster, b : MlrlactorcriticCluster) -> MlrlactorcriticCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_cluster_copy(s : MlrlactorcriticCluster) -> MlrlactorcriticCluster {
-  let result = ml_rl_actor_critic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_cluster_fill(s : MlrlactorcriticCluster, v : Double) -> MlrlactorcriticCluster {
-  let result = ml_rl_actor_critic_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_cluster_min(s : MlrlactorcriticCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ml_rl_actor_critic_model_sum(s : MlrlactorcriticModel) -> Double { @_comm
 pub fn ml_rl_actor_critic_model_mean(s : MlrlactorcriticModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_model_scale(s : MlrlactorcriticModel, f : Double) -> MlrlactorcriticModel {
-  let result = ml_rl_actor_critic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_model_add(a : MlrlactorcriticModel, b : MlrlactorcriticModel) -> MlrlactorcriticModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_model_copy(s : MlrlactorcriticModel) -> MlrlactorcriticModel {
-  let result = ml_rl_actor_critic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_model_fill(s : MlrlactorcriticModel, v : Double) -> MlrlactorcriticModel {
-  let result = ml_rl_actor_critic_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_model_min(s : MlrlactorcriticModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ml_rl_actor_critic_layer_sum(s : MlrlactorcriticLayer) -> Double { @_comm
 pub fn ml_rl_actor_critic_layer_mean(s : MlrlactorcriticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_layer_scale(s : MlrlactorcriticLayer, f : Double) -> MlrlactorcriticLayer {
-  let result = ml_rl_actor_critic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_layer_add(a : MlrlactorcriticLayer, b : MlrlactorcriticLayer) -> MlrlactorcriticLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_layer_copy(s : MlrlactorcriticLayer) -> MlrlactorcriticLayer {
-  let result = ml_rl_actor_critic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_layer_fill(s : MlrlactorcriticLayer, v : Double) -> MlrlactorcriticLayer {
-  let result = ml_rl_actor_critic_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_layer_min(s : MlrlactorcriticLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ml_rl_actor_critic_buffer_sum(s : MlrlactorcriticBuffer) -> Double { @_co
 pub fn ml_rl_actor_critic_buffer_mean(s : MlrlactorcriticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_buffer_scale(s : MlrlactorcriticBuffer, f : Double) -> MlrlactorcriticBuffer {
-  let result = ml_rl_actor_critic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_buffer_add(a : MlrlactorcriticBuffer, b : MlrlactorcriticBuffer) -> MlrlactorcriticBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_buffer_copy(s : MlrlactorcriticBuffer) -> MlrlactorcriticBuffer {
-  let result = ml_rl_actor_critic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_buffer_fill(s : MlrlactorcriticBuffer, v : Double) -> MlrlactorcriticBuffer {
-  let result = ml_rl_actor_critic_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_buffer_min(s : MlrlactorcriticBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ml_rl_actor_critic_cursor_sum(s : MlrlactorcriticCursor) -> Double { @_co
 pub fn ml_rl_actor_critic_cursor_mean(s : MlrlactorcriticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_cursor_scale(s : MlrlactorcriticCursor, f : Double) -> MlrlactorcriticCursor {
-  let result = ml_rl_actor_critic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_cursor_add(a : MlrlactorcriticCursor, b : MlrlactorcriticCursor) -> MlrlactorcriticCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_cursor_copy(s : MlrlactorcriticCursor) -> MlrlactorcriticCursor {
-  let result = ml_rl_actor_critic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_cursor_fill(s : MlrlactorcriticCursor, v : Double) -> MlrlactorcriticCursor {
-  let result = ml_rl_actor_critic_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_cursor_min(s : MlrlactorcriticCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ml_rl_actor_critic_view_sum(s : MlrlactorcriticView) -> Double { @_common
 pub fn ml_rl_actor_critic_view_mean(s : MlrlactorcriticView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_view_scale(s : MlrlactorcriticView, f : Double) -> MlrlactorcriticView {
-  let result = ml_rl_actor_critic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_view_add(a : MlrlactorcriticView, b : MlrlactorcriticView) -> MlrlactorcriticView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_view_copy(s : MlrlactorcriticView) -> MlrlactorcriticView {
-  let result = ml_rl_actor_critic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_view_fill(s : MlrlactorcriticView, v : Double) -> MlrlactorcriticView {
-  let result = ml_rl_actor_critic_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_view_min(s : MlrlactorcriticView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ml_rl_actor_critic_range_sum(s : MlrlactorcriticRange) -> Double { @_comm
 pub fn ml_rl_actor_critic_range_mean(s : MlrlactorcriticRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_range_scale(s : MlrlactorcriticRange, f : Double) -> MlrlactorcriticRange {
-  let result = ml_rl_actor_critic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_range_add(a : MlrlactorcriticRange, b : MlrlactorcriticRange) -> MlrlactorcriticRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_range_copy(s : MlrlactorcriticRange) -> MlrlactorcriticRange {
-  let result = ml_rl_actor_critic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_range_fill(s : MlrlactorcriticRange, v : Double) -> MlrlactorcriticRange {
-  let result = ml_rl_actor_critic_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_range_min(s : MlrlactorcriticRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ml_rl_actor_critic_slice_sum(s : MlrlactorcriticSlice) -> Double { @_comm
 pub fn ml_rl_actor_critic_slice_mean(s : MlrlactorcriticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_slice_scale(s : MlrlactorcriticSlice, f : Double) -> MlrlactorcriticSlice {
-  let result = ml_rl_actor_critic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_slice_add(a : MlrlactorcriticSlice, b : MlrlactorcriticSlice) -> MlrlactorcriticSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ml_rl_actor_critic_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ml_rl_actor_critic_slice_copy(s : MlrlactorcriticSlice) -> MlrlactorcriticSlice {
-  let result = ml_rl_actor_critic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_slice_fill(s : MlrlactorcriticSlice, v : Double) -> MlrlactorcriticSlice {
-  let result = ml_rl_actor_critic_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_actor_critic_slice_min(s : MlrlactorcriticSlice) -> Double { @_common.min(s.data) }

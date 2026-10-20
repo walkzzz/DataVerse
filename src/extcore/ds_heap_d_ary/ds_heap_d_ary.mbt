@@ -383,28 +383,20 @@ pub fn ds_heap_d_ary_frame_sum(s : DsheapdaryFrame) -> Double { @_common.sum(s.d
 pub fn ds_heap_d_ary_frame_mean(s : DsheapdaryFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_frame_scale(s : DsheapdaryFrame, f : Double) -> DsheapdaryFrame {
-  let result = ds_heap_d_ary_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_frame_add(a : DsheapdaryFrame, b : DsheapdaryFrame) -> DsheapdaryFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_frame_copy(s : DsheapdaryFrame) -> DsheapdaryFrame {
-  let result = ds_heap_d_ary_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_frame_fill(s : DsheapdaryFrame, v : Double) -> DsheapdaryFrame {
-  let result = ds_heap_d_ary_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_frame_min(s : DsheapdaryFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_heap_d_ary_table_sum(s : DsheapdaryTable) -> Double { @_common.sum(s.d
 pub fn ds_heap_d_ary_table_mean(s : DsheapdaryTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_table_scale(s : DsheapdaryTable, f : Double) -> DsheapdaryTable {
-  let result = ds_heap_d_ary_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_table_add(a : DsheapdaryTable, b : DsheapdaryTable) -> DsheapdaryTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_table_copy(s : DsheapdaryTable) -> DsheapdaryTable {
-  let result = ds_heap_d_ary_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_table_fill(s : DsheapdaryTable, v : Double) -> DsheapdaryTable {
-  let result = ds_heap_d_ary_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_table_min(s : DsheapdaryTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_heap_d_ary_graphn_sum(s : DsheapdaryGraphN) -> Double { @_common.sum(s
 pub fn ds_heap_d_ary_graphn_mean(s : DsheapdaryGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_graphn_scale(s : DsheapdaryGraphN, f : Double) -> DsheapdaryGraphN {
-  let result = ds_heap_d_ary_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_graphn_add(a : DsheapdaryGraphN, b : DsheapdaryGraphN) -> DsheapdaryGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_graphn_copy(s : DsheapdaryGraphN) -> DsheapdaryGraphN {
-  let result = ds_heap_d_ary_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_graphn_fill(s : DsheapdaryGraphN, v : Double) -> DsheapdaryGraphN {
-  let result = ds_heap_d_ary_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_graphn_min(s : DsheapdaryGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_heap_d_ary_node_sum(s : DsheapdaryNode) -> Double { @_common.sum(s.dat
 pub fn ds_heap_d_ary_node_mean(s : DsheapdaryNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_node_scale(s : DsheapdaryNode, f : Double) -> DsheapdaryNode {
-  let result = ds_heap_d_ary_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_node_add(a : DsheapdaryNode, b : DsheapdaryNode) -> DsheapdaryNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_node_copy(s : DsheapdaryNode) -> DsheapdaryNode {
-  let result = ds_heap_d_ary_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_node_fill(s : DsheapdaryNode, v : Double) -> DsheapdaryNode {
-  let result = ds_heap_d_ary_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_node_min(s : DsheapdaryNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_heap_d_ary_edge_sum(s : DsheapdaryEdge) -> Double { @_common.sum(s.dat
 pub fn ds_heap_d_ary_edge_mean(s : DsheapdaryEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_edge_scale(s : DsheapdaryEdge, f : Double) -> DsheapdaryEdge {
-  let result = ds_heap_d_ary_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_edge_add(a : DsheapdaryEdge, b : DsheapdaryEdge) -> DsheapdaryEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_edge_copy(s : DsheapdaryEdge) -> DsheapdaryEdge {
-  let result = ds_heap_d_ary_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_edge_fill(s : DsheapdaryEdge, v : Double) -> DsheapdaryEdge {
-  let result = ds_heap_d_ary_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_edge_min(s : DsheapdaryEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_heap_d_ary_path_sum(s : DsheapdaryPath) -> Double { @_common.sum(s.dat
 pub fn ds_heap_d_ary_path_mean(s : DsheapdaryPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_path_scale(s : DsheapdaryPath, f : Double) -> DsheapdaryPath {
-  let result = ds_heap_d_ary_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_path_add(a : DsheapdaryPath, b : DsheapdaryPath) -> DsheapdaryPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_path_copy(s : DsheapdaryPath) -> DsheapdaryPath {
-  let result = ds_heap_d_ary_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_path_fill(s : DsheapdaryPath, v : Double) -> DsheapdaryPath {
-  let result = ds_heap_d_ary_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_path_min(s : DsheapdaryPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_heap_d_ary_cluster_sum(s : DsheapdaryCluster) -> Double { @_common.sum
 pub fn ds_heap_d_ary_cluster_mean(s : DsheapdaryCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_cluster_scale(s : DsheapdaryCluster, f : Double) -> DsheapdaryCluster {
-  let result = ds_heap_d_ary_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_cluster_add(a : DsheapdaryCluster, b : DsheapdaryCluster) -> DsheapdaryCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_cluster_copy(s : DsheapdaryCluster) -> DsheapdaryCluster {
-  let result = ds_heap_d_ary_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_cluster_fill(s : DsheapdaryCluster, v : Double) -> DsheapdaryCluster {
-  let result = ds_heap_d_ary_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_cluster_min(s : DsheapdaryCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_heap_d_ary_model_sum(s : DsheapdaryModel) -> Double { @_common.sum(s.d
 pub fn ds_heap_d_ary_model_mean(s : DsheapdaryModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_model_scale(s : DsheapdaryModel, f : Double) -> DsheapdaryModel {
-  let result = ds_heap_d_ary_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_model_add(a : DsheapdaryModel, b : DsheapdaryModel) -> DsheapdaryModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_model_copy(s : DsheapdaryModel) -> DsheapdaryModel {
-  let result = ds_heap_d_ary_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_model_fill(s : DsheapdaryModel, v : Double) -> DsheapdaryModel {
-  let result = ds_heap_d_ary_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_model_min(s : DsheapdaryModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_heap_d_ary_layer_sum(s : DsheapdaryLayer) -> Double { @_common.sum(s.d
 pub fn ds_heap_d_ary_layer_mean(s : DsheapdaryLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_layer_scale(s : DsheapdaryLayer, f : Double) -> DsheapdaryLayer {
-  let result = ds_heap_d_ary_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_layer_add(a : DsheapdaryLayer, b : DsheapdaryLayer) -> DsheapdaryLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_layer_copy(s : DsheapdaryLayer) -> DsheapdaryLayer {
-  let result = ds_heap_d_ary_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_layer_fill(s : DsheapdaryLayer, v : Double) -> DsheapdaryLayer {
-  let result = ds_heap_d_ary_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_layer_min(s : DsheapdaryLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_heap_d_ary_buffer_sum(s : DsheapdaryBuffer) -> Double { @_common.sum(s
 pub fn ds_heap_d_ary_buffer_mean(s : DsheapdaryBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_buffer_scale(s : DsheapdaryBuffer, f : Double) -> DsheapdaryBuffer {
-  let result = ds_heap_d_ary_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_buffer_add(a : DsheapdaryBuffer, b : DsheapdaryBuffer) -> DsheapdaryBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_buffer_copy(s : DsheapdaryBuffer) -> DsheapdaryBuffer {
-  let result = ds_heap_d_ary_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_buffer_fill(s : DsheapdaryBuffer, v : Double) -> DsheapdaryBuffer {
-  let result = ds_heap_d_ary_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_buffer_min(s : DsheapdaryBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_heap_d_ary_cursor_sum(s : DsheapdaryCursor) -> Double { @_common.sum(s
 pub fn ds_heap_d_ary_cursor_mean(s : DsheapdaryCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_cursor_scale(s : DsheapdaryCursor, f : Double) -> DsheapdaryCursor {
-  let result = ds_heap_d_ary_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_cursor_add(a : DsheapdaryCursor, b : DsheapdaryCursor) -> DsheapdaryCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_cursor_copy(s : DsheapdaryCursor) -> DsheapdaryCursor {
-  let result = ds_heap_d_ary_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_cursor_fill(s : DsheapdaryCursor, v : Double) -> DsheapdaryCursor {
-  let result = ds_heap_d_ary_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_cursor_min(s : DsheapdaryCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_heap_d_ary_view_sum(s : DsheapdaryView) -> Double { @_common.sum(s.dat
 pub fn ds_heap_d_ary_view_mean(s : DsheapdaryView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_view_scale(s : DsheapdaryView, f : Double) -> DsheapdaryView {
-  let result = ds_heap_d_ary_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_view_add(a : DsheapdaryView, b : DsheapdaryView) -> DsheapdaryView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_view_copy(s : DsheapdaryView) -> DsheapdaryView {
-  let result = ds_heap_d_ary_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_view_fill(s : DsheapdaryView, v : Double) -> DsheapdaryView {
-  let result = ds_heap_d_ary_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_view_min(s : DsheapdaryView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_heap_d_ary_range_sum(s : DsheapdaryRange) -> Double { @_common.sum(s.d
 pub fn ds_heap_d_ary_range_mean(s : DsheapdaryRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_range_scale(s : DsheapdaryRange, f : Double) -> DsheapdaryRange {
-  let result = ds_heap_d_ary_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_range_add(a : DsheapdaryRange, b : DsheapdaryRange) -> DsheapdaryRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_range_copy(s : DsheapdaryRange) -> DsheapdaryRange {
-  let result = ds_heap_d_ary_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_range_fill(s : DsheapdaryRange, v : Double) -> DsheapdaryRange {
-  let result = ds_heap_d_ary_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_range_min(s : DsheapdaryRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_heap_d_ary_slice_sum(s : DsheapdarySlice) -> Double { @_common.sum(s.d
 pub fn ds_heap_d_ary_slice_mean(s : DsheapdarySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_slice_scale(s : DsheapdarySlice, f : Double) -> DsheapdarySlice {
-  let result = ds_heap_d_ary_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_slice_add(a : DsheapdarySlice, b : DsheapdarySlice) -> DsheapdarySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_d_ary_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_d_ary_slice_copy(s : DsheapdarySlice) -> DsheapdarySlice {
-  let result = ds_heap_d_ary_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_slice_fill(s : DsheapdarySlice, v : Double) -> DsheapdarySlice {
-  let result = ds_heap_d_ary_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_d_ary_slice_min(s : DsheapdarySlice) -> Double { @_common.min(s.data) }

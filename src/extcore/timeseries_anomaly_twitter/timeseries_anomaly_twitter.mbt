@@ -383,28 +383,20 @@ pub fn timeseries_anomaly_twitter_frame_sum(s : TimeseriesanomalytwitterFrame) -
 pub fn timeseries_anomaly_twitter_frame_mean(s : TimeseriesanomalytwitterFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_frame_scale(s : TimeseriesanomalytwitterFrame, f : Double) -> TimeseriesanomalytwitterFrame {
-  let result = timeseries_anomaly_twitter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_frame_add(a : TimeseriesanomalytwitterFrame, b : TimeseriesanomalytwitterFrame) -> TimeseriesanomalytwitterFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_frame_copy(s : TimeseriesanomalytwitterFrame) -> TimeseriesanomalytwitterFrame {
-  let result = timeseries_anomaly_twitter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_frame_fill(s : TimeseriesanomalytwitterFrame, v : Double) -> TimeseriesanomalytwitterFrame {
-  let result = timeseries_anomaly_twitter_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_frame_min(s : TimeseriesanomalytwitterFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_anomaly_twitter_table_sum(s : TimeseriesanomalytwitterTable) -
 pub fn timeseries_anomaly_twitter_table_mean(s : TimeseriesanomalytwitterTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_table_scale(s : TimeseriesanomalytwitterTable, f : Double) -> TimeseriesanomalytwitterTable {
-  let result = timeseries_anomaly_twitter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_table_add(a : TimeseriesanomalytwitterTable, b : TimeseriesanomalytwitterTable) -> TimeseriesanomalytwitterTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_table_copy(s : TimeseriesanomalytwitterTable) -> TimeseriesanomalytwitterTable {
-  let result = timeseries_anomaly_twitter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_table_fill(s : TimeseriesanomalytwitterTable, v : Double) -> TimeseriesanomalytwitterTable {
-  let result = timeseries_anomaly_twitter_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_table_min(s : TimeseriesanomalytwitterTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_anomaly_twitter_graphn_sum(s : TimeseriesanomalytwitterGraphN)
 pub fn timeseries_anomaly_twitter_graphn_mean(s : TimeseriesanomalytwitterGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_graphn_scale(s : TimeseriesanomalytwitterGraphN, f : Double) -> TimeseriesanomalytwitterGraphN {
-  let result = timeseries_anomaly_twitter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_graphn_add(a : TimeseriesanomalytwitterGraphN, b : TimeseriesanomalytwitterGraphN) -> TimeseriesanomalytwitterGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_graphn_copy(s : TimeseriesanomalytwitterGraphN) -> TimeseriesanomalytwitterGraphN {
-  let result = timeseries_anomaly_twitter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_graphn_fill(s : TimeseriesanomalytwitterGraphN, v : Double) -> TimeseriesanomalytwitterGraphN {
-  let result = timeseries_anomaly_twitter_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_graphn_min(s : TimeseriesanomalytwitterGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_anomaly_twitter_node_sum(s : TimeseriesanomalytwitterNode) -> 
 pub fn timeseries_anomaly_twitter_node_mean(s : TimeseriesanomalytwitterNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_node_scale(s : TimeseriesanomalytwitterNode, f : Double) -> TimeseriesanomalytwitterNode {
-  let result = timeseries_anomaly_twitter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_node_add(a : TimeseriesanomalytwitterNode, b : TimeseriesanomalytwitterNode) -> TimeseriesanomalytwitterNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_node_copy(s : TimeseriesanomalytwitterNode) -> TimeseriesanomalytwitterNode {
-  let result = timeseries_anomaly_twitter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_node_fill(s : TimeseriesanomalytwitterNode, v : Double) -> TimeseriesanomalytwitterNode {
-  let result = timeseries_anomaly_twitter_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_node_min(s : TimeseriesanomalytwitterNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_anomaly_twitter_edge_sum(s : TimeseriesanomalytwitterEdge) -> 
 pub fn timeseries_anomaly_twitter_edge_mean(s : TimeseriesanomalytwitterEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_edge_scale(s : TimeseriesanomalytwitterEdge, f : Double) -> TimeseriesanomalytwitterEdge {
-  let result = timeseries_anomaly_twitter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_edge_add(a : TimeseriesanomalytwitterEdge, b : TimeseriesanomalytwitterEdge) -> TimeseriesanomalytwitterEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_edge_copy(s : TimeseriesanomalytwitterEdge) -> TimeseriesanomalytwitterEdge {
-  let result = timeseries_anomaly_twitter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_edge_fill(s : TimeseriesanomalytwitterEdge, v : Double) -> TimeseriesanomalytwitterEdge {
-  let result = timeseries_anomaly_twitter_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_edge_min(s : TimeseriesanomalytwitterEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_anomaly_twitter_path_sum(s : TimeseriesanomalytwitterPath) -> 
 pub fn timeseries_anomaly_twitter_path_mean(s : TimeseriesanomalytwitterPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_path_scale(s : TimeseriesanomalytwitterPath, f : Double) -> TimeseriesanomalytwitterPath {
-  let result = timeseries_anomaly_twitter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_path_add(a : TimeseriesanomalytwitterPath, b : TimeseriesanomalytwitterPath) -> TimeseriesanomalytwitterPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_path_copy(s : TimeseriesanomalytwitterPath) -> TimeseriesanomalytwitterPath {
-  let result = timeseries_anomaly_twitter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_path_fill(s : TimeseriesanomalytwitterPath, v : Double) -> TimeseriesanomalytwitterPath {
-  let result = timeseries_anomaly_twitter_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_path_min(s : TimeseriesanomalytwitterPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_anomaly_twitter_cluster_sum(s : TimeseriesanomalytwitterCluste
 pub fn timeseries_anomaly_twitter_cluster_mean(s : TimeseriesanomalytwitterCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_cluster_scale(s : TimeseriesanomalytwitterCluster, f : Double) -> TimeseriesanomalytwitterCluster {
-  let result = timeseries_anomaly_twitter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cluster_add(a : TimeseriesanomalytwitterCluster, b : TimeseriesanomalytwitterCluster) -> TimeseriesanomalytwitterCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cluster_copy(s : TimeseriesanomalytwitterCluster) -> TimeseriesanomalytwitterCluster {
-  let result = timeseries_anomaly_twitter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cluster_fill(s : TimeseriesanomalytwitterCluster, v : Double) -> TimeseriesanomalytwitterCluster {
-  let result = timeseries_anomaly_twitter_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cluster_min(s : TimeseriesanomalytwitterCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_anomaly_twitter_model_sum(s : TimeseriesanomalytwitterModel) -
 pub fn timeseries_anomaly_twitter_model_mean(s : TimeseriesanomalytwitterModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_model_scale(s : TimeseriesanomalytwitterModel, f : Double) -> TimeseriesanomalytwitterModel {
-  let result = timeseries_anomaly_twitter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_model_add(a : TimeseriesanomalytwitterModel, b : TimeseriesanomalytwitterModel) -> TimeseriesanomalytwitterModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_model_copy(s : TimeseriesanomalytwitterModel) -> TimeseriesanomalytwitterModel {
-  let result = timeseries_anomaly_twitter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_model_fill(s : TimeseriesanomalytwitterModel, v : Double) -> TimeseriesanomalytwitterModel {
-  let result = timeseries_anomaly_twitter_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_model_min(s : TimeseriesanomalytwitterModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_anomaly_twitter_layer_sum(s : TimeseriesanomalytwitterLayer) -
 pub fn timeseries_anomaly_twitter_layer_mean(s : TimeseriesanomalytwitterLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_layer_scale(s : TimeseriesanomalytwitterLayer, f : Double) -> TimeseriesanomalytwitterLayer {
-  let result = timeseries_anomaly_twitter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_layer_add(a : TimeseriesanomalytwitterLayer, b : TimeseriesanomalytwitterLayer) -> TimeseriesanomalytwitterLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_layer_copy(s : TimeseriesanomalytwitterLayer) -> TimeseriesanomalytwitterLayer {
-  let result = timeseries_anomaly_twitter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_layer_fill(s : TimeseriesanomalytwitterLayer, v : Double) -> TimeseriesanomalytwitterLayer {
-  let result = timeseries_anomaly_twitter_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_layer_min(s : TimeseriesanomalytwitterLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_anomaly_twitter_buffer_sum(s : TimeseriesanomalytwitterBuffer)
 pub fn timeseries_anomaly_twitter_buffer_mean(s : TimeseriesanomalytwitterBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_buffer_scale(s : TimeseriesanomalytwitterBuffer, f : Double) -> TimeseriesanomalytwitterBuffer {
-  let result = timeseries_anomaly_twitter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_buffer_add(a : TimeseriesanomalytwitterBuffer, b : TimeseriesanomalytwitterBuffer) -> TimeseriesanomalytwitterBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_buffer_copy(s : TimeseriesanomalytwitterBuffer) -> TimeseriesanomalytwitterBuffer {
-  let result = timeseries_anomaly_twitter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_buffer_fill(s : TimeseriesanomalytwitterBuffer, v : Double) -> TimeseriesanomalytwitterBuffer {
-  let result = timeseries_anomaly_twitter_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_buffer_min(s : TimeseriesanomalytwitterBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_anomaly_twitter_cursor_sum(s : TimeseriesanomalytwitterCursor)
 pub fn timeseries_anomaly_twitter_cursor_mean(s : TimeseriesanomalytwitterCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_cursor_scale(s : TimeseriesanomalytwitterCursor, f : Double) -> TimeseriesanomalytwitterCursor {
-  let result = timeseries_anomaly_twitter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cursor_add(a : TimeseriesanomalytwitterCursor, b : TimeseriesanomalytwitterCursor) -> TimeseriesanomalytwitterCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cursor_copy(s : TimeseriesanomalytwitterCursor) -> TimeseriesanomalytwitterCursor {
-  let result = timeseries_anomaly_twitter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cursor_fill(s : TimeseriesanomalytwitterCursor, v : Double) -> TimeseriesanomalytwitterCursor {
-  let result = timeseries_anomaly_twitter_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cursor_min(s : TimeseriesanomalytwitterCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_anomaly_twitter_view_sum(s : TimeseriesanomalytwitterView) -> 
 pub fn timeseries_anomaly_twitter_view_mean(s : TimeseriesanomalytwitterView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_view_scale(s : TimeseriesanomalytwitterView, f : Double) -> TimeseriesanomalytwitterView {
-  let result = timeseries_anomaly_twitter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_view_add(a : TimeseriesanomalytwitterView, b : TimeseriesanomalytwitterView) -> TimeseriesanomalytwitterView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_view_copy(s : TimeseriesanomalytwitterView) -> TimeseriesanomalytwitterView {
-  let result = timeseries_anomaly_twitter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_view_fill(s : TimeseriesanomalytwitterView, v : Double) -> TimeseriesanomalytwitterView {
-  let result = timeseries_anomaly_twitter_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_view_min(s : TimeseriesanomalytwitterView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_anomaly_twitter_range_sum(s : TimeseriesanomalytwitterRange) -
 pub fn timeseries_anomaly_twitter_range_mean(s : TimeseriesanomalytwitterRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_range_scale(s : TimeseriesanomalytwitterRange, f : Double) -> TimeseriesanomalytwitterRange {
-  let result = timeseries_anomaly_twitter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_range_add(a : TimeseriesanomalytwitterRange, b : TimeseriesanomalytwitterRange) -> TimeseriesanomalytwitterRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_range_copy(s : TimeseriesanomalytwitterRange) -> TimeseriesanomalytwitterRange {
-  let result = timeseries_anomaly_twitter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_range_fill(s : TimeseriesanomalytwitterRange, v : Double) -> TimeseriesanomalytwitterRange {
-  let result = timeseries_anomaly_twitter_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_range_min(s : TimeseriesanomalytwitterRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_anomaly_twitter_slice_sum(s : TimeseriesanomalytwitterSlice) -
 pub fn timeseries_anomaly_twitter_slice_mean(s : TimeseriesanomalytwitterSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_twitter_slice_scale(s : TimeseriesanomalytwitterSlice, f : Double) -> TimeseriesanomalytwitterSlice {
-  let result = timeseries_anomaly_twitter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_slice_add(a : TimeseriesanomalytwitterSlice, b : TimeseriesanomalytwitterSlice) -> TimeseriesanomalytwitterSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_anomaly_twitter_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_anomaly_twitter_slice_copy(s : TimeseriesanomalytwitterSlice) -> TimeseriesanomalytwitterSlice {
-  let result = timeseries_anomaly_twitter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_slice_fill(s : TimeseriesanomalytwitterSlice, v : Double) -> TimeseriesanomalytwitterSlice {
-  let result = timeseries_anomaly_twitter_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_slice_min(s : TimeseriesanomalytwitterSlice) -> Double { @_common.min(s.data) }

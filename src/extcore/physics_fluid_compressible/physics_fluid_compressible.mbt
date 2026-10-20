@@ -383,28 +383,20 @@ pub fn physics_fluid_compressible_frame_sum(s : PhysicsfluidcompressibleFrame) -
 pub fn physics_fluid_compressible_frame_mean(s : PhysicsfluidcompressibleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_frame_scale(s : PhysicsfluidcompressibleFrame, f : Double) -> PhysicsfluidcompressibleFrame {
-  let result = physics_fluid_compressible_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_frame_add(a : PhysicsfluidcompressibleFrame, b : PhysicsfluidcompressibleFrame) -> PhysicsfluidcompressibleFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_frame_copy(s : PhysicsfluidcompressibleFrame) -> PhysicsfluidcompressibleFrame {
-  let result = physics_fluid_compressible_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_frame_fill(s : PhysicsfluidcompressibleFrame, v : Double) -> PhysicsfluidcompressibleFrame {
-  let result = physics_fluid_compressible_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_frame_min(s : PhysicsfluidcompressibleFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_fluid_compressible_table_sum(s : PhysicsfluidcompressibleTable) -
 pub fn physics_fluid_compressible_table_mean(s : PhysicsfluidcompressibleTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_table_scale(s : PhysicsfluidcompressibleTable, f : Double) -> PhysicsfluidcompressibleTable {
-  let result = physics_fluid_compressible_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_table_add(a : PhysicsfluidcompressibleTable, b : PhysicsfluidcompressibleTable) -> PhysicsfluidcompressibleTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_table_copy(s : PhysicsfluidcompressibleTable) -> PhysicsfluidcompressibleTable {
-  let result = physics_fluid_compressible_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_table_fill(s : PhysicsfluidcompressibleTable, v : Double) -> PhysicsfluidcompressibleTable {
-  let result = physics_fluid_compressible_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_table_min(s : PhysicsfluidcompressibleTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_fluid_compressible_graphn_sum(s : PhysicsfluidcompressibleGraphN)
 pub fn physics_fluid_compressible_graphn_mean(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_graphn_scale(s : PhysicsfluidcompressibleGraphN, f : Double) -> PhysicsfluidcompressibleGraphN {
-  let result = physics_fluid_compressible_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_graphn_add(a : PhysicsfluidcompressibleGraphN, b : PhysicsfluidcompressibleGraphN) -> PhysicsfluidcompressibleGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_graphn_copy(s : PhysicsfluidcompressibleGraphN) -> PhysicsfluidcompressibleGraphN {
-  let result = physics_fluid_compressible_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_graphn_fill(s : PhysicsfluidcompressibleGraphN, v : Double) -> PhysicsfluidcompressibleGraphN {
-  let result = physics_fluid_compressible_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_graphn_min(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_fluid_compressible_node_sum(s : PhysicsfluidcompressibleNode) -> 
 pub fn physics_fluid_compressible_node_mean(s : PhysicsfluidcompressibleNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_node_scale(s : PhysicsfluidcompressibleNode, f : Double) -> PhysicsfluidcompressibleNode {
-  let result = physics_fluid_compressible_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_node_add(a : PhysicsfluidcompressibleNode, b : PhysicsfluidcompressibleNode) -> PhysicsfluidcompressibleNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_node_copy(s : PhysicsfluidcompressibleNode) -> PhysicsfluidcompressibleNode {
-  let result = physics_fluid_compressible_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_node_fill(s : PhysicsfluidcompressibleNode, v : Double) -> PhysicsfluidcompressibleNode {
-  let result = physics_fluid_compressible_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_node_min(s : PhysicsfluidcompressibleNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_fluid_compressible_edge_sum(s : PhysicsfluidcompressibleEdge) -> 
 pub fn physics_fluid_compressible_edge_mean(s : PhysicsfluidcompressibleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_edge_scale(s : PhysicsfluidcompressibleEdge, f : Double) -> PhysicsfluidcompressibleEdge {
-  let result = physics_fluid_compressible_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_edge_add(a : PhysicsfluidcompressibleEdge, b : PhysicsfluidcompressibleEdge) -> PhysicsfluidcompressibleEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_edge_copy(s : PhysicsfluidcompressibleEdge) -> PhysicsfluidcompressibleEdge {
-  let result = physics_fluid_compressible_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_edge_fill(s : PhysicsfluidcompressibleEdge, v : Double) -> PhysicsfluidcompressibleEdge {
-  let result = physics_fluid_compressible_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_edge_min(s : PhysicsfluidcompressibleEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_fluid_compressible_path_sum(s : PhysicsfluidcompressiblePath) -> 
 pub fn physics_fluid_compressible_path_mean(s : PhysicsfluidcompressiblePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_path_scale(s : PhysicsfluidcompressiblePath, f : Double) -> PhysicsfluidcompressiblePath {
-  let result = physics_fluid_compressible_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_path_add(a : PhysicsfluidcompressiblePath, b : PhysicsfluidcompressiblePath) -> PhysicsfluidcompressiblePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_path_copy(s : PhysicsfluidcompressiblePath) -> PhysicsfluidcompressiblePath {
-  let result = physics_fluid_compressible_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_path_fill(s : PhysicsfluidcompressiblePath, v : Double) -> PhysicsfluidcompressiblePath {
-  let result = physics_fluid_compressible_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_path_min(s : PhysicsfluidcompressiblePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_fluid_compressible_cluster_sum(s : PhysicsfluidcompressibleCluste
 pub fn physics_fluid_compressible_cluster_mean(s : PhysicsfluidcompressibleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_cluster_scale(s : PhysicsfluidcompressibleCluster, f : Double) -> PhysicsfluidcompressibleCluster {
-  let result = physics_fluid_compressible_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cluster_add(a : PhysicsfluidcompressibleCluster, b : PhysicsfluidcompressibleCluster) -> PhysicsfluidcompressibleCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_cluster_copy(s : PhysicsfluidcompressibleCluster) -> PhysicsfluidcompressibleCluster {
-  let result = physics_fluid_compressible_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cluster_fill(s : PhysicsfluidcompressibleCluster, v : Double) -> PhysicsfluidcompressibleCluster {
-  let result = physics_fluid_compressible_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cluster_min(s : PhysicsfluidcompressibleCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_fluid_compressible_model_sum(s : PhysicsfluidcompressibleModel) -
 pub fn physics_fluid_compressible_model_mean(s : PhysicsfluidcompressibleModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_model_scale(s : PhysicsfluidcompressibleModel, f : Double) -> PhysicsfluidcompressibleModel {
-  let result = physics_fluid_compressible_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_model_add(a : PhysicsfluidcompressibleModel, b : PhysicsfluidcompressibleModel) -> PhysicsfluidcompressibleModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_model_copy(s : PhysicsfluidcompressibleModel) -> PhysicsfluidcompressibleModel {
-  let result = physics_fluid_compressible_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_model_fill(s : PhysicsfluidcompressibleModel, v : Double) -> PhysicsfluidcompressibleModel {
-  let result = physics_fluid_compressible_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_model_min(s : PhysicsfluidcompressibleModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_fluid_compressible_layer_sum(s : PhysicsfluidcompressibleLayer) -
 pub fn physics_fluid_compressible_layer_mean(s : PhysicsfluidcompressibleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_layer_scale(s : PhysicsfluidcompressibleLayer, f : Double) -> PhysicsfluidcompressibleLayer {
-  let result = physics_fluid_compressible_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_layer_add(a : PhysicsfluidcompressibleLayer, b : PhysicsfluidcompressibleLayer) -> PhysicsfluidcompressibleLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_layer_copy(s : PhysicsfluidcompressibleLayer) -> PhysicsfluidcompressibleLayer {
-  let result = physics_fluid_compressible_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_layer_fill(s : PhysicsfluidcompressibleLayer, v : Double) -> PhysicsfluidcompressibleLayer {
-  let result = physics_fluid_compressible_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_layer_min(s : PhysicsfluidcompressibleLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_fluid_compressible_buffer_sum(s : PhysicsfluidcompressibleBuffer)
 pub fn physics_fluid_compressible_buffer_mean(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_buffer_scale(s : PhysicsfluidcompressibleBuffer, f : Double) -> PhysicsfluidcompressibleBuffer {
-  let result = physics_fluid_compressible_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_buffer_add(a : PhysicsfluidcompressibleBuffer, b : PhysicsfluidcompressibleBuffer) -> PhysicsfluidcompressibleBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_buffer_copy(s : PhysicsfluidcompressibleBuffer) -> PhysicsfluidcompressibleBuffer {
-  let result = physics_fluid_compressible_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_buffer_fill(s : PhysicsfluidcompressibleBuffer, v : Double) -> PhysicsfluidcompressibleBuffer {
-  let result = physics_fluid_compressible_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_buffer_min(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_fluid_compressible_cursor_sum(s : PhysicsfluidcompressibleCursor)
 pub fn physics_fluid_compressible_cursor_mean(s : PhysicsfluidcompressibleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_cursor_scale(s : PhysicsfluidcompressibleCursor, f : Double) -> PhysicsfluidcompressibleCursor {
-  let result = physics_fluid_compressible_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cursor_add(a : PhysicsfluidcompressibleCursor, b : PhysicsfluidcompressibleCursor) -> PhysicsfluidcompressibleCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_cursor_copy(s : PhysicsfluidcompressibleCursor) -> PhysicsfluidcompressibleCursor {
-  let result = physics_fluid_compressible_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cursor_fill(s : PhysicsfluidcompressibleCursor, v : Double) -> PhysicsfluidcompressibleCursor {
-  let result = physics_fluid_compressible_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cursor_min(s : PhysicsfluidcompressibleCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_fluid_compressible_view_sum(s : PhysicsfluidcompressibleView) -> 
 pub fn physics_fluid_compressible_view_mean(s : PhysicsfluidcompressibleView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_view_scale(s : PhysicsfluidcompressibleView, f : Double) -> PhysicsfluidcompressibleView {
-  let result = physics_fluid_compressible_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_view_add(a : PhysicsfluidcompressibleView, b : PhysicsfluidcompressibleView) -> PhysicsfluidcompressibleView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_view_copy(s : PhysicsfluidcompressibleView) -> PhysicsfluidcompressibleView {
-  let result = physics_fluid_compressible_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_view_fill(s : PhysicsfluidcompressibleView, v : Double) -> PhysicsfluidcompressibleView {
-  let result = physics_fluid_compressible_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_view_min(s : PhysicsfluidcompressibleView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_fluid_compressible_range_sum(s : PhysicsfluidcompressibleRange) -
 pub fn physics_fluid_compressible_range_mean(s : PhysicsfluidcompressibleRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_range_scale(s : PhysicsfluidcompressibleRange, f : Double) -> PhysicsfluidcompressibleRange {
-  let result = physics_fluid_compressible_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_range_add(a : PhysicsfluidcompressibleRange, b : PhysicsfluidcompressibleRange) -> PhysicsfluidcompressibleRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_range_copy(s : PhysicsfluidcompressibleRange) -> PhysicsfluidcompressibleRange {
-  let result = physics_fluid_compressible_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_range_fill(s : PhysicsfluidcompressibleRange, v : Double) -> PhysicsfluidcompressibleRange {
-  let result = physics_fluid_compressible_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_range_min(s : PhysicsfluidcompressibleRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_fluid_compressible_slice_sum(s : PhysicsfluidcompressibleSlice) -
 pub fn physics_fluid_compressible_slice_mean(s : PhysicsfluidcompressibleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_compressible_slice_scale(s : PhysicsfluidcompressibleSlice, f : Double) -> PhysicsfluidcompressibleSlice {
-  let result = physics_fluid_compressible_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_slice_add(a : PhysicsfluidcompressibleSlice, b : PhysicsfluidcompressibleSlice) -> PhysicsfluidcompressibleSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_fluid_compressible_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_fluid_compressible_slice_copy(s : PhysicsfluidcompressibleSlice) -> PhysicsfluidcompressibleSlice {
-  let result = physics_fluid_compressible_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_slice_fill(s : PhysicsfluidcompressibleSlice, v : Double) -> PhysicsfluidcompressibleSlice {
-  let result = physics_fluid_compressible_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_slice_min(s : PhysicsfluidcompressibleSlice) -> Double { @_common.min(s.data) }

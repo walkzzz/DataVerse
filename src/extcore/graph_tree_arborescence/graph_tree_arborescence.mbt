@@ -383,28 +383,20 @@ pub fn graph_tree_arborescence_frame_sum(s : GraphtreearborescenceFrame) -> Doub
 pub fn graph_tree_arborescence_frame_mean(s : GraphtreearborescenceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_frame_scale(s : GraphtreearborescenceFrame, f : Double) -> GraphtreearborescenceFrame {
-  let result = graph_tree_arborescence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_frame_add(a : GraphtreearborescenceFrame, b : GraphtreearborescenceFrame) -> GraphtreearborescenceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_frame_copy(s : GraphtreearborescenceFrame) -> GraphtreearborescenceFrame {
-  let result = graph_tree_arborescence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_frame_fill(s : GraphtreearborescenceFrame, v : Double) -> GraphtreearborescenceFrame {
-  let result = graph_tree_arborescence_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_frame_min(s : GraphtreearborescenceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn graph_tree_arborescence_table_sum(s : GraphtreearborescenceTable) -> Doub
 pub fn graph_tree_arborescence_table_mean(s : GraphtreearborescenceTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_table_scale(s : GraphtreearborescenceTable, f : Double) -> GraphtreearborescenceTable {
-  let result = graph_tree_arborescence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_table_add(a : GraphtreearborescenceTable, b : GraphtreearborescenceTable) -> GraphtreearborescenceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_table_copy(s : GraphtreearborescenceTable) -> GraphtreearborescenceTable {
-  let result = graph_tree_arborescence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_table_fill(s : GraphtreearborescenceTable, v : Double) -> GraphtreearborescenceTable {
-  let result = graph_tree_arborescence_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_table_min(s : GraphtreearborescenceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn graph_tree_arborescence_graphn_sum(s : GraphtreearborescenceGraphN) -> Do
 pub fn graph_tree_arborescence_graphn_mean(s : GraphtreearborescenceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_graphn_scale(s : GraphtreearborescenceGraphN, f : Double) -> GraphtreearborescenceGraphN {
-  let result = graph_tree_arborescence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_graphn_add(a : GraphtreearborescenceGraphN, b : GraphtreearborescenceGraphN) -> GraphtreearborescenceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_graphn_copy(s : GraphtreearborescenceGraphN) -> GraphtreearborescenceGraphN {
-  let result = graph_tree_arborescence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_graphn_fill(s : GraphtreearborescenceGraphN, v : Double) -> GraphtreearborescenceGraphN {
-  let result = graph_tree_arborescence_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_graphn_min(s : GraphtreearborescenceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn graph_tree_arborescence_node_sum(s : GraphtreearborescenceNode) -> Double
 pub fn graph_tree_arborescence_node_mean(s : GraphtreearborescenceNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_node_scale(s : GraphtreearborescenceNode, f : Double) -> GraphtreearborescenceNode {
-  let result = graph_tree_arborescence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_node_add(a : GraphtreearborescenceNode, b : GraphtreearborescenceNode) -> GraphtreearborescenceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_node_copy(s : GraphtreearborescenceNode) -> GraphtreearborescenceNode {
-  let result = graph_tree_arborescence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_node_fill(s : GraphtreearborescenceNode, v : Double) -> GraphtreearborescenceNode {
-  let result = graph_tree_arborescence_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_node_min(s : GraphtreearborescenceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn graph_tree_arborescence_edge_sum(s : GraphtreearborescenceEdge) -> Double
 pub fn graph_tree_arborescence_edge_mean(s : GraphtreearborescenceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_edge_scale(s : GraphtreearborescenceEdge, f : Double) -> GraphtreearborescenceEdge {
-  let result = graph_tree_arborescence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_edge_add(a : GraphtreearborescenceEdge, b : GraphtreearborescenceEdge) -> GraphtreearborescenceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_edge_copy(s : GraphtreearborescenceEdge) -> GraphtreearborescenceEdge {
-  let result = graph_tree_arborescence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_edge_fill(s : GraphtreearborescenceEdge, v : Double) -> GraphtreearborescenceEdge {
-  let result = graph_tree_arborescence_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_edge_min(s : GraphtreearborescenceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn graph_tree_arborescence_path_sum(s : GraphtreearborescencePath) -> Double
 pub fn graph_tree_arborescence_path_mean(s : GraphtreearborescencePath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_path_scale(s : GraphtreearborescencePath, f : Double) -> GraphtreearborescencePath {
-  let result = graph_tree_arborescence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_path_add(a : GraphtreearborescencePath, b : GraphtreearborescencePath) -> GraphtreearborescencePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_path_copy(s : GraphtreearborescencePath) -> GraphtreearborescencePath {
-  let result = graph_tree_arborescence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_path_fill(s : GraphtreearborescencePath, v : Double) -> GraphtreearborescencePath {
-  let result = graph_tree_arborescence_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_path_min(s : GraphtreearborescencePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn graph_tree_arborescence_cluster_sum(s : GraphtreearborescenceCluster) -> 
 pub fn graph_tree_arborescence_cluster_mean(s : GraphtreearborescenceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_cluster_scale(s : GraphtreearborescenceCluster, f : Double) -> GraphtreearborescenceCluster {
-  let result = graph_tree_arborescence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_cluster_add(a : GraphtreearborescenceCluster, b : GraphtreearborescenceCluster) -> GraphtreearborescenceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_cluster_copy(s : GraphtreearborescenceCluster) -> GraphtreearborescenceCluster {
-  let result = graph_tree_arborescence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_cluster_fill(s : GraphtreearborescenceCluster, v : Double) -> GraphtreearborescenceCluster {
-  let result = graph_tree_arborescence_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_cluster_min(s : GraphtreearborescenceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn graph_tree_arborescence_model_sum(s : GraphtreearborescenceModel) -> Doub
 pub fn graph_tree_arborescence_model_mean(s : GraphtreearborescenceModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_model_scale(s : GraphtreearborescenceModel, f : Double) -> GraphtreearborescenceModel {
-  let result = graph_tree_arborescence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_model_add(a : GraphtreearborescenceModel, b : GraphtreearborescenceModel) -> GraphtreearborescenceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_model_copy(s : GraphtreearborescenceModel) -> GraphtreearborescenceModel {
-  let result = graph_tree_arborescence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_model_fill(s : GraphtreearborescenceModel, v : Double) -> GraphtreearborescenceModel {
-  let result = graph_tree_arborescence_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_model_min(s : GraphtreearborescenceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn graph_tree_arborescence_layer_sum(s : GraphtreearborescenceLayer) -> Doub
 pub fn graph_tree_arborescence_layer_mean(s : GraphtreearborescenceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_layer_scale(s : GraphtreearborescenceLayer, f : Double) -> GraphtreearborescenceLayer {
-  let result = graph_tree_arborescence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_layer_add(a : GraphtreearborescenceLayer, b : GraphtreearborescenceLayer) -> GraphtreearborescenceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_layer_copy(s : GraphtreearborescenceLayer) -> GraphtreearborescenceLayer {
-  let result = graph_tree_arborescence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_layer_fill(s : GraphtreearborescenceLayer, v : Double) -> GraphtreearborescenceLayer {
-  let result = graph_tree_arborescence_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_layer_min(s : GraphtreearborescenceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn graph_tree_arborescence_buffer_sum(s : GraphtreearborescenceBuffer) -> Do
 pub fn graph_tree_arborescence_buffer_mean(s : GraphtreearborescenceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_buffer_scale(s : GraphtreearborescenceBuffer, f : Double) -> GraphtreearborescenceBuffer {
-  let result = graph_tree_arborescence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_buffer_add(a : GraphtreearborescenceBuffer, b : GraphtreearborescenceBuffer) -> GraphtreearborescenceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_buffer_copy(s : GraphtreearborescenceBuffer) -> GraphtreearborescenceBuffer {
-  let result = graph_tree_arborescence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_buffer_fill(s : GraphtreearborescenceBuffer, v : Double) -> GraphtreearborescenceBuffer {
-  let result = graph_tree_arborescence_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_buffer_min(s : GraphtreearborescenceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn graph_tree_arborescence_cursor_sum(s : GraphtreearborescenceCursor) -> Do
 pub fn graph_tree_arborescence_cursor_mean(s : GraphtreearborescenceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_cursor_scale(s : GraphtreearborescenceCursor, f : Double) -> GraphtreearborescenceCursor {
-  let result = graph_tree_arborescence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_cursor_add(a : GraphtreearborescenceCursor, b : GraphtreearborescenceCursor) -> GraphtreearborescenceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_cursor_copy(s : GraphtreearborescenceCursor) -> GraphtreearborescenceCursor {
-  let result = graph_tree_arborescence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_cursor_fill(s : GraphtreearborescenceCursor, v : Double) -> GraphtreearborescenceCursor {
-  let result = graph_tree_arborescence_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_cursor_min(s : GraphtreearborescenceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn graph_tree_arborescence_view_sum(s : GraphtreearborescenceView) -> Double
 pub fn graph_tree_arborescence_view_mean(s : GraphtreearborescenceView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_view_scale(s : GraphtreearborescenceView, f : Double) -> GraphtreearborescenceView {
-  let result = graph_tree_arborescence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_view_add(a : GraphtreearborescenceView, b : GraphtreearborescenceView) -> GraphtreearborescenceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_view_copy(s : GraphtreearborescenceView) -> GraphtreearborescenceView {
-  let result = graph_tree_arborescence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_view_fill(s : GraphtreearborescenceView, v : Double) -> GraphtreearborescenceView {
-  let result = graph_tree_arborescence_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_view_min(s : GraphtreearborescenceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn graph_tree_arborescence_range_sum(s : GraphtreearborescenceRange) -> Doub
 pub fn graph_tree_arborescence_range_mean(s : GraphtreearborescenceRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_range_scale(s : GraphtreearborescenceRange, f : Double) -> GraphtreearborescenceRange {
-  let result = graph_tree_arborescence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_range_add(a : GraphtreearborescenceRange, b : GraphtreearborescenceRange) -> GraphtreearborescenceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_range_copy(s : GraphtreearborescenceRange) -> GraphtreearborescenceRange {
-  let result = graph_tree_arborescence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_range_fill(s : GraphtreearborescenceRange, v : Double) -> GraphtreearborescenceRange {
-  let result = graph_tree_arborescence_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_range_min(s : GraphtreearborescenceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn graph_tree_arborescence_slice_sum(s : GraphtreearborescenceSlice) -> Doub
 pub fn graph_tree_arborescence_slice_mean(s : GraphtreearborescenceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_arborescence_slice_scale(s : GraphtreearborescenceSlice, f : Double) -> GraphtreearborescenceSlice {
-  let result = graph_tree_arborescence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_slice_add(a : GraphtreearborescenceSlice, b : GraphtreearborescenceSlice) -> GraphtreearborescenceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = graph_tree_arborescence_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn graph_tree_arborescence_slice_copy(s : GraphtreearborescenceSlice) -> GraphtreearborescenceSlice {
-  let result = graph_tree_arborescence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_slice_fill(s : GraphtreearborescenceSlice, v : Double) -> GraphtreearborescenceSlice {
-  let result = graph_tree_arborescence_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_arborescence_slice_min(s : GraphtreearborescenceSlice) -> Double { @_common.min(s.data) }

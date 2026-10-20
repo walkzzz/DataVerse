@@ -383,28 +383,20 @@ pub fn finance_portfolio_black_litterman_frame_sum(s : Financeportfolioblacklitt
 pub fn finance_portfolio_black_litterman_frame_mean(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_frame_scale(s : FinanceportfolioblacklittermanFrame, f : Double) -> FinanceportfolioblacklittermanFrame {
-  let result = finance_portfolio_black_litterman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_frame_add(a : FinanceportfolioblacklittermanFrame, b : FinanceportfolioblacklittermanFrame) -> FinanceportfolioblacklittermanFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_frame_copy(s : FinanceportfolioblacklittermanFrame) -> FinanceportfolioblacklittermanFrame {
-  let result = finance_portfolio_black_litterman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_frame_fill(s : FinanceportfolioblacklittermanFrame, v : Double) -> FinanceportfolioblacklittermanFrame {
-  let result = finance_portfolio_black_litterman_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_frame_min(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_portfolio_black_litterman_table_sum(s : Financeportfolioblacklitt
 pub fn finance_portfolio_black_litterman_table_mean(s : FinanceportfolioblacklittermanTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_table_scale(s : FinanceportfolioblacklittermanTable, f : Double) -> FinanceportfolioblacklittermanTable {
-  let result = finance_portfolio_black_litterman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_table_add(a : FinanceportfolioblacklittermanTable, b : FinanceportfolioblacklittermanTable) -> FinanceportfolioblacklittermanTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_table_copy(s : FinanceportfolioblacklittermanTable) -> FinanceportfolioblacklittermanTable {
-  let result = finance_portfolio_black_litterman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_table_fill(s : FinanceportfolioblacklittermanTable, v : Double) -> FinanceportfolioblacklittermanTable {
-  let result = finance_portfolio_black_litterman_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_table_min(s : FinanceportfolioblacklittermanTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_portfolio_black_litterman_graphn_sum(s : Financeportfolioblacklit
 pub fn finance_portfolio_black_litterman_graphn_mean(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_graphn_scale(s : FinanceportfolioblacklittermanGraphN, f : Double) -> FinanceportfolioblacklittermanGraphN {
-  let result = finance_portfolio_black_litterman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_graphn_add(a : FinanceportfolioblacklittermanGraphN, b : FinanceportfolioblacklittermanGraphN) -> FinanceportfolioblacklittermanGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_graphn_copy(s : FinanceportfolioblacklittermanGraphN) -> FinanceportfolioblacklittermanGraphN {
-  let result = finance_portfolio_black_litterman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_graphn_fill(s : FinanceportfolioblacklittermanGraphN, v : Double) -> FinanceportfolioblacklittermanGraphN {
-  let result = finance_portfolio_black_litterman_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_graphn_min(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_portfolio_black_litterman_node_sum(s : Financeportfolioblacklitte
 pub fn finance_portfolio_black_litterman_node_mean(s : FinanceportfolioblacklittermanNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_node_scale(s : FinanceportfolioblacklittermanNode, f : Double) -> FinanceportfolioblacklittermanNode {
-  let result = finance_portfolio_black_litterman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_node_add(a : FinanceportfolioblacklittermanNode, b : FinanceportfolioblacklittermanNode) -> FinanceportfolioblacklittermanNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_node_copy(s : FinanceportfolioblacklittermanNode) -> FinanceportfolioblacklittermanNode {
-  let result = finance_portfolio_black_litterman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_node_fill(s : FinanceportfolioblacklittermanNode, v : Double) -> FinanceportfolioblacklittermanNode {
-  let result = finance_portfolio_black_litterman_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_node_min(s : FinanceportfolioblacklittermanNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_portfolio_black_litterman_edge_sum(s : Financeportfolioblacklitte
 pub fn finance_portfolio_black_litterman_edge_mean(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_edge_scale(s : FinanceportfolioblacklittermanEdge, f : Double) -> FinanceportfolioblacklittermanEdge {
-  let result = finance_portfolio_black_litterman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_edge_add(a : FinanceportfolioblacklittermanEdge, b : FinanceportfolioblacklittermanEdge) -> FinanceportfolioblacklittermanEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_edge_copy(s : FinanceportfolioblacklittermanEdge) -> FinanceportfolioblacklittermanEdge {
-  let result = finance_portfolio_black_litterman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_edge_fill(s : FinanceportfolioblacklittermanEdge, v : Double) -> FinanceportfolioblacklittermanEdge {
-  let result = finance_portfolio_black_litterman_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_edge_min(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_portfolio_black_litterman_path_sum(s : Financeportfolioblacklitte
 pub fn finance_portfolio_black_litterman_path_mean(s : FinanceportfolioblacklittermanPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_path_scale(s : FinanceportfolioblacklittermanPath, f : Double) -> FinanceportfolioblacklittermanPath {
-  let result = finance_portfolio_black_litterman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_path_add(a : FinanceportfolioblacklittermanPath, b : FinanceportfolioblacklittermanPath) -> FinanceportfolioblacklittermanPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_path_copy(s : FinanceportfolioblacklittermanPath) -> FinanceportfolioblacklittermanPath {
-  let result = finance_portfolio_black_litterman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_path_fill(s : FinanceportfolioblacklittermanPath, v : Double) -> FinanceportfolioblacklittermanPath {
-  let result = finance_portfolio_black_litterman_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_path_min(s : FinanceportfolioblacklittermanPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_portfolio_black_litterman_cluster_sum(s : Financeportfolioblackli
 pub fn finance_portfolio_black_litterman_cluster_mean(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_cluster_scale(s : FinanceportfolioblacklittermanCluster, f : Double) -> FinanceportfolioblacklittermanCluster {
-  let result = finance_portfolio_black_litterman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cluster_add(a : FinanceportfolioblacklittermanCluster, b : FinanceportfolioblacklittermanCluster) -> FinanceportfolioblacklittermanCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cluster_copy(s : FinanceportfolioblacklittermanCluster) -> FinanceportfolioblacklittermanCluster {
-  let result = finance_portfolio_black_litterman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cluster_fill(s : FinanceportfolioblacklittermanCluster, v : Double) -> FinanceportfolioblacklittermanCluster {
-  let result = finance_portfolio_black_litterman_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cluster_min(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_portfolio_black_litterman_model_sum(s : Financeportfolioblacklitt
 pub fn finance_portfolio_black_litterman_model_mean(s : FinanceportfolioblacklittermanModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_model_scale(s : FinanceportfolioblacklittermanModel, f : Double) -> FinanceportfolioblacklittermanModel {
-  let result = finance_portfolio_black_litterman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_model_add(a : FinanceportfolioblacklittermanModel, b : FinanceportfolioblacklittermanModel) -> FinanceportfolioblacklittermanModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_model_copy(s : FinanceportfolioblacklittermanModel) -> FinanceportfolioblacklittermanModel {
-  let result = finance_portfolio_black_litterman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_model_fill(s : FinanceportfolioblacklittermanModel, v : Double) -> FinanceportfolioblacklittermanModel {
-  let result = finance_portfolio_black_litterman_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_model_min(s : FinanceportfolioblacklittermanModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_portfolio_black_litterman_layer_sum(s : Financeportfolioblacklitt
 pub fn finance_portfolio_black_litterman_layer_mean(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_layer_scale(s : FinanceportfolioblacklittermanLayer, f : Double) -> FinanceportfolioblacklittermanLayer {
-  let result = finance_portfolio_black_litterman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_layer_add(a : FinanceportfolioblacklittermanLayer, b : FinanceportfolioblacklittermanLayer) -> FinanceportfolioblacklittermanLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_layer_copy(s : FinanceportfolioblacklittermanLayer) -> FinanceportfolioblacklittermanLayer {
-  let result = finance_portfolio_black_litterman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_layer_fill(s : FinanceportfolioblacklittermanLayer, v : Double) -> FinanceportfolioblacklittermanLayer {
-  let result = finance_portfolio_black_litterman_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_layer_min(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_portfolio_black_litterman_buffer_sum(s : Financeportfolioblacklit
 pub fn finance_portfolio_black_litterman_buffer_mean(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_buffer_scale(s : FinanceportfolioblacklittermanBuffer, f : Double) -> FinanceportfolioblacklittermanBuffer {
-  let result = finance_portfolio_black_litterman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_buffer_add(a : FinanceportfolioblacklittermanBuffer, b : FinanceportfolioblacklittermanBuffer) -> FinanceportfolioblacklittermanBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_buffer_copy(s : FinanceportfolioblacklittermanBuffer) -> FinanceportfolioblacklittermanBuffer {
-  let result = finance_portfolio_black_litterman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_buffer_fill(s : FinanceportfolioblacklittermanBuffer, v : Double) -> FinanceportfolioblacklittermanBuffer {
-  let result = finance_portfolio_black_litterman_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_buffer_min(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_portfolio_black_litterman_cursor_sum(s : Financeportfolioblacklit
 pub fn finance_portfolio_black_litterman_cursor_mean(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_cursor_scale(s : FinanceportfolioblacklittermanCursor, f : Double) -> FinanceportfolioblacklittermanCursor {
-  let result = finance_portfolio_black_litterman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cursor_add(a : FinanceportfolioblacklittermanCursor, b : FinanceportfolioblacklittermanCursor) -> FinanceportfolioblacklittermanCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cursor_copy(s : FinanceportfolioblacklittermanCursor) -> FinanceportfolioblacklittermanCursor {
-  let result = finance_portfolio_black_litterman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cursor_fill(s : FinanceportfolioblacklittermanCursor, v : Double) -> FinanceportfolioblacklittermanCursor {
-  let result = finance_portfolio_black_litterman_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cursor_min(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_portfolio_black_litterman_view_sum(s : Financeportfolioblacklitte
 pub fn finance_portfolio_black_litterman_view_mean(s : FinanceportfolioblacklittermanView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_view_scale(s : FinanceportfolioblacklittermanView, f : Double) -> FinanceportfolioblacklittermanView {
-  let result = finance_portfolio_black_litterman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_view_add(a : FinanceportfolioblacklittermanView, b : FinanceportfolioblacklittermanView) -> FinanceportfolioblacklittermanView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_view_copy(s : FinanceportfolioblacklittermanView) -> FinanceportfolioblacklittermanView {
-  let result = finance_portfolio_black_litterman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_view_fill(s : FinanceportfolioblacklittermanView, v : Double) -> FinanceportfolioblacklittermanView {
-  let result = finance_portfolio_black_litterman_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_view_min(s : FinanceportfolioblacklittermanView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_portfolio_black_litterman_range_sum(s : Financeportfolioblacklitt
 pub fn finance_portfolio_black_litterman_range_mean(s : FinanceportfolioblacklittermanRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_range_scale(s : FinanceportfolioblacklittermanRange, f : Double) -> FinanceportfolioblacklittermanRange {
-  let result = finance_portfolio_black_litterman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_range_add(a : FinanceportfolioblacklittermanRange, b : FinanceportfolioblacklittermanRange) -> FinanceportfolioblacklittermanRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_range_copy(s : FinanceportfolioblacklittermanRange) -> FinanceportfolioblacklittermanRange {
-  let result = finance_portfolio_black_litterman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_range_fill(s : FinanceportfolioblacklittermanRange, v : Double) -> FinanceportfolioblacklittermanRange {
-  let result = finance_portfolio_black_litterman_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_range_min(s : FinanceportfolioblacklittermanRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_portfolio_black_litterman_slice_sum(s : Financeportfolioblacklitt
 pub fn finance_portfolio_black_litterman_slice_mean(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_litterman_slice_scale(s : FinanceportfolioblacklittermanSlice, f : Double) -> FinanceportfolioblacklittermanSlice {
-  let result = finance_portfolio_black_litterman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_slice_add(a : FinanceportfolioblacklittermanSlice, b : FinanceportfolioblacklittermanSlice) -> FinanceportfolioblacklittermanSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_portfolio_black_litterman_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_portfolio_black_litterman_slice_copy(s : FinanceportfolioblacklittermanSlice) -> FinanceportfolioblacklittermanSlice {
-  let result = finance_portfolio_black_litterman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_slice_fill(s : FinanceportfolioblacklittermanSlice, v : Double) -> FinanceportfolioblacklittermanSlice {
-  let result = finance_portfolio_black_litterman_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_slice_min(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.min(s.data) }

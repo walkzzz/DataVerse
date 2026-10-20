@@ -383,28 +383,20 @@ pub fn finance_time_extreme_frame_sum(s : FinancetimeextremeFrame) -> Double { @
 pub fn finance_time_extreme_frame_mean(s : FinancetimeextremeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_frame_scale(s : FinancetimeextremeFrame, f : Double) -> FinancetimeextremeFrame {
-  let result = finance_time_extreme_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_frame_add(a : FinancetimeextremeFrame, b : FinancetimeextremeFrame) -> FinancetimeextremeFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_frame_copy(s : FinancetimeextremeFrame) -> FinancetimeextremeFrame {
-  let result = finance_time_extreme_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_frame_fill(s : FinancetimeextremeFrame, v : Double) -> FinancetimeextremeFrame {
-  let result = finance_time_extreme_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_frame_min(s : FinancetimeextremeFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn finance_time_extreme_table_sum(s : FinancetimeextremeTable) -> Double { @
 pub fn finance_time_extreme_table_mean(s : FinancetimeextremeTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_table_scale(s : FinancetimeextremeTable, f : Double) -> FinancetimeextremeTable {
-  let result = finance_time_extreme_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_table_add(a : FinancetimeextremeTable, b : FinancetimeextremeTable) -> FinancetimeextremeTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_table_copy(s : FinancetimeextremeTable) -> FinancetimeextremeTable {
-  let result = finance_time_extreme_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_table_fill(s : FinancetimeextremeTable, v : Double) -> FinancetimeextremeTable {
-  let result = finance_time_extreme_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_table_min(s : FinancetimeextremeTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn finance_time_extreme_graphn_sum(s : FinancetimeextremeGraphN) -> Double {
 pub fn finance_time_extreme_graphn_mean(s : FinancetimeextremeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_graphn_scale(s : FinancetimeextremeGraphN, f : Double) -> FinancetimeextremeGraphN {
-  let result = finance_time_extreme_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_graphn_add(a : FinancetimeextremeGraphN, b : FinancetimeextremeGraphN) -> FinancetimeextremeGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_graphn_copy(s : FinancetimeextremeGraphN) -> FinancetimeextremeGraphN {
-  let result = finance_time_extreme_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_graphn_fill(s : FinancetimeextremeGraphN, v : Double) -> FinancetimeextremeGraphN {
-  let result = finance_time_extreme_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_graphn_min(s : FinancetimeextremeGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn finance_time_extreme_node_sum(s : FinancetimeextremeNode) -> Double { @_c
 pub fn finance_time_extreme_node_mean(s : FinancetimeextremeNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_node_scale(s : FinancetimeextremeNode, f : Double) -> FinancetimeextremeNode {
-  let result = finance_time_extreme_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_node_add(a : FinancetimeextremeNode, b : FinancetimeextremeNode) -> FinancetimeextremeNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_node_copy(s : FinancetimeextremeNode) -> FinancetimeextremeNode {
-  let result = finance_time_extreme_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_node_fill(s : FinancetimeextremeNode, v : Double) -> FinancetimeextremeNode {
-  let result = finance_time_extreme_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_node_min(s : FinancetimeextremeNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn finance_time_extreme_edge_sum(s : FinancetimeextremeEdge) -> Double { @_c
 pub fn finance_time_extreme_edge_mean(s : FinancetimeextremeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_edge_scale(s : FinancetimeextremeEdge, f : Double) -> FinancetimeextremeEdge {
-  let result = finance_time_extreme_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_edge_add(a : FinancetimeextremeEdge, b : FinancetimeextremeEdge) -> FinancetimeextremeEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_edge_copy(s : FinancetimeextremeEdge) -> FinancetimeextremeEdge {
-  let result = finance_time_extreme_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_edge_fill(s : FinancetimeextremeEdge, v : Double) -> FinancetimeextremeEdge {
-  let result = finance_time_extreme_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_edge_min(s : FinancetimeextremeEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn finance_time_extreme_path_sum(s : FinancetimeextremePath) -> Double { @_c
 pub fn finance_time_extreme_path_mean(s : FinancetimeextremePath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_path_scale(s : FinancetimeextremePath, f : Double) -> FinancetimeextremePath {
-  let result = finance_time_extreme_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_path_add(a : FinancetimeextremePath, b : FinancetimeextremePath) -> FinancetimeextremePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_path_copy(s : FinancetimeextremePath) -> FinancetimeextremePath {
-  let result = finance_time_extreme_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_path_fill(s : FinancetimeextremePath, v : Double) -> FinancetimeextremePath {
-  let result = finance_time_extreme_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_path_min(s : FinancetimeextremePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn finance_time_extreme_cluster_sum(s : FinancetimeextremeCluster) -> Double
 pub fn finance_time_extreme_cluster_mean(s : FinancetimeextremeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_cluster_scale(s : FinancetimeextremeCluster, f : Double) -> FinancetimeextremeCluster {
-  let result = finance_time_extreme_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_cluster_add(a : FinancetimeextremeCluster, b : FinancetimeextremeCluster) -> FinancetimeextremeCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_cluster_copy(s : FinancetimeextremeCluster) -> FinancetimeextremeCluster {
-  let result = finance_time_extreme_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_cluster_fill(s : FinancetimeextremeCluster, v : Double) -> FinancetimeextremeCluster {
-  let result = finance_time_extreme_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_cluster_min(s : FinancetimeextremeCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn finance_time_extreme_model_sum(s : FinancetimeextremeModel) -> Double { @
 pub fn finance_time_extreme_model_mean(s : FinancetimeextremeModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_model_scale(s : FinancetimeextremeModel, f : Double) -> FinancetimeextremeModel {
-  let result = finance_time_extreme_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_model_add(a : FinancetimeextremeModel, b : FinancetimeextremeModel) -> FinancetimeextremeModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_model_copy(s : FinancetimeextremeModel) -> FinancetimeextremeModel {
-  let result = finance_time_extreme_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_model_fill(s : FinancetimeextremeModel, v : Double) -> FinancetimeextremeModel {
-  let result = finance_time_extreme_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_model_min(s : FinancetimeextremeModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn finance_time_extreme_layer_sum(s : FinancetimeextremeLayer) -> Double { @
 pub fn finance_time_extreme_layer_mean(s : FinancetimeextremeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_layer_scale(s : FinancetimeextremeLayer, f : Double) -> FinancetimeextremeLayer {
-  let result = finance_time_extreme_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_layer_add(a : FinancetimeextremeLayer, b : FinancetimeextremeLayer) -> FinancetimeextremeLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_layer_copy(s : FinancetimeextremeLayer) -> FinancetimeextremeLayer {
-  let result = finance_time_extreme_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_layer_fill(s : FinancetimeextremeLayer, v : Double) -> FinancetimeextremeLayer {
-  let result = finance_time_extreme_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_layer_min(s : FinancetimeextremeLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn finance_time_extreme_buffer_sum(s : FinancetimeextremeBuffer) -> Double {
 pub fn finance_time_extreme_buffer_mean(s : FinancetimeextremeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_buffer_scale(s : FinancetimeextremeBuffer, f : Double) -> FinancetimeextremeBuffer {
-  let result = finance_time_extreme_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_buffer_add(a : FinancetimeextremeBuffer, b : FinancetimeextremeBuffer) -> FinancetimeextremeBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_buffer_copy(s : FinancetimeextremeBuffer) -> FinancetimeextremeBuffer {
-  let result = finance_time_extreme_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_buffer_fill(s : FinancetimeextremeBuffer, v : Double) -> FinancetimeextremeBuffer {
-  let result = finance_time_extreme_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_buffer_min(s : FinancetimeextremeBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn finance_time_extreme_cursor_sum(s : FinancetimeextremeCursor) -> Double {
 pub fn finance_time_extreme_cursor_mean(s : FinancetimeextremeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_cursor_scale(s : FinancetimeextremeCursor, f : Double) -> FinancetimeextremeCursor {
-  let result = finance_time_extreme_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_cursor_add(a : FinancetimeextremeCursor, b : FinancetimeextremeCursor) -> FinancetimeextremeCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_cursor_copy(s : FinancetimeextremeCursor) -> FinancetimeextremeCursor {
-  let result = finance_time_extreme_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_cursor_fill(s : FinancetimeextremeCursor, v : Double) -> FinancetimeextremeCursor {
-  let result = finance_time_extreme_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_cursor_min(s : FinancetimeextremeCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn finance_time_extreme_view_sum(s : FinancetimeextremeView) -> Double { @_c
 pub fn finance_time_extreme_view_mean(s : FinancetimeextremeView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_view_scale(s : FinancetimeextremeView, f : Double) -> FinancetimeextremeView {
-  let result = finance_time_extreme_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_view_add(a : FinancetimeextremeView, b : FinancetimeextremeView) -> FinancetimeextremeView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_view_copy(s : FinancetimeextremeView) -> FinancetimeextremeView {
-  let result = finance_time_extreme_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_view_fill(s : FinancetimeextremeView, v : Double) -> FinancetimeextremeView {
-  let result = finance_time_extreme_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_view_min(s : FinancetimeextremeView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn finance_time_extreme_range_sum(s : FinancetimeextremeRange) -> Double { @
 pub fn finance_time_extreme_range_mean(s : FinancetimeextremeRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_range_scale(s : FinancetimeextremeRange, f : Double) -> FinancetimeextremeRange {
-  let result = finance_time_extreme_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_range_add(a : FinancetimeextremeRange, b : FinancetimeextremeRange) -> FinancetimeextremeRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_range_copy(s : FinancetimeextremeRange) -> FinancetimeextremeRange {
-  let result = finance_time_extreme_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_range_fill(s : FinancetimeextremeRange, v : Double) -> FinancetimeextremeRange {
-  let result = finance_time_extreme_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_range_min(s : FinancetimeextremeRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn finance_time_extreme_slice_sum(s : FinancetimeextremeSlice) -> Double { @
 pub fn finance_time_extreme_slice_mean(s : FinancetimeextremeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_extreme_slice_scale(s : FinancetimeextremeSlice, f : Double) -> FinancetimeextremeSlice {
-  let result = finance_time_extreme_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_slice_add(a : FinancetimeextremeSlice, b : FinancetimeextremeSlice) -> FinancetimeextremeSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = finance_time_extreme_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn finance_time_extreme_slice_copy(s : FinancetimeextremeSlice) -> FinancetimeextremeSlice {
-  let result = finance_time_extreme_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_slice_fill(s : FinancetimeextremeSlice, v : Double) -> FinancetimeextremeSlice {
-  let result = finance_time_extreme_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_extreme_slice_min(s : FinancetimeextremeSlice) -> Double { @_common.min(s.data) }

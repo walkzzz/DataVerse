@@ -383,28 +383,20 @@ pub fn timeseries_forecast_stacking_frame_sum(s : TimeseriesforecaststackingFram
 pub fn timeseries_forecast_stacking_frame_mean(s : TimeseriesforecaststackingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_frame_scale(s : TimeseriesforecaststackingFrame, f : Double) -> TimeseriesforecaststackingFrame {
-  let result = timeseries_forecast_stacking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_frame_add(a : TimeseriesforecaststackingFrame, b : TimeseriesforecaststackingFrame) -> TimeseriesforecaststackingFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_frame_copy(s : TimeseriesforecaststackingFrame) -> TimeseriesforecaststackingFrame {
-  let result = timeseries_forecast_stacking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_frame_fill(s : TimeseriesforecaststackingFrame, v : Double) -> TimeseriesforecaststackingFrame {
-  let result = timeseries_forecast_stacking_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_frame_min(s : TimeseriesforecaststackingFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_forecast_stacking_table_sum(s : TimeseriesforecaststackingTabl
 pub fn timeseries_forecast_stacking_table_mean(s : TimeseriesforecaststackingTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_table_scale(s : TimeseriesforecaststackingTable, f : Double) -> TimeseriesforecaststackingTable {
-  let result = timeseries_forecast_stacking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_table_add(a : TimeseriesforecaststackingTable, b : TimeseriesforecaststackingTable) -> TimeseriesforecaststackingTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_table_copy(s : TimeseriesforecaststackingTable) -> TimeseriesforecaststackingTable {
-  let result = timeseries_forecast_stacking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_table_fill(s : TimeseriesforecaststackingTable, v : Double) -> TimeseriesforecaststackingTable {
-  let result = timeseries_forecast_stacking_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_table_min(s : TimeseriesforecaststackingTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_forecast_stacking_graphn_sum(s : TimeseriesforecaststackingGra
 pub fn timeseries_forecast_stacking_graphn_mean(s : TimeseriesforecaststackingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_graphn_scale(s : TimeseriesforecaststackingGraphN, f : Double) -> TimeseriesforecaststackingGraphN {
-  let result = timeseries_forecast_stacking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_graphn_add(a : TimeseriesforecaststackingGraphN, b : TimeseriesforecaststackingGraphN) -> TimeseriesforecaststackingGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_graphn_copy(s : TimeseriesforecaststackingGraphN) -> TimeseriesforecaststackingGraphN {
-  let result = timeseries_forecast_stacking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_graphn_fill(s : TimeseriesforecaststackingGraphN, v : Double) -> TimeseriesforecaststackingGraphN {
-  let result = timeseries_forecast_stacking_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_graphn_min(s : TimeseriesforecaststackingGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_forecast_stacking_node_sum(s : TimeseriesforecaststackingNode)
 pub fn timeseries_forecast_stacking_node_mean(s : TimeseriesforecaststackingNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_node_scale(s : TimeseriesforecaststackingNode, f : Double) -> TimeseriesforecaststackingNode {
-  let result = timeseries_forecast_stacking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_node_add(a : TimeseriesforecaststackingNode, b : TimeseriesforecaststackingNode) -> TimeseriesforecaststackingNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_node_copy(s : TimeseriesforecaststackingNode) -> TimeseriesforecaststackingNode {
-  let result = timeseries_forecast_stacking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_node_fill(s : TimeseriesforecaststackingNode, v : Double) -> TimeseriesforecaststackingNode {
-  let result = timeseries_forecast_stacking_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_node_min(s : TimeseriesforecaststackingNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_forecast_stacking_edge_sum(s : TimeseriesforecaststackingEdge)
 pub fn timeseries_forecast_stacking_edge_mean(s : TimeseriesforecaststackingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_edge_scale(s : TimeseriesforecaststackingEdge, f : Double) -> TimeseriesforecaststackingEdge {
-  let result = timeseries_forecast_stacking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_edge_add(a : TimeseriesforecaststackingEdge, b : TimeseriesforecaststackingEdge) -> TimeseriesforecaststackingEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_edge_copy(s : TimeseriesforecaststackingEdge) -> TimeseriesforecaststackingEdge {
-  let result = timeseries_forecast_stacking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_edge_fill(s : TimeseriesforecaststackingEdge, v : Double) -> TimeseriesforecaststackingEdge {
-  let result = timeseries_forecast_stacking_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_edge_min(s : TimeseriesforecaststackingEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_forecast_stacking_path_sum(s : TimeseriesforecaststackingPath)
 pub fn timeseries_forecast_stacking_path_mean(s : TimeseriesforecaststackingPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_path_scale(s : TimeseriesforecaststackingPath, f : Double) -> TimeseriesforecaststackingPath {
-  let result = timeseries_forecast_stacking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_path_add(a : TimeseriesforecaststackingPath, b : TimeseriesforecaststackingPath) -> TimeseriesforecaststackingPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_path_copy(s : TimeseriesforecaststackingPath) -> TimeseriesforecaststackingPath {
-  let result = timeseries_forecast_stacking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_path_fill(s : TimeseriesforecaststackingPath, v : Double) -> TimeseriesforecaststackingPath {
-  let result = timeseries_forecast_stacking_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_path_min(s : TimeseriesforecaststackingPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_forecast_stacking_cluster_sum(s : TimeseriesforecaststackingCl
 pub fn timeseries_forecast_stacking_cluster_mean(s : TimeseriesforecaststackingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_cluster_scale(s : TimeseriesforecaststackingCluster, f : Double) -> TimeseriesforecaststackingCluster {
-  let result = timeseries_forecast_stacking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_cluster_add(a : TimeseriesforecaststackingCluster, b : TimeseriesforecaststackingCluster) -> TimeseriesforecaststackingCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_cluster_copy(s : TimeseriesforecaststackingCluster) -> TimeseriesforecaststackingCluster {
-  let result = timeseries_forecast_stacking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_cluster_fill(s : TimeseriesforecaststackingCluster, v : Double) -> TimeseriesforecaststackingCluster {
-  let result = timeseries_forecast_stacking_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_cluster_min(s : TimeseriesforecaststackingCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_forecast_stacking_model_sum(s : TimeseriesforecaststackingMode
 pub fn timeseries_forecast_stacking_model_mean(s : TimeseriesforecaststackingModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_model_scale(s : TimeseriesforecaststackingModel, f : Double) -> TimeseriesforecaststackingModel {
-  let result = timeseries_forecast_stacking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_model_add(a : TimeseriesforecaststackingModel, b : TimeseriesforecaststackingModel) -> TimeseriesforecaststackingModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_model_copy(s : TimeseriesforecaststackingModel) -> TimeseriesforecaststackingModel {
-  let result = timeseries_forecast_stacking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_model_fill(s : TimeseriesforecaststackingModel, v : Double) -> TimeseriesforecaststackingModel {
-  let result = timeseries_forecast_stacking_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_model_min(s : TimeseriesforecaststackingModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_forecast_stacking_layer_sum(s : TimeseriesforecaststackingLaye
 pub fn timeseries_forecast_stacking_layer_mean(s : TimeseriesforecaststackingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_layer_scale(s : TimeseriesforecaststackingLayer, f : Double) -> TimeseriesforecaststackingLayer {
-  let result = timeseries_forecast_stacking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_layer_add(a : TimeseriesforecaststackingLayer, b : TimeseriesforecaststackingLayer) -> TimeseriesforecaststackingLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_layer_copy(s : TimeseriesforecaststackingLayer) -> TimeseriesforecaststackingLayer {
-  let result = timeseries_forecast_stacking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_layer_fill(s : TimeseriesforecaststackingLayer, v : Double) -> TimeseriesforecaststackingLayer {
-  let result = timeseries_forecast_stacking_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_layer_min(s : TimeseriesforecaststackingLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_forecast_stacking_buffer_sum(s : TimeseriesforecaststackingBuf
 pub fn timeseries_forecast_stacking_buffer_mean(s : TimeseriesforecaststackingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_buffer_scale(s : TimeseriesforecaststackingBuffer, f : Double) -> TimeseriesforecaststackingBuffer {
-  let result = timeseries_forecast_stacking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_buffer_add(a : TimeseriesforecaststackingBuffer, b : TimeseriesforecaststackingBuffer) -> TimeseriesforecaststackingBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_buffer_copy(s : TimeseriesforecaststackingBuffer) -> TimeseriesforecaststackingBuffer {
-  let result = timeseries_forecast_stacking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_buffer_fill(s : TimeseriesforecaststackingBuffer, v : Double) -> TimeseriesforecaststackingBuffer {
-  let result = timeseries_forecast_stacking_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_buffer_min(s : TimeseriesforecaststackingBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_forecast_stacking_cursor_sum(s : TimeseriesforecaststackingCur
 pub fn timeseries_forecast_stacking_cursor_mean(s : TimeseriesforecaststackingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_cursor_scale(s : TimeseriesforecaststackingCursor, f : Double) -> TimeseriesforecaststackingCursor {
-  let result = timeseries_forecast_stacking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_cursor_add(a : TimeseriesforecaststackingCursor, b : TimeseriesforecaststackingCursor) -> TimeseriesforecaststackingCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_cursor_copy(s : TimeseriesforecaststackingCursor) -> TimeseriesforecaststackingCursor {
-  let result = timeseries_forecast_stacking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_cursor_fill(s : TimeseriesforecaststackingCursor, v : Double) -> TimeseriesforecaststackingCursor {
-  let result = timeseries_forecast_stacking_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_cursor_min(s : TimeseriesforecaststackingCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_forecast_stacking_view_sum(s : TimeseriesforecaststackingView)
 pub fn timeseries_forecast_stacking_view_mean(s : TimeseriesforecaststackingView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_view_scale(s : TimeseriesforecaststackingView, f : Double) -> TimeseriesforecaststackingView {
-  let result = timeseries_forecast_stacking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_view_add(a : TimeseriesforecaststackingView, b : TimeseriesforecaststackingView) -> TimeseriesforecaststackingView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_view_copy(s : TimeseriesforecaststackingView) -> TimeseriesforecaststackingView {
-  let result = timeseries_forecast_stacking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_view_fill(s : TimeseriesforecaststackingView, v : Double) -> TimeseriesforecaststackingView {
-  let result = timeseries_forecast_stacking_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_view_min(s : TimeseriesforecaststackingView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_forecast_stacking_range_sum(s : TimeseriesforecaststackingRang
 pub fn timeseries_forecast_stacking_range_mean(s : TimeseriesforecaststackingRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_range_scale(s : TimeseriesforecaststackingRange, f : Double) -> TimeseriesforecaststackingRange {
-  let result = timeseries_forecast_stacking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_range_add(a : TimeseriesforecaststackingRange, b : TimeseriesforecaststackingRange) -> TimeseriesforecaststackingRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_range_copy(s : TimeseriesforecaststackingRange) -> TimeseriesforecaststackingRange {
-  let result = timeseries_forecast_stacking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_range_fill(s : TimeseriesforecaststackingRange, v : Double) -> TimeseriesforecaststackingRange {
-  let result = timeseries_forecast_stacking_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_range_min(s : TimeseriesforecaststackingRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_forecast_stacking_slice_sum(s : TimeseriesforecaststackingSlic
 pub fn timeseries_forecast_stacking_slice_mean(s : TimeseriesforecaststackingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_stacking_slice_scale(s : TimeseriesforecaststackingSlice, f : Double) -> TimeseriesforecaststackingSlice {
-  let result = timeseries_forecast_stacking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_slice_add(a : TimeseriesforecaststackingSlice, b : TimeseriesforecaststackingSlice) -> TimeseriesforecaststackingSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_stacking_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_stacking_slice_copy(s : TimeseriesforecaststackingSlice) -> TimeseriesforecaststackingSlice {
-  let result = timeseries_forecast_stacking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_slice_fill(s : TimeseriesforecaststackingSlice, v : Double) -> TimeseriesforecaststackingSlice {
-  let result = timeseries_forecast_stacking_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_stacking_slice_min(s : TimeseriesforecaststackingSlice) -> Double { @_common.min(s.data) }

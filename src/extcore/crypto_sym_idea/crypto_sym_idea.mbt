@@ -383,28 +383,20 @@ pub fn crypto_sym_idea_frame_sum(s : CryptosymideaFrame) -> Double { @_common.su
 pub fn crypto_sym_idea_frame_mean(s : CryptosymideaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_frame_scale(s : CryptosymideaFrame, f : Double) -> CryptosymideaFrame {
-  let result = crypto_sym_idea_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_frame_add(a : CryptosymideaFrame, b : CryptosymideaFrame) -> CryptosymideaFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_frame_copy(s : CryptosymideaFrame) -> CryptosymideaFrame {
-  let result = crypto_sym_idea_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_frame_fill(s : CryptosymideaFrame, v : Double) -> CryptosymideaFrame {
-  let result = crypto_sym_idea_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_frame_min(s : CryptosymideaFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn crypto_sym_idea_table_sum(s : CryptosymideaTable) -> Double { @_common.su
 pub fn crypto_sym_idea_table_mean(s : CryptosymideaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_table_scale(s : CryptosymideaTable, f : Double) -> CryptosymideaTable {
-  let result = crypto_sym_idea_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_table_add(a : CryptosymideaTable, b : CryptosymideaTable) -> CryptosymideaTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_table_copy(s : CryptosymideaTable) -> CryptosymideaTable {
-  let result = crypto_sym_idea_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_table_fill(s : CryptosymideaTable, v : Double) -> CryptosymideaTable {
-  let result = crypto_sym_idea_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_table_min(s : CryptosymideaTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn crypto_sym_idea_graphn_sum(s : CryptosymideaGraphN) -> Double { @_common.
 pub fn crypto_sym_idea_graphn_mean(s : CryptosymideaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_graphn_scale(s : CryptosymideaGraphN, f : Double) -> CryptosymideaGraphN {
-  let result = crypto_sym_idea_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_graphn_add(a : CryptosymideaGraphN, b : CryptosymideaGraphN) -> CryptosymideaGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_graphn_copy(s : CryptosymideaGraphN) -> CryptosymideaGraphN {
-  let result = crypto_sym_idea_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_graphn_fill(s : CryptosymideaGraphN, v : Double) -> CryptosymideaGraphN {
-  let result = crypto_sym_idea_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_graphn_min(s : CryptosymideaGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn crypto_sym_idea_node_sum(s : CryptosymideaNode) -> Double { @_common.sum(
 pub fn crypto_sym_idea_node_mean(s : CryptosymideaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_node_scale(s : CryptosymideaNode, f : Double) -> CryptosymideaNode {
-  let result = crypto_sym_idea_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_node_add(a : CryptosymideaNode, b : CryptosymideaNode) -> CryptosymideaNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_node_copy(s : CryptosymideaNode) -> CryptosymideaNode {
-  let result = crypto_sym_idea_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_node_fill(s : CryptosymideaNode, v : Double) -> CryptosymideaNode {
-  let result = crypto_sym_idea_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_node_min(s : CryptosymideaNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn crypto_sym_idea_edge_sum(s : CryptosymideaEdge) -> Double { @_common.sum(
 pub fn crypto_sym_idea_edge_mean(s : CryptosymideaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_edge_scale(s : CryptosymideaEdge, f : Double) -> CryptosymideaEdge {
-  let result = crypto_sym_idea_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_edge_add(a : CryptosymideaEdge, b : CryptosymideaEdge) -> CryptosymideaEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_edge_copy(s : CryptosymideaEdge) -> CryptosymideaEdge {
-  let result = crypto_sym_idea_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_edge_fill(s : CryptosymideaEdge, v : Double) -> CryptosymideaEdge {
-  let result = crypto_sym_idea_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_edge_min(s : CryptosymideaEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn crypto_sym_idea_path_sum(s : CryptosymideaPath) -> Double { @_common.sum(
 pub fn crypto_sym_idea_path_mean(s : CryptosymideaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_path_scale(s : CryptosymideaPath, f : Double) -> CryptosymideaPath {
-  let result = crypto_sym_idea_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_path_add(a : CryptosymideaPath, b : CryptosymideaPath) -> CryptosymideaPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_path_copy(s : CryptosymideaPath) -> CryptosymideaPath {
-  let result = crypto_sym_idea_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_path_fill(s : CryptosymideaPath, v : Double) -> CryptosymideaPath {
-  let result = crypto_sym_idea_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_path_min(s : CryptosymideaPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn crypto_sym_idea_cluster_sum(s : CryptosymideaCluster) -> Double { @_commo
 pub fn crypto_sym_idea_cluster_mean(s : CryptosymideaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_cluster_scale(s : CryptosymideaCluster, f : Double) -> CryptosymideaCluster {
-  let result = crypto_sym_idea_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_cluster_add(a : CryptosymideaCluster, b : CryptosymideaCluster) -> CryptosymideaCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_cluster_copy(s : CryptosymideaCluster) -> CryptosymideaCluster {
-  let result = crypto_sym_idea_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_cluster_fill(s : CryptosymideaCluster, v : Double) -> CryptosymideaCluster {
-  let result = crypto_sym_idea_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_cluster_min(s : CryptosymideaCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn crypto_sym_idea_model_sum(s : CryptosymideaModel) -> Double { @_common.su
 pub fn crypto_sym_idea_model_mean(s : CryptosymideaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_model_scale(s : CryptosymideaModel, f : Double) -> CryptosymideaModel {
-  let result = crypto_sym_idea_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_model_add(a : CryptosymideaModel, b : CryptosymideaModel) -> CryptosymideaModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_model_copy(s : CryptosymideaModel) -> CryptosymideaModel {
-  let result = crypto_sym_idea_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_model_fill(s : CryptosymideaModel, v : Double) -> CryptosymideaModel {
-  let result = crypto_sym_idea_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_model_min(s : CryptosymideaModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn crypto_sym_idea_layer_sum(s : CryptosymideaLayer) -> Double { @_common.su
 pub fn crypto_sym_idea_layer_mean(s : CryptosymideaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_layer_scale(s : CryptosymideaLayer, f : Double) -> CryptosymideaLayer {
-  let result = crypto_sym_idea_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_layer_add(a : CryptosymideaLayer, b : CryptosymideaLayer) -> CryptosymideaLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_layer_copy(s : CryptosymideaLayer) -> CryptosymideaLayer {
-  let result = crypto_sym_idea_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_layer_fill(s : CryptosymideaLayer, v : Double) -> CryptosymideaLayer {
-  let result = crypto_sym_idea_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_layer_min(s : CryptosymideaLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn crypto_sym_idea_buffer_sum(s : CryptosymideaBuffer) -> Double { @_common.
 pub fn crypto_sym_idea_buffer_mean(s : CryptosymideaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_buffer_scale(s : CryptosymideaBuffer, f : Double) -> CryptosymideaBuffer {
-  let result = crypto_sym_idea_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_buffer_add(a : CryptosymideaBuffer, b : CryptosymideaBuffer) -> CryptosymideaBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_buffer_copy(s : CryptosymideaBuffer) -> CryptosymideaBuffer {
-  let result = crypto_sym_idea_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_buffer_fill(s : CryptosymideaBuffer, v : Double) -> CryptosymideaBuffer {
-  let result = crypto_sym_idea_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_buffer_min(s : CryptosymideaBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn crypto_sym_idea_cursor_sum(s : CryptosymideaCursor) -> Double { @_common.
 pub fn crypto_sym_idea_cursor_mean(s : CryptosymideaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_cursor_scale(s : CryptosymideaCursor, f : Double) -> CryptosymideaCursor {
-  let result = crypto_sym_idea_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_cursor_add(a : CryptosymideaCursor, b : CryptosymideaCursor) -> CryptosymideaCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_cursor_copy(s : CryptosymideaCursor) -> CryptosymideaCursor {
-  let result = crypto_sym_idea_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_cursor_fill(s : CryptosymideaCursor, v : Double) -> CryptosymideaCursor {
-  let result = crypto_sym_idea_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_cursor_min(s : CryptosymideaCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn crypto_sym_idea_view_sum(s : CryptosymideaView) -> Double { @_common.sum(
 pub fn crypto_sym_idea_view_mean(s : CryptosymideaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_view_scale(s : CryptosymideaView, f : Double) -> CryptosymideaView {
-  let result = crypto_sym_idea_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_view_add(a : CryptosymideaView, b : CryptosymideaView) -> CryptosymideaView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_view_copy(s : CryptosymideaView) -> CryptosymideaView {
-  let result = crypto_sym_idea_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_view_fill(s : CryptosymideaView, v : Double) -> CryptosymideaView {
-  let result = crypto_sym_idea_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_view_min(s : CryptosymideaView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn crypto_sym_idea_range_sum(s : CryptosymideaRange) -> Double { @_common.su
 pub fn crypto_sym_idea_range_mean(s : CryptosymideaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_range_scale(s : CryptosymideaRange, f : Double) -> CryptosymideaRange {
-  let result = crypto_sym_idea_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_range_add(a : CryptosymideaRange, b : CryptosymideaRange) -> CryptosymideaRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_range_copy(s : CryptosymideaRange) -> CryptosymideaRange {
-  let result = crypto_sym_idea_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_range_fill(s : CryptosymideaRange, v : Double) -> CryptosymideaRange {
-  let result = crypto_sym_idea_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_range_min(s : CryptosymideaRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn crypto_sym_idea_slice_sum(s : CryptosymideaSlice) -> Double { @_common.su
 pub fn crypto_sym_idea_slice_mean(s : CryptosymideaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_slice_scale(s : CryptosymideaSlice, f : Double) -> CryptosymideaSlice {
-  let result = crypto_sym_idea_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_slice_add(a : CryptosymideaSlice, b : CryptosymideaSlice) -> CryptosymideaSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = crypto_sym_idea_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn crypto_sym_idea_slice_copy(s : CryptosymideaSlice) -> CryptosymideaSlice {
-  let result = crypto_sym_idea_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_slice_fill(s : CryptosymideaSlice, v : Double) -> CryptosymideaSlice {
-  let result = crypto_sym_idea_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_idea_slice_min(s : CryptosymideaSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn image_morph_dilate_frame_sum(s : ImagemorphdilateFrame) -> Double { @_com
 pub fn image_morph_dilate_frame_mean(s : ImagemorphdilateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_frame_scale(s : ImagemorphdilateFrame, f : Double) -> ImagemorphdilateFrame {
-  let result = image_morph_dilate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_frame_add(a : ImagemorphdilateFrame, b : ImagemorphdilateFrame) -> ImagemorphdilateFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_frame_copy(s : ImagemorphdilateFrame) -> ImagemorphdilateFrame {
-  let result = image_morph_dilate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_frame_fill(s : ImagemorphdilateFrame, v : Double) -> ImagemorphdilateFrame {
-  let result = image_morph_dilate_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_frame_min(s : ImagemorphdilateFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn image_morph_dilate_table_sum(s : ImagemorphdilateTable) -> Double { @_com
 pub fn image_morph_dilate_table_mean(s : ImagemorphdilateTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_table_scale(s : ImagemorphdilateTable, f : Double) -> ImagemorphdilateTable {
-  let result = image_morph_dilate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_table_add(a : ImagemorphdilateTable, b : ImagemorphdilateTable) -> ImagemorphdilateTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_table_copy(s : ImagemorphdilateTable) -> ImagemorphdilateTable {
-  let result = image_morph_dilate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_table_fill(s : ImagemorphdilateTable, v : Double) -> ImagemorphdilateTable {
-  let result = image_morph_dilate_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_table_min(s : ImagemorphdilateTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn image_morph_dilate_graphn_sum(s : ImagemorphdilateGraphN) -> Double { @_c
 pub fn image_morph_dilate_graphn_mean(s : ImagemorphdilateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_graphn_scale(s : ImagemorphdilateGraphN, f : Double) -> ImagemorphdilateGraphN {
-  let result = image_morph_dilate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_graphn_add(a : ImagemorphdilateGraphN, b : ImagemorphdilateGraphN) -> ImagemorphdilateGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_graphn_copy(s : ImagemorphdilateGraphN) -> ImagemorphdilateGraphN {
-  let result = image_morph_dilate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_graphn_fill(s : ImagemorphdilateGraphN, v : Double) -> ImagemorphdilateGraphN {
-  let result = image_morph_dilate_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_graphn_min(s : ImagemorphdilateGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn image_morph_dilate_node_sum(s : ImagemorphdilateNode) -> Double { @_commo
 pub fn image_morph_dilate_node_mean(s : ImagemorphdilateNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_node_scale(s : ImagemorphdilateNode, f : Double) -> ImagemorphdilateNode {
-  let result = image_morph_dilate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_node_add(a : ImagemorphdilateNode, b : ImagemorphdilateNode) -> ImagemorphdilateNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_node_copy(s : ImagemorphdilateNode) -> ImagemorphdilateNode {
-  let result = image_morph_dilate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_node_fill(s : ImagemorphdilateNode, v : Double) -> ImagemorphdilateNode {
-  let result = image_morph_dilate_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_node_min(s : ImagemorphdilateNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn image_morph_dilate_edge_sum(s : ImagemorphdilateEdge) -> Double { @_commo
 pub fn image_morph_dilate_edge_mean(s : ImagemorphdilateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_edge_scale(s : ImagemorphdilateEdge, f : Double) -> ImagemorphdilateEdge {
-  let result = image_morph_dilate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_edge_add(a : ImagemorphdilateEdge, b : ImagemorphdilateEdge) -> ImagemorphdilateEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_edge_copy(s : ImagemorphdilateEdge) -> ImagemorphdilateEdge {
-  let result = image_morph_dilate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_edge_fill(s : ImagemorphdilateEdge, v : Double) -> ImagemorphdilateEdge {
-  let result = image_morph_dilate_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_edge_min(s : ImagemorphdilateEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn image_morph_dilate_path_sum(s : ImagemorphdilatePath) -> Double { @_commo
 pub fn image_morph_dilate_path_mean(s : ImagemorphdilatePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_path_scale(s : ImagemorphdilatePath, f : Double) -> ImagemorphdilatePath {
-  let result = image_morph_dilate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_path_add(a : ImagemorphdilatePath, b : ImagemorphdilatePath) -> ImagemorphdilatePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_path_copy(s : ImagemorphdilatePath) -> ImagemorphdilatePath {
-  let result = image_morph_dilate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_path_fill(s : ImagemorphdilatePath, v : Double) -> ImagemorphdilatePath {
-  let result = image_morph_dilate_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_path_min(s : ImagemorphdilatePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn image_morph_dilate_cluster_sum(s : ImagemorphdilateCluster) -> Double { @
 pub fn image_morph_dilate_cluster_mean(s : ImagemorphdilateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_cluster_scale(s : ImagemorphdilateCluster, f : Double) -> ImagemorphdilateCluster {
-  let result = image_morph_dilate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cluster_add(a : ImagemorphdilateCluster, b : ImagemorphdilateCluster) -> ImagemorphdilateCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_cluster_copy(s : ImagemorphdilateCluster) -> ImagemorphdilateCluster {
-  let result = image_morph_dilate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cluster_fill(s : ImagemorphdilateCluster, v : Double) -> ImagemorphdilateCluster {
-  let result = image_morph_dilate_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cluster_min(s : ImagemorphdilateCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn image_morph_dilate_model_sum(s : ImagemorphdilateModel) -> Double { @_com
 pub fn image_morph_dilate_model_mean(s : ImagemorphdilateModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_model_scale(s : ImagemorphdilateModel, f : Double) -> ImagemorphdilateModel {
-  let result = image_morph_dilate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_model_add(a : ImagemorphdilateModel, b : ImagemorphdilateModel) -> ImagemorphdilateModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_model_copy(s : ImagemorphdilateModel) -> ImagemorphdilateModel {
-  let result = image_morph_dilate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_model_fill(s : ImagemorphdilateModel, v : Double) -> ImagemorphdilateModel {
-  let result = image_morph_dilate_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_model_min(s : ImagemorphdilateModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn image_morph_dilate_layer_sum(s : ImagemorphdilateLayer) -> Double { @_com
 pub fn image_morph_dilate_layer_mean(s : ImagemorphdilateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_layer_scale(s : ImagemorphdilateLayer, f : Double) -> ImagemorphdilateLayer {
-  let result = image_morph_dilate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_layer_add(a : ImagemorphdilateLayer, b : ImagemorphdilateLayer) -> ImagemorphdilateLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_layer_copy(s : ImagemorphdilateLayer) -> ImagemorphdilateLayer {
-  let result = image_morph_dilate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_layer_fill(s : ImagemorphdilateLayer, v : Double) -> ImagemorphdilateLayer {
-  let result = image_morph_dilate_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_layer_min(s : ImagemorphdilateLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn image_morph_dilate_buffer_sum(s : ImagemorphdilateBuffer) -> Double { @_c
 pub fn image_morph_dilate_buffer_mean(s : ImagemorphdilateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_buffer_scale(s : ImagemorphdilateBuffer, f : Double) -> ImagemorphdilateBuffer {
-  let result = image_morph_dilate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_buffer_add(a : ImagemorphdilateBuffer, b : ImagemorphdilateBuffer) -> ImagemorphdilateBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_buffer_copy(s : ImagemorphdilateBuffer) -> ImagemorphdilateBuffer {
-  let result = image_morph_dilate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_buffer_fill(s : ImagemorphdilateBuffer, v : Double) -> ImagemorphdilateBuffer {
-  let result = image_morph_dilate_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_buffer_min(s : ImagemorphdilateBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn image_morph_dilate_cursor_sum(s : ImagemorphdilateCursor) -> Double { @_c
 pub fn image_morph_dilate_cursor_mean(s : ImagemorphdilateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_cursor_scale(s : ImagemorphdilateCursor, f : Double) -> ImagemorphdilateCursor {
-  let result = image_morph_dilate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cursor_add(a : ImagemorphdilateCursor, b : ImagemorphdilateCursor) -> ImagemorphdilateCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_cursor_copy(s : ImagemorphdilateCursor) -> ImagemorphdilateCursor {
-  let result = image_morph_dilate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cursor_fill(s : ImagemorphdilateCursor, v : Double) -> ImagemorphdilateCursor {
-  let result = image_morph_dilate_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cursor_min(s : ImagemorphdilateCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn image_morph_dilate_view_sum(s : ImagemorphdilateView) -> Double { @_commo
 pub fn image_morph_dilate_view_mean(s : ImagemorphdilateView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_view_scale(s : ImagemorphdilateView, f : Double) -> ImagemorphdilateView {
-  let result = image_morph_dilate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_view_add(a : ImagemorphdilateView, b : ImagemorphdilateView) -> ImagemorphdilateView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_view_copy(s : ImagemorphdilateView) -> ImagemorphdilateView {
-  let result = image_morph_dilate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_view_fill(s : ImagemorphdilateView, v : Double) -> ImagemorphdilateView {
-  let result = image_morph_dilate_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_view_min(s : ImagemorphdilateView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn image_morph_dilate_range_sum(s : ImagemorphdilateRange) -> Double { @_com
 pub fn image_morph_dilate_range_mean(s : ImagemorphdilateRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_range_scale(s : ImagemorphdilateRange, f : Double) -> ImagemorphdilateRange {
-  let result = image_morph_dilate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_range_add(a : ImagemorphdilateRange, b : ImagemorphdilateRange) -> ImagemorphdilateRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_range_copy(s : ImagemorphdilateRange) -> ImagemorphdilateRange {
-  let result = image_morph_dilate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_range_fill(s : ImagemorphdilateRange, v : Double) -> ImagemorphdilateRange {
-  let result = image_morph_dilate_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_range_min(s : ImagemorphdilateRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn image_morph_dilate_slice_sum(s : ImagemorphdilateSlice) -> Double { @_com
 pub fn image_morph_dilate_slice_mean(s : ImagemorphdilateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_slice_scale(s : ImagemorphdilateSlice, f : Double) -> ImagemorphdilateSlice {
-  let result = image_morph_dilate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_slice_add(a : ImagemorphdilateSlice, b : ImagemorphdilateSlice) -> ImagemorphdilateSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = image_morph_dilate_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn image_morph_dilate_slice_copy(s : ImagemorphdilateSlice) -> ImagemorphdilateSlice {
-  let result = image_morph_dilate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_slice_fill(s : ImagemorphdilateSlice, v : Double) -> ImagemorphdilateSlice {
-  let result = image_morph_dilate_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_slice_min(s : ImagemorphdilateSlice) -> Double { @_common.min(s.data) }

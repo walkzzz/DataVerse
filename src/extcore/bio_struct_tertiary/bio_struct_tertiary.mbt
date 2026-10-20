@@ -383,28 +383,20 @@ pub fn bio_struct_tertiary_frame_sum(s : BiostructtertiaryFrame) -> Double { @_c
 pub fn bio_struct_tertiary_frame_mean(s : BiostructtertiaryFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_frame_scale(s : BiostructtertiaryFrame, f : Double) -> BiostructtertiaryFrame {
-  let result = bio_struct_tertiary_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_frame_add(a : BiostructtertiaryFrame, b : BiostructtertiaryFrame) -> BiostructtertiaryFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_frame_copy(s : BiostructtertiaryFrame) -> BiostructtertiaryFrame {
-  let result = bio_struct_tertiary_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_frame_fill(s : BiostructtertiaryFrame, v : Double) -> BiostructtertiaryFrame {
-  let result = bio_struct_tertiary_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_frame_min(s : BiostructtertiaryFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn bio_struct_tertiary_table_sum(s : BiostructtertiaryTable) -> Double { @_c
 pub fn bio_struct_tertiary_table_mean(s : BiostructtertiaryTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_table_scale(s : BiostructtertiaryTable, f : Double) -> BiostructtertiaryTable {
-  let result = bio_struct_tertiary_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_table_add(a : BiostructtertiaryTable, b : BiostructtertiaryTable) -> BiostructtertiaryTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_table_copy(s : BiostructtertiaryTable) -> BiostructtertiaryTable {
-  let result = bio_struct_tertiary_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_table_fill(s : BiostructtertiaryTable, v : Double) -> BiostructtertiaryTable {
-  let result = bio_struct_tertiary_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_table_min(s : BiostructtertiaryTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn bio_struct_tertiary_graphn_sum(s : BiostructtertiaryGraphN) -> Double { @
 pub fn bio_struct_tertiary_graphn_mean(s : BiostructtertiaryGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_graphn_scale(s : BiostructtertiaryGraphN, f : Double) -> BiostructtertiaryGraphN {
-  let result = bio_struct_tertiary_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_graphn_add(a : BiostructtertiaryGraphN, b : BiostructtertiaryGraphN) -> BiostructtertiaryGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_graphn_copy(s : BiostructtertiaryGraphN) -> BiostructtertiaryGraphN {
-  let result = bio_struct_tertiary_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_graphn_fill(s : BiostructtertiaryGraphN, v : Double) -> BiostructtertiaryGraphN {
-  let result = bio_struct_tertiary_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_graphn_min(s : BiostructtertiaryGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn bio_struct_tertiary_node_sum(s : BiostructtertiaryNode) -> Double { @_com
 pub fn bio_struct_tertiary_node_mean(s : BiostructtertiaryNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_node_scale(s : BiostructtertiaryNode, f : Double) -> BiostructtertiaryNode {
-  let result = bio_struct_tertiary_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_node_add(a : BiostructtertiaryNode, b : BiostructtertiaryNode) -> BiostructtertiaryNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_node_copy(s : BiostructtertiaryNode) -> BiostructtertiaryNode {
-  let result = bio_struct_tertiary_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_node_fill(s : BiostructtertiaryNode, v : Double) -> BiostructtertiaryNode {
-  let result = bio_struct_tertiary_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_node_min(s : BiostructtertiaryNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn bio_struct_tertiary_edge_sum(s : BiostructtertiaryEdge) -> Double { @_com
 pub fn bio_struct_tertiary_edge_mean(s : BiostructtertiaryEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_edge_scale(s : BiostructtertiaryEdge, f : Double) -> BiostructtertiaryEdge {
-  let result = bio_struct_tertiary_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_edge_add(a : BiostructtertiaryEdge, b : BiostructtertiaryEdge) -> BiostructtertiaryEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_edge_copy(s : BiostructtertiaryEdge) -> BiostructtertiaryEdge {
-  let result = bio_struct_tertiary_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_edge_fill(s : BiostructtertiaryEdge, v : Double) -> BiostructtertiaryEdge {
-  let result = bio_struct_tertiary_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_edge_min(s : BiostructtertiaryEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn bio_struct_tertiary_path_sum(s : BiostructtertiaryPath) -> Double { @_com
 pub fn bio_struct_tertiary_path_mean(s : BiostructtertiaryPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_path_scale(s : BiostructtertiaryPath, f : Double) -> BiostructtertiaryPath {
-  let result = bio_struct_tertiary_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_path_add(a : BiostructtertiaryPath, b : BiostructtertiaryPath) -> BiostructtertiaryPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_path_copy(s : BiostructtertiaryPath) -> BiostructtertiaryPath {
-  let result = bio_struct_tertiary_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_path_fill(s : BiostructtertiaryPath, v : Double) -> BiostructtertiaryPath {
-  let result = bio_struct_tertiary_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_path_min(s : BiostructtertiaryPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn bio_struct_tertiary_cluster_sum(s : BiostructtertiaryCluster) -> Double {
 pub fn bio_struct_tertiary_cluster_mean(s : BiostructtertiaryCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_cluster_scale(s : BiostructtertiaryCluster, f : Double) -> BiostructtertiaryCluster {
-  let result = bio_struct_tertiary_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_cluster_add(a : BiostructtertiaryCluster, b : BiostructtertiaryCluster) -> BiostructtertiaryCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_cluster_copy(s : BiostructtertiaryCluster) -> BiostructtertiaryCluster {
-  let result = bio_struct_tertiary_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_cluster_fill(s : BiostructtertiaryCluster, v : Double) -> BiostructtertiaryCluster {
-  let result = bio_struct_tertiary_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_cluster_min(s : BiostructtertiaryCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn bio_struct_tertiary_model_sum(s : BiostructtertiaryModel) -> Double { @_c
 pub fn bio_struct_tertiary_model_mean(s : BiostructtertiaryModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_model_scale(s : BiostructtertiaryModel, f : Double) -> BiostructtertiaryModel {
-  let result = bio_struct_tertiary_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_model_add(a : BiostructtertiaryModel, b : BiostructtertiaryModel) -> BiostructtertiaryModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_model_copy(s : BiostructtertiaryModel) -> BiostructtertiaryModel {
-  let result = bio_struct_tertiary_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_model_fill(s : BiostructtertiaryModel, v : Double) -> BiostructtertiaryModel {
-  let result = bio_struct_tertiary_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_model_min(s : BiostructtertiaryModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn bio_struct_tertiary_layer_sum(s : BiostructtertiaryLayer) -> Double { @_c
 pub fn bio_struct_tertiary_layer_mean(s : BiostructtertiaryLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_layer_scale(s : BiostructtertiaryLayer, f : Double) -> BiostructtertiaryLayer {
-  let result = bio_struct_tertiary_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_layer_add(a : BiostructtertiaryLayer, b : BiostructtertiaryLayer) -> BiostructtertiaryLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_layer_copy(s : BiostructtertiaryLayer) -> BiostructtertiaryLayer {
-  let result = bio_struct_tertiary_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_layer_fill(s : BiostructtertiaryLayer, v : Double) -> BiostructtertiaryLayer {
-  let result = bio_struct_tertiary_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_layer_min(s : BiostructtertiaryLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn bio_struct_tertiary_buffer_sum(s : BiostructtertiaryBuffer) -> Double { @
 pub fn bio_struct_tertiary_buffer_mean(s : BiostructtertiaryBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_buffer_scale(s : BiostructtertiaryBuffer, f : Double) -> BiostructtertiaryBuffer {
-  let result = bio_struct_tertiary_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_buffer_add(a : BiostructtertiaryBuffer, b : BiostructtertiaryBuffer) -> BiostructtertiaryBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_buffer_copy(s : BiostructtertiaryBuffer) -> BiostructtertiaryBuffer {
-  let result = bio_struct_tertiary_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_buffer_fill(s : BiostructtertiaryBuffer, v : Double) -> BiostructtertiaryBuffer {
-  let result = bio_struct_tertiary_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_buffer_min(s : BiostructtertiaryBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn bio_struct_tertiary_cursor_sum(s : BiostructtertiaryCursor) -> Double { @
 pub fn bio_struct_tertiary_cursor_mean(s : BiostructtertiaryCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_cursor_scale(s : BiostructtertiaryCursor, f : Double) -> BiostructtertiaryCursor {
-  let result = bio_struct_tertiary_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_cursor_add(a : BiostructtertiaryCursor, b : BiostructtertiaryCursor) -> BiostructtertiaryCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_cursor_copy(s : BiostructtertiaryCursor) -> BiostructtertiaryCursor {
-  let result = bio_struct_tertiary_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_cursor_fill(s : BiostructtertiaryCursor, v : Double) -> BiostructtertiaryCursor {
-  let result = bio_struct_tertiary_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_cursor_min(s : BiostructtertiaryCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn bio_struct_tertiary_view_sum(s : BiostructtertiaryView) -> Double { @_com
 pub fn bio_struct_tertiary_view_mean(s : BiostructtertiaryView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_view_scale(s : BiostructtertiaryView, f : Double) -> BiostructtertiaryView {
-  let result = bio_struct_tertiary_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_view_add(a : BiostructtertiaryView, b : BiostructtertiaryView) -> BiostructtertiaryView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_view_copy(s : BiostructtertiaryView) -> BiostructtertiaryView {
-  let result = bio_struct_tertiary_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_view_fill(s : BiostructtertiaryView, v : Double) -> BiostructtertiaryView {
-  let result = bio_struct_tertiary_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_view_min(s : BiostructtertiaryView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn bio_struct_tertiary_range_sum(s : BiostructtertiaryRange) -> Double { @_c
 pub fn bio_struct_tertiary_range_mean(s : BiostructtertiaryRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_range_scale(s : BiostructtertiaryRange, f : Double) -> BiostructtertiaryRange {
-  let result = bio_struct_tertiary_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_range_add(a : BiostructtertiaryRange, b : BiostructtertiaryRange) -> BiostructtertiaryRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_range_copy(s : BiostructtertiaryRange) -> BiostructtertiaryRange {
-  let result = bio_struct_tertiary_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_range_fill(s : BiostructtertiaryRange, v : Double) -> BiostructtertiaryRange {
-  let result = bio_struct_tertiary_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_range_min(s : BiostructtertiaryRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn bio_struct_tertiary_slice_sum(s : BiostructtertiarySlice) -> Double { @_c
 pub fn bio_struct_tertiary_slice_mean(s : BiostructtertiarySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_slice_scale(s : BiostructtertiarySlice, f : Double) -> BiostructtertiarySlice {
-  let result = bio_struct_tertiary_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_slice_add(a : BiostructtertiarySlice, b : BiostructtertiarySlice) -> BiostructtertiarySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = bio_struct_tertiary_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn bio_struct_tertiary_slice_copy(s : BiostructtertiarySlice) -> BiostructtertiarySlice {
-  let result = bio_struct_tertiary_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_slice_fill(s : BiostructtertiarySlice, v : Double) -> BiostructtertiarySlice {
-  let result = bio_struct_tertiary_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_tertiary_slice_min(s : BiostructtertiarySlice) -> Double { @_common.min(s.data) }

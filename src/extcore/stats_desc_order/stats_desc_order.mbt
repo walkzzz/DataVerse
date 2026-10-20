@@ -383,28 +383,20 @@ pub fn stats_desc_order_frame_sum(s : StatsdescorderFrame) -> Double { @_common.
 pub fn stats_desc_order_frame_mean(s : StatsdescorderFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_frame_scale(s : StatsdescorderFrame, f : Double) -> StatsdescorderFrame {
-  let result = stats_desc_order_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_frame_add(a : StatsdescorderFrame, b : StatsdescorderFrame) -> StatsdescorderFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_frame_copy(s : StatsdescorderFrame) -> StatsdescorderFrame {
-  let result = stats_desc_order_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_frame_fill(s : StatsdescorderFrame, v : Double) -> StatsdescorderFrame {
-  let result = stats_desc_order_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_frame_min(s : StatsdescorderFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn stats_desc_order_table_sum(s : StatsdescorderTable) -> Double { @_common.
 pub fn stats_desc_order_table_mean(s : StatsdescorderTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_table_scale(s : StatsdescorderTable, f : Double) -> StatsdescorderTable {
-  let result = stats_desc_order_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_table_add(a : StatsdescorderTable, b : StatsdescorderTable) -> StatsdescorderTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_table_copy(s : StatsdescorderTable) -> StatsdescorderTable {
-  let result = stats_desc_order_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_table_fill(s : StatsdescorderTable, v : Double) -> StatsdescorderTable {
-  let result = stats_desc_order_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_table_min(s : StatsdescorderTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn stats_desc_order_graphn_sum(s : StatsdescorderGraphN) -> Double { @_commo
 pub fn stats_desc_order_graphn_mean(s : StatsdescorderGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_graphn_scale(s : StatsdescorderGraphN, f : Double) -> StatsdescorderGraphN {
-  let result = stats_desc_order_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_graphn_add(a : StatsdescorderGraphN, b : StatsdescorderGraphN) -> StatsdescorderGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_graphn_copy(s : StatsdescorderGraphN) -> StatsdescorderGraphN {
-  let result = stats_desc_order_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_graphn_fill(s : StatsdescorderGraphN, v : Double) -> StatsdescorderGraphN {
-  let result = stats_desc_order_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_graphn_min(s : StatsdescorderGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn stats_desc_order_node_sum(s : StatsdescorderNode) -> Double { @_common.su
 pub fn stats_desc_order_node_mean(s : StatsdescorderNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_node_scale(s : StatsdescorderNode, f : Double) -> StatsdescorderNode {
-  let result = stats_desc_order_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_node_add(a : StatsdescorderNode, b : StatsdescorderNode) -> StatsdescorderNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_node_copy(s : StatsdescorderNode) -> StatsdescorderNode {
-  let result = stats_desc_order_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_node_fill(s : StatsdescorderNode, v : Double) -> StatsdescorderNode {
-  let result = stats_desc_order_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_node_min(s : StatsdescorderNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn stats_desc_order_edge_sum(s : StatsdescorderEdge) -> Double { @_common.su
 pub fn stats_desc_order_edge_mean(s : StatsdescorderEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_edge_scale(s : StatsdescorderEdge, f : Double) -> StatsdescorderEdge {
-  let result = stats_desc_order_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_edge_add(a : StatsdescorderEdge, b : StatsdescorderEdge) -> StatsdescorderEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_edge_copy(s : StatsdescorderEdge) -> StatsdescorderEdge {
-  let result = stats_desc_order_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_edge_fill(s : StatsdescorderEdge, v : Double) -> StatsdescorderEdge {
-  let result = stats_desc_order_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_edge_min(s : StatsdescorderEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn stats_desc_order_path_sum(s : StatsdescorderPath) -> Double { @_common.su
 pub fn stats_desc_order_path_mean(s : StatsdescorderPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_path_scale(s : StatsdescorderPath, f : Double) -> StatsdescorderPath {
-  let result = stats_desc_order_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_path_add(a : StatsdescorderPath, b : StatsdescorderPath) -> StatsdescorderPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_path_copy(s : StatsdescorderPath) -> StatsdescorderPath {
-  let result = stats_desc_order_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_path_fill(s : StatsdescorderPath, v : Double) -> StatsdescorderPath {
-  let result = stats_desc_order_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_path_min(s : StatsdescorderPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn stats_desc_order_cluster_sum(s : StatsdescorderCluster) -> Double { @_com
 pub fn stats_desc_order_cluster_mean(s : StatsdescorderCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_cluster_scale(s : StatsdescorderCluster, f : Double) -> StatsdescorderCluster {
-  let result = stats_desc_order_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cluster_add(a : StatsdescorderCluster, b : StatsdescorderCluster) -> StatsdescorderCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_cluster_copy(s : StatsdescorderCluster) -> StatsdescorderCluster {
-  let result = stats_desc_order_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cluster_fill(s : StatsdescorderCluster, v : Double) -> StatsdescorderCluster {
-  let result = stats_desc_order_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cluster_min(s : StatsdescorderCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn stats_desc_order_model_sum(s : StatsdescorderModel) -> Double { @_common.
 pub fn stats_desc_order_model_mean(s : StatsdescorderModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_model_scale(s : StatsdescorderModel, f : Double) -> StatsdescorderModel {
-  let result = stats_desc_order_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_model_add(a : StatsdescorderModel, b : StatsdescorderModel) -> StatsdescorderModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_model_copy(s : StatsdescorderModel) -> StatsdescorderModel {
-  let result = stats_desc_order_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_model_fill(s : StatsdescorderModel, v : Double) -> StatsdescorderModel {
-  let result = stats_desc_order_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_model_min(s : StatsdescorderModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn stats_desc_order_layer_sum(s : StatsdescorderLayer) -> Double { @_common.
 pub fn stats_desc_order_layer_mean(s : StatsdescorderLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_layer_scale(s : StatsdescorderLayer, f : Double) -> StatsdescorderLayer {
-  let result = stats_desc_order_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_layer_add(a : StatsdescorderLayer, b : StatsdescorderLayer) -> StatsdescorderLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_layer_copy(s : StatsdescorderLayer) -> StatsdescorderLayer {
-  let result = stats_desc_order_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_layer_fill(s : StatsdescorderLayer, v : Double) -> StatsdescorderLayer {
-  let result = stats_desc_order_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_layer_min(s : StatsdescorderLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn stats_desc_order_buffer_sum(s : StatsdescorderBuffer) -> Double { @_commo
 pub fn stats_desc_order_buffer_mean(s : StatsdescorderBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_buffer_scale(s : StatsdescorderBuffer, f : Double) -> StatsdescorderBuffer {
-  let result = stats_desc_order_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_buffer_add(a : StatsdescorderBuffer, b : StatsdescorderBuffer) -> StatsdescorderBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_buffer_copy(s : StatsdescorderBuffer) -> StatsdescorderBuffer {
-  let result = stats_desc_order_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_buffer_fill(s : StatsdescorderBuffer, v : Double) -> StatsdescorderBuffer {
-  let result = stats_desc_order_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_buffer_min(s : StatsdescorderBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn stats_desc_order_cursor_sum(s : StatsdescorderCursor) -> Double { @_commo
 pub fn stats_desc_order_cursor_mean(s : StatsdescorderCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_cursor_scale(s : StatsdescorderCursor, f : Double) -> StatsdescorderCursor {
-  let result = stats_desc_order_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cursor_add(a : StatsdescorderCursor, b : StatsdescorderCursor) -> StatsdescorderCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_cursor_copy(s : StatsdescorderCursor) -> StatsdescorderCursor {
-  let result = stats_desc_order_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cursor_fill(s : StatsdescorderCursor, v : Double) -> StatsdescorderCursor {
-  let result = stats_desc_order_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cursor_min(s : StatsdescorderCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn stats_desc_order_view_sum(s : StatsdescorderView) -> Double { @_common.su
 pub fn stats_desc_order_view_mean(s : StatsdescorderView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_view_scale(s : StatsdescorderView, f : Double) -> StatsdescorderView {
-  let result = stats_desc_order_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_view_add(a : StatsdescorderView, b : StatsdescorderView) -> StatsdescorderView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_view_copy(s : StatsdescorderView) -> StatsdescorderView {
-  let result = stats_desc_order_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_view_fill(s : StatsdescorderView, v : Double) -> StatsdescorderView {
-  let result = stats_desc_order_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_view_min(s : StatsdescorderView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn stats_desc_order_range_sum(s : StatsdescorderRange) -> Double { @_common.
 pub fn stats_desc_order_range_mean(s : StatsdescorderRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_range_scale(s : StatsdescorderRange, f : Double) -> StatsdescorderRange {
-  let result = stats_desc_order_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_range_add(a : StatsdescorderRange, b : StatsdescorderRange) -> StatsdescorderRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_range_copy(s : StatsdescorderRange) -> StatsdescorderRange {
-  let result = stats_desc_order_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_range_fill(s : StatsdescorderRange, v : Double) -> StatsdescorderRange {
-  let result = stats_desc_order_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_range_min(s : StatsdescorderRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn stats_desc_order_slice_sum(s : StatsdescorderSlice) -> Double { @_common.
 pub fn stats_desc_order_slice_mean(s : StatsdescorderSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_slice_scale(s : StatsdescorderSlice, f : Double) -> StatsdescorderSlice {
-  let result = stats_desc_order_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_slice_add(a : StatsdescorderSlice, b : StatsdescorderSlice) -> StatsdescorderSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = stats_desc_order_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn stats_desc_order_slice_copy(s : StatsdescorderSlice) -> StatsdescorderSlice {
-  let result = stats_desc_order_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_slice_fill(s : StatsdescorderSlice, v : Double) -> StatsdescorderSlice {
-  let result = stats_desc_order_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_slice_min(s : StatsdescorderSlice) -> Double { @_common.min(s.data) }

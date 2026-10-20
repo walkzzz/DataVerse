@@ -383,28 +383,20 @@ pub fn signal_transform_chirp_frame_sum(s : SignaltransformchirpFrame) -> Double
 pub fn signal_transform_chirp_frame_mean(s : SignaltransformchirpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_frame_scale(s : SignaltransformchirpFrame, f : Double) -> SignaltransformchirpFrame {
-  let result = signal_transform_chirp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_frame_add(a : SignaltransformchirpFrame, b : SignaltransformchirpFrame) -> SignaltransformchirpFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_frame_copy(s : SignaltransformchirpFrame) -> SignaltransformchirpFrame {
-  let result = signal_transform_chirp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_frame_fill(s : SignaltransformchirpFrame, v : Double) -> SignaltransformchirpFrame {
-  let result = signal_transform_chirp_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_frame_min(s : SignaltransformchirpFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn signal_transform_chirp_table_sum(s : SignaltransformchirpTable) -> Double
 pub fn signal_transform_chirp_table_mean(s : SignaltransformchirpTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_table_scale(s : SignaltransformchirpTable, f : Double) -> SignaltransformchirpTable {
-  let result = signal_transform_chirp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_table_add(a : SignaltransformchirpTable, b : SignaltransformchirpTable) -> SignaltransformchirpTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_table_copy(s : SignaltransformchirpTable) -> SignaltransformchirpTable {
-  let result = signal_transform_chirp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_table_fill(s : SignaltransformchirpTable, v : Double) -> SignaltransformchirpTable {
-  let result = signal_transform_chirp_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_table_min(s : SignaltransformchirpTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn signal_transform_chirp_graphn_sum(s : SignaltransformchirpGraphN) -> Doub
 pub fn signal_transform_chirp_graphn_mean(s : SignaltransformchirpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_graphn_scale(s : SignaltransformchirpGraphN, f : Double) -> SignaltransformchirpGraphN {
-  let result = signal_transform_chirp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_graphn_add(a : SignaltransformchirpGraphN, b : SignaltransformchirpGraphN) -> SignaltransformchirpGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_graphn_copy(s : SignaltransformchirpGraphN) -> SignaltransformchirpGraphN {
-  let result = signal_transform_chirp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_graphn_fill(s : SignaltransformchirpGraphN, v : Double) -> SignaltransformchirpGraphN {
-  let result = signal_transform_chirp_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_graphn_min(s : SignaltransformchirpGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn signal_transform_chirp_node_sum(s : SignaltransformchirpNode) -> Double {
 pub fn signal_transform_chirp_node_mean(s : SignaltransformchirpNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_node_scale(s : SignaltransformchirpNode, f : Double) -> SignaltransformchirpNode {
-  let result = signal_transform_chirp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_node_add(a : SignaltransformchirpNode, b : SignaltransformchirpNode) -> SignaltransformchirpNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_node_copy(s : SignaltransformchirpNode) -> SignaltransformchirpNode {
-  let result = signal_transform_chirp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_node_fill(s : SignaltransformchirpNode, v : Double) -> SignaltransformchirpNode {
-  let result = signal_transform_chirp_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_node_min(s : SignaltransformchirpNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn signal_transform_chirp_edge_sum(s : SignaltransformchirpEdge) -> Double {
 pub fn signal_transform_chirp_edge_mean(s : SignaltransformchirpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_edge_scale(s : SignaltransformchirpEdge, f : Double) -> SignaltransformchirpEdge {
-  let result = signal_transform_chirp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_edge_add(a : SignaltransformchirpEdge, b : SignaltransformchirpEdge) -> SignaltransformchirpEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_edge_copy(s : SignaltransformchirpEdge) -> SignaltransformchirpEdge {
-  let result = signal_transform_chirp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_edge_fill(s : SignaltransformchirpEdge, v : Double) -> SignaltransformchirpEdge {
-  let result = signal_transform_chirp_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_edge_min(s : SignaltransformchirpEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn signal_transform_chirp_path_sum(s : SignaltransformchirpPath) -> Double {
 pub fn signal_transform_chirp_path_mean(s : SignaltransformchirpPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_path_scale(s : SignaltransformchirpPath, f : Double) -> SignaltransformchirpPath {
-  let result = signal_transform_chirp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_path_add(a : SignaltransformchirpPath, b : SignaltransformchirpPath) -> SignaltransformchirpPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_path_copy(s : SignaltransformchirpPath) -> SignaltransformchirpPath {
-  let result = signal_transform_chirp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_path_fill(s : SignaltransformchirpPath, v : Double) -> SignaltransformchirpPath {
-  let result = signal_transform_chirp_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_path_min(s : SignaltransformchirpPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn signal_transform_chirp_cluster_sum(s : SignaltransformchirpCluster) -> Do
 pub fn signal_transform_chirp_cluster_mean(s : SignaltransformchirpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_cluster_scale(s : SignaltransformchirpCluster, f : Double) -> SignaltransformchirpCluster {
-  let result = signal_transform_chirp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_cluster_add(a : SignaltransformchirpCluster, b : SignaltransformchirpCluster) -> SignaltransformchirpCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_cluster_copy(s : SignaltransformchirpCluster) -> SignaltransformchirpCluster {
-  let result = signal_transform_chirp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_cluster_fill(s : SignaltransformchirpCluster, v : Double) -> SignaltransformchirpCluster {
-  let result = signal_transform_chirp_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_cluster_min(s : SignaltransformchirpCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn signal_transform_chirp_model_sum(s : SignaltransformchirpModel) -> Double
 pub fn signal_transform_chirp_model_mean(s : SignaltransformchirpModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_model_scale(s : SignaltransformchirpModel, f : Double) -> SignaltransformchirpModel {
-  let result = signal_transform_chirp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_model_add(a : SignaltransformchirpModel, b : SignaltransformchirpModel) -> SignaltransformchirpModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_model_copy(s : SignaltransformchirpModel) -> SignaltransformchirpModel {
-  let result = signal_transform_chirp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_model_fill(s : SignaltransformchirpModel, v : Double) -> SignaltransformchirpModel {
-  let result = signal_transform_chirp_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_model_min(s : SignaltransformchirpModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn signal_transform_chirp_layer_sum(s : SignaltransformchirpLayer) -> Double
 pub fn signal_transform_chirp_layer_mean(s : SignaltransformchirpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_layer_scale(s : SignaltransformchirpLayer, f : Double) -> SignaltransformchirpLayer {
-  let result = signal_transform_chirp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_layer_add(a : SignaltransformchirpLayer, b : SignaltransformchirpLayer) -> SignaltransformchirpLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_layer_copy(s : SignaltransformchirpLayer) -> SignaltransformchirpLayer {
-  let result = signal_transform_chirp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_layer_fill(s : SignaltransformchirpLayer, v : Double) -> SignaltransformchirpLayer {
-  let result = signal_transform_chirp_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_layer_min(s : SignaltransformchirpLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn signal_transform_chirp_buffer_sum(s : SignaltransformchirpBuffer) -> Doub
 pub fn signal_transform_chirp_buffer_mean(s : SignaltransformchirpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_buffer_scale(s : SignaltransformchirpBuffer, f : Double) -> SignaltransformchirpBuffer {
-  let result = signal_transform_chirp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_buffer_add(a : SignaltransformchirpBuffer, b : SignaltransformchirpBuffer) -> SignaltransformchirpBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_buffer_copy(s : SignaltransformchirpBuffer) -> SignaltransformchirpBuffer {
-  let result = signal_transform_chirp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_buffer_fill(s : SignaltransformchirpBuffer, v : Double) -> SignaltransformchirpBuffer {
-  let result = signal_transform_chirp_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_buffer_min(s : SignaltransformchirpBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn signal_transform_chirp_cursor_sum(s : SignaltransformchirpCursor) -> Doub
 pub fn signal_transform_chirp_cursor_mean(s : SignaltransformchirpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_cursor_scale(s : SignaltransformchirpCursor, f : Double) -> SignaltransformchirpCursor {
-  let result = signal_transform_chirp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_cursor_add(a : SignaltransformchirpCursor, b : SignaltransformchirpCursor) -> SignaltransformchirpCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_cursor_copy(s : SignaltransformchirpCursor) -> SignaltransformchirpCursor {
-  let result = signal_transform_chirp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_cursor_fill(s : SignaltransformchirpCursor, v : Double) -> SignaltransformchirpCursor {
-  let result = signal_transform_chirp_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_cursor_min(s : SignaltransformchirpCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn signal_transform_chirp_view_sum(s : SignaltransformchirpView) -> Double {
 pub fn signal_transform_chirp_view_mean(s : SignaltransformchirpView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_view_scale(s : SignaltransformchirpView, f : Double) -> SignaltransformchirpView {
-  let result = signal_transform_chirp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_view_add(a : SignaltransformchirpView, b : SignaltransformchirpView) -> SignaltransformchirpView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_view_copy(s : SignaltransformchirpView) -> SignaltransformchirpView {
-  let result = signal_transform_chirp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_view_fill(s : SignaltransformchirpView, v : Double) -> SignaltransformchirpView {
-  let result = signal_transform_chirp_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_view_min(s : SignaltransformchirpView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn signal_transform_chirp_range_sum(s : SignaltransformchirpRange) -> Double
 pub fn signal_transform_chirp_range_mean(s : SignaltransformchirpRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_range_scale(s : SignaltransformchirpRange, f : Double) -> SignaltransformchirpRange {
-  let result = signal_transform_chirp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_range_add(a : SignaltransformchirpRange, b : SignaltransformchirpRange) -> SignaltransformchirpRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_range_copy(s : SignaltransformchirpRange) -> SignaltransformchirpRange {
-  let result = signal_transform_chirp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_range_fill(s : SignaltransformchirpRange, v : Double) -> SignaltransformchirpRange {
-  let result = signal_transform_chirp_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_range_min(s : SignaltransformchirpRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn signal_transform_chirp_slice_sum(s : SignaltransformchirpSlice) -> Double
 pub fn signal_transform_chirp_slice_mean(s : SignaltransformchirpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_chirp_slice_scale(s : SignaltransformchirpSlice, f : Double) -> SignaltransformchirpSlice {
-  let result = signal_transform_chirp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_slice_add(a : SignaltransformchirpSlice, b : SignaltransformchirpSlice) -> SignaltransformchirpSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = signal_transform_chirp_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn signal_transform_chirp_slice_copy(s : SignaltransformchirpSlice) -> SignaltransformchirpSlice {
-  let result = signal_transform_chirp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_slice_fill(s : SignaltransformchirpSlice, v : Double) -> SignaltransformchirpSlice {
-  let result = signal_transform_chirp_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_chirp_slice_min(s : SignaltransformchirpSlice) -> Double { @_common.min(s.data) }

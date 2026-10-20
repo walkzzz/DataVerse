@@ -383,28 +383,20 @@ pub fn net_flow_bufferbloat_frame_sum(s : NetflowbufferbloatFrame) -> Double { @
 pub fn net_flow_bufferbloat_frame_mean(s : NetflowbufferbloatFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_frame_scale(s : NetflowbufferbloatFrame, f : Double) -> NetflowbufferbloatFrame {
-  let result = net_flow_bufferbloat_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_frame_add(a : NetflowbufferbloatFrame, b : NetflowbufferbloatFrame) -> NetflowbufferbloatFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_frame_copy(s : NetflowbufferbloatFrame) -> NetflowbufferbloatFrame {
-  let result = net_flow_bufferbloat_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_frame_fill(s : NetflowbufferbloatFrame, v : Double) -> NetflowbufferbloatFrame {
-  let result = net_flow_bufferbloat_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_frame_min(s : NetflowbufferbloatFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn net_flow_bufferbloat_table_sum(s : NetflowbufferbloatTable) -> Double { @
 pub fn net_flow_bufferbloat_table_mean(s : NetflowbufferbloatTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_table_scale(s : NetflowbufferbloatTable, f : Double) -> NetflowbufferbloatTable {
-  let result = net_flow_bufferbloat_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_table_add(a : NetflowbufferbloatTable, b : NetflowbufferbloatTable) -> NetflowbufferbloatTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_table_copy(s : NetflowbufferbloatTable) -> NetflowbufferbloatTable {
-  let result = net_flow_bufferbloat_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_table_fill(s : NetflowbufferbloatTable, v : Double) -> NetflowbufferbloatTable {
-  let result = net_flow_bufferbloat_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_table_min(s : NetflowbufferbloatTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn net_flow_bufferbloat_graphn_sum(s : NetflowbufferbloatGraphN) -> Double {
 pub fn net_flow_bufferbloat_graphn_mean(s : NetflowbufferbloatGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_graphn_scale(s : NetflowbufferbloatGraphN, f : Double) -> NetflowbufferbloatGraphN {
-  let result = net_flow_bufferbloat_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_graphn_add(a : NetflowbufferbloatGraphN, b : NetflowbufferbloatGraphN) -> NetflowbufferbloatGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_graphn_copy(s : NetflowbufferbloatGraphN) -> NetflowbufferbloatGraphN {
-  let result = net_flow_bufferbloat_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_graphn_fill(s : NetflowbufferbloatGraphN, v : Double) -> NetflowbufferbloatGraphN {
-  let result = net_flow_bufferbloat_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_graphn_min(s : NetflowbufferbloatGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn net_flow_bufferbloat_node_sum(s : NetflowbufferbloatNode) -> Double { @_c
 pub fn net_flow_bufferbloat_node_mean(s : NetflowbufferbloatNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_node_scale(s : NetflowbufferbloatNode, f : Double) -> NetflowbufferbloatNode {
-  let result = net_flow_bufferbloat_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_node_add(a : NetflowbufferbloatNode, b : NetflowbufferbloatNode) -> NetflowbufferbloatNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_node_copy(s : NetflowbufferbloatNode) -> NetflowbufferbloatNode {
-  let result = net_flow_bufferbloat_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_node_fill(s : NetflowbufferbloatNode, v : Double) -> NetflowbufferbloatNode {
-  let result = net_flow_bufferbloat_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_node_min(s : NetflowbufferbloatNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn net_flow_bufferbloat_edge_sum(s : NetflowbufferbloatEdge) -> Double { @_c
 pub fn net_flow_bufferbloat_edge_mean(s : NetflowbufferbloatEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_edge_scale(s : NetflowbufferbloatEdge, f : Double) -> NetflowbufferbloatEdge {
-  let result = net_flow_bufferbloat_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_edge_add(a : NetflowbufferbloatEdge, b : NetflowbufferbloatEdge) -> NetflowbufferbloatEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_edge_copy(s : NetflowbufferbloatEdge) -> NetflowbufferbloatEdge {
-  let result = net_flow_bufferbloat_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_edge_fill(s : NetflowbufferbloatEdge, v : Double) -> NetflowbufferbloatEdge {
-  let result = net_flow_bufferbloat_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_edge_min(s : NetflowbufferbloatEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn net_flow_bufferbloat_path_sum(s : NetflowbufferbloatPath) -> Double { @_c
 pub fn net_flow_bufferbloat_path_mean(s : NetflowbufferbloatPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_path_scale(s : NetflowbufferbloatPath, f : Double) -> NetflowbufferbloatPath {
-  let result = net_flow_bufferbloat_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_path_add(a : NetflowbufferbloatPath, b : NetflowbufferbloatPath) -> NetflowbufferbloatPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_path_copy(s : NetflowbufferbloatPath) -> NetflowbufferbloatPath {
-  let result = net_flow_bufferbloat_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_path_fill(s : NetflowbufferbloatPath, v : Double) -> NetflowbufferbloatPath {
-  let result = net_flow_bufferbloat_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_path_min(s : NetflowbufferbloatPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn net_flow_bufferbloat_cluster_sum(s : NetflowbufferbloatCluster) -> Double
 pub fn net_flow_bufferbloat_cluster_mean(s : NetflowbufferbloatCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_cluster_scale(s : NetflowbufferbloatCluster, f : Double) -> NetflowbufferbloatCluster {
-  let result = net_flow_bufferbloat_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_cluster_add(a : NetflowbufferbloatCluster, b : NetflowbufferbloatCluster) -> NetflowbufferbloatCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_cluster_copy(s : NetflowbufferbloatCluster) -> NetflowbufferbloatCluster {
-  let result = net_flow_bufferbloat_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_cluster_fill(s : NetflowbufferbloatCluster, v : Double) -> NetflowbufferbloatCluster {
-  let result = net_flow_bufferbloat_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_cluster_min(s : NetflowbufferbloatCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn net_flow_bufferbloat_model_sum(s : NetflowbufferbloatModel) -> Double { @
 pub fn net_flow_bufferbloat_model_mean(s : NetflowbufferbloatModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_model_scale(s : NetflowbufferbloatModel, f : Double) -> NetflowbufferbloatModel {
-  let result = net_flow_bufferbloat_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_model_add(a : NetflowbufferbloatModel, b : NetflowbufferbloatModel) -> NetflowbufferbloatModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_model_copy(s : NetflowbufferbloatModel) -> NetflowbufferbloatModel {
-  let result = net_flow_bufferbloat_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_model_fill(s : NetflowbufferbloatModel, v : Double) -> NetflowbufferbloatModel {
-  let result = net_flow_bufferbloat_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_model_min(s : NetflowbufferbloatModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn net_flow_bufferbloat_layer_sum(s : NetflowbufferbloatLayer) -> Double { @
 pub fn net_flow_bufferbloat_layer_mean(s : NetflowbufferbloatLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_layer_scale(s : NetflowbufferbloatLayer, f : Double) -> NetflowbufferbloatLayer {
-  let result = net_flow_bufferbloat_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_layer_add(a : NetflowbufferbloatLayer, b : NetflowbufferbloatLayer) -> NetflowbufferbloatLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_layer_copy(s : NetflowbufferbloatLayer) -> NetflowbufferbloatLayer {
-  let result = net_flow_bufferbloat_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_layer_fill(s : NetflowbufferbloatLayer, v : Double) -> NetflowbufferbloatLayer {
-  let result = net_flow_bufferbloat_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_layer_min(s : NetflowbufferbloatLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn net_flow_bufferbloat_buffer_sum(s : NetflowbufferbloatBuffer) -> Double {
 pub fn net_flow_bufferbloat_buffer_mean(s : NetflowbufferbloatBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_buffer_scale(s : NetflowbufferbloatBuffer, f : Double) -> NetflowbufferbloatBuffer {
-  let result = net_flow_bufferbloat_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_buffer_add(a : NetflowbufferbloatBuffer, b : NetflowbufferbloatBuffer) -> NetflowbufferbloatBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_buffer_copy(s : NetflowbufferbloatBuffer) -> NetflowbufferbloatBuffer {
-  let result = net_flow_bufferbloat_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_buffer_fill(s : NetflowbufferbloatBuffer, v : Double) -> NetflowbufferbloatBuffer {
-  let result = net_flow_bufferbloat_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_buffer_min(s : NetflowbufferbloatBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn net_flow_bufferbloat_cursor_sum(s : NetflowbufferbloatCursor) -> Double {
 pub fn net_flow_bufferbloat_cursor_mean(s : NetflowbufferbloatCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_cursor_scale(s : NetflowbufferbloatCursor, f : Double) -> NetflowbufferbloatCursor {
-  let result = net_flow_bufferbloat_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_cursor_add(a : NetflowbufferbloatCursor, b : NetflowbufferbloatCursor) -> NetflowbufferbloatCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_cursor_copy(s : NetflowbufferbloatCursor) -> NetflowbufferbloatCursor {
-  let result = net_flow_bufferbloat_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_cursor_fill(s : NetflowbufferbloatCursor, v : Double) -> NetflowbufferbloatCursor {
-  let result = net_flow_bufferbloat_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_cursor_min(s : NetflowbufferbloatCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn net_flow_bufferbloat_view_sum(s : NetflowbufferbloatView) -> Double { @_c
 pub fn net_flow_bufferbloat_view_mean(s : NetflowbufferbloatView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_view_scale(s : NetflowbufferbloatView, f : Double) -> NetflowbufferbloatView {
-  let result = net_flow_bufferbloat_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_view_add(a : NetflowbufferbloatView, b : NetflowbufferbloatView) -> NetflowbufferbloatView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_view_copy(s : NetflowbufferbloatView) -> NetflowbufferbloatView {
-  let result = net_flow_bufferbloat_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_view_fill(s : NetflowbufferbloatView, v : Double) -> NetflowbufferbloatView {
-  let result = net_flow_bufferbloat_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_view_min(s : NetflowbufferbloatView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn net_flow_bufferbloat_range_sum(s : NetflowbufferbloatRange) -> Double { @
 pub fn net_flow_bufferbloat_range_mean(s : NetflowbufferbloatRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_range_scale(s : NetflowbufferbloatRange, f : Double) -> NetflowbufferbloatRange {
-  let result = net_flow_bufferbloat_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_range_add(a : NetflowbufferbloatRange, b : NetflowbufferbloatRange) -> NetflowbufferbloatRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_range_copy(s : NetflowbufferbloatRange) -> NetflowbufferbloatRange {
-  let result = net_flow_bufferbloat_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_range_fill(s : NetflowbufferbloatRange, v : Double) -> NetflowbufferbloatRange {
-  let result = net_flow_bufferbloat_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_range_min(s : NetflowbufferbloatRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn net_flow_bufferbloat_slice_sum(s : NetflowbufferbloatSlice) -> Double { @
 pub fn net_flow_bufferbloat_slice_mean(s : NetflowbufferbloatSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_bufferbloat_slice_scale(s : NetflowbufferbloatSlice, f : Double) -> NetflowbufferbloatSlice {
-  let result = net_flow_bufferbloat_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_slice_add(a : NetflowbufferbloatSlice, b : NetflowbufferbloatSlice) -> NetflowbufferbloatSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = net_flow_bufferbloat_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn net_flow_bufferbloat_slice_copy(s : NetflowbufferbloatSlice) -> NetflowbufferbloatSlice {
-  let result = net_flow_bufferbloat_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_slice_fill(s : NetflowbufferbloatSlice, v : Double) -> NetflowbufferbloatSlice {
-  let result = net_flow_bufferbloat_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_bufferbloat_slice_min(s : NetflowbufferbloatSlice) -> Double { @_common.min(s.data) }

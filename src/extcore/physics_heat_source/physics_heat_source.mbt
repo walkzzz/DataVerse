@@ -383,28 +383,20 @@ pub fn physics_heat_source_frame_sum(s : PhysicsheatsourceFrame) -> Double { @_c
 pub fn physics_heat_source_frame_mean(s : PhysicsheatsourceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_frame_scale(s : PhysicsheatsourceFrame, f : Double) -> PhysicsheatsourceFrame {
-  let result = physics_heat_source_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_frame_add(a : PhysicsheatsourceFrame, b : PhysicsheatsourceFrame) -> PhysicsheatsourceFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_frame_copy(s : PhysicsheatsourceFrame) -> PhysicsheatsourceFrame {
-  let result = physics_heat_source_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_frame_fill(s : PhysicsheatsourceFrame, v : Double) -> PhysicsheatsourceFrame {
-  let result = physics_heat_source_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_frame_min(s : PhysicsheatsourceFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_heat_source_table_sum(s : PhysicsheatsourceTable) -> Double { @_c
 pub fn physics_heat_source_table_mean(s : PhysicsheatsourceTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_table_scale(s : PhysicsheatsourceTable, f : Double) -> PhysicsheatsourceTable {
-  let result = physics_heat_source_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_table_add(a : PhysicsheatsourceTable, b : PhysicsheatsourceTable) -> PhysicsheatsourceTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_table_copy(s : PhysicsheatsourceTable) -> PhysicsheatsourceTable {
-  let result = physics_heat_source_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_table_fill(s : PhysicsheatsourceTable, v : Double) -> PhysicsheatsourceTable {
-  let result = physics_heat_source_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_table_min(s : PhysicsheatsourceTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_heat_source_graphn_sum(s : PhysicsheatsourceGraphN) -> Double { @
 pub fn physics_heat_source_graphn_mean(s : PhysicsheatsourceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_graphn_scale(s : PhysicsheatsourceGraphN, f : Double) -> PhysicsheatsourceGraphN {
-  let result = physics_heat_source_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_graphn_add(a : PhysicsheatsourceGraphN, b : PhysicsheatsourceGraphN) -> PhysicsheatsourceGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_graphn_copy(s : PhysicsheatsourceGraphN) -> PhysicsheatsourceGraphN {
-  let result = physics_heat_source_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_graphn_fill(s : PhysicsheatsourceGraphN, v : Double) -> PhysicsheatsourceGraphN {
-  let result = physics_heat_source_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_graphn_min(s : PhysicsheatsourceGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_heat_source_node_sum(s : PhysicsheatsourceNode) -> Double { @_com
 pub fn physics_heat_source_node_mean(s : PhysicsheatsourceNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_node_scale(s : PhysicsheatsourceNode, f : Double) -> PhysicsheatsourceNode {
-  let result = physics_heat_source_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_node_add(a : PhysicsheatsourceNode, b : PhysicsheatsourceNode) -> PhysicsheatsourceNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_node_copy(s : PhysicsheatsourceNode) -> PhysicsheatsourceNode {
-  let result = physics_heat_source_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_node_fill(s : PhysicsheatsourceNode, v : Double) -> PhysicsheatsourceNode {
-  let result = physics_heat_source_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_node_min(s : PhysicsheatsourceNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_heat_source_edge_sum(s : PhysicsheatsourceEdge) -> Double { @_com
 pub fn physics_heat_source_edge_mean(s : PhysicsheatsourceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_edge_scale(s : PhysicsheatsourceEdge, f : Double) -> PhysicsheatsourceEdge {
-  let result = physics_heat_source_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_edge_add(a : PhysicsheatsourceEdge, b : PhysicsheatsourceEdge) -> PhysicsheatsourceEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_edge_copy(s : PhysicsheatsourceEdge) -> PhysicsheatsourceEdge {
-  let result = physics_heat_source_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_edge_fill(s : PhysicsheatsourceEdge, v : Double) -> PhysicsheatsourceEdge {
-  let result = physics_heat_source_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_edge_min(s : PhysicsheatsourceEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_heat_source_path_sum(s : PhysicsheatsourcePath) -> Double { @_com
 pub fn physics_heat_source_path_mean(s : PhysicsheatsourcePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_path_scale(s : PhysicsheatsourcePath, f : Double) -> PhysicsheatsourcePath {
-  let result = physics_heat_source_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_path_add(a : PhysicsheatsourcePath, b : PhysicsheatsourcePath) -> PhysicsheatsourcePath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_path_copy(s : PhysicsheatsourcePath) -> PhysicsheatsourcePath {
-  let result = physics_heat_source_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_path_fill(s : PhysicsheatsourcePath, v : Double) -> PhysicsheatsourcePath {
-  let result = physics_heat_source_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_path_min(s : PhysicsheatsourcePath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_heat_source_cluster_sum(s : PhysicsheatsourceCluster) -> Double {
 pub fn physics_heat_source_cluster_mean(s : PhysicsheatsourceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_cluster_scale(s : PhysicsheatsourceCluster, f : Double) -> PhysicsheatsourceCluster {
-  let result = physics_heat_source_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cluster_add(a : PhysicsheatsourceCluster, b : PhysicsheatsourceCluster) -> PhysicsheatsourceCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_cluster_copy(s : PhysicsheatsourceCluster) -> PhysicsheatsourceCluster {
-  let result = physics_heat_source_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cluster_fill(s : PhysicsheatsourceCluster, v : Double) -> PhysicsheatsourceCluster {
-  let result = physics_heat_source_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cluster_min(s : PhysicsheatsourceCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_heat_source_model_sum(s : PhysicsheatsourceModel) -> Double { @_c
 pub fn physics_heat_source_model_mean(s : PhysicsheatsourceModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_model_scale(s : PhysicsheatsourceModel, f : Double) -> PhysicsheatsourceModel {
-  let result = physics_heat_source_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_model_add(a : PhysicsheatsourceModel, b : PhysicsheatsourceModel) -> PhysicsheatsourceModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_model_copy(s : PhysicsheatsourceModel) -> PhysicsheatsourceModel {
-  let result = physics_heat_source_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_model_fill(s : PhysicsheatsourceModel, v : Double) -> PhysicsheatsourceModel {
-  let result = physics_heat_source_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_model_min(s : PhysicsheatsourceModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_heat_source_layer_sum(s : PhysicsheatsourceLayer) -> Double { @_c
 pub fn physics_heat_source_layer_mean(s : PhysicsheatsourceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_layer_scale(s : PhysicsheatsourceLayer, f : Double) -> PhysicsheatsourceLayer {
-  let result = physics_heat_source_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_layer_add(a : PhysicsheatsourceLayer, b : PhysicsheatsourceLayer) -> PhysicsheatsourceLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_layer_copy(s : PhysicsheatsourceLayer) -> PhysicsheatsourceLayer {
-  let result = physics_heat_source_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_layer_fill(s : PhysicsheatsourceLayer, v : Double) -> PhysicsheatsourceLayer {
-  let result = physics_heat_source_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_layer_min(s : PhysicsheatsourceLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_heat_source_buffer_sum(s : PhysicsheatsourceBuffer) -> Double { @
 pub fn physics_heat_source_buffer_mean(s : PhysicsheatsourceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_buffer_scale(s : PhysicsheatsourceBuffer, f : Double) -> PhysicsheatsourceBuffer {
-  let result = physics_heat_source_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_buffer_add(a : PhysicsheatsourceBuffer, b : PhysicsheatsourceBuffer) -> PhysicsheatsourceBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_buffer_copy(s : PhysicsheatsourceBuffer) -> PhysicsheatsourceBuffer {
-  let result = physics_heat_source_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_buffer_fill(s : PhysicsheatsourceBuffer, v : Double) -> PhysicsheatsourceBuffer {
-  let result = physics_heat_source_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_buffer_min(s : PhysicsheatsourceBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_heat_source_cursor_sum(s : PhysicsheatsourceCursor) -> Double { @
 pub fn physics_heat_source_cursor_mean(s : PhysicsheatsourceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_cursor_scale(s : PhysicsheatsourceCursor, f : Double) -> PhysicsheatsourceCursor {
-  let result = physics_heat_source_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cursor_add(a : PhysicsheatsourceCursor, b : PhysicsheatsourceCursor) -> PhysicsheatsourceCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_cursor_copy(s : PhysicsheatsourceCursor) -> PhysicsheatsourceCursor {
-  let result = physics_heat_source_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cursor_fill(s : PhysicsheatsourceCursor, v : Double) -> PhysicsheatsourceCursor {
-  let result = physics_heat_source_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cursor_min(s : PhysicsheatsourceCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_heat_source_view_sum(s : PhysicsheatsourceView) -> Double { @_com
 pub fn physics_heat_source_view_mean(s : PhysicsheatsourceView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_view_scale(s : PhysicsheatsourceView, f : Double) -> PhysicsheatsourceView {
-  let result = physics_heat_source_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_view_add(a : PhysicsheatsourceView, b : PhysicsheatsourceView) -> PhysicsheatsourceView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_view_copy(s : PhysicsheatsourceView) -> PhysicsheatsourceView {
-  let result = physics_heat_source_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_view_fill(s : PhysicsheatsourceView, v : Double) -> PhysicsheatsourceView {
-  let result = physics_heat_source_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_view_min(s : PhysicsheatsourceView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_heat_source_range_sum(s : PhysicsheatsourceRange) -> Double { @_c
 pub fn physics_heat_source_range_mean(s : PhysicsheatsourceRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_range_scale(s : PhysicsheatsourceRange, f : Double) -> PhysicsheatsourceRange {
-  let result = physics_heat_source_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_range_add(a : PhysicsheatsourceRange, b : PhysicsheatsourceRange) -> PhysicsheatsourceRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_range_copy(s : PhysicsheatsourceRange) -> PhysicsheatsourceRange {
-  let result = physics_heat_source_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_range_fill(s : PhysicsheatsourceRange, v : Double) -> PhysicsheatsourceRange {
-  let result = physics_heat_source_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_range_min(s : PhysicsheatsourceRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_heat_source_slice_sum(s : PhysicsheatsourceSlice) -> Double { @_c
 pub fn physics_heat_source_slice_mean(s : PhysicsheatsourceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_source_slice_scale(s : PhysicsheatsourceSlice, f : Double) -> PhysicsheatsourceSlice {
-  let result = physics_heat_source_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_slice_add(a : PhysicsheatsourceSlice, b : PhysicsheatsourceSlice) -> PhysicsheatsourceSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_heat_source_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_heat_source_slice_copy(s : PhysicsheatsourceSlice) -> PhysicsheatsourceSlice {
-  let result = physics_heat_source_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_slice_fill(s : PhysicsheatsourceSlice, v : Double) -> PhysicsheatsourceSlice {
-  let result = physics_heat_source_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_slice_min(s : PhysicsheatsourceSlice) -> Double { @_common.min(s.data) }

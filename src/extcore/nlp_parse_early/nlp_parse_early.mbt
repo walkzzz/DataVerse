@@ -383,28 +383,20 @@ pub fn nlp_parse_early_frame_sum(s : NlpparseearlyFrame) -> Double { @_common.su
 pub fn nlp_parse_early_frame_mean(s : NlpparseearlyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_frame_scale(s : NlpparseearlyFrame, f : Double) -> NlpparseearlyFrame {
-  let result = nlp_parse_early_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_frame_add(a : NlpparseearlyFrame, b : NlpparseearlyFrame) -> NlpparseearlyFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_frame_copy(s : NlpparseearlyFrame) -> NlpparseearlyFrame {
-  let result = nlp_parse_early_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_frame_fill(s : NlpparseearlyFrame, v : Double) -> NlpparseearlyFrame {
-  let result = nlp_parse_early_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_frame_min(s : NlpparseearlyFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_parse_early_table_sum(s : NlpparseearlyTable) -> Double { @_common.su
 pub fn nlp_parse_early_table_mean(s : NlpparseearlyTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_table_scale(s : NlpparseearlyTable, f : Double) -> NlpparseearlyTable {
-  let result = nlp_parse_early_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_table_add(a : NlpparseearlyTable, b : NlpparseearlyTable) -> NlpparseearlyTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_table_copy(s : NlpparseearlyTable) -> NlpparseearlyTable {
-  let result = nlp_parse_early_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_table_fill(s : NlpparseearlyTable, v : Double) -> NlpparseearlyTable {
-  let result = nlp_parse_early_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_table_min(s : NlpparseearlyTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_parse_early_graphn_sum(s : NlpparseearlyGraphN) -> Double { @_common.
 pub fn nlp_parse_early_graphn_mean(s : NlpparseearlyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_graphn_scale(s : NlpparseearlyGraphN, f : Double) -> NlpparseearlyGraphN {
-  let result = nlp_parse_early_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_graphn_add(a : NlpparseearlyGraphN, b : NlpparseearlyGraphN) -> NlpparseearlyGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_graphn_copy(s : NlpparseearlyGraphN) -> NlpparseearlyGraphN {
-  let result = nlp_parse_early_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_graphn_fill(s : NlpparseearlyGraphN, v : Double) -> NlpparseearlyGraphN {
-  let result = nlp_parse_early_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_graphn_min(s : NlpparseearlyGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_parse_early_node_sum(s : NlpparseearlyNode) -> Double { @_common.sum(
 pub fn nlp_parse_early_node_mean(s : NlpparseearlyNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_node_scale(s : NlpparseearlyNode, f : Double) -> NlpparseearlyNode {
-  let result = nlp_parse_early_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_node_add(a : NlpparseearlyNode, b : NlpparseearlyNode) -> NlpparseearlyNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_node_copy(s : NlpparseearlyNode) -> NlpparseearlyNode {
-  let result = nlp_parse_early_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_node_fill(s : NlpparseearlyNode, v : Double) -> NlpparseearlyNode {
-  let result = nlp_parse_early_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_node_min(s : NlpparseearlyNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_parse_early_edge_sum(s : NlpparseearlyEdge) -> Double { @_common.sum(
 pub fn nlp_parse_early_edge_mean(s : NlpparseearlyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_edge_scale(s : NlpparseearlyEdge, f : Double) -> NlpparseearlyEdge {
-  let result = nlp_parse_early_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_edge_add(a : NlpparseearlyEdge, b : NlpparseearlyEdge) -> NlpparseearlyEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_edge_copy(s : NlpparseearlyEdge) -> NlpparseearlyEdge {
-  let result = nlp_parse_early_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_edge_fill(s : NlpparseearlyEdge, v : Double) -> NlpparseearlyEdge {
-  let result = nlp_parse_early_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_edge_min(s : NlpparseearlyEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_parse_early_path_sum(s : NlpparseearlyPath) -> Double { @_common.sum(
 pub fn nlp_parse_early_path_mean(s : NlpparseearlyPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_path_scale(s : NlpparseearlyPath, f : Double) -> NlpparseearlyPath {
-  let result = nlp_parse_early_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_path_add(a : NlpparseearlyPath, b : NlpparseearlyPath) -> NlpparseearlyPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_path_copy(s : NlpparseearlyPath) -> NlpparseearlyPath {
-  let result = nlp_parse_early_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_path_fill(s : NlpparseearlyPath, v : Double) -> NlpparseearlyPath {
-  let result = nlp_parse_early_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_path_min(s : NlpparseearlyPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_parse_early_cluster_sum(s : NlpparseearlyCluster) -> Double { @_commo
 pub fn nlp_parse_early_cluster_mean(s : NlpparseearlyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_cluster_scale(s : NlpparseearlyCluster, f : Double) -> NlpparseearlyCluster {
-  let result = nlp_parse_early_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_cluster_add(a : NlpparseearlyCluster, b : NlpparseearlyCluster) -> NlpparseearlyCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_cluster_copy(s : NlpparseearlyCluster) -> NlpparseearlyCluster {
-  let result = nlp_parse_early_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_cluster_fill(s : NlpparseearlyCluster, v : Double) -> NlpparseearlyCluster {
-  let result = nlp_parse_early_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_cluster_min(s : NlpparseearlyCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_parse_early_model_sum(s : NlpparseearlyModel) -> Double { @_common.su
 pub fn nlp_parse_early_model_mean(s : NlpparseearlyModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_model_scale(s : NlpparseearlyModel, f : Double) -> NlpparseearlyModel {
-  let result = nlp_parse_early_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_model_add(a : NlpparseearlyModel, b : NlpparseearlyModel) -> NlpparseearlyModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_model_copy(s : NlpparseearlyModel) -> NlpparseearlyModel {
-  let result = nlp_parse_early_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_model_fill(s : NlpparseearlyModel, v : Double) -> NlpparseearlyModel {
-  let result = nlp_parse_early_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_model_min(s : NlpparseearlyModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_parse_early_layer_sum(s : NlpparseearlyLayer) -> Double { @_common.su
 pub fn nlp_parse_early_layer_mean(s : NlpparseearlyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_layer_scale(s : NlpparseearlyLayer, f : Double) -> NlpparseearlyLayer {
-  let result = nlp_parse_early_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_layer_add(a : NlpparseearlyLayer, b : NlpparseearlyLayer) -> NlpparseearlyLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_layer_copy(s : NlpparseearlyLayer) -> NlpparseearlyLayer {
-  let result = nlp_parse_early_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_layer_fill(s : NlpparseearlyLayer, v : Double) -> NlpparseearlyLayer {
-  let result = nlp_parse_early_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_layer_min(s : NlpparseearlyLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_parse_early_buffer_sum(s : NlpparseearlyBuffer) -> Double { @_common.
 pub fn nlp_parse_early_buffer_mean(s : NlpparseearlyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_buffer_scale(s : NlpparseearlyBuffer, f : Double) -> NlpparseearlyBuffer {
-  let result = nlp_parse_early_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_buffer_add(a : NlpparseearlyBuffer, b : NlpparseearlyBuffer) -> NlpparseearlyBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_buffer_copy(s : NlpparseearlyBuffer) -> NlpparseearlyBuffer {
-  let result = nlp_parse_early_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_buffer_fill(s : NlpparseearlyBuffer, v : Double) -> NlpparseearlyBuffer {
-  let result = nlp_parse_early_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_buffer_min(s : NlpparseearlyBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_parse_early_cursor_sum(s : NlpparseearlyCursor) -> Double { @_common.
 pub fn nlp_parse_early_cursor_mean(s : NlpparseearlyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_cursor_scale(s : NlpparseearlyCursor, f : Double) -> NlpparseearlyCursor {
-  let result = nlp_parse_early_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_cursor_add(a : NlpparseearlyCursor, b : NlpparseearlyCursor) -> NlpparseearlyCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_cursor_copy(s : NlpparseearlyCursor) -> NlpparseearlyCursor {
-  let result = nlp_parse_early_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_cursor_fill(s : NlpparseearlyCursor, v : Double) -> NlpparseearlyCursor {
-  let result = nlp_parse_early_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_cursor_min(s : NlpparseearlyCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_parse_early_view_sum(s : NlpparseearlyView) -> Double { @_common.sum(
 pub fn nlp_parse_early_view_mean(s : NlpparseearlyView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_view_scale(s : NlpparseearlyView, f : Double) -> NlpparseearlyView {
-  let result = nlp_parse_early_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_view_add(a : NlpparseearlyView, b : NlpparseearlyView) -> NlpparseearlyView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_view_copy(s : NlpparseearlyView) -> NlpparseearlyView {
-  let result = nlp_parse_early_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_view_fill(s : NlpparseearlyView, v : Double) -> NlpparseearlyView {
-  let result = nlp_parse_early_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_view_min(s : NlpparseearlyView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_parse_early_range_sum(s : NlpparseearlyRange) -> Double { @_common.su
 pub fn nlp_parse_early_range_mean(s : NlpparseearlyRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_range_scale(s : NlpparseearlyRange, f : Double) -> NlpparseearlyRange {
-  let result = nlp_parse_early_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_range_add(a : NlpparseearlyRange, b : NlpparseearlyRange) -> NlpparseearlyRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_range_copy(s : NlpparseearlyRange) -> NlpparseearlyRange {
-  let result = nlp_parse_early_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_range_fill(s : NlpparseearlyRange, v : Double) -> NlpparseearlyRange {
-  let result = nlp_parse_early_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_range_min(s : NlpparseearlyRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_parse_early_slice_sum(s : NlpparseearlySlice) -> Double { @_common.su
 pub fn nlp_parse_early_slice_mean(s : NlpparseearlySlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_early_slice_scale(s : NlpparseearlySlice, f : Double) -> NlpparseearlySlice {
-  let result = nlp_parse_early_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_slice_add(a : NlpparseearlySlice, b : NlpparseearlySlice) -> NlpparseearlySlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_parse_early_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_parse_early_slice_copy(s : NlpparseearlySlice) -> NlpparseearlySlice {
-  let result = nlp_parse_early_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_slice_fill(s : NlpparseearlySlice, v : Double) -> NlpparseearlySlice {
-  let result = nlp_parse_early_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_early_slice_min(s : NlpparseearlySlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn nlp_pos_bilstm_frame_sum(s : NlpposbilstmFrame) -> Double { @_common.sum(
 pub fn nlp_pos_bilstm_frame_mean(s : NlpposbilstmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_frame_scale(s : NlpposbilstmFrame, f : Double) -> NlpposbilstmFrame {
-  let result = nlp_pos_bilstm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_frame_add(a : NlpposbilstmFrame, b : NlpposbilstmFrame) -> NlpposbilstmFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_frame_copy(s : NlpposbilstmFrame) -> NlpposbilstmFrame {
-  let result = nlp_pos_bilstm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_frame_fill(s : NlpposbilstmFrame, v : Double) -> NlpposbilstmFrame {
-  let result = nlp_pos_bilstm_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_frame_min(s : NlpposbilstmFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn nlp_pos_bilstm_table_sum(s : NlpposbilstmTable) -> Double { @_common.sum(
 pub fn nlp_pos_bilstm_table_mean(s : NlpposbilstmTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_table_scale(s : NlpposbilstmTable, f : Double) -> NlpposbilstmTable {
-  let result = nlp_pos_bilstm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_table_add(a : NlpposbilstmTable, b : NlpposbilstmTable) -> NlpposbilstmTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_table_copy(s : NlpposbilstmTable) -> NlpposbilstmTable {
-  let result = nlp_pos_bilstm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_table_fill(s : NlpposbilstmTable, v : Double) -> NlpposbilstmTable {
-  let result = nlp_pos_bilstm_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_table_min(s : NlpposbilstmTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn nlp_pos_bilstm_graphn_sum(s : NlpposbilstmGraphN) -> Double { @_common.su
 pub fn nlp_pos_bilstm_graphn_mean(s : NlpposbilstmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_graphn_scale(s : NlpposbilstmGraphN, f : Double) -> NlpposbilstmGraphN {
-  let result = nlp_pos_bilstm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_graphn_add(a : NlpposbilstmGraphN, b : NlpposbilstmGraphN) -> NlpposbilstmGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_graphn_copy(s : NlpposbilstmGraphN) -> NlpposbilstmGraphN {
-  let result = nlp_pos_bilstm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_graphn_fill(s : NlpposbilstmGraphN, v : Double) -> NlpposbilstmGraphN {
-  let result = nlp_pos_bilstm_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_graphn_min(s : NlpposbilstmGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn nlp_pos_bilstm_node_sum(s : NlpposbilstmNode) -> Double { @_common.sum(s.
 pub fn nlp_pos_bilstm_node_mean(s : NlpposbilstmNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_node_scale(s : NlpposbilstmNode, f : Double) -> NlpposbilstmNode {
-  let result = nlp_pos_bilstm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_node_add(a : NlpposbilstmNode, b : NlpposbilstmNode) -> NlpposbilstmNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_node_copy(s : NlpposbilstmNode) -> NlpposbilstmNode {
-  let result = nlp_pos_bilstm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_node_fill(s : NlpposbilstmNode, v : Double) -> NlpposbilstmNode {
-  let result = nlp_pos_bilstm_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_node_min(s : NlpposbilstmNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn nlp_pos_bilstm_edge_sum(s : NlpposbilstmEdge) -> Double { @_common.sum(s.
 pub fn nlp_pos_bilstm_edge_mean(s : NlpposbilstmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_edge_scale(s : NlpposbilstmEdge, f : Double) -> NlpposbilstmEdge {
-  let result = nlp_pos_bilstm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_edge_add(a : NlpposbilstmEdge, b : NlpposbilstmEdge) -> NlpposbilstmEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_edge_copy(s : NlpposbilstmEdge) -> NlpposbilstmEdge {
-  let result = nlp_pos_bilstm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_edge_fill(s : NlpposbilstmEdge, v : Double) -> NlpposbilstmEdge {
-  let result = nlp_pos_bilstm_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_edge_min(s : NlpposbilstmEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn nlp_pos_bilstm_path_sum(s : NlpposbilstmPath) -> Double { @_common.sum(s.
 pub fn nlp_pos_bilstm_path_mean(s : NlpposbilstmPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_path_scale(s : NlpposbilstmPath, f : Double) -> NlpposbilstmPath {
-  let result = nlp_pos_bilstm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_path_add(a : NlpposbilstmPath, b : NlpposbilstmPath) -> NlpposbilstmPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_path_copy(s : NlpposbilstmPath) -> NlpposbilstmPath {
-  let result = nlp_pos_bilstm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_path_fill(s : NlpposbilstmPath, v : Double) -> NlpposbilstmPath {
-  let result = nlp_pos_bilstm_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_path_min(s : NlpposbilstmPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn nlp_pos_bilstm_cluster_sum(s : NlpposbilstmCluster) -> Double { @_common.
 pub fn nlp_pos_bilstm_cluster_mean(s : NlpposbilstmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_cluster_scale(s : NlpposbilstmCluster, f : Double) -> NlpposbilstmCluster {
-  let result = nlp_pos_bilstm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cluster_add(a : NlpposbilstmCluster, b : NlpposbilstmCluster) -> NlpposbilstmCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_cluster_copy(s : NlpposbilstmCluster) -> NlpposbilstmCluster {
-  let result = nlp_pos_bilstm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cluster_fill(s : NlpposbilstmCluster, v : Double) -> NlpposbilstmCluster {
-  let result = nlp_pos_bilstm_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cluster_min(s : NlpposbilstmCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn nlp_pos_bilstm_model_sum(s : NlpposbilstmModel) -> Double { @_common.sum(
 pub fn nlp_pos_bilstm_model_mean(s : NlpposbilstmModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_model_scale(s : NlpposbilstmModel, f : Double) -> NlpposbilstmModel {
-  let result = nlp_pos_bilstm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_model_add(a : NlpposbilstmModel, b : NlpposbilstmModel) -> NlpposbilstmModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_model_copy(s : NlpposbilstmModel) -> NlpposbilstmModel {
-  let result = nlp_pos_bilstm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_model_fill(s : NlpposbilstmModel, v : Double) -> NlpposbilstmModel {
-  let result = nlp_pos_bilstm_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_model_min(s : NlpposbilstmModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn nlp_pos_bilstm_layer_sum(s : NlpposbilstmLayer) -> Double { @_common.sum(
 pub fn nlp_pos_bilstm_layer_mean(s : NlpposbilstmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_layer_scale(s : NlpposbilstmLayer, f : Double) -> NlpposbilstmLayer {
-  let result = nlp_pos_bilstm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_layer_add(a : NlpposbilstmLayer, b : NlpposbilstmLayer) -> NlpposbilstmLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_layer_copy(s : NlpposbilstmLayer) -> NlpposbilstmLayer {
-  let result = nlp_pos_bilstm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_layer_fill(s : NlpposbilstmLayer, v : Double) -> NlpposbilstmLayer {
-  let result = nlp_pos_bilstm_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_layer_min(s : NlpposbilstmLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn nlp_pos_bilstm_buffer_sum(s : NlpposbilstmBuffer) -> Double { @_common.su
 pub fn nlp_pos_bilstm_buffer_mean(s : NlpposbilstmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_buffer_scale(s : NlpposbilstmBuffer, f : Double) -> NlpposbilstmBuffer {
-  let result = nlp_pos_bilstm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_buffer_add(a : NlpposbilstmBuffer, b : NlpposbilstmBuffer) -> NlpposbilstmBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_buffer_copy(s : NlpposbilstmBuffer) -> NlpposbilstmBuffer {
-  let result = nlp_pos_bilstm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_buffer_fill(s : NlpposbilstmBuffer, v : Double) -> NlpposbilstmBuffer {
-  let result = nlp_pos_bilstm_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_buffer_min(s : NlpposbilstmBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn nlp_pos_bilstm_cursor_sum(s : NlpposbilstmCursor) -> Double { @_common.su
 pub fn nlp_pos_bilstm_cursor_mean(s : NlpposbilstmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_cursor_scale(s : NlpposbilstmCursor, f : Double) -> NlpposbilstmCursor {
-  let result = nlp_pos_bilstm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cursor_add(a : NlpposbilstmCursor, b : NlpposbilstmCursor) -> NlpposbilstmCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_cursor_copy(s : NlpposbilstmCursor) -> NlpposbilstmCursor {
-  let result = nlp_pos_bilstm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cursor_fill(s : NlpposbilstmCursor, v : Double) -> NlpposbilstmCursor {
-  let result = nlp_pos_bilstm_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cursor_min(s : NlpposbilstmCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn nlp_pos_bilstm_view_sum(s : NlpposbilstmView) -> Double { @_common.sum(s.
 pub fn nlp_pos_bilstm_view_mean(s : NlpposbilstmView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_view_scale(s : NlpposbilstmView, f : Double) -> NlpposbilstmView {
-  let result = nlp_pos_bilstm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_view_add(a : NlpposbilstmView, b : NlpposbilstmView) -> NlpposbilstmView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_view_copy(s : NlpposbilstmView) -> NlpposbilstmView {
-  let result = nlp_pos_bilstm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_view_fill(s : NlpposbilstmView, v : Double) -> NlpposbilstmView {
-  let result = nlp_pos_bilstm_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_view_min(s : NlpposbilstmView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn nlp_pos_bilstm_range_sum(s : NlpposbilstmRange) -> Double { @_common.sum(
 pub fn nlp_pos_bilstm_range_mean(s : NlpposbilstmRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_range_scale(s : NlpposbilstmRange, f : Double) -> NlpposbilstmRange {
-  let result = nlp_pos_bilstm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_range_add(a : NlpposbilstmRange, b : NlpposbilstmRange) -> NlpposbilstmRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_range_copy(s : NlpposbilstmRange) -> NlpposbilstmRange {
-  let result = nlp_pos_bilstm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_range_fill(s : NlpposbilstmRange, v : Double) -> NlpposbilstmRange {
-  let result = nlp_pos_bilstm_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_range_min(s : NlpposbilstmRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn nlp_pos_bilstm_slice_sum(s : NlpposbilstmSlice) -> Double { @_common.sum(
 pub fn nlp_pos_bilstm_slice_mean(s : NlpposbilstmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_slice_scale(s : NlpposbilstmSlice, f : Double) -> NlpposbilstmSlice {
-  let result = nlp_pos_bilstm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_slice_add(a : NlpposbilstmSlice, b : NlpposbilstmSlice) -> NlpposbilstmSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = nlp_pos_bilstm_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn nlp_pos_bilstm_slice_copy(s : NlpposbilstmSlice) -> NlpposbilstmSlice {
-  let result = nlp_pos_bilstm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_slice_fill(s : NlpposbilstmSlice, v : Double) -> NlpposbilstmSlice {
-  let result = nlp_pos_bilstm_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_slice_min(s : NlpposbilstmSlice) -> Double { @_common.min(s.data) }

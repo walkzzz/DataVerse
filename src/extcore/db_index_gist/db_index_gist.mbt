@@ -383,28 +383,20 @@ pub fn db_index_gist_frame_sum(s : DbindexgistFrame) -> Double { @_common.sum(s.
 pub fn db_index_gist_frame_mean(s : DbindexgistFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_frame_scale(s : DbindexgistFrame, f : Double) -> DbindexgistFrame {
-  let result = db_index_gist_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_frame_add(a : DbindexgistFrame, b : DbindexgistFrame) -> DbindexgistFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_frame_copy(s : DbindexgistFrame) -> DbindexgistFrame {
-  let result = db_index_gist_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_frame_fill(s : DbindexgistFrame, v : Double) -> DbindexgistFrame {
-  let result = db_index_gist_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_frame_min(s : DbindexgistFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn db_index_gist_table_sum(s : DbindexgistTable) -> Double { @_common.sum(s.
 pub fn db_index_gist_table_mean(s : DbindexgistTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_table_scale(s : DbindexgistTable, f : Double) -> DbindexgistTable {
-  let result = db_index_gist_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_table_add(a : DbindexgistTable, b : DbindexgistTable) -> DbindexgistTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_table_copy(s : DbindexgistTable) -> DbindexgistTable {
-  let result = db_index_gist_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_table_fill(s : DbindexgistTable, v : Double) -> DbindexgistTable {
-  let result = db_index_gist_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_table_min(s : DbindexgistTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn db_index_gist_graphn_sum(s : DbindexgistGraphN) -> Double { @_common.sum(
 pub fn db_index_gist_graphn_mean(s : DbindexgistGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_graphn_scale(s : DbindexgistGraphN, f : Double) -> DbindexgistGraphN {
-  let result = db_index_gist_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_graphn_add(a : DbindexgistGraphN, b : DbindexgistGraphN) -> DbindexgistGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_graphn_copy(s : DbindexgistGraphN) -> DbindexgistGraphN {
-  let result = db_index_gist_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_graphn_fill(s : DbindexgistGraphN, v : Double) -> DbindexgistGraphN {
-  let result = db_index_gist_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_graphn_min(s : DbindexgistGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn db_index_gist_node_sum(s : DbindexgistNode) -> Double { @_common.sum(s.da
 pub fn db_index_gist_node_mean(s : DbindexgistNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_node_scale(s : DbindexgistNode, f : Double) -> DbindexgistNode {
-  let result = db_index_gist_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_node_add(a : DbindexgistNode, b : DbindexgistNode) -> DbindexgistNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_node_copy(s : DbindexgistNode) -> DbindexgistNode {
-  let result = db_index_gist_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_node_fill(s : DbindexgistNode, v : Double) -> DbindexgistNode {
-  let result = db_index_gist_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_node_min(s : DbindexgistNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn db_index_gist_edge_sum(s : DbindexgistEdge) -> Double { @_common.sum(s.da
 pub fn db_index_gist_edge_mean(s : DbindexgistEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_edge_scale(s : DbindexgistEdge, f : Double) -> DbindexgistEdge {
-  let result = db_index_gist_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_edge_add(a : DbindexgistEdge, b : DbindexgistEdge) -> DbindexgistEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_edge_copy(s : DbindexgistEdge) -> DbindexgistEdge {
-  let result = db_index_gist_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_edge_fill(s : DbindexgistEdge, v : Double) -> DbindexgistEdge {
-  let result = db_index_gist_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_edge_min(s : DbindexgistEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn db_index_gist_path_sum(s : DbindexgistPath) -> Double { @_common.sum(s.da
 pub fn db_index_gist_path_mean(s : DbindexgistPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_path_scale(s : DbindexgistPath, f : Double) -> DbindexgistPath {
-  let result = db_index_gist_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_path_add(a : DbindexgistPath, b : DbindexgistPath) -> DbindexgistPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_path_copy(s : DbindexgistPath) -> DbindexgistPath {
-  let result = db_index_gist_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_path_fill(s : DbindexgistPath, v : Double) -> DbindexgistPath {
-  let result = db_index_gist_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_path_min(s : DbindexgistPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn db_index_gist_cluster_sum(s : DbindexgistCluster) -> Double { @_common.su
 pub fn db_index_gist_cluster_mean(s : DbindexgistCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_cluster_scale(s : DbindexgistCluster, f : Double) -> DbindexgistCluster {
-  let result = db_index_gist_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cluster_add(a : DbindexgistCluster, b : DbindexgistCluster) -> DbindexgistCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_cluster_copy(s : DbindexgistCluster) -> DbindexgistCluster {
-  let result = db_index_gist_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cluster_fill(s : DbindexgistCluster, v : Double) -> DbindexgistCluster {
-  let result = db_index_gist_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cluster_min(s : DbindexgistCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn db_index_gist_model_sum(s : DbindexgistModel) -> Double { @_common.sum(s.
 pub fn db_index_gist_model_mean(s : DbindexgistModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_model_scale(s : DbindexgistModel, f : Double) -> DbindexgistModel {
-  let result = db_index_gist_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_model_add(a : DbindexgistModel, b : DbindexgistModel) -> DbindexgistModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_model_copy(s : DbindexgistModel) -> DbindexgistModel {
-  let result = db_index_gist_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_model_fill(s : DbindexgistModel, v : Double) -> DbindexgistModel {
-  let result = db_index_gist_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_model_min(s : DbindexgistModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn db_index_gist_layer_sum(s : DbindexgistLayer) -> Double { @_common.sum(s.
 pub fn db_index_gist_layer_mean(s : DbindexgistLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_layer_scale(s : DbindexgistLayer, f : Double) -> DbindexgistLayer {
-  let result = db_index_gist_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_layer_add(a : DbindexgistLayer, b : DbindexgistLayer) -> DbindexgistLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_layer_copy(s : DbindexgistLayer) -> DbindexgistLayer {
-  let result = db_index_gist_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_layer_fill(s : DbindexgistLayer, v : Double) -> DbindexgistLayer {
-  let result = db_index_gist_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_layer_min(s : DbindexgistLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn db_index_gist_buffer_sum(s : DbindexgistBuffer) -> Double { @_common.sum(
 pub fn db_index_gist_buffer_mean(s : DbindexgistBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_buffer_scale(s : DbindexgistBuffer, f : Double) -> DbindexgistBuffer {
-  let result = db_index_gist_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_buffer_add(a : DbindexgistBuffer, b : DbindexgistBuffer) -> DbindexgistBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_buffer_copy(s : DbindexgistBuffer) -> DbindexgistBuffer {
-  let result = db_index_gist_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_buffer_fill(s : DbindexgistBuffer, v : Double) -> DbindexgistBuffer {
-  let result = db_index_gist_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_buffer_min(s : DbindexgistBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn db_index_gist_cursor_sum(s : DbindexgistCursor) -> Double { @_common.sum(
 pub fn db_index_gist_cursor_mean(s : DbindexgistCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_cursor_scale(s : DbindexgistCursor, f : Double) -> DbindexgistCursor {
-  let result = db_index_gist_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cursor_add(a : DbindexgistCursor, b : DbindexgistCursor) -> DbindexgistCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_cursor_copy(s : DbindexgistCursor) -> DbindexgistCursor {
-  let result = db_index_gist_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cursor_fill(s : DbindexgistCursor, v : Double) -> DbindexgistCursor {
-  let result = db_index_gist_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cursor_min(s : DbindexgistCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn db_index_gist_view_sum(s : DbindexgistView) -> Double { @_common.sum(s.da
 pub fn db_index_gist_view_mean(s : DbindexgistView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_view_scale(s : DbindexgistView, f : Double) -> DbindexgistView {
-  let result = db_index_gist_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_view_add(a : DbindexgistView, b : DbindexgistView) -> DbindexgistView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_view_copy(s : DbindexgistView) -> DbindexgistView {
-  let result = db_index_gist_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_view_fill(s : DbindexgistView, v : Double) -> DbindexgistView {
-  let result = db_index_gist_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_view_min(s : DbindexgistView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn db_index_gist_range_sum(s : DbindexgistRange) -> Double { @_common.sum(s.
 pub fn db_index_gist_range_mean(s : DbindexgistRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_range_scale(s : DbindexgistRange, f : Double) -> DbindexgistRange {
-  let result = db_index_gist_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_range_add(a : DbindexgistRange, b : DbindexgistRange) -> DbindexgistRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_range_copy(s : DbindexgistRange) -> DbindexgistRange {
-  let result = db_index_gist_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_range_fill(s : DbindexgistRange, v : Double) -> DbindexgistRange {
-  let result = db_index_gist_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_range_min(s : DbindexgistRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn db_index_gist_slice_sum(s : DbindexgistSlice) -> Double { @_common.sum(s.
 pub fn db_index_gist_slice_mean(s : DbindexgistSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_slice_scale(s : DbindexgistSlice, f : Double) -> DbindexgistSlice {
-  let result = db_index_gist_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_slice_add(a : DbindexgistSlice, b : DbindexgistSlice) -> DbindexgistSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = db_index_gist_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn db_index_gist_slice_copy(s : DbindexgistSlice) -> DbindexgistSlice {
-  let result = db_index_gist_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_slice_fill(s : DbindexgistSlice, v : Double) -> DbindexgistSlice {
-  let result = db_index_gist_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_slice_min(s : DbindexgistSlice) -> Double { @_common.min(s.data) }

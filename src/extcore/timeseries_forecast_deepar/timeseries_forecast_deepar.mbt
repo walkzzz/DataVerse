@@ -383,28 +383,20 @@ pub fn timeseries_forecast_deepar_frame_sum(s : TimeseriesforecastdeeparFrame) -
 pub fn timeseries_forecast_deepar_frame_mean(s : TimeseriesforecastdeeparFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_frame_scale(s : TimeseriesforecastdeeparFrame, f : Double) -> TimeseriesforecastdeeparFrame {
-  let result = timeseries_forecast_deepar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_frame_add(a : TimeseriesforecastdeeparFrame, b : TimeseriesforecastdeeparFrame) -> TimeseriesforecastdeeparFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_frame_copy(s : TimeseriesforecastdeeparFrame) -> TimeseriesforecastdeeparFrame {
-  let result = timeseries_forecast_deepar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_frame_fill(s : TimeseriesforecastdeeparFrame, v : Double) -> TimeseriesforecastdeeparFrame {
-  let result = timeseries_forecast_deepar_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_frame_min(s : TimeseriesforecastdeeparFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn timeseries_forecast_deepar_table_sum(s : TimeseriesforecastdeeparTable) -
 pub fn timeseries_forecast_deepar_table_mean(s : TimeseriesforecastdeeparTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_table_scale(s : TimeseriesforecastdeeparTable, f : Double) -> TimeseriesforecastdeeparTable {
-  let result = timeseries_forecast_deepar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_table_add(a : TimeseriesforecastdeeparTable, b : TimeseriesforecastdeeparTable) -> TimeseriesforecastdeeparTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_table_copy(s : TimeseriesforecastdeeparTable) -> TimeseriesforecastdeeparTable {
-  let result = timeseries_forecast_deepar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_table_fill(s : TimeseriesforecastdeeparTable, v : Double) -> TimeseriesforecastdeeparTable {
-  let result = timeseries_forecast_deepar_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_table_min(s : TimeseriesforecastdeeparTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn timeseries_forecast_deepar_graphn_sum(s : TimeseriesforecastdeeparGraphN)
 pub fn timeseries_forecast_deepar_graphn_mean(s : TimeseriesforecastdeeparGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_graphn_scale(s : TimeseriesforecastdeeparGraphN, f : Double) -> TimeseriesforecastdeeparGraphN {
-  let result = timeseries_forecast_deepar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_graphn_add(a : TimeseriesforecastdeeparGraphN, b : TimeseriesforecastdeeparGraphN) -> TimeseriesforecastdeeparGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_graphn_copy(s : TimeseriesforecastdeeparGraphN) -> TimeseriesforecastdeeparGraphN {
-  let result = timeseries_forecast_deepar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_graphn_fill(s : TimeseriesforecastdeeparGraphN, v : Double) -> TimeseriesforecastdeeparGraphN {
-  let result = timeseries_forecast_deepar_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_graphn_min(s : TimeseriesforecastdeeparGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn timeseries_forecast_deepar_node_sum(s : TimeseriesforecastdeeparNode) -> 
 pub fn timeseries_forecast_deepar_node_mean(s : TimeseriesforecastdeeparNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_node_scale(s : TimeseriesforecastdeeparNode, f : Double) -> TimeseriesforecastdeeparNode {
-  let result = timeseries_forecast_deepar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_node_add(a : TimeseriesforecastdeeparNode, b : TimeseriesforecastdeeparNode) -> TimeseriesforecastdeeparNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_node_copy(s : TimeseriesforecastdeeparNode) -> TimeseriesforecastdeeparNode {
-  let result = timeseries_forecast_deepar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_node_fill(s : TimeseriesforecastdeeparNode, v : Double) -> TimeseriesforecastdeeparNode {
-  let result = timeseries_forecast_deepar_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_node_min(s : TimeseriesforecastdeeparNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn timeseries_forecast_deepar_edge_sum(s : TimeseriesforecastdeeparEdge) -> 
 pub fn timeseries_forecast_deepar_edge_mean(s : TimeseriesforecastdeeparEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_edge_scale(s : TimeseriesforecastdeeparEdge, f : Double) -> TimeseriesforecastdeeparEdge {
-  let result = timeseries_forecast_deepar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_edge_add(a : TimeseriesforecastdeeparEdge, b : TimeseriesforecastdeeparEdge) -> TimeseriesforecastdeeparEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_edge_copy(s : TimeseriesforecastdeeparEdge) -> TimeseriesforecastdeeparEdge {
-  let result = timeseries_forecast_deepar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_edge_fill(s : TimeseriesforecastdeeparEdge, v : Double) -> TimeseriesforecastdeeparEdge {
-  let result = timeseries_forecast_deepar_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_edge_min(s : TimeseriesforecastdeeparEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn timeseries_forecast_deepar_path_sum(s : TimeseriesforecastdeeparPath) -> 
 pub fn timeseries_forecast_deepar_path_mean(s : TimeseriesforecastdeeparPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_path_scale(s : TimeseriesforecastdeeparPath, f : Double) -> TimeseriesforecastdeeparPath {
-  let result = timeseries_forecast_deepar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_path_add(a : TimeseriesforecastdeeparPath, b : TimeseriesforecastdeeparPath) -> TimeseriesforecastdeeparPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_path_copy(s : TimeseriesforecastdeeparPath) -> TimeseriesforecastdeeparPath {
-  let result = timeseries_forecast_deepar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_path_fill(s : TimeseriesforecastdeeparPath, v : Double) -> TimeseriesforecastdeeparPath {
-  let result = timeseries_forecast_deepar_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_path_min(s : TimeseriesforecastdeeparPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn timeseries_forecast_deepar_cluster_sum(s : TimeseriesforecastdeeparCluste
 pub fn timeseries_forecast_deepar_cluster_mean(s : TimeseriesforecastdeeparCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_cluster_scale(s : TimeseriesforecastdeeparCluster, f : Double) -> TimeseriesforecastdeeparCluster {
-  let result = timeseries_forecast_deepar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_cluster_add(a : TimeseriesforecastdeeparCluster, b : TimeseriesforecastdeeparCluster) -> TimeseriesforecastdeeparCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_cluster_copy(s : TimeseriesforecastdeeparCluster) -> TimeseriesforecastdeeparCluster {
-  let result = timeseries_forecast_deepar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_cluster_fill(s : TimeseriesforecastdeeparCluster, v : Double) -> TimeseriesforecastdeeparCluster {
-  let result = timeseries_forecast_deepar_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_cluster_min(s : TimeseriesforecastdeeparCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn timeseries_forecast_deepar_model_sum(s : TimeseriesforecastdeeparModel) -
 pub fn timeseries_forecast_deepar_model_mean(s : TimeseriesforecastdeeparModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_model_scale(s : TimeseriesforecastdeeparModel, f : Double) -> TimeseriesforecastdeeparModel {
-  let result = timeseries_forecast_deepar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_model_add(a : TimeseriesforecastdeeparModel, b : TimeseriesforecastdeeparModel) -> TimeseriesforecastdeeparModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_model_copy(s : TimeseriesforecastdeeparModel) -> TimeseriesforecastdeeparModel {
-  let result = timeseries_forecast_deepar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_model_fill(s : TimeseriesforecastdeeparModel, v : Double) -> TimeseriesforecastdeeparModel {
-  let result = timeseries_forecast_deepar_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_model_min(s : TimeseriesforecastdeeparModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn timeseries_forecast_deepar_layer_sum(s : TimeseriesforecastdeeparLayer) -
 pub fn timeseries_forecast_deepar_layer_mean(s : TimeseriesforecastdeeparLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_layer_scale(s : TimeseriesforecastdeeparLayer, f : Double) -> TimeseriesforecastdeeparLayer {
-  let result = timeseries_forecast_deepar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_layer_add(a : TimeseriesforecastdeeparLayer, b : TimeseriesforecastdeeparLayer) -> TimeseriesforecastdeeparLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_layer_copy(s : TimeseriesforecastdeeparLayer) -> TimeseriesforecastdeeparLayer {
-  let result = timeseries_forecast_deepar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_layer_fill(s : TimeseriesforecastdeeparLayer, v : Double) -> TimeseriesforecastdeeparLayer {
-  let result = timeseries_forecast_deepar_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_layer_min(s : TimeseriesforecastdeeparLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn timeseries_forecast_deepar_buffer_sum(s : TimeseriesforecastdeeparBuffer)
 pub fn timeseries_forecast_deepar_buffer_mean(s : TimeseriesforecastdeeparBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_buffer_scale(s : TimeseriesforecastdeeparBuffer, f : Double) -> TimeseriesforecastdeeparBuffer {
-  let result = timeseries_forecast_deepar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_buffer_add(a : TimeseriesforecastdeeparBuffer, b : TimeseriesforecastdeeparBuffer) -> TimeseriesforecastdeeparBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_buffer_copy(s : TimeseriesforecastdeeparBuffer) -> TimeseriesforecastdeeparBuffer {
-  let result = timeseries_forecast_deepar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_buffer_fill(s : TimeseriesforecastdeeparBuffer, v : Double) -> TimeseriesforecastdeeparBuffer {
-  let result = timeseries_forecast_deepar_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_buffer_min(s : TimeseriesforecastdeeparBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn timeseries_forecast_deepar_cursor_sum(s : TimeseriesforecastdeeparCursor)
 pub fn timeseries_forecast_deepar_cursor_mean(s : TimeseriesforecastdeeparCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_cursor_scale(s : TimeseriesforecastdeeparCursor, f : Double) -> TimeseriesforecastdeeparCursor {
-  let result = timeseries_forecast_deepar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_cursor_add(a : TimeseriesforecastdeeparCursor, b : TimeseriesforecastdeeparCursor) -> TimeseriesforecastdeeparCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_cursor_copy(s : TimeseriesforecastdeeparCursor) -> TimeseriesforecastdeeparCursor {
-  let result = timeseries_forecast_deepar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_cursor_fill(s : TimeseriesforecastdeeparCursor, v : Double) -> TimeseriesforecastdeeparCursor {
-  let result = timeseries_forecast_deepar_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_cursor_min(s : TimeseriesforecastdeeparCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn timeseries_forecast_deepar_view_sum(s : TimeseriesforecastdeeparView) -> 
 pub fn timeseries_forecast_deepar_view_mean(s : TimeseriesforecastdeeparView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_view_scale(s : TimeseriesforecastdeeparView, f : Double) -> TimeseriesforecastdeeparView {
-  let result = timeseries_forecast_deepar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_view_add(a : TimeseriesforecastdeeparView, b : TimeseriesforecastdeeparView) -> TimeseriesforecastdeeparView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_view_copy(s : TimeseriesforecastdeeparView) -> TimeseriesforecastdeeparView {
-  let result = timeseries_forecast_deepar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_view_fill(s : TimeseriesforecastdeeparView, v : Double) -> TimeseriesforecastdeeparView {
-  let result = timeseries_forecast_deepar_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_view_min(s : TimeseriesforecastdeeparView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn timeseries_forecast_deepar_range_sum(s : TimeseriesforecastdeeparRange) -
 pub fn timeseries_forecast_deepar_range_mean(s : TimeseriesforecastdeeparRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_range_scale(s : TimeseriesforecastdeeparRange, f : Double) -> TimeseriesforecastdeeparRange {
-  let result = timeseries_forecast_deepar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_range_add(a : TimeseriesforecastdeeparRange, b : TimeseriesforecastdeeparRange) -> TimeseriesforecastdeeparRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_range_copy(s : TimeseriesforecastdeeparRange) -> TimeseriesforecastdeeparRange {
-  let result = timeseries_forecast_deepar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_range_fill(s : TimeseriesforecastdeeparRange, v : Double) -> TimeseriesforecastdeeparRange {
-  let result = timeseries_forecast_deepar_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_range_min(s : TimeseriesforecastdeeparRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn timeseries_forecast_deepar_slice_sum(s : TimeseriesforecastdeeparSlice) -
 pub fn timeseries_forecast_deepar_slice_mean(s : TimeseriesforecastdeeparSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_slice_scale(s : TimeseriesforecastdeeparSlice, f : Double) -> TimeseriesforecastdeeparSlice {
-  let result = timeseries_forecast_deepar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_slice_add(a : TimeseriesforecastdeeparSlice, b : TimeseriesforecastdeeparSlice) -> TimeseriesforecastdeeparSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = timeseries_forecast_deepar_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn timeseries_forecast_deepar_slice_copy(s : TimeseriesforecastdeeparSlice) -> TimeseriesforecastdeeparSlice {
-  let result = timeseries_forecast_deepar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_slice_fill(s : TimeseriesforecastdeeparSlice, v : Double) -> TimeseriesforecastdeeparSlice {
-  let result = timeseries_forecast_deepar_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_deepar_slice_min(s : TimeseriesforecastdeeparSlice) -> Double { @_common.min(s.data) }

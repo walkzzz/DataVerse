@@ -383,28 +383,20 @@ pub fn physics_mechanics_static_frame_sum(s : PhysicsmechanicsstaticFrame) -> Do
 pub fn physics_mechanics_static_frame_mean(s : PhysicsmechanicsstaticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_frame_scale(s : PhysicsmechanicsstaticFrame, f : Double) -> PhysicsmechanicsstaticFrame {
-  let result = physics_mechanics_static_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_frame_add(a : PhysicsmechanicsstaticFrame, b : PhysicsmechanicsstaticFrame) -> PhysicsmechanicsstaticFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_frame_copy(s : PhysicsmechanicsstaticFrame) -> PhysicsmechanicsstaticFrame {
-  let result = physics_mechanics_static_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_frame_fill(s : PhysicsmechanicsstaticFrame, v : Double) -> PhysicsmechanicsstaticFrame {
-  let result = physics_mechanics_static_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_frame_min(s : PhysicsmechanicsstaticFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn physics_mechanics_static_table_sum(s : PhysicsmechanicsstaticTable) -> Do
 pub fn physics_mechanics_static_table_mean(s : PhysicsmechanicsstaticTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_table_scale(s : PhysicsmechanicsstaticTable, f : Double) -> PhysicsmechanicsstaticTable {
-  let result = physics_mechanics_static_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_table_add(a : PhysicsmechanicsstaticTable, b : PhysicsmechanicsstaticTable) -> PhysicsmechanicsstaticTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_table_copy(s : PhysicsmechanicsstaticTable) -> PhysicsmechanicsstaticTable {
-  let result = physics_mechanics_static_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_table_fill(s : PhysicsmechanicsstaticTable, v : Double) -> PhysicsmechanicsstaticTable {
-  let result = physics_mechanics_static_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_table_min(s : PhysicsmechanicsstaticTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn physics_mechanics_static_graphn_sum(s : PhysicsmechanicsstaticGraphN) -> 
 pub fn physics_mechanics_static_graphn_mean(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_graphn_scale(s : PhysicsmechanicsstaticGraphN, f : Double) -> PhysicsmechanicsstaticGraphN {
-  let result = physics_mechanics_static_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_graphn_add(a : PhysicsmechanicsstaticGraphN, b : PhysicsmechanicsstaticGraphN) -> PhysicsmechanicsstaticGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_graphn_copy(s : PhysicsmechanicsstaticGraphN) -> PhysicsmechanicsstaticGraphN {
-  let result = physics_mechanics_static_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_graphn_fill(s : PhysicsmechanicsstaticGraphN, v : Double) -> PhysicsmechanicsstaticGraphN {
-  let result = physics_mechanics_static_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_graphn_min(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn physics_mechanics_static_node_sum(s : PhysicsmechanicsstaticNode) -> Doub
 pub fn physics_mechanics_static_node_mean(s : PhysicsmechanicsstaticNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_node_scale(s : PhysicsmechanicsstaticNode, f : Double) -> PhysicsmechanicsstaticNode {
-  let result = physics_mechanics_static_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_node_add(a : PhysicsmechanicsstaticNode, b : PhysicsmechanicsstaticNode) -> PhysicsmechanicsstaticNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_node_copy(s : PhysicsmechanicsstaticNode) -> PhysicsmechanicsstaticNode {
-  let result = physics_mechanics_static_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_node_fill(s : PhysicsmechanicsstaticNode, v : Double) -> PhysicsmechanicsstaticNode {
-  let result = physics_mechanics_static_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_node_min(s : PhysicsmechanicsstaticNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn physics_mechanics_static_edge_sum(s : PhysicsmechanicsstaticEdge) -> Doub
 pub fn physics_mechanics_static_edge_mean(s : PhysicsmechanicsstaticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_edge_scale(s : PhysicsmechanicsstaticEdge, f : Double) -> PhysicsmechanicsstaticEdge {
-  let result = physics_mechanics_static_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_edge_add(a : PhysicsmechanicsstaticEdge, b : PhysicsmechanicsstaticEdge) -> PhysicsmechanicsstaticEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_edge_copy(s : PhysicsmechanicsstaticEdge) -> PhysicsmechanicsstaticEdge {
-  let result = physics_mechanics_static_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_edge_fill(s : PhysicsmechanicsstaticEdge, v : Double) -> PhysicsmechanicsstaticEdge {
-  let result = physics_mechanics_static_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_edge_min(s : PhysicsmechanicsstaticEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn physics_mechanics_static_path_sum(s : PhysicsmechanicsstaticPath) -> Doub
 pub fn physics_mechanics_static_path_mean(s : PhysicsmechanicsstaticPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_path_scale(s : PhysicsmechanicsstaticPath, f : Double) -> PhysicsmechanicsstaticPath {
-  let result = physics_mechanics_static_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_path_add(a : PhysicsmechanicsstaticPath, b : PhysicsmechanicsstaticPath) -> PhysicsmechanicsstaticPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_path_copy(s : PhysicsmechanicsstaticPath) -> PhysicsmechanicsstaticPath {
-  let result = physics_mechanics_static_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_path_fill(s : PhysicsmechanicsstaticPath, v : Double) -> PhysicsmechanicsstaticPath {
-  let result = physics_mechanics_static_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_path_min(s : PhysicsmechanicsstaticPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn physics_mechanics_static_cluster_sum(s : PhysicsmechanicsstaticCluster) -
 pub fn physics_mechanics_static_cluster_mean(s : PhysicsmechanicsstaticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_cluster_scale(s : PhysicsmechanicsstaticCluster, f : Double) -> PhysicsmechanicsstaticCluster {
-  let result = physics_mechanics_static_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cluster_add(a : PhysicsmechanicsstaticCluster, b : PhysicsmechanicsstaticCluster) -> PhysicsmechanicsstaticCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_cluster_copy(s : PhysicsmechanicsstaticCluster) -> PhysicsmechanicsstaticCluster {
-  let result = physics_mechanics_static_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cluster_fill(s : PhysicsmechanicsstaticCluster, v : Double) -> PhysicsmechanicsstaticCluster {
-  let result = physics_mechanics_static_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cluster_min(s : PhysicsmechanicsstaticCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn physics_mechanics_static_model_sum(s : PhysicsmechanicsstaticModel) -> Do
 pub fn physics_mechanics_static_model_mean(s : PhysicsmechanicsstaticModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_model_scale(s : PhysicsmechanicsstaticModel, f : Double) -> PhysicsmechanicsstaticModel {
-  let result = physics_mechanics_static_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_model_add(a : PhysicsmechanicsstaticModel, b : PhysicsmechanicsstaticModel) -> PhysicsmechanicsstaticModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_model_copy(s : PhysicsmechanicsstaticModel) -> PhysicsmechanicsstaticModel {
-  let result = physics_mechanics_static_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_model_fill(s : PhysicsmechanicsstaticModel, v : Double) -> PhysicsmechanicsstaticModel {
-  let result = physics_mechanics_static_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_model_min(s : PhysicsmechanicsstaticModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn physics_mechanics_static_layer_sum(s : PhysicsmechanicsstaticLayer) -> Do
 pub fn physics_mechanics_static_layer_mean(s : PhysicsmechanicsstaticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_layer_scale(s : PhysicsmechanicsstaticLayer, f : Double) -> PhysicsmechanicsstaticLayer {
-  let result = physics_mechanics_static_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_layer_add(a : PhysicsmechanicsstaticLayer, b : PhysicsmechanicsstaticLayer) -> PhysicsmechanicsstaticLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_layer_copy(s : PhysicsmechanicsstaticLayer) -> PhysicsmechanicsstaticLayer {
-  let result = physics_mechanics_static_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_layer_fill(s : PhysicsmechanicsstaticLayer, v : Double) -> PhysicsmechanicsstaticLayer {
-  let result = physics_mechanics_static_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_layer_min(s : PhysicsmechanicsstaticLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn physics_mechanics_static_buffer_sum(s : PhysicsmechanicsstaticBuffer) -> 
 pub fn physics_mechanics_static_buffer_mean(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_buffer_scale(s : PhysicsmechanicsstaticBuffer, f : Double) -> PhysicsmechanicsstaticBuffer {
-  let result = physics_mechanics_static_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_buffer_add(a : PhysicsmechanicsstaticBuffer, b : PhysicsmechanicsstaticBuffer) -> PhysicsmechanicsstaticBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_buffer_copy(s : PhysicsmechanicsstaticBuffer) -> PhysicsmechanicsstaticBuffer {
-  let result = physics_mechanics_static_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_buffer_fill(s : PhysicsmechanicsstaticBuffer, v : Double) -> PhysicsmechanicsstaticBuffer {
-  let result = physics_mechanics_static_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_buffer_min(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn physics_mechanics_static_cursor_sum(s : PhysicsmechanicsstaticCursor) -> 
 pub fn physics_mechanics_static_cursor_mean(s : PhysicsmechanicsstaticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_cursor_scale(s : PhysicsmechanicsstaticCursor, f : Double) -> PhysicsmechanicsstaticCursor {
-  let result = physics_mechanics_static_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cursor_add(a : PhysicsmechanicsstaticCursor, b : PhysicsmechanicsstaticCursor) -> PhysicsmechanicsstaticCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_cursor_copy(s : PhysicsmechanicsstaticCursor) -> PhysicsmechanicsstaticCursor {
-  let result = physics_mechanics_static_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cursor_fill(s : PhysicsmechanicsstaticCursor, v : Double) -> PhysicsmechanicsstaticCursor {
-  let result = physics_mechanics_static_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cursor_min(s : PhysicsmechanicsstaticCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn physics_mechanics_static_view_sum(s : PhysicsmechanicsstaticView) -> Doub
 pub fn physics_mechanics_static_view_mean(s : PhysicsmechanicsstaticView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_view_scale(s : PhysicsmechanicsstaticView, f : Double) -> PhysicsmechanicsstaticView {
-  let result = physics_mechanics_static_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_view_add(a : PhysicsmechanicsstaticView, b : PhysicsmechanicsstaticView) -> PhysicsmechanicsstaticView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_view_copy(s : PhysicsmechanicsstaticView) -> PhysicsmechanicsstaticView {
-  let result = physics_mechanics_static_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_view_fill(s : PhysicsmechanicsstaticView, v : Double) -> PhysicsmechanicsstaticView {
-  let result = physics_mechanics_static_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_view_min(s : PhysicsmechanicsstaticView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn physics_mechanics_static_range_sum(s : PhysicsmechanicsstaticRange) -> Do
 pub fn physics_mechanics_static_range_mean(s : PhysicsmechanicsstaticRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_range_scale(s : PhysicsmechanicsstaticRange, f : Double) -> PhysicsmechanicsstaticRange {
-  let result = physics_mechanics_static_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_range_add(a : PhysicsmechanicsstaticRange, b : PhysicsmechanicsstaticRange) -> PhysicsmechanicsstaticRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_range_copy(s : PhysicsmechanicsstaticRange) -> PhysicsmechanicsstaticRange {
-  let result = physics_mechanics_static_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_range_fill(s : PhysicsmechanicsstaticRange, v : Double) -> PhysicsmechanicsstaticRange {
-  let result = physics_mechanics_static_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_range_min(s : PhysicsmechanicsstaticRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn physics_mechanics_static_slice_sum(s : PhysicsmechanicsstaticSlice) -> Do
 pub fn physics_mechanics_static_slice_mean(s : PhysicsmechanicsstaticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_slice_scale(s : PhysicsmechanicsstaticSlice, f : Double) -> PhysicsmechanicsstaticSlice {
-  let result = physics_mechanics_static_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_slice_add(a : PhysicsmechanicsstaticSlice, b : PhysicsmechanicsstaticSlice) -> PhysicsmechanicsstaticSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = physics_mechanics_static_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn physics_mechanics_static_slice_copy(s : PhysicsmechanicsstaticSlice) -> PhysicsmechanicsstaticSlice {
-  let result = physics_mechanics_static_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_slice_fill(s : PhysicsmechanicsstaticSlice, v : Double) -> PhysicsmechanicsstaticSlice {
-  let result = physics_mechanics_static_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_slice_min(s : PhysicsmechanicsstaticSlice) -> Double { @_common.min(s.data) }

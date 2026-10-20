@@ -383,28 +383,20 @@ pub fn math_approx_fourier_frame_sum(s : MathapproxfourierFrame) -> Double { @_c
 pub fn math_approx_fourier_frame_mean(s : MathapproxfourierFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_frame_scale(s : MathapproxfourierFrame, f : Double) -> MathapproxfourierFrame {
-  let result = math_approx_fourier_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_frame_add(a : MathapproxfourierFrame, b : MathapproxfourierFrame) -> MathapproxfourierFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_frame_copy(s : MathapproxfourierFrame) -> MathapproxfourierFrame {
-  let result = math_approx_fourier_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_frame_fill(s : MathapproxfourierFrame, v : Double) -> MathapproxfourierFrame {
-  let result = math_approx_fourier_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_frame_min(s : MathapproxfourierFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn math_approx_fourier_table_sum(s : MathapproxfourierTable) -> Double { @_c
 pub fn math_approx_fourier_table_mean(s : MathapproxfourierTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_table_scale(s : MathapproxfourierTable, f : Double) -> MathapproxfourierTable {
-  let result = math_approx_fourier_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_table_add(a : MathapproxfourierTable, b : MathapproxfourierTable) -> MathapproxfourierTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_table_copy(s : MathapproxfourierTable) -> MathapproxfourierTable {
-  let result = math_approx_fourier_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_table_fill(s : MathapproxfourierTable, v : Double) -> MathapproxfourierTable {
-  let result = math_approx_fourier_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_table_min(s : MathapproxfourierTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn math_approx_fourier_graphn_sum(s : MathapproxfourierGraphN) -> Double { @
 pub fn math_approx_fourier_graphn_mean(s : MathapproxfourierGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_graphn_scale(s : MathapproxfourierGraphN, f : Double) -> MathapproxfourierGraphN {
-  let result = math_approx_fourier_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_graphn_add(a : MathapproxfourierGraphN, b : MathapproxfourierGraphN) -> MathapproxfourierGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_graphn_copy(s : MathapproxfourierGraphN) -> MathapproxfourierGraphN {
-  let result = math_approx_fourier_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_graphn_fill(s : MathapproxfourierGraphN, v : Double) -> MathapproxfourierGraphN {
-  let result = math_approx_fourier_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_graphn_min(s : MathapproxfourierGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn math_approx_fourier_node_sum(s : MathapproxfourierNode) -> Double { @_com
 pub fn math_approx_fourier_node_mean(s : MathapproxfourierNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_node_scale(s : MathapproxfourierNode, f : Double) -> MathapproxfourierNode {
-  let result = math_approx_fourier_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_node_add(a : MathapproxfourierNode, b : MathapproxfourierNode) -> MathapproxfourierNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_node_copy(s : MathapproxfourierNode) -> MathapproxfourierNode {
-  let result = math_approx_fourier_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_node_fill(s : MathapproxfourierNode, v : Double) -> MathapproxfourierNode {
-  let result = math_approx_fourier_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_node_min(s : MathapproxfourierNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn math_approx_fourier_edge_sum(s : MathapproxfourierEdge) -> Double { @_com
 pub fn math_approx_fourier_edge_mean(s : MathapproxfourierEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_edge_scale(s : MathapproxfourierEdge, f : Double) -> MathapproxfourierEdge {
-  let result = math_approx_fourier_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_edge_add(a : MathapproxfourierEdge, b : MathapproxfourierEdge) -> MathapproxfourierEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_edge_copy(s : MathapproxfourierEdge) -> MathapproxfourierEdge {
-  let result = math_approx_fourier_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_edge_fill(s : MathapproxfourierEdge, v : Double) -> MathapproxfourierEdge {
-  let result = math_approx_fourier_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_edge_min(s : MathapproxfourierEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn math_approx_fourier_path_sum(s : MathapproxfourierPath) -> Double { @_com
 pub fn math_approx_fourier_path_mean(s : MathapproxfourierPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_path_scale(s : MathapproxfourierPath, f : Double) -> MathapproxfourierPath {
-  let result = math_approx_fourier_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_path_add(a : MathapproxfourierPath, b : MathapproxfourierPath) -> MathapproxfourierPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_path_copy(s : MathapproxfourierPath) -> MathapproxfourierPath {
-  let result = math_approx_fourier_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_path_fill(s : MathapproxfourierPath, v : Double) -> MathapproxfourierPath {
-  let result = math_approx_fourier_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_path_min(s : MathapproxfourierPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn math_approx_fourier_cluster_sum(s : MathapproxfourierCluster) -> Double {
 pub fn math_approx_fourier_cluster_mean(s : MathapproxfourierCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_cluster_scale(s : MathapproxfourierCluster, f : Double) -> MathapproxfourierCluster {
-  let result = math_approx_fourier_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_cluster_add(a : MathapproxfourierCluster, b : MathapproxfourierCluster) -> MathapproxfourierCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_cluster_copy(s : MathapproxfourierCluster) -> MathapproxfourierCluster {
-  let result = math_approx_fourier_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_cluster_fill(s : MathapproxfourierCluster, v : Double) -> MathapproxfourierCluster {
-  let result = math_approx_fourier_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_cluster_min(s : MathapproxfourierCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn math_approx_fourier_model_sum(s : MathapproxfourierModel) -> Double { @_c
 pub fn math_approx_fourier_model_mean(s : MathapproxfourierModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_model_scale(s : MathapproxfourierModel, f : Double) -> MathapproxfourierModel {
-  let result = math_approx_fourier_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_model_add(a : MathapproxfourierModel, b : MathapproxfourierModel) -> MathapproxfourierModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_model_copy(s : MathapproxfourierModel) -> MathapproxfourierModel {
-  let result = math_approx_fourier_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_model_fill(s : MathapproxfourierModel, v : Double) -> MathapproxfourierModel {
-  let result = math_approx_fourier_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_model_min(s : MathapproxfourierModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn math_approx_fourier_layer_sum(s : MathapproxfourierLayer) -> Double { @_c
 pub fn math_approx_fourier_layer_mean(s : MathapproxfourierLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_layer_scale(s : MathapproxfourierLayer, f : Double) -> MathapproxfourierLayer {
-  let result = math_approx_fourier_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_layer_add(a : MathapproxfourierLayer, b : MathapproxfourierLayer) -> MathapproxfourierLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_layer_copy(s : MathapproxfourierLayer) -> MathapproxfourierLayer {
-  let result = math_approx_fourier_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_layer_fill(s : MathapproxfourierLayer, v : Double) -> MathapproxfourierLayer {
-  let result = math_approx_fourier_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_layer_min(s : MathapproxfourierLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn math_approx_fourier_buffer_sum(s : MathapproxfourierBuffer) -> Double { @
 pub fn math_approx_fourier_buffer_mean(s : MathapproxfourierBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_buffer_scale(s : MathapproxfourierBuffer, f : Double) -> MathapproxfourierBuffer {
-  let result = math_approx_fourier_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_buffer_add(a : MathapproxfourierBuffer, b : MathapproxfourierBuffer) -> MathapproxfourierBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_buffer_copy(s : MathapproxfourierBuffer) -> MathapproxfourierBuffer {
-  let result = math_approx_fourier_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_buffer_fill(s : MathapproxfourierBuffer, v : Double) -> MathapproxfourierBuffer {
-  let result = math_approx_fourier_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_buffer_min(s : MathapproxfourierBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn math_approx_fourier_cursor_sum(s : MathapproxfourierCursor) -> Double { @
 pub fn math_approx_fourier_cursor_mean(s : MathapproxfourierCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_cursor_scale(s : MathapproxfourierCursor, f : Double) -> MathapproxfourierCursor {
-  let result = math_approx_fourier_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_cursor_add(a : MathapproxfourierCursor, b : MathapproxfourierCursor) -> MathapproxfourierCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_cursor_copy(s : MathapproxfourierCursor) -> MathapproxfourierCursor {
-  let result = math_approx_fourier_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_cursor_fill(s : MathapproxfourierCursor, v : Double) -> MathapproxfourierCursor {
-  let result = math_approx_fourier_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_cursor_min(s : MathapproxfourierCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn math_approx_fourier_view_sum(s : MathapproxfourierView) -> Double { @_com
 pub fn math_approx_fourier_view_mean(s : MathapproxfourierView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_view_scale(s : MathapproxfourierView, f : Double) -> MathapproxfourierView {
-  let result = math_approx_fourier_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_view_add(a : MathapproxfourierView, b : MathapproxfourierView) -> MathapproxfourierView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_view_copy(s : MathapproxfourierView) -> MathapproxfourierView {
-  let result = math_approx_fourier_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_view_fill(s : MathapproxfourierView, v : Double) -> MathapproxfourierView {
-  let result = math_approx_fourier_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_view_min(s : MathapproxfourierView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn math_approx_fourier_range_sum(s : MathapproxfourierRange) -> Double { @_c
 pub fn math_approx_fourier_range_mean(s : MathapproxfourierRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_range_scale(s : MathapproxfourierRange, f : Double) -> MathapproxfourierRange {
-  let result = math_approx_fourier_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_range_add(a : MathapproxfourierRange, b : MathapproxfourierRange) -> MathapproxfourierRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_range_copy(s : MathapproxfourierRange) -> MathapproxfourierRange {
-  let result = math_approx_fourier_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_range_fill(s : MathapproxfourierRange, v : Double) -> MathapproxfourierRange {
-  let result = math_approx_fourier_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_range_min(s : MathapproxfourierRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn math_approx_fourier_slice_sum(s : MathapproxfourierSlice) -> Double { @_c
 pub fn math_approx_fourier_slice_mean(s : MathapproxfourierSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_fourier_slice_scale(s : MathapproxfourierSlice, f : Double) -> MathapproxfourierSlice {
-  let result = math_approx_fourier_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_slice_add(a : MathapproxfourierSlice, b : MathapproxfourierSlice) -> MathapproxfourierSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = math_approx_fourier_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn math_approx_fourier_slice_copy(s : MathapproxfourierSlice) -> MathapproxfourierSlice {
-  let result = math_approx_fourier_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_slice_fill(s : MathapproxfourierSlice, v : Double) -> MathapproxfourierSlice {
-  let result = math_approx_fourier_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_fourier_slice_min(s : MathapproxfourierSlice) -> Double { @_common.min(s.data) }

@@ -383,28 +383,20 @@ pub fn ds_heap_interval_frame_sum(s : DsheapintervalFrame) -> Double { @_common.
 pub fn ds_heap_interval_frame_mean(s : DsheapintervalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_frame_scale(s : DsheapintervalFrame, f : Double) -> DsheapintervalFrame {
-  let result = ds_heap_interval_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_frame_add(a : DsheapintervalFrame, b : DsheapintervalFrame) -> DsheapintervalFrame {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_frame_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_frame_copy(s : DsheapintervalFrame) -> DsheapintervalFrame {
-  let result = ds_heap_interval_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_frame_fill(s : DsheapintervalFrame, v : Double) -> DsheapintervalFrame {
-  let result = ds_heap_interval_frame_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_frame_min(s : DsheapintervalFrame) -> Double { @_common.min(s.data) }
@@ -443,28 +435,20 @@ pub fn ds_heap_interval_table_sum(s : DsheapintervalTable) -> Double { @_common.
 pub fn ds_heap_interval_table_mean(s : DsheapintervalTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_table_scale(s : DsheapintervalTable, f : Double) -> DsheapintervalTable {
-  let result = ds_heap_interval_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_table_add(a : DsheapintervalTable, b : DsheapintervalTable) -> DsheapintervalTable {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_table_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_table_copy(s : DsheapintervalTable) -> DsheapintervalTable {
-  let result = ds_heap_interval_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_table_fill(s : DsheapintervalTable, v : Double) -> DsheapintervalTable {
-  let result = ds_heap_interval_table_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_table_min(s : DsheapintervalTable) -> Double { @_common.min(s.data) }
@@ -503,28 +487,20 @@ pub fn ds_heap_interval_graphn_sum(s : DsheapintervalGraphN) -> Double { @_commo
 pub fn ds_heap_interval_graphn_mean(s : DsheapintervalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_graphn_scale(s : DsheapintervalGraphN, f : Double) -> DsheapintervalGraphN {
-  let result = ds_heap_interval_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_graphn_add(a : DsheapintervalGraphN, b : DsheapintervalGraphN) -> DsheapintervalGraphN {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_graphn_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_graphn_copy(s : DsheapintervalGraphN) -> DsheapintervalGraphN {
-  let result = ds_heap_interval_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_graphn_fill(s : DsheapintervalGraphN, v : Double) -> DsheapintervalGraphN {
-  let result = ds_heap_interval_graphn_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_graphn_min(s : DsheapintervalGraphN) -> Double { @_common.min(s.data) }
@@ -563,28 +539,20 @@ pub fn ds_heap_interval_node_sum(s : DsheapintervalNode) -> Double { @_common.su
 pub fn ds_heap_interval_node_mean(s : DsheapintervalNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_node_scale(s : DsheapintervalNode, f : Double) -> DsheapintervalNode {
-  let result = ds_heap_interval_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_node_add(a : DsheapintervalNode, b : DsheapintervalNode) -> DsheapintervalNode {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_node_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_node_copy(s : DsheapintervalNode) -> DsheapintervalNode {
-  let result = ds_heap_interval_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_node_fill(s : DsheapintervalNode, v : Double) -> DsheapintervalNode {
-  let result = ds_heap_interval_node_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_node_min(s : DsheapintervalNode) -> Double { @_common.min(s.data) }
@@ -623,28 +591,20 @@ pub fn ds_heap_interval_edge_sum(s : DsheapintervalEdge) -> Double { @_common.su
 pub fn ds_heap_interval_edge_mean(s : DsheapintervalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_edge_scale(s : DsheapintervalEdge, f : Double) -> DsheapintervalEdge {
-  let result = ds_heap_interval_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_edge_add(a : DsheapintervalEdge, b : DsheapintervalEdge) -> DsheapintervalEdge {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_edge_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_edge_copy(s : DsheapintervalEdge) -> DsheapintervalEdge {
-  let result = ds_heap_interval_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_edge_fill(s : DsheapintervalEdge, v : Double) -> DsheapintervalEdge {
-  let result = ds_heap_interval_edge_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_edge_min(s : DsheapintervalEdge) -> Double { @_common.min(s.data) }
@@ -683,28 +643,20 @@ pub fn ds_heap_interval_path_sum(s : DsheapintervalPath) -> Double { @_common.su
 pub fn ds_heap_interval_path_mean(s : DsheapintervalPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_path_scale(s : DsheapintervalPath, f : Double) -> DsheapintervalPath {
-  let result = ds_heap_interval_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_path_add(a : DsheapintervalPath, b : DsheapintervalPath) -> DsheapintervalPath {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_path_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_path_copy(s : DsheapintervalPath) -> DsheapintervalPath {
-  let result = ds_heap_interval_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_path_fill(s : DsheapintervalPath, v : Double) -> DsheapintervalPath {
-  let result = ds_heap_interval_path_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_path_min(s : DsheapintervalPath) -> Double { @_common.min(s.data) }
@@ -743,28 +695,20 @@ pub fn ds_heap_interval_cluster_sum(s : DsheapintervalCluster) -> Double { @_com
 pub fn ds_heap_interval_cluster_mean(s : DsheapintervalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_cluster_scale(s : DsheapintervalCluster, f : Double) -> DsheapintervalCluster {
-  let result = ds_heap_interval_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cluster_add(a : DsheapintervalCluster, b : DsheapintervalCluster) -> DsheapintervalCluster {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_cluster_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_cluster_copy(s : DsheapintervalCluster) -> DsheapintervalCluster {
-  let result = ds_heap_interval_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cluster_fill(s : DsheapintervalCluster, v : Double) -> DsheapintervalCluster {
-  let result = ds_heap_interval_cluster_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cluster_min(s : DsheapintervalCluster) -> Double { @_common.min(s.data) }
@@ -803,28 +747,20 @@ pub fn ds_heap_interval_model_sum(s : DsheapintervalModel) -> Double { @_common.
 pub fn ds_heap_interval_model_mean(s : DsheapintervalModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_model_scale(s : DsheapintervalModel, f : Double) -> DsheapintervalModel {
-  let result = ds_heap_interval_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_model_add(a : DsheapintervalModel, b : DsheapintervalModel) -> DsheapintervalModel {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_model_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_model_copy(s : DsheapintervalModel) -> DsheapintervalModel {
-  let result = ds_heap_interval_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_model_fill(s : DsheapintervalModel, v : Double) -> DsheapintervalModel {
-  let result = ds_heap_interval_model_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_model_min(s : DsheapintervalModel) -> Double { @_common.min(s.data) }
@@ -863,28 +799,20 @@ pub fn ds_heap_interval_layer_sum(s : DsheapintervalLayer) -> Double { @_common.
 pub fn ds_heap_interval_layer_mean(s : DsheapintervalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_layer_scale(s : DsheapintervalLayer, f : Double) -> DsheapintervalLayer {
-  let result = ds_heap_interval_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_layer_add(a : DsheapintervalLayer, b : DsheapintervalLayer) -> DsheapintervalLayer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_layer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_layer_copy(s : DsheapintervalLayer) -> DsheapintervalLayer {
-  let result = ds_heap_interval_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_layer_fill(s : DsheapintervalLayer, v : Double) -> DsheapintervalLayer {
-  let result = ds_heap_interval_layer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_layer_min(s : DsheapintervalLayer) -> Double { @_common.min(s.data) }
@@ -923,28 +851,20 @@ pub fn ds_heap_interval_buffer_sum(s : DsheapintervalBuffer) -> Double { @_commo
 pub fn ds_heap_interval_buffer_mean(s : DsheapintervalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_buffer_scale(s : DsheapintervalBuffer, f : Double) -> DsheapintervalBuffer {
-  let result = ds_heap_interval_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_buffer_add(a : DsheapintervalBuffer, b : DsheapintervalBuffer) -> DsheapintervalBuffer {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_buffer_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_buffer_copy(s : DsheapintervalBuffer) -> DsheapintervalBuffer {
-  let result = ds_heap_interval_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_buffer_fill(s : DsheapintervalBuffer, v : Double) -> DsheapintervalBuffer {
-  let result = ds_heap_interval_buffer_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_buffer_min(s : DsheapintervalBuffer) -> Double { @_common.min(s.data) }
@@ -983,28 +903,20 @@ pub fn ds_heap_interval_cursor_sum(s : DsheapintervalCursor) -> Double { @_commo
 pub fn ds_heap_interval_cursor_mean(s : DsheapintervalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_cursor_scale(s : DsheapintervalCursor, f : Double) -> DsheapintervalCursor {
-  let result = ds_heap_interval_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cursor_add(a : DsheapintervalCursor, b : DsheapintervalCursor) -> DsheapintervalCursor {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_cursor_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_cursor_copy(s : DsheapintervalCursor) -> DsheapintervalCursor {
-  let result = ds_heap_interval_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cursor_fill(s : DsheapintervalCursor, v : Double) -> DsheapintervalCursor {
-  let result = ds_heap_interval_cursor_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cursor_min(s : DsheapintervalCursor) -> Double { @_common.min(s.data) }
@@ -1043,28 +955,20 @@ pub fn ds_heap_interval_view_sum(s : DsheapintervalView) -> Double { @_common.su
 pub fn ds_heap_interval_view_mean(s : DsheapintervalView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_view_scale(s : DsheapintervalView, f : Double) -> DsheapintervalView {
-  let result = ds_heap_interval_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_view_add(a : DsheapintervalView, b : DsheapintervalView) -> DsheapintervalView {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_view_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_view_copy(s : DsheapintervalView) -> DsheapintervalView {
-  let result = ds_heap_interval_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_view_fill(s : DsheapintervalView, v : Double) -> DsheapintervalView {
-  let result = ds_heap_interval_view_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_view_min(s : DsheapintervalView) -> Double { @_common.min(s.data) }
@@ -1103,28 +1007,20 @@ pub fn ds_heap_interval_range_sum(s : DsheapintervalRange) -> Double { @_common.
 pub fn ds_heap_interval_range_mean(s : DsheapintervalRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_range_scale(s : DsheapintervalRange, f : Double) -> DsheapintervalRange {
-  let result = ds_heap_interval_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_range_add(a : DsheapintervalRange, b : DsheapintervalRange) -> DsheapintervalRange {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_range_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_range_copy(s : DsheapintervalRange) -> DsheapintervalRange {
-  let result = ds_heap_interval_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_range_fill(s : DsheapintervalRange, v : Double) -> DsheapintervalRange {
-  let result = ds_heap_interval_range_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_range_min(s : DsheapintervalRange) -> Double { @_common.min(s.data) }
@@ -1163,28 +1059,20 @@ pub fn ds_heap_interval_slice_sum(s : DsheapintervalSlice) -> Double { @_common.
 pub fn ds_heap_interval_slice_mean(s : DsheapintervalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_slice_scale(s : DsheapintervalSlice, f : Double) -> DsheapintervalSlice {
-  let result = ds_heap_interval_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] * f }
-  result
+  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_slice_add(a : DsheapintervalSlice, b : DsheapintervalSlice) -> DsheapintervalSlice {
   let n = if a.size < b.size { a.size } else { b.size }
-  let result = ds_heap_interval_slice_make(n)
-  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
-  result
+  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
 }
 
 pub fn ds_heap_interval_slice_copy(s : DsheapintervalSlice) -> DsheapintervalSlice {
-  let result = ds_heap_interval_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = s.data[i] }
-  result
+  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_slice_fill(s : DsheapintervalSlice, v : Double) -> DsheapintervalSlice {
-  let result = ds_heap_interval_slice_make(s.size)
-  for i in 0..<s.size { result.data[i] = v }
-  result
+  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_slice_min(s : DsheapintervalSlice) -> Double { @_common.min(s.data) }

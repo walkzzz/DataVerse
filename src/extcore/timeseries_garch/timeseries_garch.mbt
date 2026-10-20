@@ -94,52 +94,21 @@ pub fn timeseries_garch_series_sum(s : TimeseriesgarchSeries) -> Double {
   total
 }
 
-pub fn timeseries_garch_series_mean(s : TimeseriesgarchSeries) -> Double {
-  let n = timeseries_garch_series_len(s)
-  if n == 0 { 0.0 } else { timeseries_garch_series_sum(s) / n.to_double() }
-}
+pub fn timeseries_garch_series_mean(s : TimeseriesgarchSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn timeseries_garch_series_min(s : TimeseriesgarchSeries) -> Double {
-  let n = timeseries_garch_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn timeseries_garch_series_min(s : TimeseriesgarchSeries) -> Double { @_common.min(s.vals) }
 
-pub fn timeseries_garch_series_max(s : TimeseriesgarchSeries) -> Double {
-  let n = timeseries_garch_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn timeseries_garch_series_max(s : TimeseriesgarchSeries) -> Double { @_common.max(s.vals) }
 
 pub fn timeseries_garch_series_range(s : TimeseriesgarchSeries) -> Double {
-  timeseries_garch_series_max(s) - timeseries_garch_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn timeseries_garch_series_var(s : TimeseriesgarchSeries) -> Double {
-  let n = timeseries_garch_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = timeseries_garch_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn timeseries_garch_series_var(s : TimeseriesgarchSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn timeseries_garch_series_std(s : TimeseriesgarchSeries) -> Double { @_common.sqrt(timeseries_garch_series_var(s)) }
+pub fn timeseries_garch_series_std(s : TimeseriesgarchSeries) -> Double { @_common.std(s.vals) }
 
-pub fn timeseries_garch_series_median(s : TimeseriesgarchSeries) -> Double {
-  let n = timeseries_garch_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = timeseries_garch_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn timeseries_garch_series_median(s : TimeseriesgarchSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_garch_series_scale(s : TimeseriesgarchSeries, f : Double) -> TimeseriesgarchSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn timeseries_garch_series_normalize(s : TimeseriesgarchSeries) -> Timeserie
 }
 
 pub fn timeseries_garch_series_cumsum(s : TimeseriesgarchSeries) -> TimeseriesgarchSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn timeseries_garch_series_to_string(s : TimeseriesgarchSeries) -> String {

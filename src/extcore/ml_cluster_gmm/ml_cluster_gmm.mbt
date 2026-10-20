@@ -94,52 +94,21 @@ pub fn ml_cluster_gmm_series_sum(s : MlclustergmmSeries) -> Double {
   total
 }
 
-pub fn ml_cluster_gmm_series_mean(s : MlclustergmmSeries) -> Double {
-  let n = ml_cluster_gmm_series_len(s)
-  if n == 0 { 0.0 } else { ml_cluster_gmm_series_sum(s) / n.to_double() }
-}
+pub fn ml_cluster_gmm_series_mean(s : MlclustergmmSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ml_cluster_gmm_series_min(s : MlclustergmmSeries) -> Double {
-  let n = ml_cluster_gmm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_cluster_gmm_series_min(s : MlclustergmmSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ml_cluster_gmm_series_max(s : MlclustergmmSeries) -> Double {
-  let n = ml_cluster_gmm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_cluster_gmm_series_max(s : MlclustergmmSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ml_cluster_gmm_series_range(s : MlclustergmmSeries) -> Double {
-  ml_cluster_gmm_series_max(s) - ml_cluster_gmm_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ml_cluster_gmm_series_var(s : MlclustergmmSeries) -> Double {
-  let n = ml_cluster_gmm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ml_cluster_gmm_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ml_cluster_gmm_series_var(s : MlclustergmmSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ml_cluster_gmm_series_std(s : MlclustergmmSeries) -> Double { @_common.sqrt(ml_cluster_gmm_series_var(s)) }
+pub fn ml_cluster_gmm_series_std(s : MlclustergmmSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ml_cluster_gmm_series_median(s : MlclustergmmSeries) -> Double {
-  let n = ml_cluster_gmm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ml_cluster_gmm_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ml_cluster_gmm_series_median(s : MlclustergmmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_gmm_series_scale(s : MlclustergmmSeries, f : Double) -> MlclustergmmSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ml_cluster_gmm_series_normalize(s : MlclustergmmSeries) -> MlclustergmmSe
 }
 
 pub fn ml_cluster_gmm_series_cumsum(s : MlclustergmmSeries) -> MlclustergmmSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ml_cluster_gmm_series_to_string(s : MlclustergmmSeries) -> String {

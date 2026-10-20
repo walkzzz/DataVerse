@@ -94,52 +94,21 @@ pub fn physics_fluid_smoothed_series_sum(s : PhysicsfluidsmoothedSeries) -> Doub
   total
 }
 
-pub fn physics_fluid_smoothed_series_mean(s : PhysicsfluidsmoothedSeries) -> Double {
-  let n = physics_fluid_smoothed_series_len(s)
-  if n == 0 { 0.0 } else { physics_fluid_smoothed_series_sum(s) / n.to_double() }
-}
+pub fn physics_fluid_smoothed_series_mean(s : PhysicsfluidsmoothedSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn physics_fluid_smoothed_series_min(s : PhysicsfluidsmoothedSeries) -> Double {
-  let n = physics_fluid_smoothed_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_series_min(s : PhysicsfluidsmoothedSeries) -> Double { @_common.min(s.vals) }
 
-pub fn physics_fluid_smoothed_series_max(s : PhysicsfluidsmoothedSeries) -> Double {
-  let n = physics_fluid_smoothed_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_series_max(s : PhysicsfluidsmoothedSeries) -> Double { @_common.max(s.vals) }
 
 pub fn physics_fluid_smoothed_series_range(s : PhysicsfluidsmoothedSeries) -> Double {
-  physics_fluid_smoothed_series_max(s) - physics_fluid_smoothed_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn physics_fluid_smoothed_series_var(s : PhysicsfluidsmoothedSeries) -> Double {
-  let n = physics_fluid_smoothed_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = physics_fluid_smoothed_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn physics_fluid_smoothed_series_var(s : PhysicsfluidsmoothedSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn physics_fluid_smoothed_series_std(s : PhysicsfluidsmoothedSeries) -> Double { @_common.sqrt(physics_fluid_smoothed_series_var(s)) }
+pub fn physics_fluid_smoothed_series_std(s : PhysicsfluidsmoothedSeries) -> Double { @_common.std(s.vals) }
 
-pub fn physics_fluid_smoothed_series_median(s : PhysicsfluidsmoothedSeries) -> Double {
-  let n = physics_fluid_smoothed_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = physics_fluid_smoothed_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn physics_fluid_smoothed_series_median(s : PhysicsfluidsmoothedSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_smoothed_series_scale(s : PhysicsfluidsmoothedSeries, f : Double) -> PhysicsfluidsmoothedSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn physics_fluid_smoothed_series_normalize(s : PhysicsfluidsmoothedSeries) -
 }
 
 pub fn physics_fluid_smoothed_series_cumsum(s : PhysicsfluidsmoothedSeries) -> PhysicsfluidsmoothedSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn physics_fluid_smoothed_series_to_string(s : PhysicsfluidsmoothedSeries) -> String {

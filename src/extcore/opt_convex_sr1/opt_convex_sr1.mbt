@@ -94,52 +94,21 @@ pub fn opt_convex_sr1_series_sum(s : Optconvexsr1Series) -> Double {
   total
 }
 
-pub fn opt_convex_sr1_series_mean(s : Optconvexsr1Series) -> Double {
-  let n = opt_convex_sr1_series_len(s)
-  if n == 0 { 0.0 } else { opt_convex_sr1_series_sum(s) / n.to_double() }
-}
+pub fn opt_convex_sr1_series_mean(s : Optconvexsr1Series) -> Double { @_common.mean(s.vals) }
 
-pub fn opt_convex_sr1_series_min(s : Optconvexsr1Series) -> Double {
-  let n = opt_convex_sr1_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_convex_sr1_series_min(s : Optconvexsr1Series) -> Double { @_common.min(s.vals) }
 
-pub fn opt_convex_sr1_series_max(s : Optconvexsr1Series) -> Double {
-  let n = opt_convex_sr1_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_convex_sr1_series_max(s : Optconvexsr1Series) -> Double { @_common.max(s.vals) }
 
 pub fn opt_convex_sr1_series_range(s : Optconvexsr1Series) -> Double {
-  opt_convex_sr1_series_max(s) - opt_convex_sr1_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn opt_convex_sr1_series_var(s : Optconvexsr1Series) -> Double {
-  let n = opt_convex_sr1_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = opt_convex_sr1_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn opt_convex_sr1_series_var(s : Optconvexsr1Series) -> Double { @_common.variance(s.vals) }
 
-pub fn opt_convex_sr1_series_std(s : Optconvexsr1Series) -> Double { @_common.sqrt(opt_convex_sr1_series_var(s)) }
+pub fn opt_convex_sr1_series_std(s : Optconvexsr1Series) -> Double { @_common.std(s.vals) }
 
-pub fn opt_convex_sr1_series_median(s : Optconvexsr1Series) -> Double {
-  let n = opt_convex_sr1_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = opt_convex_sr1_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn opt_convex_sr1_series_median(s : Optconvexsr1Series) -> Double { @_common.median(s.vals) }
 
 pub fn opt_convex_sr1_series_scale(s : Optconvexsr1Series, f : Double) -> Optconvexsr1Series {
   let result = []
@@ -173,10 +142,7 @@ pub fn opt_convex_sr1_series_normalize(s : Optconvexsr1Series) -> Optconvexsr1Se
 }
 
 pub fn opt_convex_sr1_series_cumsum(s : Optconvexsr1Series) -> Optconvexsr1Series {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn opt_convex_sr1_series_to_string(s : Optconvexsr1Series) -> String {

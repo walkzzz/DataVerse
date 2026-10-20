@@ -94,52 +94,21 @@ pub fn chem_mol_props_hbd_series_sum(s : ChemmolpropshbdSeries) -> Double {
   total
 }
 
-pub fn chem_mol_props_hbd_series_mean(s : ChemmolpropshbdSeries) -> Double {
-  let n = chem_mol_props_hbd_series_len(s)
-  if n == 0 { 0.0 } else { chem_mol_props_hbd_series_sum(s) / n.to_double() }
-}
+pub fn chem_mol_props_hbd_series_mean(s : ChemmolpropshbdSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn chem_mol_props_hbd_series_min(s : ChemmolpropshbdSeries) -> Double {
-  let n = chem_mol_props_hbd_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_hbd_series_min(s : ChemmolpropshbdSeries) -> Double { @_common.min(s.vals) }
 
-pub fn chem_mol_props_hbd_series_max(s : ChemmolpropshbdSeries) -> Double {
-  let n = chem_mol_props_hbd_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_hbd_series_max(s : ChemmolpropshbdSeries) -> Double { @_common.max(s.vals) }
 
 pub fn chem_mol_props_hbd_series_range(s : ChemmolpropshbdSeries) -> Double {
-  chem_mol_props_hbd_series_max(s) - chem_mol_props_hbd_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn chem_mol_props_hbd_series_var(s : ChemmolpropshbdSeries) -> Double {
-  let n = chem_mol_props_hbd_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = chem_mol_props_hbd_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn chem_mol_props_hbd_series_var(s : ChemmolpropshbdSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn chem_mol_props_hbd_series_std(s : ChemmolpropshbdSeries) -> Double { @_common.sqrt(chem_mol_props_hbd_series_var(s)) }
+pub fn chem_mol_props_hbd_series_std(s : ChemmolpropshbdSeries) -> Double { @_common.std(s.vals) }
 
-pub fn chem_mol_props_hbd_series_median(s : ChemmolpropshbdSeries) -> Double {
-  let n = chem_mol_props_hbd_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = chem_mol_props_hbd_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn chem_mol_props_hbd_series_median(s : ChemmolpropshbdSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_hbd_series_scale(s : ChemmolpropshbdSeries, f : Double) -> ChemmolpropshbdSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn chem_mol_props_hbd_series_normalize(s : ChemmolpropshbdSeries) -> Chemmol
 }
 
 pub fn chem_mol_props_hbd_series_cumsum(s : ChemmolpropshbdSeries) -> ChemmolpropshbdSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn chem_mol_props_hbd_series_to_string(s : ChemmolpropshbdSeries) -> String {

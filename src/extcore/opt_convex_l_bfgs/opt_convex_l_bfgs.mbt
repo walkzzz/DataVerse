@@ -94,52 +94,21 @@ pub fn opt_convex_l_bfgs_series_sum(s : OptconvexlbfgsSeries) -> Double {
   total
 }
 
-pub fn opt_convex_l_bfgs_series_mean(s : OptconvexlbfgsSeries) -> Double {
-  let n = opt_convex_l_bfgs_series_len(s)
-  if n == 0 { 0.0 } else { opt_convex_l_bfgs_series_sum(s) / n.to_double() }
-}
+pub fn opt_convex_l_bfgs_series_mean(s : OptconvexlbfgsSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn opt_convex_l_bfgs_series_min(s : OptconvexlbfgsSeries) -> Double {
-  let n = opt_convex_l_bfgs_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_series_min(s : OptconvexlbfgsSeries) -> Double { @_common.min(s.vals) }
 
-pub fn opt_convex_l_bfgs_series_max(s : OptconvexlbfgsSeries) -> Double {
-  let n = opt_convex_l_bfgs_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_series_max(s : OptconvexlbfgsSeries) -> Double { @_common.max(s.vals) }
 
 pub fn opt_convex_l_bfgs_series_range(s : OptconvexlbfgsSeries) -> Double {
-  opt_convex_l_bfgs_series_max(s) - opt_convex_l_bfgs_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn opt_convex_l_bfgs_series_var(s : OptconvexlbfgsSeries) -> Double {
-  let n = opt_convex_l_bfgs_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = opt_convex_l_bfgs_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn opt_convex_l_bfgs_series_var(s : OptconvexlbfgsSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn opt_convex_l_bfgs_series_std(s : OptconvexlbfgsSeries) -> Double { @_common.sqrt(opt_convex_l_bfgs_series_var(s)) }
+pub fn opt_convex_l_bfgs_series_std(s : OptconvexlbfgsSeries) -> Double { @_common.std(s.vals) }
 
-pub fn opt_convex_l_bfgs_series_median(s : OptconvexlbfgsSeries) -> Double {
-  let n = opt_convex_l_bfgs_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = opt_convex_l_bfgs_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn opt_convex_l_bfgs_series_median(s : OptconvexlbfgsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_convex_l_bfgs_series_scale(s : OptconvexlbfgsSeries, f : Double) -> OptconvexlbfgsSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn opt_convex_l_bfgs_series_normalize(s : OptconvexlbfgsSeries) -> Optconvex
 }
 
 pub fn opt_convex_l_bfgs_series_cumsum(s : OptconvexlbfgsSeries) -> OptconvexlbfgsSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn opt_convex_l_bfgs_series_to_string(s : OptconvexlbfgsSeries) -> String {

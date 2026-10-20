@@ -94,52 +94,21 @@ pub fn stats_dist_neg_binomial_series_sum(s : StatsdistnegbinomialSeries) -> Dou
   total
 }
 
-pub fn stats_dist_neg_binomial_series_mean(s : StatsdistnegbinomialSeries) -> Double {
-  let n = stats_dist_neg_binomial_series_len(s)
-  if n == 0 { 0.0 } else { stats_dist_neg_binomial_series_sum(s) / n.to_double() }
-}
+pub fn stats_dist_neg_binomial_series_mean(s : StatsdistnegbinomialSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn stats_dist_neg_binomial_series_min(s : StatsdistnegbinomialSeries) -> Double {
-  let n = stats_dist_neg_binomial_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn stats_dist_neg_binomial_series_min(s : StatsdistnegbinomialSeries) -> Double { @_common.min(s.vals) }
 
-pub fn stats_dist_neg_binomial_series_max(s : StatsdistnegbinomialSeries) -> Double {
-  let n = stats_dist_neg_binomial_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn stats_dist_neg_binomial_series_max(s : StatsdistnegbinomialSeries) -> Double { @_common.max(s.vals) }
 
 pub fn stats_dist_neg_binomial_series_range(s : StatsdistnegbinomialSeries) -> Double {
-  stats_dist_neg_binomial_series_max(s) - stats_dist_neg_binomial_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn stats_dist_neg_binomial_series_var(s : StatsdistnegbinomialSeries) -> Double {
-  let n = stats_dist_neg_binomial_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = stats_dist_neg_binomial_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn stats_dist_neg_binomial_series_var(s : StatsdistnegbinomialSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn stats_dist_neg_binomial_series_std(s : StatsdistnegbinomialSeries) -> Double { @_common.sqrt(stats_dist_neg_binomial_series_var(s)) }
+pub fn stats_dist_neg_binomial_series_std(s : StatsdistnegbinomialSeries) -> Double { @_common.std(s.vals) }
 
-pub fn stats_dist_neg_binomial_series_median(s : StatsdistnegbinomialSeries) -> Double {
-  let n = stats_dist_neg_binomial_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = stats_dist_neg_binomial_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn stats_dist_neg_binomial_series_median(s : StatsdistnegbinomialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_neg_binomial_series_scale(s : StatsdistnegbinomialSeries, f : Double) -> StatsdistnegbinomialSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn stats_dist_neg_binomial_series_normalize(s : StatsdistnegbinomialSeries) 
 }
 
 pub fn stats_dist_neg_binomial_series_cumsum(s : StatsdistnegbinomialSeries) -> StatsdistnegbinomialSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn stats_dist_neg_binomial_series_to_string(s : StatsdistnegbinomialSeries) -> String {

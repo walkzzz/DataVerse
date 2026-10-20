@@ -94,52 +94,21 @@ pub fn math_tensor_calc_series_sum(s : MathtensorcalcSeries) -> Double {
   total
 }
 
-pub fn math_tensor_calc_series_mean(s : MathtensorcalcSeries) -> Double {
-  let n = math_tensor_calc_series_len(s)
-  if n == 0 { 0.0 } else { math_tensor_calc_series_sum(s) / n.to_double() }
-}
+pub fn math_tensor_calc_series_mean(s : MathtensorcalcSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn math_tensor_calc_series_min(s : MathtensorcalcSeries) -> Double {
-  let n = math_tensor_calc_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn math_tensor_calc_series_min(s : MathtensorcalcSeries) -> Double { @_common.min(s.vals) }
 
-pub fn math_tensor_calc_series_max(s : MathtensorcalcSeries) -> Double {
-  let n = math_tensor_calc_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn math_tensor_calc_series_max(s : MathtensorcalcSeries) -> Double { @_common.max(s.vals) }
 
 pub fn math_tensor_calc_series_range(s : MathtensorcalcSeries) -> Double {
-  math_tensor_calc_series_max(s) - math_tensor_calc_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn math_tensor_calc_series_var(s : MathtensorcalcSeries) -> Double {
-  let n = math_tensor_calc_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = math_tensor_calc_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn math_tensor_calc_series_var(s : MathtensorcalcSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn math_tensor_calc_series_std(s : MathtensorcalcSeries) -> Double { @_common.sqrt(math_tensor_calc_series_var(s)) }
+pub fn math_tensor_calc_series_std(s : MathtensorcalcSeries) -> Double { @_common.std(s.vals) }
 
-pub fn math_tensor_calc_series_median(s : MathtensorcalcSeries) -> Double {
-  let n = math_tensor_calc_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = math_tensor_calc_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn math_tensor_calc_series_median(s : MathtensorcalcSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_tensor_calc_series_scale(s : MathtensorcalcSeries, f : Double) -> MathtensorcalcSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn math_tensor_calc_series_normalize(s : MathtensorcalcSeries) -> Mathtensor
 }
 
 pub fn math_tensor_calc_series_cumsum(s : MathtensorcalcSeries) -> MathtensorcalcSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn math_tensor_calc_series_to_string(s : MathtensorcalcSeries) -> String {

@@ -94,52 +94,21 @@ pub fn ml_classify_probit_series_sum(s : MlclassifyprobitSeries) -> Double {
   total
 }
 
-pub fn ml_classify_probit_series_mean(s : MlclassifyprobitSeries) -> Double {
-  let n = ml_classify_probit_series_len(s)
-  if n == 0 { 0.0 } else { ml_classify_probit_series_sum(s) / n.to_double() }
-}
+pub fn ml_classify_probit_series_mean(s : MlclassifyprobitSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ml_classify_probit_series_min(s : MlclassifyprobitSeries) -> Double {
-  let n = ml_classify_probit_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_classify_probit_series_min(s : MlclassifyprobitSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ml_classify_probit_series_max(s : MlclassifyprobitSeries) -> Double {
-  let n = ml_classify_probit_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_classify_probit_series_max(s : MlclassifyprobitSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ml_classify_probit_series_range(s : MlclassifyprobitSeries) -> Double {
-  ml_classify_probit_series_max(s) - ml_classify_probit_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ml_classify_probit_series_var(s : MlclassifyprobitSeries) -> Double {
-  let n = ml_classify_probit_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ml_classify_probit_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ml_classify_probit_series_var(s : MlclassifyprobitSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ml_classify_probit_series_std(s : MlclassifyprobitSeries) -> Double { @_common.sqrt(ml_classify_probit_series_var(s)) }
+pub fn ml_classify_probit_series_std(s : MlclassifyprobitSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ml_classify_probit_series_median(s : MlclassifyprobitSeries) -> Double {
-  let n = ml_classify_probit_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ml_classify_probit_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ml_classify_probit_series_median(s : MlclassifyprobitSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_probit_series_scale(s : MlclassifyprobitSeries, f : Double) -> MlclassifyprobitSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ml_classify_probit_series_normalize(s : MlclassifyprobitSeries) -> Mlclas
 }
 
 pub fn ml_classify_probit_series_cumsum(s : MlclassifyprobitSeries) -> MlclassifyprobitSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ml_classify_probit_series_to_string(s : MlclassifyprobitSeries) -> String {

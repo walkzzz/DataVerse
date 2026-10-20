@@ -323,26 +323,44 @@ pub fn f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
 // 排序函数
 // ============================================================================
 
-/// 选择排序（升序）
-pub fn sort(arr : Array[Double]) -> Array[Double] {
-  let n = arr.length()
-  let result = Array::make(n, 0.0)
-  for i in 0..<n {
-    result[i] = arr[i]
-  }
-  for i in 0..<n {
-    let mut min_idx = i
-    let start = i + 1
-    for j in start..<n {
-      if result[j] < result[min_idx] {
-        min_idx = j
+/// 快速排序（升序）— O(n log n) 平均复杂度
+fn qsort_helper(arr : Array[Double], lo : Int, hi : Int) -> Unit {
+  if lo < hi {
+    let pivot = arr[hi]
+    let mut i = lo - 1
+    for j in lo..<hi {
+      if arr[j] <= pivot {
+        i = i + 1
+        let tmp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = tmp
       }
     }
-    let tmp = result[i]
-    result[i] = result[min_idx]
-    result[min_idx] = tmp
+    i = i + 1
+    let tmp = arr[i]
+    arr[i] = arr[hi]
+    arr[hi] = tmp
+    let pivot_idx = i
+    qsort_helper(arr, lo, pivot_idx - 1)
+    qsort_helper(arr, pivot_idx + 1, hi)
   }
-  result
+}
+
+/// 排序（升序）— 快速排序 O(n log n)
+pub fn sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  match n {
+    0 => []
+    1 => [arr[0]]
+    _ => {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n {
+        result[i] = arr[i]
+      }
+      qsort_helper(result, 0, n - 1)
+      result
+    }
+  }
 }
 
 /// 降序排序

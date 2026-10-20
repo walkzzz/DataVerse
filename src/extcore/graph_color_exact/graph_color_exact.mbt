@@ -94,52 +94,21 @@ pub fn graph_color_exact_series_sum(s : GraphcolorexactSeries) -> Double {
   total
 }
 
-pub fn graph_color_exact_series_mean(s : GraphcolorexactSeries) -> Double {
-  let n = graph_color_exact_series_len(s)
-  if n == 0 { 0.0 } else { graph_color_exact_series_sum(s) / n.to_double() }
-}
+pub fn graph_color_exact_series_mean(s : GraphcolorexactSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn graph_color_exact_series_min(s : GraphcolorexactSeries) -> Double {
-  let n = graph_color_exact_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_series_min(s : GraphcolorexactSeries) -> Double { @_common.min(s.vals) }
 
-pub fn graph_color_exact_series_max(s : GraphcolorexactSeries) -> Double {
-  let n = graph_color_exact_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_series_max(s : GraphcolorexactSeries) -> Double { @_common.max(s.vals) }
 
 pub fn graph_color_exact_series_range(s : GraphcolorexactSeries) -> Double {
-  graph_color_exact_series_max(s) - graph_color_exact_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn graph_color_exact_series_var(s : GraphcolorexactSeries) -> Double {
-  let n = graph_color_exact_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = graph_color_exact_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn graph_color_exact_series_var(s : GraphcolorexactSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn graph_color_exact_series_std(s : GraphcolorexactSeries) -> Double { @_common.sqrt(graph_color_exact_series_var(s)) }
+pub fn graph_color_exact_series_std(s : GraphcolorexactSeries) -> Double { @_common.std(s.vals) }
 
-pub fn graph_color_exact_series_median(s : GraphcolorexactSeries) -> Double {
-  let n = graph_color_exact_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = graph_color_exact_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn graph_color_exact_series_median(s : GraphcolorexactSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_color_exact_series_scale(s : GraphcolorexactSeries, f : Double) -> GraphcolorexactSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn graph_color_exact_series_normalize(s : GraphcolorexactSeries) -> Graphcol
 }
 
 pub fn graph_color_exact_series_cumsum(s : GraphcolorexactSeries) -> GraphcolorexactSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn graph_color_exact_series_to_string(s : GraphcolorexactSeries) -> String {

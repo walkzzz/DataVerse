@@ -94,52 +94,21 @@ pub fn opt_meta_evolution_series_sum(s : OptmetaevolutionSeries) -> Double {
   total
 }
 
-pub fn opt_meta_evolution_series_mean(s : OptmetaevolutionSeries) -> Double {
-  let n = opt_meta_evolution_series_len(s)
-  if n == 0 { 0.0 } else { opt_meta_evolution_series_sum(s) / n.to_double() }
-}
+pub fn opt_meta_evolution_series_mean(s : OptmetaevolutionSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn opt_meta_evolution_series_min(s : OptmetaevolutionSeries) -> Double {
-  let n = opt_meta_evolution_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_series_min(s : OptmetaevolutionSeries) -> Double { @_common.min(s.vals) }
 
-pub fn opt_meta_evolution_series_max(s : OptmetaevolutionSeries) -> Double {
-  let n = opt_meta_evolution_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_series_max(s : OptmetaevolutionSeries) -> Double { @_common.max(s.vals) }
 
 pub fn opt_meta_evolution_series_range(s : OptmetaevolutionSeries) -> Double {
-  opt_meta_evolution_series_max(s) - opt_meta_evolution_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn opt_meta_evolution_series_var(s : OptmetaevolutionSeries) -> Double {
-  let n = opt_meta_evolution_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = opt_meta_evolution_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn opt_meta_evolution_series_var(s : OptmetaevolutionSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn opt_meta_evolution_series_std(s : OptmetaevolutionSeries) -> Double { @_common.sqrt(opt_meta_evolution_series_var(s)) }
+pub fn opt_meta_evolution_series_std(s : OptmetaevolutionSeries) -> Double { @_common.std(s.vals) }
 
-pub fn opt_meta_evolution_series_median(s : OptmetaevolutionSeries) -> Double {
-  let n = opt_meta_evolution_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = opt_meta_evolution_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn opt_meta_evolution_series_median(s : OptmetaevolutionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_evolution_series_scale(s : OptmetaevolutionSeries, f : Double) -> OptmetaevolutionSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn opt_meta_evolution_series_normalize(s : OptmetaevolutionSeries) -> Optmet
 }
 
 pub fn opt_meta_evolution_series_cumsum(s : OptmetaevolutionSeries) -> OptmetaevolutionSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn opt_meta_evolution_series_to_string(s : OptmetaevolutionSeries) -> String {

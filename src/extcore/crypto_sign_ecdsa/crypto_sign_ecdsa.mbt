@@ -94,52 +94,21 @@ pub fn crypto_sign_ecdsa_series_sum(s : CryptosignecdsaSeries) -> Double {
   total
 }
 
-pub fn crypto_sign_ecdsa_series_mean(s : CryptosignecdsaSeries) -> Double {
-  let n = crypto_sign_ecdsa_series_len(s)
-  if n == 0 { 0.0 } else { crypto_sign_ecdsa_series_sum(s) / n.to_double() }
-}
+pub fn crypto_sign_ecdsa_series_mean(s : CryptosignecdsaSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn crypto_sign_ecdsa_series_min(s : CryptosignecdsaSeries) -> Double {
-  let n = crypto_sign_ecdsa_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn crypto_sign_ecdsa_series_min(s : CryptosignecdsaSeries) -> Double { @_common.min(s.vals) }
 
-pub fn crypto_sign_ecdsa_series_max(s : CryptosignecdsaSeries) -> Double {
-  let n = crypto_sign_ecdsa_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn crypto_sign_ecdsa_series_max(s : CryptosignecdsaSeries) -> Double { @_common.max(s.vals) }
 
 pub fn crypto_sign_ecdsa_series_range(s : CryptosignecdsaSeries) -> Double {
-  crypto_sign_ecdsa_series_max(s) - crypto_sign_ecdsa_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn crypto_sign_ecdsa_series_var(s : CryptosignecdsaSeries) -> Double {
-  let n = crypto_sign_ecdsa_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = crypto_sign_ecdsa_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn crypto_sign_ecdsa_series_var(s : CryptosignecdsaSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn crypto_sign_ecdsa_series_std(s : CryptosignecdsaSeries) -> Double { @_common.sqrt(crypto_sign_ecdsa_series_var(s)) }
+pub fn crypto_sign_ecdsa_series_std(s : CryptosignecdsaSeries) -> Double { @_common.std(s.vals) }
 
-pub fn crypto_sign_ecdsa_series_median(s : CryptosignecdsaSeries) -> Double {
-  let n = crypto_sign_ecdsa_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = crypto_sign_ecdsa_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn crypto_sign_ecdsa_series_median(s : CryptosignecdsaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sign_ecdsa_series_scale(s : CryptosignecdsaSeries, f : Double) -> CryptosignecdsaSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn crypto_sign_ecdsa_series_normalize(s : CryptosignecdsaSeries) -> Cryptosi
 }
 
 pub fn crypto_sign_ecdsa_series_cumsum(s : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn crypto_sign_ecdsa_series_to_string(s : CryptosignecdsaSeries) -> String {

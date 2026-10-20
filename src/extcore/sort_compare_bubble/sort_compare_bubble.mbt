@@ -94,52 +94,21 @@ pub fn sort_compare_bubble_series_sum(s : SortcomparebubbleSeries) -> Double {
   total
 }
 
-pub fn sort_compare_bubble_series_mean(s : SortcomparebubbleSeries) -> Double {
-  let n = sort_compare_bubble_series_len(s)
-  if n == 0 { 0.0 } else { sort_compare_bubble_series_sum(s) / n.to_double() }
-}
+pub fn sort_compare_bubble_series_mean(s : SortcomparebubbleSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn sort_compare_bubble_series_min(s : SortcomparebubbleSeries) -> Double {
-  let n = sort_compare_bubble_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_series_min(s : SortcomparebubbleSeries) -> Double { @_common.min(s.vals) }
 
-pub fn sort_compare_bubble_series_max(s : SortcomparebubbleSeries) -> Double {
-  let n = sort_compare_bubble_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_series_max(s : SortcomparebubbleSeries) -> Double { @_common.max(s.vals) }
 
 pub fn sort_compare_bubble_series_range(s : SortcomparebubbleSeries) -> Double {
-  sort_compare_bubble_series_max(s) - sort_compare_bubble_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn sort_compare_bubble_series_var(s : SortcomparebubbleSeries) -> Double {
-  let n = sort_compare_bubble_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = sort_compare_bubble_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn sort_compare_bubble_series_var(s : SortcomparebubbleSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn sort_compare_bubble_series_std(s : SortcomparebubbleSeries) -> Double { @_common.sqrt(sort_compare_bubble_series_var(s)) }
+pub fn sort_compare_bubble_series_std(s : SortcomparebubbleSeries) -> Double { @_common.std(s.vals) }
 
-pub fn sort_compare_bubble_series_median(s : SortcomparebubbleSeries) -> Double {
-  let n = sort_compare_bubble_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = sort_compare_bubble_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn sort_compare_bubble_series_median(s : SortcomparebubbleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_bubble_series_scale(s : SortcomparebubbleSeries, f : Double) -> SortcomparebubbleSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn sort_compare_bubble_series_normalize(s : SortcomparebubbleSeries) -> Sort
 }
 
 pub fn sort_compare_bubble_series_cumsum(s : SortcomparebubbleSeries) -> SortcomparebubbleSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn sort_compare_bubble_series_to_string(s : SortcomparebubbleSeries) -> String {

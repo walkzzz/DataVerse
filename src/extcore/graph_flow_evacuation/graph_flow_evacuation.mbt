@@ -94,52 +94,21 @@ pub fn graph_flow_evacuation_series_sum(s : GraphflowevacuationSeries) -> Double
   total
 }
 
-pub fn graph_flow_evacuation_series_mean(s : GraphflowevacuationSeries) -> Double {
-  let n = graph_flow_evacuation_series_len(s)
-  if n == 0 { 0.0 } else { graph_flow_evacuation_series_sum(s) / n.to_double() }
-}
+pub fn graph_flow_evacuation_series_mean(s : GraphflowevacuationSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn graph_flow_evacuation_series_min(s : GraphflowevacuationSeries) -> Double {
-  let n = graph_flow_evacuation_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_series_min(s : GraphflowevacuationSeries) -> Double { @_common.min(s.vals) }
 
-pub fn graph_flow_evacuation_series_max(s : GraphflowevacuationSeries) -> Double {
-  let n = graph_flow_evacuation_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_series_max(s : GraphflowevacuationSeries) -> Double { @_common.max(s.vals) }
 
 pub fn graph_flow_evacuation_series_range(s : GraphflowevacuationSeries) -> Double {
-  graph_flow_evacuation_series_max(s) - graph_flow_evacuation_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn graph_flow_evacuation_series_var(s : GraphflowevacuationSeries) -> Double {
-  let n = graph_flow_evacuation_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = graph_flow_evacuation_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn graph_flow_evacuation_series_var(s : GraphflowevacuationSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn graph_flow_evacuation_series_std(s : GraphflowevacuationSeries) -> Double { @_common.sqrt(graph_flow_evacuation_series_var(s)) }
+pub fn graph_flow_evacuation_series_std(s : GraphflowevacuationSeries) -> Double { @_common.std(s.vals) }
 
-pub fn graph_flow_evacuation_series_median(s : GraphflowevacuationSeries) -> Double {
-  let n = graph_flow_evacuation_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = graph_flow_evacuation_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn graph_flow_evacuation_series_median(s : GraphflowevacuationSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_evacuation_series_scale(s : GraphflowevacuationSeries, f : Double) -> GraphflowevacuationSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn graph_flow_evacuation_series_normalize(s : GraphflowevacuationSeries) -> 
 }
 
 pub fn graph_flow_evacuation_series_cumsum(s : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn graph_flow_evacuation_series_to_string(s : GraphflowevacuationSeries) -> String {

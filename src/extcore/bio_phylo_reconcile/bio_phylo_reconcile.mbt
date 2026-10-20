@@ -94,52 +94,21 @@ pub fn bio_phylo_reconcile_series_sum(s : BiophyloreconcileSeries) -> Double {
   total
 }
 
-pub fn bio_phylo_reconcile_series_mean(s : BiophyloreconcileSeries) -> Double {
-  let n = bio_phylo_reconcile_series_len(s)
-  if n == 0 { 0.0 } else { bio_phylo_reconcile_series_sum(s) / n.to_double() }
-}
+pub fn bio_phylo_reconcile_series_mean(s : BiophyloreconcileSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn bio_phylo_reconcile_series_min(s : BiophyloreconcileSeries) -> Double {
-  let n = bio_phylo_reconcile_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_series_min(s : BiophyloreconcileSeries) -> Double { @_common.min(s.vals) }
 
-pub fn bio_phylo_reconcile_series_max(s : BiophyloreconcileSeries) -> Double {
-  let n = bio_phylo_reconcile_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_series_max(s : BiophyloreconcileSeries) -> Double { @_common.max(s.vals) }
 
 pub fn bio_phylo_reconcile_series_range(s : BiophyloreconcileSeries) -> Double {
-  bio_phylo_reconcile_series_max(s) - bio_phylo_reconcile_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn bio_phylo_reconcile_series_var(s : BiophyloreconcileSeries) -> Double {
-  let n = bio_phylo_reconcile_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = bio_phylo_reconcile_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn bio_phylo_reconcile_series_var(s : BiophyloreconcileSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn bio_phylo_reconcile_series_std(s : BiophyloreconcileSeries) -> Double { @_common.sqrt(bio_phylo_reconcile_series_var(s)) }
+pub fn bio_phylo_reconcile_series_std(s : BiophyloreconcileSeries) -> Double { @_common.std(s.vals) }
 
-pub fn bio_phylo_reconcile_series_median(s : BiophyloreconcileSeries) -> Double {
-  let n = bio_phylo_reconcile_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = bio_phylo_reconcile_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn bio_phylo_reconcile_series_median(s : BiophyloreconcileSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_phylo_reconcile_series_scale(s : BiophyloreconcileSeries, f : Double) -> BiophyloreconcileSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn bio_phylo_reconcile_series_normalize(s : BiophyloreconcileSeries) -> Biop
 }
 
 pub fn bio_phylo_reconcile_series_cumsum(s : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn bio_phylo_reconcile_series_to_string(s : BiophyloreconcileSeries) -> String {

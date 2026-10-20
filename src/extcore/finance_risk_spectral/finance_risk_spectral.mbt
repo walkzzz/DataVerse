@@ -94,52 +94,21 @@ pub fn finance_risk_spectral_series_sum(s : FinanceriskspectralSeries) -> Double
   total
 }
 
-pub fn finance_risk_spectral_series_mean(s : FinanceriskspectralSeries) -> Double {
-  let n = finance_risk_spectral_series_len(s)
-  if n == 0 { 0.0 } else { finance_risk_spectral_series_sum(s) / n.to_double() }
-}
+pub fn finance_risk_spectral_series_mean(s : FinanceriskspectralSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn finance_risk_spectral_series_min(s : FinanceriskspectralSeries) -> Double {
-  let n = finance_risk_spectral_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_series_min(s : FinanceriskspectralSeries) -> Double { @_common.min(s.vals) }
 
-pub fn finance_risk_spectral_series_max(s : FinanceriskspectralSeries) -> Double {
-  let n = finance_risk_spectral_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_series_max(s : FinanceriskspectralSeries) -> Double { @_common.max(s.vals) }
 
 pub fn finance_risk_spectral_series_range(s : FinanceriskspectralSeries) -> Double {
-  finance_risk_spectral_series_max(s) - finance_risk_spectral_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn finance_risk_spectral_series_var(s : FinanceriskspectralSeries) -> Double {
-  let n = finance_risk_spectral_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = finance_risk_spectral_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn finance_risk_spectral_series_var(s : FinanceriskspectralSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn finance_risk_spectral_series_std(s : FinanceriskspectralSeries) -> Double { @_common.sqrt(finance_risk_spectral_series_var(s)) }
+pub fn finance_risk_spectral_series_std(s : FinanceriskspectralSeries) -> Double { @_common.std(s.vals) }
 
-pub fn finance_risk_spectral_series_median(s : FinanceriskspectralSeries) -> Double {
-  let n = finance_risk_spectral_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = finance_risk_spectral_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn finance_risk_spectral_series_median(s : FinanceriskspectralSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_risk_spectral_series_scale(s : FinanceriskspectralSeries, f : Double) -> FinanceriskspectralSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn finance_risk_spectral_series_normalize(s : FinanceriskspectralSeries) -> 
 }
 
 pub fn finance_risk_spectral_series_cumsum(s : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn finance_risk_spectral_series_to_string(s : FinanceriskspectralSeries) -> String {

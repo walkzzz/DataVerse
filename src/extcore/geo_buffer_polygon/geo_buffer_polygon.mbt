@@ -94,52 +94,21 @@ pub fn geo_buffer_polygon_series_sum(s : GeobufferpolygonSeries) -> Double {
   total
 }
 
-pub fn geo_buffer_polygon_series_mean(s : GeobufferpolygonSeries) -> Double {
-  let n = geo_buffer_polygon_series_len(s)
-  if n == 0 { 0.0 } else { geo_buffer_polygon_series_sum(s) / n.to_double() }
-}
+pub fn geo_buffer_polygon_series_mean(s : GeobufferpolygonSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn geo_buffer_polygon_series_min(s : GeobufferpolygonSeries) -> Double {
-  let n = geo_buffer_polygon_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_series_min(s : GeobufferpolygonSeries) -> Double { @_common.min(s.vals) }
 
-pub fn geo_buffer_polygon_series_max(s : GeobufferpolygonSeries) -> Double {
-  let n = geo_buffer_polygon_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_series_max(s : GeobufferpolygonSeries) -> Double { @_common.max(s.vals) }
 
 pub fn geo_buffer_polygon_series_range(s : GeobufferpolygonSeries) -> Double {
-  geo_buffer_polygon_series_max(s) - geo_buffer_polygon_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn geo_buffer_polygon_series_var(s : GeobufferpolygonSeries) -> Double {
-  let n = geo_buffer_polygon_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = geo_buffer_polygon_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn geo_buffer_polygon_series_var(s : GeobufferpolygonSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn geo_buffer_polygon_series_std(s : GeobufferpolygonSeries) -> Double { @_common.sqrt(geo_buffer_polygon_series_var(s)) }
+pub fn geo_buffer_polygon_series_std(s : GeobufferpolygonSeries) -> Double { @_common.std(s.vals) }
 
-pub fn geo_buffer_polygon_series_median(s : GeobufferpolygonSeries) -> Double {
-  let n = geo_buffer_polygon_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = geo_buffer_polygon_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn geo_buffer_polygon_series_median(s : GeobufferpolygonSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_buffer_polygon_series_scale(s : GeobufferpolygonSeries, f : Double) -> GeobufferpolygonSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn geo_buffer_polygon_series_normalize(s : GeobufferpolygonSeries) -> Geobuf
 }
 
 pub fn geo_buffer_polygon_series_cumsum(s : GeobufferpolygonSeries) -> GeobufferpolygonSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn geo_buffer_polygon_series_to_string(s : GeobufferpolygonSeries) -> String {

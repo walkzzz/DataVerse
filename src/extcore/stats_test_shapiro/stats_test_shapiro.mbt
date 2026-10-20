@@ -94,52 +94,21 @@ pub fn stats_test_shapiro_series_sum(s : StatstestshapiroSeries) -> Double {
   total
 }
 
-pub fn stats_test_shapiro_series_mean(s : StatstestshapiroSeries) -> Double {
-  let n = stats_test_shapiro_series_len(s)
-  if n == 0 { 0.0 } else { stats_test_shapiro_series_sum(s) / n.to_double() }
-}
+pub fn stats_test_shapiro_series_mean(s : StatstestshapiroSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn stats_test_shapiro_series_min(s : StatstestshapiroSeries) -> Double {
-  let n = stats_test_shapiro_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_series_min(s : StatstestshapiroSeries) -> Double { @_common.min(s.vals) }
 
-pub fn stats_test_shapiro_series_max(s : StatstestshapiroSeries) -> Double {
-  let n = stats_test_shapiro_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_series_max(s : StatstestshapiroSeries) -> Double { @_common.max(s.vals) }
 
 pub fn stats_test_shapiro_series_range(s : StatstestshapiroSeries) -> Double {
-  stats_test_shapiro_series_max(s) - stats_test_shapiro_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn stats_test_shapiro_series_var(s : StatstestshapiroSeries) -> Double {
-  let n = stats_test_shapiro_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = stats_test_shapiro_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn stats_test_shapiro_series_var(s : StatstestshapiroSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn stats_test_shapiro_series_std(s : StatstestshapiroSeries) -> Double { @_common.sqrt(stats_test_shapiro_series_var(s)) }
+pub fn stats_test_shapiro_series_std(s : StatstestshapiroSeries) -> Double { @_common.std(s.vals) }
 
-pub fn stats_test_shapiro_series_median(s : StatstestshapiroSeries) -> Double {
-  let n = stats_test_shapiro_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = stats_test_shapiro_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn stats_test_shapiro_series_median(s : StatstestshapiroSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_test_shapiro_series_scale(s : StatstestshapiroSeries, f : Double) -> StatstestshapiroSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn stats_test_shapiro_series_normalize(s : StatstestshapiroSeries) -> Statst
 }
 
 pub fn stats_test_shapiro_series_cumsum(s : StatstestshapiroSeries) -> StatstestshapiroSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn stats_test_shapiro_series_to_string(s : StatstestshapiroSeries) -> String {

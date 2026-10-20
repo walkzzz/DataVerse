@@ -94,52 +94,21 @@ pub fn nlp_embed_doc2vec_series_sum(s : Nlpembeddoc2vecSeries) -> Double {
   total
 }
 
-pub fn nlp_embed_doc2vec_series_mean(s : Nlpembeddoc2vecSeries) -> Double {
-  let n = nlp_embed_doc2vec_series_len(s)
-  if n == 0 { 0.0 } else { nlp_embed_doc2vec_series_sum(s) / n.to_double() }
-}
+pub fn nlp_embed_doc2vec_series_mean(s : Nlpembeddoc2vecSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn nlp_embed_doc2vec_series_min(s : Nlpembeddoc2vecSeries) -> Double {
-  let n = nlp_embed_doc2vec_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_series_min(s : Nlpembeddoc2vecSeries) -> Double { @_common.min(s.vals) }
 
-pub fn nlp_embed_doc2vec_series_max(s : Nlpembeddoc2vecSeries) -> Double {
-  let n = nlp_embed_doc2vec_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_series_max(s : Nlpembeddoc2vecSeries) -> Double { @_common.max(s.vals) }
 
 pub fn nlp_embed_doc2vec_series_range(s : Nlpembeddoc2vecSeries) -> Double {
-  nlp_embed_doc2vec_series_max(s) - nlp_embed_doc2vec_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn nlp_embed_doc2vec_series_var(s : Nlpembeddoc2vecSeries) -> Double {
-  let n = nlp_embed_doc2vec_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = nlp_embed_doc2vec_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn nlp_embed_doc2vec_series_var(s : Nlpembeddoc2vecSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn nlp_embed_doc2vec_series_std(s : Nlpembeddoc2vecSeries) -> Double { @_common.sqrt(nlp_embed_doc2vec_series_var(s)) }
+pub fn nlp_embed_doc2vec_series_std(s : Nlpembeddoc2vecSeries) -> Double { @_common.std(s.vals) }
 
-pub fn nlp_embed_doc2vec_series_median(s : Nlpembeddoc2vecSeries) -> Double {
-  let n = nlp_embed_doc2vec_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = nlp_embed_doc2vec_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn nlp_embed_doc2vec_series_median(s : Nlpembeddoc2vecSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_doc2vec_series_scale(s : Nlpembeddoc2vecSeries, f : Double) -> Nlpembeddoc2vecSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn nlp_embed_doc2vec_series_normalize(s : Nlpembeddoc2vecSeries) -> Nlpembed
 }
 
 pub fn nlp_embed_doc2vec_series_cumsum(s : Nlpembeddoc2vecSeries) -> Nlpembeddoc2vecSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn nlp_embed_doc2vec_series_to_string(s : Nlpembeddoc2vecSeries) -> String {

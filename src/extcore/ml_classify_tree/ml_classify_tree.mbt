@@ -94,52 +94,21 @@ pub fn ml_classify_tree_series_sum(s : MlclassifytreeSeries) -> Double {
   total
 }
 
-pub fn ml_classify_tree_series_mean(s : MlclassifytreeSeries) -> Double {
-  let n = ml_classify_tree_series_len(s)
-  if n == 0 { 0.0 } else { ml_classify_tree_series_sum(s) / n.to_double() }
-}
+pub fn ml_classify_tree_series_mean(s : MlclassifytreeSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ml_classify_tree_series_min(s : MlclassifytreeSeries) -> Double {
-  let n = ml_classify_tree_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_series_min(s : MlclassifytreeSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ml_classify_tree_series_max(s : MlclassifytreeSeries) -> Double {
-  let n = ml_classify_tree_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_series_max(s : MlclassifytreeSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ml_classify_tree_series_range(s : MlclassifytreeSeries) -> Double {
-  ml_classify_tree_series_max(s) - ml_classify_tree_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ml_classify_tree_series_var(s : MlclassifytreeSeries) -> Double {
-  let n = ml_classify_tree_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ml_classify_tree_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ml_classify_tree_series_var(s : MlclassifytreeSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ml_classify_tree_series_std(s : MlclassifytreeSeries) -> Double { @_common.sqrt(ml_classify_tree_series_var(s)) }
+pub fn ml_classify_tree_series_std(s : MlclassifytreeSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ml_classify_tree_series_median(s : MlclassifytreeSeries) -> Double {
-  let n = ml_classify_tree_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ml_classify_tree_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ml_classify_tree_series_median(s : MlclassifytreeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_tree_series_scale(s : MlclassifytreeSeries, f : Double) -> MlclassifytreeSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ml_classify_tree_series_normalize(s : MlclassifytreeSeries) -> Mlclassify
 }
 
 pub fn ml_classify_tree_series_cumsum(s : MlclassifytreeSeries) -> MlclassifytreeSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ml_classify_tree_series_to_string(s : MlclassifytreeSeries) -> String {

@@ -94,52 +94,21 @@ pub fn sort_compare_insertion_series_sum(s : SortcompareinsertionSeries) -> Doub
   total
 }
 
-pub fn sort_compare_insertion_series_mean(s : SortcompareinsertionSeries) -> Double {
-  let n = sort_compare_insertion_series_len(s)
-  if n == 0 { 0.0 } else { sort_compare_insertion_series_sum(s) / n.to_double() }
-}
+pub fn sort_compare_insertion_series_mean(s : SortcompareinsertionSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn sort_compare_insertion_series_min(s : SortcompareinsertionSeries) -> Double {
-  let n = sort_compare_insertion_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_series_min(s : SortcompareinsertionSeries) -> Double { @_common.min(s.vals) }
 
-pub fn sort_compare_insertion_series_max(s : SortcompareinsertionSeries) -> Double {
-  let n = sort_compare_insertion_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_series_max(s : SortcompareinsertionSeries) -> Double { @_common.max(s.vals) }
 
 pub fn sort_compare_insertion_series_range(s : SortcompareinsertionSeries) -> Double {
-  sort_compare_insertion_series_max(s) - sort_compare_insertion_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn sort_compare_insertion_series_var(s : SortcompareinsertionSeries) -> Double {
-  let n = sort_compare_insertion_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = sort_compare_insertion_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn sort_compare_insertion_series_var(s : SortcompareinsertionSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn sort_compare_insertion_series_std(s : SortcompareinsertionSeries) -> Double { @_common.sqrt(sort_compare_insertion_series_var(s)) }
+pub fn sort_compare_insertion_series_std(s : SortcompareinsertionSeries) -> Double { @_common.std(s.vals) }
 
-pub fn sort_compare_insertion_series_median(s : SortcompareinsertionSeries) -> Double {
-  let n = sort_compare_insertion_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = sort_compare_insertion_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn sort_compare_insertion_series_median(s : SortcompareinsertionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_insertion_series_scale(s : SortcompareinsertionSeries, f : Double) -> SortcompareinsertionSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn sort_compare_insertion_series_normalize(s : SortcompareinsertionSeries) -
 }
 
 pub fn sort_compare_insertion_series_cumsum(s : SortcompareinsertionSeries) -> SortcompareinsertionSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn sort_compare_insertion_series_to_string(s : SortcompareinsertionSeries) -> String {

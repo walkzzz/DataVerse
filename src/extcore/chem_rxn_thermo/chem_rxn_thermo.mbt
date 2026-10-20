@@ -94,52 +94,21 @@ pub fn chem_rxn_thermo_series_sum(s : ChemrxnthermoSeries) -> Double {
   total
 }
 
-pub fn chem_rxn_thermo_series_mean(s : ChemrxnthermoSeries) -> Double {
-  let n = chem_rxn_thermo_series_len(s)
-  if n == 0 { 0.0 } else { chem_rxn_thermo_series_sum(s) / n.to_double() }
-}
+pub fn chem_rxn_thermo_series_mean(s : ChemrxnthermoSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn chem_rxn_thermo_series_min(s : ChemrxnthermoSeries) -> Double {
-  let n = chem_rxn_thermo_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn chem_rxn_thermo_series_min(s : ChemrxnthermoSeries) -> Double { @_common.min(s.vals) }
 
-pub fn chem_rxn_thermo_series_max(s : ChemrxnthermoSeries) -> Double {
-  let n = chem_rxn_thermo_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn chem_rxn_thermo_series_max(s : ChemrxnthermoSeries) -> Double { @_common.max(s.vals) }
 
 pub fn chem_rxn_thermo_series_range(s : ChemrxnthermoSeries) -> Double {
-  chem_rxn_thermo_series_max(s) - chem_rxn_thermo_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn chem_rxn_thermo_series_var(s : ChemrxnthermoSeries) -> Double {
-  let n = chem_rxn_thermo_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = chem_rxn_thermo_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn chem_rxn_thermo_series_var(s : ChemrxnthermoSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn chem_rxn_thermo_series_std(s : ChemrxnthermoSeries) -> Double { @_common.sqrt(chem_rxn_thermo_series_var(s)) }
+pub fn chem_rxn_thermo_series_std(s : ChemrxnthermoSeries) -> Double { @_common.std(s.vals) }
 
-pub fn chem_rxn_thermo_series_median(s : ChemrxnthermoSeries) -> Double {
-  let n = chem_rxn_thermo_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = chem_rxn_thermo_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn chem_rxn_thermo_series_median(s : ChemrxnthermoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_rxn_thermo_series_scale(s : ChemrxnthermoSeries, f : Double) -> ChemrxnthermoSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn chem_rxn_thermo_series_normalize(s : ChemrxnthermoSeries) -> Chemrxntherm
 }
 
 pub fn chem_rxn_thermo_series_cumsum(s : ChemrxnthermoSeries) -> ChemrxnthermoSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn chem_rxn_thermo_series_to_string(s : ChemrxnthermoSeries) -> String {

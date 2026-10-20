@@ -94,52 +94,21 @@ pub fn crypto_sym_idea_series_sum(s : CryptosymideaSeries) -> Double {
   total
 }
 
-pub fn crypto_sym_idea_series_mean(s : CryptosymideaSeries) -> Double {
-  let n = crypto_sym_idea_series_len(s)
-  if n == 0 { 0.0 } else { crypto_sym_idea_series_sum(s) / n.to_double() }
-}
+pub fn crypto_sym_idea_series_mean(s : CryptosymideaSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn crypto_sym_idea_series_min(s : CryptosymideaSeries) -> Double {
-  let n = crypto_sym_idea_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_series_min(s : CryptosymideaSeries) -> Double { @_common.min(s.vals) }
 
-pub fn crypto_sym_idea_series_max(s : CryptosymideaSeries) -> Double {
-  let n = crypto_sym_idea_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_series_max(s : CryptosymideaSeries) -> Double { @_common.max(s.vals) }
 
 pub fn crypto_sym_idea_series_range(s : CryptosymideaSeries) -> Double {
-  crypto_sym_idea_series_max(s) - crypto_sym_idea_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn crypto_sym_idea_series_var(s : CryptosymideaSeries) -> Double {
-  let n = crypto_sym_idea_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = crypto_sym_idea_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn crypto_sym_idea_series_var(s : CryptosymideaSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn crypto_sym_idea_series_std(s : CryptosymideaSeries) -> Double { @_common.sqrt(crypto_sym_idea_series_var(s)) }
+pub fn crypto_sym_idea_series_std(s : CryptosymideaSeries) -> Double { @_common.std(s.vals) }
 
-pub fn crypto_sym_idea_series_median(s : CryptosymideaSeries) -> Double {
-  let n = crypto_sym_idea_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = crypto_sym_idea_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn crypto_sym_idea_series_median(s : CryptosymideaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sym_idea_series_scale(s : CryptosymideaSeries, f : Double) -> CryptosymideaSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn crypto_sym_idea_series_normalize(s : CryptosymideaSeries) -> Cryptosymide
 }
 
 pub fn crypto_sym_idea_series_cumsum(s : CryptosymideaSeries) -> CryptosymideaSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn crypto_sym_idea_series_to_string(s : CryptosymideaSeries) -> String {

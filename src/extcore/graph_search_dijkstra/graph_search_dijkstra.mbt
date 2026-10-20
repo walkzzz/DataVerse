@@ -94,52 +94,21 @@ pub fn graph_search_dijkstra_series_sum(s : GraphsearchdijkstraSeries) -> Double
   total
 }
 
-pub fn graph_search_dijkstra_series_mean(s : GraphsearchdijkstraSeries) -> Double {
-  let n = graph_search_dijkstra_series_len(s)
-  if n == 0 { 0.0 } else { graph_search_dijkstra_series_sum(s) / n.to_double() }
-}
+pub fn graph_search_dijkstra_series_mean(s : GraphsearchdijkstraSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn graph_search_dijkstra_series_min(s : GraphsearchdijkstraSeries) -> Double {
-  let n = graph_search_dijkstra_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_series_min(s : GraphsearchdijkstraSeries) -> Double { @_common.min(s.vals) }
 
-pub fn graph_search_dijkstra_series_max(s : GraphsearchdijkstraSeries) -> Double {
-  let n = graph_search_dijkstra_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_series_max(s : GraphsearchdijkstraSeries) -> Double { @_common.max(s.vals) }
 
 pub fn graph_search_dijkstra_series_range(s : GraphsearchdijkstraSeries) -> Double {
-  graph_search_dijkstra_series_max(s) - graph_search_dijkstra_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn graph_search_dijkstra_series_var(s : GraphsearchdijkstraSeries) -> Double {
-  let n = graph_search_dijkstra_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = graph_search_dijkstra_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn graph_search_dijkstra_series_var(s : GraphsearchdijkstraSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn graph_search_dijkstra_series_std(s : GraphsearchdijkstraSeries) -> Double { @_common.sqrt(graph_search_dijkstra_series_var(s)) }
+pub fn graph_search_dijkstra_series_std(s : GraphsearchdijkstraSeries) -> Double { @_common.std(s.vals) }
 
-pub fn graph_search_dijkstra_series_median(s : GraphsearchdijkstraSeries) -> Double {
-  let n = graph_search_dijkstra_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = graph_search_dijkstra_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn graph_search_dijkstra_series_median(s : GraphsearchdijkstraSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_search_dijkstra_series_scale(s : GraphsearchdijkstraSeries, f : Double) -> GraphsearchdijkstraSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn graph_search_dijkstra_series_normalize(s : GraphsearchdijkstraSeries) -> 
 }
 
 pub fn graph_search_dijkstra_series_cumsum(s : GraphsearchdijkstraSeries) -> GraphsearchdijkstraSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn graph_search_dijkstra_series_to_string(s : GraphsearchdijkstraSeries) -> String {

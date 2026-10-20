@@ -94,52 +94,21 @@ pub fn stats_model_glm_series_sum(s : StatsmodelglmSeries) -> Double {
   total
 }
 
-pub fn stats_model_glm_series_mean(s : StatsmodelglmSeries) -> Double {
-  let n = stats_model_glm_series_len(s)
-  if n == 0 { 0.0 } else { stats_model_glm_series_sum(s) / n.to_double() }
-}
+pub fn stats_model_glm_series_mean(s : StatsmodelglmSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn stats_model_glm_series_min(s : StatsmodelglmSeries) -> Double {
-  let n = stats_model_glm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn stats_model_glm_series_min(s : StatsmodelglmSeries) -> Double { @_common.min(s.vals) }
 
-pub fn stats_model_glm_series_max(s : StatsmodelglmSeries) -> Double {
-  let n = stats_model_glm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn stats_model_glm_series_max(s : StatsmodelglmSeries) -> Double { @_common.max(s.vals) }
 
 pub fn stats_model_glm_series_range(s : StatsmodelglmSeries) -> Double {
-  stats_model_glm_series_max(s) - stats_model_glm_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn stats_model_glm_series_var(s : StatsmodelglmSeries) -> Double {
-  let n = stats_model_glm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = stats_model_glm_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn stats_model_glm_series_var(s : StatsmodelglmSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn stats_model_glm_series_std(s : StatsmodelglmSeries) -> Double { @_common.sqrt(stats_model_glm_series_var(s)) }
+pub fn stats_model_glm_series_std(s : StatsmodelglmSeries) -> Double { @_common.std(s.vals) }
 
-pub fn stats_model_glm_series_median(s : StatsmodelglmSeries) -> Double {
-  let n = stats_model_glm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = stats_model_glm_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn stats_model_glm_series_median(s : StatsmodelglmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_model_glm_series_scale(s : StatsmodelglmSeries, f : Double) -> StatsmodelglmSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn stats_model_glm_series_normalize(s : StatsmodelglmSeries) -> Statsmodelgl
 }
 
 pub fn stats_model_glm_series_cumsum(s : StatsmodelglmSeries) -> StatsmodelglmSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn stats_model_glm_series_to_string(s : StatsmodelglmSeries) -> String {

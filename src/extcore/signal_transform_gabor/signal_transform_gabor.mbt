@@ -94,52 +94,21 @@ pub fn signal_transform_gabor_series_sum(s : SignaltransformgaborSeries) -> Doub
   total
 }
 
-pub fn signal_transform_gabor_series_mean(s : SignaltransformgaborSeries) -> Double {
-  let n = signal_transform_gabor_series_len(s)
-  if n == 0 { 0.0 } else { signal_transform_gabor_series_sum(s) / n.to_double() }
-}
+pub fn signal_transform_gabor_series_mean(s : SignaltransformgaborSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn signal_transform_gabor_series_min(s : SignaltransformgaborSeries) -> Double {
-  let n = signal_transform_gabor_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_transform_gabor_series_min(s : SignaltransformgaborSeries) -> Double { @_common.min(s.vals) }
 
-pub fn signal_transform_gabor_series_max(s : SignaltransformgaborSeries) -> Double {
-  let n = signal_transform_gabor_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_transform_gabor_series_max(s : SignaltransformgaborSeries) -> Double { @_common.max(s.vals) }
 
 pub fn signal_transform_gabor_series_range(s : SignaltransformgaborSeries) -> Double {
-  signal_transform_gabor_series_max(s) - signal_transform_gabor_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn signal_transform_gabor_series_var(s : SignaltransformgaborSeries) -> Double {
-  let n = signal_transform_gabor_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = signal_transform_gabor_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn signal_transform_gabor_series_var(s : SignaltransformgaborSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn signal_transform_gabor_series_std(s : SignaltransformgaborSeries) -> Double { @_common.sqrt(signal_transform_gabor_series_var(s)) }
+pub fn signal_transform_gabor_series_std(s : SignaltransformgaborSeries) -> Double { @_common.std(s.vals) }
 
-pub fn signal_transform_gabor_series_median(s : SignaltransformgaborSeries) -> Double {
-  let n = signal_transform_gabor_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = signal_transform_gabor_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn signal_transform_gabor_series_median(s : SignaltransformgaborSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_gabor_series_scale(s : SignaltransformgaborSeries, f : Double) -> SignaltransformgaborSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn signal_transform_gabor_series_normalize(s : SignaltransformgaborSeries) -
 }
 
 pub fn signal_transform_gabor_series_cumsum(s : SignaltransformgaborSeries) -> SignaltransformgaborSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn signal_transform_gabor_series_to_string(s : SignaltransformgaborSeries) -> String {

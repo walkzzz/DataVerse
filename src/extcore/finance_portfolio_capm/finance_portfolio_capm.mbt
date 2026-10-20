@@ -94,52 +94,21 @@ pub fn finance_portfolio_capm_series_sum(s : FinanceportfoliocapmSeries) -> Doub
   total
 }
 
-pub fn finance_portfolio_capm_series_mean(s : FinanceportfoliocapmSeries) -> Double {
-  let n = finance_portfolio_capm_series_len(s)
-  if n == 0 { 0.0 } else { finance_portfolio_capm_series_sum(s) / n.to_double() }
-}
+pub fn finance_portfolio_capm_series_mean(s : FinanceportfoliocapmSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn finance_portfolio_capm_series_min(s : FinanceportfoliocapmSeries) -> Double {
-  let n = finance_portfolio_capm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_series_min(s : FinanceportfoliocapmSeries) -> Double { @_common.min(s.vals) }
 
-pub fn finance_portfolio_capm_series_max(s : FinanceportfoliocapmSeries) -> Double {
-  let n = finance_portfolio_capm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_series_max(s : FinanceportfoliocapmSeries) -> Double { @_common.max(s.vals) }
 
 pub fn finance_portfolio_capm_series_range(s : FinanceportfoliocapmSeries) -> Double {
-  finance_portfolio_capm_series_max(s) - finance_portfolio_capm_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn finance_portfolio_capm_series_var(s : FinanceportfoliocapmSeries) -> Double {
-  let n = finance_portfolio_capm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = finance_portfolio_capm_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn finance_portfolio_capm_series_var(s : FinanceportfoliocapmSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn finance_portfolio_capm_series_std(s : FinanceportfoliocapmSeries) -> Double { @_common.sqrt(finance_portfolio_capm_series_var(s)) }
+pub fn finance_portfolio_capm_series_std(s : FinanceportfoliocapmSeries) -> Double { @_common.std(s.vals) }
 
-pub fn finance_portfolio_capm_series_median(s : FinanceportfoliocapmSeries) -> Double {
-  let n = finance_portfolio_capm_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = finance_portfolio_capm_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn finance_portfolio_capm_series_median(s : FinanceportfoliocapmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_capm_series_scale(s : FinanceportfoliocapmSeries, f : Double) -> FinanceportfoliocapmSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn finance_portfolio_capm_series_normalize(s : FinanceportfoliocapmSeries) -
 }
 
 pub fn finance_portfolio_capm_series_cumsum(s : FinanceportfoliocapmSeries) -> FinanceportfoliocapmSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn finance_portfolio_capm_series_to_string(s : FinanceportfoliocapmSeries) -> String {

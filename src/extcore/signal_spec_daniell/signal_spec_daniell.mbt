@@ -94,52 +94,21 @@ pub fn signal_spec_daniell_series_sum(s : SignalspecdaniellSeries) -> Double {
   total
 }
 
-pub fn signal_spec_daniell_series_mean(s : SignalspecdaniellSeries) -> Double {
-  let n = signal_spec_daniell_series_len(s)
-  if n == 0 { 0.0 } else { signal_spec_daniell_series_sum(s) / n.to_double() }
-}
+pub fn signal_spec_daniell_series_mean(s : SignalspecdaniellSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn signal_spec_daniell_series_min(s : SignalspecdaniellSeries) -> Double {
-  let n = signal_spec_daniell_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_series_min(s : SignalspecdaniellSeries) -> Double { @_common.min(s.vals) }
 
-pub fn signal_spec_daniell_series_max(s : SignalspecdaniellSeries) -> Double {
-  let n = signal_spec_daniell_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_series_max(s : SignalspecdaniellSeries) -> Double { @_common.max(s.vals) }
 
 pub fn signal_spec_daniell_series_range(s : SignalspecdaniellSeries) -> Double {
-  signal_spec_daniell_series_max(s) - signal_spec_daniell_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn signal_spec_daniell_series_var(s : SignalspecdaniellSeries) -> Double {
-  let n = signal_spec_daniell_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = signal_spec_daniell_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn signal_spec_daniell_series_var(s : SignalspecdaniellSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn signal_spec_daniell_series_std(s : SignalspecdaniellSeries) -> Double { @_common.sqrt(signal_spec_daniell_series_var(s)) }
+pub fn signal_spec_daniell_series_std(s : SignalspecdaniellSeries) -> Double { @_common.std(s.vals) }
 
-pub fn signal_spec_daniell_series_median(s : SignalspecdaniellSeries) -> Double {
-  let n = signal_spec_daniell_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = signal_spec_daniell_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn signal_spec_daniell_series_median(s : SignalspecdaniellSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_daniell_series_scale(s : SignalspecdaniellSeries, f : Double) -> SignalspecdaniellSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn signal_spec_daniell_series_normalize(s : SignalspecdaniellSeries) -> Sign
 }
 
 pub fn signal_spec_daniell_series_cumsum(s : SignalspecdaniellSeries) -> SignalspecdaniellSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn signal_spec_daniell_series_to_string(s : SignalspecdaniellSeries) -> String {

@@ -94,52 +94,21 @@ pub fn opt_grad_amsgrad_series_sum(s : OptgradamsgradSeries) -> Double {
   total
 }
 
-pub fn opt_grad_amsgrad_series_mean(s : OptgradamsgradSeries) -> Double {
-  let n = opt_grad_amsgrad_series_len(s)
-  if n == 0 { 0.0 } else { opt_grad_amsgrad_series_sum(s) / n.to_double() }
-}
+pub fn opt_grad_amsgrad_series_mean(s : OptgradamsgradSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn opt_grad_amsgrad_series_min(s : OptgradamsgradSeries) -> Double {
-  let n = opt_grad_amsgrad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_grad_amsgrad_series_min(s : OptgradamsgradSeries) -> Double { @_common.min(s.vals) }
 
-pub fn opt_grad_amsgrad_series_max(s : OptgradamsgradSeries) -> Double {
-  let n = opt_grad_amsgrad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_grad_amsgrad_series_max(s : OptgradamsgradSeries) -> Double { @_common.max(s.vals) }
 
 pub fn opt_grad_amsgrad_series_range(s : OptgradamsgradSeries) -> Double {
-  opt_grad_amsgrad_series_max(s) - opt_grad_amsgrad_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn opt_grad_amsgrad_series_var(s : OptgradamsgradSeries) -> Double {
-  let n = opt_grad_amsgrad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = opt_grad_amsgrad_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn opt_grad_amsgrad_series_var(s : OptgradamsgradSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn opt_grad_amsgrad_series_std(s : OptgradamsgradSeries) -> Double { @_common.sqrt(opt_grad_amsgrad_series_var(s)) }
+pub fn opt_grad_amsgrad_series_std(s : OptgradamsgradSeries) -> Double { @_common.std(s.vals) }
 
-pub fn opt_grad_amsgrad_series_median(s : OptgradamsgradSeries) -> Double {
-  let n = opt_grad_amsgrad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = opt_grad_amsgrad_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn opt_grad_amsgrad_series_median(s : OptgradamsgradSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_grad_amsgrad_series_scale(s : OptgradamsgradSeries, f : Double) -> OptgradamsgradSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn opt_grad_amsgrad_series_normalize(s : OptgradamsgradSeries) -> Optgradams
 }
 
 pub fn opt_grad_amsgrad_series_cumsum(s : OptgradamsgradSeries) -> OptgradamsgradSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn opt_grad_amsgrad_series_to_string(s : OptgradamsgradSeries) -> String {

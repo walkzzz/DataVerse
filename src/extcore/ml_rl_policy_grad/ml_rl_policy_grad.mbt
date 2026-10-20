@@ -94,52 +94,21 @@ pub fn ml_rl_policy_grad_series_sum(s : MlrlpolicygradSeries) -> Double {
   total
 }
 
-pub fn ml_rl_policy_grad_series_mean(s : MlrlpolicygradSeries) -> Double {
-  let n = ml_rl_policy_grad_series_len(s)
-  if n == 0 { 0.0 } else { ml_rl_policy_grad_series_sum(s) / n.to_double() }
-}
+pub fn ml_rl_policy_grad_series_mean(s : MlrlpolicygradSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ml_rl_policy_grad_series_min(s : MlrlpolicygradSeries) -> Double {
-  let n = ml_rl_policy_grad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_series_min(s : MlrlpolicygradSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ml_rl_policy_grad_series_max(s : MlrlpolicygradSeries) -> Double {
-  let n = ml_rl_policy_grad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_series_max(s : MlrlpolicygradSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ml_rl_policy_grad_series_range(s : MlrlpolicygradSeries) -> Double {
-  ml_rl_policy_grad_series_max(s) - ml_rl_policy_grad_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ml_rl_policy_grad_series_var(s : MlrlpolicygradSeries) -> Double {
-  let n = ml_rl_policy_grad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ml_rl_policy_grad_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ml_rl_policy_grad_series_var(s : MlrlpolicygradSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ml_rl_policy_grad_series_std(s : MlrlpolicygradSeries) -> Double { @_common.sqrt(ml_rl_policy_grad_series_var(s)) }
+pub fn ml_rl_policy_grad_series_std(s : MlrlpolicygradSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ml_rl_policy_grad_series_median(s : MlrlpolicygradSeries) -> Double {
-  let n = ml_rl_policy_grad_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ml_rl_policy_grad_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ml_rl_policy_grad_series_median(s : MlrlpolicygradSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_rl_policy_grad_series_scale(s : MlrlpolicygradSeries, f : Double) -> MlrlpolicygradSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ml_rl_policy_grad_series_normalize(s : MlrlpolicygradSeries) -> Mlrlpolic
 }
 
 pub fn ml_rl_policy_grad_series_cumsum(s : MlrlpolicygradSeries) -> MlrlpolicygradSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ml_rl_policy_grad_series_to_string(s : MlrlpolicygradSeries) -> String {

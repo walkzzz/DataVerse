@@ -94,52 +94,21 @@ pub fn signal_spec_bartlett_series_sum(s : SignalspecbartlettSeries) -> Double {
   total
 }
 
-pub fn signal_spec_bartlett_series_mean(s : SignalspecbartlettSeries) -> Double {
-  let n = signal_spec_bartlett_series_len(s)
-  if n == 0 { 0.0 } else { signal_spec_bartlett_series_sum(s) / n.to_double() }
-}
+pub fn signal_spec_bartlett_series_mean(s : SignalspecbartlettSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn signal_spec_bartlett_series_min(s : SignalspecbartlettSeries) -> Double {
-  let n = signal_spec_bartlett_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_spec_bartlett_series_min(s : SignalspecbartlettSeries) -> Double { @_common.min(s.vals) }
 
-pub fn signal_spec_bartlett_series_max(s : SignalspecbartlettSeries) -> Double {
-  let n = signal_spec_bartlett_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_spec_bartlett_series_max(s : SignalspecbartlettSeries) -> Double { @_common.max(s.vals) }
 
 pub fn signal_spec_bartlett_series_range(s : SignalspecbartlettSeries) -> Double {
-  signal_spec_bartlett_series_max(s) - signal_spec_bartlett_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn signal_spec_bartlett_series_var(s : SignalspecbartlettSeries) -> Double {
-  let n = signal_spec_bartlett_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = signal_spec_bartlett_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn signal_spec_bartlett_series_var(s : SignalspecbartlettSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn signal_spec_bartlett_series_std(s : SignalspecbartlettSeries) -> Double { @_common.sqrt(signal_spec_bartlett_series_var(s)) }
+pub fn signal_spec_bartlett_series_std(s : SignalspecbartlettSeries) -> Double { @_common.std(s.vals) }
 
-pub fn signal_spec_bartlett_series_median(s : SignalspecbartlettSeries) -> Double {
-  let n = signal_spec_bartlett_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = signal_spec_bartlett_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn signal_spec_bartlett_series_median(s : SignalspecbartlettSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_bartlett_series_scale(s : SignalspecbartlettSeries, f : Double) -> SignalspecbartlettSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn signal_spec_bartlett_series_normalize(s : SignalspecbartlettSeries) -> Si
 }
 
 pub fn signal_spec_bartlett_series_cumsum(s : SignalspecbartlettSeries) -> SignalspecbartlettSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn signal_spec_bartlett_series_to_string(s : SignalspecbartlettSeries) -> String {

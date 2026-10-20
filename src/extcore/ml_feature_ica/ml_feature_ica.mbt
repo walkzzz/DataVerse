@@ -94,52 +94,21 @@ pub fn ml_feature_ica_series_sum(s : MlfeatureicaSeries) -> Double {
   total
 }
 
-pub fn ml_feature_ica_series_mean(s : MlfeatureicaSeries) -> Double {
-  let n = ml_feature_ica_series_len(s)
-  if n == 0 { 0.0 } else { ml_feature_ica_series_sum(s) / n.to_double() }
-}
+pub fn ml_feature_ica_series_mean(s : MlfeatureicaSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ml_feature_ica_series_min(s : MlfeatureicaSeries) -> Double {
-  let n = ml_feature_ica_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_series_min(s : MlfeatureicaSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ml_feature_ica_series_max(s : MlfeatureicaSeries) -> Double {
-  let n = ml_feature_ica_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_series_max(s : MlfeatureicaSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ml_feature_ica_series_range(s : MlfeatureicaSeries) -> Double {
-  ml_feature_ica_series_max(s) - ml_feature_ica_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ml_feature_ica_series_var(s : MlfeatureicaSeries) -> Double {
-  let n = ml_feature_ica_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ml_feature_ica_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ml_feature_ica_series_var(s : MlfeatureicaSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ml_feature_ica_series_std(s : MlfeatureicaSeries) -> Double { @_common.sqrt(ml_feature_ica_series_var(s)) }
+pub fn ml_feature_ica_series_std(s : MlfeatureicaSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ml_feature_ica_series_median(s : MlfeatureicaSeries) -> Double {
-  let n = ml_feature_ica_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ml_feature_ica_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ml_feature_ica_series_median(s : MlfeatureicaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_ica_series_scale(s : MlfeatureicaSeries, f : Double) -> MlfeatureicaSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ml_feature_ica_series_normalize(s : MlfeatureicaSeries) -> MlfeatureicaSe
 }
 
 pub fn ml_feature_ica_series_cumsum(s : MlfeatureicaSeries) -> MlfeatureicaSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ml_feature_ica_series_to_string(s : MlfeatureicaSeries) -> String {

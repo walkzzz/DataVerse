@@ -94,52 +94,21 @@ pub fn physics_heat_phase_series_sum(s : PhysicsheatphaseSeries) -> Double {
   total
 }
 
-pub fn physics_heat_phase_series_mean(s : PhysicsheatphaseSeries) -> Double {
-  let n = physics_heat_phase_series_len(s)
-  if n == 0 { 0.0 } else { physics_heat_phase_series_sum(s) / n.to_double() }
-}
+pub fn physics_heat_phase_series_mean(s : PhysicsheatphaseSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn physics_heat_phase_series_min(s : PhysicsheatphaseSeries) -> Double {
-  let n = physics_heat_phase_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_series_min(s : PhysicsheatphaseSeries) -> Double { @_common.min(s.vals) }
 
-pub fn physics_heat_phase_series_max(s : PhysicsheatphaseSeries) -> Double {
-  let n = physics_heat_phase_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_series_max(s : PhysicsheatphaseSeries) -> Double { @_common.max(s.vals) }
 
 pub fn physics_heat_phase_series_range(s : PhysicsheatphaseSeries) -> Double {
-  physics_heat_phase_series_max(s) - physics_heat_phase_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn physics_heat_phase_series_var(s : PhysicsheatphaseSeries) -> Double {
-  let n = physics_heat_phase_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = physics_heat_phase_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn physics_heat_phase_series_var(s : PhysicsheatphaseSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn physics_heat_phase_series_std(s : PhysicsheatphaseSeries) -> Double { @_common.sqrt(physics_heat_phase_series_var(s)) }
+pub fn physics_heat_phase_series_std(s : PhysicsheatphaseSeries) -> Double { @_common.std(s.vals) }
 
-pub fn physics_heat_phase_series_median(s : PhysicsheatphaseSeries) -> Double {
-  let n = physics_heat_phase_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = physics_heat_phase_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn physics_heat_phase_series_median(s : PhysicsheatphaseSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_phase_series_scale(s : PhysicsheatphaseSeries, f : Double) -> PhysicsheatphaseSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn physics_heat_phase_series_normalize(s : PhysicsheatphaseSeries) -> Physic
 }
 
 pub fn physics_heat_phase_series_cumsum(s : PhysicsheatphaseSeries) -> PhysicsheatphaseSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn physics_heat_phase_series_to_string(s : PhysicsheatphaseSeries) -> String {

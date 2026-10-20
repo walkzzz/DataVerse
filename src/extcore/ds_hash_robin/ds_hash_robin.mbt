@@ -94,52 +94,21 @@ pub fn ds_hash_robin_series_sum(s : DshashrobinSeries) -> Double {
   total
 }
 
-pub fn ds_hash_robin_series_mean(s : DshashrobinSeries) -> Double {
-  let n = ds_hash_robin_series_len(s)
-  if n == 0 { 0.0 } else { ds_hash_robin_series_sum(s) / n.to_double() }
-}
+pub fn ds_hash_robin_series_mean(s : DshashrobinSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ds_hash_robin_series_min(s : DshashrobinSeries) -> Double {
-  let n = ds_hash_robin_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_series_min(s : DshashrobinSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ds_hash_robin_series_max(s : DshashrobinSeries) -> Double {
-  let n = ds_hash_robin_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_series_max(s : DshashrobinSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ds_hash_robin_series_range(s : DshashrobinSeries) -> Double {
-  ds_hash_robin_series_max(s) - ds_hash_robin_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ds_hash_robin_series_var(s : DshashrobinSeries) -> Double {
-  let n = ds_hash_robin_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ds_hash_robin_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ds_hash_robin_series_var(s : DshashrobinSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ds_hash_robin_series_std(s : DshashrobinSeries) -> Double { @_common.sqrt(ds_hash_robin_series_var(s)) }
+pub fn ds_hash_robin_series_std(s : DshashrobinSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ds_hash_robin_series_median(s : DshashrobinSeries) -> Double {
-  let n = ds_hash_robin_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ds_hash_robin_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ds_hash_robin_series_median(s : DshashrobinSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_robin_series_scale(s : DshashrobinSeries, f : Double) -> DshashrobinSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ds_hash_robin_series_normalize(s : DshashrobinSeries) -> DshashrobinSerie
 }
 
 pub fn ds_hash_robin_series_cumsum(s : DshashrobinSeries) -> DshashrobinSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ds_hash_robin_series_to_string(s : DshashrobinSeries) -> String {

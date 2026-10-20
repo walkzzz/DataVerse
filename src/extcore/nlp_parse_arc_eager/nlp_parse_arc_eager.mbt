@@ -94,52 +94,21 @@ pub fn nlp_parse_arc_eager_series_sum(s : NlpparsearceagerSeries) -> Double {
   total
 }
 
-pub fn nlp_parse_arc_eager_series_mean(s : NlpparsearceagerSeries) -> Double {
-  let n = nlp_parse_arc_eager_series_len(s)
-  if n == 0 { 0.0 } else { nlp_parse_arc_eager_series_sum(s) / n.to_double() }
-}
+pub fn nlp_parse_arc_eager_series_mean(s : NlpparsearceagerSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn nlp_parse_arc_eager_series_min(s : NlpparsearceagerSeries) -> Double {
-  let n = nlp_parse_arc_eager_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn nlp_parse_arc_eager_series_min(s : NlpparsearceagerSeries) -> Double { @_common.min(s.vals) }
 
-pub fn nlp_parse_arc_eager_series_max(s : NlpparsearceagerSeries) -> Double {
-  let n = nlp_parse_arc_eager_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn nlp_parse_arc_eager_series_max(s : NlpparsearceagerSeries) -> Double { @_common.max(s.vals) }
 
 pub fn nlp_parse_arc_eager_series_range(s : NlpparsearceagerSeries) -> Double {
-  nlp_parse_arc_eager_series_max(s) - nlp_parse_arc_eager_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn nlp_parse_arc_eager_series_var(s : NlpparsearceagerSeries) -> Double {
-  let n = nlp_parse_arc_eager_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = nlp_parse_arc_eager_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn nlp_parse_arc_eager_series_var(s : NlpparsearceagerSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn nlp_parse_arc_eager_series_std(s : NlpparsearceagerSeries) -> Double { @_common.sqrt(nlp_parse_arc_eager_series_var(s)) }
+pub fn nlp_parse_arc_eager_series_std(s : NlpparsearceagerSeries) -> Double { @_common.std(s.vals) }
 
-pub fn nlp_parse_arc_eager_series_median(s : NlpparsearceagerSeries) -> Double {
-  let n = nlp_parse_arc_eager_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = nlp_parse_arc_eager_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn nlp_parse_arc_eager_series_median(s : NlpparsearceagerSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_arc_eager_series_scale(s : NlpparsearceagerSeries, f : Double) -> NlpparsearceagerSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn nlp_parse_arc_eager_series_normalize(s : NlpparsearceagerSeries) -> Nlppa
 }
 
 pub fn nlp_parse_arc_eager_series_cumsum(s : NlpparsearceagerSeries) -> NlpparsearceagerSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn nlp_parse_arc_eager_series_to_string(s : NlpparsearceagerSeries) -> String {

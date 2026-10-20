@@ -94,52 +94,21 @@ pub fn ds_heap_interval_series_sum(s : DsheapintervalSeries) -> Double {
   total
 }
 
-pub fn ds_heap_interval_series_mean(s : DsheapintervalSeries) -> Double {
-  let n = ds_heap_interval_series_len(s)
-  if n == 0 { 0.0 } else { ds_heap_interval_series_sum(s) / n.to_double() }
-}
+pub fn ds_heap_interval_series_mean(s : DsheapintervalSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn ds_heap_interval_series_min(s : DsheapintervalSeries) -> Double {
-  let n = ds_heap_interval_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_series_min(s : DsheapintervalSeries) -> Double { @_common.min(s.vals) }
 
-pub fn ds_heap_interval_series_max(s : DsheapintervalSeries) -> Double {
-  let n = ds_heap_interval_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_series_max(s : DsheapintervalSeries) -> Double { @_common.max(s.vals) }
 
 pub fn ds_heap_interval_series_range(s : DsheapintervalSeries) -> Double {
-  ds_heap_interval_series_max(s) - ds_heap_interval_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn ds_heap_interval_series_var(s : DsheapintervalSeries) -> Double {
-  let n = ds_heap_interval_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = ds_heap_interval_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn ds_heap_interval_series_var(s : DsheapintervalSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn ds_heap_interval_series_std(s : DsheapintervalSeries) -> Double { @_common.sqrt(ds_heap_interval_series_var(s)) }
+pub fn ds_heap_interval_series_std(s : DsheapintervalSeries) -> Double { @_common.std(s.vals) }
 
-pub fn ds_heap_interval_series_median(s : DsheapintervalSeries) -> Double {
-  let n = ds_heap_interval_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = ds_heap_interval_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn ds_heap_interval_series_median(s : DsheapintervalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_interval_series_scale(s : DsheapintervalSeries, f : Double) -> DsheapintervalSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn ds_heap_interval_series_normalize(s : DsheapintervalSeries) -> Dsheapinte
 }
 
 pub fn ds_heap_interval_series_cumsum(s : DsheapintervalSeries) -> DsheapintervalSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn ds_heap_interval_series_to_string(s : DsheapintervalSeries) -> String {

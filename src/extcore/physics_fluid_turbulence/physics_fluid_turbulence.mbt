@@ -94,52 +94,21 @@ pub fn physics_fluid_turbulence_series_sum(s : PhysicsfluidturbulenceSeries) -> 
   total
 }
 
-pub fn physics_fluid_turbulence_series_mean(s : PhysicsfluidturbulenceSeries) -> Double {
-  let n = physics_fluid_turbulence_series_len(s)
-  if n == 0 { 0.0 } else { physics_fluid_turbulence_series_sum(s) / n.to_double() }
-}
+pub fn physics_fluid_turbulence_series_mean(s : PhysicsfluidturbulenceSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn physics_fluid_turbulence_series_min(s : PhysicsfluidturbulenceSeries) -> Double {
-  let n = physics_fluid_turbulence_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_series_min(s : PhysicsfluidturbulenceSeries) -> Double { @_common.min(s.vals) }
 
-pub fn physics_fluid_turbulence_series_max(s : PhysicsfluidturbulenceSeries) -> Double {
-  let n = physics_fluid_turbulence_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_series_max(s : PhysicsfluidturbulenceSeries) -> Double { @_common.max(s.vals) }
 
 pub fn physics_fluid_turbulence_series_range(s : PhysicsfluidturbulenceSeries) -> Double {
-  physics_fluid_turbulence_series_max(s) - physics_fluid_turbulence_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn physics_fluid_turbulence_series_var(s : PhysicsfluidturbulenceSeries) -> Double {
-  let n = physics_fluid_turbulence_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = physics_fluid_turbulence_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn physics_fluid_turbulence_series_var(s : PhysicsfluidturbulenceSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn physics_fluid_turbulence_series_std(s : PhysicsfluidturbulenceSeries) -> Double { @_common.sqrt(physics_fluid_turbulence_series_var(s)) }
+pub fn physics_fluid_turbulence_series_std(s : PhysicsfluidturbulenceSeries) -> Double { @_common.std(s.vals) }
 
-pub fn physics_fluid_turbulence_series_median(s : PhysicsfluidturbulenceSeries) -> Double {
-  let n = physics_fluid_turbulence_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = physics_fluid_turbulence_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn physics_fluid_turbulence_series_median(s : PhysicsfluidturbulenceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_turbulence_series_scale(s : PhysicsfluidturbulenceSeries, f : Double) -> PhysicsfluidturbulenceSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn physics_fluid_turbulence_series_normalize(s : PhysicsfluidturbulenceSerie
 }
 
 pub fn physics_fluid_turbulence_series_cumsum(s : PhysicsfluidturbulenceSeries) -> PhysicsfluidturbulenceSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn physics_fluid_turbulence_series_to_string(s : PhysicsfluidturbulenceSeries) -> String {

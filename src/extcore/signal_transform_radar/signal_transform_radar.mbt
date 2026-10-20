@@ -94,52 +94,21 @@ pub fn signal_transform_radar_series_sum(s : SignaltransformradarSeries) -> Doub
   total
 }
 
-pub fn signal_transform_radar_series_mean(s : SignaltransformradarSeries) -> Double {
-  let n = signal_transform_radar_series_len(s)
-  if n == 0 { 0.0 } else { signal_transform_radar_series_sum(s) / n.to_double() }
-}
+pub fn signal_transform_radar_series_mean(s : SignaltransformradarSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn signal_transform_radar_series_min(s : SignaltransformradarSeries) -> Double {
-  let n = signal_transform_radar_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_series_min(s : SignaltransformradarSeries) -> Double { @_common.min(s.vals) }
 
-pub fn signal_transform_radar_series_max(s : SignaltransformradarSeries) -> Double {
-  let n = signal_transform_radar_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_series_max(s : SignaltransformradarSeries) -> Double { @_common.max(s.vals) }
 
 pub fn signal_transform_radar_series_range(s : SignaltransformradarSeries) -> Double {
-  signal_transform_radar_series_max(s) - signal_transform_radar_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn signal_transform_radar_series_var(s : SignaltransformradarSeries) -> Double {
-  let n = signal_transform_radar_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = signal_transform_radar_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn signal_transform_radar_series_var(s : SignaltransformradarSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn signal_transform_radar_series_std(s : SignaltransformradarSeries) -> Double { @_common.sqrt(signal_transform_radar_series_var(s)) }
+pub fn signal_transform_radar_series_std(s : SignaltransformradarSeries) -> Double { @_common.std(s.vals) }
 
-pub fn signal_transform_radar_series_median(s : SignaltransformradarSeries) -> Double {
-  let n = signal_transform_radar_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = signal_transform_radar_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn signal_transform_radar_series_median(s : SignaltransformradarSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_radar_series_scale(s : SignaltransformradarSeries, f : Double) -> SignaltransformradarSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn signal_transform_radar_series_normalize(s : SignaltransformradarSeries) -
 }
 
 pub fn signal_transform_radar_series_cumsum(s : SignaltransformradarSeries) -> SignaltransformradarSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn signal_transform_radar_series_to_string(s : SignaltransformradarSeries) -> String {

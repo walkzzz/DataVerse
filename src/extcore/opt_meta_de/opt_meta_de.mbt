@@ -94,52 +94,21 @@ pub fn opt_meta_de_series_sum(s : OptmetadeSeries) -> Double {
   total
 }
 
-pub fn opt_meta_de_series_mean(s : OptmetadeSeries) -> Double {
-  let n = opt_meta_de_series_len(s)
-  if n == 0 { 0.0 } else { opt_meta_de_series_sum(s) / n.to_double() }
-}
+pub fn opt_meta_de_series_mean(s : OptmetadeSeries) -> Double { @_common.mean(s.vals) }
 
-pub fn opt_meta_de_series_min(s : OptmetadeSeries) -> Double {
-  let n = opt_meta_de_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_meta_de_series_min(s : OptmetadeSeries) -> Double { @_common.min(s.vals) }
 
-pub fn opt_meta_de_series_max(s : OptmetadeSeries) -> Double {
-  let n = opt_meta_de_series_len(s)
-  if n == 0 { 0.0 } else {
-    let mut m = s.vals[0]
-    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
-    m
-  }
-}
+pub fn opt_meta_de_series_max(s : OptmetadeSeries) -> Double { @_common.max(s.vals) }
 
 pub fn opt_meta_de_series_range(s : OptmetadeSeries) -> Double {
-  opt_meta_de_series_max(s) - opt_meta_de_series_min(s)
+  @_common.max(s.vals) - @_common.min(s.vals)
 }
 
-pub fn opt_meta_de_series_var(s : OptmetadeSeries) -> Double {
-  let n = opt_meta_de_series_len(s)
-  if n == 0 { 0.0 } else {
-    let m = opt_meta_de_series_mean(s)
-    let mut total = 0.0
-    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
-    total / n.to_double()
-  }
-}
+pub fn opt_meta_de_series_var(s : OptmetadeSeries) -> Double { @_common.variance(s.vals) }
 
-pub fn opt_meta_de_series_std(s : OptmetadeSeries) -> Double { @_common.sqrt(opt_meta_de_series_var(s)) }
+pub fn opt_meta_de_series_std(s : OptmetadeSeries) -> Double { @_common.std(s.vals) }
 
-pub fn opt_meta_de_series_median(s : OptmetadeSeries) -> Double {
-  let n = opt_meta_de_series_len(s)
-  if n == 0 { 0.0 } else {
-    let sorted = opt_meta_de_sort(s.vals)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn opt_meta_de_series_median(s : OptmetadeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_de_series_scale(s : OptmetadeSeries, f : Double) -> OptmetadeSeries {
   let result = []
@@ -173,10 +142,7 @@ pub fn opt_meta_de_series_normalize(s : OptmetadeSeries) -> OptmetadeSeries {
 }
 
 pub fn opt_meta_de_series_cumsum(s : OptmetadeSeries) -> OptmetadeSeries {
-  let result = []
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
-  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
 }
 
 pub fn opt_meta_de_series_to_string(s : OptmetadeSeries) -> String {
